@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "cozyhome:block/planked_wall/oak_planked_wall_single",
+    "side": "cozyhome:block/planked_wall/oak_planked_wall_single"
+  }
+}

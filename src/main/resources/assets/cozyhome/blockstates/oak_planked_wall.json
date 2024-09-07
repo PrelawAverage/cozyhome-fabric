@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "cozyhome:block/planked_wall/oak_planked_wall_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "cozyhome:block/planked_wall/oak_planked_wall"
+    },
+    "axis=z": {
+      "model": "cozyhome:block/planked_wall/oak_planked_wall_horizontal",
+      "x": 90
+    }
+  }
+}

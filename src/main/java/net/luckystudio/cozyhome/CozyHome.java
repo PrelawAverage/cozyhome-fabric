@@ -1,6 +1,9 @@
 package net.luckystudio.cozyhome;
 
 import net.fabricmc.api.ModInitializer;
+import net.luckystudio.cozyhome.block.ModBlocks;
+import net.luckystudio.cozyhome.item.ModItemGroups;
+import net.luckystudio.cozyhome.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,6 +13,8 @@ public class CozyHome implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-
+		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
+		ModItemGroups.registerModItemGroups();
 	}
 }
