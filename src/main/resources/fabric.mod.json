@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "cozyhome",
+	"version": "${version}",
+	"name": "Cozy Home",
+	"description": "This mod adds furniture into the game!",
+	"authors": [
+		"LuckyOwl, DipChip"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/cozyhome/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.luckystudio.cozyhome.CozyHome"
+		],
+		"fabric-datagen": [
+			"net.luckystudio.cozyhome.CozyHomeDataGenerator"
+		],
+		"client": [
+			"net.luckystudio.cozyhome.CozyHomeClient"
+		]
+	},
+	"mixins": [
+		"cozyhome.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.5",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
