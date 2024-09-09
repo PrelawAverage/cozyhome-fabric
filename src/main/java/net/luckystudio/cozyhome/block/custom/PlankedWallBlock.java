@@ -5,25 +5,17 @@ import net.luckystudio.cozyhome.block.util.StackableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PillarBlock;
-import net.minecraft.block.enums.Thickness;
-import net.minecraft.component.Component;
-import net.minecraft.datafixer.fix.ChunkPalettedStorageFix;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
-import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
 import java.util.List;
-import java.util.Stack;
 
 public class PlankedWallBlock extends PillarBlock {
     public static final EnumProperty<StackableBlock> STACKABLE_BLOCK = ModProperties.STACKABLE_BLOCK;
@@ -56,22 +48,23 @@ public class PlankedWallBlock extends PillarBlock {
 
         StackableBlock stackableBlockType = getStackableBlockType(state, relativeHeadBlock, relativeTailBlock);
 
-        state = state.with(STACKABLE_BLOCK, stackableBlockType);
+        BlockState updatedState = state.with(STACKABLE_BLOCK, stackableBlockType);
 
-        world.setBlockState(pos, state, 3);
+        world.setBlockState(pos, updatedState, 3);
     }
 
-    public BlockPos getRelativeAxisNeighborPosition(Direction.Axis axis, BlockPos pos, StackableBlock stackableBlock) {
-        if (axis == Direction.Axis.X && stackableBlock == StackableBlock.HEAD) {return pos.east();}
-        else if (axis == Direction.Axis.X && stackableBlock == StackableBlock.TAIL) {return pos.west();}
-        else if (axis == Direction.Axis.Y && stackableBlock == StackableBlock.HEAD) {return pos.up();}
-        else if (axis == Direction.Axis.Y && stackableBlock == StackableBlock.TAIL) {return pos.down();}
-        else if (axis == Direction.Axis.Z && stackableBlock == StackableBlock.HEAD) {return pos.south();}
-        else if (axis == Direction.Axis.Z && stackableBlock == StackableBlock.TAIL) {return pos.north();}
-        else {return null;}
+    private BlockPos getRelativeAxisNeighborPosition(Direction.Axis axis, BlockPos pos, StackableBlock stackableBlock) {
+        return switch (axis) {
+            case X -> stackableBlock == StackableBlock.HEAD ? pos.east() :
+                    stackableBlock == StackableBlock.TAIL ? pos.west() : null;
+            case Y -> stackableBlock == StackableBlock.HEAD ? pos.up() :
+                    stackableBlock == StackableBlock.TAIL ? pos.down() : null;
+            case Z -> stackableBlock == StackableBlock.HEAD ? pos.south() :
+                    stackableBlock == StackableBlock.TAIL ? pos.north() : null;
+        };
     }
 
-    public StackableBlock getStackableBlockType(BlockState state, BlockState relativeHeadBlock, BlockState relativeBlockTail) {
+    private StackableBlock getStackableBlockType(BlockState state, BlockState relativeHeadBlock, BlockState relativeBlockTail) {
         boolean isHeadBlockConnected = relativeHeadBlock.isOf(state.getBlock()) && relativeHeadBlock.get(AXIS) == state.get(AXIS);
         boolean isTailBlockConnected = relativeBlockTail.isOf(state.getBlock()) && relativeBlockTail.get(AXIS) == state.get(AXIS);
 
