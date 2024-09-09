@@ -21,6 +21,7 @@ public class ModItemGroups {
                     .displayName(Text.translatable("itemgroup.cozyhome.cozyhome"))
                     .entries((displayContext, entries) -> {
                         entries.add(ModBlocks.OAK_PLANKED_WALL);
+                        entries.add(ModBlocks.SPRUCE_PLANKED_WALL);
                     }).build());
 
     public static void registerModItemGroups() {

@@ -19,6 +19,8 @@ public class ModBlocks {
     // Add Blocks Here
     public static final Block OAK_PLANKED_WALL = registerBlock("oak_planked_wall",
             new PlankedWallBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block SPRUCE_PLANKED_WALL = registerBlock("spruce_planked_wall",
+            new PlankedWallBlock(AbstractBlock.Settings.copy(Blocks.SPRUCE_PLANKS)));
 
     // Register Block Method
     private static Block registerBlock(String name, Block block) {

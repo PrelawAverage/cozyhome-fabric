@@ -2,14 +2,18 @@ package net.luckystudio.cozyhome.block.custom;
 
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.StackableBlock;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.EnumProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -19,13 +23,26 @@ import java.util.List;
 
 public class PlankedWallBlock extends PillarBlock {
     public static final EnumProperty<StackableBlock> STACKABLE_BLOCK = ModProperties.STACKABLE_BLOCK;
-    public PlankedWallBlock(Settings settings) {
+    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+
+    public PlankedWallBlock(AbstractBlock.Settings settings) {
         super(settings);
+        this.setDefaultState(this.stateManager.getDefaultState()
+                .with(AXIS, Direction.Axis.Y)
+                .with(FACING, Direction.NORTH));
+    }
+
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        return this.getDefaultState()
+                .with(FACING, ctx.getHorizontalPlayerFacing().getOpposite())
+                .with(STACKABLE_BLOCK, StackableBlock.SINGLE)
+                .with(AXIS, ctx.getSide().getAxis());
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(AXIS, STACKABLE_BLOCK);
+        builder.add(FACING, STACKABLE_BLOCK, AXIS);
     }
 
     @Override
@@ -59,8 +76,8 @@ public class PlankedWallBlock extends PillarBlock {
                     stackableBlock == StackableBlock.TAIL ? pos.west() : null;
             case Y -> stackableBlock == StackableBlock.HEAD ? pos.up() :
                     stackableBlock == StackableBlock.TAIL ? pos.down() : null;
-            case Z -> stackableBlock == StackableBlock.HEAD ? pos.south() :
-                    stackableBlock == StackableBlock.TAIL ? pos.north() : null;
+            case Z -> stackableBlock == StackableBlock.HEAD ? pos.north() :
+                    stackableBlock == StackableBlock.TAIL ? pos.south() : null;
         };
     }
 
