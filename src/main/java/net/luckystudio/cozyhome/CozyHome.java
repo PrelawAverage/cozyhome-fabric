@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.item.ModItemGroups;
 import net.luckystudio.cozyhome.item.ModItems;
+import net.luckystudio.cozyhome.sound.ModSounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,5 +30,6 @@ public class CozyHome implements ModInitializer {
 		FuelRegistry.INSTANCE.add(ModBlocks.BAMBOO_PLANKED_WALL, 300);
 		FuelRegistry.INSTANCE.add(ModBlocks.CRIMSON_PLANKED_WALL, 300);
 		FuelRegistry.INSTANCE.add(ModBlocks.WARPED_PLANKED_WALL, 300);
+		ModSounds.registerSounds();
 	}
 }

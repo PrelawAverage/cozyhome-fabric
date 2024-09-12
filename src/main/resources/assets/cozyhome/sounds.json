@@ -1,0 +1,8 @@
+{
+  "lamp_toggle": {
+    "subtitle": "sounds.cozyhome.lamp_toggle",
+    "sounds": [
+      "cozyhome:lamp_toggle"
+    ]
+  }
+}
