@@ -1,4 +1,6 @@
 {
+  "itemgroup.cozyhome.cozyhome": "Cozy Home",
+
   "block.cozyhome.oak_planked_wall": "Oak Planked Wall",
   "block.cozyhome.spruce_planked_wall": "Spruce Planked Wall",
   "block.cozyhome.birch_planked_wall": "Birch Planked Wall",
@@ -30,7 +32,8 @@
 
   "tooltip.cozyhome.block.planked_wall": "§7Stackable",
 
-  "itemgroup.cozyhome.cozyhome": "Cozy Home",
-
-  "sounds.cozyhome.lamp_toggle": "Lamp Toggled"
+  "sounds.cozyhome.lamp_toggle": "Lamp Toggled",
+  "sounds.cozyhome.fireplace_loop": "Fireplace Crackles",
+  "sounds.cozyhome.grandfather_clock_tick": "Grandfather Clock Ticks",
+  "sounds.cozyhome.grandfather_clock_midnight": "Grandfather Clock Midnight"
 }

@@ -4,5 +4,29 @@
     "sounds": [
       "cozyhome:lamp_toggle"
     ]
+  },
+  "fireplace_loop": {
+    "subtitle": "sounds.cozyhome.fireplace_loop",
+    "sounds": [
+      "cozyhome:fireplace_loop_0",
+      "cozyhome:fireplace_loop_1"
+    ]
+  },
+  "grandfather_clock_tick": {
+    "subtitle": "sounds.cozyhome.grandfather_clock_tick",
+    "sounds": [
+      "cozyhome:grandfather_clock_tick_0",
+      "cozyhome:grandfather_clock_tick_1",
+      "cozyhome:grandfather_clock_tick_2",
+      "cozyhome:grandfather_clock_tick_3",
+      "cozyhome:grandfather_clock_tick_4",
+      "cozyhome:grandfather_clock_tick_5"
+    ]
+  },
+  "grandfather_clock_midnight": {
+    "subtitle": "sounds.cozyhome.grandfather_clock_midnight",
+    "sounds": [
+      "cozyhome:grandfather_clock_midnight"
+    ]
   }
 }
