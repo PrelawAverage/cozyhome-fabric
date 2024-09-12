@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_crimson_planked_wall": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cozyhome:crimson_planked_wall"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:crimson_planks_from_crimson_planked_wall"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_crimson_planked_wall"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:crimson_planks_from_crimson_planked_wall"
+    ]
+  }
+}

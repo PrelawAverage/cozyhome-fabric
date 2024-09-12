@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_post",
+  "textures": {
+    "edge": "cozyhome:block/autumn_stained_window_pane_top",
+    "pane": "cozyhome:block/autumn_stained_window"
+  }
+}

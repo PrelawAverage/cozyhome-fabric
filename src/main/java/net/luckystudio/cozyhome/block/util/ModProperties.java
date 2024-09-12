@@ -1,7 +1,8 @@
 package net.luckystudio.cozyhome.block.util;
 
+import net.luckystudio.cozyhome.block.util.blockstates.LinearConnectionBlock;
 import net.minecraft.state.property.EnumProperty;
 
 public class ModProperties {
-    public static final EnumProperty<StackableBlock> STACKABLE_BLOCK = EnumProperty.of("stack_type", StackableBlock.class);
+    public static final EnumProperty<LinearConnectionBlock> LINEAR_CONNECTION_BLOCK = EnumProperty.of("linear_connection", LinearConnectionBlock.class);
 }
