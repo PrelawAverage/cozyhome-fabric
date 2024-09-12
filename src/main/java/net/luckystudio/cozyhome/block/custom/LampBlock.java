@@ -72,6 +72,6 @@ public class LampBlock extends Block {
     protected static void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, BlockState state) {
         // Just alters the pitch when the lamp is being turned on and off.
         float f = state.get(LIT) ? 1F : 0.9F;
-        world.playSound(player, pos, ModSounds.LAMP_TOGGLE, SoundCategory.BLOCKS, 0.3F, f);
+        world.playSound(player, pos, ModSounds.LAMP_TOGGLE, SoundCategory.BLOCKS, 1F, f);
     }
 }

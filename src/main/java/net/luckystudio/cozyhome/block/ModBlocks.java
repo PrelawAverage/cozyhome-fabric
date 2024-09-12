@@ -12,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
@@ -45,52 +46,52 @@ public class ModBlocks {
 
     // Lamps
     public static final Block WHITE_LAMP = registerBlock("white_lamp",
-            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.WHITE).luminance(createLightLevelFromLitBlockState(9)).strength(.1F))
+            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.WHITE).luminance(createLightLevelFromLitBlockState(9)).strength(.1F).sounds(BlockSoundGroup.WOOL))
     );
     public static final Block ORANGE_LAMP = registerBlock("orange_lamp",
-            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.ORANGE).luminance(createLightLevelFromLitBlockState(9)).strength(.1F))
+            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.ORANGE).luminance(createLightLevelFromLitBlockState(9)).strength(.1F).sounds(BlockSoundGroup.WOOL))
     );
     public static final Block MAGENTA_LAMP = registerBlock("magenta_lamp",
-            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.MAGENTA).luminance(createLightLevelFromLitBlockState(9)).strength(.1F))
+            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.MAGENTA).luminance(createLightLevelFromLitBlockState(9)).strength(.1F).sounds(BlockSoundGroup.WOOL))
     );
     public static final Block LIGHT_BLUE_LAMP = registerBlock("light_blue_lamp",
-            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_BLUE).luminance(createLightLevelFromLitBlockState(9)).strength(.1F))
+            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_BLUE).luminance(createLightLevelFromLitBlockState(9)).strength(.1F).sounds(BlockSoundGroup.WOOL))
     );
     public static final Block YELLOW_LAMP = registerBlock("yellow_lamp",
-            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).luminance(createLightLevelFromLitBlockState(9)).strength(.1F))
+            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).luminance(createLightLevelFromLitBlockState(9)).strength(.1F).sounds(BlockSoundGroup.WOOL))
     );
     public static final Block LIME_LAMP = registerBlock("lime_lamp",
-            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.LIME).luminance(createLightLevelFromLitBlockState(9)).strength(.1F))
+            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.LIME).luminance(createLightLevelFromLitBlockState(9)).strength(.1F).sounds(BlockSoundGroup.WOOL))
     );
     public static final Block PINK_LAMP = registerBlock("pink_lamp",
-            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.PINK).luminance(createLightLevelFromLitBlockState(9)).strength(.1F))
+            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.PINK).luminance(createLightLevelFromLitBlockState(9)).strength(.1F).sounds(BlockSoundGroup.WOOL))
     );
     public static final Block GRAY_LAMP = registerBlock("gray_lamp",
-            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.GRAY).luminance(createLightLevelFromLitBlockState(9)).strength(.1F))
+            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.GRAY).luminance(createLightLevelFromLitBlockState(9)).strength(.1F).sounds(BlockSoundGroup.WOOL))
     );
     public static final Block LIGHT_GRAY_LAMP = registerBlock("light_gray_lamp",
-            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_GRAY).luminance(createLightLevelFromLitBlockState(9)).strength(.1F))
+            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_GRAY).luminance(createLightLevelFromLitBlockState(9)).strength(.1F).sounds(BlockSoundGroup.WOOL))
     );
     public static final Block CYAN_LAMP = registerBlock("cyan_lamp",
-            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.CYAN).luminance(createLightLevelFromLitBlockState(9)).strength(.1F))
+            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.CYAN).luminance(createLightLevelFromLitBlockState(9)).strength(.1F).sounds(BlockSoundGroup.WOOL))
     );
     public static final Block PURPLE_LAMP = registerBlock("purple_lamp",
-            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.PURPLE).luminance(createLightLevelFromLitBlockState(9)).strength(.1F))
+            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.PURPLE).luminance(createLightLevelFromLitBlockState(9)).strength(.1F).sounds(BlockSoundGroup.WOOL))
     );
     public static final Block BLUE_LAMP = registerBlock("blue_lamp",
-            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.BLUE).luminance(createLightLevelFromLitBlockState(9)).strength(.1F))
+            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.BLUE).luminance(createLightLevelFromLitBlockState(9)).strength(.1F).sounds(BlockSoundGroup.WOOL))
     );
     public static final Block BROWN_LAMP = registerBlock("brown_lamp",
-            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.BROWN).luminance(createLightLevelFromLitBlockState(9)).strength(.1F))
+            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.BROWN).luminance(createLightLevelFromLitBlockState(9)).strength(.1F).sounds(BlockSoundGroup.WOOL))
     );
     public static final Block GREEN_LAMP = registerBlock("green_lamp",
-            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.GREEN).luminance(createLightLevelFromLitBlockState(9)).strength(.1F))
+            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.GREEN).luminance(createLightLevelFromLitBlockState(9)).strength(.1F).sounds(BlockSoundGroup.WOOL))
     );
     public static final Block RED_LAMP = registerBlock("red_lamp",
-            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.RED).luminance(createLightLevelFromLitBlockState(9)).strength(.1F))
+            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.RED).luminance(createLightLevelFromLitBlockState(9)).strength(.1F).sounds(BlockSoundGroup.WOOL))
     );
     public static final Block BLACK_LAMP = registerBlock("black_lamp",
-            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.BLACK).luminance(createLightLevelFromLitBlockState(9)).strength(.1F))
+            new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.BLACK).luminance(createLightLevelFromLitBlockState(9)).strength(.1F).sounds(BlockSoundGroup.WOOL))
     );
 
     public static ToIntFunction<BlockState> createLightLevelFromLitBlockState(int litLevel) {
