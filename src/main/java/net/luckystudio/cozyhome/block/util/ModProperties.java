@@ -1,5 +1,6 @@
 package net.luckystudio.cozyhome.block.util;
 
+import net.luckystudio.cozyhome.block.util.blockstates.LinearConnectionBlock;
 import net.minecraft.state.property.EnumProperty;
 
 public class ModProperties {

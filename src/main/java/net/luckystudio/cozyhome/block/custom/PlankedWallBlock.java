@@ -1,7 +1,7 @@
 package net.luckystudio.cozyhome.block.custom;
 
 import net.luckystudio.cozyhome.block.util.ModProperties;
-import net.luckystudio.cozyhome.block.util.LinearConnectionBlock;
+import net.luckystudio.cozyhome.block.util.blockstates.LinearConnectionBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
