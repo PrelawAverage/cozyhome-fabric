@@ -1,9 +1,9 @@
 {
-	"credit": "Lucky Owl",
+	"cmagentait": "Lucky Owl",
 	"texture_size": [32, 32],
 	"textures": {
-		"3": "cozyhome:block/lamp/red_lamp_on",
-		"particle": "minecraft:block/red_wool"
+		"3": "cozyhome:block/lamp/magenta_lamp_on",
+		"particle": "minecraft:block/magenta_wool"
 	},
 	"elements": [
 		{

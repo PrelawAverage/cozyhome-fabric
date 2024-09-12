@@ -1,9 +1,9 @@
 {
-	"credit": "Lucky Owl",
+	"cpinkit": "Lucky Owl",
 	"texture_size": [32, 32],
 	"textures": {
-		"3": "cozyhome:block/lamp/red_lamp_on",
-		"particle": "minecraft:block/red_wool"
+		"3": "cozyhome:block/lamp/pink_lamp_on",
+		"particle": "minecraft:block/pink_wool"
 	},
 	"elements": [
 		{

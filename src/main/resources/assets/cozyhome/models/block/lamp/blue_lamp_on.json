@@ -2,8 +2,8 @@
 	"credit": "Lucky Owl",
 	"texture_size": [32, 32],
 	"textures": {
-		"lamp": "cozyhome:block/lamp/red_lamp",
-		"particle": "minecraft:block/red_wool"
+		"lamp": "cozyhome:block/lamp/blue_lamp_on",
+		"particle": "minecraft:block/blue_wool"
 	},
 	"elements": [
 		{

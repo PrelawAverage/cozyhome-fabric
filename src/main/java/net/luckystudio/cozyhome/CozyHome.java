@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.item.ModItemGroups;
 import net.luckystudio.cozyhome.item.ModItems;
+import net.luckystudio.cozyhome.sound.ModSounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,5 +17,6 @@ public class CozyHome implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModItemGroups.registerModItemGroups();
+		ModSounds.registerSounds();
 	}
 }
