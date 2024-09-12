@@ -1,6 +1,15 @@
 {
   "block.cozyhome.oak_planked_wall": "Oak Planked Wall",
   "block.cozyhome.spruce_planked_wall": "Spruce Planked Wall",
+  "block.cozyhome.birch_planked_wall": "Birch Planked Wall",
+  "block.cozyhome.jungle_planked_wall": "Jungle Planked Wall",
+  "block.cozyhome.acacia_planked_wall": "Acacia Planked Wall",
+  "block.cozyhome.dark_oak_planked_wall": "Dark Oak Planked Wall",
+  "block.cozyhome.mangrove_planked_wall": "Mangrove Planked Wall",
+  "block.cozyhome.cherry_planked_wall": "Cherry Planked Wall",
+  "block.cozyhome.bamboo_planked_wall": "Bamboo Planked Wall",
+  "block.cozyhome.crimson_planked_wall": "Crimson Planked Wall",
+  "block.cozyhome.warped_planked_wall": "Warped Planked Wall",
 
   "tooltip.cozyhome.block.planked_wall": "§7Stackable",
 

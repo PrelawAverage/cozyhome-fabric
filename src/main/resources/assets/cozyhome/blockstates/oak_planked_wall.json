@@ -1,98 +1,98 @@
 {
   "variants": {
-    "axis=x,stack_type=single": {
+    "axis=x,linear_connection=single": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_single_horizontal",
       "x": 90,
       "y": 90
     },
-    "axis=y,stack_type=single,facing=east": {
+    "axis=y,linear_connection=single,facing=east": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_single",
       "y": 90
     },
-    "axis=y,stack_type=single,facing=north": {
+    "axis=y,linear_connection=single,facing=north": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_single"
     },
-    "axis=y,stack_type=single,facing=south": {
+    "axis=y,linear_connection=single,facing=south": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_single",
       "y": 180
     },
-    "axis=y,stack_type=single,facing=west": {
+    "axis=y,linear_connection=single,facing=west": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_single",
       "y": 270
     },
-    "axis=z,stack_type=single": {
+    "axis=z,linear_connection=single": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_single_horizontal",
       "x": 90
     },
-    "axis=x,stack_type=head": {
+    "axis=x,linear_connection=head": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_head_horizontal",
       "x": 90,
       "y": 90
     },
-    "axis=y,stack_type=head,facing=east": {
+    "axis=y,linear_connection=head,facing=east": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_head",
       "y": 90
     },
-    "axis=y,stack_type=head,facing=north": {
+    "axis=y,linear_connection=head,facing=north": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_head"
     },
-    "axis=y,stack_type=head,facing=south": {
+    "axis=y,linear_connection=head,facing=south": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_head",
       "y": 180
     },
-    "axis=y,stack_type=head,facing=west": {
+    "axis=y,linear_connection=head,facing=west": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_head",
       "y": 270
     },
-    "axis=z,stack_type=head": {
+    "axis=z,linear_connection=head": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_head_horizontal",
       "x": 90
     },
-    "axis=x,stack_type=middle": {
+    "axis=x,linear_connection=middle": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_middle_horizontal",
       "x": 90,
       "y": 90
     },
-    "axis=y,stack_type=middle,facing=east": {
+    "axis=y,linear_connection=middle,facing=east": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_middle",
       "y": 90
     },
-    "axis=y,stack_type=middle,facing=north": {
+    "axis=y,linear_connection=middle,facing=north": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_middle"
     },
-    "axis=y,stack_type=middle,facing=south": {
+    "axis=y,linear_connection=middle,facing=south": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_middle",
       "y": 180
     },
-    "axis=y,stack_type=middle,facing=west": {
+    "axis=y,linear_connection=middle,facing=west": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_middle",
       "y": 270
     },
-    "axis=z,stack_type=middle": {
+    "axis=z,linear_connection=middle": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_middle_horizontal",
       "x": 90
     },
-    "axis=x,stack_type=tail": {
+    "axis=x,linear_connection=tail": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_tail_horizontal",
       "x": 90,
       "y": 90
     },
-    "axis=y,stack_type=tail,facing=east": {
+    "axis=y,linear_connection=tail,facing=east": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_tail",
       "y": 90
     },
-    "axis=y,stack_type=tail,facing=north": {
+    "axis=y,linear_connection=tail,facing=north": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_tail"
     },
-    "axis=y,stack_type=tail,facing=south": {
+    "axis=y,linear_connection=tail,facing=south": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_tail",
       "y": 180
     },
-    "axis=y,stack_type=tail,facing=west": {
+    "axis=y,linear_connection=tail,facing=west": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_tail",
       "y": 270
     },
-    "axis=z,stack_type=tail": {
+    "axis=z,linear_connection=tail": {
       "model": "cozyhome:block/planked_wall/oak_planked_wall_tail_horizontal",
       "x": 90
     }
