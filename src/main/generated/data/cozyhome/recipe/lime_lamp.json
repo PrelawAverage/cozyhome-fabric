@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:lantern"
+    },
+    "@": {
+      "item": "minecraft:lime_wool"
+    }
+  },
+  "pattern": [
+    "@",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyhome:lime_lamp"
+  }
+}
