@@ -8,6 +8,10 @@ import net.minecraft.client.render.RenderLayer;
 public class CozyHomeClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AUTUMN_STAINED_WINDOW, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AUTUMN_STAINED_WINDOW_PANE, RenderLayer.getTranslucent());
+
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WHITE_LAMP, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ORANGE_LAMP, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MAGENTA_LAMP, RenderLayer.getTranslucent());

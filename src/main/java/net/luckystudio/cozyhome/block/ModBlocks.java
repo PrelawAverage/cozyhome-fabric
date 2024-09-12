@@ -44,6 +44,11 @@ public class ModBlocks {
     public static final Block WARPED_PLANKED_WALL = registerBlock("warped_planked_wall",
             new PlankedWallBlock(AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS)));
 
+    public static final Block AUTUMN_STAINED_WINDOW = registerBlock("autumn_stained_window",
+            new TranslucentBlock(AbstractBlock.Settings.copy(Blocks.BLACK_STAINED_GLASS)));
+    public static final Block AUTUMN_STAINED_WINDOW_PANE = registerBlock("autumn_stained_window_pane",
+            new PaneBlock(AbstractBlock.Settings.copy(Blocks.BLACK_STAINED_GLASS_PANE)));
+
     // Lamps
     public static final Block WHITE_LAMP = registerBlock("white_lamp",
             new LampBlock(AbstractBlock.Settings.create().mapColor(MapColor.WHITE).luminance(createLightLevelFromLitBlockState(9)).strength(.1F).sounds(BlockSoundGroup.WOOL))
