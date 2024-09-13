@@ -1,7 +1,7 @@
-// 1.21	2024-09-12T04:09:03.8004672	Cozy Home/Block Loot Tables
+// 1.21	2024-09-12T21:49:35.8854178	Cozy Home/Block Loot Tables
 de31d8744b8bd33dc553c2aa60198c7248b40051 data\cozyhome\loot_table\blocks\black_lamp.json
-652370709a3a8d390a8779d6a40c09dff32d2f89 data\cozyhome\loot_table\blocks\gray_lamp.json
 6d6723f7b6c580a4ee03c7c88097f4b9331a3823 data\cozyhome\loot_table\blocks\magenta_lamp.json
+652370709a3a8d390a8779d6a40c09dff32d2f89 data\cozyhome\loot_table\blocks\gray_lamp.json
 d02b415a3f2cc3e8b8ae66976e0963634be668e7 data\cozyhome\loot_table\blocks\yellow_lamp.json
 6ac7e21b7a6d9556a37cd9e6b4d53cdc9e1e0fb6 data\cozyhome\loot_table\blocks\lime_lamp.json
 68c017723b0be038961118e34bee0dde5f4b1965 data\cozyhome\loot_table\blocks\brown_lamp.json
@@ -11,8 +11,8 @@ bc2fd31e831a69631a83a79b2cfe0467a91815de data\cozyhome\loot_table\blocks\blue_la
 a3ecb54ee3eb27278218dbf51167a877de722dea data\cozyhome\loot_table\blocks\mangrove_planked_wall.json
 29dd6f43109d08ddc170114b590a035528c91566 data\cozyhome\loot_table\blocks\cherry_planked_wall.json
 3973fc3b2be15049ebf62d97c05f62c2203b5e9e data\cozyhome\loot_table\blocks\bamboo_planked_wall.json
-bd30b753d6ebfa43ba81478248b5172c9feb3124 data\cozyhome\loot_table\blocks\warped_planked_wall.json
 588233e524ff22ac025d05bc36f256d8dfd0556a data\cozyhome\loot_table\blocks\light_blue_lamp.json
+bd30b753d6ebfa43ba81478248b5172c9feb3124 data\cozyhome\loot_table\blocks\warped_planked_wall.json
 000d7ac86714a18681c86c0b7d6229b5f6035ca1 data\cozyhome\loot_table\blocks\pink_lamp.json
 9411dc367a093ee6d44d73839251e89c6c710d70 data\cozyhome\loot_table\blocks\crimson_planked_wall.json
 06b0593b196d9ed2b70da03a20965d66faeecd7f data\cozyhome\loot_table\blocks\green_lamp.json
