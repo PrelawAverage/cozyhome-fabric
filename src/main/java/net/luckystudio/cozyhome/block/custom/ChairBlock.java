@@ -1,24 +1,15 @@
 package net.luckystudio.cozyhome.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.blocks.SeatBlock;
 import net.luckystudio.cozyhome.block.util.blocks.TuckableBlock;
-import net.luckystudio.cozyhome.block.util.blockstates.LinearConnectionBlock;
-import net.luckystudio.cozyhome.sound.ModSounds;
 import net.luckystudio.cozyhome.util.ModTags;
 import net.minecraft.block.*;
-import net.minecraft.block.enums.SlabType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.DirectionProperty;
-import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
