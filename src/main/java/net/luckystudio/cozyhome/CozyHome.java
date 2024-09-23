@@ -1,8 +1,11 @@
 package net.luckystudio.cozyhome;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.luckystudio.cozyhome.block.ModBlocks;
+import net.luckystudio.cozyhome.entity.ModEntities;
+import net.luckystudio.cozyhome.entity.custom.SeatEntity;
 import net.luckystudio.cozyhome.item.ModItemGroups;
 import net.luckystudio.cozyhome.item.ModItems;
 import net.luckystudio.cozyhome.sound.ModSounds;

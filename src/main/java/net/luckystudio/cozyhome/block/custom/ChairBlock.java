@@ -10,6 +10,7 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -23,39 +24,32 @@ import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 public class ChairBlock extends SeatBlock implements TuckableBlock {
+
     private static final VoxelShape BASE_SHAPE = ChairBlock.createCuboidShape(2,0,2,14,10,14);
     public static final VoxelShape NORTH_SHAPE = VoxelShapes.union(
             Block.createCuboidShape(2, 10, 12, 14, 24, 14),
-            BASE_SHAPE
-    );
+            BASE_SHAPE);
     public static final VoxelShape EAST_SHAPE = VoxelShapes.union(
             Block.createCuboidShape(2, 10, 2, 4, 24, 14),
-            BASE_SHAPE
-    );
+            BASE_SHAPE);
     public static final VoxelShape SOUTH_SHAPE = VoxelShapes.union(
             Block.createCuboidShape(2, 10, 2, 14, 24, 4),
-            BASE_SHAPE
-    );
+            BASE_SHAPE);
     public static final VoxelShape WEST_SHAPE = VoxelShapes.union(
             Block.createCuboidShape(12, 10, 2, 14, 24, 14),
-            BASE_SHAPE
-    );
+            BASE_SHAPE);
     public static final VoxelShape TUCKED_NORTH = VoxelShapes.union(
             Block.createCuboidShape(2, 0, -8, 14, 10, 4),
-            Block.createCuboidShape(2, 10, 2, 14, 24, 4)
-    );
+            Block.createCuboidShape(2, 10, 2, 14, 24, 4));
     public static final VoxelShape TUCKED_EAST = VoxelShapes.union(
             Block.createCuboidShape(12, 0, 2, 24, 10, 14),
-            Block.createCuboidShape(12, 10, 2, 14, 24, 14)
-    );
+            Block.createCuboidShape(12, 10, 2, 14, 24, 14));
     public static final VoxelShape TUCKED_SOUTH = VoxelShapes.union(
             Block.createCuboidShape(2, 0, 12, 14, 10, 24),
-            Block.createCuboidShape(2, 10, 12, 14, 24, 14)
-    );
+            Block.createCuboidShape(2, 10, 12, 14, 24, 14));
     public static final VoxelShape TUCKED_WEST = VoxelShapes.union(
             Block.createCuboidShape(-8, 0, 2, 4, 10, 14),
-            Block.createCuboidShape(2, 10, 2, 4, 24, 14)
-    );
+            Block.createCuboidShape(2, 10, 2, 4, 24, 14));
 
     public ChairBlock(Settings settings) {
         super(settings);
@@ -106,15 +100,10 @@ public class ChairBlock extends SeatBlock implements TuckableBlock {
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if (world.isClient) {
-            BlockState blockState = state.cycle(TUCKED);
-            return ActionResult.SUCCESS;
-        } else {
-            if (player.isSneaking() && canTuckUnderBlockInfront(state, world, pos)) {
-                this.moveChair(state, world, pos, null);
-            }
-            return ActionResult.CONSUME;
+        if (!world.isClient) {
+            return TuckableBlock.tryTuck(state, world, pos, player);
         }
+        return super.onUse(state, world, pos, player, hit);
     }
 
     // This is needed or the block will just be invisible
@@ -134,8 +123,7 @@ public class ChairBlock extends SeatBlock implements TuckableBlock {
     }
 
     public void moveChair(BlockState state, World world, BlockPos pos, @Nullable PlayerEntity player) {
-        state = state.cycle(TUCKED);
-        world.setBlockState(pos, state, Block.NOTIFY_ALL);
+        world.setBlockState(pos, state.cycle(TUCKED), Block.NOTIFY_ALL);
         playMoveSound(player, world, pos, state);
         world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
     }
