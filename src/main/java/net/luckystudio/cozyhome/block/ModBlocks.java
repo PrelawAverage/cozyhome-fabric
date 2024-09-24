@@ -1,6 +1,5 @@
 package net.luckystudio.cozyhome.block;
 
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.custom.LampBlock;
 import net.luckystudio.cozyhome.block.custom.PlankedWallBlock;
