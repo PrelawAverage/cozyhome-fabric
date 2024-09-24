@@ -1,35 +1,45 @@
 package net.luckystudio.cozyhome.entity.custom;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Arm;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 
-public class SeatEntity extends LivingEntity {
+public class SeatEntity extends Entity {
 
-    public SeatEntity(EntityType<? extends LivingEntity> entityType, World world) {
-        super(entityType, world);
+    public SeatEntity(EntityType<?> type, World world) {
+        super(type, world);
     }
 
     @Override
-    public Iterable<ItemStack> getArmorItems() {
-        return null;
+    public ActionResult interact(PlayerEntity player, Hand hand) {
+        if (player.shouldCancelInteraction()) {
+            return ActionResult.PASS;
+        } else if (this.hasPassengers()) {
+            return ActionResult.PASS;
+        } else if (!this.getWorld().isClient) {
+            return player.startRiding(this) ? ActionResult.CONSUME : ActionResult.PASS;
+        } else {
+            return ActionResult.SUCCESS;
+        }
     }
 
     @Override
-    public ItemStack getEquippedStack(EquipmentSlot slot) {
-        return null;
-    }
-
-    @Override
-    public void equipStack(EquipmentSlot slot, ItemStack stack) {
+    protected void initDataTracker(DataTracker.Builder builder) {
 
     }
 
     @Override
-    public Arm getMainArm() {
-        return null;
+    protected void readCustomDataFromNbt(NbtCompound nbt) {
+
+    }
+
+    @Override
+    protected void writeCustomDataToNbt(NbtCompound nbt) {
+
     }
 }

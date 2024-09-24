@@ -1,9 +1,6 @@
 package net.luckystudio.cozyhome.entity;
 
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
-import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.entity.custom.SeatEntity;
-import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registries;
