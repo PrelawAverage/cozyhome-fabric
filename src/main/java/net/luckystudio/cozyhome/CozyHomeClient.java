@@ -9,6 +9,8 @@ public class CozyHomeClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ModBlocks.OAK_COUNTER);
+
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AUTUMN_STAINED_WINDOW, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AUTUMN_STAINED_WINDOW_PANE, RenderLayer.getTranslucent());
 
