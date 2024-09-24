@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "cozyhome:block/autumn_stained_window"
+  }
+}

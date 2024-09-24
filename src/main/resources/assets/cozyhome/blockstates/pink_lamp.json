@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "cozyhome:block/lamp/pink_lamp"
+    },
+    "lit=true": {
+      "model": "cozyhome:block/lamp/pink_lamp_on"
+    }
+  }
+}

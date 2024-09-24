@@ -31,6 +31,23 @@ public class ModItemGroups {
                         entries.add(ModBlocks.BAMBOO_PLANKED_WALL);
                         entries.add(ModBlocks.CRIMSON_PLANKED_WALL);
                         entries.add(ModBlocks.WARPED_PLANKED_WALL);
+
+                        entries.add(ModBlocks.WHITE_LAMP);
+                        entries.add(ModBlocks.ORANGE_LAMP);
+                        entries.add(ModBlocks.MAGENTA_LAMP);
+                        entries.add(ModBlocks.LIGHT_BLUE_LAMP);
+                        entries.add(ModBlocks.YELLOW_LAMP);
+                        entries.add(ModBlocks.LIME_LAMP);
+                        entries.add(ModBlocks.PINK_LAMP);
+                        entries.add(ModBlocks.GRAY_LAMP);
+                        entries.add(ModBlocks.LIGHT_GRAY_LAMP);
+                        entries.add(ModBlocks.CYAN_LAMP);
+                        entries.add(ModBlocks.PURPLE_LAMP);
+                        entries.add(ModBlocks.BLUE_LAMP);
+                        entries.add(ModBlocks.BROWN_LAMP);
+                        entries.add(ModBlocks.GREEN_LAMP);
+                        entries.add(ModBlocks.RED_LAMP);
+                        entries.add(ModBlocks.BLACK_LAMP);
                     }).build());
 
     public static void registerModItemGroups() {

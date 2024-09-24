@@ -1,4 +1,4 @@
-package net.luckystudio.cozyhome.block.util;
+package net.luckystudio.cozyhome.block.util.blockstates;
 
 import net.minecraft.util.StringIdentifiable;
 
