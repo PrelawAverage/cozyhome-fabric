@@ -70,14 +70,14 @@ public class PlankedWallBlock extends PillarBlock {
         world.setBlockState(pos, updatedState, 3);
     }
 
-    private BlockPos getRelativeAxisNeighborPosition(Direction.Axis axis, BlockPos pos, LinearConnectionBlock LinearConnectionBlock) {
+    private BlockPos getRelativeAxisNeighborPosition(Direction.Axis axis, BlockPos pos, LinearConnectionBlock linearConnectionBlock) {
         return switch (axis) {
-            case X -> LinearConnectionBlock == LinearConnectionBlock.HEAD ? pos.east() :
-                    LinearConnectionBlock == LinearConnectionBlock.TAIL ? pos.west() : null;
-            case Y -> LinearConnectionBlock == LinearConnectionBlock.HEAD ? pos.up() :
-                    LinearConnectionBlock == LinearConnectionBlock.TAIL ? pos.down() : null;
-            case Z -> LinearConnectionBlock == LinearConnectionBlock.HEAD ? pos.north() :
-                    LinearConnectionBlock == LinearConnectionBlock.TAIL ? pos.south() : null;
+            case X -> linearConnectionBlock == LinearConnectionBlock.HEAD ? pos.east() :
+                    linearConnectionBlock == LinearConnectionBlock.TAIL ? pos.west() : null;
+            case Y -> linearConnectionBlock == LinearConnectionBlock.HEAD ? pos.up() :
+                    linearConnectionBlock == LinearConnectionBlock.TAIL ? pos.down() : null;
+            case Z -> linearConnectionBlock == LinearConnectionBlock.HEAD ? pos.north() :
+                    linearConnectionBlock == LinearConnectionBlock.TAIL ? pos.south() : null;
         };
     }
 
