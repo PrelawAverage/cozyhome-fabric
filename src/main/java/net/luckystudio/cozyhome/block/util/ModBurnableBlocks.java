@@ -16,8 +16,6 @@ public class ModBurnableBlocks {
         registry.add(ModBlocks.MANGROVE_PLANKED_WALL, 5, 20);
         registry.add(ModBlocks.CHERRY_PLANKED_WALL, 5, 20);
         registry.add(ModBlocks.BAMBOO_PLANKED_WALL, 5, 20);
-        registry.add(ModBlocks.CRIMSON_PLANKED_WALL, 5, 20);
-        registry.add(ModBlocks.WARPED_PLANKED_WALL, 5, 20);
 
         registry.add(ModBlocks.WHITE_LAMP, 5, 20);
         registry.add(ModBlocks.LIGHT_GRAY_LAMP, 5, 20);
