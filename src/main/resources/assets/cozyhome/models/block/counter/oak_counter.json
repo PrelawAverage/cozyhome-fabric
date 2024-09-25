@@ -1,37 +1,37 @@
 {
 	"credit": "Made with Blockbench by LuckyOwl",
 	"textures": {
-		"back": "cozyhome:block/counter/oak_counter_back",
+		"5": "cozyhome:block/counter/oak_counter_bottom_inner",
+		"6": "cozyhome:block/counter/oak_counter_side",
+		"7": "cozyhome:block/counter/oak_counter_bottom",
 		"front": "cozyhome:block/counter/oak_counter_front",
 		"top": "block/bricks",
-		"bottom": "cozyhome:block/counter/oak_counter_bottom",
-		"6": "cozyhome:block/counter/oak_counter_side",
-		"particle": "cozyhome:block/counter/oak_counter_back"
+		"particle": "cozyhome:block/counter/oak_counter_bottom"
 	},
 	"elements": [
 		{
 			"from": [0, 0, 2],
 			"to": [16, 12, 16],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 2]},
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
 			"faces": {
-				"north": {"uv": [0, 4, 16, 16], "texture": "#front", "cullface": "north"},
+				"north": {"uv": [0, 4, 16, 16], "texture": "#front"},
 				"east": {"uv": [16, 4, 2, 16], "texture": "#6", "cullface": "east"},
-				"south": {"uv": [0, 4, 16, 16], "texture": "#back", "cullface": "south"},
+				"south": {"uv": [0, 4, 16, 16], "texture": "#front", "cullface": "south"},
 				"west": {"uv": [2, 4, 16, 16], "texture": "#6", "cullface": "west"},
-				"up": {"uv": [0, 0, 16, 14], "texture": "#missing"},
-				"down": {"uv": [0, 2, 16, 16], "rotation": 180, "texture": "#5", "cullface": "down"}
+				"down": {"uv": [0, 2, 16, 16], "rotation": 180, "texture": "#7", "cullface": "down"}
 			}
 		},
 		{
 			"from": [0, 12, 0],
 			"to": [16, 16, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
 			"faces": {
 				"north": {"uv": [0, 0, 16, 4], "texture": "#front", "cullface": "north"},
 				"east": {"uv": [16, 0, 0, 4], "texture": "#6", "cullface": "east"},
-				"south": {"uv": [0, 0, 16, 4], "texture": "#back", "cullface": "south"},
+				"south": {"uv": [0, 0, 16, 4], "texture": "#front", "cullface": "south"},
 				"west": {"uv": [0, 0, 16, 4], "texture": "#6", "cullface": "west"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#top", "cullface": "up"},
-				"down": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#top"}
+				"up": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#top", "cullface": "up"},
+				"down": {"uv": [0, 16, 16, 0], "texture": "#5"}
 			}
 		}
 	]

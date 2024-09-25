@@ -1,5 +1,7 @@
 package net.luckystudio.cozyhome.block.custom;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.StairShape;
 import net.minecraft.item.ItemPlacementContext;
@@ -15,53 +17,62 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 
-import java.util.stream.IntStream;
 
 public class CounterBlock extends Block {
-
+    public static final MapCodec<CounterBlock> CODEC = RecordCodecBuilder.mapCodec(
+            instance -> instance.group(BlockState.CODEC.fieldOf("base_state").forGetter(block -> block.baseBlockState), createSettingsCodec())
+                    .apply(instance, CounterBlock::new)
+    );
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final EnumProperty<StairShape> SHAPE = Properties.STAIR_SHAPE;
-    protected static final VoxelShape COUNTER_TOP = Block.createCuboidShape(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
-    protected static final VoxelShape BOTTOM_NORTH_WEST_CORNER_SHAPE = Block.createCuboidShape(0.0, 0.0, 0.0, 8.0, 8.0, 8.0);
-    protected static final VoxelShape BOTTOM_SOUTH_WEST_CORNER_SHAPE = Block.createCuboidShape(0.0, 0.0, 8.0, 8.0, 8.0, 16.0);
-    protected static final VoxelShape BOTTOM_NORTH_EAST_CORNER_SHAPE = Block.createCuboidShape(8.0, 0.0, 0.0, 16.0, 8.0, 8.0);
-    protected static final VoxelShape BOTTOM_SOUTH_EAST_CORNER_SHAPE = Block.createCuboidShape(8.0, 0.0, 8.0, 16.0, 8.0, 16.0);
-    protected static final VoxelShape[] SHAPES = composeShapes(
-            COUNTER_TOP, BOTTOM_NORTH_WEST_CORNER_SHAPE, BOTTOM_NORTH_EAST_CORNER_SHAPE, BOTTOM_SOUTH_WEST_CORNER_SHAPE, BOTTOM_SOUTH_EAST_CORNER_SHAPE
-    );
 
-    private static final int[] SHAPE_INDICES = new int[]{12, 5, 3, 10, 14, 13, 7, 11, 13, 7, 11, 14, 8, 4, 1, 2, 4, 1, 2, 8};
+    public static final VoxelShape COUNTER_TOP = Block.createCuboidShape(0, 12, 0, 16, 16, 16);
+
+    // Final Shapes
+    public static final VoxelShape NORTH_STRAIGHT = VoxelShapes.union(COUNTER_TOP, Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape NORTH_INNER_LEFT = VoxelShapes.union(COUNTER_TOP,
+            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape NORTH_INNER_RIGHT = VoxelShapes.union(COUNTER_TOP,
+            Block.createCuboidShape(0, 0, 2, 16, 12, 16),
+    Block.createCuboidShape(0, 0, 0, 14, 12, 2));
+    public static final VoxelShape NORTH_OUTER_LEFT = VoxelShapes.union(COUNTER_TOP,
+            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape NORTH_OUTER_RIGHT = VoxelShapes.union(COUNTER_TOP,
+            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape EAST_STRAIGHT = VoxelShapes.union(COUNTER_TOP, Block.createCuboidShape(2, 0, 0, 16, 12, 16));
+    public static final VoxelShape EAST_INNER_LEFT = VoxelShapes.union(COUNTER_TOP,
+            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape EAST_INNER_RIGHT = VoxelShapes.union(COUNTER_TOP,
+            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape EAST_OUTER_LEFT = VoxelShapes.union(COUNTER_TOP,
+            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape EAST_OUTER_RIGHT = VoxelShapes.union(COUNTER_TOP,
+            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape SOUTH_STRAIGHT = VoxelShapes.union(COUNTER_TOP, Block.createCuboidShape(0, 0, 2, 16, 12, 16));
+    public static final VoxelShape SOUTH_INNER_LEFT = VoxelShapes.union(COUNTER_TOP,
+            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape SOUTH_INNER_RIGHT = VoxelShapes.union(COUNTER_TOP,
+            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape SOUTH_OUTER_LEFT = VoxelShapes.union(COUNTER_TOP,
+            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape SOUTH_OUTER_RIGHT = VoxelShapes.union(COUNTER_TOP,
+            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape WEST_STRAIGHT = VoxelShapes.union(COUNTER_TOP, Block.createCuboidShape(0, 0, 0, 14, 12, 16));
+    public static final VoxelShape WEST_INNER_LEFT = VoxelShapes.union(COUNTER_TOP,
+            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape WEST_INNER_RIGHT = VoxelShapes.union(COUNTER_TOP,
+            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape WEST_OUTER_LEFT = VoxelShapes.union(COUNTER_TOP,
+            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape WEST_OUTER_RIGHT = VoxelShapes.union(COUNTER_TOP,
+            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
     private final Block baseBlock;
     protected final BlockState baseBlockState;
 
-    private static VoxelShape[] composeShapes(VoxelShape base, VoxelShape northWest, VoxelShape northEast, VoxelShape southWest, VoxelShape southEast) {
-        return (VoxelShape[]) IntStream.range(0, 16).mapToObj(i -> composeShape(i, base, northWest, northEast, southWest, southEast)).toArray(VoxelShape[]::new);
-    }
-
-    private static VoxelShape composeShape(int i, VoxelShape base, VoxelShape northWest, VoxelShape northEast, VoxelShape southWest, VoxelShape southEast) {
-        VoxelShape voxelShape = base;
-        if ((i & 1) != 0) {
-            voxelShape = VoxelShapes.union(base, northWest);
-        }
-
-        if ((i & 2) != 0) {
-            voxelShape = VoxelShapes.union(voxelShape, northEast);
-        }
-
-        if ((i & 4) != 0) {
-            voxelShape = VoxelShapes.union(voxelShape, southWest);
-        }
-
-        if ((i & 8) != 0) {
-            voxelShape = VoxelShapes.union(voxelShape, southEast);
-        }
-
-        return voxelShape;
-    }
-
     public CounterBlock(BlockState baseBlockState, Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState()
+        this.setDefaultState(this.stateManager
+                .getDefaultState()
                 .with(FACING, Direction.NORTH)
                 .with(SHAPE, StairShape.STRAIGHT));
         this.baseBlock = baseBlockState.getBlock();
@@ -69,12 +80,60 @@ public class CounterBlock extends Block {
     }
 
     @Override
-    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPES[SHAPE_INDICES[this.getShapeIndexIndex(state)]];
+    public MapCodec<? extends CounterBlock> getCodec() {
+        return CODEC;
     }
 
-    private int getShapeIndexIndex(BlockState state) {
-        return state.get(SHAPE).ordinal() * 4 + state.get(FACING).getHorizontal();
+    @Override
+    protected boolean hasSidedTransparency(BlockState state) {
+        return true;
+    }
+
+    @Override
+    protected float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
+        return super.getAmbientOcclusionLightLevel(state, world, pos);
+    }
+
+    @Override
+    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        Direction direction = state.get(FACING);
+        StairShape shape = state.get(SHAPE);
+        switch (direction) {
+            case NORTH:
+                return switch (shape) {
+                    case STRAIGHT -> NORTH_STRAIGHT;
+                    case INNER_LEFT -> NORTH_INNER_LEFT;
+                    case INNER_RIGHT -> NORTH_INNER_RIGHT;
+                    case OUTER_LEFT -> NORTH_OUTER_LEFT;
+                    case OUTER_RIGHT -> NORTH_OUTER_RIGHT;
+                };
+            case EAST:
+                return switch (shape) {
+                    case STRAIGHT -> EAST_STRAIGHT;
+                    case INNER_LEFT -> EAST_INNER_LEFT;
+                    case INNER_RIGHT -> EAST_INNER_RIGHT;
+                    case OUTER_LEFT -> EAST_OUTER_LEFT;
+                    case OUTER_RIGHT -> EAST_OUTER_RIGHT;
+                };
+            case SOUTH:
+                return switch (shape) {
+                    case STRAIGHT -> SOUTH_STRAIGHT;
+                    case INNER_LEFT -> SOUTH_INNER_LEFT;
+                    case INNER_RIGHT -> SOUTH_INNER_RIGHT;
+                    case OUTER_LEFT -> SOUTH_OUTER_LEFT;
+                    case OUTER_RIGHT -> SOUTH_OUTER_RIGHT;
+                };
+            case WEST:
+                return switch (shape) {
+                    case STRAIGHT -> WEST_STRAIGHT;
+                    case INNER_LEFT -> WEST_INNER_LEFT;
+                    case INNER_RIGHT -> WEST_INNER_RIGHT;
+                    case OUTER_LEFT -> WEST_OUTER_LEFT;
+                    case OUTER_RIGHT -> WEST_OUTER_RIGHT;
+                };
+            default:
+                throw new IllegalStateException("Unexpected value: " + FACING);
+        }
     }
 
     @Override
@@ -93,6 +152,7 @@ public class CounterBlock extends Block {
                 ? state.with(SHAPE, getCounterShape(state, world, pos))
                 : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
+
 
     private static StairShape getCounterShape(BlockState state, BlockView world, BlockPos pos) {
         Direction direction = state.get(FACING);
@@ -132,10 +192,5 @@ public class CounterBlock extends Block {
     @Override
     protected BlockState rotate(BlockState state, BlockRotation rotation) {
         return state.with(FACING, rotation.rotate(state.get(FACING)));
-    }
-
-    @Override
-    protected boolean hasSidedTransparency(BlockState state) {
-        return true;
     }
 }

@@ -1,6 +1,7 @@
 package net.luckystudio.cozyhome.block;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.custom.CounterBlock;
 import net.luckystudio.cozyhome.block.custom.LampBlock;
@@ -64,7 +65,7 @@ public class ModBlocks {
     public static final Block CRIMSON_COUNTER = registerBlock("crimson_counter",
             new CounterBlock(Blocks.CRIMSON_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS)));
     public static final Block WARPED_COUNTER = registerBlock("warped_counter",
-            new CounterBlock(Blocks.WARPED_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS)));
+            new CounterBlock(Blocks.WARPED_PLANKS.getDefaultState(), AbstractBlock.Settings.create().burnable()));
 
     public static final Block AUTUMN_STAINED_WINDOW = registerBlock("autumn_stained_window",
             new TranslucentBlock(AbstractBlock.Settings.copy(Blocks.BLACK_STAINED_GLASS)));
