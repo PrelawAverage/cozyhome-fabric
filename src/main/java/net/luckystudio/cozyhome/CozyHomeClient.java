@@ -1,13 +1,27 @@
 package net.luckystudio.cozyhome;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.luckystudio.cozyhome.block.ModBlocks;
+import net.luckystudio.cozyhome.entity.ModEntities;
+import net.luckystudio.cozyhome.entity.client.SeatRenderer;
+import net.luckystudio.cozyhome.entity.model.SeatEntityModel;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.util.Identifier;
 
+@Environment(EnvType.CLIENT)
 public class CozyHomeClient implements ClientModInitializer {
+    public static final EntityModelLayer MODEL_SEAT_LAYER = new EntityModelLayer(Identifier.of("cozyhome", "seat"), "main");
+
     @Override
     public void onInitializeClient() {
+        EntityRendererRegistry.register(ModEntities.SEAT_ENTITY, SeatRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(MODEL_SEAT_LAYER, SeatEntityModel::getTexturedModelData);
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
                 ModBlocks.OAK_CHAIR,

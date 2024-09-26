@@ -100,9 +100,10 @@ public class ChairBlock extends SeatBlock implements TuckableBlock {
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if (!world.isClient) {
-            return TuckableBlock.tryTuck(state, world, pos, player);
-        }
+//        if (!world.isClient) {
+//            return TuckableBlock.tryTuck(state, world, pos, player);
+//        }
+
         return super.onUse(state, world, pos, player, hit);
     }
 

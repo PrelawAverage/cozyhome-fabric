@@ -10,6 +10,6 @@ import net.minecraft.util.Identifier;
 public class ModEntities {
     public static final EntityType<SeatEntity> SEAT_ENTITY = Registry.register(
             Registries.ENTITY_TYPE,
-            Identifier.of("seat"),
-            EntityType.Builder.create(SeatEntity::new, SpawnGroup.CREATURE).dimensions(1f, 1f).build());
+            Identifier.of("cozyhome", "seat"),
+            EntityType.Builder.create(SeatEntity::new, SpawnGroup.CREATURE).dimensions(0.5f, 0.5f).build());
 }

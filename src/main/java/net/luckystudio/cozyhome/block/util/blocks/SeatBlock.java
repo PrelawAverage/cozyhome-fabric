@@ -1,7 +1,11 @@
 package net.luckystudio.cozyhome.block.util.blocks;
 
+import net.luckystudio.cozyhome.entity.ModEntities;
+import net.luckystudio.cozyhome.entity.custom.SeatEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
@@ -15,7 +19,16 @@ public class SeatBlock extends Block {
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        if (world.isClient) return ActionResult.PASS;
+        System.out.println("hello from clinet");
 
-        return super.onUse(state, world, pos, player, hit);
+        SeatEntity seat = new SeatEntity(ModEntities.SEAT_ENTITY, world);
+        seat.setPosition(pos.getX() + 0.5f, pos.getY() + 0.1f, pos.getZ() + 0.5f);
+
+        world.spawnEntity(seat);
+
+        player.startRiding(seat);
+
+        return ActionResult.SUCCESS;
     }
 }
