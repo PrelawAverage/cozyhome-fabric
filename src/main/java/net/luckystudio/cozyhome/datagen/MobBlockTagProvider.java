@@ -27,18 +27,5 @@ public class MobBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BAMBOO_PLANKED_WALL)
                 .add(ModBlocks.CRIMSON_PLANKED_WALL)
                 .add(ModBlocks.WARPED_PLANKED_WALL);
-
-        getOrCreateTagBuilder(BlockTags.PLANKS)
-                .add(ModBlocks.OAK_PLANKED_WALL)
-                .add(ModBlocks.SPRUCE_PLANKED_WALL)
-                .add(ModBlocks.BIRCH_PLANKED_WALL)
-                .add(ModBlocks.JUNGLE_PLANKED_WALL)
-                .add(ModBlocks.ACACIA_PLANKED_WALL)
-                .add(ModBlocks.DARK_OAK_PLANKED_WALL)
-                .add(ModBlocks.MANGROVE_PLANKED_WALL)
-                .add(ModBlocks.CHERRY_PLANKED_WALL)
-                .add(ModBlocks.BAMBOO_PLANKED_WALL)
-                .add(ModBlocks.CRIMSON_PLANKED_WALL)
-                .add(ModBlocks.WARPED_PLANKED_WALL);
     }
 }
