@@ -34,6 +34,16 @@ public class LampBlock extends Block {
     }
 
     @Override
+    public float getHardness() {
+        return 0.1f;
+    }
+
+    @Override
+    public float getBlastResistance() {
+        return 0.1f;
+    }
+
+    @Override
     public MapCodec<LampBlock> getCodec() {
         return CODEC;
     }
