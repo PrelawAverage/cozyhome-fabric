@@ -1,75 +1,75 @@
 {
   "variants": {
-    "facing=east,shape=inner_left": {
-      "model": "cozyhome:block/counter/counteracacia_stairs_inner",
-      "y": 270
-    },
-    "facing=east,shape=inner_right": {
-      "model": "cozyhome:block/counter/counteracacia_stairs_inner"
-    },
-    "facing=east,shape=outer_left": {
-      "model": "cozyhome:block/counter/counteracacia_stairs_outer",
-      "y": 270
-    },
-    "facing=east,shape=outer_right": {
-      "model": "cozyhome:block/counter/counteracacia_stairs_outer"
-    },
-    "facing=south,shape=straight": {
-      "model": "cozyhome:block/counter/oak_counter"
+    "facing=north,shape=straight": {
+      "model": "cozyhome:block/counter/oak_counter",
+      "y": 180
     },
     "facing=north,shape=inner_left": {
-      "model": "cozyhome:block/counter/counteracacia_stairs_inner",
+      "model": "cozyhome:block/counter/oak_counter_inner_left",
       "y": 180
     },
     "facing=north,shape=inner_right": {
-      "model": "cozyhome:block/counter/counteracacia_stairs_inner",
-      "y": 270
+      "model": "cozyhome:block/counter/oak_counter_inner_right",
+      "y": 180
     },
     "facing=north,shape=outer_left": {
-      "model": "cozyhome:block/counter/counteracacia_stairs_outer",
+      "model": "cozyhome:block/counter/oak_counter_outer_left",
       "y": 180
     },
     "facing=north,shape=outer_right": {
-      "model": "cozyhome:block/counter/counteracacia_stairs_outer",
-      "y": 270
+      "model": "cozyhome:block/counter/oak_counter_outer_right",
+      "y": 180
     },
     "facing=east,shape=straight": {
       "model": "cozyhome:block/counter/oak_counter",
       "y": 270
     },
+    "facing=east,shape=inner_left": {
+      "model": "cozyhome:block/counter/oak_counter_inner_left",
+      "y": 270
+    },
+    "facing=east,shape=inner_right": {
+      "model": "cozyhome:block/counter/oak_counter_inner_right",
+      "y": 270
+    },
+    "facing=east,shape=outer_left": {
+      "model": "cozyhome:block/counter/oak_counter_outer_left",
+      "y": 270
+    },
+    "facing=east,shape=outer_right": {
+      "model": "cozyhome:block/counter/oak_counter_outer_right",
+      "y": 270
+    },
+    "facing=south,shape=straight": {
+      "model": "cozyhome:block/counter/oak_counter"
+    },
     "facing=south,shape=inner_left": {
-      "model": "cozyhome:block/counter/counteracacia_stairs_inner"
+      "model": "cozyhome:block/counter/oak_counter_inner_left"
     },
     "facing=south,shape=inner_right": {
-      "model": "cozyhome:block/counter/counteracacia_stairs_inner",
-      "y": 90
+      "model": "cozyhome:block/counter/oak_counter_inner_right"
     },
     "facing=south,shape=outer_left": {
-      "model": "cozyhome:block/counter/counteracacia_stairs_outer"
+      "model": "cozyhome:block/counter/oak_counter_outer_left"
     },
     "facing=south,shape=outer_right": {
-      "model": "cozyhome:block/counter/counteracacia_stairs_outer",
-      "y": 90
-    },
-    "facing=north,shape=straight": {
-      "model": "cozyhome:block/counter/oak_counter",
-      "y": 180
+      "model": "cozyhome:block/counter/oak_counter_outer_right"
     },
     "facing=west,shape=inner_left": {
-      "model": "cozyhome:block/counter/counteracacia_stairs_inner",
+      "model": "cozyhome:block/counter/oak_counter_inner_left",
       "y": 90
     },
     "facing=west,shape=inner_right": {
-      "model": "cozyhome:block/counter/counteracacia_stairs_inner",
-      "y": 180
+      "model": "cozyhome:block/counter/oak_counter_inner_right",
+      "y": 90
     },
     "facing=west,shape=outer_left": {
-      "model": "cozyhome:block/counter/counteracacia_stairs_outer",
+      "model": "cozyhome:block/counter/oak_counter_outer_left",
       "y": 90
     },
     "facing=west,shape=outer_right": {
-      "model": "cozyhome:block/counter/counteracacia_stairs_outer",
-      "y": 180
+      "model": "cozyhome:block/counter/oak_counter_outer_right",
+      "y": 90
     },
     "facing=west,shape=straight": {
       "model": "cozyhome:block/counter/oak_counter",

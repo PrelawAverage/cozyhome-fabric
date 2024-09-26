@@ -3,18 +3,17 @@ package net.luckystudio.cozyhome.block;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.luckystudio.cozyhome.CozyHome;
-import net.luckystudio.cozyhome.block.custom.CounterBlock;
-import net.luckystudio.cozyhome.block.custom.LampBlock;
-import net.luckystudio.cozyhome.block.custom.PlankedWallBlock;
+import net.luckystudio.cozyhome.block.custom.*;
 import net.minecraft.block.*;
+import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.biome.Biome;
 
 import java.util.function.ToIntFunction;
 
@@ -66,6 +65,52 @@ public class ModBlocks {
             new CounterBlock(Blocks.CRIMSON_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS)));
     public static final Block WARPED_COUNTER = registerBlock("warped_counter",
             new CounterBlock(Blocks.WARPED_PLANKS.getDefaultState(), AbstractBlock.Settings.create().burnable()));
+/*
+    public static final Block OAK_COUNTER = registerBlock("oak_counter",
+            new StorageCounterBlock(Blocks.OAK_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block SPRUCE_COUNTER = registerBlock("spruce_counter",
+            new StorageCounterBlock(Blocks.SPRUCE_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.SPRUCE_PLANKS)));
+    public static final Block BIRCH_COUNTER = registerBlock("birch_counter",
+            new StorageCounterBlock(Blocks.BIRCH_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.BIRCH_PLANKS)));
+    public static final Block JUNGLE_COUNTER = registerBlock("jungle_counter",
+            new StorageCounterBlock(Blocks.JUNGLE_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.JUNGLE_PLANKS)));
+    public static final Block ACACIA_COUNTER = registerBlock("acacia_counter",
+            new StorageCounterBlock(Blocks.ACACIA_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.ACACIA_PLANKS)));
+    public static final Block DARK_OAK_COUNTER = registerBlock("dark_oak_counter",
+            new StorageCounterBlock(Blocks.DARK_OAK_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.DARK_OAK_PLANKS)));
+    public static final Block MANGROVE_COUNTER = registerBlock("mangrove_counter",
+            new StorageCounterBlock(Blocks.MANGROVE_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS)));
+    public static final Block CHERRY_COUNTER = registerBlock("cherry_counter",
+            new StorageCounterBlock(Blocks.CHERRY_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS)));
+    public static final Block BAMBOO_COUNTER = registerBlock("bamboo_counter",
+            new StorageCounterBlock(Blocks.BAMBOO_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.BAMBOO_PLANKS)));
+    public static final Block CRIMSON_COUNTER = registerBlock("crimson_counter",
+            new StorageCounterBlock(Blocks.CRIMSON_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS)));
+    public static final Block WARPED_COUNTER = registerBlock("warped_counter",
+            new StorageCounterBlock(Blocks.WARPED_PLANKS.getDefaultState(), AbstractBlock.Settings.create().burnable()));
+*/
+    public static final Block OAK_SINK_COUNTER = registerBlock("oak_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, CauldronBehavior.WATER_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copyShallow(Blocks.CAULDRON)));
+    public static final Block SPRUCE_SINK_COUNTER = registerBlock("spruce_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, CauldronBehavior.WATER_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copyShallow(Blocks.CAULDRON)));
+    public static final Block BIRCH_SINK_COUNTER = registerBlock("birch_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, CauldronBehavior.WATER_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copyShallow(Blocks.CAULDRON)));
+    public static final Block JUNGLE_SINK_COUNTER = registerBlock("jungle_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, CauldronBehavior.WATER_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copyShallow(Blocks.CAULDRON)));
+    public static final Block ACACIA_SINK_COUNTER = registerBlock("acacia_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, CauldronBehavior.WATER_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copyShallow(Blocks.CAULDRON)));
+    public static final Block DARK_OAK_SINK_COUNTER = registerBlock("dark_oak_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, CauldronBehavior.WATER_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copyShallow(Blocks.CAULDRON)));
+    public static final Block MANGROVE_SINK_COUNTER = registerBlock("mangrove_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, CauldronBehavior.WATER_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copyShallow(Blocks.CAULDRON)));
+    public static final Block CHERRY_SINK_COUNTER = registerBlock("cherry_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, CauldronBehavior.WATER_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copyShallow(Blocks.CAULDRON)));
+    public static final Block BAMBOO_SINK_COUNTER = registerBlock("bamboo_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, CauldronBehavior.WATER_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copyShallow(Blocks.CAULDRON)));
+    public static final Block CRIMSON_SINK_COUNTER = registerBlock("crimson_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, CauldronBehavior.WATER_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copyShallow(Blocks.CAULDRON)));
+    public static final Block WARPED_SINK_COUNTER = registerBlock("warped_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, CauldronBehavior.WATER_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copyShallow(Blocks.CAULDRON)));
 
     public static final Block AUTUMN_STAINED_WINDOW = registerBlock("autumn_stained_window",
             new TranslucentBlock(AbstractBlock.Settings.copy(Blocks.BLACK_STAINED_GLASS)));

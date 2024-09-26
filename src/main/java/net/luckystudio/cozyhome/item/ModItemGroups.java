@@ -32,6 +32,18 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CRIMSON_PLANKED_WALL);
                         entries.add(ModBlocks.WARPED_PLANKED_WALL);
 
+                        entries.add(ModBlocks.OAK_COUNTER);
+                        entries.add(ModBlocks.SPRUCE_COUNTER);
+                        entries.add(ModBlocks.BIRCH_COUNTER);
+                        entries.add(ModBlocks.JUNGLE_COUNTER);
+                        entries.add(ModBlocks.ACACIA_COUNTER);
+                        entries.add(ModBlocks.DARK_OAK_COUNTER);
+                        entries.add(ModBlocks.MANGROVE_COUNTER);
+                        entries.add(ModBlocks.CHERRY_COUNTER);
+                        entries.add(ModBlocks.BAMBOO_COUNTER);
+                        entries.add(ModBlocks.CRIMSON_COUNTER);
+                        entries.add(ModBlocks.WARPED_COUNTER);
+
                         entries.add(ModBlocks.WHITE_LAMP);
                         entries.add(ModBlocks.ORANGE_LAMP);
                         entries.add(ModBlocks.MAGENTA_LAMP);

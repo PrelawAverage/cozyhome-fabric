@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north,level=0": {
+      "model": "cozyhome:block/counter/sink/oak_sink_counter_level0",
+      "y": 180
+    },
+    "facing=north,level=1": {
+      "model": "cozyhome:block/counter/sink/oak_sink_counter_level1",
+      "y": 180
+    },
+    "facing=north,level=2": {
+      "model": "cozyhome:block/counter/sink/oak_sink_counter_level2",
+      "y": 180
+    },
+    "facing=north,level=3": {
+      "model": "cozyhome:block/counter/sink/oak_sink_counter_level3",
+      "y": 180
+    }
+  }
+}

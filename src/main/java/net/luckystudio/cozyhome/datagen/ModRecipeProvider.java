@@ -3,6 +3,7 @@ package net.luckystudio.cozyhome.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.luckystudio.cozyhome.block.ModBlocks;
+import net.luckystudio.cozyhome.block.custom.PlankedWallBlock;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
@@ -10,6 +11,9 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.registry.tag.TagKey;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -42,6 +46,47 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.LANTERN), conditionsFromItem(Items.LANTERN))
                 .offerTo(exporter);
     }
+    // Criterion needs to be fixed to take in a tag instead of a singular item, instead it should be tag planks
+    public static void offerCounterRecipe(RecipeExporter exporter, RecipeCategory category, ItemConvertible output, ItemConvertible input1, ItemConvertible input2) {
+        ShapedRecipeJsonBuilder.create(
+                        category,
+                        output, 3)
+                .pattern("@@@")
+                .pattern("# #")
+                .pattern("###")
+                .input('@', input1)
+                .input('#', input2)
+                .criterion(hasItem(Items.OAK_PLANKS), conditionsFromItem(Items.OAK_PLANKS))
+                .offerTo(exporter);
+    }
+    // Criterion needs to be fixed to take in a tag instead of a singular item, instead it should be tag planks
+    public static void offerStorageCounterRecipe(RecipeExporter exporter, RecipeCategory category, ItemConvertible output, ItemConvertible input1, ItemConvertible input2) {
+        ShapedRecipeJsonBuilder.create(
+                        category,
+                        output, 3)
+                .pattern("@@@")
+                .pattern("#$#")
+                .pattern("###")
+                .input('@', input1)
+                .input('$', Items.CHEST)
+                .input('#', input2)
+                .criterion(hasItem(Items.OAK_PLANKS), conditionsFromItem(Items.OAK_PLANKS))
+                .offerTo(exporter);
+    }
+    // Criterion needs to be fixed to take in a tag instead of a singular item, instead it should be tag planks
+    public static void offerSinkCounterRecipe(RecipeExporter exporter, RecipeCategory category, ItemConvertible output, ItemConvertible input1, ItemConvertible input2) {
+        ShapedRecipeJsonBuilder.create(
+                        category,
+                        output, 3)
+                .pattern("@@@")
+                .pattern("#$#")
+                .pattern("###")
+                .input('@', input1)
+                .input('$', Items.CAULDRON)
+                .input('#', input2)
+                .criterion(hasItem(Items.OAK_PLANKS), conditionsFromItem(Items.OAK_PLANKS))
+                .offerTo(exporter);
+    }
 
     @Override
     public void generate(RecipeExporter exporter) {
@@ -55,6 +100,39 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerPlankedWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BAMBOO_PLANKED_WALL, Blocks.BAMBOO_PLANKS);
         offerPlankedWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRIMSON_PLANKED_WALL, Blocks.CRIMSON_PLANKS);
         offerPlankedWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.WARPED_PLANKED_WALL, Blocks.WARPED_PLANKS);
+
+        offerCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.OAK_COUNTER, Blocks.BRICKS, Blocks.OAK_PLANKS);
+        offerCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SPRUCE_COUNTER, Blocks.POLISHED_ANDESITE, Blocks.SPRUCE_PLANKS);
+        offerCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BIRCH_COUNTER, Blocks.POLISHED_GRANITE, Blocks.BIRCH_PLANKS);
+        offerCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.JUNGLE_COUNTER, Blocks.POLISHED_GRANITE, Blocks.JUNGLE_PLANKS);
+        offerCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ACACIA_COUNTER, Blocks.POLISHED_DIORITE, Blocks.ACACIA_PLANKS);
+        offerCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.DARK_OAK_COUNTER, Blocks.DEEPSLATE_TILES, Blocks.DARK_OAK_PLANKS);
+        offerCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MANGROVE_COUNTER, Blocks.PACKED_MUD, Blocks.MANGROVE_PLANKS);
+        offerCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BAMBOO_COUNTER, Blocks.BAMBOO_BLOCK, Blocks.BAMBOO_PLANKS);
+        offerCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRIMSON_COUNTER, Blocks.NETHER_WART_BLOCK, Blocks.CRIMSON_PLANKS);
+        offerCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.WARPED_PLANKED_WALL, Blocks.WARPED_WART_BLOCK, Blocks.WARPED_PLANKS);
+
+        offerStorageCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.OAK_COUNTER, Blocks.BRICKS, Blocks.OAK_PLANKS);
+        offerStorageCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SPRUCE_COUNTER, Blocks.POLISHED_ANDESITE, Blocks.SPRUCE_PLANKS);
+        offerStorageCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BIRCH_COUNTER, Blocks.POLISHED_GRANITE, Blocks.BIRCH_PLANKS);
+        offerStorageCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.JUNGLE_COUNTER, Blocks.POLISHED_GRANITE, Blocks.JUNGLE_PLANKS);
+        offerStorageCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ACACIA_COUNTER, Blocks.POLISHED_DIORITE, Blocks.ACACIA_PLANKS);
+        offerStorageCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.DARK_OAK_COUNTER, Blocks.DEEPSLATE_TILES, Blocks.DARK_OAK_PLANKS);
+        offerStorageCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MANGROVE_COUNTER, Blocks.PACKED_MUD, Blocks.MANGROVE_PLANKS);
+        offerStorageCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BAMBOO_COUNTER, Blocks.BAMBOO_BLOCK, Blocks.BAMBOO_PLANKS);
+        offerStorageCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRIMSON_COUNTER, Blocks.NETHER_WART_BLOCK, Blocks.CRIMSON_PLANKS);
+        offerStorageCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.WARPED_PLANKED_WALL, Blocks.WARPED_WART_BLOCK, Blocks.WARPED_PLANKS);
+
+        offerSinkCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.OAK_COUNTER, Blocks.BRICKS, Blocks.OAK_PLANKS);
+        offerSinkCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SPRUCE_COUNTER, Blocks.POLISHED_ANDESITE, Blocks.SPRUCE_PLANKS);
+        offerSinkCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BIRCH_COUNTER, Blocks.POLISHED_GRANITE, Blocks.BIRCH_PLANKS);
+        offerSinkCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.JUNGLE_COUNTER, Blocks.POLISHED_GRANITE, Blocks.JUNGLE_PLANKS);
+        offerSinkCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ACACIA_COUNTER, Blocks.POLISHED_DIORITE, Blocks.ACACIA_PLANKS);
+        offerSinkCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.DARK_OAK_COUNTER, Blocks.DEEPSLATE_TILES, Blocks.DARK_OAK_PLANKS);
+        offerSinkCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MANGROVE_COUNTER, Blocks.PACKED_MUD, Blocks.MANGROVE_PLANKS);
+        offerSinkCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BAMBOO_COUNTER, Blocks.BAMBOO_BLOCK, Blocks.BAMBOO_PLANKS);
+        offerSinkCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRIMSON_COUNTER, Blocks.NETHER_WART_BLOCK, Blocks.CRIMSON_PLANKS);
+        offerSinkCounterRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.WARPED_PLANKED_WALL, Blocks.WARPED_WART_BLOCK, Blocks.WARPED_PLANKS);
 
         offerSingleOutputShapelessRecipe(exporter, Items.OAK_PLANKS, ModBlocks.OAK_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());
         offerSingleOutputShapelessRecipe(exporter, Items.SPRUCE_PLANKS, ModBlocks.SPRUCE_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());

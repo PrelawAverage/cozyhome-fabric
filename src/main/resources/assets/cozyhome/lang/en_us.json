@@ -13,6 +13,18 @@
   "block.cozyhome.crimson_planked_wall": "Crimson Planked Wall",
   "block.cozyhome.warped_planked_wall": "Warped Planked Wall",
 
+  "block.cozyhome.oak_counter": "Oak Counter",
+  "block.cozyhome.spruce_counter": "Spruce Counter",
+  "block.cozyhome.birch_counter": "Birch Counter",
+  "block.cozyhome.jungle_counter": "Jungle Counter",
+  "block.cozyhome.acacia_counter": "Acacia Counter",
+  "block.cozyhome.dark_oak_counter": "Dark Oak Counter",
+  "block.cozyhome.mangrove_counter": "Mangrove Counter",
+  "block.cozyhome.cherry_counter": "Cherry Counter",
+  "block.cozyhome.bamboo_counter": "Bamboo Counter",
+  "block.cozyhome.crimson_counter": "Crimson Counter",
+  "block.cozyhome.warped_counter": "Warped Counter",
+
   "block.cozyhome.autumn_stained_window": "Autumn Stained Window",
   "block.cozyhome.autumn_stained_window_pane": "Autumn Stained Window Pane",
 
