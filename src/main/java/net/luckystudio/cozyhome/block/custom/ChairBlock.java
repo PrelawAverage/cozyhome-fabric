@@ -61,7 +61,7 @@ public class ChairBlock extends SeatBlock implements TuckableBlock {
     // This is the hitbox of the block, we are applying our VoxelShape to it.
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        switch ((Direction)state.get(FACING)) {
+        switch (state.get(FACING)) {
             case NORTH:
                 if (state.get(TUCKED)) {
                     return TUCKED_NORTH;
@@ -100,9 +100,10 @@ public class ChairBlock extends SeatBlock implements TuckableBlock {
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-//        if (!world.isClient) {
-//            return TuckableBlock.tryTuck(state, world, pos, player);
-//        }
+        if (world.isClient) return ActionResult.PASS;
+        ActionResult actionResult = TuckableBlock.tryTuck(state, world, pos, player);
+
+        if (!actionResult.equals(ActionResult.PASS)) return actionResult;
 
         return super.onUse(state, world, pos, player, hit);
     }
@@ -133,11 +134,5 @@ public class ChairBlock extends SeatBlock implements TuckableBlock {
         // Just alters the pitch when the lamp is being turned on and off.
         float f = state.get(TUCKED) ? 0.8F : 1F;
         world.playSound(player, pos, SoundEvents.BLOCK_BARREL_OPEN, SoundCategory.BLOCKS, 1F, f);
-    }
-
-    static boolean canTuckUnderBlockInfront(BlockState state, World world, BlockPos pos) {
-        Direction forward = state.get(FACING);
-        BlockState forwardState = world.getBlockState(pos.offset(forward));
-        return forwardState.isIn(ModTags.Blocks.TUCKABLE);
     }
 }

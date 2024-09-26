@@ -30,7 +30,6 @@ public interface TuckableBlock {
     static ActionResult tryTuck(BlockState state, World world, BlockPos pos, PlayerEntity player) {
         if (state.get(TUCKED)) {
             world.setBlockState(pos, state.with(TUCKED, false), 3);
-            player.sendMessage(Text.literal(state.get(TUCKED).toString()), true);
             world.playSound(null, pos, SoundEvents.BLOCK_BARREL_OPEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
             return ActionResult.SUCCESS;
         }
@@ -41,6 +40,7 @@ public interface TuckableBlock {
             world.playSound(null, pos, SoundEvents.BLOCK_BARREL_CLOSE, SoundCategory.BLOCKS, 1.0F, 1.0F);
             return ActionResult.SUCCESS;
         }
+
         return ActionResult.PASS;
     }
 

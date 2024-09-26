@@ -10,6 +10,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
 public class SeatBlock extends Block {
@@ -20,7 +21,6 @@ public class SeatBlock extends Block {
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (world.isClient) return ActionResult.PASS;
-        System.out.println("hello from clinet");
 
         SeatEntity seat = new SeatEntity(ModEntities.SEAT_ENTITY, world);
         seat.setPosition(pos.getX() + 0.5f, pos.getY() + 0.1f, pos.getZ() + 0.5f);
