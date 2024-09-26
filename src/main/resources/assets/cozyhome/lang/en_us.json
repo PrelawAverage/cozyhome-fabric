@@ -33,6 +33,18 @@
   "block.cozyhome.red_lamp": "Red Lamp",
   "block.cozyhome.black_lamp": "Black Lamp",
 
+  "block.cozyhome.oak_chair": "Oak Chair",
+  "block.cozyhome.spruce_chair": "Spruce Chair",
+  "block.cozyhome.birch_chair": "Birch Chair",
+  "block.cozyhome.jungle_chair": "Jungle Chair",
+  "block.cozyhome.acacia_chair": "Acacia Chair",
+  "block.cozyhome.dark_oak_chair": "Dark Oak Chair",
+  "block.cozyhome.mangrove_chair": "Mangrove Chair",
+  "block.cozyhome.cherry_chair": "Cherry Chair",
+  "block.cozyhome.bamboo_chair": "Bamboo Chair",
+  "block.cozyhome.crimson_chair": "Crimson Chair",
+  "block.cozyhome.warped_chair": "Warped Chair",
+
   "tooltip.cozyhome.block.planked_wall": "§7Stackable",
 
   "sounds.cozyhome.lamp_toggle": "Lamp Toggled",
