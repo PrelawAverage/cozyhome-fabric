@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:spruce_planks"
+    },
+    "@": {
+      "item": "minecraft:polished_andesite"
+    }
+  },
+  "pattern": [
+    "@@@",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyhome:spruce_counter"
+  }
+}
