@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:warped_planks"
+    },
+    "@": {
+      "item": "minecraft:warped_wart_block"
+    }
+  },
+  "pattern": [
+    "@@@",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "count": 3,
+    "id": "cozyhome:warped_counter"
+  }
+}
