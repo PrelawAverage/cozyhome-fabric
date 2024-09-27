@@ -12,6 +12,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.BlockRotation;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -104,6 +105,8 @@ public class ChairBlock extends SeatBlock implements TuckableBlock {
         ActionResult actionResult = TuckableBlock.tryTuck(state, world, pos, player);
 
         if (!actionResult.equals(ActionResult.PASS)) return actionResult;
+
+        this.rotate(state, BlockRotation.CLOCKWISE_180);
 
         return super.onUse(state, world, pos, player, hit);
     }

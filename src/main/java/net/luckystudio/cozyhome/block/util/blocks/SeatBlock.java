@@ -4,9 +4,8 @@ import net.luckystudio.cozyhome.entity.ModEntities;
 import net.luckystudio.cozyhome.entity.custom.SeatEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -24,6 +23,13 @@ public class SeatBlock extends Block {
 
         SeatEntity seat = new SeatEntity(ModEntities.SEAT_ENTITY, world);
         seat.setPosition(pos.getX() + 0.5f, pos.getY() + 0.1f, pos.getZ() + 0.5f);
+
+        BlockState seatBlock = world.getBlockState(pos);
+        Direction facing = seatBlock.get(TuckableBlock.FACING);
+
+        float rotationOffset = facing == Direction.NORTH ? 180f: facing == Direction.SOUTH ? 0f:
+                facing == Direction.EAST ? 270f: facing == Direction.WEST ? 90f: 0;
+        seat.setYaw(rotationOffset);
 
         world.spawnEntity(seat);
 
