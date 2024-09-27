@@ -1,6 +1,7 @@
 package net.luckystudio.cozyhome.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.sound.ModSounds;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
@@ -8,9 +9,12 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.IntProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RotationPropertyHelper;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
@@ -22,7 +26,7 @@ public class LampBlock extends Block {
     public static final MapCodec<LampBlock> CODEC = createCodec(LampBlock::new);
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
     protected static final VoxelShape SHAPE = Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 14.0, 13.0);
-
+    public static final IntProperty OMNI_ROTATION = ModProperties.OMNI_ROTATION;
     public LampBlock(AbstractBlock.Settings settings) {
         super(settings);
         this.setDefaultState(this.getDefaultState().with(LIT, Boolean.FALSE));
@@ -50,7 +54,7 @@ public class LampBlock extends Block {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(LIT);
+        builder.add(LIT, OMNI_ROTATION);
     }
 
 
@@ -68,7 +72,10 @@ public class LampBlock extends Block {
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(LIT, ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos()));
+        int rotation = ModProperties.getOmniRotation(Integer.valueOf(RotationPropertyHelper.fromYaw(ctx.getPlayerYaw())));
+        return this.getDefaultState()
+                .with(LIT, ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos()))
+                .with(OMNI_ROTATION, rotation);
     }
 
     public void toggleLight(BlockState state, World world, BlockPos pos, @Nullable PlayerEntity player) {
@@ -83,4 +90,7 @@ public class LampBlock extends Block {
         float f = state.get(LIT) ? 1F : 0.9F;
         world.playSound(player, pos, ModSounds.LAMP_TOGGLE, SoundCategory.BLOCKS, 1F, f);
     }
+
+
+
 }

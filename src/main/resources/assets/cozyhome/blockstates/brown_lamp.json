@@ -1,10 +1,28 @@
 {
   "variants": {
-    "lit=false": {
-      "model": "cozyhome:block/lamp/brown_lamp"
+    "lit=false,omni_rotation=0": {
+      "model": "cozyhome:block/lamp/types/brown_lamp_0"
     },
-    "lit=true": {
-      "model": "cozyhome:block/lamp/brown_lamp_on"
+    "lit=false,omni_rotation=1": {
+      "model": "cozyhome:block/lamp/types/brown_lamp_1"
+    },
+    "lit=false,omni_rotation=2": {
+      "model": "cozyhome:block/lamp/types/brown_lamp_2"
+    },
+    "lit=false,omni_rotation=3": {
+      "model": "cozyhome:block/lamp/types/brown_lamp_3"
+    },
+    "lit=true,omni_rotation=0": {
+      "model": "cozyhome:block/lamp/types/brown_lamp_on_0"
+    },
+    "lit=true,omni_rotation=1": {
+      "model": "cozyhome:block/lamp/types/brown_lamp_on_1"
+    },
+    "lit=true,omni_rotation=2": {
+      "model": "cozyhome:block/lamp/types/brown_lamp_on_2"
+    },
+    "lit=true,omni_rotation=3": {
+      "model": "cozyhome:block/lamp/types/brown_lamp_on_3"
     }
   }
 }
