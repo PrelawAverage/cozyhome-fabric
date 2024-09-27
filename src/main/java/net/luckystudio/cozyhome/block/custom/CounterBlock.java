@@ -26,47 +26,38 @@ public class CounterBlock extends Block {
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final EnumProperty<StairShape> SHAPE = Properties.STAIR_SHAPE;
 
+    // Setting the pieces of the block
     public static final VoxelShape COUNTER_TOP = Block.createCuboidShape(0, 12, 0, 16, 16, 16);
+    public static final VoxelShape NORTH_EAST_INNER = VoxelShapes.union(Block.createCuboidShape(0, 0, 0, 14, 12, 16));
+    public static final VoxelShape NORTH_WEST_INNER = VoxelShapes.union(Block.createCuboidShape(2, 0, 0, 16, 12, 16));
+    public static final VoxelShape SOUTH_EAST_INNER = VoxelShapes.union(Block.createCuboidShape(2, 0, 0, 16, 12, 16));
+    public static final VoxelShape SOUTH_WEST_INNER = VoxelShapes.union(Block.createCuboidShape(0, 0, 0, 14, 12, 16));
+    public static final VoxelShape NORTH_EAST_OUTER = VoxelShapes.union(Block.createCuboidShape(2, 0, 0, 16, 12, 14));
+    public static final VoxelShape NORTH_WEST_OUTER = VoxelShapes.union(Block.createCuboidShape(0, 0, 0, 14, 12, 14));
+    public static final VoxelShape SOUTH_EAST_OUTER = VoxelShapes.union(Block.createCuboidShape(2, 0, 2, 16, 12, 16));
+    public static final VoxelShape SOUTH_WEST_OUTER = VoxelShapes.union(Block.createCuboidShape(0, 0, 2, 14, 12, 16));
 
     // Final Shapes
     public static final VoxelShape NORTH_STRAIGHT = VoxelShapes.union(COUNTER_TOP, Block.createCuboidShape(0, 0, 0, 16, 12, 14));
-    public static final VoxelShape NORTH_INNER_LEFT = VoxelShapes.union(COUNTER_TOP,
-            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
-    public static final VoxelShape NORTH_INNER_RIGHT = VoxelShapes.union(COUNTER_TOP,
-            Block.createCuboidShape(0, 0, 2, 16, 12, 16),
-    Block.createCuboidShape(0, 0, 0, 14, 12, 2));
-    public static final VoxelShape NORTH_OUTER_LEFT = VoxelShapes.union(COUNTER_TOP,
-            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
-    public static final VoxelShape NORTH_OUTER_RIGHT = VoxelShapes.union(COUNTER_TOP,
-            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape NORTH_INNER_LEFT = VoxelShapes.union(COUNTER_TOP, NORTH_EAST_INNER);
+    public static final VoxelShape NORTH_INNER_RIGHT = VoxelShapes.union(COUNTER_TOP, NORTH_WEST_INNER);
+    public static final VoxelShape NORTH_OUTER_LEFT = VoxelShapes.union(COUNTER_TOP, NORTH_WEST_OUTER);
+    public static final VoxelShape NORTH_OUTER_RIGHT = VoxelShapes.union(COUNTER_TOP, NORTH_EAST_OUTER);
     public static final VoxelShape EAST_STRAIGHT = VoxelShapes.union(COUNTER_TOP, Block.createCuboidShape(2, 0, 0, 16, 12, 16));
-    public static final VoxelShape EAST_INNER_LEFT = VoxelShapes.union(COUNTER_TOP,
-            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
-    public static final VoxelShape EAST_INNER_RIGHT = VoxelShapes.union(COUNTER_TOP,
-            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
-    public static final VoxelShape EAST_OUTER_LEFT = VoxelShapes.union(COUNTER_TOP,
-            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
-    public static final VoxelShape EAST_OUTER_RIGHT = VoxelShapes.union(COUNTER_TOP,
-            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape EAST_INNER_LEFT = VoxelShapes.union(COUNTER_TOP, NORTH_WEST_INNER);
+    public static final VoxelShape EAST_INNER_RIGHT = VoxelShapes.union(COUNTER_TOP, SOUTH_EAST_INNER);
+    public static final VoxelShape EAST_OUTER_LEFT = VoxelShapes.union(COUNTER_TOP, NORTH_EAST_OUTER);
+    public static final VoxelShape EAST_OUTER_RIGHT = VoxelShapes.union(COUNTER_TOP, SOUTH_EAST_OUTER);
     public static final VoxelShape SOUTH_STRAIGHT = VoxelShapes.union(COUNTER_TOP, Block.createCuboidShape(0, 0, 2, 16, 12, 16));
-    public static final VoxelShape SOUTH_INNER_LEFT = VoxelShapes.union(COUNTER_TOP,
-            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
-    public static final VoxelShape SOUTH_INNER_RIGHT = VoxelShapes.union(COUNTER_TOP,
-            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
-    public static final VoxelShape SOUTH_OUTER_LEFT = VoxelShapes.union(COUNTER_TOP,
-            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
-    public static final VoxelShape SOUTH_OUTER_RIGHT = VoxelShapes.union(COUNTER_TOP,
-            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
+    public static final VoxelShape SOUTH_INNER_LEFT = VoxelShapes.union(COUNTER_TOP, SOUTH_EAST_INNER);
+    public static final VoxelShape SOUTH_INNER_RIGHT = VoxelShapes.union(COUNTER_TOP, SOUTH_WEST_INNER);
+    public static final VoxelShape SOUTH_OUTER_LEFT = VoxelShapes.union(COUNTER_TOP, SOUTH_EAST_OUTER);
+    public static final VoxelShape SOUTH_OUTER_RIGHT = VoxelShapes.union(COUNTER_TOP, SOUTH_WEST_OUTER);
     public static final VoxelShape WEST_STRAIGHT = VoxelShapes.union(COUNTER_TOP, Block.createCuboidShape(0, 0, 0, 14, 12, 16));
-    public static final VoxelShape WEST_INNER_LEFT = VoxelShapes.union(COUNTER_TOP,
-            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
-    public static final VoxelShape WEST_INNER_RIGHT = VoxelShapes.union(COUNTER_TOP,
-            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
-    public static final VoxelShape WEST_OUTER_LEFT = VoxelShapes.union(COUNTER_TOP,
-            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
-    public static final VoxelShape WEST_OUTER_RIGHT = VoxelShapes.union(COUNTER_TOP,
-            Block.createCuboidShape(0, 0, 0, 16, 12, 14));
-    private final Block baseBlock;
+    public static final VoxelShape WEST_INNER_LEFT = VoxelShapes.union(COUNTER_TOP, SOUTH_WEST_INNER);
+    public static final VoxelShape WEST_INNER_RIGHT = VoxelShapes.union(COUNTER_TOP, NORTH_EAST_INNER);
+    public static final VoxelShape WEST_OUTER_LEFT = VoxelShapes.union(COUNTER_TOP, SOUTH_WEST_OUTER);
+    public static final VoxelShape WEST_OUTER_RIGHT = VoxelShapes.union(COUNTER_TOP, NORTH_WEST_OUTER);
     protected final BlockState baseBlockState;
 
     public CounterBlock(BlockState baseBlockState, Settings settings) {
@@ -75,7 +66,7 @@ public class CounterBlock extends Block {
                 .getDefaultState()
                 .with(FACING, Direction.NORTH)
                 .with(SHAPE, StairShape.STRAIGHT));
-        this.baseBlock = baseBlockState.getBlock();
+        Block baseBlock = baseBlockState.getBlock();
         this.baseBlockState = baseBlockState;
     }
 

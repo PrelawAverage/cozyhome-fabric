@@ -26,6 +26,33 @@ public class MobBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CHERRY_PLANKED_WALL)
                 .add(ModBlocks.BAMBOO_PLANKED_WALL)
                 .add(ModBlocks.CRIMSON_PLANKED_WALL)
-                .add(ModBlocks.WARPED_PLANKED_WALL);
+                .add(ModBlocks.WARPED_PLANKED_WALL)
+
+                .add(ModBlocks.OAK_COUNTER)
+                .add(ModBlocks.SPRUCE_COUNTER)
+                .add(ModBlocks.BIRCH_COUNTER)
+                .add(ModBlocks.JUNGLE_COUNTER)
+                .add(ModBlocks.ACACIA_COUNTER)
+                .add(ModBlocks.DARK_OAK_COUNTER)
+                .add(ModBlocks.MANGROVE_COUNTER)
+                .add(ModBlocks.CHERRY_COUNTER)
+                .add(ModBlocks.BAMBOO_COUNTER)
+                .add(ModBlocks.CRIMSON_COUNTER)
+                .add(ModBlocks.WARPED_COUNTER)
+        ;
+
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(ModBlocks.OAK_COUNTER)
+                .add(ModBlocks.SPRUCE_COUNTER)
+                .add(ModBlocks.BIRCH_COUNTER)
+                .add(ModBlocks.JUNGLE_COUNTER)
+                .add(ModBlocks.ACACIA_COUNTER)
+                .add(ModBlocks.DARK_OAK_COUNTER)
+                .add(ModBlocks.MANGROVE_COUNTER)
+                .add(ModBlocks.CHERRY_COUNTER)
+                .add(ModBlocks.BAMBOO_COUNTER)
+                .add(ModBlocks.CRIMSON_COUNTER)
+                .add(ModBlocks.WARPED_COUNTER)
+        ;
     }
 }
