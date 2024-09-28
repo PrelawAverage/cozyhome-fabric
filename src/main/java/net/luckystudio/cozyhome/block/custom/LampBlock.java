@@ -1,12 +1,14 @@
 package net.luckystudio.cozyhome.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.blockstates.LinearConnectionBlock;
 import net.luckystudio.cozyhome.sound.ModSounds;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
@@ -15,8 +17,11 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.RotationPropertyHelper;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -79,24 +84,6 @@ public class LampBlock extends Block {
         builder.add(LIT, OMNI_ROTATION, STACKABLE_BLOCK);
     }
 
-
-    @Override
-    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        LinearConnectionBlock type = state.get(STACKABLE_BLOCK);
-        boolean isLightEmittingBlock = type == LinearConnectionBlock.HEAD || type == LinearConnectionBlock.SINGLE;
-        if (world.isClient) {
-            if (isLightEmittingBlock) {
-                return ActionResult.SUCCESS;
-            }
-        } else {
-            if (isLightEmittingBlock) {
-                this.toggleLight(state, world, pos, null);
-                return ActionResult.CONSUME;
-            }
-        }
-        return ActionResult.FAIL;
-    }
-
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
@@ -105,6 +92,28 @@ public class LampBlock extends Block {
                 .with(LIT, ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos()))
                 .with(OMNI_ROTATION, rotation)
                 .with(STACKABLE_BLOCK, LinearConnectionBlock.SINGLE);
+    }
+
+    @Override
+    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        LinearConnectionBlock type = state.get(STACKABLE_BLOCK);
+        boolean isLightEmittingBlock = type == LinearConnectionBlock.HEAD || type == LinearConnectionBlock.SINGLE;
+        if (world.isClient) {
+            if (isToggleLight(isLightEmittingBlock, stack, hit)) {
+                return ItemActionResult.SUCCESS;
+            }
+        } else {
+            if (isToggleLight(isLightEmittingBlock, stack, hit)) {
+                this.toggleLight(state, world, pos, null);
+                return ItemActionResult.CONSUME;
+            }
+            return ItemActionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+        }
+        return ItemActionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    private boolean isToggleLight(boolean isLightEmittingBlock, ItemStack stack, BlockHitResult hit) {
+        return isLightEmittingBlock && !stack.isOf(ModBlocks.RED_LAMP.asItem()) && hit.getSide() != Direction.UP;
     }
 
     public void toggleLight(BlockState state, World world, BlockPos pos, @Nullable PlayerEntity player) {
@@ -127,33 +136,42 @@ public class LampBlock extends Block {
 
     @Override
     protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
-
-        BlockPos relativeHeadBlockPos = getRelativeAxisNeighborPosition(pos, LinearConnectionBlock.HEAD);
-        BlockPos relativeTailBlockPos = getRelativeAxisNeighborPosition(pos, LinearConnectionBlock.TAIL);
-
-        BlockState relativeHeadBlock = world.getBlockState(relativeHeadBlockPos);
-        BlockState relativeTailBlock = world.getBlockState(relativeTailBlockPos);
-
-        LinearConnectionBlock LinearConnectionBlockType = getLinearConnectionBlockType(state, relativeHeadBlock, relativeTailBlock);
-
-        BlockState updatedState = state
-                .with(STACKABLE_BLOCK, LinearConnectionBlockType)
-                .with(LIT, false);
-
+        // Getting the states of the block above and below our block
+        BlockState getBlockAbove = world.getBlockState(pos.up());
+        BlockState getBlockBelow = world.getBlockState(pos.down());
+        // Getting Vertical Connection Types based on the states of the block above and below.
+        LinearConnectionBlock linearConnectionBlockType = getLinearConnectionBlockType(state, getBlockAbove, getBlockBelow);
+        // Checking if the block is on before we make changes
+        boolean wasOn = state.get(LIT);
+        // Creating the new state to update the block to.
+        BlockState updatedState =
+                state
+                        .with(STACKABLE_BLOCK, linearConnectionBlockType)
+                        .with(LIT, didShapeChange(state, linearConnectionBlockType, wasOn))
+                        .with(OMNI_ROTATION, adjustRotation(state, getBlockBelow));
+        // Updating the block to the new state
         world.setBlockState(pos, updatedState, 3);
     }
 
-    private BlockPos getRelativeAxisNeighborPosition(BlockPos pos, LinearConnectionBlock linearConnectionBlock) {
-        return linearConnectionBlock == LinearConnectionBlock.HEAD ? pos.up() : linearConnectionBlock == LinearConnectionBlock.TAIL ? pos.down() : null;
+    private boolean didShapeChange(BlockState state, LinearConnectionBlock linearConnectionBlockType, boolean wasOn) {
+        return wasOn && (state.get(STACKABLE_BLOCK) != linearConnectionBlockType);
     }
 
-    private LinearConnectionBlock getLinearConnectionBlockType(BlockState state, BlockState relativeHeadBlock, BlockState relativeBlockTail) {
-        boolean isHeadBlockConnected = relativeHeadBlock.isOf(state.getBlock()) && Objects.equals(relativeHeadBlock.get(OMNI_ROTATION), state.get(OMNI_ROTATION));
-        boolean isTailBlockConnected = relativeBlockTail.isOf(state.getBlock()) && Objects.equals(relativeBlockTail.get(OMNI_ROTATION), state.get(OMNI_ROTATION));
+    private Integer adjustRotation(BlockState state, BlockState blockbelow) {
+        if (blockbelow.getBlock() == state.getBlock()) {
+            return blockbelow.get(OMNI_ROTATION);
+        } else {
+            return state.get(OMNI_ROTATION);
+        }
+    }
 
-        if (isHeadBlockConnected && isTailBlockConnected) return LinearConnectionBlock.MIDDLE;
-        if (isHeadBlockConnected) return LinearConnectionBlock.TAIL;
-        if (isTailBlockConnected) return LinearConnectionBlock.HEAD;
+    private LinearConnectionBlock getLinearConnectionBlockType(BlockState state, BlockState getBlockAbove, BlockState getBlockBelow) {
+        boolean above = getBlockAbove.getBlock() == state.getBlock();
+        boolean below = getBlockBelow.getBlock() == state.getBlock();
+
+        if (above && below) return LinearConnectionBlock.MIDDLE;
+        if (above) return LinearConnectionBlock.TAIL;
+        if (below) return LinearConnectionBlock.HEAD;
         return LinearConnectionBlock.SINGLE;
     }
 }
