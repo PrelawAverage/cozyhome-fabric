@@ -83,18 +83,18 @@ public class LampBlock extends Block {
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         LinearConnectionBlock type = state.get(STACKABLE_BLOCK);
+        boolean isLightEmittingBlock = type == LinearConnectionBlock.HEAD || type == LinearConnectionBlock.SINGLE;
         if (world.isClient) {
-            if (type == LinearConnectionBlock.HEAD || type == LinearConnectionBlock.SINGLE) {
-                BlockState blockState = state.cycle(LIT);
+            if (isLightEmittingBlock) {
                 return ActionResult.SUCCESS;
             }
         } else {
-            if (type == LinearConnectionBlock.HEAD || type == LinearConnectionBlock.SINGLE) {
+            if (isLightEmittingBlock) {
                 this.toggleLight(state, world, pos, null);
                 return ActionResult.CONSUME;
             }
         }
-        return ActionResult.PASS;
+        return ActionResult.FAIL;
     }
 
     @Nullable
@@ -110,8 +110,13 @@ public class LampBlock extends Block {
     public void toggleLight(BlockState state, World world, BlockPos pos, @Nullable PlayerEntity player) {
         state = state.cycle(LIT);
         world.setBlockState(pos, state, Block.NOTIFY_ALL);
+        this.updateNeighbors(state, world, pos);
         playClickSound(player, world, pos, state);
         world.emitGameEvent(player, state.get(LIT) ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, pos);
+    }
+
+    private void updateNeighbors(BlockState state, World world, BlockPos pos) {
+        world.updateNeighborsAlways(pos, this);
     }
 
     protected static void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, BlockState state) {
@@ -123,8 +128,6 @@ public class LampBlock extends Block {
     @Override
     protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
 
-        LinearConnectionBlock linearConnectionBlockEnumProperty = state.get(STACKABLE_BLOCK);
-
         BlockPos relativeHeadBlockPos = getRelativeAxisNeighborPosition(pos, LinearConnectionBlock.HEAD);
         BlockPos relativeTailBlockPos = getRelativeAxisNeighborPosition(pos, LinearConnectionBlock.TAIL);
 
@@ -132,10 +135,6 @@ public class LampBlock extends Block {
         BlockState relativeTailBlock = world.getBlockState(relativeTailBlockPos);
 
         LinearConnectionBlock LinearConnectionBlockType = getLinearConnectionBlockType(state, relativeHeadBlock, relativeTailBlock);
-
-        BlockPos blockBelow = pos.down();
-
-        BlockState stateBelow = world.getBlockState(blockBelow);
 
         BlockState updatedState = state
                 .with(STACKABLE_BLOCK, LinearConnectionBlockType)

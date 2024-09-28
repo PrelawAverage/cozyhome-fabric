@@ -33,23 +33,6 @@
   "block.cozyhome.red_lamp": "Red Lamp",
   "block.cozyhome.black_lamp": "Black Lamp",
 
-  "block.cozyhome.white_sofa": "White Sofa",
-  "block.cozyhome.orange_sofa": "Orange Sofa",
-  "block.cozyhome.magenta_sofa": "Magenta Sofa",
-  "block.cozyhome.light_blue_sofa": "Light Blue Sofa",
-  "block.cozyhome.yellow_sofa": "Yellow Sofa",
-  "block.cozyhome.lime_sofa": "Lime Sofa",
-  "block.cozyhome.pink_sofa": "Pink Sofa",
-  "block.cozyhome.gray_sofa": "Gray Sofa",
-  "block.cozyhome.light_gray_sofa": "Light Gray Sofa",
-  "block.cozyhome.cyan_sofa": "Cyan Sofa",
-  "block.cozyhome.purple_sofa": "Purple Sofa",
-  "block.cozyhome.blue_sofa": "Blue Sofa",
-  "block.cozyhome.brown_sofa": "Brown Sofa",
-  "block.cozyhome.green_sofa": "Green Sofa",
-  "block.cozyhome.red_sofa": "Red Sofa",
-  "block.cozyhome.black_sofa": "Black Sofa",
-
   "tooltip.cozyhome.block.planked_wall": "§7Stackable",
 
   "sounds.cozyhome.lamp_toggle": "Lamp Toggled",

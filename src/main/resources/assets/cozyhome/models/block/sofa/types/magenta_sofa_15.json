@@ -1,7 +1,0 @@
-{
-	"parent": "cozyhome:block/sofa/template_sofa_15",
-	"textures": {
-		"sofa": "cozyhome:block/sofa/magenta_sofa",
-		"particle": "cozyhome:block/sofa/magenta_sofa"
-	}
-}
