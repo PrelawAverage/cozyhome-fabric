@@ -145,17 +145,19 @@ public class LampBlock extends Block {
         // Checking if the block is on before we make changes
         boolean wasOn = state.get(LIT);
         // Creating the new state to update the block to.
-        BlockState updatedState =
-                state
-                        .with(STACKABLE_BLOCK, linearConnectionBlockType)
-                        .with(LIT, didShapeChange(state, linearConnectionBlockType, wasOn))
-                        .with(OMNI_ROTATION, adjustRotation(state, getBlockBelow));
-        // Updating the block to the new state
-        world.setBlockState(pos, updatedState, 3);
+        BlockState updatedState;
+        if (didShapeChange(state, linearConnectionBlockType)) {
+            updatedState = state
+                    .with(STACKABLE_BLOCK, linearConnectionBlockType)
+                    .with(LIT, false)
+                    .with(OMNI_ROTATION, adjustRotation(state, getBlockBelow));
+            // Updating the block to the new state
+            world.setBlockState(pos, updatedState, 3);
+        }
     }
 
-    private boolean didShapeChange(BlockState state, LinearConnectionBlock linearConnectionBlockType, boolean wasOn) {
-        return wasOn && (state.get(STACKABLE_BLOCK) != linearConnectionBlockType);
+    private boolean didShapeChange(BlockState state, LinearConnectionBlock linearConnectionBlockType) {
+        return (state.get(STACKABLE_BLOCK) != linearConnectionBlockType);
     }
 
     private Integer adjustRotation(BlockState state, BlockState blockbelow) {
