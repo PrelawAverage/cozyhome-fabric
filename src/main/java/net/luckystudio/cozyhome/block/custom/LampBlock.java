@@ -5,6 +5,7 @@ import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.blockstates.LinearConnectionBlock;
 import net.luckystudio.cozyhome.sound.ModSounds;
+import net.luckystudio.cozyhome.util.ModTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,6 +29,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
@@ -113,7 +115,7 @@ public class LampBlock extends Block {
     }
 
     private boolean isToggleLight(boolean isLightEmittingBlock, ItemStack stack, BlockHitResult hit) {
-        return isLightEmittingBlock && !stack.isOf(ModBlocks.RED_LAMP.asItem()) && hit.getSide() != Direction.UP;
+        return isLightEmittingBlock && !stack.isIn(ModTags.Items.LAMPS) && hit.getSide() != Direction.UP;
     }
 
     public void toggleLight(BlockState state, World world, BlockPos pos, @Nullable PlayerEntity player) {
