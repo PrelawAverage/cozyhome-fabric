@@ -1,15 +1,11 @@
 package net.luckystudio.cozyhome.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.blockstates.LinearConnectionBlock;
 import net.luckystudio.cozyhome.sound.ModSounds;
-import net.luckystudio.cozyhome.util.ModTags;
 import net.minecraft.block.*;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
@@ -17,7 +13,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.IntProperty;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
@@ -29,11 +24,8 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Objects;
 
 public class LampBlock extends Block {
     public static final MapCodec<LampBlock> CODEC = createCodec(LampBlock::new);
@@ -123,10 +115,6 @@ public class LampBlock extends Block {
 
     private boolean canStackInstead(boolean isLightEmittingBlock, ItemStack stack,  BlockState state, BlockHitResult hit) {
         return isLightEmittingBlock && stack.isOf(state.getBlock().asItem()) && hit.getSide() == Direction.UP;
-    }
-
-    private boolean isToggleLight(boolean isLightEmittingBlock, ItemStack stack,  BlockState state, BlockHitResult hit) {
-        return isLightEmittingBlock && !stack.isOf(state.getBlock().asItem()) && hit.getSide() == Direction.UP;
     }
 
     public void toggleLight(BlockState state, World world, BlockPos pos, @Nullable PlayerEntity player) {
