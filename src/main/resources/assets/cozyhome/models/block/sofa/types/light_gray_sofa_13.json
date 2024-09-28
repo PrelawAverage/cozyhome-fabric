@@ -1,0 +1,7 @@
+{
+	"parent": "cozyhome:block/sofa/template_sofa_13",
+	"textures": {
+		"sofa": "cozyhome:block/sofa/light_gray_sofa",
+		"particle": "cozyhome:block/sofa/light_gray_sofa"
+	}
+}

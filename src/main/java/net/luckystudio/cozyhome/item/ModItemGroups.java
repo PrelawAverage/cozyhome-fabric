@@ -48,6 +48,32 @@ public class ModItemGroups {
                         entries.add(ModBlocks.GREEN_LAMP);
                         entries.add(ModBlocks.RED_LAMP);
                         entries.add(ModBlocks.BLACK_LAMP);
+
+                        entries.add(ModBlocks.WHITE_SOFA);
+                        entries.add(ModBlocks.ORANGE_SOFA);
+                        entries.add(ModBlocks.MAGENTA_SOFA);
+                        entries.add(ModBlocks.LIGHT_BLUE_SOFA);
+                        entries.add(ModBlocks.YELLOW_SOFA);
+                        entries.add(ModBlocks.LIME_SOFA);
+                        entries.add(ModBlocks.PINK_SOFA);
+                        entries.add(ModBlocks.GRAY_SOFA);
+                        entries.add(ModBlocks.LIGHT_GRAY_SOFA);
+                        entries.add(ModBlocks.CYAN_SOFA);
+                        entries.add(ModBlocks.PURPLE_SOFA);
+                        entries.add(ModBlocks.BLUE_SOFA);
+                        entries.add(ModBlocks.BROWN_SOFA);
+                        entries.add(ModBlocks.GREEN_SOFA);
+                        entries.add(ModBlocks.RED_SOFA);
+                        entries.add(ModBlocks.BLACK_SOFA);
+
+                        // Compat with Ecologics Mod - https://www.curseforge.com/minecraft/mc-mods/ecologics
+                        if (FabricLoader.getInstance().isModLoaded("ecologics")) {
+
+                        }
+                        // Compat with Biomes O Plenty Mod - https://www.curseforge.com/minecraft/mc-mods/biomes-o-plenty
+                        if (FabricLoader.getInstance().isModLoaded("biomesoplenty")) {
+
+                        }
                     }).build());
 
     public static void registerModItemGroups() {

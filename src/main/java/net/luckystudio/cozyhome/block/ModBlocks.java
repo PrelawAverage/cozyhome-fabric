@@ -5,6 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.custom.LampBlock;
 import net.luckystudio.cozyhome.block.custom.PlankedWallBlock;
+import net.luckystudio.cozyhome.block.custom.SofaBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
@@ -15,7 +16,6 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
-import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
 public class ModBlocks {
@@ -36,6 +36,17 @@ public class ModBlocks {
                         .strength(0.6f)
                         .burnable()
                         .sounds(BlockSoundGroup.LANTERN)
+        );
+    }
+    private static Block createSofaBlock(MapColor color) {
+        return new SofaBlock(
+                AbstractBlock.Settings.create()
+                        .mapColor(color)
+                        .nonOpaque()
+                        .hardness(1f)
+                        .strength(1f)
+                        .burnable()
+                        .sounds(BlockSoundGroup.WOOL)
         );
     }
 
@@ -74,6 +85,24 @@ public class ModBlocks {
     public static final Block GREEN_LAMP = registerBlock("green_lamp", createLampBlock(MapColor.GREEN));
     public static final Block RED_LAMP = registerBlock("red_lamp", createLampBlock(MapColor.RED));
     public static final Block BLACK_LAMP = registerBlock("black_lamp", createLampBlock(MapColor.BLACK));
+
+    // Sofas
+    public static final Block WHITE_SOFA = registerBlock("white_sofa", createSofaBlock(MapColor.WHITE));
+    public static final Block ORANGE_SOFA = registerBlock("orange_sofa", createSofaBlock(MapColor.ORANGE));
+    public static final Block MAGENTA_SOFA = registerBlock("magenta_sofa", createSofaBlock(MapColor.MAGENTA));
+    public static final Block LIGHT_BLUE_SOFA = registerBlock("light_blue_sofa", createSofaBlock(MapColor.LIGHT_BLUE));
+    public static final Block YELLOW_SOFA = registerBlock("yellow_sofa", createSofaBlock(MapColor.YELLOW));
+    public static final Block LIME_SOFA = registerBlock("lime_sofa", createSofaBlock(MapColor.LIME));
+    public static final Block PINK_SOFA = registerBlock("pink_sofa", createSofaBlock(MapColor.PINK));
+    public static final Block GRAY_SOFA = registerBlock("gray_sofa",  createSofaBlock(MapColor.GRAY));
+    public static final Block LIGHT_GRAY_SOFA = registerBlock("light_gray_sofa", createSofaBlock(MapColor.LIGHT_GRAY));
+    public static final Block CYAN_SOFA = registerBlock("cyan_sofa", createSofaBlock(MapColor.CYAN));
+    public static final Block PURPLE_SOFA = registerBlock("purple_sofa", createSofaBlock(MapColor.PURPLE));
+    public static final Block BLUE_SOFA = registerBlock("blue_sofa", createSofaBlock(MapColor.BLUE));
+    public static final Block BROWN_SOFA = registerBlock("brown_sofa", createSofaBlock(MapColor.BROWN));
+    public static final Block GREEN_SOFA = registerBlock("green_sofa", createSofaBlock(MapColor.GREEN));
+    public static final Block RED_SOFA = registerBlock("red_sofa", createSofaBlock(MapColor.RED));
+    public static final Block BLACK_SOFA = registerBlock("black_sofa", createSofaBlock(MapColor.BLACK));
 
     public static ToIntFunction<BlockState> createLightLevelFromLitBlockState(int litLevel) {
         return state -> state.get(Properties.LIT) ? litLevel : 0;
