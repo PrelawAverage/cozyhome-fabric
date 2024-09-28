@@ -1,5 +1,6 @@
 package net.luckystudio.cozyhome.block.custom;
 
+import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.blockstates.LinearConnectionBlock;
 import net.minecraft.block.AbstractBlock;
@@ -22,6 +23,7 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class PlankedWallBlock extends PillarBlock {
+    public static final MapCodec<PlankedWallBlock> CODEC = createCodec(PlankedWallBlock::new);
     public static final EnumProperty<LinearConnectionBlock> STACKABLE_BLOCK = ModProperties.LINEAR_CONNECTION_BLOCK;
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
@@ -29,7 +31,8 @@ public class PlankedWallBlock extends PillarBlock {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState()
                 .with(AXIS, Direction.Axis.Y)
-                .with(FACING, Direction.NORTH));
+                .with(FACING, Direction.NORTH)
+                .with(STACKABLE_BLOCK, LinearConnectionBlock.SINGLE));
     }
 
     @Override

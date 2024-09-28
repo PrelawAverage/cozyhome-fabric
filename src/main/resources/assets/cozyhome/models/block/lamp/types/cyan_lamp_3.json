@@ -1,0 +1,7 @@
+{
+	"parent": "cozyhome:block/lamp/template_lamp_3",
+	"textures": {
+		"lamp": "cozyhome:block/lamp/cyan_lamp",
+		"particle": "cozyhome:block/lamp/cyan_lamp"
+	}
+}

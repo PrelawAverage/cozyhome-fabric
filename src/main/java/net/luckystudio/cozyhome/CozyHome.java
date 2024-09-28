@@ -1,6 +1,7 @@
 package net.luckystudio.cozyhome;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.loader.api.FabricLoader;
 import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.util.ModBurnableBlocks;
 import net.luckystudio.cozyhome.item.ModFuels;
@@ -17,6 +18,9 @@ public class CozyHome implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModItems.registerModItems();
+		if (FabricLoader.getInstance().isModLoaded("ecologics")) {
+			ModBlocks.registerModBlocks();
+		}
 		ModBlocks.registerModBlocks();
 		ModItemGroups.registerModItemGroups();
 		ModFuels.registerFuels();

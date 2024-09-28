@@ -14,7 +14,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
-        // Call its self to drop its self
+        // Planked Walls
         addDrop(ModBlocks.OAK_PLANKED_WALL);
         addDrop(ModBlocks.SPRUCE_PLANKED_WALL);
         addDrop(ModBlocks.BIRCH_PLANKED_WALL);
@@ -39,6 +39,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CRIMSON_COUNTER);
         addDrop(ModBlocks.WARPED_COUNTER);
 
+        // Lamps
         addDrop(ModBlocks.WHITE_LAMP);
         addDrop(ModBlocks.ORANGE_LAMP);
         addDrop(ModBlocks.MAGENTA_LAMP);
@@ -47,6 +48,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.LIME_LAMP);
         addDrop(ModBlocks.PINK_LAMP);
         addDrop(ModBlocks.GRAY_LAMP);
+        addDrop(ModBlocks.LIGHT_GRAY_LAMP);
+        addDrop(ModBlocks.CYAN_LAMP);
         addDrop(ModBlocks.PURPLE_LAMP);
         addDrop(ModBlocks.BLUE_LAMP);
         addDrop(ModBlocks.BROWN_LAMP);
