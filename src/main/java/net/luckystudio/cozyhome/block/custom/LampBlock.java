@@ -101,21 +101,32 @@ public class LampBlock extends Block {
         LinearConnectionBlock type = state.get(STACKABLE_BLOCK);
         boolean isLightEmittingBlock = type == LinearConnectionBlock.HEAD || type == LinearConnectionBlock.SINGLE;
         if (world.isClient) {
-            if (isToggleLight(isLightEmittingBlock, stack, hit)) {
-                return ItemActionResult.SUCCESS;
+            if (canStackInstead(isLightEmittingBlock, stack, state, hit)) {
+                return ItemActionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+            } else if (isLightEmittingBlock) {
+                {
+                    return ItemActionResult.SUCCESS;
+                }
             }
         } else {
-            if (isToggleLight(isLightEmittingBlock, stack, hit)) {
-                this.toggleLight(state, world, pos, null);
-                return ItemActionResult.CONSUME;
+            if (canStackInstead(isLightEmittingBlock, stack, state, hit)) {
+                return ItemActionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+            } else if (isLightEmittingBlock) {
+                 {
+                    this.toggleLight(state, world, pos, null);
+                    return ItemActionResult.SUCCESS;
+                 }
             }
-            return ItemActionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
         }
-        return ItemActionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
-    private boolean isToggleLight(boolean isLightEmittingBlock, ItemStack stack, BlockHitResult hit) {
-        return isLightEmittingBlock && !stack.isIn(ModTags.Items.LAMPS) && hit.getSide() != Direction.UP;
+    private boolean canStackInstead(boolean isLightEmittingBlock, ItemStack stack,  BlockState state, BlockHitResult hit) {
+        return isLightEmittingBlock && stack.isOf(state.getBlock().asItem()) && hit.getSide() == Direction.UP;
+    }
+
+    private boolean isToggleLight(boolean isLightEmittingBlock, ItemStack stack,  BlockState state, BlockHitResult hit) {
+        return isLightEmittingBlock && !stack.isOf(state.getBlock().asItem()) && hit.getSide() == Direction.UP;
     }
 
     public void toggleLight(BlockState state, World world, BlockPos pos, @Nullable PlayerEntity player) {
