@@ -76,6 +76,11 @@ public class CounterBlock extends Block {
     }
 
     @Override
+    protected int getOpacity(BlockState state, BlockView world, BlockPos pos) {
+        return super.getOpacity(state, world, pos);
+    }
+
+    @Override
     protected boolean hasSidedTransparency(BlockState state) {
         return true;
     }
@@ -85,8 +90,7 @@ public class CounterBlock extends Block {
         return super.getAmbientOcclusionLightLevel(state, world, pos);
     }
 
-    @Override
-    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+    private VoxelShape getShape(BlockState state) {
         Direction direction = state.get(FACING);
         StairShape shape = state.get(SHAPE);
         switch (direction) {
@@ -128,6 +132,16 @@ public class CounterBlock extends Block {
     }
 
     @Override
+    protected VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return this.getShape(state);
+    }
+
+    @Override
+    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return this.getShape(state);
+    }
+
+    @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockPos blockPos = ctx.getBlockPos();
         BlockState blockState = this.getDefaultState()
@@ -143,7 +157,6 @@ public class CounterBlock extends Block {
                 ? state.with(SHAPE, getCounterShape(state, world, pos))
                 : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
-
 
     private static StairShape getCounterShape(BlockState state, BlockView world, BlockPos pos) {
         Direction direction = state.get(FACING);

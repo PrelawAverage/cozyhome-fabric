@@ -22,6 +22,7 @@ public class ModBlocks {
                         .strength(3)
                         .burnable()
                         .sounds(soundGroup)
+                        .dynamicBounds()
         );
     }
     private static Block createLampBlock(MapColor color) {

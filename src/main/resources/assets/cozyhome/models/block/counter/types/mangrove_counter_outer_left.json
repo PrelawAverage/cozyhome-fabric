@@ -1,0 +1,10 @@
+{
+	"parent": "cozyhome:block/counter/template_counter_outer_left",
+	"textures": {
+		"7": "cozyhome:block/counter/mangrove_counter_outer_bottom",
+		"8": "cozyhome:block/counter/mangrove_counter_outer_side",
+		"9": "cozyhome:block/counter/mangrove_counter_outer_top",
+		"10": "cozyhome:block/counter/mangrove_counter_side",
+		"particle": "cozyhome:block/counter/mangrove_counter_back"
+	}
+}

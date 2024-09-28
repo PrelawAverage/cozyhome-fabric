@@ -1,0 +1,11 @@
+{
+	"parent": "cozyhome:block/counter/template_counter",
+	"textures": {
+		"0": "cozyhome:block/counter/spruce_counter_bottom",
+		"1": "cozyhome:block/counter/spruce_counter_front",
+		"2": "cozyhome:block/counter/spruce_counter_side",
+		"3": "cozyhome:block/counter/spruce_counter_top",
+		"4": "cozyhome:block/counter/spruce_counter_back",
+		"particle": "cozyhome:block/break/spruce_furniture"
+	}
+}
