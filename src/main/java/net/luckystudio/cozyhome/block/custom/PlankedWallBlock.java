@@ -31,7 +31,8 @@ public class PlankedWallBlock extends PillarBlock {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState()
                 .with(AXIS, Direction.Axis.Y)
-                .with(FACING, Direction.NORTH));
+                .with(FACING, Direction.NORTH)
+                .with(STACKABLE_BLOCK, LinearConnectionBlock.SINGLE));
     }
 
     @Override

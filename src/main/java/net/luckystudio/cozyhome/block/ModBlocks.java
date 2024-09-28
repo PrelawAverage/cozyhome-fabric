@@ -1,13 +1,12 @@
 package net.luckystudio.cozyhome.block;
 
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.fabricmc.loader.api.FabricLoader;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.custom.LampBlock;
 import net.luckystudio.cozyhome.block.custom.PlankedWallBlock;
 import net.luckystudio.cozyhome.block.custom.SofaBlock;
 import net.minecraft.block.*;
-import net.minecraft.block.piston.PistonBehavior;
+
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -33,6 +32,7 @@ public class ModBlocks {
                 AbstractBlock.Settings.create()
                         .nonOpaque()
                         .luminance(createLightLevelFromLitBlockState(9))
+                        .breakInstantly()
                         .strength(0.6f)
                         .burnable()
                         .sounds(BlockSoundGroup.LANTERN)

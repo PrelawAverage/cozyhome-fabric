@@ -9,13 +9,7 @@ public class CozyHomeClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
-//        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout());
-
-//        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped());
-
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
-                ModBlocks.AUTUMN_STAINED_WINDOW,
-                ModBlocks.AUTUMN_STAINED_WINDOW_PANE,
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
                 ModBlocks.WHITE_LAMP,
                 ModBlocks.ORANGE_LAMP,
                 ModBlocks.MAGENTA_LAMP,
@@ -32,6 +26,13 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.GREEN_LAMP,
                 ModBlocks.RED_LAMP,
                 ModBlocks.BLACK_LAMP
+        );
+
+//        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped());
+
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
+                ModBlocks.AUTUMN_STAINED_WINDOW,
+                ModBlocks.AUTUMN_STAINED_WINDOW_PANE
         );
     }
 }

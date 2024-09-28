@@ -14,7 +14,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
-        // Call its self to drop its self
+        // Planked Walls
         addDrop(ModBlocks.OAK_PLANKED_WALL);
         addDrop(ModBlocks.SPRUCE_PLANKED_WALL);
         addDrop(ModBlocks.BIRCH_PLANKED_WALL);
