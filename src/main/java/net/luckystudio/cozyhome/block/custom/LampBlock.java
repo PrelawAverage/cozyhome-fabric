@@ -59,16 +59,6 @@ public class LampBlock extends Block {
     }
 
     @Override
-    public float getHardness() {
-        return 0.1f;
-    }
-
-    @Override
-    public float getBlastResistance() {
-        return 0.1f;
-    }
-
-    @Override
     public MapCodec<LampBlock> getCodec() {
         return CODEC;
     }
@@ -83,7 +73,7 @@ public class LampBlock extends Block {
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         int rotation = ModProperties.getOmniRotation(RotationPropertyHelper.fromYaw(ctx.getPlayerYaw()));
         return this.getDefaultState()
-                .with(LIT, ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos()))
+                .with(LIT, false)
                 .with(OMNI_ROTATION, rotation)
                 .with(STACKABLE_BLOCK, LinearConnectionBlock.SINGLE);
     }

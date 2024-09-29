@@ -1,13 +1,6 @@
 {
 	"credit": "Made by LuckyOwl with Blockbench",
-	"textures": {
-		"0": "cozyhome:block/counter/oak_counter_bottom",
-		"1": "cozyhome:block/counter/oak_counter_front",
-		"2": "cozyhome:block/counter/oak_counter_side",
-		"3": "cozyhome:block/counter/oak_counter_top",
-		"4": "cozyhome:block/counter/oak_counter_back",
-		"particle": "cozyhome:block/break/oak_furniture"
-	},
+	"ambientocclusion": false,
 	"elements": [
 		{
 			"from": [0, 0, 2],

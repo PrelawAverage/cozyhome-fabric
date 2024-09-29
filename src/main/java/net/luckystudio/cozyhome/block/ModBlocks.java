@@ -10,7 +10,6 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.biome.Biome;
 
 import java.util.function.ToIntFunction;
 
@@ -28,12 +27,22 @@ public class ModBlocks {
     private static Block createLampBlock(MapColor color) {
         return new LampBlock(
                 AbstractBlock.Settings.create()
+                        .mapColor(color)
                         .nonOpaque()
                         .luminance(createLightLevelFromLitBlockState(9))
                         .breakInstantly()
                         .strength(0.6f)
                         .burnable()
                         .sounds(BlockSoundGroup.LANTERN)
+        );
+    }
+    private static Block createCounterBlock(MapColor color) {
+        return new LampBlock(
+                AbstractBlock.Settings.create()
+                        .nonOpaque()
+                        .strength(0.6f)
+                        .burnable()
+                        .sounds(BlockSoundGroup.WOOD)
         );
     }
 

@@ -142,6 +142,11 @@ public class CounterBlock extends Block {
     }
 
     @Override
+    protected BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
+
+    @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockPos blockPos = ctx.getBlockPos();
         BlockState blockState = this.getDefaultState()
