@@ -16,6 +16,7 @@ public class MobBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+                // Adding Planked Walls
                 .add(ModBlocks.OAK_PLANKED_WALL)
                 .add(ModBlocks.SPRUCE_PLANKED_WALL)
                 .add(ModBlocks.BIRCH_PLANKED_WALL)
@@ -43,6 +44,12 @@ public class MobBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BROWN_SOFA)
                 .add(ModBlocks.GREEN_SOFA)
                 .add(ModBlocks.RED_SOFA)
-                .add(ModBlocks.BLACK_SOFA);
+                .add(ModBlocks.BLACK_SOFA)
+                .add(ModBlocks.WARPED_PLANKED_WALL)
+        ;
+
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                // Adding Counters (For axe and pickaxe)
+        ;
     }
 }

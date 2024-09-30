@@ -38,6 +38,6 @@ public class SofaBlock extends Block {
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return this.getDefaultState()
-                .with(ROTATION, Integer.valueOf(RotationPropertyHelper.fromYaw(ctx.getPlayerYaw())));
+                .with(ROTATION, RotationPropertyHelper.fromYaw(ctx.getPlayerYaw()));
     }
 }
