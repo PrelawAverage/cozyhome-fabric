@@ -24,8 +24,7 @@ public class ModBlocks {
                         .hardness(2)
                         .strength(3)
                         .burnable()
-                        .sounds(soundGroup)
-        );
+                        .sounds(soundGroup));
     }
     private static Block createLampBlock(MapColor color) {
         return new LampBlock(
@@ -35,8 +34,7 @@ public class ModBlocks {
                         .breakInstantly()
                         .strength(0.6f)
                         .burnable()
-                        .sounds(BlockSoundGroup.LANTERN)
-        );
+                        .sounds(BlockSoundGroup.LANTERN));
     }
     private static Block createSofaBlock(MapColor color) {
         return new SofaBlock(
@@ -46,8 +44,7 @@ public class ModBlocks {
                         .hardness(1f)
                         .strength(1f)
                         .burnable()
-                        .sounds(BlockSoundGroup.WOOL)
-        );
+                        .sounds(BlockSoundGroup.WOOL));
     }
 
     // Add Blocks Here
