@@ -68,6 +68,7 @@ public class ModBlocks {
     public static final Block CRIMSON_PLANKED_WALL = registerBlock("crimson_planked_wall", createPlankedWall(BlockSoundGroup.NETHER_WOOD));
     public static final Block WARPED_PLANKED_WALL = registerBlock("warped_planked_wall", createPlankedWall(BlockSoundGroup.NETHER_WOOD));
 
+    // Counters
     public static final Block OAK_COUNTER = registerBlock("oak_counter",
             new CounterBlock(Blocks.OAK_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
     public static final Block SPRUCE_COUNTER = registerBlock("spruce_counter",
