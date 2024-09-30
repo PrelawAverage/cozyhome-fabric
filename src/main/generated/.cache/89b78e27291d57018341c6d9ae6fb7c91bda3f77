@@ -1,4 +1,4 @@
-// 1.21	2024-09-29T00:33:41.209685	Cozy Home/Recipes
+// 1.21	2024-09-30T00:50:48.0638276	Cozy Home/Recipes
 ec3c37b76a2a11e4ba869d58bd1f643c07c6b2b9 data\cozyhome\advancement\recipes\misc\crimson_planks_from_crimson_planked_wall.json
 5da12ca0ac2423ea705e4d410d90c0d41a84556f data\cozyhome\recipe\brown_lamp.json
 f95c0dab144b786c29b67a5dd83548826c930fec data\cozyhome\recipe\jungle_planks_from_jungle_planked_wall.json
@@ -71,8 +71,8 @@ d8438473814e4c4c8a29c75fc48ecf7504ce3f75 data\cozyhome\advancement\recipes\build
 cae53c92c5181f3836c5b44141b42e3c0c123f61 data\cozyhome\recipe\green_lamp.json
 ef169adf2410c3df28a511b33ed9267a3ba03be7 data\cozyhome\advancement\recipes\building_blocks\red_lamp.json
 47dfd1587b064f163d8215672a64bda463640ce4 data\cozyhome\recipe\dark_oak_planked_wall.json
-7e3ba77d2ab5cfbce51db0449c7acdaf9794897e data\cozyhome\advancement\recipes\building_blocks\acacia_planked_wall.json
 17292b7f64717d4c9489d3efc7b3da39f664a0c3 data\cozyhome\advancement\recipes\misc\oak_planks_from_oak_planked_wall.json
+7e3ba77d2ab5cfbce51db0449c7acdaf9794897e data\cozyhome\advancement\recipes\building_blocks\acacia_planked_wall.json
 eaa920f6f838e49041cc00516abbe7b442793b0a data\cozyhome\recipe\spruce_planked_wall.json
 030b0a81df423baa4bbfbc3e7ed1f4f4f1c6d6dd data\cozyhome\advancement\recipes\building_blocks\light_blue_lamp.json
 6d31debb2335b6dcf734fa2fc5a5c22e47d7ea2b data\cozyhome\recipe\acacia_planked_wall.json

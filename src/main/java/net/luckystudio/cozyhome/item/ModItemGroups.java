@@ -19,6 +19,7 @@ public class ModItemGroups {
                     .icon(() -> new ItemStack(ModBlocks.RED_LAMP))
                     .displayName(Text.translatable("itemgroup.cozyhome.cozyhome"))
                     .entries((displayContext, entries) -> {
+                        // Planked Walls
                         entries.add(ModBlocks.OAK_PLANKED_WALL);
                         entries.add(ModBlocks.SPRUCE_PLANKED_WALL);
                         entries.add(ModBlocks.BIRCH_PLANKED_WALL);
@@ -31,6 +32,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CRIMSON_PLANKED_WALL);
                         entries.add(ModBlocks.WARPED_PLANKED_WALL);
 
+                        // Counters
                         entries.add(ModBlocks.OAK_COUNTER);
                         entries.add(ModBlocks.SPRUCE_COUNTER);
                         entries.add(ModBlocks.BIRCH_COUNTER);
@@ -43,6 +45,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CRIMSON_COUNTER);
                         entries.add(ModBlocks.WARPED_COUNTER);
 
+                        // Lamps
                         entries.add(ModBlocks.WHITE_LAMP);
                         entries.add(ModBlocks.ORANGE_LAMP);
                         entries.add(ModBlocks.MAGENTA_LAMP);
@@ -59,6 +62,24 @@ public class ModItemGroups {
                         entries.add(ModBlocks.GREEN_LAMP);
                         entries.add(ModBlocks.RED_LAMP);
                         entries.add(ModBlocks.BLACK_LAMP);
+
+                        // Sofas
+                        entries.add(ModBlocks.WHITE_SOFA);
+                        entries.add(ModBlocks.ORANGE_SOFA);
+                        entries.add(ModBlocks.MAGENTA_SOFA);
+                        entries.add(ModBlocks.LIGHT_BLUE_SOFA);
+                        entries.add(ModBlocks.YELLOW_SOFA);
+                        entries.add(ModBlocks.LIME_SOFA);
+                        entries.add(ModBlocks.PINK_SOFA);
+                        entries.add(ModBlocks.GRAY_SOFA);
+                        entries.add(ModBlocks.LIGHT_GRAY_SOFA);
+                        entries.add(ModBlocks.CYAN_SOFA);
+                        entries.add(ModBlocks.PURPLE_SOFA);
+                        entries.add(ModBlocks.BLUE_SOFA);
+                        entries.add(ModBlocks.BROWN_SOFA);
+                        entries.add(ModBlocks.GREEN_SOFA);
+                        entries.add(ModBlocks.RED_SOFA);
+                        entries.add(ModBlocks.BLACK_SOFA);
 
                         // Compat with Ecologics Mod - https://www.curseforge.com/minecraft/mc-mods/ecologics
                         if (FabricLoader.getInstance().isModLoaded("ecologics")) {
