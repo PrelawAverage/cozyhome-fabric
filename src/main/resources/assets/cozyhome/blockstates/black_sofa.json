@@ -5,7 +5,6 @@
     },
     "rotation=1": {
       "model": "cozyhome:block/sofa/types/black_sofa_0",
-      "y": 45
     },
     "rotation=2": {
       "model": "cozyhome:block/sofa/types/black_sofa_2"

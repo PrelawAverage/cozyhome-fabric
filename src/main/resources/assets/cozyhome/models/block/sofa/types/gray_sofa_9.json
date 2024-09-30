@@ -2,6 +2,6 @@
 	"parent": "cozyhome:block/sofa/template_sofa_9",
 	"textures": {
 		"sofa": "cozyhome:block/sofa/gray_sofa",
-		"particle": "cozyhome:block/sofa/gray_sofa"
+		"particle": "block/gray_wool"
 	}
 }
