@@ -62,6 +62,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
     @Override
     public void generate(RecipeExporter exporter) {
+        // Planked Walls
         offerPlankedWallRecipe(exporter, ModBlocks.OAK_PLANKED_WALL, Blocks.OAK_PLANKS);
         offerPlankedWallRecipe(exporter, ModBlocks.SPRUCE_PLANKED_WALL, Blocks.SPRUCE_PLANKS);
         offerPlankedWallRecipe(exporter, ModBlocks.BIRCH_PLANKED_WALL, Blocks.BIRCH_PLANKS);
@@ -73,17 +74,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerPlankedWallRecipe(exporter, ModBlocks.CRIMSON_PLANKED_WALL, Blocks.CRIMSON_PLANKS);
         offerPlankedWallRecipe(exporter, ModBlocks.WARPED_PLANKED_WALL, Blocks.WARPED_PLANKS);
 
-        offerCounterRecipe(exporter, ModBlocks.OAK_COUNTER, Blocks.BRICKS, Blocks.OAK_PLANKS);
-        offerCounterRecipe(exporter, ModBlocks.SPRUCE_COUNTER, Blocks.POLISHED_ANDESITE, Blocks.SPRUCE_PLANKS);
-        offerCounterRecipe(exporter, ModBlocks.BIRCH_COUNTER, Blocks.POLISHED_GRANITE, Blocks.BIRCH_PLANKS);
-        offerCounterRecipe(exporter, ModBlocks.JUNGLE_COUNTER, Blocks.POLISHED_GRANITE, Blocks.JUNGLE_PLANKS);
-        offerCounterRecipe(exporter, ModBlocks.ACACIA_COUNTER, Blocks.POLISHED_DIORITE, Blocks.ACACIA_PLANKS);
-        offerCounterRecipe(exporter, ModBlocks.DARK_OAK_COUNTER, Blocks.DEEPSLATE_TILES, Blocks.DARK_OAK_PLANKS);
-        offerCounterRecipe(exporter, ModBlocks.MANGROVE_COUNTER, Blocks.PACKED_MUD, Blocks.MANGROVE_PLANKS);
-        offerCounterRecipe(exporter, ModBlocks.BAMBOO_COUNTER, Blocks.BAMBOO_BLOCK, Blocks.BAMBOO_PLANKS);
-        offerCounterRecipe(exporter, ModBlocks.CRIMSON_COUNTER, Blocks.NETHER_WART_BLOCK, Blocks.CRIMSON_PLANKS);
-        offerCounterRecipe(exporter, ModBlocks.WARPED_COUNTER, Blocks.WARPED_WART_BLOCK, Blocks.WARPED_PLANKS);
-
+        // Planked Walls to regular vanilla planks
         offerSingleOutputShapelessRecipe(exporter, Items.OAK_PLANKS, ModBlocks.OAK_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());
         offerSingleOutputShapelessRecipe(exporter, Items.SPRUCE_PLANKS, ModBlocks.SPRUCE_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());
         offerSingleOutputShapelessRecipe(exporter, Items.BIRCH_PLANKS, ModBlocks.BIRCH_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());
@@ -96,6 +87,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerSingleOutputShapelessRecipe(exporter, Items.CRIMSON_PLANKS, ModBlocks.CRIMSON_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());
         offerSingleOutputShapelessRecipe(exporter, Items.WARPED_PLANKS, ModBlocks.WARPED_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());
 
+        // Counters
+        offerCounterRecipe(exporter, ModBlocks.OAK_COUNTER, Blocks.BRICKS, Blocks.OAK_PLANKS);
+        offerCounterRecipe(exporter, ModBlocks.SPRUCE_COUNTER, Blocks.POLISHED_ANDESITE, Blocks.SPRUCE_PLANKS);
+        offerCounterRecipe(exporter, ModBlocks.BIRCH_COUNTER, Blocks.POLISHED_GRANITE, Blocks.BIRCH_PLANKS);
+        offerCounterRecipe(exporter, ModBlocks.JUNGLE_COUNTER, Blocks.POLISHED_GRANITE, Blocks.JUNGLE_PLANKS);
+        offerCounterRecipe(exporter, ModBlocks.ACACIA_COUNTER, Blocks.POLISHED_DIORITE, Blocks.ACACIA_PLANKS);
+        offerCounterRecipe(exporter, ModBlocks.DARK_OAK_COUNTER, Blocks.DEEPSLATE_TILES, Blocks.DARK_OAK_PLANKS);
+        offerCounterRecipe(exporter, ModBlocks.MANGROVE_COUNTER, Blocks.PACKED_MUD, Blocks.MANGROVE_PLANKS);
+        offerCounterRecipe(exporter, ModBlocks.BAMBOO_COUNTER, Blocks.BAMBOO_BLOCK, Blocks.BAMBOO_PLANKS);
+        offerCounterRecipe(exporter, ModBlocks.CRIMSON_COUNTER, Blocks.NETHER_WART_BLOCK, Blocks.CRIMSON_PLANKS);
+        offerCounterRecipe(exporter, ModBlocks.WARPED_COUNTER, Blocks.WARPED_WART_BLOCK, Blocks.WARPED_PLANKS);
+
+        // Lamps
         offerLampRecipe(exporter, ModBlocks.WHITE_LAMP, Items.RED_WOOL);
         offerLampRecipe(exporter, ModBlocks.ORANGE_LAMP, Items.ORANGE_WOOL);
         offerLampRecipe(exporter, ModBlocks.MAGENTA_LAMP, Items.MAGENTA_WOOL);

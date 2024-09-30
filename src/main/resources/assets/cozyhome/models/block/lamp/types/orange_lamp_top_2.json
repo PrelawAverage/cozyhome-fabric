@@ -2,6 +2,6 @@
 	"parent": "cozyhome:block/lamp/template_lamp_top_2",
 	"textures": {
 		"lamp": "cozyhome:block/lamp/orange_lamp",
-		"particle": "cozyhome:block/lamp/orange_lamp"
+		"particle": "block/orange_wool"
 	}
 }

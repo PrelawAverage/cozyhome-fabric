@@ -16,7 +16,7 @@ public class ModItemGroups {
             Registry.register(Registries.ITEM_GROUP,
             Identifier.of(CozyHome.MOD_ID, "cozyhome"),
             FabricItemGroup.builder()
-                    .icon(() -> new ItemStack(ModBlocks.OAK_PLANKED_WALL))
+                    .icon(() -> new ItemStack(ModBlocks.RED_LAMP))
                     .displayName(Text.translatable("itemgroup.cozyhome.cozyhome"))
                     .entries((displayContext, entries) -> {
                         entries.add(ModBlocks.OAK_PLANKED_WALL);
