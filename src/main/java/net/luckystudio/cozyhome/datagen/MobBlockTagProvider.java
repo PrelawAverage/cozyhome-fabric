@@ -26,6 +26,23 @@ public class MobBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CHERRY_PLANKED_WALL)
                 .add(ModBlocks.BAMBOO_PLANKED_WALL)
                 .add(ModBlocks.CRIMSON_PLANKED_WALL)
-                .add(ModBlocks.WARPED_PLANKED_WALL);
+                .add(ModBlocks.WARPED_PLANKED_WALL)
+
+                .add(ModBlocks.WHITE_SOFA)
+                .add(ModBlocks.ORANGE_SOFA)
+                .add(ModBlocks.MAGENTA_SOFA)
+                .add(ModBlocks.LIGHT_BLUE_SOFA)
+                .add(ModBlocks.YELLOW_SOFA)
+                .add(ModBlocks.LIME_SOFA)
+                .add(ModBlocks.PINK_SOFA)
+                .add(ModBlocks.GRAY_SOFA)
+                .add(ModBlocks.LIGHT_GRAY_SOFA)
+                .add(ModBlocks.CYAN_SOFA)
+                .add(ModBlocks.PURPLE_SOFA)
+                .add(ModBlocks.BLUE_SOFA)
+                .add(ModBlocks.BROWN_SOFA)
+                .add(ModBlocks.GREEN_SOFA)
+                .add(ModBlocks.RED_SOFA)
+                .add(ModBlocks.BLACK_SOFA);
     }
 }
