@@ -3,14 +3,10 @@ package net.luckystudio.cozyhome.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.util.blocks.SeatBlock;
 import net.luckystudio.cozyhome.block.util.blocks.TuckableBlock;
-import net.luckystudio.cozyhome.util.ModTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
-import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.hit.BlockHitResult;
@@ -20,9 +16,6 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
-import net.minecraft.world.event.GameEvent;
-import org.jetbrains.annotations.Nullable;
 
 public class ChairBlock extends SeatBlock implements TuckableBlock {
 
@@ -125,17 +118,5 @@ public class ChairBlock extends SeatBlock implements TuckableBlock {
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING, TUCKED);
-    }
-
-    public void moveChair(BlockState state, World world, BlockPos pos, @Nullable PlayerEntity player) {
-        world.setBlockState(pos, state.cycle(TUCKED), Block.NOTIFY_ALL);
-        playMoveSound(player, world, pos, state);
-        world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-    }
-
-    protected static void playMoveSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, BlockState state) {
-        // Just alters the pitch when the lamp is being turned on and off.
-        float f = state.get(TUCKED) ? 0.8F : 1F;
-        world.playSound(player, pos, SoundEvents.BLOCK_BARREL_OPEN, SoundCategory.BLOCKS, 1F, f);
     }
 }

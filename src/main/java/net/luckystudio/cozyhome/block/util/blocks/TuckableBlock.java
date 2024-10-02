@@ -1,25 +1,21 @@
 package net.luckystudio.cozyhome.block.util.blocks;
 
-import com.mojang.brigadier.LiteralMessage;
 import net.luckystudio.cozyhome.block.custom.ChairBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.util.ModTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.network.message.MessageType;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
-
-import java.util.Objects;
+import net.minecraft.world.WorldAccess;
+import org.jetbrains.annotations.Nullable;
 
 public interface TuckableBlock {
     BooleanProperty TUCKED = ModProperties.TUCKED;
@@ -30,14 +26,14 @@ public interface TuckableBlock {
     static ActionResult tryTuck(BlockState state, World world, BlockPos pos, PlayerEntity player) {
         if (state.get(TUCKED)) {
             world.setBlockState(pos, state.with(TUCKED, false), 3);
-            world.playSound(null, pos, SoundEvents.BLOCK_BARREL_OPEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            playMoveSound(player, world, pos, state);
             return ActionResult.SUCCESS;
         }
         boolean isTuckable = player.isSneaking() && !isBlockedFromTucking(state, world, pos) && canTuckUnderBlockInfront(state, world, pos);
 
         if (isTuckable) {
             world.setBlockState(pos, state.with(TUCKED, true));
-            world.playSound(null, pos, SoundEvents.BLOCK_BARREL_CLOSE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            playMoveSound(player, world, pos, state);
             return ActionResult.SUCCESS;
         }
 
@@ -62,6 +58,12 @@ public interface TuckableBlock {
         if (right.getBlock() instanceof ChairBlock && right.get(TUCKED)
                 && right.get(FACING) == facing.rotateCounterclockwise(Direction.Axis.Y)) return true;
         return false;
+    }
+
+    static void playMoveSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, BlockState state) {
+        // Just alters the pitch when the lamp is being turned on and off.
+        float f = state.get(TUCKED) ? 0.8F : 1F;
+        world.playSound(player, pos, SoundEvents.BLOCK_BARREL_OPEN, SoundCategory.BLOCKS, 1F, f);
     }
 
 }
