@@ -8,7 +8,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.BlockRotation;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -52,7 +51,7 @@ public class ChairBlock extends SeatBlock implements TuckableBlock {
                 .with(TUCKED, Boolean.FALSE));
     }
 
-    // This is the hitbox of the block, we are applying our VoxelShape to it.
+    // This is the hit-box of the block, we are applying our VoxelShape to it.
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         switch (state.get(FACING)) {
@@ -98,8 +97,6 @@ public class ChairBlock extends SeatBlock implements TuckableBlock {
         ActionResult actionResult = TuckableBlock.tryTuck(state, world, pos, player);
 
         if (!actionResult.equals(ActionResult.PASS)) return actionResult;
-
-        this.rotate(state, BlockRotation.CLOCKWISE_180);
 
         return super.onUse(state, world, pos, player, hit);
     }

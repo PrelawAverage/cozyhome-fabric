@@ -61,7 +61,7 @@ public class SeatEntity extends Entity {
         BlockPos pos = this.getBlockPos();
         BlockState state = this.getWorld().getBlockState(pos);
         if (state.getBlock() instanceof SeatBlock seatBlock) {
-            passenger.setYaw(seatBlock.setRiderRotation(state, this));
+            passenger.setYaw(seatBlock.setRiderRotation(this));
             super.addPassenger(passenger);
         }
     }
@@ -70,15 +70,6 @@ public class SeatEntity extends Entity {
     public Vec3d getPassengerRidingPos(Entity passenger) {
         return super.getPassengerRidingPos(passenger);
     }
-
-    //    @Override
-//    protected void updatePassengerPosition(Entity passenger, PositionUpdater positionUpdater) {
-//        if (this.hasPassenger(passenger)) {
-//            // Update passenger position and rotation
-//            passenger.setBodyYaw(this.getYaw());
-//            passenger.setPos(this.getX(), this.getY(), this.getZ());
-//        }
-//    }
 
     // This method makes sure the dismount location is valid.
     // This is the same as the pig class, maybe try and access it instead?

@@ -40,17 +40,17 @@ public class SeatBlock extends Block {
         BlockState seatBlock = world.getBlockState(pos);
         Direction facing = seatBlock.get(TuckableBlock.FACING);
 
-        float rotationOffset = facing == Direction.NORTH ? 180f: facing == Direction.SOUTH ? 0f:
+        float rotationDirection = facing == Direction.NORTH ? 180f: facing == Direction.SOUTH ? 0f:
                 facing == Direction.EAST ? 270f: facing == Direction.WEST ? 90f: 0;
-        seat.setYaw(rotationOffset);
-        seat.setAngles(rotationOffset, 0);
+        seat.setYaw(rotationDirection);
+        seat.setAngles(rotationDirection, 0);
 
         world.spawnEntity(seat);
 
         player.startRiding(seat);
     }
 
-    public float setRiderRotation(BlockState state, Entity entity) {
+    public float setRiderRotation(Entity entity) {
         return entity.getYaw();
     }
 
