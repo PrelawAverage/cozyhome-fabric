@@ -1,11 +1,17 @@
 package net.luckystudio.cozyhome.block.util.blocks;
 
+import net.luckystudio.cozyhome.block.custom.ChairBlock;
+import net.luckystudio.cozyhome.block.custom.SofaBlock;
 import net.luckystudio.cozyhome.entity.ModEntities;
 import net.luckystudio.cozyhome.entity.custom.SeatEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.FacingBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.Properties;
+import net.minecraft.state.property.Property;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -25,28 +31,37 @@ public class SeatBlock extends Block {
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (world.isClient) return ActionResult.PASS;
 
-        sitDown(world, pos, player);
+        sitDown(state, world, pos, player);
 
         return ActionResult.SUCCESS;
     }
 
-    private static void sitDown(World world, BlockPos pos, PlayerEntity player) {
+    private static void sitDown(BlockState state, World world, BlockPos pos, PlayerEntity player) {
         // Creates a new entity
         SeatEntity seat = new SeatEntity(ModEntities.SEAT_ENTITY, world);
         // Sets it's location
         seat.setPosition(pos.getX() + 0.5f, pos.getY(), pos.getZ() + 0.5f);
 
-        BlockState seatBlock = world.getBlockState(pos);
-        Direction facing = seatBlock.get(TuckableBlock.FACING);
-
-        float rotationDirection = facing == Direction.NORTH ? 180f: facing == Direction.SOUTH ? 0f:
-                facing == Direction.EAST ? 270f: facing == Direction.WEST ? 90f: 0;
-        seat.setYaw(rotationDirection);
-        seat.setAngles(rotationDirection, 0);
+        seat.setYaw(setSeatRotation(world, pos));
+        seat.setAngles(setSeatRotation(world, pos), 0);
 
         world.spawnEntity(seat);
 
         player.startRiding(seat);
+    }
+
+    private static float setSeatRotation(World world, BlockPos pos) {
+        BlockState seatBlock = world.getBlockState(pos);
+        Block block = seatBlock.getBlock();
+
+        if(block instanceof ChairBlock) {
+            Direction facing = seatBlock.get(TuckableBlock.FACING);
+            return facing == Direction.NORTH ? 180f: facing == Direction.SOUTH ? 0f:
+                    facing == Direction.EAST ? 270f: facing == Direction.WEST ? 90f: 0;
+        } else if (block instanceof SofaBlock) {
+            return (seatBlock.get(Properties.ROTATION) * 22.5f) + 180f;
+        }
+        return 0;
     }
 
     public float setRiderRotation(Entity entity) {

@@ -34,8 +34,30 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.CHERRY_CHAIR,
                 ModBlocks.BAMBOO_CHAIR,
                 ModBlocks.CRIMSON_CHAIR,
-                ModBlocks.WARPED_CHAIR);
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
+                ModBlocks.WARPED_CHAIR,
+
+                ModBlocks.WHITE_LAMP,
+                ModBlocks.ORANGE_LAMP,
+                ModBlocks.MAGENTA_LAMP,
+                ModBlocks.LIGHT_BLUE_LAMP,
+                ModBlocks.YELLOW_LAMP,
+                ModBlocks.LIME_LAMP,
+                ModBlocks.PINK_LAMP,
+                ModBlocks.GRAY_LAMP,
+                ModBlocks.LIGHT_GRAY_LAMP,
+                ModBlocks.CYAN_LAMP,
+                ModBlocks.PURPLE_LAMP,
+                ModBlocks.BLUE_LAMP,
+                ModBlocks.BROWN_LAMP,
+                ModBlocks.GREEN_LAMP,
+                ModBlocks.RED_LAMP,
+                ModBlocks.BLACK_LAMP
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
+                ModBlocks.AUTUMN_STAINED_WINDOW,
+                ModBlocks.AUTUMN_STAINED_WINDOW_PANE,
+
                 ModBlocks.WHITE_LAMP,
                 ModBlocks.ORANGE_LAMP,
                 ModBlocks.MAGENTA_LAMP,
@@ -53,25 +75,6 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.RED_LAMP,
                 ModBlocks.BLACK_LAMP,
 
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
-                ModBlocks.AUTUMN_STAINED_WINDOW,
-                ModBlocks.AUTUMN_STAINED_WINDOW_PANE,
-                ModBlocks.WHITE_LAMP,
-                ModBlocks.ORANGE_LAMP,
-                ModBlocks.MAGENTA_LAMP,
-                ModBlocks.LIGHT_BLUE_LAMP,
-                ModBlocks.YELLOW_LAMP,
-                ModBlocks.LIME_LAMP,
-                ModBlocks.PINK_LAMP,
-                ModBlocks.GRAY_LAMP,
-                ModBlocks.LIGHT_GRAY_LAMP,
-                ModBlocks.CYAN_LAMP,
-                ModBlocks.PURPLE_LAMP,
-                ModBlocks.BLUE_LAMP,
-                ModBlocks.BROWN_LAMP,
-                ModBlocks.GREEN_LAMP,
-                ModBlocks.RED_LAMP,
-                ModBlocks.BLACK_LAMP);
                 ModBlocks.OAK_COUNTER,
                 ModBlocks.SPRUCE_COUNTER,
                 ModBlocks.BIRCH_COUNTER,
@@ -83,11 +86,6 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.BAMBOO_COUNTER,
                 ModBlocks.CRIMSON_COUNTER,
                 ModBlocks.WARPED_COUNTER
-        );
-
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
-                ModBlocks.AUTUMN_STAINED_WINDOW,
-                ModBlocks.AUTUMN_STAINED_WINDOW_PANE
         );
     }
 }
