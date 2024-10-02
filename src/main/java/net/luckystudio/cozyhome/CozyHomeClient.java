@@ -51,7 +51,19 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.BROWN_LAMP,
                 ModBlocks.GREEN_LAMP,
                 ModBlocks.RED_LAMP,
-                ModBlocks.BLACK_LAMP
+                ModBlocks.BLACK_LAMP,
+
+                ModBlocks.OAK_COUNTER,
+                ModBlocks.SPRUCE_COUNTER,
+                ModBlocks.BIRCH_COUNTER,
+                ModBlocks.JUNGLE_COUNTER,
+                ModBlocks.ACACIA_COUNTER,
+                ModBlocks.DARK_OAK_COUNTER,
+                ModBlocks.MANGROVE_COUNTER,
+                ModBlocks.CHERRY_COUNTER,
+                ModBlocks.BAMBOO_COUNTER,
+                ModBlocks.CRIMSON_COUNTER,
+                ModBlocks.WARPED_COUNTER
         );
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
@@ -73,19 +85,7 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.BROWN_LAMP,
                 ModBlocks.GREEN_LAMP,
                 ModBlocks.RED_LAMP,
-                ModBlocks.BLACK_LAMP,
-
-                ModBlocks.OAK_COUNTER,
-                ModBlocks.SPRUCE_COUNTER,
-                ModBlocks.BIRCH_COUNTER,
-                ModBlocks.JUNGLE_COUNTER,
-                ModBlocks.ACACIA_COUNTER,
-                ModBlocks.DARK_OAK_COUNTER,
-                ModBlocks.MANGROVE_COUNTER,
-                ModBlocks.CHERRY_COUNTER,
-                ModBlocks.BAMBOO_COUNTER,
-                ModBlocks.CRIMSON_COUNTER,
-                ModBlocks.WARPED_COUNTER
+                ModBlocks.BLACK_LAMP
         );
     }
 }
