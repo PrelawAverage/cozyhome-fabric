@@ -11,6 +11,8 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
+import java.awt.*;
+
 public class ModItemGroups {
     public static final ItemGroup COZY_HOME =
             Registry.register(Registries.ITEM_GROUP,
@@ -46,6 +48,18 @@ public class ModItemGroups {
                         entries.add(ModBlocks.WARPED_COUNTER);
 
                         // Lamps
+                        entries.add(ModBlocks.OAK_CHAIR);
+                        entries.add(ModBlocks.SPRUCE_CHAIR);
+                        entries.add(ModBlocks.BIRCH_CHAIR);
+                        entries.add(ModBlocks.JUNGLE_CHAIR);
+                        entries.add(ModBlocks.ACACIA_CHAIR);
+                        entries.add(ModBlocks.DARK_OAK_CHAIR);
+                        entries.add(ModBlocks.MANGROVE_CHAIR);
+                        entries.add(ModBlocks.CHERRY_CHAIR);
+                        entries.add(ModBlocks.BAMBOO_CHAIR);
+                        entries.add(ModBlocks.CRIMSON_CHAIR);
+                        entries.add(ModBlocks.WARPED_CHAIR);
+
                         entries.add(ModBlocks.WHITE_LAMP);
                         entries.add(ModBlocks.ORANGE_LAMP);
                         entries.add(ModBlocks.MAGENTA_LAMP);

@@ -1,12 +1,14 @@
 package net.luckystudio.cozyhome.block.util;
 
 import net.luckystudio.cozyhome.block.util.blockstates.LinearConnectionBlock;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.math.RotationPropertyHelper;
 
 public class ModProperties {
     public static final EnumProperty<LinearConnectionBlock> LINEAR_CONNECTION_BLOCK = EnumProperty.of("linear_connection", LinearConnectionBlock.class);
+    public static final BooleanProperty TUCKED = BooleanProperty.of("tucked");
     public static final IntProperty OMNI_ROTATION = IntProperty.of("omni_rotation", 0, 3);
 
     public static int getOmniRotation(int rotation) {

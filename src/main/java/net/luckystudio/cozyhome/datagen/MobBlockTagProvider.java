@@ -3,6 +3,8 @@ package net.luckystudio.cozyhome.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.luckystudio.cozyhome.block.ModBlocks;
+import net.luckystudio.cozyhome.util.ModTags;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 
@@ -15,6 +17,13 @@ public class MobBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+
+        getOrCreateTagBuilder(ModTags.Blocks.TUCKABLE)
+                .add(Blocks.AIR)
+                .add(Blocks.SCAFFOLDING);
+        getOrCreateTagBuilder(ModTags.Blocks.TUCKABLE_DIRECTIONAL)
+                .add(ModBlocks.DARK_OAK_PLANKED_WALL);
+
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 // Adding Planked Walls
                 .add(ModBlocks.OAK_PLANKED_WALL)
