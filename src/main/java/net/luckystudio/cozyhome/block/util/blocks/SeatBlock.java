@@ -23,11 +23,10 @@ public class SeatBlock extends Block {
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if (world.isClient) {
-            return ActionResult.PASS;
-        } else {
-            sitDown(world, pos, player);
-        }
+        if (world.isClient) return ActionResult.PASS;
+
+        sitDown(world, pos, player);
+
         return ActionResult.SUCCESS;
     }
 
