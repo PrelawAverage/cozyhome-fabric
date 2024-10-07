@@ -76,6 +76,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.GREEN_LAMP);
                         entries.add(ModBlocks.RED_LAMP);
                         entries.add(ModBlocks.BLACK_LAMP);
+                        entries.add(ModBlocks.MANGROVE_LAMP);
+                        entries.add(ModBlocks.MANGROVE_LANTERN);
 
                         // Sofas
                         entries.add(ModBlocks.WHITE_SOFA);
@@ -94,6 +96,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.GREEN_SOFA);
                         entries.add(ModBlocks.RED_SOFA);
                         entries.add(ModBlocks.BLACK_SOFA);
+                        entries.add(ModBlocks.MANGROVE_ZAISU);
 
                         // Compat with Ecologics Mod - https://www.curseforge.com/minecraft/mc-mods/ecologics
                         if (FabricLoader.getInstance().isModLoaded("ecologics")) {

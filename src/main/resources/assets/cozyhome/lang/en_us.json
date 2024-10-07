@@ -44,6 +44,9 @@
   "block.cozyhome.green_lamp": "Green Lamp",
   "block.cozyhome.red_lamp": "Red Lamp",
   "block.cozyhome.black_lamp": "Black Lamp",
+  "block.cozyhome.mangrove_lamp": "Mangrove Lamp",
+
+  "block.cozyhome.mangrove_lantern": "Mangrove Lantern",
 
   "block.cozyhome.white_sofa": "White Sofa",
   "block.cozyhome.orange_sofa": "Orange Sofa",
@@ -61,6 +64,8 @@
   "block.cozyhome.green_sofa": "Green Sofa",
   "block.cozyhome.red_sofa": "Red Sofa",
   "block.cozyhome.black_sofa": "Black Sofa",
+
+  "block.cozyhome.mangrove_zaisu": "Mangrove Zaisu",
 
   "block.cozyhome.oak_chair": "Oak Chair",
   "block.cozyhome.spruce_chair": "Spruce Chair",

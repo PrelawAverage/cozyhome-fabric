@@ -17,7 +17,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class SofaBlock extends SeatBlock {
+public class SofaBlock extends AbstractChairBlock {
     public static final MapCodec<SofaBlock> CODEC = createCodec(SofaBlock::new);
     public static final IntProperty ROTATION = Properties.ROTATION;
     protected static final VoxelShape SHAPE = Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
