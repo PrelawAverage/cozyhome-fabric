@@ -130,6 +130,13 @@ public class LampBlock extends Block {
         // Getting the states of the block above and below our block
         BlockState getBlockAbove = world.getBlockState(pos.up());
         BlockState getBlockBelow = world.getBlockState(pos.down());
+
+        // If the block below is air then lamp block breaks
+        if (getBlockBelow.isAir() && !world.isClient()) {
+            world.breakBlock(pos, true);
+            return;
+        }
+
         // Getting Vertical Connection Types based on the states of the block above and below.
         LinearConnectionBlock linearConnectionBlockType = getLinearConnectionBlockType(state, getBlockAbove, getBlockBelow);
         // Checking if the block is on before we make changes
