@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "omni_rotation=0,lit=false,hanging=false": {
+      "model": "cozyhome:block/lantern/special/mangrove/mangrove_lantern_0"
+    },
+    "omni_rotation=1,lit=false,hanging=false": {
+      "model": "cozyhome:block/lantern/special/mangrove/mangrove_lantern_1"
+    },
+    "omni_rotation=2,lit=false,hanging=false": {
+      "model": "cozyhome:block/lantern/special/mangrove/mangrove_lantern_2"
+    },
+    "omni_rotation=3,lit=false,hanging=false": {
+      "model": "cozyhome:block/lantern/special/mangrove/mangrove_lantern_3"
+    },
+    "omni_rotation=0,lit=true,hanging=false": {
+      "model": "cozyhome:block/lantern/special/mangrove/mangrove_lantern_0"
+    },
+    "omni_rotation=1,lit=true,hanging=false": {
+      "model": "cozyhome:block/lantern/special/mangrove/mangrove_lantern_1"
+    },
+    "omni_rotation=2,lit=true,hanging=false": {
+      "model": "cozyhome:block/lantern/special/mangrove/mangrove_lantern_2"
+    },
+    "omni_rotation=3,lit=true,hanging=false": {
+      "model": "cozyhome:block/lantern/special/mangrove/mangrove_lantern_3"
+    },
+    "omni_rotation=0,lit=true,hanging=true": {
+      "model": "cozyhome:block/lantern/special/mangrove/mangrove_lantern_hanging_0"
+    },
+    "omni_rotation=1,lit=true,hanging=true": {
+      "model": "cozyhome:block/lantern/special/mangrove/mangrove_lantern_hanging_1"
+    },
+    "omni_rotation=2,lit=true,hanging=true": {
+      "model": "cozyhome:block/lantern/special/mangrove/mangrove_lantern_hanging_2"
+    },
+    "omni_rotation=3,lit=true,hanging=true": {
+      "model": "cozyhome:block/lantern/special/mangrove/mangrove_lantern_hanging_3"
+    },
+    "omni_rotation=0,lit=false,hanging=true": {
+      "model": "cozyhome:block/lantern/special/mangrove/mangrove_lantern_hanging_0"
+    },
+    "omni_rotation=1,lit=false,hanging=true": {
+      "model": "cozyhome:block/lantern/special/mangrove/mangrove_lantern_hanging_1"
+    },
+    "omni_rotation=2,lit=false,hanging=true": {
+      "model": "cozyhome:block/lantern/special/mangrove/mangrove_lantern_hanging_2"
+    },
+    "omni_rotation=3,lit=false,hanging=true": {
+      "model": "cozyhome:block/lantern/special/mangrove/mangrove_lantern_hanging_3"
+    }
+  }
+}

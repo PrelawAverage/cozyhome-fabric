@@ -1,17 +1,18 @@
 package net.luckystudio.cozyhome.block.util.blocks;
 
-import net.luckystudio.cozyhome.block.custom.ChairBlock;
+
 import net.luckystudio.cozyhome.block.custom.SofaBlock;
+import net.luckystudio.cozyhome.block.custom.special.GenericChairBlock;
 import net.luckystudio.cozyhome.entity.ModEntities;
 import net.luckystudio.cozyhome.entity.custom.SeatEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.FacingBlock;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.state.property.DirectionProperty;
+
 import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
+
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -54,7 +55,7 @@ public class SeatBlock extends Block {
         BlockState seatBlock = world.getBlockState(pos);
         Block block = seatBlock.getBlock();
 
-        if(block instanceof ChairBlock) {
+        if(block instanceof GenericChairBlock) {
             Direction facing = seatBlock.get(TuckableBlock.FACING);
             return facing == Direction.NORTH ? 180f: facing == Direction.SOUTH ? 0f:
                     facing == Direction.EAST ? 270f: facing == Direction.WEST ? 90f: 0;

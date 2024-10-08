@@ -2,6 +2,8 @@ package net.luckystudio.cozyhome.block;
 
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.custom.*;
+import net.luckystudio.cozyhome.block.custom.special.GenericChairBlock;
+import net.luckystudio.cozyhome.block.custom.special.MangroveLanternBlock;
 import net.minecraft.block.*;
 
 import net.minecraft.item.BlockItem;
@@ -11,6 +13,8 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockView;
 
 import java.util.function.ToIntFunction;
 
@@ -30,19 +34,11 @@ public class ModBlocks {
                         .mapColor(color)
                         .nonOpaque()
                         .luminance(createLightLevelFromLitBlockState(9))
+                        .emissiveLighting(ModBlocks::ifLit)
                         .breakInstantly()
                         .strength(0.6f)
                         .burnable()
                         .sounds(BlockSoundGroup.LANTERN));
-    }
-    private static Block createCounterBlock(MapColor color) {
-        return new LampBlock(
-                AbstractBlock.Settings.create()
-                        .nonOpaque()
-                        .strength(0.6f)
-                        .burnable()
-                        .sounds(BlockSoundGroup.WOOD)
-        );
     }
     private static Block createSofaBlock(MapColor color) {
         return new SofaBlock(
@@ -99,27 +95,27 @@ public class ModBlocks {
 
     // Chairs
     public static final Block OAK_CHAIR = registerBlock("oak_chair",
-            new ChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
     public static final Block SPRUCE_CHAIR = registerBlock("spruce_chair",
-            new ChairBlock(AbstractBlock.Settings.copy(Blocks.SPRUCE_PLANKS)));
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.SPRUCE_PLANKS)));
     public static final Block BIRCH_CHAIR = registerBlock("birch_chair",
-            new ChairBlock(AbstractBlock.Settings.copy(Blocks.BIRCH_PLANKS)));
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.BIRCH_PLANKS)));
     public static final Block JUNGLE_CHAIR = registerBlock("jungle_chair",
-            new ChairBlock(AbstractBlock.Settings.copy(Blocks.JUNGLE_PLANKS)));
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.JUNGLE_PLANKS)));
     public static final Block ACACIA_CHAIR = registerBlock("acacia_chair",
-            new ChairBlock(AbstractBlock.Settings.copy(Blocks.ACACIA_PLANKS)));
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.ACACIA_PLANKS)));
     public static final Block DARK_OAK_CHAIR = registerBlock("dark_oak_chair",
-            new ChairBlock(AbstractBlock.Settings.copy(Blocks.DARK_OAK_PLANKS)));
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.DARK_OAK_PLANKS)));
     public static final Block MANGROVE_CHAIR = registerBlock("mangrove_chair",
-            new ChairBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS)));
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS)));
     public static final Block CHERRY_CHAIR = registerBlock("cherry_chair",
-            new ChairBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS)));
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS)));
     public static final Block BAMBOO_CHAIR = registerBlock("bamboo_chair",
-            new ChairBlock(AbstractBlock.Settings.copy(Blocks.BAMBOO_PLANKS)));
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.BAMBOO_PLANKS)));
     public static final Block CRIMSON_CHAIR = registerBlock("crimson_chair",
-            new ChairBlock(AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS)));
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS)));
     public static final Block WARPED_CHAIR = registerBlock("warped_chair",
-            new ChairBlock(AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS)));
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS)));
 
     // Lamps
     public static final Block WHITE_LAMP = registerBlock("white_lamp", createLampBlock(MapColor.WHITE));
@@ -139,6 +135,14 @@ public class ModBlocks {
     public static final Block RED_LAMP = registerBlock("red_lamp", createLampBlock(MapColor.RED));
     public static final Block BLACK_LAMP = registerBlock("black_lamp", createLampBlock(MapColor.BLACK));
 
+    public static final Block MANGROVE_LAMP = registerBlock("mangrove_lamp",
+            createLampBlock(MapColor.DULL_RED));
+    public static final Block MANGROVE_LANTERN = registerBlock("mangrove_lantern",
+            new MangroveLanternBlock(AbstractBlock.Settings.create()
+                    .luminance(createLightLevelFromLitBlockState(9))
+                    .nonOpaque()
+                    .emissiveLighting(ModBlocks::ifLit)));
+
     // Sofas
     public static final Block WHITE_SOFA = registerBlock("white_sofa", createSofaBlock(MapColor.WHITE));
     public static final Block ORANGE_SOFA = registerBlock("orange_sofa", createSofaBlock(MapColor.ORANGE));
@@ -157,9 +161,14 @@ public class ModBlocks {
     public static final Block RED_SOFA = registerBlock("red_sofa", createSofaBlock(MapColor.RED));
     public static final Block BLACK_SOFA = registerBlock("black_sofa", createSofaBlock(MapColor.BLACK));
 
+    public static final Block MANGROVE_ZAISU = registerBlock("mangrove_zaisu", createSofaBlock(MapColor.BLACK));
 
     public static ToIntFunction<BlockState> createLightLevelFromLitBlockState(int litLevel) {
         return state -> state.get(Properties.LIT) ? litLevel : 0;
+    }
+
+    public static boolean ifLit(BlockState state, BlockView world, BlockPos pos) {
+        return state.get(Properties.LIT);
     }
 
     // Register Block Method

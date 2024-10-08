@@ -1,6 +1,6 @@
 package net.luckystudio.cozyhome.block.util.blocks;
 
-import net.luckystudio.cozyhome.block.custom.ChairBlock;
+import net.luckystudio.cozyhome.block.custom.special.GenericChairBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.util.ModTags;
 import net.minecraft.block.BlockState;
@@ -53,9 +53,9 @@ public interface TuckableBlock {
         BlockState left = world.getBlockState(pos.offset(facing).offset(facing.rotateCounterclockwise(Direction.Axis.Y)));
         BlockState right = world.getBlockState(pos.offset(facing).offset(facing.rotateClockwise(Direction.Axis.Y)));
 
-        if (left.getBlock() instanceof ChairBlock && left.get(TUCKED)
+        if (left.getBlock() instanceof GenericChairBlock && left.get(TUCKED)
                 && left.get(FACING) == facing.rotateClockwise(Direction.Axis.Y)) return true;
-        if (right.getBlock() instanceof ChairBlock && right.get(TUCKED)
+        if (right.getBlock() instanceof GenericChairBlock && right.get(TUCKED)
                 && right.get(FACING) == facing.rotateCounterclockwise(Direction.Axis.Y)) return true;
         return false;
     }

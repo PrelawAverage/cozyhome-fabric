@@ -1,24 +1,15 @@
-package net.luckystudio.cozyhome.block.custom;
+package net.luckystudio.cozyhome.block.custom.special;
 
-import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.util.blocks.SeatBlock;
-import net.luckystudio.cozyhome.block.util.blocks.TuckableBlock;
+import net.luckystudio.cozyhome.block.custom.AbstractChairBlock;
 import net.minecraft.block.*;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.state.StateManager;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
 
-public class ChairBlock extends SeatBlock implements TuckableBlock {
+public class GenericChairBlock extends AbstractChairBlock {
 
-    private static final VoxelShape BASE_SHAPE = ChairBlock.createCuboidShape(2,0,2,14,10,14);
+    private static final VoxelShape BASE_SHAPE = GenericChairBlock.createCuboidShape(2,0,2,14,10,14);
     public static final VoxelShape NORTH_SHAPE = VoxelShapes.union(
             Block.createCuboidShape(2, 10, 12, 14, 24, 14),
             BASE_SHAPE);
@@ -44,13 +35,9 @@ public class ChairBlock extends SeatBlock implements TuckableBlock {
             Block.createCuboidShape(-8, 0, 2, 4, 10, 14),
             Block.createCuboidShape(2, 10, 2, 4, 24, 14));
 
-    public ChairBlock(Settings settings) {
+    public GenericChairBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.getDefaultState()
-                .with(FACING, Direction.NORTH)
-                .with(TUCKED, Boolean.FALSE));
     }
-
     // This is the hit-box of the block, we are applying our VoxelShape to it.
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -82,38 +69,5 @@ public class ChairBlock extends SeatBlock implements TuckableBlock {
             default:
                 return BASE_SHAPE;
         }
-    }
-
-    @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState()
-                .with(FACING, ctx.getHorizontalPlayerFacing())
-                .with(TUCKED, false);
-    }
-
-    @Override
-    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if (world.isClient) return ActionResult.PASS;
-        ActionResult actionResult = TuckableBlock.tryTuck(state, world, pos, player);
-
-        if (!actionResult.equals(ActionResult.PASS)) return actionResult;
-
-        return super.onUse(state, world, pos, player, hit);
-    }
-
-    // This is needed or the block will just be invisible
-    @Override
-    protected BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
-    }
-
-    @Override
-    protected MapCodec<? extends HorizontalFacingBlock> getCodec() {
-        return null;
-    }
-
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING, TUCKED);
     }
 }
