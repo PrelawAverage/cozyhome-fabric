@@ -11,8 +11,6 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-import java.awt.*;
-
 public class ModItemGroups {
     public static final ItemGroup COZY_HOME =
             Registry.register(Registries.ITEM_GROUP,
@@ -76,8 +74,6 @@ public class ModItemGroups {
                         entries.add(ModBlocks.GREEN_LAMP);
                         entries.add(ModBlocks.RED_LAMP);
                         entries.add(ModBlocks.BLACK_LAMP);
-                        entries.add(ModBlocks.MANGROVE_LAMP);
-                        entries.add(ModBlocks.MANGROVE_LANTERN);
 
                         // Sofas
                         entries.add(ModBlocks.WHITE_SOFA);
@@ -96,6 +92,9 @@ public class ModItemGroups {
                         entries.add(ModBlocks.GREEN_SOFA);
                         entries.add(ModBlocks.RED_SOFA);
                         entries.add(ModBlocks.BLACK_SOFA);
+
+                        entries.add(ModBlocks.MANGROVE_LAMP);
+                        entries.add(ModBlocks.MANGROVE_LANTERN);
                         entries.add(ModBlocks.MANGROVE_ZAISU);
 
                         // Compat with Ecologics Mod - https://www.curseforge.com/minecraft/mc-mods/ecologics
