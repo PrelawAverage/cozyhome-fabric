@@ -2,10 +2,9 @@ package net.luckystudio.cozyhome.block.type;
 
 import net.luckystudio.cozyhome.block.abstracts.AbstractTuckableBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -17,17 +16,21 @@ import net.minecraft.util.math.RotationPropertyHelper;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
-public class GenericChairBlock extends AbstractTuckableBlock {
+public class GenericChairBlock extends AbstractTuckableBlock implements Waterloggable {
     public static final BooleanProperty TUCKED = ModProperties.TUCKED;
     public static final IntProperty ROTATION = Properties.ROTATION;
+    public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     public GenericChairBlock(AbstractBlock.Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState()
                 .with(ROTATION, 0)
-                .with(TUCKED, false));
+                .with(TUCKED, false)
+                .with(WATERLOGGED, Boolean.FALSE)
+        );
     }
 
     private static final VoxelShape BASE_SHAPE = GenericChairBlock.createCuboidShape(2,0,2,14,10,14);
@@ -73,40 +76,6 @@ public class GenericChairBlock extends AbstractTuckableBlock {
             Block.createCuboidShape(3, 0, 10, 4, 24, 11),
             BASE_SHAPE);
 
-//    // This is the hit-box of the block, we are applying our VoxelShape to it.
-//    @Override
-//    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-//        Direction direction = TuckableBlock.direction(state);
-//        switch (direction) {
-//            case NORTH:
-//                if (state.get(TUCKED)) {
-//                    return TUCKED_NORTH;
-//                } else {
-//                    return NORTH_SHAPE;
-//                }
-//            case EAST:
-//                if (state.get(TUCKED)) {
-//                    return TUCKED_EAST;
-//                } else {
-//                    return EAST_SHAPE;
-//                }
-//            case SOUTH:
-//                if (state.get(TUCKED)) {
-//                    return TUCKED_SOUTH;
-//                } else {
-//                    return SOUTH_SHAPE;
-//                }
-//            case WEST:
-//                if (state.get(TUCKED)) {
-//                    return TUCKED_WEST;
-//                } else {
-//                    return WEST_SHAPE;
-//                }
-//            case null, default:
-//                return BASE_SHAPE;
-//        }
-//    }
-
     // This is the hit-box of the block, we are applying our VoxelShape to it.
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -145,21 +114,37 @@ public class GenericChairBlock extends AbstractTuckableBlock {
         return super.getCollisionShape(state, world, pos, context);
     }
 
+    @Override
+    protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if (state.get(WATERLOGGED)) {
+            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
+        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+    }
+
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         int rotation = RotationPropertyHelper.fromYaw(ctx.getPlayerYaw());
+        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
         for (Direction direction : ctx.getPlacementDirections()) {
             if (direction.getAxis() == Direction.Axis.Y) {
                 return this.getDefaultState()
                         .with(ROTATION, rotation)
-                        .with(TUCKED, false);
+                        .with(TUCKED, false)
+                        .with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
             }
         }
         return null;
     }
+
+    @Override
+    protected FluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(ROTATION, TUCKED);
+        builder.add(ROTATION, TUCKED, WATERLOGGED);
     }
 }
