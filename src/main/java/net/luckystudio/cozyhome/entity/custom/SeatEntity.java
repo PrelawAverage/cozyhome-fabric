@@ -1,29 +1,16 @@
 package net.luckystudio.cozyhome.entity.custom;
 
-import net.luckystudio.cozyhome.block.util.blocks.SeatBlock;
+import net.luckystudio.cozyhome.block.abstracts.AbstractSeatBlock;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.*;
 import net.minecraft.entity.data.DataTracker;
-import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.listener.ClientCommonPacketListener;
-import net.minecraft.network.listener.PacketListener;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.*;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
 
 public class SeatEntity extends Entity {
 
@@ -60,7 +47,7 @@ public class SeatEntity extends Entity {
     protected void addPassenger(Entity passenger) {
         BlockPos pos = this.getBlockPos();
         BlockState state = this.getWorld().getBlockState(pos);
-        if (state.getBlock() instanceof SeatBlock seatBlock) {
+        if (state.getBlock() instanceof AbstractSeatBlock seatBlock) {
             passenger.setYaw(seatBlock.setRiderRotation(this));
             super.addPassenger(passenger);
         }
@@ -110,13 +97,32 @@ public class SeatEntity extends Entity {
         if (passenger instanceof PlayerEntity player) {
             // Get the yaw of the entity and the player
             float entityYaw = this.getYaw();
-
             // If the yaw difference exceeds the threshold, rotate the player's body
             passenger.setBodyYaw(entityYaw);
-
             // Update the player's position relative to the entity
-            passenger.setPos(this.getX(), this.getY(), this.getZ());
+            passenger.setPos(this.getX(), this.getY() - 0.5f + getHeightOffset(), this.getZ());
         }
+    }
+
+
+
+    private float getHeightOffset() {
+        BlockPos pos = this.getBlockPos();
+        BlockState state = getWorld().getBlockState(pos);
+        if (state.getBlock() instanceof AbstractSeatBlock abstractSeatBlock) {
+            return abstractSeatBlock.getSeatHeight(state);
+        }
+        return 0f;
+    }
+
+    @Override
+    protected BlockPos getPosWithYOffset(float offset) {
+        BlockPos pos = this.getBlockPos();
+        BlockState state = getWorld().getBlockState(pos);
+        if (state.getBlock() instanceof AbstractSeatBlock abstractSeatBlock) {
+            return new BlockPos((int) this.getX(), (int) (this.getY() + abstractSeatBlock.getSeatHeight(state)),(int)  this.getZ());
+        }
+        return super.getPosWithYOffset(offset);
     }
 
     // This allows the seat entity to get moved by a piston

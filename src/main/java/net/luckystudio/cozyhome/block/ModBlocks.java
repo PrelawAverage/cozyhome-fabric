@@ -1,9 +1,9 @@
 package net.luckystudio.cozyhome.block;
 
 import net.luckystudio.cozyhome.CozyHome;
-import net.luckystudio.cozyhome.block.custom.*;
-import net.luckystudio.cozyhome.block.custom.special.GenericChairBlock;
-import net.luckystudio.cozyhome.block.custom.special.MangroveLanternBlock;
+import net.luckystudio.cozyhome.block.custom.MangroveLanternBlock;
+import net.luckystudio.cozyhome.block.custom.ZaisuSeatBlock;
+import net.luckystudio.cozyhome.block.type.*;
 import net.minecraft.block.*;
 
 import net.minecraft.item.BlockItem;
@@ -161,7 +161,7 @@ public class ModBlocks {
     public static final Block RED_SOFA = registerBlock("red_sofa", createSofaBlock(MapColor.RED));
     public static final Block BLACK_SOFA = registerBlock("black_sofa", createSofaBlock(MapColor.BLACK));
 
-    public static final Block MANGROVE_ZAISU = registerBlock("mangrove_zaisu", createSofaBlock(MapColor.BLACK));
+    public static final Block MANGROVE_ZAISU = registerBlock("mangrove_zaisu", new ZaisuSeatBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS)));
 
     public static ToIntFunction<BlockState> createLightLevelFromLitBlockState(int litLevel) {
         return state -> state.get(Properties.LIT) ? litLevel : 0;

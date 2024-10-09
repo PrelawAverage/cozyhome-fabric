@@ -1,34 +1,64 @@
 {
   "variants": {
-    "facing=east,tucked=false": {
-      "model": "cozyhome:block/chair/spruce_chair",
-      "y": 90
+    "rotation=0,tucked=false": {
+      "model": "cozyhome:block/chair/types/spruce_chair_0"
     },
-    "facing=north,tucked=false": {
-      "model": "cozyhome:block/chair/spruce_chair"
+    "rotation=0,tucked=true": {
+      "model": "cozyhome:block/chair/types/spruce_chair_tucked_south"
     },
-    "facing=south,tucked=false": {
-      "model": "cozyhome:block/chair/spruce_chair",
-      "y": 180
+    "rotation=1,tucked=false": {
+      "model": "cozyhome:block/chair/types/spruce_chair_1"
     },
-    "facing=west,tucked=false": {
-      "model": "cozyhome:block/chair/spruce_chair",
-      "y": 270
+    "rotation=2,tucked=false": {
+      "model": "cozyhome:block/chair/types/spruce_chair_2"
     },
-    "facing=east,tucked=true": {
-      "model": "cozyhome:block/chair/spruce_chair_tucked",
-      "y": 90
+    "rotation=3,tucked=false": {
+      "model": "cozyhome:block/chair/types/spruce_chair_3"
     },
-    "facing=north,tucked=true": {
-      "model": "cozyhome:block/chair/spruce_chair_tucked"
+    "rotation=4,tucked=false": {
+      "model": "cozyhome:block/chair/types/spruce_chair_4"
     },
-    "facing=south,tucked=true": {
-      "model": "cozyhome:block/chair/spruce_chair_tucked",
-      "y": 180
+    "rotation=4,tucked=true": {
+      "model": "cozyhome:block/chair/types/spruce_chair_tucked_west"
     },
-    "facing=west,tucked=true": {
-      "model": "cozyhome:block/chair/spruce_chair_tucked",
-      "y": 270
+    "rotation=5,tucked=false": {
+      "model": "cozyhome:block/chair/types/spruce_chair_5"
+    },
+    "rotation=6,tucked=false": {
+      "model": "cozyhome:block/chair/types/spruce_chair_6"
+    },
+    "rotation=7,tucked=false": {
+      "model": "cozyhome:block/chair/types/spruce_chair_7"
+    },
+    "rotation=8,tucked=false": {
+      "model": "cozyhome:block/chair/types/spruce_chair_8"
+    },
+    "rotation=8,tucked=true": {
+      "model": "cozyhome:block/chair/types/spruce_chair_tucked_north"
+    },
+    "rotation=9,tucked=false": {
+      "model": "cozyhome:block/chair/types/spruce_chair_9"
+    },
+    "rotation=10,tucked=false": {
+      "model": "cozyhome:block/chair/types/spruce_chair_10"
+    },
+    "rotation=11,tucked=false": {
+      "model": "cozyhome:block/chair/types/spruce_chair_11"
+    },
+    "rotation=12,tucked=false": {
+      "model": "cozyhome:block/chair/types/spruce_chair_12"
+    },
+    "rotation=12,tucked=true": {
+      "model": "cozyhome:block/chair/types/spruce_chair_tucked_east"
+    },
+    "rotation=13,tucked=false": {
+      "model": "cozyhome:block/chair/types/spruce_chair_13"
+    },
+    "rotation=14,tucked=false": {
+      "model": "cozyhome:block/chair/types/spruce_chair_14"
+    },
+    "rotation=15,tucked=false": {
+      "model": "cozyhome:block/chair/types/spruce_chair_15"
     }
   }
 }
