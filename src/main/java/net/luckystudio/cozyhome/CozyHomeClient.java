@@ -83,7 +83,9 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.CHERRY_COUNTER,
                 ModBlocks.BAMBOO_COUNTER,
                 ModBlocks.CRIMSON_COUNTER,
-                ModBlocks.WARPED_COUNTER
+                ModBlocks.WARPED_COUNTER,
+
+                ModBlocks.OAK_WALL_MIRROR
         );
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),

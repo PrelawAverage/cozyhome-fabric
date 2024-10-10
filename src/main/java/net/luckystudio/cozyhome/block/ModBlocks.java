@@ -161,6 +161,9 @@ public class ModBlocks {
     public static final Block RED_SOFA = registerBlock("red_sofa", createSofaBlock(MapColor.RED));
     public static final Block BLACK_SOFA = registerBlock("black_sofa", createSofaBlock(MapColor.BLACK));
 
+    // Wall Mirrors
+    public static final Block OAK_WALL_MIRROR = registerBlock("oak_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
+
     public static final Block MANGROVE_ZAISU = registerBlock("mangrove_zaisu", new ZaisuSeatBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS)));
 
     public static ToIntFunction<BlockState> createLightLevelFromLitBlockState(int litLevel) {
