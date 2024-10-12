@@ -7,6 +7,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.IntProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RotationPropertyHelper;
 import net.minecraft.util.shape.VoxelShape;
@@ -15,6 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class SofaBlock extends AbstractSeatBlock {
     public static final MapCodec<SofaBlock> CODEC = createCodec(SofaBlock::new);
+    public static final IntProperty ROTATION = Properties.ROTATION;
 
     public SofaBlock(Settings settings) {
         super(settings);
@@ -29,7 +32,7 @@ public class SofaBlock extends AbstractSeatBlock {
 
     @Override
     public float getSeatHeight(BlockState state) {
-        return 0.25f;
+        return 0.4f;
     }
 
     @Override

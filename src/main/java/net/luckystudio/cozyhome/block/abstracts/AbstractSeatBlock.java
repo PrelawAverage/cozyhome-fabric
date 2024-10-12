@@ -11,7 +11,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 
-import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 
 import net.minecraft.util.ActionResult;
@@ -24,7 +23,6 @@ import net.minecraft.world.WorldAccess;
 import java.util.List;
 
 public abstract class AbstractSeatBlock extends Block {
-    public static final IntProperty ROTATION = Properties.ROTATION;
 
     public AbstractSeatBlock(Settings settings) {
         super(settings);
