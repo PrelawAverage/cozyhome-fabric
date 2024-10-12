@@ -45,7 +45,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CRIMSON_COUNTER);
                         entries.add(ModBlocks.WARPED_COUNTER);
 
-                        // Lamps
+                        // Chairs
                         entries.add(ModBlocks.OAK_CHAIR);
                         entries.add(ModBlocks.SPRUCE_CHAIR);
                         entries.add(ModBlocks.BIRCH_CHAIR);
@@ -58,6 +58,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CRIMSON_CHAIR);
                         entries.add(ModBlocks.WARPED_CHAIR);
 
+                        // Lamps
                         entries.add(ModBlocks.WHITE_LAMP);
                         entries.add(ModBlocks.ORANGE_LAMP);
                         entries.add(ModBlocks.MAGENTA_LAMP);
@@ -93,9 +94,23 @@ public class ModItemGroups {
                         entries.add(ModBlocks.RED_SOFA);
                         entries.add(ModBlocks.BLACK_SOFA);
 
+                        // Specials (Mangrove)
                         entries.add(ModBlocks.MANGROVE_LAMP);
                         entries.add(ModBlocks.MANGROVE_LANTERN);
                         entries.add(ModBlocks.MANGROVE_ZAISU);
+
+                        // Wall Mirrors
+                        entries.add(ModBlocks.OAK_WALL_MIRROR);
+                        entries.add(ModBlocks.SPRUCE_WALL_MIRROR);
+                        entries.add(ModBlocks.BIRCH_WALL_MIRROR);
+                        entries.add(ModBlocks.JUNGLE_WALL_MIRROR);
+                        entries.add(ModBlocks.ACACIA_WALL_MIRROR);
+                        entries.add(ModBlocks.DARK_OAK_WALL_MIRROR);
+                        entries.add(ModBlocks.MANGROVE_WALL_MIRROR);
+                        entries.add(ModBlocks.CHERRY_WALL_MIRROR);
+                        entries.add(ModBlocks.BAMBOO_WALL_MIRROR);
+                        entries.add(ModBlocks.CRIMSON_WALL_MIRROR);
+                        entries.add(ModBlocks.WARPED_WALL_MIRROR);
 
                         // Compat with Ecologics Mod - https://www.curseforge.com/minecraft/mc-mods/ecologics
                         if (FabricLoader.getInstance().isModLoaded("ecologics")) {

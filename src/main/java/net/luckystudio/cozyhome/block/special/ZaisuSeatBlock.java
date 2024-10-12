@@ -1,4 +1,4 @@
-package net.luckystudio.cozyhome.block.custom;
+package net.luckystudio.cozyhome.block.special;
 
 import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.abstracts.AbstractSeatBlock;

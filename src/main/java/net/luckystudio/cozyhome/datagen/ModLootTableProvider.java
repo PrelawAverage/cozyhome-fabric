@@ -14,6 +14,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
+
         // Planked Walls
         addDrop(ModBlocks.OAK_PLANKED_WALL);
         addDrop(ModBlocks.SPRUCE_PLANKED_WALL);
@@ -27,6 +28,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CRIMSON_PLANKED_WALL);
         addDrop(ModBlocks.WARPED_PLANKED_WALL);
 
+        // Counters
         addDrop(ModBlocks.OAK_COUNTER);
         addDrop(ModBlocks.SPRUCE_COUNTER);
         addDrop(ModBlocks.BIRCH_COUNTER);
@@ -74,5 +76,18 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.GREEN_SOFA);
         addDrop(ModBlocks.RED_SOFA);
         addDrop(ModBlocks.BLACK_SOFA);
+
+        // Wall Mirrors
+        addDrop(ModBlocks.OAK_WALL_MIRROR);
+        addDrop(ModBlocks.SPRUCE_WALL_MIRROR);
+        addDrop(ModBlocks.BIRCH_WALL_MIRROR);
+        addDrop(ModBlocks.JUNGLE_WALL_MIRROR);
+        addDrop(ModBlocks.ACACIA_WALL_MIRROR);
+        addDrop(ModBlocks.DARK_OAK_WALL_MIRROR);
+        addDrop(ModBlocks.MANGROVE_WALL_MIRROR);
+        addDrop(ModBlocks.CHERRY_WALL_MIRROR);
+        addDrop(ModBlocks.BAMBOO_WALL_MIRROR);
+        addDrop(ModBlocks.CRIMSON_WALL_MIRROR);
+        addDrop(ModBlocks.WARPED_WALL_MIRROR);
     }
 }

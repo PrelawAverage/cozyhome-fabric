@@ -1,4 +1,4 @@
-package net.luckystudio.cozyhome.block.custom;
+package net.luckystudio.cozyhome.block.special;
 
 import net.luckystudio.cozyhome.block.abstracts.AbstractImprovedLanternBlock;
 import net.minecraft.block.Block;

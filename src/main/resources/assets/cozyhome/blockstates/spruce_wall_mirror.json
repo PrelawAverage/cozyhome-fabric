@@ -1,0 +1,65 @@
+{
+  "variants": {
+    "facing=north,linear_connection=single": {
+      "model": "cozyhome:block/mirror/wall/types/spruce_wall_mirror_single"
+    },
+    "facing=east,linear_connection=single": {
+      "model": "cozyhome:block/mirror/wall/types/spruce_wall_mirror_single",
+      "y": 90
+    },
+    "facing=south,linear_connection=single": {
+      "model": "cozyhome:block/mirror/wall/types/spruce_wall_mirror_single",
+      "y": 180
+    },
+    "facing=west,linear_connection=single": {
+      "model": "cozyhome:block/mirror/wall/types/spruce_wall_mirror_single",
+      "y": 270
+    },
+    "facing=north,linear_connection=head": {
+      "model": "cozyhome:block/mirror/wall/types/spruce_wall_mirror_top"
+    },
+    "facing=east,linear_connection=head": {
+      "model": "cozyhome:block/mirror/wall/types/spruce_wall_mirror_top",
+      "y": 90
+    },
+    "facing=south,linear_connection=head": {
+      "model": "cozyhome:block/mirror/wall/types/spruce_wall_mirror_top",
+      "y": 180
+    },
+    "facing=west,linear_connection=head": {
+      "model": "cozyhome:block/mirror/wall/types/spruce_wall_mirror_top",
+      "y": 270
+    },
+    "facing=north,linear_connection=middle": {
+      "model": "cozyhome:block/mirror/wall/types/spruce_wall_mirror_middle"
+    },
+    "facing=east,linear_connection=middle": {
+      "model": "cozyhome:block/mirror/wall/types/spruce_wall_mirror_middle",
+      "y": 90
+    },
+    "facing=south,linear_connection=middle": {
+      "model": "cozyhome:block/mirror/wall/types/spruce_wall_mirror_middle",
+      "y": 180
+    },
+    "facing=west,linear_connection=middle": {
+      "model": "cozyhome:block/mirror/wall/types/spruce_wall_mirror_middle",
+      "y": 270
+    },
+
+    "facing=north,linear_connection=tail": {
+      "model": "cozyhome:block/mirror/wall/types/spruce_wall_mirror_bottom"
+    },
+    "facing=east,linear_connection=tail": {
+      "model": "cozyhome:block/mirror/wall/types/spruce_wall_mirror_bottom",
+      "y": 90
+    },
+    "facing=south,linear_connection=tail": {
+      "model": "cozyhome:block/mirror/wall/types/spruce_wall_mirror_bottom",
+      "y": 180
+    },
+    "facing=west,linear_connection=tail": {
+      "model": "cozyhome:block/mirror/wall/types/spruce_wall_mirror_bottom",
+      "y": 270
+    }
+  }
+}
