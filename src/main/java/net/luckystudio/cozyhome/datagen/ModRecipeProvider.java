@@ -42,7 +42,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.LANTERN), conditionsFromItem(Items.LANTERN))
                 .offerTo(exporter);
     }
-    // Criterion needs to be fixed to take in a tag instead of a singular item, instead it should be tag planks
+
     public static void offerCounterRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2) {
         ShapedRecipeJsonBuilder.create(
                         RecipeCategory.BUILDING_BLOCKS,
