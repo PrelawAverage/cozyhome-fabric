@@ -25,7 +25,19 @@
   "block.cozyhome.crimson_counter": "Crimson Counter",
   "block.cozyhome.warped_counter": "Warped Counter",
 
+  "container.cozyhome.storage_counter": "Storage Counter",
+
   "block.cozyhome.oak_storage_counter": "Oak Storage Counter",
+  "block.cozyhome.spruce_storage_counter": "Spruce Storage Counter",
+  "block.cozyhome.birch_storage_counter": "Birch Storage Counter",
+  "block.cozyhome.jungle_storage_counter": "Jungle Storage Counter",
+  "block.cozyhome.acacia_storage_counter": "Acacia Storage Counter",
+  "block.cozyhome.dark_oak_storage_counter": "Dark Oak Storage Counter",
+  "block.cozyhome.mangrove_storage_counter": "Mangrove Storage Counter",
+  "block.cozyhome.cherry_storage_counter": "Cherry  StorageCounter",
+  "block.cozyhome.bamboo_storage_counter": "Bamboo Storage Counter",
+  "block.cozyhome.crimson_storage_counter": "Crimson Storage Counter",
+  "block.cozyhome.warped_storage_counter": "Warped Storage Counter",
 
   "block.cozyhome.autumn_stained_window": "Autumn Stained Window",
   "block.cozyhome.autumn_stained_window_pane": "Autumn Stained Window Pane",
@@ -82,8 +94,6 @@
   "block.cozyhome.warped_chair": "Warped Chair",
 
   "block.cozyhome.oak_wall_mirror": "Oak Wall Mirror",
-
-  "container.cozyhome.storage_counter": "Storage Counter",
 
   "tooltip.cozyhome.block.planked_wall": "§7Stackable",
 

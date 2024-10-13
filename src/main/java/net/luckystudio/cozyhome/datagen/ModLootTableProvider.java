@@ -42,6 +42,16 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
         // Storage Counters
         addDrop(ModBlocks.OAK_STORAGE_COUNTER);
+        addDrop(ModBlocks.SPRUCE_STORAGE_COUNTER);
+        addDrop(ModBlocks.BIRCH_STORAGE_COUNTER);
+        addDrop(ModBlocks.JUNGLE_STORAGE_COUNTER);
+        addDrop(ModBlocks.ACACIA_STORAGE_COUNTER);
+        addDrop(ModBlocks.DARK_OAK_STORAGE_COUNTER);
+        addDrop(ModBlocks.MANGROVE_STORAGE_COUNTER);
+        addDrop(ModBlocks.CHERRY_STORAGE_COUNTER);
+        addDrop(ModBlocks.BAMBOO_STORAGE_COUNTER);
+        addDrop(ModBlocks.CRIMSON_STORAGE_COUNTER);
+        addDrop(ModBlocks.WARPED_STORAGE_COUNTER);
 
         // Lamps
         addDrop(ModBlocks.WHITE_LAMP);

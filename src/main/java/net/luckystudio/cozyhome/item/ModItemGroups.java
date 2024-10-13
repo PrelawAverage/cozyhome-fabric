@@ -47,6 +47,16 @@ public class ModItemGroups {
 
                         // Storage Counters
                         entries.add(ModBlocks.OAK_STORAGE_COUNTER);
+                        entries.add(ModBlocks.SPRUCE_STORAGE_COUNTER);
+                        entries.add(ModBlocks.BIRCH_STORAGE_COUNTER);
+                        entries.add(ModBlocks.JUNGLE_STORAGE_COUNTER);
+                        entries.add(ModBlocks.ACACIA_STORAGE_COUNTER);
+                        entries.add(ModBlocks.DARK_OAK_STORAGE_COUNTER);
+                        entries.add(ModBlocks.MANGROVE_STORAGE_COUNTER);
+                        entries.add(ModBlocks.CHERRY_STORAGE_COUNTER);
+                        entries.add(ModBlocks.BAMBOO_STORAGE_COUNTER);
+                        entries.add(ModBlocks.CRIMSON_STORAGE_COUNTER);
+                        entries.add(ModBlocks.WARPED_STORAGE_COUNTER);
 
                         // Lamps
                         entries.add(ModBlocks.OAK_CHAIR);

@@ -89,6 +89,16 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.WARPED_COUNTER,
 
                 ModBlocks.OAK_STORAGE_COUNTER,
+                ModBlocks.SPRUCE_STORAGE_COUNTER,
+                ModBlocks.BIRCH_STORAGE_COUNTER,
+                ModBlocks.JUNGLE_STORAGE_COUNTER,
+                ModBlocks.ACACIA_STORAGE_COUNTER,
+                ModBlocks.DARK_OAK_STORAGE_COUNTER,
+                ModBlocks.MANGROVE_STORAGE_COUNTER,
+                ModBlocks.CHERRY_STORAGE_COUNTER,
+                ModBlocks.BAMBOO_STORAGE_COUNTER,
+                ModBlocks.CRIMSON_STORAGE_COUNTER,
+                ModBlocks.WARPED_STORAGE_COUNTER,
 
                 ModBlocks.OAK_WALL_MIRROR
         );
