@@ -94,10 +94,13 @@ public class ModItemGroups {
                         entries.add(ModBlocks.RED_SOFA);
                         entries.add(ModBlocks.BLACK_SOFA);
 
-                        // Specials (Mangrove)
-                        entries.add(ModBlocks.MANGROVE_LAMP);
-                        entries.add(ModBlocks.MANGROVE_LANTERN);
-                        entries.add(ModBlocks.MANGROVE_ZAISU);
+                        // Specials (Dynasty)
+                        entries.add(ModBlocks.DYNASTY_LAMP);
+                        entries.add(ModBlocks.DYNASTY_LANTERN);
+                        entries.add(ModBlocks.DYNASTY_CHAIR);
+
+                        // Specials (Princess)
+                        entries.add(ModBlocks.PRINCESS_CHAIR);
 
                         // Wall Mirrors
                         entries.add(ModBlocks.OAK_WALL_MIRROR);

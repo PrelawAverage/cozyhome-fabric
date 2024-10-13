@@ -1,0 +1,7 @@
+{
+	"parent": "cozyhome:block/chair/template_zaisu_10",
+	"textures": {
+		"0": "cozyhome:block/chair/dynasty_chair",
+		"particle": "cozyhome:block/chair/dynasty_chair"
+	}
+}

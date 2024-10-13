@@ -1,8 +1,9 @@
 package net.luckystudio.cozyhome.block;
 
 import net.luckystudio.cozyhome.CozyHome;
-import net.luckystudio.cozyhome.block.special.MangroveLanternBlock;
-import net.luckystudio.cozyhome.block.special.ZaisuSeatBlock;
+import net.luckystudio.cozyhome.block.special.DynastyLanternBlock;
+import net.luckystudio.cozyhome.block.special.DynastySeatBlock;
+import net.luckystudio.cozyhome.block.test.ChairBlock;
 import net.luckystudio.cozyhome.block.type.*;
 import net.minecraft.block.*;
 
@@ -95,7 +96,7 @@ public class ModBlocks {
 
     // Chairs
     public static final Block OAK_CHAIR = registerBlock("oak_chair",
-            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+            new ChairBlock(ChairBlock.Type.OAK, AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
     public static final Block SPRUCE_CHAIR = registerBlock("spruce_chair",
             new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.SPRUCE_PLANKS)));
     public static final Block BIRCH_CHAIR = registerBlock("birch_chair",
@@ -135,14 +136,6 @@ public class ModBlocks {
     public static final Block RED_LAMP = registerBlock("red_lamp", createLampBlock(MapColor.RED));
     public static final Block BLACK_LAMP = registerBlock("black_lamp", createLampBlock(MapColor.BLACK));
 
-    public static final Block MANGROVE_LAMP = registerBlock("mangrove_lamp",
-            createLampBlock(MapColor.DULL_RED));
-    public static final Block MANGROVE_LANTERN = registerBlock("mangrove_lantern",
-            new MangroveLanternBlock(AbstractBlock.Settings.create()
-                    .luminance(createLightLevelFromLitBlockState(9))
-                    .nonOpaque()
-                    .emissiveLighting(ModBlocks::ifLit)));
-
     // Sofas
     public static final Block WHITE_SOFA = registerBlock("white_sofa", createSofaBlock(MapColor.WHITE));
     public static final Block ORANGE_SOFA = registerBlock("orange_sofa", createSofaBlock(MapColor.ORANGE));
@@ -174,7 +167,18 @@ public class ModBlocks {
     public static final Block CRIMSON_WALL_MIRROR = registerBlock("crimson_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
     public static final Block WARPED_WALL_MIRROR = registerBlock("warped_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
 
-    public static final Block MANGROVE_ZAISU = registerBlock("mangrove_zaisu", new ZaisuSeatBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS)));
+    // Dynasty Set
+    public static final Block DYNASTY_LAMP = registerBlock("dynasty_lamp",
+            createLampBlock(MapColor.DULL_RED));
+    public static final Block DYNASTY_LANTERN = registerBlock("dynasty_lantern",
+            new DynastyLanternBlock(AbstractBlock.Settings.create()
+                    .luminance(createLightLevelFromLitBlockState(9))
+                    .nonOpaque()
+                    .emissiveLighting(ModBlocks::ifLit)));
+    public static final Block DYNASTY_CHAIR = registerBlock("dynasty_chair", new DynastySeatBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS)));
+
+    // Princess Set
+    public static final Block PRINCESS_CHAIR = registerBlock("princess_chair", new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.QUARTZ_BLOCK)));
 
     public static ToIntFunction<BlockState> createLightLevelFromLitBlockState(int litLevel) {
         return state -> state.get(Properties.LIT) ? litLevel : 0;

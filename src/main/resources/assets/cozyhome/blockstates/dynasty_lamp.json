@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "omni_rotation=0": {
+      "model": "cozyhome:block/lamp/special/dynasty/dynasty_lamp_0"
+    },
+    "omni_rotation=1": {
+      "model": "cozyhome:block/lamp/special/dynasty/dynasty_lamp_1"
+    },
+    "omni_rotation=2": {
+      "model": "cozyhome:block/lamp/special/dynasty/dynasty_lamp_2"
+    },
+    "omni_rotation=3": {
+      "model": "cozyhome:block/lamp/special/dynasty/dynasty_lamp_3"
+    }
+  }
+}

@@ -1,64 +1,64 @@
 {
   "variants": {
     "rotation=0,tucked=false": {
-      "model": "cozyhome:block/chair/types/jungle_chair_0"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_0"
     },
     "rotation=0,tucked=true": {
-      "model": "cozyhome:block/chair/types/jungle_chair_tucked_south"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_tucked_south"
     },
     "rotation=1,tucked=false": {
-      "model": "cozyhome:block/chair/types/jungle_chair_1"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_1"
     },
     "rotation=2,tucked=false": {
-      "model": "cozyhome:block/chair/types/jungle_chair_2"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_2"
     },
     "rotation=3,tucked=false": {
-      "model": "cozyhome:block/chair/types/jungle_chair_3"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_3"
     },
     "rotation=4,tucked=false": {
-      "model": "cozyhome:block/chair/types/jungle_chair_4"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_4"
     },
     "rotation=4,tucked=true": {
-      "model": "cozyhome:block/chair/types/jungle_chair_tucked_west"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_tucked_west"
     },
     "rotation=5,tucked=false": {
-      "model": "cozyhome:block/chair/types/jungle_chair_5"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_5"
     },
     "rotation=6,tucked=false": {
-      "model": "cozyhome:block/chair/types/jungle_chair_6"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_6"
     },
     "rotation=7,tucked=false": {
-      "model": "cozyhome:block/chair/types/jungle_chair_7"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_7"
     },
     "rotation=8,tucked=false": {
-      "model": "cozyhome:block/chair/types/jungle_chair_8"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_8"
     },
     "rotation=8,tucked=true": {
-      "model": "cozyhome:block/chair/types/jungle_chair_tucked_north"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_tucked_north"
     },
     "rotation=9,tucked=false": {
-      "model": "cozyhome:block/chair/types/jungle_chair_9"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_9"
     },
     "rotation=10,tucked=false": {
-      "model": "cozyhome:block/chair/types/jungle_chair_10"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_10"
     },
     "rotation=11,tucked=false": {
-      "model": "cozyhome:block/chair/types/jungle_chair_11"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_11"
     },
     "rotation=12,tucked=false": {
-      "model": "cozyhome:block/chair/types/jungle_chair_12"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_12"
     },
     "rotation=12,tucked=true": {
-      "model": "cozyhome:block/chair/types/jungle_chair_tucked_east"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_tucked_east"
     },
     "rotation=13,tucked=false": {
-      "model": "cozyhome:block/chair/types/jungle_chair_13"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_13"
     },
     "rotation=14,tucked=false": {
-      "model": "cozyhome:block/chair/types/jungle_chair_14"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_14"
     },
     "rotation=15,tucked=false": {
-      "model": "cozyhome:block/chair/types/jungle_chair_15"
+      "model": "cozyhome:block/chair/wood_types/jungle_chair_15"
     }
   }
 }

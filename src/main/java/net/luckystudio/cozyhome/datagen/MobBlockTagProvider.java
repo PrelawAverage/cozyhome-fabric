@@ -83,6 +83,8 @@ public class MobBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BAMBOO_COUNTER)
                 .add(ModBlocks.CRIMSON_COUNTER)
                 .add(ModBlocks.WARPED_COUNTER)
+
+                .add(ModBlocks.PRINCESS_CHAIR)
         ;
     }
 }

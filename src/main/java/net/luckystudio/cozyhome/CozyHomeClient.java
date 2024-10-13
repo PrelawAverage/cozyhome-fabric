@@ -52,8 +52,8 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.GREEN_LAMP,
                 ModBlocks.RED_LAMP,
                 ModBlocks.BLACK_LAMP,
-                ModBlocks.MANGROVE_LAMP,
-                ModBlocks.MANGROVE_LANTERN,
+                ModBlocks.DYNASTY_LAMP,
+                ModBlocks.DYNASTY_LANTERN,
 
                 ModBlocks.WHITE_SOFA,
                 ModBlocks.ORANGE_SOFA,
@@ -71,7 +71,6 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.GREEN_SOFA,
                 ModBlocks.RED_SOFA,
                 ModBlocks.BLACK_SOFA,
-                ModBlocks.MANGROVE_ZAISU,
 
                 ModBlocks.OAK_COUNTER,
                 ModBlocks.SPRUCE_COUNTER,
@@ -95,7 +94,11 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.CHERRY_WALL_MIRROR,
                 ModBlocks.BAMBOO_WALL_MIRROR,
                 ModBlocks.CRIMSON_WALL_MIRROR,
-                ModBlocks.WARPED_WALL_MIRROR
+                ModBlocks.WARPED_WALL_MIRROR,
+
+                ModBlocks.DYNASTY_CHAIR,
+
+                ModBlocks.PRINCESS_CHAIR
         );
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),

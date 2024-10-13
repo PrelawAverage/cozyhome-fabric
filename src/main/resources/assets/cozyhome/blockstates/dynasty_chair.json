@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "rotation=0": {
+      "model": "cozyhome:block/chair/special/dynasty/dynasty_chair_0"
+    },
+    "rotation=1": {
+      "model": "cozyhome:block/chair/special/dynasty/dynasty_chair_1"
+    },
+    "rotation=2": {
+      "model": "cozyhome:block/chair/special/dynasty/dynasty_chair_2"
+    },
+    "rotation=3": {
+      "model": "cozyhome:block/chair/special/dynasty/dynasty_chair_3"
+    },
+    "rotation=4": {
+      "model": "cozyhome:block/chair/special/dynasty/dynasty_chair_4"
+    },
+    "rotation=5": {
+      "model": "cozyhome:block/chair/special/dynasty/dynasty_chair_5"
+    },
+    "rotation=6": {
+      "model": "cozyhome:block/chair/special/dynasty/dynasty_chair_6"
+    },
+    "rotation=7": {
+      "model": "cozyhome:block/chair/special/dynasty/dynasty_chair_7"
+    },
+    "rotation=8": {
+      "model": "cozyhome:block/chair/special/dynasty/dynasty_chair_8"
+    },
+    "rotation=9": {
+      "model": "cozyhome:block/chair/special/dynasty/dynasty_chair_9"
+    },
+    "rotation=10": {
+      "model": "cozyhome:block/chair/special/dynasty/dynasty_chair_10"
+    },
+    "rotation=11": {
+      "model": "cozyhome:block/chair/special/dynasty/dynasty_chair_11"
+    },
+    "rotation=12": {
+      "model": "cozyhome:block/chair/special/dynasty/dynasty_chair_12"
+    },
+    "rotation=13": {
+      "model": "cozyhome:block/chair/special/dynasty/dynasty_chair_13"
+    },
+    "rotation=14": {
+      "model": "cozyhome:block/chair/special/dynasty/dynasty_chair_14"
+    },
+    "rotation=15": {
+      "model": "cozyhome:block/chair/special/dynasty/dynasty_chair_15"
+    }
+  }
+}
