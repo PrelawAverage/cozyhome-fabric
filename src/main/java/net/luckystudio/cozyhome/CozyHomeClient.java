@@ -100,7 +100,17 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.CRIMSON_STORAGE_COUNTER,
                 ModBlocks.WARPED_STORAGE_COUNTER,
 
-                ModBlocks.OAK_WALL_MIRROR
+                ModBlocks.OAK_WALL_MIRROR,
+                ModBlocks.SPRUCE_WALL_MIRROR,
+                ModBlocks.BIRCH_WALL_MIRROR,
+                ModBlocks.JUNGLE_WALL_MIRROR,
+                ModBlocks.ACACIA_WALL_MIRROR,
+                ModBlocks.DARK_OAK_WALL_MIRROR,
+                ModBlocks.MANGROVE_WALL_MIRROR,
+                ModBlocks.CHERRY_WALL_MIRROR,
+                ModBlocks.BAMBOO_WALL_MIRROR,
+                ModBlocks.CRIMSON_WALL_MIRROR,
+                ModBlocks.WARPED_WALL_MIRROR
         );
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),

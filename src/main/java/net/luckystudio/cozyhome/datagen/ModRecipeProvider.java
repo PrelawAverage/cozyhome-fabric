@@ -72,9 +72,23 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(input3), conditionsFromItem(input3))
                 .offerTo(exporter);
     }
+    // Criterion needs to be fixed to take in a tag instead of a singular item, instead it should be tag planks
+    public static void offerWallMirrorRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2) {
+        ShapedRecipeJsonBuilder.create(
+                        RecipeCategory.BUILDING_BLOCKS,
+                        output, 3)
+                .pattern("###")
+                .pattern("#@#")
+                .pattern("###")
+                .input('@', input1)
+                .input('#', input2)
+                .criterion(hasItem(input2), conditionsFromItem(input2))
+                .offerTo(exporter);
+    }
 
     @Override
     public void generate(RecipeExporter exporter) {
+
         // Planked Walls
         offerPlankedWallRecipe(exporter, ModBlocks.OAK_PLANKED_WALL, Blocks.OAK_PLANKS);
         offerPlankedWallRecipe(exporter, ModBlocks.SPRUCE_PLANKED_WALL, Blocks.SPRUCE_PLANKS);
@@ -141,5 +155,17 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerLampRecipe(exporter, ModBlocks.GREEN_LAMP, Items.GREEN_WOOL);
         offerLampRecipe(exporter, ModBlocks.RED_LAMP, Items.RED_WOOL);
         offerLampRecipe(exporter, ModBlocks.BLACK_LAMP, Items.BLACK_WOOL);
+
+        // Wall Mirrors
+        offerWallMirrorRecipe(exporter, ModBlocks.OAK_WALL_MIRROR, Blocks.GLASS ,Blocks.OAK_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.SPRUCE_WALL_MIRROR, Blocks.GLASS ,Blocks.SPRUCE_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.BIRCH_WALL_MIRROR, Blocks.GLASS ,Blocks.BIRCH_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.ACACIA_WALL_MIRROR, Blocks.GLASS ,Blocks.ACACIA_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.DARK_OAK_WALL_MIRROR, Blocks.GLASS ,Blocks.DARK_OAK_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.MANGROVE_WALL_MIRROR, Blocks.GLASS ,Blocks.MANGROVE_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.CHERRY_WALL_MIRROR, Blocks.GLASS ,Blocks.CHERRY_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.BAMBOO_WALL_MIRROR, Blocks.GLASS ,Blocks.BAMBOO_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.CRIMSON_WALL_MIRROR, Blocks.GLASS ,Blocks.CRIMSON_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.WARPED_WALL_MIRROR, Blocks.GLASS ,Blocks.WARPED_PLANKS);
     }
 }

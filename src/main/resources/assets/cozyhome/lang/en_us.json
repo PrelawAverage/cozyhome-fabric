@@ -94,6 +94,16 @@
   "block.cozyhome.warped_chair": "Warped Chair",
 
   "block.cozyhome.oak_wall_mirror": "Oak Wall Mirror",
+  "block.cozyhome.spruce_wall_mirror": "Spruce Wall Mirror",
+  "block.cozyhome.birch_wall_mirror": "Birch Wall Mirror",
+  "block.cozyhome.jungle_wall_mirror": "Jungle Wall Mirror",
+  "block.cozyhome.acacia_wall_mirror": "Acacia Wall Mirror",
+  "block.cozyhome.dark_oak_wall_mirror": "Dark Oak Wall Mirror",
+  "block.cozyhome.mangrove_wall_mirror": "Mangrove Wall Mirror",
+  "block.cozyhome.cherry_wall_mirror": "Cherry Wall Mirror",
+  "block.cozyhome.bamboo_wall_mirror": "Bamboo Wall Mirror",
+  "block.cozyhome.warped_wall_mirror": "Crimson Wall Mirror",
+  "block.cozyhome.crimson_wall_mirror": "Warped Wall Mirror",
 
   "tooltip.cozyhome.block.planked_wall": "§7Stackable",
 

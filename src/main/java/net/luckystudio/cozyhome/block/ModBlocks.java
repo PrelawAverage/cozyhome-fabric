@@ -1,8 +1,8 @@
 package net.luckystudio.cozyhome.block;
 
 import net.luckystudio.cozyhome.CozyHome;
-import net.luckystudio.cozyhome.block.custom.MangroveLanternBlock;
-import net.luckystudio.cozyhome.block.custom.ZaisuSeatBlock;
+import net.luckystudio.cozyhome.block.special.MangroveLanternBlock;
+import net.luckystudio.cozyhome.block.special.ZaisuSeatBlock;
 import net.luckystudio.cozyhome.block.type.*;
 import net.minecraft.block.*;
 
@@ -188,6 +188,16 @@ public class ModBlocks {
 
     // Wall Mirrors
     public static final Block OAK_WALL_MIRROR = registerBlock("oak_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
+    public static final Block SPRUCE_WALL_MIRROR = registerBlock("spruce_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
+    public static final Block BIRCH_WALL_MIRROR = registerBlock("birch_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
+    public static final Block JUNGLE_WALL_MIRROR = registerBlock("jungle_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
+    public static final Block ACACIA_WALL_MIRROR = registerBlock("acacia_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
+    public static final Block DARK_OAK_WALL_MIRROR = registerBlock("dark_oak_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
+    public static final Block MANGROVE_WALL_MIRROR = registerBlock("mangrove_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
+    public static final Block CHERRY_WALL_MIRROR = registerBlock("cherry_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
+    public static final Block BAMBOO_WALL_MIRROR = registerBlock("bamboo_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
+    public static final Block CRIMSON_WALL_MIRROR = registerBlock("crimson_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
+    public static final Block WARPED_WALL_MIRROR = registerBlock("warped_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
 
     public static final Block MANGROVE_ZAISU = registerBlock("mangrove_zaisu", new ZaisuSeatBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS)));
 
