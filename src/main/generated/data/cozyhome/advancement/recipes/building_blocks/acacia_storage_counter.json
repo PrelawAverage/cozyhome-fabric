@@ -1,21 +1,31 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_birch_planks": {
+    "has_acacia_planks": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:birch_planks"
+            "items": "minecraft:acacia_planks"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_polished_granite": {
+    "has_chest": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:polished_granite"
+            "items": "minecraft:chest"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_polished_diorite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:polished_diorite"
           }
         ]
       },
@@ -23,7 +33,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "cozyhome:birch_counter"
+        "recipe": "cozyhome:acacia_storage_counter"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -31,13 +41,14 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_polished_granite",
-      "has_birch_planks"
+      "has_polished_diorite",
+      "has_acacia_planks",
+      "has_chest"
     ]
   ],
   "rewards": {
     "recipes": [
-      "cozyhome:birch_counter"
+      "cozyhome:acacia_storage_counter"
     ]
   }
 }

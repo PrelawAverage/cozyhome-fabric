@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:oak_planks"
+    },
+    "@": {
+      "item": "minecraft:bricks"
+    },
+    "C": {
+      "item": "minecraft:chest"
+    }
+  },
+  "pattern": [
+    "@@@",
+    "#C#",
+    "###"
+  ],
+  "result": {
+    "count": 3,
+    "id": "cozyhome:oak_storage_counter"
+  }
+}

@@ -52,7 +52,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .pattern("###")
                 .input('@', input1)
                 .input('#', input2)
-                .criterion(hasItem(Items.OAK_PLANKS), conditionsFromItem(Items.OAK_PLANKS))
+                .criterion(hasItem(input1), conditionsFromItem(input1))
+                .criterion(hasItem(input2), conditionsFromItem(input2))
                 .offerTo(exporter);
     }
 

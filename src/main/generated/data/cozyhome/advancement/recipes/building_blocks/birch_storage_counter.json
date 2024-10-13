@@ -11,6 +11,16 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_chest": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:chest"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_polished_granite": {
       "conditions": {
         "items": [
@@ -23,7 +33,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "cozyhome:birch_counter"
+        "recipe": "cozyhome:birch_storage_counter"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -32,12 +42,13 @@
     [
       "has_the_recipe",
       "has_polished_granite",
-      "has_birch_planks"
+      "has_birch_planks",
+      "has_chest"
     ]
   ],
   "rewards": {
     "recipes": [
-      "cozyhome:birch_counter"
+      "cozyhome:birch_storage_counter"
     ]
   }
 }
