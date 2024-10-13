@@ -45,6 +45,9 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CRIMSON_COUNTER);
                         entries.add(ModBlocks.WARPED_COUNTER);
 
+                        // Storage Counters
+                        entries.add(ModBlocks.OAK_STORAGE_COUNTER);
+
                         // Lamps
                         entries.add(ModBlocks.OAK_CHAIR);
                         entries.add(ModBlocks.SPRUCE_CHAIR);

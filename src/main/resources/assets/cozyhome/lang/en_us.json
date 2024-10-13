@@ -25,6 +25,8 @@
   "block.cozyhome.crimson_counter": "Crimson Counter",
   "block.cozyhome.warped_counter": "Warped Counter",
 
+  "block.cozyhome.oak_storage_counter": "Oak Storage Counter",
+
   "block.cozyhome.autumn_stained_window": "Autumn Stained Window",
   "block.cozyhome.autumn_stained_window_pane": "Autumn Stained Window Pane",
 
@@ -80,6 +82,8 @@
   "block.cozyhome.warped_chair": "Warped Chair",
 
   "block.cozyhome.oak_wall_mirror": "Oak Wall Mirror",
+
+  "container.cozyhome.storage_counter": "Storage Counter",
 
   "tooltip.cozyhome.block.planked_wall": "§7Stackable",
 

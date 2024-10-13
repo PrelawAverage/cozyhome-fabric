@@ -3,6 +3,7 @@ package net.luckystudio.cozyhome;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.luckystudio.cozyhome.block.ModBlocks;
+import net.luckystudio.cozyhome.block.entity.ModBlockEntities;
 import net.luckystudio.cozyhome.block.util.ModBurnableBlocks;
 import net.luckystudio.cozyhome.item.ModFuels;
 import net.luckystudio.cozyhome.item.ModItemGroups;
@@ -22,6 +23,7 @@ public class CozyHome implements ModInitializer {
 			ModBlocks.registerModBlocks();
 		}
 		ModBlocks.registerModBlocks();
+		ModBlockEntities.registerBlockEntities();
 		ModItemGroups.registerModItemGroups();
 		ModFuels.registerFuels();
 		ModBurnableBlocks.registerFlammableBlocks();

@@ -93,6 +93,10 @@ public class ModBlocks {
     public static final Block AUTUMN_STAINED_WINDOW_PANE = registerBlock("autumn_stained_window_pane",
             new PaneBlock(AbstractBlock.Settings.copy(Blocks.BLACK_STAINED_GLASS_PANE)));
 
+    // Storage Counters
+    public static final Block OAK_STORAGE_COUNTER = registerBlock("oak_storage_counter",
+            new StorageCounterBlock(Blocks.OAK_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+
     // Chairs
     public static final Block OAK_CHAIR = registerBlock("oak_chair",
             new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));

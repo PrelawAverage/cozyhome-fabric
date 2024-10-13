@@ -56,6 +56,20 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
     }
 
+    public static void offerStorageCounterRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2, ItemConvertible input3) {
+        ShapedRecipeJsonBuilder.create(
+                        RecipeCategory.BUILDING_BLOCKS,
+                        output, 3)
+                .pattern("@@@")
+                .pattern("#?#")
+                .pattern("###")
+                .input('@', input1)
+                .input('#', input2)
+                .input('?', input2)
+                .criterion(hasItem(Items.OAK_PLANKS), conditionsFromItem(Items.OAK_PLANKS))
+                .offerTo(exporter);
+    }
+
     @Override
     public void generate(RecipeExporter exporter) {
         // Planked Walls
@@ -94,6 +108,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerCounterRecipe(exporter, ModBlocks.BAMBOO_COUNTER, Blocks.BAMBOO_BLOCK, Blocks.BAMBOO_PLANKS);
         offerCounterRecipe(exporter, ModBlocks.CRIMSON_COUNTER, Blocks.NETHER_WART_BLOCK, Blocks.CRIMSON_PLANKS);
         offerCounterRecipe(exporter, ModBlocks.WARPED_COUNTER, Blocks.WARPED_WART_BLOCK, Blocks.WARPED_PLANKS);
+
+        // Storage Counters
+        offerStorageCounterRecipe(exporter, ModBlocks.OAK_STORAGE_COUNTER, Blocks.BRICKS, Blocks.OAK_PLANKS, Blocks.CHEST);
 
         // Lamps
         offerLampRecipe(exporter, ModBlocks.WHITE_LAMP, Items.RED_WOOL);

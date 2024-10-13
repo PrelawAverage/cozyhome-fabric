@@ -27,6 +27,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CRIMSON_PLANKED_WALL);
         addDrop(ModBlocks.WARPED_PLANKED_WALL);
 
+        // Counters
         addDrop(ModBlocks.OAK_COUNTER);
         addDrop(ModBlocks.SPRUCE_COUNTER);
         addDrop(ModBlocks.BIRCH_COUNTER);
@@ -38,6 +39,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.BAMBOO_COUNTER);
         addDrop(ModBlocks.CRIMSON_COUNTER);
         addDrop(ModBlocks.WARPED_COUNTER);
+
+        // Storage Counters
+        addDrop(ModBlocks.OAK_STORAGE_COUNTER);
 
         // Lamps
         addDrop(ModBlocks.WHITE_LAMP);

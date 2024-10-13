@@ -85,6 +85,8 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.CRIMSON_COUNTER,
                 ModBlocks.WARPED_COUNTER,
 
+                ModBlocks.OAK_STORAGE_COUNTER,
+
                 ModBlocks.OAK_WALL_MIRROR
         );
 
