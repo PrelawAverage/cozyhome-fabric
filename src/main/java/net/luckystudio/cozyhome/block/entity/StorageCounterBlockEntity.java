@@ -92,7 +92,7 @@ public class StorageCounterBlockEntity extends LootableContainerBlockEntity {
 
     @Override
     protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
-        return GenericContainerScreenHandler.createGeneric9x3(syncId, playerInventory);
+        return GenericContainerScreenHandler.createGeneric9x3(syncId, playerInventory, this);
     }
 
     @Override
@@ -122,7 +122,7 @@ public class StorageCounterBlockEntity extends LootableContainerBlockEntity {
 
     void setOpen(BlockState state, boolean open) {
         assert this.world != null;
-        this.world.setBlockState(this.getPos(), state.with(StorageCounterBlock.OPEN, open), StorageCounterBlock.NOTIFY_ALL);
+        this.world.setBlockState(this.getPos(), state.with(StorageCounterBlock.OPEN, Boolean.valueOf(open)), StorageCounterBlock.NOTIFY_ALL);
     }
 
     void playSound(BlockState state, SoundEvent soundEvent) {

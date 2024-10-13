@@ -4,12 +4,10 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.luckystudio.cozyhome.block.entity.StorageCounterBlockEntity;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BarrelBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.mob.PiglinBrain;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.stat.Stats;
@@ -18,7 +16,6 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -29,7 +26,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class StorageCounterBlock extends BlockWithEntity implements  BlockEntityProvider{
+public class StorageCounterBlock extends BlockWithEntity implements BlockEntityProvider{
     public static final MapCodec<StorageCounterBlock> CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(BlockState.CODEC.fieldOf("base_state").forGetter(block -> block.blockState), createSettingsCodec())
                     .apply(instance, StorageCounterBlock::new)
@@ -64,15 +61,15 @@ public class StorageCounterBlock extends BlockWithEntity implements  BlockEntity
         this.blockState = state;
     }
 
-//    @Override
-//    protected boolean hasComparatorOutput(BlockState state) {
-//        return true;
-//    }
-//
-//    @Override
-//    protected int getComparatorOutput(BlockState state, World world, BlockPos pos) {
-//        return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
-//    }
+    @Override
+    protected boolean hasComparatorOutput(BlockState state) {
+        return true;
+    }
+
+    @Override
+    protected int getComparatorOutput(BlockState state, World world, BlockPos pos) {
+        return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
+    }
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
