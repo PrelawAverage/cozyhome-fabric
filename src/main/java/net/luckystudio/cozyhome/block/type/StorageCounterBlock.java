@@ -16,6 +16,7 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -73,17 +74,27 @@ public class StorageCounterBlock extends BlockWithEntity implements BlockEntityP
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if (world.isClient) {
-            return ActionResult.SUCCESS;
-        } else {
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof StorageCounterBlockEntity) {
-                player.openHandledScreen((StorageCounterBlockEntity)blockEntity);
-                player.incrementStat(Stats.OPEN_BARREL);
-                PiglinBrain.onGuardedBlockInteracted(player, true);
-            }
-            return ActionResult.CONSUME;
+        if (world.isClient) return ActionResult.SUCCESS;
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof StorageCounterBlockEntity) {
+            player.openHandledScreen((StorageCounterBlockEntity)blockEntity);
+            player.incrementStat(Stats.OPEN_BARREL);
+            PiglinBrain.onGuardedBlockInteracted(player, true);
         }
+        return ActionResult.CONSUME;
+    }
+
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (state.getBlock() == newState.getBlock()) return;
+
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof StorageCounterBlockEntity boxBlockEntity) {
+            ItemScatterer.spawn(world, pos, boxBlockEntity);
+            // update comparators
+            world.updateComparators(pos,this);
+        }
+        super.onStateReplaced(state, world, pos, newState, moved);
     }
 
     @Override

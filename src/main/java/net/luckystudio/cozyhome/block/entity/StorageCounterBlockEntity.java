@@ -1,6 +1,8 @@
 package net.luckystudio.cozyhome.block.entity;
 
 import net.luckystudio.cozyhome.block.type.StorageCounterBlock;
+import net.luckystudio.cozyhome.screen.StorageCounterScreenHandler;
+import net.luckystudio.cozyhome.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.*;
 import net.minecraft.entity.player.PlayerEntity;
@@ -10,7 +12,7 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.screen.GenericContainerScreenHandler;
+import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -22,8 +24,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
-public class StorageCounterBlockEntity extends LootableContainerBlockEntity {
-    private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
+public class StorageCounterBlockEntity extends LootableContainerBlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
+    private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(27, ItemStack.EMPTY);
     private final ViewerCountManager stateManager = new ViewerCountManager() {
         @Override
         protected void onContainerOpen(World world, BlockPos pos, BlockState state) {
@@ -44,8 +46,8 @@ public class StorageCounterBlockEntity extends LootableContainerBlockEntity {
 
         @Override
         protected boolean isPlayerViewing(PlayerEntity player) {
-            if (player.currentScreenHandler instanceof GenericContainerScreenHandler) {
-                Inventory inventory = ((GenericContainerScreenHandler)player.currentScreenHandler).getInventory();
+            if (player.currentScreenHandler instanceof StorageCounterScreenHandler) {
+                Inventory inventory = ((StorageCounterScreenHandler)player.currentScreenHandler).getInventory();
                 return inventory == StorageCounterBlockEntity.this;
             } else {
                 return false;
@@ -56,7 +58,6 @@ public class StorageCounterBlockEntity extends LootableContainerBlockEntity {
     public StorageCounterBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.STORAGE_COUNTER_BLOCK_ENTITY, pos, state);
     }
-
 
     @Override
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
@@ -92,7 +93,12 @@ public class StorageCounterBlockEntity extends LootableContainerBlockEntity {
 
     @Override
     protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
-        return GenericContainerScreenHandler.createGeneric9x3(syncId, playerInventory, this);
+        return new StorageCounterScreenHandler(syncId, playerInventory, this);
+    }
+
+    @Override
+    public DefaultedList<ItemStack> getItems() {
+        return inventory;
     }
 
     @Override
