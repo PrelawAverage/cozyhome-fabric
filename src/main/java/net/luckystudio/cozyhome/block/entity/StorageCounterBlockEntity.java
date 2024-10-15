@@ -25,7 +25,7 @@ import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
 public class StorageCounterBlockEntity extends LootableContainerBlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
-    private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(27, ItemStack.EMPTY);
+    private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(24, ItemStack.EMPTY);
     private final ViewerCountManager stateManager = new ViewerCountManager() {
         @Override
         protected void onContainerOpen(World world, BlockPos pos, BlockState state) {
@@ -103,7 +103,7 @@ public class StorageCounterBlockEntity extends LootableContainerBlockEntity impl
 
     @Override
     public int size() {
-        return 27;
+        return 24;
     }
 
     @Override
@@ -128,7 +128,7 @@ public class StorageCounterBlockEntity extends LootableContainerBlockEntity impl
 
     void setOpen(BlockState state, boolean open) {
         assert this.world != null;
-        this.world.setBlockState(this.getPos(), state.with(StorageCounterBlock.OPEN, Boolean.valueOf(open)), StorageCounterBlock.NOTIFY_ALL);
+        this.world.setBlockState(this.getPos(), state.with(StorageCounterBlock.OPEN, open), StorageCounterBlock.NOTIFY_ALL);
     }
 
     void playSound(BlockState state, SoundEvent soundEvent) {

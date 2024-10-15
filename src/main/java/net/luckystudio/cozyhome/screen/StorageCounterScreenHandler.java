@@ -13,12 +13,12 @@ public class StorageCounterScreenHandler extends ScreenHandler {
     private final Inventory inventory;
 
     public StorageCounterScreenHandler(int syncId, PlayerInventory playerInventory) {
-        this(syncId, playerInventory, new SimpleInventory(27));
+        this(syncId, playerInventory, new SimpleInventory(24));
     }
 
     public StorageCounterScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
         super(CozyHome.STORAGE_COUNTER_SCREEN_HANDLER, syncId);
-        checkSize(inventory, 9);
+        checkSize(inventory, 24);
         this.inventory = inventory;
         inventory.onOpen(playerInventory.player);
 
@@ -27,8 +27,10 @@ public class StorageCounterScreenHandler extends ScreenHandler {
         // Our inventory
         for (m = 0; m < 3; ++m) {
             for (l = 0; l < 9; ++l) {
+                // To skip middle column
                 if (l == 4) continue;
-                this.addSlot(new Slot(inventory, l + m * 9, 8 + l * 18, 18 + m * 18));
+                // x is left and right, y is up and down
+                this.addSlot(new Slot(inventory, l + m * 9, 8 + l * 18, 17 + m * 18));
             }
         }
         // The player inventory

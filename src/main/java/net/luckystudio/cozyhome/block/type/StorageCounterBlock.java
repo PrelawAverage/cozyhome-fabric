@@ -3,18 +3,20 @@ package net.luckystudio.cozyhome.block.type;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.luckystudio.cozyhome.block.entity.StorageCounterBlockEntity;
+import net.luckystudio.cozyhome.screen.StorageCounterScreenHandler;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.mob.PiglinBrain;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.*;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
@@ -32,7 +34,7 @@ public class StorageCounterBlock extends BlockWithEntity implements BlockEntityP
             instance -> instance.group(BlockState.CODEC.fieldOf("base_state").forGetter(block -> block.blockState), createSettingsCodec())
                     .apply(instance, StorageCounterBlock::new)
     );
-
+    private static final Text SCREEN_TITLE = Text.translatable("container.counter");
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final BooleanProperty OPEN = Properties.OPEN;
 
