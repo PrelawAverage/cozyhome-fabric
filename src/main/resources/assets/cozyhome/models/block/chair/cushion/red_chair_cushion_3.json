@@ -1,0 +1,6 @@
+{
+  "parent": "cozyhome:block/chair/template_chair_cushion_3",
+  "textures": {
+    "cushion": "cozyhome:block/chair/cushion/red_chair_cushion"
+  }
+}

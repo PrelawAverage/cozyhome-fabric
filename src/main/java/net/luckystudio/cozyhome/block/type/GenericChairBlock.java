@@ -2,12 +2,14 @@ package net.luckystudio.cozyhome.block.type;
 
 import net.luckystudio.cozyhome.block.abstracts.AbstractTuckableBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
+import net.luckystudio.cozyhome.block.util.blockstates.CoveredBlock;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
@@ -23,12 +25,14 @@ public class GenericChairBlock extends AbstractTuckableBlock implements Waterlog
     public static final BooleanProperty TUCKED = ModProperties.TUCKED;
     public static final IntProperty ROTATION = Properties.ROTATION;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+    public static final EnumProperty<CoveredBlock> COVER = ModProperties.COVER;
 
     public GenericChairBlock(AbstractBlock.Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState()
                 .with(ROTATION, 0)
                 .with(TUCKED, false)
+                .with(COVER, CoveredBlock.NONE)
                 .with(WATERLOGGED, Boolean.FALSE)
         );
     }
@@ -132,6 +136,7 @@ public class GenericChairBlock extends AbstractTuckableBlock implements Waterlog
                 return this.getDefaultState()
                         .with(ROTATION, rotation)
                         .with(TUCKED, false)
+                        .with(COVER, CoveredBlock.NONE)
                         .with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
             }
         }
@@ -142,9 +147,8 @@ public class GenericChairBlock extends AbstractTuckableBlock implements Waterlog
     protected FluidState getFluidState(BlockState state) {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
-
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(ROTATION, TUCKED, WATERLOGGED);
+        builder.add(ROTATION, TUCKED, COVER, WATERLOGGED);
     }
 }

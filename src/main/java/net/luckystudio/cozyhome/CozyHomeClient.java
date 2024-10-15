@@ -4,13 +4,17 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.luckystudio.cozyhome.block.ModBlocks;
+import net.luckystudio.cozyhome.block.test.GenericChairBlockEntity;
 import net.luckystudio.cozyhome.entity.ModEntities;
 import net.luckystudio.cozyhome.entity.client.SeatRenderer;
 import net.luckystudio.cozyhome.entity.model.SeatEntityModel;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
 
@@ -25,6 +29,23 @@ public class CozyHomeClient implements ClientModInitializer {
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
                 ModBlocks.OAK_CHAIR,
+                ModBlocks.WHITE_OAK_CHAIR,
+                ModBlocks.ORANGE_OAK_CHAIR,
+                ModBlocks.MAGENTA_OAK_CHAIR,
+                ModBlocks.LIGHT_BLUE_OAK_CHAIR,
+                ModBlocks.YELLOW_OAK_CHAIR,
+                ModBlocks.LIME_SOFA,
+                ModBlocks.PINK_OAK_CHAIR,
+                ModBlocks.GRAY_OAK_CHAIR,
+                ModBlocks.LIGHT_GRAY_OAK_CHAIR,
+                ModBlocks.CYAN_OAK_CHAIR,
+                ModBlocks.PURPLE_OAK_CHAIR,
+                ModBlocks.BLUE_OAK_CHAIR,
+                ModBlocks.BROWN_OAK_CHAIR,
+                ModBlocks.GREEN_OAK_CHAIR,
+                ModBlocks.RED_OAK_CHAIR,
+                ModBlocks.BLACK_OAK_CHAIR,
+
                 ModBlocks.SPRUCE_CHAIR,
                 ModBlocks.BIRCH_CHAIR,
                 ModBlocks.JUNGLE_CHAIR,
@@ -105,5 +126,8 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.AUTUMN_STAINED_WINDOW,
                 ModBlocks.AUTUMN_STAINED_WINDOW_PANE
         );
+
+        BlockEntityRendererFactories.register();
+
     }
 }

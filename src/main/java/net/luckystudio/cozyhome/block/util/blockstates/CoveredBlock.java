@@ -3,6 +3,7 @@ package net.luckystudio.cozyhome.block.util.blockstates;
 import net.minecraft.util.StringIdentifiable;
 
 public enum CoveredBlock implements StringIdentifiable {
+    NONE("none"),
     WHITE("white"),
     ORANGE("orange"),
     MAGENTA("magenta"),

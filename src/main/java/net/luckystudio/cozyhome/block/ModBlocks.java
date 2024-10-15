@@ -3,7 +3,6 @@ package net.luckystudio.cozyhome.block;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.special.DynastyLanternBlock;
 import net.luckystudio.cozyhome.block.special.DynastySeatBlock;
-import net.luckystudio.cozyhome.block.test.ChairBlock;
 import net.luckystudio.cozyhome.block.type.*;
 import net.minecraft.block.*;
 
@@ -96,7 +95,39 @@ public class ModBlocks {
 
     // Chairs
     public static final Block OAK_CHAIR = registerBlock("oak_chair",
-            new ChairBlock(ChairBlock.Type.OAK, AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block WHITE_OAK_CHAIR = registerBlock("white_oak_chair",
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block ORANGE_OAK_CHAIR = registerBlock("orange_oak_chair",
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block MAGENTA_OAK_CHAIR = registerBlock("magenta_oak_chair",
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block LIGHT_BLUE_OAK_CHAIR = registerBlock("light_blue_oak_chair",
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block YELLOW_OAK_CHAIR = registerBlock("yellow_oak_chair",
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block LIME_OAK_CHAIR = registerBlock("lime_oak_chair",
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block PINK_OAK_CHAIR = registerBlock("pink_oak_chair",
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block GRAY_OAK_CHAIR = registerBlock("gray_oak_chair",
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block LIGHT_GRAY_OAK_CHAIR = registerBlock("light_gray_oak_chair",
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block CYAN_OAK_CHAIR = registerBlock("cyan_oak_chair",
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block PURPLE_OAK_CHAIR = registerBlock("purple_oak_chair",
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block BLUE_OAK_CHAIR = registerBlock("blue_oak_chair",
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block BROWN_OAK_CHAIR = registerBlock("brown_oak_chair",
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block GREEN_OAK_CHAIR = registerBlock("green_oak_chair",
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block RED_OAK_CHAIR = registerBlock("red_oak_chair",
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block BLACK_OAK_CHAIR = registerBlock("black_oak_chair",
+            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
     public static final Block SPRUCE_CHAIR = registerBlock("spruce_chair",
             new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.SPRUCE_PLANKS)));
     public static final Block BIRCH_CHAIR = registerBlock("birch_chair",
