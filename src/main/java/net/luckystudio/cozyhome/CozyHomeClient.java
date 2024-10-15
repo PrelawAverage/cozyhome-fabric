@@ -10,6 +10,8 @@ import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.entity.ModEntities;
 import net.luckystudio.cozyhome.entity.client.SeatRenderer;
 import net.luckystudio.cozyhome.entity.model.SeatEntityModel;
+import net.luckystudio.cozyhome.screen.StorageCounterScreen;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
@@ -22,6 +24,7 @@ public class CozyHomeClient implements ClientModInitializer {
     public void onInitializeClient() {
         EntityRendererRegistry.register(ModEntities.SEAT_ENTITY, SeatRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(MODEL_SEAT_LAYER, SeatEntityModel::getTexturedModelData);
+        HandledScreens.register(CozyHome.STORAGE_COUNTER_SCREEN_HANDLER, StorageCounterScreen::new);
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
                 ModBlocks.OAK_CHAIR,
@@ -84,6 +87,18 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.BAMBOO_COUNTER,
                 ModBlocks.CRIMSON_COUNTER,
                 ModBlocks.WARPED_COUNTER,
+
+                ModBlocks.OAK_STORAGE_COUNTER,
+                ModBlocks.SPRUCE_STORAGE_COUNTER,
+                ModBlocks.BIRCH_STORAGE_COUNTER,
+                ModBlocks.JUNGLE_STORAGE_COUNTER,
+                ModBlocks.ACACIA_STORAGE_COUNTER,
+                ModBlocks.DARK_OAK_STORAGE_COUNTER,
+                ModBlocks.MANGROVE_STORAGE_COUNTER,
+                ModBlocks.CHERRY_STORAGE_COUNTER,
+                ModBlocks.BAMBOO_STORAGE_COUNTER,
+                ModBlocks.CRIMSON_STORAGE_COUNTER,
+                ModBlocks.WARPED_STORAGE_COUNTER,
 
                 ModBlocks.OAK_WALL_MIRROR,
                 ModBlocks.SPRUCE_WALL_MIRROR,

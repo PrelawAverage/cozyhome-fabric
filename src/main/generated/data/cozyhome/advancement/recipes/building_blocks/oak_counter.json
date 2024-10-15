@@ -1,6 +1,16 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
+    "has_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_oak_planks": {
       "conditions": {
         "items": [
@@ -21,6 +31,7 @@
   "requirements": [
     [
       "has_the_recipe",
+      "has_bricks",
       "has_oak_planks"
     ]
   ],

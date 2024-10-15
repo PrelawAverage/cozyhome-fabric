@@ -88,6 +88,31 @@ public class ModBlocks {
     public static final Block WARPED_COUNTER = registerBlock("warped_counter",
             new CounterBlock(Blocks.WARPED_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS)));
 
+    // Storage Counters
+    public static final Block OAK_STORAGE_COUNTER = registerBlock("oak_storage_counter",
+            new StorageCounterBlock(Blocks.OAK_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+    public static final Block SPRUCE_STORAGE_COUNTER = registerBlock("spruce_storage_counter",
+            new StorageCounterBlock(Blocks.SPRUCE_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.SPRUCE_PLANKS)));
+    public static final Block BIRCH_STORAGE_COUNTER = registerBlock("birch_storage_counter",
+            new StorageCounterBlock(Blocks.BIRCH_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.BIRCH_PLANKS)));
+    public static final Block JUNGLE_STORAGE_COUNTER = registerBlock("jungle_storage_counter",
+            new StorageCounterBlock(Blocks.JUNGLE_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.JUNGLE_PLANKS)));
+    public static final Block ACACIA_STORAGE_COUNTER = registerBlock("acacia_storage_counter",
+            new StorageCounterBlock(Blocks.ACACIA_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.ACACIA_PLANKS)));
+    public static final Block DARK_OAK_STORAGE_COUNTER = registerBlock("dark_oak_storage_counter",
+            new StorageCounterBlock(Blocks.DARK_OAK_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.DARK_OAK_PLANKS)));
+    public static final Block MANGROVE_STORAGE_COUNTER = registerBlock("mangrove_storage_counter",
+            new StorageCounterBlock(Blocks.MANGROVE_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS)));
+    public static final Block CHERRY_STORAGE_COUNTER = registerBlock("cherry_storage_counter",
+            new StorageCounterBlock(Blocks.CHERRY_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS)));
+    public static final Block BAMBOO_STORAGE_COUNTER = registerBlock("bamboo_storage_counter",
+            new StorageCounterBlock(Blocks.BAMBOO_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.BAMBOO_PLANKS)));
+    public static final Block CRIMSON_STORAGE_COUNTER = registerBlock("crimson_storage_counter",
+            new StorageCounterBlock(Blocks.CRIMSON_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS)));
+    public static final Block WARPED_STORAGE_COUNTER = registerBlock("warped_storage_counter",
+            new StorageCounterBlock(Blocks.WARPED_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS)));
+
+    // Stained Windows
     public static final Block AUTUMN_STAINED_WINDOW = registerBlock("autumn_stained_window",
             new TranslucentBlock(AbstractBlock.Settings.copy(Blocks.BLACK_STAINED_GLASS)));
     public static final Block AUTUMN_STAINED_WINDOW_PANE = registerBlock("autumn_stained_window_pane",

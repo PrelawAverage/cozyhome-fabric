@@ -68,6 +68,19 @@ public class MobBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BAMBOO_COUNTER)
                 .add(ModBlocks.CRIMSON_COUNTER)
                 .add(ModBlocks.WARPED_COUNTER)
+
+                // Storage Counters
+                .add(ModBlocks.OAK_STORAGE_COUNTER)
+                .add(ModBlocks.SPRUCE_STORAGE_COUNTER)
+                .add(ModBlocks.BIRCH_STORAGE_COUNTER)
+                .add(ModBlocks.JUNGLE_STORAGE_COUNTER)
+                .add(ModBlocks.ACACIA_STORAGE_COUNTER)
+                .add(ModBlocks.DARK_OAK_STORAGE_COUNTER)
+                .add(ModBlocks.MANGROVE_STORAGE_COUNTER)
+                .add(ModBlocks.CHERRY_STORAGE_COUNTER)
+                .add(ModBlocks.BAMBOO_STORAGE_COUNTER)
+                .add(ModBlocks.CRIMSON_STORAGE_COUNTER)
+                .add(ModBlocks.WARPED_STORAGE_COUNTER)
         ;
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
@@ -83,6 +96,18 @@ public class MobBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BAMBOO_COUNTER)
                 .add(ModBlocks.CRIMSON_COUNTER)
                 .add(ModBlocks.WARPED_COUNTER)
+
+                .add(ModBlocks.OAK_STORAGE_COUNTER)
+                .add(ModBlocks.SPRUCE_STORAGE_COUNTER)
+                .add(ModBlocks.BIRCH_STORAGE_COUNTER)
+                .add(ModBlocks.JUNGLE_STORAGE_COUNTER)
+                .add(ModBlocks.ACACIA_STORAGE_COUNTER)
+                .add(ModBlocks.DARK_OAK_STORAGE_COUNTER)
+                .add(ModBlocks.MANGROVE_STORAGE_COUNTER)
+                .add(ModBlocks.CHERRY_STORAGE_COUNTER)
+                .add(ModBlocks.BAMBOO_STORAGE_COUNTER)
+                .add(ModBlocks.CRIMSON_STORAGE_COUNTER)
+                .add(ModBlocks.WARPED_STORAGE_COUNTER)
         ;
     }
 }

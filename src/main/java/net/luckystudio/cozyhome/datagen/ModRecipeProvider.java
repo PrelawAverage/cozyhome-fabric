@@ -42,7 +42,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.LANTERN), conditionsFromItem(Items.LANTERN))
                 .offerTo(exporter);
     }
-    // Criterion needs to be fixed to take in a tag instead of a singular item, instead it should be tag planks
+
     public static void offerCounterRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2) {
         ShapedRecipeJsonBuilder.create(
                         RecipeCategory.BUILDING_BLOCKS,
@@ -52,7 +52,24 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .pattern("###")
                 .input('@', input1)
                 .input('#', input2)
-                .criterion(hasItem(Items.OAK_PLANKS), conditionsFromItem(Items.OAK_PLANKS))
+                .criterion(hasItem(input1), conditionsFromItem(input1))
+                .criterion(hasItem(input2), conditionsFromItem(input2))
+                .offerTo(exporter);
+    }
+
+    public static void offerStorageCounterRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2, ItemConvertible input3) {
+        ShapedRecipeJsonBuilder.create(
+                        RecipeCategory.BUILDING_BLOCKS,
+                        output, 3)
+                .pattern("@@@")
+                .pattern("#C#")
+                .pattern("###")
+                .input('@', input1)
+                .input('#', input2)
+                .input('C', input3)
+                .criterion(hasItem(input1), conditionsFromItem(input1))
+                .criterion(hasItem(input2), conditionsFromItem(input2))
+                .criterion(hasItem(input3), conditionsFromItem(input3))
                 .offerTo(exporter);
     }
     // Criterion needs to be fixed to take in a tag instead of a singular item, instead it should be tag planks
@@ -108,6 +125,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerCounterRecipe(exporter, ModBlocks.BAMBOO_COUNTER, Blocks.BAMBOO_BLOCK, Blocks.BAMBOO_PLANKS);
         offerCounterRecipe(exporter, ModBlocks.CRIMSON_COUNTER, Blocks.NETHER_WART_BLOCK, Blocks.CRIMSON_PLANKS);
         offerCounterRecipe(exporter, ModBlocks.WARPED_COUNTER, Blocks.WARPED_WART_BLOCK, Blocks.WARPED_PLANKS);
+
+        // Storage Counters
+        offerStorageCounterRecipe(exporter, ModBlocks.OAK_STORAGE_COUNTER, Blocks.BRICKS, Blocks.OAK_PLANKS, Blocks.CHEST);
+        offerStorageCounterRecipe(exporter, ModBlocks.SPRUCE_STORAGE_COUNTER, Blocks.POLISHED_ANDESITE, Blocks.SPRUCE_PLANKS, Blocks.CHEST);
+        offerStorageCounterRecipe(exporter, ModBlocks.BIRCH_STORAGE_COUNTER, Blocks.POLISHED_GRANITE, Blocks.BIRCH_PLANKS, Blocks.CHEST);
+        offerStorageCounterRecipe(exporter, ModBlocks.JUNGLE_STORAGE_COUNTER, Blocks.POLISHED_GRANITE, Blocks.JUNGLE_PLANKS, Blocks.CHEST);
+        offerStorageCounterRecipe(exporter, ModBlocks.ACACIA_STORAGE_COUNTER, Blocks.POLISHED_DIORITE, Blocks.ACACIA_PLANKS, Blocks.CHEST);
+        offerStorageCounterRecipe(exporter, ModBlocks.DARK_OAK_STORAGE_COUNTER, Blocks.DEEPSLATE_TILES, Blocks.DARK_OAK_PLANKS, Blocks.CHEST);
+        offerStorageCounterRecipe(exporter, ModBlocks.MANGROVE_STORAGE_COUNTER, Blocks.PACKED_MUD, Blocks.MANGROVE_PLANKS, Blocks.CHEST);
+        offerStorageCounterRecipe(exporter, ModBlocks.BAMBOO_STORAGE_COUNTER, Blocks.BAMBOO_BLOCK, Blocks.BAMBOO_PLANKS, Blocks.CHEST);
+        offerStorageCounterRecipe(exporter, ModBlocks.CRIMSON_STORAGE_COUNTER, Blocks.NETHER_WART_BLOCK, Blocks.CRIMSON_PLANKS, Blocks.CHEST);
+        offerStorageCounterRecipe(exporter, ModBlocks.WARPED_STORAGE_COUNTER, Blocks.WARPED_WART_BLOCK, Blocks.WARPED_PLANKS, Blocks.CHEST);
 
         // Lamps
         offerLampRecipe(exporter, ModBlocks.WHITE_LAMP, Items.RED_WOOL);

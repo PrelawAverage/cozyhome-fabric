@@ -1,11 +1,21 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_oak_planks": {
+    "has_dark_oak_planks": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:oak_planks"
+            "items": "minecraft:dark_oak_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_deepslate_tiles": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:deepslate_tiles"
           }
         ]
       },
@@ -21,7 +31,8 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_oak_planks"
+      "has_deepslate_tiles",
+      "has_dark_oak_planks"
     ]
   ],
   "rewards": {
