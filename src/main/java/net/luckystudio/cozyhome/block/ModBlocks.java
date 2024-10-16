@@ -47,11 +47,9 @@ private static Block createColorLampBlock() {
                     .luminance(createLightLevelFromLitBlockState(9))
                     .emissiveLighting(ModBlocks::ifLit)
                     .nonOpaque()
-                    .breakInstantly()
-                    .strength(0.6f)
                     .burnable()
                     .sounds(BlockSoundGroup.LANTERN));
-}
+    }
     private static Block createSofaBlock(MapColor color) {
         return new SofaBlock(
                 AbstractBlock.Settings.create()

@@ -110,6 +110,7 @@
   "block.cozyhome.crimson_wall_mirror": "Warped Wall Mirror",
 
   "tooltip.cozyhome.block.planked_wall": "§7Stackable",
+  "tooltip.cozyhome.block.dyed": "Dyed",
   "tooltip.cozyhome.block.dyeable": "§7Dyeable",
 
   "sounds.cozyhome.lamp_toggle": "Lamp Toggled",

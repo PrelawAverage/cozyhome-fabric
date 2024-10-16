@@ -3,6 +3,13 @@ package net.luckystudio.cozyhome.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.luckystudio.cozyhome.block.ModBlocks;
+import net.minecraft.block.Block;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.loot.LootPool;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.function.CopyComponentsLootFunction;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
@@ -55,8 +62,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.WARPED_STORAGE_COUNTER);
 
         // Lamps
-        addDrop(ModBlocks.OAK_LAMP);
-
+        dyeableDrop(ModBlocks.OAK_LAMP);
 
         // Sofas
         addDrop(ModBlocks.WHITE_SOFA);
@@ -88,5 +94,23 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.BAMBOO_WALL_MIRROR);
         addDrop(ModBlocks.CRIMSON_WALL_MIRROR);
         addDrop(ModBlocks.WARPED_WALL_MIRROR);
+    }
+
+    public LootTable.Builder dyeableDrop(Block drop) {
+        return LootTable.builder()
+                .pool(
+                        this.addSurvivesExplosionCondition(
+                                drop,
+                                LootPool.builder()
+                                        .rolls(ConstantLootNumberProvider.create(1.0F))
+                                        .with(
+                                                ItemEntry.builder(drop)
+                                                        .apply(
+                                                                CopyComponentsLootFunction.builder(CopyComponentsLootFunction.Source.BLOCK_ENTITY)
+                                                                        .include(DataComponentTypes.BLOCK_ENTITY_DATA)
+                                                        )
+                                        )
+                        )
+                );
     }
 }

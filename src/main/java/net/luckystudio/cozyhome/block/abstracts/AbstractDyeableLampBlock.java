@@ -1,17 +1,18 @@
 package net.luckystudio.cozyhome.block.abstracts;
 
 import com.mojang.serialization.MapCodec;
+import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.entity.DyeableBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.blockstates.LinearConnectionBlock;
 import net.luckystudio.cozyhome.sound.ModSounds;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.NbtComponent;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.DyeItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
@@ -208,9 +209,33 @@ public class AbstractDyeableLampBlock extends BlockWithEntity {
 
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
+        NbtComponent component = stack.get(DataComponentTypes.BLOCK_ENTITY_DATA);
         // Our tool tip
-        tooltip.add(Text.translatable("tooltip.cozyhome.block.dyeable"));
+        if (component != null) {
+            if (component.contains("color")) {
+                tooltip.add(Text.translatable("tooltip.cozyhome.block.dyed").withColor(getItemColor(stack)));
+            }
+        } else {
+            tooltip.add(Text.translatable("tooltip.cozyhome.block.dyeable"));
+        }
         // Always add this because we also want other tooltips to render too like item group and other modded tooltips
         super.appendTooltip(stack, context, tooltip, options);
+    }
+
+    @Override
+    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+//        ItemConvertible itemConvertible = state.getBlock().asItem();
+//        ItemEntity itemEntity = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModBlocks.OAK_LAMP.asItem()).copyComponentsToNewStack(itemConvertible, 10));
+//        world.spawnEntity(itemEntity);
+        return super.onBreak(world, pos, state, player);
+    }
+    private static int getItemColor(ItemStack stack) {
+        // Retrieve the block entity data component from the item
+        NbtComponent component = stack.get(DataComponentTypes.BLOCK_ENTITY_DATA);
+
+        if (component != null && component.contains("color")) {  // 3 = int type
+            return component.copyNbt().getInt("color");
+        }
+        return 0xFFFFFF;  // Default color (white) if color is not found
     }
 }

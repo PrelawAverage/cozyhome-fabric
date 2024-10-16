@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:birch_planks"
+    },
+    "@": {
+      "item": "minecraft:glass"
+    }
+  },
+  "pattern": [
+    "###",
+    "#@#",
+    "###"
+  ],
+  "result": {
+    "count": 3,
+    "id": "cozyhome:birch_wall_mirror"
+  }
+}
