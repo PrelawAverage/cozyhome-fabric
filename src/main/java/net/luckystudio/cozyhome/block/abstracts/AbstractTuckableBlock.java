@@ -1,16 +1,13 @@
 package net.luckystudio.cozyhome.block.abstracts;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.util.blocks.TuckableBlock;
+import net.luckystudio.cozyhome.block.util.interfaces.TuckableBlock;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.state.StateManager;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 public class AbstractTuckableBlock extends AbstractSeatBlock implements TuckableBlock{

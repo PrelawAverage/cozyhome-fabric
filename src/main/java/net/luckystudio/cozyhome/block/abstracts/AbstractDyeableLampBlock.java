@@ -1,17 +1,15 @@
 package net.luckystudio.cozyhome.block.abstracts;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.entity.DyeableBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModProperties;
-import net.luckystudio.cozyhome.block.util.blockstates.LinearConnectionBlock;
+import net.luckystudio.cozyhome.block.util.enums.LinearConnectionBlock;
 import net.luckystudio.cozyhome.sound.ModSounds;
 import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
-import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;

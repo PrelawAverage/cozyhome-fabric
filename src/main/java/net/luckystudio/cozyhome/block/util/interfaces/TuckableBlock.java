@@ -1,4 +1,4 @@
-package net.luckystudio.cozyhome.block.util.blocks;
+package net.luckystudio.cozyhome.block.util.interfaces;
 
 import net.luckystudio.cozyhome.block.abstracts.AbstractTuckableBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;

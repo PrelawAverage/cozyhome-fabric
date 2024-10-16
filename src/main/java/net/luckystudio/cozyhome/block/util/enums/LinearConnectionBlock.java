@@ -1,4 +1,4 @@
-package net.luckystudio.cozyhome.block.util.blockstates;
+package net.luckystudio.cozyhome.block.util.enums;
 
 import net.minecraft.util.StringIdentifiable;
 

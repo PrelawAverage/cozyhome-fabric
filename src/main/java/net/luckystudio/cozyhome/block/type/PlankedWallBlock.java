@@ -2,7 +2,7 @@ package net.luckystudio.cozyhome.block.type;
 
 import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.util.ModProperties;
-import net.luckystudio.cozyhome.block.util.blockstates.LinearConnectionBlock;
+import net.luckystudio.cozyhome.block.util.enums.LinearConnectionBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

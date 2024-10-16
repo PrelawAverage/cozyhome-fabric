@@ -1,4 +1,4 @@
-package net.luckystudio.cozyhome.util;
+package net.luckystudio.cozyhome.block.util.interfaces;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
