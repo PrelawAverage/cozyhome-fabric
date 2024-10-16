@@ -1,6 +1,5 @@
 package net.luckystudio.cozyhome;
 
-import com.mojang.datafixers.types.templates.CompoundList;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -13,6 +12,7 @@ import net.luckystudio.cozyhome.entity.ModEntities;
 import net.luckystudio.cozyhome.entity.client.SeatRenderer;
 import net.luckystudio.cozyhome.entity.model.SeatEntityModel;
 import net.luckystudio.cozyhome.screen.StorageCounterScreen;
+import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
@@ -119,15 +119,6 @@ public class CozyHomeClient implements ClientModInitializer {
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && view.getBlockEntityRenderData(pos) instanceof Integer integer ? integer : 0xFFFFFF, ModBlocks.DYE_VAT);
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && view.getBlockEntityRenderData(pos) instanceof Integer integer ? integer : 0xFFFFFF, ModBlocks.OAK_LAMP);
         // Renders the colors on the Items
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> getItemColor(stack), ModBlocks.OAK_LAMP.asItem());
-    }
-    private static int getItemColor(ItemStack stack) {
-        // Retrieve the block entity data component from the item
-        NbtComponent component = stack.get(DataComponentTypes.BLOCK_ENTITY_DATA);
-
-        if (component != null && component.contains("color")) {  // 3 = int type
-            return component.copyNbt().getInt("color");
-        }
-        return 0xFFFFFF;  // Default color (white) if color is not found
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ModColorHandler.getItemColor(stack), ModBlocks.OAK_LAMP.asItem());
     }
 }

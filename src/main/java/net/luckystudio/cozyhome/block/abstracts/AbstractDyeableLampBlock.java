@@ -6,6 +6,7 @@ import net.luckystudio.cozyhome.block.entity.DyeableBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.blockstates.LinearConnectionBlock;
 import net.luckystudio.cozyhome.sound.ModSounds;
+import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.component.DataComponentTypes;
@@ -213,7 +214,7 @@ public class AbstractDyeableLampBlock extends BlockWithEntity {
         // Our tool tip
         if (component != null) {
             if (component.contains("color")) {
-                tooltip.add(Text.translatable("tooltip.cozyhome.block.dyed").withColor(getItemColor(stack)));
+                tooltip.add(Text.translatable("tooltip.cozyhome.block.dyed").withColor(ModColorHandler.getItemColor(stack)));
             }
         } else {
             tooltip.add(Text.translatable("tooltip.cozyhome.block.dyeable"));
@@ -228,14 +229,5 @@ public class AbstractDyeableLampBlock extends BlockWithEntity {
 //        ItemEntity itemEntity = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModBlocks.OAK_LAMP.asItem()).copyComponentsToNewStack(itemConvertible, 10));
 //        world.spawnEntity(itemEntity);
         return super.onBreak(world, pos, state, player);
-    }
-    private static int getItemColor(ItemStack stack) {
-        // Retrieve the block entity data component from the item
-        NbtComponent component = stack.get(DataComponentTypes.BLOCK_ENTITY_DATA);
-
-        if (component != null && component.contains("color")) {  // 3 = int type
-            return component.copyNbt().getInt("color");
-        }
-        return 0xFFFFFF;  // Default color (white) if color is not found
     }
 }
