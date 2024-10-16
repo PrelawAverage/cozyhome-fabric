@@ -116,8 +116,8 @@ public class AbstractDyeableLampBlock extends BlockWithEntity {
                 if (stack.getItem() instanceof DyeItem dyeItem) {
                     if (world.getBlockEntity(pos) instanceof DyeableBlockEntity colorBlockEntity) {
                         final int newColor = dyeItem.getColor().getEntityColor();
-                        final int originalColor = colorBlockEntity.water_color;
-                        colorBlockEntity.water_color = ColorHelper.Argb.averageArgb(newColor, originalColor);
+                        final int originalColor = colorBlockEntity.color;
+                        colorBlockEntity.color = ColorHelper.Argb.averageArgb(newColor, originalColor);
                         stack.decrementUnlessCreative(1, player);
                         colorBlockEntity.markDirty();
                         world.updateListeners(pos, state, state, 0);

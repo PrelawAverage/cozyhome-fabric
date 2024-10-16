@@ -12,7 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
 public class DyeableBlockEntity extends BlockEntity {
-    public int water_color = 0xFFFFFF;
+    public int color = 0xFFFFFF;
 
     public DyeableBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.COLOR_LAMP_BLOCK_ENTITY, pos, state);
@@ -23,7 +23,7 @@ public class DyeableBlockEntity extends BlockEntity {
     @Override
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
-        water_color = nbt.getInt("color");
+        color = nbt.getInt("color");
 
         // When the data is modified through "/data" command,
         // or placed by an item with "block_entity_data" component,
@@ -36,7 +36,7 @@ public class DyeableBlockEntity extends BlockEntity {
     @Override
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.writeNbt(nbt, registryLookup);
-        nbt.putInt("color", water_color);
+        nbt.putInt("color", color);
     }
 
     @Nullable
@@ -53,6 +53,6 @@ public class DyeableBlockEntity extends BlockEntity {
     @Override
     public @Nullable Object getRenderData() {
         // this is the method from `RenderDataBlockEntity` class.
-        return water_color;
+        return color;
     }
 }

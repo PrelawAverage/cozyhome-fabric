@@ -20,7 +20,6 @@ import net.minecraft.util.Identifier;
 @Environment(EnvType.CLIENT)
 public class CozyHomeClient implements ClientModInitializer {
     public static final EntityModelLayer MODEL_SEAT_LAYER = new EntityModelLayer(Identifier.of("cozyhome", "seat"), "main");
-
     @Override
     public void onInitializeClient() {
         EntityRendererRegistry.register(ModEntities.SEAT_ENTITY, SeatRenderer::new);
@@ -28,6 +27,7 @@ public class CozyHomeClient implements ClientModInitializer {
         HandledScreens.register(CozyHome.STORAGE_COUNTER_SCREEN_HANDLER, StorageCounterScreen::new);
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
+                // Chairs
                 ModBlocks.OAK_CHAIR,
                 ModBlocks.SPRUCE_CHAIR,
                 ModBlocks.BIRCH_CHAIR,
@@ -40,27 +40,13 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.CRIMSON_CHAIR,
                 ModBlocks.WARPED_CHAIR,
 
-//                ModBlocks.WHITE_LAMP,
-//                ModBlocks.ORANGE_LAMP,
-//                ModBlocks.MAGENTA_LAMP,
-//                ModBlocks.LIGHT_BLUE_LAMP,
-//                ModBlocks.YELLOW_LAMP,
-//                ModBlocks.LIME_LAMP,
-//                ModBlocks.PINK_LAMP,
-//                ModBlocks.GRAY_LAMP,
-//                ModBlocks.LIGHT_GRAY_LAMP,
-//                ModBlocks.CYAN_LAMP,
-//                ModBlocks.PURPLE_LAMP,
-//                ModBlocks.BLUE_LAMP,
-//                ModBlocks.BROWN_LAMP,
-//                ModBlocks.GREEN_LAMP,
-//                ModBlocks.RED_LAMP,
-//                ModBlocks.BLACK_LAMP,
-//                ModBlocks.MANGROVE_LAMP,
+                // Lamps
                 ModBlocks.OAK_LAMP,
 
+                // Lanterns
                 ModBlocks.MANGROVE_LANTERN,
 
+                // Sofas
                 ModBlocks.WHITE_SOFA,
                 ModBlocks.ORANGE_SOFA,
                 ModBlocks.MAGENTA_SOFA,
@@ -79,6 +65,7 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.BLACK_SOFA,
                 ModBlocks.MANGROVE_ZAISU,
 
+                // Counters
                 ModBlocks.OAK_COUNTER,
                 ModBlocks.SPRUCE_COUNTER,
                 ModBlocks.BIRCH_COUNTER,
@@ -91,6 +78,7 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.CRIMSON_COUNTER,
                 ModBlocks.WARPED_COUNTER,
 
+                // Storage Counters
                 ModBlocks.OAK_STORAGE_COUNTER,
                 ModBlocks.SPRUCE_STORAGE_COUNTER,
                 ModBlocks.BIRCH_STORAGE_COUNTER,
@@ -103,6 +91,7 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.CRIMSON_STORAGE_COUNTER,
                 ModBlocks.WARPED_STORAGE_COUNTER,
 
+                // Wall Mirrors
                 ModBlocks.OAK_WALL_MIRROR,
                 ModBlocks.SPRUCE_WALL_MIRROR,
                 ModBlocks.BIRCH_WALL_MIRROR,
@@ -121,7 +110,11 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.AUTUMN_STAINED_WINDOW,
                 ModBlocks.AUTUMN_STAINED_WINDOW_PANE
         );
-        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && view.getBlockEntityRenderData(pos) instanceof Integer integer ? integer : 0x3495eb, ModBlocks.DYE_VAT);
-        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && view.getBlockEntityRenderData(pos) instanceof Integer integer ? integer : 0x3495eb, ModBlocks.OAK_LAMP);
+
+        // Renders the colors on the Blocks
+        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && view.getBlockEntityRenderData(pos) instanceof Integer integer ? integer : 0xFFFFFF, ModBlocks.DYE_VAT);
+        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && view.getBlockEntityRenderData(pos) instanceof Integer integer ? integer : 0xFFFFFF, ModBlocks.OAK_LAMP);
+        // Renders the colors on the Items
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0xFFFFFF, ModBlocks.OAK_LAMP);
     }
 }

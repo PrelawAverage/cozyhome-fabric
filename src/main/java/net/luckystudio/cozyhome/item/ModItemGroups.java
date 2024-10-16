@@ -5,6 +5,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.ModBlocks;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
