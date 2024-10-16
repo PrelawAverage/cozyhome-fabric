@@ -3,6 +3,7 @@ package net.luckystudio.cozyhome.block;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.special.MangroveLanternBlock;
 import net.luckystudio.cozyhome.block.special.ZaisuSeatBlock;
+import net.luckystudio.cozyhome.block.abstracts.AbstractDyeableLampBlock;
 import net.luckystudio.cozyhome.block.type.*;
 import net.minecraft.block.*;
 
@@ -28,18 +29,29 @@ public class ModBlocks {
                         .sounds(soundGroup)
                         .dynamicBounds());
     }
-    private static Block createLampBlock(MapColor color) {
-        return new LampBlock(
-                AbstractBlock.Settings.create()
-                        .mapColor(color)
-                        .nonOpaque()
-                        .luminance(createLightLevelFromLitBlockState(9))
-                        .emissiveLighting(ModBlocks::ifLit)
-                        .breakInstantly()
-                        .strength(0.6f)
-                        .burnable()
-                        .sounds(BlockSoundGroup.LANTERN));
-    }
+//    private static Block createLampBlock(MapColor color) {
+//        return new LampBlock(
+//                AbstractBlock.Settings.create()
+//                        .mapColor(color)
+//                        .nonOpaque()
+//                        .luminance(createLightLevelFromLitBlockState(9))
+//                        .emissiveLighting(ModBlocks::ifLit)
+//                        .breakInstantly()
+//                        .strength(0.6f)
+//                        .burnable()
+//                        .sounds(BlockSoundGroup.LANTERN));
+//    }
+private static Block createColorLampBlock() {
+    return new AbstractDyeableLampBlock(
+            AbstractBlock.Settings.create()
+                    .luminance(createLightLevelFromLitBlockState(9))
+                    .emissiveLighting(ModBlocks::ifLit)
+                    .nonOpaque()
+                    .breakInstantly()
+                    .strength(0.6f)
+                    .burnable()
+                    .sounds(BlockSoundGroup.LANTERN));
+}
     private static Block createSofaBlock(MapColor color) {
         return new SofaBlock(
                 AbstractBlock.Settings.create()
@@ -50,6 +62,13 @@ public class ModBlocks {
                         .burnable()
                         .sounds(BlockSoundGroup.WOOL));
     }
+
+    public static final Block DYE_VAT = registerBlock("dye_vat",
+            new DyeVatBlock(Blocks.CAULDRON.getDefaultState(), AbstractBlock.Settings.create()
+                    .strength(2.5f, 2.5f)
+                    .nonOpaque()
+                    .requiresTool()
+                    .dynamicBounds()));
 
     // Add Blocks Here
     public static final Block OAK_PLANKED_WALL = registerBlock("oak_planked_wall", createPlankedWall(BlockSoundGroup.WOOD));
@@ -143,25 +162,9 @@ public class ModBlocks {
             new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS)));
 
     // Lamps
-    public static final Block WHITE_LAMP = registerBlock("white_lamp", createLampBlock(MapColor.WHITE));
-    public static final Block ORANGE_LAMP = registerBlock("orange_lamp", createLampBlock(MapColor.ORANGE));
-    public static final Block MAGENTA_LAMP = registerBlock("magenta_lamp", createLampBlock(MapColor.MAGENTA));
-    public static final Block LIGHT_BLUE_LAMP = registerBlock("light_blue_lamp", createLampBlock(MapColor.LIGHT_BLUE));
-    public static final Block YELLOW_LAMP = registerBlock("yellow_lamp", createLampBlock(MapColor.YELLOW));
-    public static final Block LIME_LAMP = registerBlock("lime_lamp", createLampBlock(MapColor.LIME));
-    public static final Block PINK_LAMP = registerBlock("pink_lamp", createLampBlock(MapColor.PINK));
-    public static final Block GRAY_LAMP = registerBlock("gray_lamp",  createLampBlock(MapColor.GRAY));
-    public static final Block LIGHT_GRAY_LAMP = registerBlock("light_gray_lamp", createLampBlock(MapColor.LIGHT_GRAY));
-    public static final Block CYAN_LAMP = registerBlock("cyan_lamp", createLampBlock(MapColor.CYAN));
-    public static final Block PURPLE_LAMP = registerBlock("purple_lamp", createLampBlock(MapColor.PURPLE));
-    public static final Block BLUE_LAMP = registerBlock("blue_lamp", createLampBlock(MapColor.BLUE));
-    public static final Block BROWN_LAMP = registerBlock("brown_lamp", createLampBlock(MapColor.BROWN));
-    public static final Block GREEN_LAMP = registerBlock("green_lamp", createLampBlock(MapColor.GREEN));
-    public static final Block RED_LAMP = registerBlock("red_lamp", createLampBlock(MapColor.RED));
-    public static final Block BLACK_LAMP = registerBlock("black_lamp", createLampBlock(MapColor.BLACK));
-
-    public static final Block MANGROVE_LAMP = registerBlock("mangrove_lamp",
-            createLampBlock(MapColor.DULL_RED));
+    public static final Block OAK_LAMP = registerBlock("oak_lamp", createColorLampBlock());
+//    public static final Block MANGROVE_LAMP = registerBlock("mangrove_lamp",
+//            createLampBlock(MapColor.DULL_RED));
     public static final Block MANGROVE_LANTERN = registerBlock("mangrove_lantern",
             new MangroveLanternBlock(AbstractBlock.Settings.create()
                     .luminance(createLightLevelFromLitBlockState(9))

@@ -4,6 +4,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.luckystudio.cozyhome.block.ModBlocks;
@@ -39,23 +40,25 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.CRIMSON_CHAIR,
                 ModBlocks.WARPED_CHAIR,
 
-                ModBlocks.WHITE_LAMP,
-                ModBlocks.ORANGE_LAMP,
-                ModBlocks.MAGENTA_LAMP,
-                ModBlocks.LIGHT_BLUE_LAMP,
-                ModBlocks.YELLOW_LAMP,
-                ModBlocks.LIME_LAMP,
-                ModBlocks.PINK_LAMP,
-                ModBlocks.GRAY_LAMP,
-                ModBlocks.LIGHT_GRAY_LAMP,
-                ModBlocks.CYAN_LAMP,
-                ModBlocks.PURPLE_LAMP,
-                ModBlocks.BLUE_LAMP,
-                ModBlocks.BROWN_LAMP,
-                ModBlocks.GREEN_LAMP,
-                ModBlocks.RED_LAMP,
-                ModBlocks.BLACK_LAMP,
-                ModBlocks.MANGROVE_LAMP,
+//                ModBlocks.WHITE_LAMP,
+//                ModBlocks.ORANGE_LAMP,
+//                ModBlocks.MAGENTA_LAMP,
+//                ModBlocks.LIGHT_BLUE_LAMP,
+//                ModBlocks.YELLOW_LAMP,
+//                ModBlocks.LIME_LAMP,
+//                ModBlocks.PINK_LAMP,
+//                ModBlocks.GRAY_LAMP,
+//                ModBlocks.LIGHT_GRAY_LAMP,
+//                ModBlocks.CYAN_LAMP,
+//                ModBlocks.PURPLE_LAMP,
+//                ModBlocks.BLUE_LAMP,
+//                ModBlocks.BROWN_LAMP,
+//                ModBlocks.GREEN_LAMP,
+//                ModBlocks.RED_LAMP,
+//                ModBlocks.BLACK_LAMP,
+//                ModBlocks.MANGROVE_LAMP,
+                ModBlocks.OAK_LAMP,
+
                 ModBlocks.MANGROVE_LANTERN,
 
                 ModBlocks.WHITE_SOFA,
@@ -110,12 +113,15 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.CHERRY_WALL_MIRROR,
                 ModBlocks.BAMBOO_WALL_MIRROR,
                 ModBlocks.CRIMSON_WALL_MIRROR,
-                ModBlocks.WARPED_WALL_MIRROR
+                ModBlocks.WARPED_WALL_MIRROR,
+                ModBlocks.DYE_VAT
         );
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
                 ModBlocks.AUTUMN_STAINED_WINDOW,
                 ModBlocks.AUTUMN_STAINED_WINDOW_PANE
         );
+        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && view.getBlockEntityRenderData(pos) instanceof Integer integer ? integer : 0x3495eb, ModBlocks.DYE_VAT);
+        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && view.getBlockEntityRenderData(pos) instanceof Integer integer ? integer : 0x3495eb, ModBlocks.OAK_LAMP);
     }
 }

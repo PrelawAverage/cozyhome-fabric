@@ -16,9 +16,11 @@ public class ModItemGroups {
             Registry.register(Registries.ITEM_GROUP,
             Identifier.of(CozyHome.MOD_ID, "cozyhome"),
             FabricItemGroup.builder()
-                    .icon(() -> new ItemStack(ModBlocks.RED_LAMP))
+                    .icon(() -> new ItemStack(ModBlocks.OAK_LAMP))
                     .displayName(Text.translatable("itemgroup.cozyhome.cozyhome"))
                     .entries((displayContext, entries) -> {
+
+                        entries.add(ModBlocks.DYE_VAT);
                         // Planked Walls
                         entries.add(ModBlocks.OAK_PLANKED_WALL);
                         entries.add(ModBlocks.SPRUCE_PLANKED_WALL);
@@ -72,22 +74,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.WARPED_CHAIR);
 
                         // Lamps
-                        entries.add(ModBlocks.WHITE_LAMP);
-                        entries.add(ModBlocks.ORANGE_LAMP);
-                        entries.add(ModBlocks.MAGENTA_LAMP);
-                        entries.add(ModBlocks.LIGHT_BLUE_LAMP);
-                        entries.add(ModBlocks.YELLOW_LAMP);
-                        entries.add(ModBlocks.LIME_LAMP);
-                        entries.add(ModBlocks.PINK_LAMP);
-                        entries.add(ModBlocks.GRAY_LAMP);
-                        entries.add(ModBlocks.LIGHT_GRAY_LAMP);
-                        entries.add(ModBlocks.CYAN_LAMP);
-                        entries.add(ModBlocks.PURPLE_LAMP);
-                        entries.add(ModBlocks.BLUE_LAMP);
-                        entries.add(ModBlocks.BROWN_LAMP);
-                        entries.add(ModBlocks.GREEN_LAMP);
-                        entries.add(ModBlocks.RED_LAMP);
-                        entries.add(ModBlocks.BLACK_LAMP);
+                        entries.add(ModBlocks.OAK_LAMP);
 
                         // Sofas
                         entries.add(ModBlocks.WHITE_SOFA);
@@ -108,7 +95,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.BLACK_SOFA);
 
                         // Specials (Mangrove)
-                        entries.add(ModBlocks.MANGROVE_LAMP);
+//                        entries.add(ModBlocks.MANGROVE_LAMP);
                         entries.add(ModBlocks.MANGROVE_LANTERN);
                         entries.add(ModBlocks.MANGROVE_ZAISU);
 

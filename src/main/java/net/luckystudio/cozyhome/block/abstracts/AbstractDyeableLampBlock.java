@@ -1,22 +1,29 @@
-package net.luckystudio.cozyhome.block.type;
+package net.luckystudio.cozyhome.block.abstracts;
 
 import com.mojang.serialization.MapCodec;
+import net.luckystudio.cozyhome.block.entity.DyeableBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.blockstates.LinearConnectionBlock;
 import net.luckystudio.cozyhome.sound.ModSounds;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.DyeItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.IntProperty;
+import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.RotationPropertyHelper;
 import net.minecraft.util.shape.VoxelShape;
@@ -27,10 +34,13 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
-public class LampBlock extends Block {
-    public static final MapCodec<LampBlock> CODEC = createCodec(LampBlock::new);
+import java.util.List;
+
+public class AbstractDyeableLampBlock extends BlockWithEntity {
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
+    public static final IntProperty OMNI_ROTATION = ModProperties.OMNI_ROTATION;
     public static final EnumProperty<LinearConnectionBlock> STACKABLE_BLOCK = ModProperties.LINEAR_CONNECTION_BLOCK;
+
     protected static final VoxelShape SINGLE = Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 14.0, 13.0);
     protected static final VoxelShape POLE = Block.createCuboidShape(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
     protected static final VoxelShape BASE = VoxelShapes.union(
@@ -39,13 +49,23 @@ public class LampBlock extends Block {
     protected static final VoxelShape HEAD = VoxelShapes.union(
             Block.createCuboidShape(3.0, 4.0, 3.0, 13.0, 14.0, 13.0),
             Block.createCuboidShape(6,0,6,10,4,10));
-    public static final IntProperty OMNI_ROTATION = ModProperties.OMNI_ROTATION;
-    public LampBlock(Settings settings) {
+
+    public AbstractDyeableLampBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.getDefaultState()
                 .with(LIT, Boolean.FALSE)
                 .with(OMNI_ROTATION, 0)
                 .with(STACKABLE_BLOCK, LinearConnectionBlock.SINGLE));
+    }
+
+    @Override
+    protected MapCodec<? extends AbstractDyeableLampBlock> getCodec() {
+        return createCodec(AbstractDyeableLampBlock::new);
+    }
+
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(LIT, OMNI_ROTATION, STACKABLE_BLOCK);
     }
 
     @Override
@@ -58,16 +78,6 @@ public class LampBlock extends Block {
         };
     }
 
-    @Override
-    public MapCodec<LampBlock> getCodec() {
-        return CODEC;
-    }
-
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(LIT, OMNI_ROTATION, STACKABLE_BLOCK);
-    }
-
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
@@ -78,29 +88,50 @@ public class LampBlock extends Block {
                 .with(STACKABLE_BLOCK, LinearConnectionBlock.SINGLE);
     }
 
+    @Nullable
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new DyeableBlockEntity(pos, state);
+    }
+
+    @Override
+    protected BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
+
+    // Change color
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        LinearConnectionBlock type = state.get(STACKABLE_BLOCK);
-        boolean isLightEmittingBlock = type == LinearConnectionBlock.HEAD || type == LinearConnectionBlock.SINGLE;
-        if (world.isClient) {
-            if (canStackInstead(isLightEmittingBlock, stack, state, hit)) {
-                return ItemActionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
-            } else if (isLightEmittingBlock) {
-                {
-                    return ItemActionResult.SUCCESS;
+            LinearConnectionBlock type = state.get(STACKABLE_BLOCK);
+            boolean isLightEmittingBlock = type == LinearConnectionBlock.HEAD || type == LinearConnectionBlock.SINGLE;
+            if (world.isClient) {
+                if (canStackInstead(isLightEmittingBlock, stack, state, hit)) {
+                    return ItemActionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+                } else if (isLightEmittingBlock) {
+                    {
+                        return ItemActionResult.SUCCESS;
+                    }
+                }
+            } else {
+                if (stack.getItem() instanceof DyeItem dyeItem) {
+                    if (world.getBlockEntity(pos) instanceof DyeableBlockEntity colorBlockEntity) {
+                        final int newColor = dyeItem.getColor().getEntityColor();
+                        final int originalColor = colorBlockEntity.water_color;
+                        colorBlockEntity.water_color = ColorHelper.Argb.averageArgb(newColor, originalColor);
+                        stack.decrementUnlessCreative(1, player);
+                        colorBlockEntity.markDirty();
+                        world.updateListeners(pos, state, state, 0);
+                    }
+                } else if (canStackInstead(isLightEmittingBlock, stack, state, hit)) {
+                    return ItemActionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+                } else if (isLightEmittingBlock) {
+                    {
+                        this.toggleLight(state, world, pos, null);
+                        return ItemActionResult.SUCCESS;
+                    }
                 }
             }
-        } else {
-            if (canStackInstead(isLightEmittingBlock, stack, state, hit)) {
-                return ItemActionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
-            } else if (isLightEmittingBlock) {
-                 {
-                    this.toggleLight(state, world, pos, null);
-                    return ItemActionResult.SUCCESS;
-                 }
-            }
-        }
-        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     private boolean canStackInstead(boolean isLightEmittingBlock, ItemStack stack,  BlockState state, BlockHitResult hit) {
@@ -173,5 +204,13 @@ public class LampBlock extends Block {
         if (above) return LinearConnectionBlock.TAIL;
         if (below) return LinearConnectionBlock.HEAD;
         return LinearConnectionBlock.SINGLE;
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
+        // Our tool tip
+        tooltip.add(Text.translatable("tooltip.cozyhome.block.dyeable"));
+        // Always add this because we also want other tooltips to render too like item group and other modded tooltips
+        super.appendTooltip(stack, context, tooltip, options);
     }
 }
