@@ -1,17 +1,13 @@
 package net.luckystudio.cozyhome;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.luckystudio.cozyhome.block.ModBlocks;
-import net.luckystudio.cozyhome.block.test.GenericChairBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModBurnableBlocks;
 import net.luckystudio.cozyhome.item.ModFuels;
 import net.luckystudio.cozyhome.item.ModItemGroups;
 import net.luckystudio.cozyhome.item.ModItems;
 import net.luckystudio.cozyhome.sound.ModSounds;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
