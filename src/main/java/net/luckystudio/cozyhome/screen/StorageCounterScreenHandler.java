@@ -24,13 +24,17 @@ public class StorageCounterScreenHandler extends ScreenHandler {
 
         int m;
         int l;
+        int left_padding = 8;
+
         // Our inventory
         for (m = 0; m < 3; ++m) {
-            for (l = 0; l < 9; ++l) {
-                // To skip middle column
-                if (l == 4) continue;
+            for (l = 0; l < 8; ++l) {
+                // after the 4th slot the slots are shifted to the right by one slot
+                int x = l <= 3 ? left_padding + l * 18 : (left_padding + 18) + l * 18;
+                int y = 17 + m * 18;
+
                 // x is left and right, y is up and down
-                this.addSlot(new Slot(inventory, l + m * 9, 8 + l * 18, 17 + m * 18));
+                this.addSlot(new Slot(inventory, l + m * 8, x, y));
             }
         }
         // The player inventory
