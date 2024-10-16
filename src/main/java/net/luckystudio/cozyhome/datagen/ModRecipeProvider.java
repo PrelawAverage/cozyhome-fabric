@@ -31,17 +31,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(input), conditionsFromItem(input))
                 .offerTo(exporter);
     }
-    public static void offerLampRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input1) {
-        ShapedRecipeJsonBuilder.create(
-                        RecipeCategory.BUILDING_BLOCKS,
-                        output, 1)
-                .pattern("@")
-                .pattern("#")
-                .input('@', input1)
-                .input('#', Items.LANTERN)
-                .criterion(hasItem(Items.LANTERN), conditionsFromItem(Items.LANTERN))
-                .offerTo(exporter);
-    }
 
     public static void offerCounterRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2) {
         ShapedRecipeJsonBuilder.create(
@@ -139,22 +128,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerStorageCounterRecipe(exporter, ModBlocks.WARPED_STORAGE_COUNTER, Blocks.WARPED_WART_BLOCK, Blocks.WARPED_PLANKS, Blocks.CHEST);
 
         // Lamps
-        offerLampRecipe(exporter, ModBlocks.WHITE_LAMP, Items.RED_WOOL);
-        offerLampRecipe(exporter, ModBlocks.ORANGE_LAMP, Items.ORANGE_WOOL);
-        offerLampRecipe(exporter, ModBlocks.MAGENTA_LAMP, Items.MAGENTA_WOOL);
-        offerLampRecipe(exporter, ModBlocks.LIGHT_BLUE_LAMP, Items.LIGHT_BLUE_WOOL);
-        offerLampRecipe(exporter, ModBlocks.YELLOW_LAMP, Items.YELLOW_WOOL);
-        offerLampRecipe(exporter, ModBlocks.LIME_LAMP, Items.LIME_WOOL);
-        offerLampRecipe(exporter, ModBlocks.PINK_LAMP, Items.PINK_WOOL);
-        offerLampRecipe(exporter, ModBlocks.GRAY_LAMP, Items.GRAY_WOOL);
-        offerLampRecipe(exporter, ModBlocks.LIGHT_GRAY_LAMP, Items.LIGHT_GRAY_WOOL);
-        offerLampRecipe(exporter, ModBlocks.CYAN_LAMP, Items.CYAN_WOOL);
-        offerLampRecipe(exporter, ModBlocks.PURPLE_LAMP, Items.PURPLE_WOOL);
-        offerLampRecipe(exporter, ModBlocks.BLUE_LAMP, Items.BLUE_WOOL);
-        offerLampRecipe(exporter, ModBlocks.BROWN_LAMP, Items.BROWN_WOOL);
-        offerLampRecipe(exporter, ModBlocks.GREEN_LAMP, Items.GREEN_WOOL);
-        offerLampRecipe(exporter, ModBlocks.RED_LAMP, Items.RED_WOOL);
-        offerLampRecipe(exporter, ModBlocks.BLACK_LAMP, Items.BLACK_WOOL);
+
 
         // Wall Mirrors
         offerWallMirrorRecipe(exporter, ModBlocks.OAK_WALL_MIRROR, Blocks.GLASS ,Blocks.OAK_PLANKS);

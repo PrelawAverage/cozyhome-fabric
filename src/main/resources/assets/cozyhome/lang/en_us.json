@@ -1,6 +1,8 @@
 {
   "itemgroup.cozyhome.cozyhome": "Cozy Home",
 
+  "block.cozyhome.dye_vat": "Dye Vat",
+
   "block.cozyhome.oak_planked_wall": "Oak Planked Wall",
   "block.cozyhome.spruce_planked_wall": "Spruce Planked Wall",
   "block.cozyhome.birch_planked_wall": "Birch Planked Wall",
@@ -60,6 +62,8 @@
   "block.cozyhome.black_lamp": "Black Lamp",
   "block.cozyhome.mangrove_lamp": "Mangrove Lamp",
 
+  "block.cozyhome.oak_lamp": "Oak Lamp",
+
   "block.cozyhome.mangrove_lantern": "Mangrove Lantern",
 
   "block.cozyhome.white_sofa": "White Sofa",
@@ -106,6 +110,7 @@
   "block.cozyhome.crimson_wall_mirror": "Warped Wall Mirror",
 
   "tooltip.cozyhome.block.planked_wall": "§7Stackable",
+  "tooltip.cozyhome.block.dyeable": "§7Dyeable",
 
   "sounds.cozyhome.lamp_toggle": "Lamp Toggled",
   "sounds.cozyhome.fireplace_loop": "Fireplace Crackles",

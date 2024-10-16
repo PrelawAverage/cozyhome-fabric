@@ -55,22 +55,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.WARPED_STORAGE_COUNTER);
 
         // Lamps
-        addDrop(ModBlocks.WHITE_LAMP);
-        addDrop(ModBlocks.ORANGE_LAMP);
-        addDrop(ModBlocks.MAGENTA_LAMP);
-        addDrop(ModBlocks.LIGHT_BLUE_LAMP);
-        addDrop(ModBlocks.YELLOW_LAMP);
-        addDrop(ModBlocks.LIME_LAMP);
-        addDrop(ModBlocks.PINK_LAMP);
-        addDrop(ModBlocks.GRAY_LAMP);
-        addDrop(ModBlocks.LIGHT_GRAY_LAMP);
-        addDrop(ModBlocks.CYAN_LAMP);
-        addDrop(ModBlocks.PURPLE_LAMP);
-        addDrop(ModBlocks.BLUE_LAMP);
-        addDrop(ModBlocks.BROWN_LAMP);
-        addDrop(ModBlocks.GREEN_LAMP);
-        addDrop(ModBlocks.RED_LAMP);
-        addDrop(ModBlocks.BLACK_LAMP);
+        addDrop(ModBlocks.OAK_LAMP);
+
 
         // Sofas
         addDrop(ModBlocks.WHITE_SOFA);

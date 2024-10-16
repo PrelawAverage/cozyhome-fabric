@@ -50,7 +50,9 @@ public class PlankedWallBlock extends PillarBlock {
 
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
+        // Our tool tip
         tooltip.add(Text.translatable("tooltip.cozyhome.block.planked_wall"));
+        // Always add this because we also want other tooltips to render too like item group and other modded tooltips
         super.appendTooltip(stack, context, tooltip, options);
     }
 

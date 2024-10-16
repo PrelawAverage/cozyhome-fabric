@@ -1,0 +1,94 @@
+{
+  "variants": {
+    "facing=east,filled_level=0": {
+      "model": "cozyhome:block/dye_vat/dye_vat",
+      "y": 270
+    },
+    "facing=north,filled_level=0": {
+      "model": "cozyhome:block/dye_vat/dye_vat",
+      "y": 180
+    },
+    "facing=south,filled_level=0": {
+      "model": "cozyhome:block/dye_vat/dye_vat"
+    },
+    "facing=west,filled_level=0": {
+      "model": "cozyhome:block/dye_vat/dye_vat",
+      "y": 90
+    },
+    "facing=east,filled_level=1": {
+      "model": "cozyhome:block/dye_vat/dye_vat_1",
+      "y": 270
+    },
+    "facing=north,filled_level=1": {
+      "model": "cozyhome:block/dye_vat/dye_vat_1",
+      "y": 180
+    },
+    "facing=south,filled_level=1": {
+      "model": "cozyhome:block/dye_vat/dye_vat_1"
+    },
+    "facing=west,filled_level=1": {
+      "model": "cozyhome:block/dye_vat/dye_vat_1",
+      "y": 90
+    },
+    "facing=east,filled_level=2": {
+      "model": "cozyhome:block/dye_vat/dye_vat_2",
+      "y": 270
+    },
+    "facing=north,filled_level=2": {
+      "model": "cozyhome:block/dye_vat/dye_vat_2",
+      "y": 180
+    },
+    "facing=south,filled_level=2": {
+      "model": "cozyhome:block/dye_vat/dye_vat_2"
+    },
+    "facing=west,filled_level=2": {
+      "model": "cozyhome:block/dye_vat/dye_vat_2",
+      "y": 90
+    },
+    "facing=east,filled_level=3": {
+      "model": "cozyhome:block/dye_vat/dye_vat_3",
+      "y": 270
+    },
+    "facing=north,filled_level=3": {
+      "model": "cozyhome:block/dye_vat/dye_vat_3",
+      "y": 180
+    },
+    "facing=south,filled_level=3": {
+      "model": "cozyhome:block/dye_vat/dye_vat_3"
+    },
+    "facing=west,filled_level=3": {
+      "model": "cozyhome:block/dye_vat/dye_vat_3",
+      "y": 90
+    },
+    "facing=east,filled_level=4": {
+      "model": "cozyhome:block/dye_vat/dye_vat_4",
+      "y": 270
+    },
+    "facing=north,filled_level=4": {
+      "model": "cozyhome:block/dye_vat/dye_vat_4",
+      "y": 180
+    },
+    "facing=south,filled_level=4": {
+      "model": "cozyhome:block/dye_vat/dye_vat_4"
+    },
+    "facing=west,filled_level=4": {
+      "model": "cozyhome:block/dye_vat/dye_vat_4",
+      "y": 90
+    },
+    "facing=east,filled_level=5": {
+      "model": "cozyhome:block/dye_vat/dye_vat_5",
+      "y": 270
+    },
+    "facing=north,filled_level=5": {
+      "model": "cozyhome:block/dye_vat/dye_vat_5",
+      "y": 180
+    },
+    "facing=south,filled_level=5": {
+      "model": "cozyhome:block/dye_vat/dye_vat_5"
+    },
+    "facing=west,filled_level=5": {
+      "model": "cozyhome:block/dye_vat/dye_vat_5",
+      "y": 90
+    }
+  }
+}

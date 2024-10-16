@@ -34,7 +34,6 @@ public class StorageCounterBlock extends BlockWithEntity implements BlockEntityP
             instance -> instance.group(BlockState.CODEC.fieldOf("base_state").forGetter(block -> block.blockState), createSettingsCodec())
                     .apply(instance, StorageCounterBlock::new)
     );
-    private static final Text SCREEN_TITLE = Text.translatable("container.counter");
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final BooleanProperty OPEN = Properties.OPEN;
 
@@ -60,7 +59,6 @@ public class StorageCounterBlock extends BlockWithEntity implements BlockEntityP
                 .getDefaultState()
                 .with(FACING, Direction.NORTH)
                 .with(OPEN, Boolean.FALSE));
-
         this.blockState = state;
     }
 
