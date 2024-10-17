@@ -1,5 +1,5 @@
-// 1.21	2024-10-16T19:30:29.5283237	Cozy Home/Tags for minecraft:block
+// 1.21	2024-10-16T23:48:05.6004428	Cozy Home/Tags for minecraft:block
 d40dfa6b480f24eabdaa3c8486f0a482aaac73c7 data\cozyhome\tags\block\tuckable.json
 4fa4f3ecbb9bcd0639b458de3c75eaa758cab992 data\minecraft\tags\block\mineable\axe.json
 e6b2eb64460072c08bbce28c98d29efe7047c1b1 data\minecraft\tags\block\mineable\pickaxe.json
-e4f78832395e8ea13c5e52aa44c1f5045ea944c0 data\cozyhome\tags\block\tuckable_directional.json
+a25ea38aba7377f87cd79ffa56429fc7120dd063 data\cozyhome\tags\block\dyeable.json

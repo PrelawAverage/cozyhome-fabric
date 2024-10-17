@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.luckystudio.cozyhome.block.ModBlocks;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
@@ -62,7 +63,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.WARPED_STORAGE_COUNTER);
 
         // Lamps
-        dyeableDrop(ModBlocks.OAK_LAMP);
 
         // Sofas
         addDrop(ModBlocks.WHITE_SOFA);

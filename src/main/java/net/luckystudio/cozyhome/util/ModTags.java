@@ -14,7 +14,7 @@ public class ModTags {
     public static class Blocks {
 
         public static final TagKey<Block> TUCKABLE = createTag("tuckable");
-        public static final TagKey<Block> TUCKABLE_DIRECTIONAL = createTag("tuckable_directional");
+        public static final TagKey<Block> DYEABLE = createTag("dyeable");
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, Identifier.of(CozyHome.MOD_ID, name));
@@ -22,8 +22,6 @@ public class ModTags {
     }
 
     public static class Items {
-
-        public static final TagKey<Item> LAMPS = createTag("lamps");
 
         private static TagKey<Item> createTag(String name) {
             return  TagKey.of(RegistryKeys.ITEM, Identifier.of(CozyHome.MOD_ID, name));

@@ -1,6 +1,8 @@
 package net.luckystudio.cozyhome.block.abstracts;
 
 import com.mojang.serialization.MapCodec;
+import net.luckystudio.cozyhome.block.ModBlockEntities;
+import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.entity.DyeableBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.LinearConnectionBlock;
@@ -8,11 +10,18 @@ import net.luckystudio.cozyhome.sound.ModSounds;
 import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.entity.ShulkerBoxBlockEntity;
+import net.minecraft.component.ComponentMap;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;
+import net.minecraft.loot.context.LootContextParameterSet;
+import net.minecraft.loot.context.LootContextParameters;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -20,6 +29,7 @@ import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -31,12 +41,13 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class AbstractDyeableLampBlock extends BlockWithEntity {
+public class AbstractDyeableLampBlock extends AbstractDyeableBlock {
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
     public static final IntProperty OMNI_ROTATION = ModProperties.OMNI_ROTATION;
     public static final EnumProperty<LinearConnectionBlock> STACKABLE_BLOCK = ModProperties.LINEAR_CONNECTION_BLOCK;
@@ -115,8 +126,11 @@ public class AbstractDyeableLampBlock extends BlockWithEntity {
             } else {
                 if (stack.getItem() instanceof DyeItem dyeItem) {
                     if (world.getBlockEntity(pos) instanceof DyeableBlockEntity colorBlockEntity) {
+                        // Getting New color
                         final int newColor = dyeItem.getColor().getEntityColor();
+                        // Getting Old Color
                         final int originalColor = colorBlockEntity.color;
+                        // Setting the Color to the average of both
                         colorBlockEntity.color = ColorHelper.Argb.averageArgb(newColor, originalColor);
                         stack.decrementUnlessCreative(1, player);
                         colorBlockEntity.markDirty();
@@ -207,25 +221,20 @@ public class AbstractDyeableLampBlock extends BlockWithEntity {
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
-        NbtComponent component = stack.get(DataComponentTypes.BLOCK_ENTITY_DATA);
-        // Our tool tip
-        if (component != null) {
-            if (component.contains("color")) {
-                tooltip.add(Text.translatable("tooltip.cozyhome.block.dyed").withColor(ModColorHandler.getItemColor(stack)));
-            }
-        } else {
-            tooltip.add(Text.translatable("tooltip.cozyhome.block.dyeable"));
-        }
-        // Always add this because we also want other tooltips to render too like item group and other modded tooltips
-        super.appendTooltip(stack, context, tooltip, options);
+    public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
+        ItemStack itemStack = super.getPickStack(world, pos, state);
+        world.getBlockEntity(pos, ModBlockEntities.COLOR_LAMP_BLOCK_ENTITY).ifPresent(blockEntity -> blockEntity.setStackNbt(itemStack, world.getRegistryManager()));
+        return itemStack;
     }
 
     @Override
     public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-//        ItemConvertible itemConvertible = state.getBlock().asItem();
-//        ItemEntity itemEntity = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModBlocks.OAK_LAMP.asItem()).copyComponentsToNewStack(itemConvertible, 10));
-//        world.spawnEntity(itemEntity);
+        if (!player.isCreative()) {
+            ItemStack itemStack = super.getPickStack(world, pos, state);
+            world.getBlockEntity(pos, ModBlockEntities.COLOR_LAMP_BLOCK_ENTITY).ifPresent(blockEntity -> blockEntity.setStackNbt(itemStack, world.getRegistryManager()));
+            ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, itemStack);
+            world.spawnEntity(itemEntity);
+        }
         return super.onBreak(world, pos, state, player);
     }
 }

@@ -18,11 +18,13 @@ public class MobBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
 
+        getOrCreateTagBuilder(ModTags.Blocks.DYEABLE)
+                .add(ModBlocks.OAK_LAMP)
+                .add(Blocks.SCAFFOLDING);
+
         getOrCreateTagBuilder(ModTags.Blocks.TUCKABLE)
                 .add(Blocks.AIR)
                 .add(Blocks.SCAFFOLDING);
-        getOrCreateTagBuilder(ModTags.Blocks.TUCKABLE_DIRECTIONAL)
-                .add(ModBlocks.DARK_OAK_PLANKED_WALL);
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 // Adding Planked Walls

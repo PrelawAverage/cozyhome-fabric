@@ -2,8 +2,11 @@ package net.luckystudio.cozyhome.block.type;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.luckystudio.cozyhome.block.abstracts.AbstractDyeableBlock;
+import net.luckystudio.cozyhome.block.abstracts.AbstractDyeableLampBlock;
 import net.luckystudio.cozyhome.block.entity.DyeVatBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModProperties;
+import net.luckystudio.cozyhome.util.ModTags;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -88,6 +91,8 @@ public class DyeVatBlock extends BlockWithEntity {
 
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        Block getBlock = Block.getBlockFromItem(stack.getItem());
+        BlockState blockState = getBlock.getDefaultState();
         if (stack.getItem() instanceof DyeItem dyeItem) {
             if (world.getBlockEntity(pos) instanceof DyeVatBlockEntity colorBlockEntity) {
                 final int newColor = dyeItem.getColor().getEntityColor();
@@ -97,6 +102,8 @@ public class DyeVatBlock extends BlockWithEntity {
                 colorBlockEntity.markDirty();
                 world.updateListeners(pos, state, state, 0);
             }
+        } else if (blockState.isIn(ModTags.Blocks.DYEABLE)) {
+            System.out.println("Dyed");
         }
         return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
