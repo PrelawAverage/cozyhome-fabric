@@ -79,21 +79,6 @@ public class ModItemGroups {
 
                         // Sofas
                         entries.add(ModBlocks.WHITE_SOFA);
-                        entries.add(ModBlocks.ORANGE_SOFA);
-                        entries.add(ModBlocks.MAGENTA_SOFA);
-                        entries.add(ModBlocks.LIGHT_BLUE_SOFA);
-                        entries.add(ModBlocks.YELLOW_SOFA);
-                        entries.add(ModBlocks.LIME_SOFA);
-                        entries.add(ModBlocks.PINK_SOFA);
-                        entries.add(ModBlocks.GRAY_SOFA);
-                        entries.add(ModBlocks.LIGHT_GRAY_SOFA);
-                        entries.add(ModBlocks.CYAN_SOFA);
-                        entries.add(ModBlocks.PURPLE_SOFA);
-                        entries.add(ModBlocks.BLUE_SOFA);
-                        entries.add(ModBlocks.BROWN_SOFA);
-                        entries.add(ModBlocks.GREEN_SOFA);
-                        entries.add(ModBlocks.RED_SOFA);
-                        entries.add(ModBlocks.BLACK_SOFA);
 
                         // Specials (Mangrove)
 //                        entries.add(ModBlocks.MANGROVE_LAMP);

@@ -66,21 +66,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
         // Sofas
         addDrop(ModBlocks.WHITE_SOFA);
-        addDrop(ModBlocks.ORANGE_SOFA);
-        addDrop(ModBlocks.MAGENTA_SOFA);
-        addDrop(ModBlocks.LIGHT_BLUE_SOFA);
-        addDrop(ModBlocks.YELLOW_SOFA);
-        addDrop(ModBlocks.LIME_SOFA);
-        addDrop(ModBlocks.PINK_SOFA);
-        addDrop(ModBlocks.GRAY_SOFA);
-        addDrop(ModBlocks.LIGHT_GRAY_SOFA);
-        addDrop(ModBlocks.CYAN_SOFA);
-        addDrop(ModBlocks.PURPLE_SOFA);
-        addDrop(ModBlocks.BLUE_SOFA);
-        addDrop(ModBlocks.BROWN_SOFA);
-        addDrop(ModBlocks.GREEN_SOFA);
-        addDrop(ModBlocks.RED_SOFA);
-        addDrop(ModBlocks.BLACK_SOFA);
 
         // Wall Mirrors
         addDrop(ModBlocks.OAK_WALL_MIRROR);

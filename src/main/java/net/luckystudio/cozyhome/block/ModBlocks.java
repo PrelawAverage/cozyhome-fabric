@@ -171,21 +171,6 @@ private static Block createColorLampBlock() {
 
     // Sofas
     public static final Block WHITE_SOFA = registerBlock("white_sofa", createSofaBlock(MapColor.WHITE));
-    public static final Block ORANGE_SOFA = registerBlock("orange_sofa", createSofaBlock(MapColor.ORANGE));
-    public static final Block MAGENTA_SOFA = registerBlock("magenta_sofa", createSofaBlock(MapColor.MAGENTA));
-    public static final Block LIGHT_BLUE_SOFA = registerBlock("light_blue_sofa", createSofaBlock(MapColor.LIGHT_BLUE));
-    public static final Block YELLOW_SOFA = registerBlock("yellow_sofa", createSofaBlock(MapColor.YELLOW));
-    public static final Block LIME_SOFA = registerBlock("lime_sofa", createSofaBlock(MapColor.LIME));
-    public static final Block PINK_SOFA = registerBlock("pink_sofa", createSofaBlock(MapColor.PINK));
-    public static final Block GRAY_SOFA = registerBlock("gray_sofa",  createSofaBlock(MapColor.GRAY));
-    public static final Block LIGHT_GRAY_SOFA = registerBlock("light_gray_sofa", createSofaBlock(MapColor.LIGHT_GRAY));
-    public static final Block CYAN_SOFA = registerBlock("cyan_sofa", createSofaBlock(MapColor.CYAN));
-    public static final Block PURPLE_SOFA = registerBlock("purple_sofa", createSofaBlock(MapColor.PURPLE));
-    public static final Block BLUE_SOFA = registerBlock("blue_sofa", createSofaBlock(MapColor.BLUE));
-    public static final Block BROWN_SOFA = registerBlock("brown_sofa", createSofaBlock(MapColor.BROWN));
-    public static final Block GREEN_SOFA = registerBlock("green_sofa", createSofaBlock(MapColor.GREEN));
-    public static final Block RED_SOFA = registerBlock("red_sofa", createSofaBlock(MapColor.RED));
-    public static final Block BLACK_SOFA = registerBlock("black_sofa", createSofaBlock(MapColor.BLACK));
 
     // Wall Mirrors
     public static final Block OAK_WALL_MIRROR = registerBlock("oak_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
