@@ -7,7 +7,7 @@
 		"3": "cozyhome:block/dye_vat/dye_vat_inside_side",
 		"4": "cozyhome:block/dye_vat/dye_vat_inside_top",
 		"5": "cozyhome:block/dye_vat/dye_vat_faucet",
-		"6": "block/water_still",
+		"6": "cozyhome:block/dye_vat/content_still",
 		"particle": "cozyhome:block/dye_vat/dye_vat_bottom"
 	},
 	"elements": [
