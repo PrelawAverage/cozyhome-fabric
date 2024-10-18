@@ -1,6 +1,6 @@
 package net.luckystudio.cozyhome.block.util.interfaces;
 
-import net.luckystudio.cozyhome.block.abstracts.AbstractTuckableBlock;
+import net.luckystudio.cozyhome.block.type.DyeableChairBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.util.ModTags;
 import net.minecraft.block.BlockState;
@@ -10,6 +10,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.RotationPropertyHelper;
@@ -21,23 +22,22 @@ public interface TuckableBlock {
     BooleanProperty TUCKED = ModProperties.TUCKED;
 
     // This is where we try and tuck the block in.
-    static ActionResult tryTuck(BlockState state, World world, BlockPos pos, PlayerEntity player) {
+    static ItemActionResult tryTuck(BlockState state, World world, BlockPos pos, PlayerEntity player) {
         if (isFacingDirection(state,world,pos)) {
             if (state.get(TUCKED)) {
                 world.setBlockState(pos, state.with(TUCKED, false), 3);
                 playMoveSound(player, world, pos, state);
-                return ActionResult.SUCCESS;
+                return ItemActionResult.SUCCESS;
             }
-            System.out.println("RAN");
             boolean isTuckable = player.isSneaking() && !isBlockedFromTucking(state, world, pos) && canTuckUnderBlockInfront(state, world, pos);
 
             if (isTuckable) {
                 world.setBlockState(pos, state.with(TUCKED, true));
                 playMoveSound(player, world, pos, state);
-                return ActionResult.SUCCESS;
+                return ItemActionResult.SUCCESS;
             }
         }
-        return ActionResult.PASS;
+        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     static boolean canTuckUnderBlockInfront(BlockState state, World world, BlockPos pos) {
@@ -51,11 +51,11 @@ public interface TuckableBlock {
         BlockState left = world.getBlockState(pos.offset(facing).offset(facing.rotateCounterclockwise(Direction.Axis.Y)));
         BlockState right = world.getBlockState(pos.offset(facing).offset(facing.rotateClockwise(Direction.Axis.Y)));
 
-        if (left.getBlock() instanceof AbstractTuckableBlock) {
+        if (left.getBlock() instanceof DyeableChairBlock) {
             Direction leftDir = direction(left);
             return left.get(TUCKED) && leftDir == facing.rotateClockwise(Direction.Axis.Y);
         }
-        if (right.getBlock() instanceof AbstractTuckableBlock) {
+        if (right.getBlock() instanceof DyeableChairBlock) {
             Direction rightDir = direction(left);
             return right.get(TUCKED) && rightDir == facing.rotateCounterclockwise(Direction.Axis.Y);
         }

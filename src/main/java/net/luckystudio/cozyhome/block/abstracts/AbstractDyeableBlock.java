@@ -3,9 +3,6 @@ package net.luckystudio.cozyhome.block.abstracts;
 import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.ModBlockEntities;
 import net.luckystudio.cozyhome.block.entity.DyeableBlockEntity;
-import net.luckystudio.cozyhome.block.util.ModProperties;
-import net.luckystudio.cozyhome.block.util.enums.LinearConnectionBlock;
-import net.luckystudio.cozyhome.sound.ModSounds;
 import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -14,35 +11,21 @@ import net.minecraft.component.type.NbtComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DyeItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.EnumProperty;
-import net.minecraft.state.property.IntProperty;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ColorHelper;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.RotationPropertyHelper;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class AbstractDyeableBlock extends BlockWithEntity {
+public abstract class AbstractDyeableBlock extends BlockWithEntity {
 
     public AbstractDyeableBlock(Settings settings) {
         super(settings);
@@ -50,9 +33,7 @@ public class AbstractDyeableBlock extends BlockWithEntity {
     }
 
     @Override
-    protected MapCodec<? extends AbstractDyeableBlock> getCodec() {
-        return createCodec(AbstractDyeableBlock::new);
-    }
+    protected abstract MapCodec<? extends AbstractDyeableBlock> getCodec();
 
     @Nullable
     @Override
@@ -82,11 +63,19 @@ public class AbstractDyeableBlock extends BlockWithEntity {
         return itemStack;
     }
 
-//    @Override
-//    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-//        Item itemStack = state.getBlock().asItem();
-//        ItemEntity itemEntity = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModBlocks.OAK_LAMP.asItem()).copyComponentsToNewStack(itemStack,1));
-//        world.spawnEntity(itemEntity);
-//        return super.onBreak(world, pos, state, player);
-//    }
+    @Override
+    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        // Simple Dyeing of the Block functionality.
+        if (stack.getItem() instanceof DyeItem dyeItem) {
+            if (world.getBlockEntity(pos) instanceof DyeableBlockEntity dyeableBlockEntity) {
+                final int newColor = dyeItem.getColor().getEntityColor();
+                final int originalColor = dyeableBlockEntity.color;
+                dyeableBlockEntity.color = ColorHelper.Argb.averageArgb(newColor, originalColor);
+                stack.decrementUnlessCreative(1, player);
+                dyeableBlockEntity.markDirty();
+                world.updateListeners(pos, state, state, 0);
+            }
+        }
+        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
 }

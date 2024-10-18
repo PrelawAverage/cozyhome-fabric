@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cozyhome:item/paint_brush_handle",
+    "layer1": "cozyhome:item/paint_brush_hair"
+  }
+}

@@ -2,6 +2,7 @@
   "itemgroup.cozyhome.cozyhome": "Cozy Home",
 
   "block.cozyhome.dye_vat": "Dye Vat",
+  "item.cozyhome.paint_brush": "Paint Brush",
 
   "block.cozyhome.oak_planked_wall": "Oak Planked Wall",
   "block.cozyhome.spruce_planked_wall": "Spruce Planked Wall",
@@ -77,11 +78,14 @@
   "block.cozyhome.crimson_wall_mirror": "Warped Wall Mirror",
 
   "tooltip.cozyhome.block.planked_wall": "§7Stackable",
-  "tooltip.cozyhome.block.dyed": "Dyed",
   "tooltip.cozyhome.block.dyeable": "§7Dyeable",
+  "tooltip.cozyhome.block.dyed": "Dyed",
 
   "sounds.cozyhome.lamp_toggle": "Lamp Toggled",
   "sounds.cozyhome.fireplace_loop": "Fireplace Crackles",
   "sounds.cozyhome.grandfather_clock_tick": "Grandfather Clock Ticks",
-  "sounds.cozyhome.grandfather_clock_midnight": "Grandfather Clock Midnight"
+  "sounds.cozyhome.grandfather_clock_midnight": "Grandfather Clock Midnight",
+
+  "text.cozyhome.grandfather_clock.day": "☀",
+  "text.cozyhome.grandfather_clock.night": "☾"
 }

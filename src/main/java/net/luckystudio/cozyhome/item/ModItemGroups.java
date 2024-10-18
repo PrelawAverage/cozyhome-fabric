@@ -5,7 +5,6 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.ModBlocks;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -22,6 +21,7 @@ public class ModItemGroups {
                     .entries((displayContext, entries) -> {
 
                         entries.add(ModBlocks.DYE_VAT);
+                        entries.add(ModItems.PAINT_BRUSH);
                         // Planked Walls
                         entries.add(ModBlocks.OAK_PLANKED_WALL);
                         entries.add(ModBlocks.SPRUCE_PLANKED_WALL);
@@ -78,7 +78,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.OAK_LAMP);
 
                         // Sofas
-                        entries.add(ModBlocks.WHITE_SOFA);
+                        entries.add(ModBlocks.OAK_SOFA);
 
                         // Specials (Mangrove)
 //                        entries.add(ModBlocks.MANGROVE_LAMP);

@@ -16,9 +16,6 @@ import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.NbtComponent;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
@@ -51,22 +48,8 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.MANGROVE_LANTERN,
 
                 // Sofas
-                ModBlocks.WHITE_SOFA,
-                ModBlocks.ORANGE_SOFA,
-                ModBlocks.MAGENTA_SOFA,
-                ModBlocks.LIGHT_BLUE_SOFA,
-                ModBlocks.YELLOW_SOFA,
-                ModBlocks.LIME_SOFA,
-                ModBlocks.PINK_SOFA,
-                ModBlocks.GRAY_SOFA,
-                ModBlocks.LIGHT_GRAY_SOFA,
-                ModBlocks.CYAN_SOFA,
-                ModBlocks.PURPLE_SOFA,
-                ModBlocks.BLUE_SOFA,
-                ModBlocks.BROWN_SOFA,
-                ModBlocks.GREEN_SOFA,
-                ModBlocks.RED_SOFA,
-                ModBlocks.BLACK_SOFA,
+                ModBlocks.OAK_SOFA,
+
                 ModBlocks.MANGROVE_ZAISU,
 
                 // Counters
@@ -110,15 +93,36 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.DYE_VAT
         );
 
+        // Makes Blocks render like stained-glass, where you can see through the color
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
                 ModBlocks.AUTUMN_STAINED_WINDOW,
                 ModBlocks.AUTUMN_STAINED_WINDOW_PANE
         );
 
         // Renders the colors on the Blocks
-        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && view.getBlockEntityRenderData(pos) instanceof Integer integer ? integer : 0xFFFFFF, ModBlocks.DYE_VAT);
-        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && view.getBlockEntityRenderData(pos) instanceof Integer integer ? integer : 0xFFFFFF, ModBlocks.OAK_LAMP);
+        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) ->
+                view != null && view.getBlockEntityRenderData(pos) instanceof Integer integer ? integer : 0xFFFFFF,
+                ModBlocks.DYE_VAT,
+
+                ModBlocks.OAK_SOFA,
+
+                ModBlocks.OAK_LAMP,
+
+                ModBlocks.OAK_CHAIR,
+                ModBlocks.SPRUCE_CHAIR,
+                ModBlocks.BIRCH_CHAIR,
+                ModBlocks.JUNGLE_CHAIR,
+                ModBlocks.ACACIA_CHAIR,
+                ModBlocks.DARK_OAK_CHAIR,
+                ModBlocks.MANGROVE_CHAIR,
+                ModBlocks.CHERRY_CHAIR,
+                ModBlocks.BAMBOO_CHAIR,
+                ModBlocks.CRIMSON_CHAIR,
+                ModBlocks.WARPED_CHAIR
+        );
+
         // Renders the colors on the Items
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ModColorHandler.getItemColor(stack), ModBlocks.OAK_LAMP.asItem());
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ModColorHandler.getItemColor(stack),
+                ModBlocks.OAK_LAMP.asItem());
     }
 }

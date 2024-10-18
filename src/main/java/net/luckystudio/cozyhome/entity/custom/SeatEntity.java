@@ -1,6 +1,7 @@
 package net.luckystudio.cozyhome.entity.custom;
 
 import net.luckystudio.cozyhome.block.abstracts.AbstractSeatBlock;
+import net.luckystudio.cozyhome.block.type.DyeableChairBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.data.DataTracker;
@@ -47,7 +48,7 @@ public class SeatEntity extends Entity {
     protected void addPassenger(Entity passenger) {
         BlockPos pos = this.getBlockPos();
         BlockState state = this.getWorld().getBlockState(pos);
-        if (state.getBlock() instanceof AbstractSeatBlock seatBlock) {
+        if (state.getBlock() instanceof DyeableChairBlock seatBlock) {
             passenger.setYaw(seatBlock.setRiderRotation(this));
             super.addPassenger(passenger);
         }
@@ -109,7 +110,7 @@ public class SeatEntity extends Entity {
     private float getHeightOffset() {
         BlockPos pos = this.getBlockPos();
         BlockState state = getWorld().getBlockState(pos);
-        if (state.getBlock() instanceof AbstractSeatBlock abstractSeatBlock) {
+        if (state.getBlock() instanceof DyeableChairBlock abstractSeatBlock) {
             return abstractSeatBlock.getSeatHeight(state);
         }
         return 0f;

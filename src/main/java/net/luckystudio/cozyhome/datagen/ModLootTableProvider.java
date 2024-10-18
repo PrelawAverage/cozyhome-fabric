@@ -23,6 +23,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
 
+        // Blocks that save the color they are dyed do not get registered here as they had a custom method that determines their drops
+
         // Planked Walls
         addDrop(ModBlocks.OAK_PLANKED_WALL);
         addDrop(ModBlocks.SPRUCE_PLANKED_WALL);
@@ -62,11 +64,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CRIMSON_STORAGE_COUNTER);
         addDrop(ModBlocks.WARPED_STORAGE_COUNTER);
 
-        // Lamps
-
-        // Sofas
-        addDrop(ModBlocks.WHITE_SOFA);
-
         // Wall Mirrors
         addDrop(ModBlocks.OAK_WALL_MIRROR);
         addDrop(ModBlocks.SPRUCE_WALL_MIRROR);
@@ -79,23 +76,5 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.BAMBOO_WALL_MIRROR);
         addDrop(ModBlocks.CRIMSON_WALL_MIRROR);
         addDrop(ModBlocks.WARPED_WALL_MIRROR);
-    }
-
-    public LootTable.Builder dyeableDrop(Block drop) {
-        return LootTable.builder()
-                .pool(
-                        this.addSurvivesExplosionCondition(
-                                drop,
-                                LootPool.builder()
-                                        .rolls(ConstantLootNumberProvider.create(1.0F))
-                                        .with(
-                                                ItemEntry.builder(drop)
-                                                        .apply(
-                                                                CopyComponentsLootFunction.builder(CopyComponentsLootFunction.Source.BLOCK_ENTITY)
-                                                                        .include(DataComponentTypes.BLOCK_ENTITY_DATA)
-                                                        )
-                                        )
-                        )
-                );
     }
 }

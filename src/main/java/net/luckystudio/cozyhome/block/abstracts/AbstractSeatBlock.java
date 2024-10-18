@@ -22,7 +22,7 @@ import net.minecraft.world.WorldAccess;
 
 import java.util.List;
 
-public abstract class AbstractSeatBlock extends Block {
+public abstract class AbstractSeatBlock extends AbstractDyeableBlock {
 
     public AbstractSeatBlock(Settings settings) {
         super(settings);

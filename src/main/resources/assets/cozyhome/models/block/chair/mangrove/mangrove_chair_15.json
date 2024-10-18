@@ -1,0 +1,7 @@
+{
+	"parent": "cozyhome:block/chair/template_chair_15",
+	"textures": {
+		"chair": "cozyhome:block/chair/mangrove_chair",
+		"particle": "block/mangrove_planks"
+	}
+}

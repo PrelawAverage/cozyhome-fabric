@@ -23,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class WallMirrorBlock extends HorizontalFacingBlock implements Waterloggable{
     public static final MapCodec<WallMirrorBlock> CODEC = createCodec(WallMirrorBlock::new);
-    public static final EnumProperty<LinearConnectionBlock> STACKABLE_BLOCK = ModProperties.LINEAR_CONNECTION_BLOCK;
+    public static final EnumProperty<LinearConnectionBlock> STACKABLE_BLOCK = ModProperties.LINEAR_CONNECTION;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final VoxelShape WEST_SHAPE = VoxelShapes.union(
             Block.createCuboidShape(14, 0, 0, 16, 16, 16));

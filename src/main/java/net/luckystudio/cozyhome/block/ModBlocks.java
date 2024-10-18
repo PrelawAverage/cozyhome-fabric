@@ -3,7 +3,6 @@ package net.luckystudio.cozyhome.block;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.special.MangroveLanternBlock;
 import net.luckystudio.cozyhome.block.special.ZaisuSeatBlock;
-import net.luckystudio.cozyhome.block.abstracts.AbstractDyeableLampBlock;
 import net.luckystudio.cozyhome.block.type.*;
 import net.minecraft.block.*;
 
@@ -29,20 +28,8 @@ public class ModBlocks {
                         .sounds(soundGroup)
                         .dynamicBounds());
     }
-//    private static Block createLampBlock(MapColor color) {
-//        return new LampBlock(
-//                AbstractBlock.Settings.create()
-//                        .mapColor(color)
-//                        .nonOpaque()
-//                        .luminance(createLightLevelFromLitBlockState(9))
-//                        .emissiveLighting(ModBlocks::ifLit)
-//                        .breakInstantly()
-//                        .strength(0.6f)
-//                        .burnable()
-//                        .sounds(BlockSoundGroup.LANTERN));
-//    }
 private static Block createColorLampBlock() {
-    return new AbstractDyeableLampBlock(
+    return new DyeableLampBlock(
             AbstractBlock.Settings.create()
                     .luminance(createLightLevelFromLitBlockState(9))
                     .emissiveLighting(ModBlocks::ifLit)
@@ -137,27 +124,27 @@ private static Block createColorLampBlock() {
 
     // Chairs
     public static final Block OAK_CHAIR = registerBlock("oak_chair",
-            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
+            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
     public static final Block SPRUCE_CHAIR = registerBlock("spruce_chair",
-            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.SPRUCE_PLANKS)));
+            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.SPRUCE_PLANKS)));
     public static final Block BIRCH_CHAIR = registerBlock("birch_chair",
-            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.BIRCH_PLANKS)));
+            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.BIRCH_PLANKS)));
     public static final Block JUNGLE_CHAIR = registerBlock("jungle_chair",
-            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.JUNGLE_PLANKS)));
+            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.JUNGLE_PLANKS)));
     public static final Block ACACIA_CHAIR = registerBlock("acacia_chair",
-            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.ACACIA_PLANKS)));
+            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.ACACIA_PLANKS)));
     public static final Block DARK_OAK_CHAIR = registerBlock("dark_oak_chair",
-            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.DARK_OAK_PLANKS)));
+            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.DARK_OAK_PLANKS)));
     public static final Block MANGROVE_CHAIR = registerBlock("mangrove_chair",
-            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS)));
+            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS)));
     public static final Block CHERRY_CHAIR = registerBlock("cherry_chair",
-            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS)));
+            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS)));
     public static final Block BAMBOO_CHAIR = registerBlock("bamboo_chair",
-            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.BAMBOO_PLANKS)));
+            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.BAMBOO_PLANKS)));
     public static final Block CRIMSON_CHAIR = registerBlock("crimson_chair",
-            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS)));
+            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS)));
     public static final Block WARPED_CHAIR = registerBlock("warped_chair",
-            new GenericChairBlock(AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS)));
+            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS)));
 
     // Lamps
     public static final Block OAK_LAMP = registerBlock("oak_lamp", createColorLampBlock());
@@ -170,7 +157,7 @@ private static Block createColorLampBlock() {
                     .emissiveLighting(ModBlocks::ifLit)));
 
     // Sofas
-    public static final Block WHITE_SOFA = registerBlock("white_sofa", createSofaBlock(MapColor.WHITE));
+    public static final Block OAK_SOFA = registerBlock("oak_sofa", createSofaBlock(MapColor.WHITE));
 
     // Wall Mirrors
     public static final Block OAK_WALL_MIRROR = registerBlock("oak_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));

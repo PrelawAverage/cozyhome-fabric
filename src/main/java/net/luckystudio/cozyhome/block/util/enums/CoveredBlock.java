@@ -3,23 +3,9 @@ package net.luckystudio.cozyhome.block.util.enums;
 import net.minecraft.util.StringIdentifiable;
 
 public enum CoveredBlock implements StringIdentifiable {
-    WHITE("white"),
-    ORANGE("orange"),
-    MAGENTA("magenta"),
-    LIGHT_BLUE("light_blue"),
-    YELLOW("yellow"),
-    LIME("lime"),
-    PINK("pink"),
-    GRAY("gray"),
-    LIGHT_GRAY("light_gray"),
-    CYAN("cyan"),
-    PURPLE("purple"),
-    BLUE("blue"),
-    BROWN("brown"),
-    GREEN("green"),
-    RED("red"),
-    BLACK("black");
-
+    NONE("none"),
+    GENERIC("generic"),
+    TRADER("trader");
     private final String name;
 
     private CoveredBlock(final String name) {
