@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/chair/cushions/template_chair_cushion_1",
+  "textures": {
+    "0": "cozyhome:block/chair/cushion/chair_cushion_generic",
+    "particle": "cozyhome:block/chair/cushion/chair_cushion_generic"
+  }
+}

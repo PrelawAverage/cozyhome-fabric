@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/chair/cushions/template_chair_cushion_tucked_north",
+  "textures": {
+    "0": "cozyhome:block/chair/cushion/chair_cushion_trader",
+    "particle": "cozyhome:block/chair/cushion/chair_cushion_trader"
+  }
+}

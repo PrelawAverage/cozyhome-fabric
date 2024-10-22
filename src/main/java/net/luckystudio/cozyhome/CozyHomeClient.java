@@ -40,9 +40,11 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.BAMBOO_CHAIR,
                 ModBlocks.CRIMSON_CHAIR,
                 ModBlocks.WARPED_CHAIR,
+                ModBlocks.PRINCESS_CHAIR,
 
                 // Lamps
                 ModBlocks.OAK_LAMP,
+                ModBlocks.SPRUCE_LAMP,
 
                 // Lanterns
                 ModBlocks.MANGROVE_LANTERN,
@@ -50,32 +52,39 @@ public class CozyHomeClient implements ClientModInitializer {
                 // Sofas
                 ModBlocks.OAK_SOFA,
 
-                ModBlocks.MANGROVE_ZAISU,
-
                 // Counters
                 ModBlocks.OAK_COUNTER,
-                ModBlocks.SPRUCE_COUNTER,
-                ModBlocks.BIRCH_COUNTER,
-                ModBlocks.JUNGLE_COUNTER,
-                ModBlocks.ACACIA_COUNTER,
-                ModBlocks.DARK_OAK_COUNTER,
-                ModBlocks.MANGROVE_COUNTER,
-                ModBlocks.CHERRY_COUNTER,
-                ModBlocks.BAMBOO_COUNTER,
-                ModBlocks.CRIMSON_COUNTER,
-                ModBlocks.WARPED_COUNTER,
-
-                // Storage Counters
+                ModBlocks.OAK_SINK_COUNTER,
                 ModBlocks.OAK_STORAGE_COUNTER,
+                ModBlocks.SPRUCE_COUNTER,
+                ModBlocks.SPRUCE_SINK_COUNTER,
                 ModBlocks.SPRUCE_STORAGE_COUNTER,
+                ModBlocks.BIRCH_COUNTER,
+                ModBlocks.BIRCH_SINK_COUNTER,
                 ModBlocks.BIRCH_STORAGE_COUNTER,
+                ModBlocks.JUNGLE_COUNTER,
+                ModBlocks.JUNGLE_SINK_COUNTER,
                 ModBlocks.JUNGLE_STORAGE_COUNTER,
+                ModBlocks.ACACIA_COUNTER,
+                ModBlocks.ACACIA_SINK_COUNTER,
                 ModBlocks.ACACIA_STORAGE_COUNTER,
+                ModBlocks.DARK_OAK_COUNTER,
+                ModBlocks.DARK_OAK_SINK_COUNTER,
                 ModBlocks.DARK_OAK_STORAGE_COUNTER,
+                ModBlocks.MANGROVE_COUNTER,
+                ModBlocks.MANGROVE_SINK_COUNTER,
                 ModBlocks.MANGROVE_STORAGE_COUNTER,
+                ModBlocks.CHERRY_COUNTER,
+                ModBlocks.CHERRY_SINK_COUNTER,
                 ModBlocks.CHERRY_STORAGE_COUNTER,
+                ModBlocks.BAMBOO_COUNTER,
+                ModBlocks.BAMBOO_SINK_COUNTER,
                 ModBlocks.BAMBOO_STORAGE_COUNTER,
+                ModBlocks.CRIMSON_COUNTER,
+                ModBlocks.CRIMSON_SINK_COUNTER,
                 ModBlocks.CRIMSON_STORAGE_COUNTER,
+                ModBlocks.WARPED_COUNTER,
+                ModBlocks.WARPED_SINK_COUNTER,
                 ModBlocks.WARPED_STORAGE_COUNTER,
 
                 // Wall Mirrors
@@ -90,13 +99,17 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.BAMBOO_WALL_MIRROR,
                 ModBlocks.CRIMSON_WALL_MIRROR,
                 ModBlocks.WARPED_WALL_MIRROR,
+
+                ModBlocks.GOLD_FRAMED_GLASS,
+                ModBlocks.GOLD_FRAMED_GLASS_PANE,
+
                 ModBlocks.DYE_VAT
         );
 
         // Makes Blocks render like stained-glass, where you can see through the color
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
-                ModBlocks.AUTUMN_STAINED_WINDOW,
-                ModBlocks.AUTUMN_STAINED_WINDOW_PANE
+                ModBlocks.AUTUMN_STAINED_GLASS,
+                ModBlocks.AUTUMN_STAINED_GLASS_PANE
         );
 
         // Renders the colors on the Blocks
@@ -107,7 +120,7 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.OAK_SOFA,
 
                 ModBlocks.OAK_LAMP,
-
+                ModBlocks.SPRUCE_LAMP,
                 ModBlocks.OAK_CHAIR,
                 ModBlocks.SPRUCE_CHAIR,
                 ModBlocks.BIRCH_CHAIR,
@@ -118,11 +131,30 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.CHERRY_CHAIR,
                 ModBlocks.BAMBOO_CHAIR,
                 ModBlocks.CRIMSON_CHAIR,
-                ModBlocks.WARPED_CHAIR
+                ModBlocks.WARPED_CHAIR,
+                ModBlocks.PRINCESS_CHAIR
+        );
+
+        // Gives blocks the water color
+        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) ->
+                        0x3495eb,
+                ModBlocks.OAK_SINK_COUNTER,
+                ModBlocks.SPRUCE_SINK_COUNTER,
+                ModBlocks.BIRCH_SINK_COUNTER,
+                ModBlocks.JUNGLE_SINK_COUNTER,
+                ModBlocks.ACACIA_SINK_COUNTER,
+                ModBlocks.DARK_OAK_SINK_COUNTER,
+                ModBlocks.MANGROVE_SINK_COUNTER,
+                ModBlocks.CHERRY_SINK_COUNTER,
+                ModBlocks.BAMBOO_SINK_COUNTER,
+                ModBlocks.CRIMSON_SINK_COUNTER,
+                ModBlocks.WARPED_SINK_COUNTER
         );
 
         // Renders the colors on the Items
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ModColorHandler.getItemColor(stack),
-                ModBlocks.OAK_LAMP.asItem());
+                ModBlocks.OAK_LAMP.asItem(),
+                ModBlocks.SPRUCE_LAMP.asItem()
+        );
     }
 }

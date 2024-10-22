@@ -2,8 +2,8 @@ package net.luckystudio.cozyhome.block;
 
 import com.mojang.serialization.MapCodec;
 
-import net.luckystudio.cozyhome.block.type.DyeableLampBlock;
-import net.luckystudio.cozyhome.block.type.PlankedWallBlock;
+import net.luckystudio.cozyhome.block.primary.secondary.DyeableLampBlock;
+import net.luckystudio.cozyhome.block.primary.PlankedWallBlock;
 import net.minecraft.block.*;
 import net.minecraft.registry.Registry;
 

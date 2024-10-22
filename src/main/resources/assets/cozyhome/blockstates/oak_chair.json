@@ -1,164 +1,324 @@
 {
   "multipart": [
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_0"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_0"},
       "when": {"rotation": 0, "tucked": false}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_1"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_1"},
       "when": {"rotation": 1, "tucked": false}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_2"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_2"},
       "when": {"rotation": 2, "tucked": false}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_3"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_3"},
       "when": {"rotation": 3, "tucked": false}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_4"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_4"},
       "when": {"rotation": 4, "tucked": false}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_5"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_5"},
       "when": {"rotation": 5, "tucked": false}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_6"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_6"},
       "when": {"rotation": 6, "tucked": false}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_7"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_7"},
       "when": {"rotation": 7, "tucked": false}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_8"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_8"},
       "when": {"rotation": 8, "tucked": false}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_9"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_9"},
       "when": {"rotation": 9, "tucked": false}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_10"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_10"},
       "when": {"rotation": 10, "tucked": false}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_11"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_11"},
       "when": {"rotation": 11, "tucked": false}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_12"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_12"},
       "when": {"rotation": 12, "tucked": false}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_13"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_13"},
       "when": {"rotation": 13, "tucked": false}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_14"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_14"},
       "when": {"rotation": 14, "tucked": false}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_15"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_15"},
       "when": {"rotation": 15, "tucked": false}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_tucked_north"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_tucked_north"},
       "when": {"rotation": 0, "tucked": true}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_tucked_east"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_tucked_east"},
       "when": {"rotation": 4, "tucked": true}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_tucked_south"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_tucked_south"},
       "when": {"rotation": 8, "tucked": true}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/oak/oak_chair_tucked_west"},
+      "apply": {"model": "cozyhome:block/chair/types/oak_chair_tucked_west"},
       "when": {"rotation": 12, "tucked": true}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_0"},
-      "when": {"rotation": 0, "tucked": false, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_0"},
+      "when": {"rotation": 0, "tucked": false, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_1"},
-      "when": {"rotation": 1, "tucked": false, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_1"},
+      "when": {"rotation": 1, "tucked": false, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_2"},
-      "when": {"rotation": 2, "tucked": false, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_2"},
+      "when": {"rotation": 2, "tucked": false, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_3"},
-      "when": {"rotation": 3, "tucked": false, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_3"},
+      "when": {"rotation": 3, "tucked": false, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_0"},
-      "when": {"rotation": 4, "tucked": false, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_0"},
+      "when": {"rotation": 4, "tucked": false, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_1"},
-      "when": {"rotation": 5, "tucked": false, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_1"},
+      "when": {"rotation": 5, "tucked": false, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_2"},
-      "when": {"rotation": 6, "tucked": false, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_2"},
+      "when": {"rotation": 6, "tucked": false, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_3"},
-      "when": {"rotation": 7, "tucked": false, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_3"},
+      "when": {"rotation": 7, "tucked": false, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_0"},
-      "when": {"rotation": 8, "tucked": false, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_0"},
+      "when": {"rotation": 8, "tucked": false, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_1"},
-      "when": {"rotation": 9, "tucked": false, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_1"},
+      "when": {"rotation": 9, "tucked": false, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_2"},
-      "when": {"rotation": 10, "tucked": false, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_2"},
+      "when": {"rotation": 10, "tucked": false, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_3"},
-      "when": {"rotation": 11, "tucked": false, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_3"},
+      "when": {"rotation": 11, "tucked": false, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_0"},
-      "when": {"rotation": 12, "tucked": false, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_0"},
+      "when": {"rotation": 12, "tucked": false, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_1"},
-      "when": {"rotation": 13, "tucked": false, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_1"},
+      "when": {"rotation": 13, "tucked": false, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_2"},
-      "when": {"rotation": 14, "tucked": false, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_2"},
+      "when": {"rotation": 14, "tucked": false, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_3"},
-      "when": {"rotation": 15, "tucked": false, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_3"},
+      "when": {"rotation": 15, "tucked": false, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_tucked_north"},
-      "when": {"rotation": 0, "tucked": true, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_tucked_north"},
+      "when": {"rotation": 0, "tucked": true, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_tucked_east"},
-      "when": {"rotation": 4, "tucked": true, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_tucked_east"},
+      "when": {"rotation": 4, "tucked": true, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_tucked_south"},
-      "when": {"rotation": 8, "tucked": true, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_tucked_south"},
+      "when": {"rotation": 8, "tucked": true, "cover": "generic"}
     },
     {
-      "apply": {"model": "cozyhome:block/chair/chair_cushion_tucked_west"},
-      "when": {"rotation": 12, "tucked": true, "covered": true}
+      "apply": {"model": "cozyhome:block/chair/cushions/types/generic_chair_cushion_tucked_west"},
+      "when": {"rotation": 12, "tucked": true, "cover": "generic"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_0"},
+      "when": {"rotation": 0, "tucked": false, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_1"},
+      "when": {"rotation": 1, "tucked": false, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_2"},
+      "when": {"rotation": 2, "tucked": false, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_3"},
+      "when": {"rotation": 3, "tucked": false, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_0"},
+      "when": {"rotation": 4, "tucked": false, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_1"},
+      "when": {"rotation": 5, "tucked": false, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_2"},
+      "when": {"rotation": 6, "tucked": false, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_3"},
+      "when": {"rotation": 7, "tucked": false, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_0"},
+      "when": {"rotation": 8, "tucked": false, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_1"},
+      "when": {"rotation": 9, "tucked": false, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_2"},
+      "when": {"rotation": 10, "tucked": false, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_3"},
+      "when": {"rotation": 11, "tucked": false, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_0"},
+      "when": {"rotation": 12, "tucked": false, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_1"},
+      "when": {"rotation": 13, "tucked": false, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_2"},
+      "when": {"rotation": 14, "tucked": false, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_3"},
+      "when": {"rotation": 15, "tucked": false, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_tucked_north"},
+      "when": {"rotation": 0, "tucked": true, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_tucked_east"},
+      "when": {"rotation": 4, "tucked": true, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_tucked_south"},
+      "when": {"rotation": 8, "tucked": true, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/trader_chair_cushion_tucked_west"},
+      "when": {"rotation": 12, "tucked": true, "cover": "trader"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_0"},
+      "when": {"rotation": 0, "tucked": false, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_1"},
+      "when": {"rotation": 1, "tucked": false, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_2"},
+      "when": {"rotation": 2, "tucked": false, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_3"},
+      "when": {"rotation": 3, "tucked": false, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_0"},
+      "when": {"rotation": 4, "tucked": false, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_1"},
+      "when": {"rotation": 5, "tucked": false, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_2"},
+      "when": {"rotation": 6, "tucked": false, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_3"},
+      "when": {"rotation": 7, "tucked": false, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_0"},
+      "when": {"rotation": 8, "tucked": false, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_1"},
+      "when": {"rotation": 9, "tucked": false, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_2"},
+      "when": {"rotation": 10, "tucked": false, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_3"},
+      "when": {"rotation": 11, "tucked": false, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_0"},
+      "when": {"rotation": 12, "tucked": false, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_1"},
+      "when": {"rotation": 13, "tucked": false, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_2"},
+      "when": {"rotation": 14, "tucked": false, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_3"},
+      "when": {"rotation": 15, "tucked": false, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_tucked_north"},
+      "when": {"rotation": 0, "tucked": true, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_tucked_east"},
+      "when": {"rotation": 4, "tucked": true, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_tucked_south"},
+      "when": {"rotation": 8, "tucked": true, "cover": "hay"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/chair/cushions/types/hay_chair_cushion_tucked_west"},
+      "when": {"rotation": 12, "tucked": true, "cover": "hay"}
     }
   ]
 }

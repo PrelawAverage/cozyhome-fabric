@@ -1,6 +1,6 @@
 package net.luckystudio.cozyhome.block.special;
 
-import net.luckystudio.cozyhome.block.abstracts.AbstractImprovedLanternBlock;
+import net.luckystudio.cozyhome.block.primary.AbstractImprovedLanternBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;

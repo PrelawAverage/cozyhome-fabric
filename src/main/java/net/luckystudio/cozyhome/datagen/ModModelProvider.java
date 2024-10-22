@@ -14,7 +14,8 @@ public class ModModelProvider extends FabricModelProvider {
     // Even though it states "blockstate", these will generate blockstates, models, and item models.
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        blockStateModelGenerator.registerGlassPane(ModBlocks.AUTUMN_STAINED_WINDOW, ModBlocks.AUTUMN_STAINED_WINDOW_PANE);
+        blockStateModelGenerator.registerGlassPane(ModBlocks.AUTUMN_STAINED_GLASS, ModBlocks.AUTUMN_STAINED_GLASS_PANE);
+        blockStateModelGenerator.registerGlassPane(ModBlocks.GOLD_FRAMED_GLASS, ModBlocks.GOLD_FRAMED_GLASS_PANE);
     }
 
     @Override

@@ -1,0 +1,7 @@
+{
+	"parent": "cozyhome:block/chair/template_chair_tucked_north",
+	"textures": {
+		"chair": "cozyhome:block/chair/princess_chair",
+		"particle": "block/princess_planks"
+	}
+}

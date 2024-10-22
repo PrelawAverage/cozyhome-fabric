@@ -5,7 +5,9 @@ import net.minecraft.util.StringIdentifiable;
 public enum CoveredBlock implements StringIdentifiable {
     NONE("none"),
     GENERIC("generic"),
+    HAY("hay"),
     TRADER("trader");
+
     private final String name;
 
     private CoveredBlock(final String name) {

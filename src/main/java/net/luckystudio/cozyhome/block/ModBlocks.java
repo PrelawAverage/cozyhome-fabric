@@ -1,11 +1,16 @@
 package net.luckystudio.cozyhome.block;
 
 import net.luckystudio.cozyhome.CozyHome;
+import net.luckystudio.cozyhome.block.primary.*;
+import net.luckystudio.cozyhome.block.primary.secondary.DyeVatBlock;
+import net.luckystudio.cozyhome.block.primary.secondary.DyeableLampBlock;
+import net.luckystudio.cozyhome.block.primary.secondary.tertiary.DyeableChairBlock;
+import net.luckystudio.cozyhome.block.primary.secondary.tertiary.DyeableSofaBlock;
 import net.luckystudio.cozyhome.block.special.MangroveLanternBlock;
-import net.luckystudio.cozyhome.block.special.ZaisuSeatBlock;
-import net.luckystudio.cozyhome.block.type.*;
+import net.luckystudio.cozyhome.block.util.interfaces.SinkBehavior;
 import net.minecraft.block.*;
 
+import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -15,6 +20,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.biome.Biome;
 
 import java.util.function.ToIntFunction;
 
@@ -38,7 +44,7 @@ private static Block createColorLampBlock() {
                     .sounds(BlockSoundGroup.LANTERN));
     }
     private static Block createSofaBlock(MapColor color) {
-        return new SofaBlock(
+        return new DyeableSofaBlock(
                 AbstractBlock.Settings.create()
                         .mapColor(color)
                         .nonOpaque()
@@ -54,6 +60,26 @@ private static Block createColorLampBlock() {
                     .nonOpaque()
                     .requiresTool()
                     .dynamicBounds()));
+
+    private static Block createTable(BlockSoundGroup soundGroup) {
+        return new PlankedWallBlock(
+                AbstractBlock.Settings.create()
+                        .hardness(2)
+                        .strength(3)
+                        .burnable()
+                        .sounds(soundGroup)
+                        .dynamicBounds());
+    }
+
+    private static Block createDesk(BlockSoundGroup soundGroup) {
+        return new PlankedWallBlock(
+                AbstractBlock.Settings.create()
+                        .hardness(2)
+                        .strength(3)
+                        .burnable()
+                        .sounds(soundGroup)
+                        .dynamicBounds());
+    }
 
     // Add Blocks Here
     public static final Block OAK_PLANKED_WALL = registerBlock("oak_planked_wall", createPlankedWall(BlockSoundGroup.WOOD));
@@ -116,10 +142,38 @@ private static Block createColorLampBlock() {
     public static final Block WARPED_STORAGE_COUNTER = registerBlock("warped_storage_counter",
             new StorageCounterBlock(Blocks.WARPED_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS)));
 
-    // Stained Windows
-    public static final Block AUTUMN_STAINED_WINDOW = registerBlock("autumn_stained_window",
+    // Sink Counters
+    public static final Block OAK_SINK_COUNTER = registerBlock("oak_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+    public static final Block SPRUCE_SINK_COUNTER = registerBlock("spruce_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+    public static final Block BIRCH_SINK_COUNTER = registerBlock("birch_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+    public static final Block JUNGLE_SINK_COUNTER = registerBlock("jungle_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+    public static final Block ACACIA_SINK_COUNTER = registerBlock("acacia_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+    public static final Block DARK_OAK_SINK_COUNTER = registerBlock("dark_oak_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+    public static final Block MANGROVE_SINK_COUNTER = registerBlock("mangrove_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+    public static final Block CHERRY_SINK_COUNTER = registerBlock("cherry_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+    public static final Block BAMBOO_SINK_COUNTER = registerBlock("bamboo_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+    public static final Block CRIMSON_SINK_COUNTER = registerBlock("crimson_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+    public static final Block WARPED_SINK_COUNTER = registerBlock("warped_sink_counter",
+            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+
+    // Glass
+    public static final Block AUTUMN_STAINED_GLASS = registerBlock("autumn_stained_glass",
             new TranslucentBlock(AbstractBlock.Settings.copy(Blocks.BLACK_STAINED_GLASS)));
-    public static final Block AUTUMN_STAINED_WINDOW_PANE = registerBlock("autumn_stained_window_pane",
+    public static final Block AUTUMN_STAINED_GLASS_PANE = registerBlock("autumn_stained_glass_pane",
+            new PaneBlock(AbstractBlock.Settings.copy(Blocks.BLACK_STAINED_GLASS_PANE)));
+    public static final Block GOLD_FRAMED_GLASS = registerBlock("gold_framed_glass",
+            new TranslucentBlock(AbstractBlock.Settings.copy(Blocks.BLACK_STAINED_GLASS)));
+    public static final Block GOLD_FRAMED_GLASS_PANE = registerBlock("gold_framed_glass_pane",
             new PaneBlock(AbstractBlock.Settings.copy(Blocks.BLACK_STAINED_GLASS_PANE)));
 
     // Chairs
@@ -145,11 +199,22 @@ private static Block createColorLampBlock() {
             new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS)));
     public static final Block WARPED_CHAIR = registerBlock("warped_chair",
             new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS)));
+    public static final Block PRINCESS_CHAIR = registerBlock("princess_chair",
+            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.QUARTZ_BLOCK)));
 
     // Lamps
     public static final Block OAK_LAMP = registerBlock("oak_lamp", createColorLampBlock());
-//    public static final Block MANGROVE_LAMP = registerBlock("mangrove_lamp",
-//            createLampBlock(MapColor.DULL_RED));
+    public static final Block SPRUCE_LAMP = registerBlock("spruce_lamp", createColorLampBlock());
+    public static final Block BIRCH_LAMP = registerBlock("birch_lamp", createColorLampBlock());
+    public static final Block JUNGLE_LAMP = registerBlock("jungle_lamp", createColorLampBlock());
+    public static final Block ACACIA_LAMP = registerBlock("acacia_lamp", createColorLampBlock());
+    public static final Block DARK_OAK_LAMP = registerBlock("dark_oak_lamp", createColorLampBlock());
+    public static final Block MANGROVE_LAMP = registerBlock("mangrove_lamp", createColorLampBlock());
+    public static final Block CHERRY_LAMP = registerBlock("cherry_lamp", createColorLampBlock());
+    public static final Block BAMBOO_LAMP = registerBlock("bamboo_lamp", createColorLampBlock());
+    public static final Block CRIMSON_LAMP = registerBlock("crimson_lamp", createColorLampBlock());
+    public static final Block WARPED_LAMP = registerBlock("warped_lamp", createColorLampBlock());
+
     public static final Block MANGROVE_LANTERN = registerBlock("mangrove_lantern",
             new MangroveLanternBlock(AbstractBlock.Settings.create()
                     .luminance(createLightLevelFromLitBlockState(9))
@@ -158,6 +223,16 @@ private static Block createColorLampBlock() {
 
     // Sofas
     public static final Block OAK_SOFA = registerBlock("oak_sofa", createSofaBlock(MapColor.WHITE));
+    public static final Block SPRUCE_SOFA = registerBlock("spruce_sofa", createSofaBlock(MapColor.WHITE));
+    public static final Block BIRCH_SOFA = registerBlock("birch_sofa", createSofaBlock(MapColor.WHITE));
+    public static final Block JUNGLE_SOFA = registerBlock("jungle_sofa", createSofaBlock(MapColor.WHITE));
+    public static final Block ACACIA_SOFA = registerBlock("acacia_sofa", createSofaBlock(MapColor.WHITE));
+    public static final Block DARK_OAK_SOFA = registerBlock("dark_oak_sofa", createSofaBlock(MapColor.WHITE));
+    public static final Block MANGROVE_SOFA = registerBlock("mangrove_sofa", createSofaBlock(MapColor.WHITE));
+    public static final Block CHERRY_SOFA = registerBlock("cherry_sofa", createSofaBlock(MapColor.WHITE));
+    public static final Block BAMBOO_SOFA = registerBlock("bamboo_sofa", createSofaBlock(MapColor.WHITE));
+    public static final Block CRIMSON_SOFA = registerBlock("crimson_sofa", createSofaBlock(MapColor.WHITE));
+    public static final Block WARPED_SOFA = registerBlock("warped_sofa", createSofaBlock(MapColor.WHITE));
 
     // Wall Mirrors
     public static final Block OAK_WALL_MIRROR = registerBlock("oak_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
@@ -172,7 +247,31 @@ private static Block createColorLampBlock() {
     public static final Block CRIMSON_WALL_MIRROR = registerBlock("crimson_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
     public static final Block WARPED_WALL_MIRROR = registerBlock("warped_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
 
-    public static final Block MANGROVE_ZAISU = registerBlock("mangrove_zaisu", new ZaisuSeatBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS)));
+    // Tables
+    public static final Block OAK_TABLE = registerBlock("oak_table", createTable(BlockSoundGroup.WOOD));
+    public static final Block SPRUCE_TABLE = registerBlock("spruce_table", createTable(BlockSoundGroup.WOOD));
+    public static final Block BIRCH_TABLE = registerBlock("birch_table", createTable(BlockSoundGroup.WOOD));
+    public static final Block JUNGLE_TABLE = registerBlock("jungle_table", createTable(BlockSoundGroup.WOOD));
+    public static final Block ACACIA_TABLE = registerBlock("acacia_table", createTable(BlockSoundGroup.WOOD));
+    public static final Block DARK_OAK_TABLE = registerBlock("dark_oak_table", createTable(BlockSoundGroup.WOOD));
+    public static final Block MANGROVE_TABLE = registerBlock("mangrove_table", createTable(BlockSoundGroup.WOOD));
+    public static final Block CHERRY_TABLE = registerBlock("cherry_table", createTable(BlockSoundGroup.CHERRY_WOOD));
+    public static final Block BAMBOO_TABLE = registerBlock("bamboo_table", createTable(BlockSoundGroup.BAMBOO_WOOD));
+    public static final Block CRIMSON_TABLE = registerBlock("crimson_table", createTable(BlockSoundGroup.NETHER_WOOD));
+    public static final Block WARPED_TABLE = registerBlock("warped_table", createTable(BlockSoundGroup.NETHER_WOOD));
+
+    // Desks
+    public static final Block OAK_DESK = registerBlock("oak_desk", createDesk(BlockSoundGroup.WOOD));
+    public static final Block SPRUCE_DESK = registerBlock("spruce_desk", createDesk(BlockSoundGroup.WOOD));
+    public static final Block BIRCH_DESK = registerBlock("birch_desk", createDesk(BlockSoundGroup.WOOD));
+    public static final Block JUNGLE_DESK = registerBlock("jungle_desk", createDesk(BlockSoundGroup.WOOD));
+    public static final Block ACACIA_DESK = registerBlock("acacia_desk", createDesk(BlockSoundGroup.WOOD));
+    public static final Block DARK_OAK_DESK = registerBlock("dark_oak_desk", createDesk(BlockSoundGroup.WOOD));
+    public static final Block MANGROVE_DESK = registerBlock("mangrove_desk", createDesk(BlockSoundGroup.WOOD));
+    public static final Block CHERRY_DESK = registerBlock("cherry_desk", createDesk(BlockSoundGroup.CHERRY_WOOD));
+    public static final Block BAMBOO_DESK = registerBlock("bamboo_desk", createDesk(BlockSoundGroup.BAMBOO_WOOD));
+    public static final Block CRIMSON_DESK = registerBlock("crimson_desk", createDesk(BlockSoundGroup.NETHER_WOOD));
+    public static final Block WARPED_DESK = registerBlock("warped_desk", createDesk(BlockSoundGroup.NETHER_WOOD));
 
     public static ToIntFunction<BlockState> createLightLevelFromLitBlockState(int litLevel) {
         return state -> state.get(Properties.LIT) ? litLevel : 0;
