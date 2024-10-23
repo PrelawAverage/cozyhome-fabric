@@ -1,0 +1,14 @@
+{
+	"parent": "cozyhome:block/counter/template_sink_counter",
+	"textures": {
+		"0": "cozyhome:block/counter/jungle_counter_bottom",
+		"1": "cozyhome:block/counter/jungle_counter_front",
+		"2": "cozyhome:block/counter/jungle_counter_side",
+		"3": "cozyhome:block/counter/jungle_counter_sink_top",
+		"4": "cozyhome:block/counter/jungle_counter_back",
+		"5": "cozyhome:block/dye_vat/dye_vat_faucet",
+		"6": "cozyhome:block/counter/sink_bottom",
+		"7": "cozyhome:block/counter/sink_inner_side",
+		"particle": "cozyhome:block/break/jungle_furniture"
+	}
+}

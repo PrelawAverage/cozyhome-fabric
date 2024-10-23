@@ -100,6 +100,19 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.CRIMSON_WALL_MIRROR,
                 ModBlocks.WARPED_WALL_MIRROR,
 
+                // Wall Clocks
+                ModBlocks.OAK_WALL_CLOCK,
+                ModBlocks.SPRUCE_WALL_CLOCK,
+                ModBlocks.BIRCH_WALL_CLOCK,
+                ModBlocks.JUNGLE_WALL_CLOCK,
+                ModBlocks.ACACIA_WALL_CLOCK,
+                ModBlocks.DARK_OAK_WALL_CLOCK,
+                ModBlocks.MANGROVE_WALL_CLOCK,
+                ModBlocks.CHERRY_WALL_CLOCK,
+                ModBlocks.BAMBOO_WALL_CLOCK,
+                ModBlocks.CRIMSON_WALL_CLOCK,
+                ModBlocks.WARPED_WALL_CLOCK,
+
                 ModBlocks.GOLD_FRAMED_GLASS,
                 ModBlocks.GOLD_FRAMED_GLASS_PANE,
 
@@ -148,7 +161,10 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.CHERRY_SINK_COUNTER,
                 ModBlocks.BAMBOO_SINK_COUNTER,
                 ModBlocks.CRIMSON_SINK_COUNTER,
-                ModBlocks.WARPED_SINK_COUNTER
+                ModBlocks.WARPED_SINK_COUNTER,
+
+                ModBlocks.TUFF_BIRD_BATH,
+                ModBlocks.STONE_BRICKS_BIRD_BATH
         );
 
         // Renders the colors on the Items

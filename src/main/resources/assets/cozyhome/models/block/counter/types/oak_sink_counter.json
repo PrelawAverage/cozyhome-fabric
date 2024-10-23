@@ -1,5 +1,5 @@
 {
-	"parent": "cozyhome:block/counter/template_counter",
+	"parent": "cozyhome:block/counter/template_sink_counter",
 	"textures": {
 		"0": "cozyhome:block/counter/oak_counter_bottom",
 		"1": "cozyhome:block/counter/oak_counter_front",
@@ -7,8 +7,8 @@
 		"3": "cozyhome:block/counter/oak_counter_sink_top",
 		"4": "cozyhome:block/counter/oak_counter_back",
 		"5": "cozyhome:block/dye_vat/dye_vat_faucet",
-		"6": "cozyhome:block/dye_vat/dye_vat_faucet_bottom",
-		"7": "cozyhome:block/dye_vat/dye_vat_faucet_inner_side",
+		"6": "cozyhome:block/counter/sink_bottom",
+		"7": "cozyhome:block/counter/sink_inner_side",
 		"particle": "cozyhome:block/break/oak_furniture"
 	}
 }

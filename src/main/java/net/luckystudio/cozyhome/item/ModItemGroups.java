@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.loader.api.FabricLoader;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.ModBlocks;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -23,11 +22,13 @@ public class ModItemGroups {
 
                         // Oak
                         entries.add(ModBlocks.OAK_PLANKED_WALL);
+                        entries.add(ModBlocks.OAK_BEAM);
                         entries.add(ModBlocks.OAK_COUNTER);
                         entries.add(ModBlocks.OAK_SINK_COUNTER);
                         entries.add(ModBlocks.OAK_STORAGE_COUNTER);
                         entries.add(ModBlocks.OAK_CHAIR);
                         entries.add(ModBlocks.OAK_WALL_MIRROR);
+                        entries.add(ModBlocks.OAK_WALL_CLOCK);
                         entries.add(ModBlocks.OAK_LAMP);
                         entries.add(ModBlocks.OAK_SOFA);
                         entries.add(ModBlocks.OAK_TABLE);
@@ -35,11 +36,13 @@ public class ModItemGroups {
 
                         // Spruce
                         entries.add(ModBlocks.SPRUCE_PLANKED_WALL);
+                        entries.add(ModBlocks.SPRUCE_BEAM);
                         entries.add(ModBlocks.SPRUCE_COUNTER);
                         entries.add(ModBlocks.SPRUCE_SINK_COUNTER);
                         entries.add(ModBlocks.SPRUCE_STORAGE_COUNTER);
                         entries.add(ModBlocks.SPRUCE_CHAIR);
                         entries.add(ModBlocks.SPRUCE_WALL_MIRROR);
+                        entries.add(ModBlocks.SPRUCE_WALL_CLOCK);
                         entries.add(ModBlocks.SPRUCE_LAMP);
                         entries.add(ModBlocks.SPRUCE_SOFA);
                         entries.add(ModBlocks.SPRUCE_TABLE);
@@ -47,11 +50,13 @@ public class ModItemGroups {
 
                         // Birch
                         entries.add(ModBlocks.BIRCH_PLANKED_WALL);
+                        entries.add(ModBlocks.BIRCH_BEAM);
                         entries.add(ModBlocks.BIRCH_COUNTER);
                         entries.add(ModBlocks.BIRCH_SINK_COUNTER);
                         entries.add(ModBlocks.BIRCH_STORAGE_COUNTER);
                         entries.add(ModBlocks.BIRCH_CHAIR);
                         entries.add(ModBlocks.BIRCH_WALL_MIRROR);
+                        entries.add(ModBlocks.BIRCH_WALL_CLOCK);
                         entries.add(ModBlocks.BIRCH_LAMP);
                         entries.add(ModBlocks.BIRCH_SOFA);
                         entries.add(ModBlocks.BIRCH_TABLE);
@@ -59,11 +64,13 @@ public class ModItemGroups {
 
                         // Jungle
                         entries.add(ModBlocks.JUNGLE_PLANKED_WALL);
+                        entries.add(ModBlocks.JUNGLE_BEAM);
                         entries.add(ModBlocks.JUNGLE_COUNTER);
                         entries.add(ModBlocks.JUNGLE_SINK_COUNTER);
                         entries.add(ModBlocks.JUNGLE_STORAGE_COUNTER);
                         entries.add(ModBlocks.JUNGLE_CHAIR);
                         entries.add(ModBlocks.JUNGLE_WALL_MIRROR);
+                        entries.add(ModBlocks.JUNGLE_WALL_CLOCK);
                         entries.add(ModBlocks.JUNGLE_LAMP);
                         entries.add(ModBlocks.JUNGLE_SOFA);
                         entries.add(ModBlocks.JUNGLE_TABLE);
@@ -71,11 +78,13 @@ public class ModItemGroups {
 
                         // Acacia
                         entries.add(ModBlocks.ACACIA_PLANKED_WALL);
+                        entries.add(ModBlocks.ACACIA_BEAM);
                         entries.add(ModBlocks.ACACIA_COUNTER);
                         entries.add(ModBlocks.ACACIA_SINK_COUNTER);
                         entries.add(ModBlocks.ACACIA_STORAGE_COUNTER);
                         entries.add(ModBlocks.ACACIA_CHAIR);
                         entries.add(ModBlocks.ACACIA_WALL_MIRROR);
+                        entries.add(ModBlocks.ACACIA_WALL_CLOCK);
                         entries.add(ModBlocks.ACACIA_LAMP);
                         entries.add(ModBlocks.ACACIA_SOFA);
                         entries.add(ModBlocks.ACACIA_TABLE);
@@ -83,11 +92,13 @@ public class ModItemGroups {
 
                         // Dark Oak
                         entries.add(ModBlocks.DARK_OAK_PLANKED_WALL);
+                        entries.add(ModBlocks.DARK_OAK_BEAM);
                         entries.add(ModBlocks.DARK_OAK_COUNTER);
                         entries.add(ModBlocks.DARK_OAK_SINK_COUNTER);
                         entries.add(ModBlocks.DARK_OAK_STORAGE_COUNTER);
                         entries.add(ModBlocks.DARK_OAK_CHAIR);
                         entries.add(ModBlocks.DARK_OAK_WALL_MIRROR);
+                        entries.add(ModBlocks.DARK_OAK_WALL_CLOCK);
                         entries.add(ModBlocks.DARK_OAK_LAMP);
                         entries.add(ModBlocks.DARK_OAK_SOFA);
                         entries.add(ModBlocks.DARK_OAK_TABLE);
@@ -95,11 +106,13 @@ public class ModItemGroups {
 
                         // Mangrove
                         entries.add(ModBlocks.MANGROVE_PLANKED_WALL);
+                        entries.add(ModBlocks.MANGROVE_BEAM);
                         entries.add(ModBlocks.MANGROVE_COUNTER);
                         entries.add(ModBlocks.MANGROVE_SINK_COUNTER);
                         entries.add(ModBlocks.MANGROVE_STORAGE_COUNTER);
                         entries.add(ModBlocks.MANGROVE_CHAIR);
                         entries.add(ModBlocks.MANGROVE_WALL_MIRROR);
+                        entries.add(ModBlocks.MANGROVE_WALL_CLOCK);
                         entries.add(ModBlocks.MANGROVE_LAMP);
                         entries.add(ModBlocks.MANGROVE_SOFA);
                         entries.add(ModBlocks.MANGROVE_TABLE);
@@ -107,11 +120,13 @@ public class ModItemGroups {
 
                         // Cherry
                         entries.add(ModBlocks.CHERRY_PLANKED_WALL);
+                        entries.add(ModBlocks.CHERRY_BEAM);
                         entries.add(ModBlocks.CHERRY_COUNTER);
                         entries.add(ModBlocks.CHERRY_SINK_COUNTER);
                         entries.add(ModBlocks.CHERRY_STORAGE_COUNTER);
                         entries.add(ModBlocks.CHERRY_CHAIR);
                         entries.add(ModBlocks.CHERRY_WALL_MIRROR);
+                        entries.add(ModBlocks.CHERRY_WALL_CLOCK);
                         entries.add(ModBlocks.CHERRY_LAMP);
                         entries.add(ModBlocks.CHERRY_SOFA);
                         entries.add(ModBlocks.CHERRY_TABLE);
@@ -119,11 +134,13 @@ public class ModItemGroups {
 
                         // Bamboo
                         entries.add(ModBlocks.BAMBOO_PLANKED_WALL);
+                        entries.add(ModBlocks.BAMBOO_BEAM);
                         entries.add(ModBlocks.BAMBOO_COUNTER);
                         entries.add(ModBlocks.BAMBOO_SINK_COUNTER);
                         entries.add(ModBlocks.BAMBOO_STORAGE_COUNTER);
                         entries.add(ModBlocks.BAMBOO_CHAIR);
                         entries.add(ModBlocks.BAMBOO_WALL_MIRROR);
+                        entries.add(ModBlocks.BAMBOO_WALL_CLOCK);
                         entries.add(ModBlocks.BAMBOO_LAMP);
                         entries.add(ModBlocks.BAMBOO_SOFA);
                         entries.add(ModBlocks.BAMBOO_TABLE);
@@ -131,11 +148,13 @@ public class ModItemGroups {
 
                         // Crimson
                         entries.add(ModBlocks.CRIMSON_PLANKED_WALL);
+                        entries.add(ModBlocks.CRIMSON_BEAM);
                         entries.add(ModBlocks.CRIMSON_COUNTER);
                         entries.add(ModBlocks.CRIMSON_SINK_COUNTER);
                         entries.add(ModBlocks.CRIMSON_STORAGE_COUNTER);
                         entries.add(ModBlocks.CRIMSON_CHAIR);
                         entries.add(ModBlocks.CRIMSON_WALL_MIRROR);
+                        entries.add(ModBlocks.CRIMSON_WALL_CLOCK);
                         entries.add(ModBlocks.CRIMSON_LAMP);
                         entries.add(ModBlocks.CRIMSON_SOFA);
                         entries.add(ModBlocks.CRIMSON_TABLE);
@@ -143,11 +162,13 @@ public class ModItemGroups {
 
                         // Warped
                         entries.add(ModBlocks.WARPED_PLANKED_WALL);
+                        entries.add(ModBlocks.WARPED_BEAM);
                         entries.add(ModBlocks.WARPED_COUNTER);
                         entries.add(ModBlocks.WARPED_SINK_COUNTER);
                         entries.add(ModBlocks.WARPED_STORAGE_COUNTER);
                         entries.add(ModBlocks.WARPED_CHAIR);
                         entries.add(ModBlocks.WARPED_WALL_MIRROR);
+                        entries.add(ModBlocks.WARPED_WALL_CLOCK);
                         entries.add(ModBlocks.WARPED_LAMP);
                         entries.add(ModBlocks.WARPED_SOFA);
                         entries.add(ModBlocks.WARPED_TABLE);
@@ -156,6 +177,8 @@ public class ModItemGroups {
                         // Specials (Mangrove)
 //                        entries.add(ModBlocks.MANGROVE_LAMP);
                         entries.add(ModBlocks.MANGROVE_LANTERN);
+
+                        entries.add(ModBlocks.TUFF_BIRD_BATH);
 
                         entries.add(ModBlocks.AUTUMN_STAINED_GLASS);
                         entries.add(ModBlocks.AUTUMN_STAINED_GLASS_PANE);

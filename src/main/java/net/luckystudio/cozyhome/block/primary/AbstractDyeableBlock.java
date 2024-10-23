@@ -59,7 +59,7 @@ public abstract class AbstractDyeableBlock extends BlockWithEntity {
     @Override
     public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
         ItemStack itemStack = super.getPickStack(world, pos, state);
-        world.getBlockEntity(pos, ModBlockEntities.COLOR_LAMP_BLOCK_ENTITY).ifPresent(blockEntity -> blockEntity.setStackNbt(itemStack, world.getRegistryManager()));
+        world.getBlockEntity(pos, ModBlockEntities.DYEABLE_BLOCK_ENTITY).ifPresent(blockEntity -> blockEntity.setStackNbt(itemStack, world.getRegistryManager()));
         return itemStack;
     }
 

@@ -1,0 +1,25 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "cozyhome:block/bird_bath/types/stone_bricks_bird_bath"
+      }
+    },
+    {
+      "apply": {"model": "cozyhome:block/liquid/types/water_12_by_12_level_15","y": 180},
+      "when": {"contains": true,"facing": "north"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/liquid/types/water_12_by_12_level_15","y": 270},
+      "when": {"contains": true,"facing": "east"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/liquid/types/water_12_by_12_level_15"},
+      "when": {"contains": true,"facing": "south"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/liquid/types/water_12_by_12_level_15","y": 90},
+      "when": {"contains": true,"facing": "west"}
+    }
+  ]
+}

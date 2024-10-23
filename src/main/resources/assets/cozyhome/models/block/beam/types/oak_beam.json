@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/beam/template_beam",
+  "textures": {
+    "0": "cozyhome:block/beam/oak_beam",
+    "particle": "blocks/oak_log"
+  }
+}

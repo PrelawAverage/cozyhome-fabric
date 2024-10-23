@@ -15,7 +15,7 @@ public class DyeableBlockEntity extends BlockEntity {
     public int color = 0xFFFFFF;
 
     public DyeableBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.COLOR_LAMP_BLOCK_ENTITY, pos, state);
+        super(ModBlockEntities.DYEABLE_BLOCK_ENTITY, pos, state);
     }
 
     // The following two methods specify serialization of color data.

@@ -8,11 +8,12 @@ import net.minecraft.state.property.IntProperty;
 
 public class ModProperties {
     public static final EnumProperty<LinearConnectionBlock> LINEAR_CONNECTION = EnumProperty.of("linear_connection", LinearConnectionBlock.class);
-    public static final EnumProperty<CoveredBlock> COVERED_BLOCK = EnumProperty.of("cover", CoveredBlock.class);
+    public static final EnumProperty<CoveredBlock> COVERED = EnumProperty.of("cover", CoveredBlock.class);
     public static final BooleanProperty TUCKED = BooleanProperty.of("tucked");
     public static final IntProperty OMNI_ROTATION = IntProperty.of("omni_rotation", 0, 3);
-    public static final IntProperty FILLED_LEVEL_0_3 = IntProperty.of("filled_level_3", 0, 3);
-    public static final IntProperty FILLED_LEVEL_0_5 = IntProperty.of("filled_level_5", 0, 5);
+    public static final IntProperty FILLED_LEVEL_0_3 = IntProperty.of("level", 0, 3);
+    public static final IntProperty FILLED_LEVEL_0_5 = IntProperty.of("level", 0, 5);
+    public static final BooleanProperty CONTAINS = BooleanProperty.of("contains");
 
     public static int getOmniRotation(int rotation) {
         if (rotation == 0 || rotation == 4 || rotation == 8 || rotation == 12) return 0;

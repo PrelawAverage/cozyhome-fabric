@@ -16,6 +16,18 @@
   "block.cozyhome.crimson_planked_wall": "Crimson Planked Wall",
   "block.cozyhome.warped_planked_wall": "Warped Planked Wall",
 
+  "block.cozyhome.oak_wall_clock": "Oak Wall Clock",
+  "block.cozyhome.spruce_wall_clock": "Spruce Wall Clock",
+  "block.cozyhome.birch_wall_clock": "Birch Wall Clock",
+  "block.cozyhome.jungle_wall_clock": "Jungle Wall Clock",
+  "block.cozyhome.acacia_wall_clock": "Acacia Wall Clock",
+  "block.cozyhome.dark_oak_wall_clock": "Dark Oak Wall Clock",
+  "block.cozyhome.mangrove_wall_clock": "Mangrove Wall Clock",
+  "block.cozyhome.cherry_wall_clock": "Cherry Wall Clock",
+  "block.cozyhome.bamboo_wall_clock": "Bamboo Wall Clock",
+  "block.cozyhome.crimson_wall_clock": "Crimson Wall Clock",
+  "block.cozyhome.warped_wall_clock": "Warped Wall Clock",
+
   "block.cozyhome.oak_counter": "Oak Counter",
   "block.cozyhome.oak_sink_counter": "Oak Sink Counter",
   "block.cozyhome.oak_storage_counter": "Oak Storage Counter",
@@ -88,6 +100,21 @@
   "block.cozyhome.bamboo_wall_mirror": "Bamboo Wall Mirror",
   "block.cozyhome.warped_wall_mirror": "Crimson Wall Mirror",
   "block.cozyhome.crimson_wall_mirror": "Warped Wall Mirror",
+
+  "block.cozyhome.oak_beam": "Oak Beam",
+  "block.cozyhome.spruce_beam": "Spruce Beam",
+  "block.cozyhome.birch_beam": "Birch Beam",
+  "block.cozyhome.jungle_beam": "Jungle Beam",
+  "block.cozyhome.acacia_beam": "Acacia Beam",
+  "block.cozyhome.dark_oak_beam": "Dark Oak Beam",
+  "block.cozyhome.mangrove_beam": "Mangrove Beam",
+  "block.cozyhome.cherry_beam": "Cherry Beam",
+  "block.cozyhome.bamboo_beam": "Bamboo Beam",
+  "block.cozyhome.warped_beam": "Crimson Beam",
+  "block.cozyhome.crimson_beam": "Warped Beam",
+
+  "block.cozyhome.stone_bricks_bird_bath": "Stone Brick Bird Bath",
+  "block.cozyhome.tuff_bird_bath": "Tuff Bird Bath",
 
   "container.cozyhome.storage_counter": "Storage Counter",
 

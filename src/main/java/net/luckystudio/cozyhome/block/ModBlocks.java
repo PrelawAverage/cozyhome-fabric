@@ -10,7 +10,6 @@ import net.luckystudio.cozyhome.block.special.MangroveLanternBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.SinkBehavior;
 import net.minecraft.block.*;
 
-import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -19,7 +18,9 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.WorldView;
 import net.minecraft.world.biome.Biome;
 
 import java.util.function.ToIntFunction;
@@ -43,23 +44,16 @@ private static Block createColorLampBlock() {
                     .burnable()
                     .sounds(BlockSoundGroup.LANTERN));
     }
-    private static Block createSofaBlock(MapColor color) {
+    private static Block createSofaBlock() {
         return new DyeableSofaBlock(
                 AbstractBlock.Settings.create()
-                        .mapColor(color)
+                        .mapColor(MapColor.WHITE)
                         .nonOpaque()
                         .hardness(1f)
                         .strength(1f)
                         .burnable()
                         .sounds(BlockSoundGroup.WOOL));
     }
-
-    public static final Block DYE_VAT = registerBlock("dye_vat",
-            new DyeVatBlock(Blocks.CAULDRON.getDefaultState(), AbstractBlock.Settings.create()
-                    .strength(2.5f, 2.5f)
-                    .nonOpaque()
-                    .requiresTool()
-                    .dynamicBounds()));
 
     private static Block createTable(BlockSoundGroup soundGroup) {
         return new PlankedWallBlock(
@@ -80,6 +74,43 @@ private static Block createColorLampBlock() {
                         .sounds(soundGroup)
                         .dynamicBounds());
     }
+
+    private static Block createWallClock(BlockSoundGroup soundGroup) {
+        return new ClockBlock(
+                AbstractBlock.Settings.create()
+                        .hardness(2)
+                        .strength(3)
+                        .burnable()
+                        .sounds(soundGroup)
+                        .dynamicBounds());
+    }
+
+    private static Block createBirdBath(BlockSoundGroup soundGroup) {
+        return new BirdBathBlock(
+                AbstractBlock.Settings.create()
+                        .solid()
+                        .hardness(2)
+                        .strength(3)
+                        .sounds(soundGroup)
+                        .dynamicBounds());
+    }
+
+    private static Block createBeam(BlockSoundGroup soundGroup) {
+        return new BeamBlock(.25f,
+                AbstractBlock.Settings.create()
+                        .hardness(2)
+                        .strength(3)
+                        .requiresTool()
+                        .sounds(soundGroup)
+                        .dynamicBounds());
+    }
+
+    public static final Block DYE_VAT = registerBlock("dye_vat",
+            new DyeVatBlock(Blocks.CAULDRON.getDefaultState(), AbstractBlock.Settings.create()
+                    .strength(2.5f, 2.5f)
+                    .nonOpaque()
+                    .requiresTool()
+                    .dynamicBounds()));
 
     // Add Blocks Here
     public static final Block OAK_PLANKED_WALL = registerBlock("oak_planked_wall", createPlankedWall(BlockSoundGroup.WOOD));
@@ -222,17 +253,17 @@ private static Block createColorLampBlock() {
                     .emissiveLighting(ModBlocks::ifLit)));
 
     // Sofas
-    public static final Block OAK_SOFA = registerBlock("oak_sofa", createSofaBlock(MapColor.WHITE));
-    public static final Block SPRUCE_SOFA = registerBlock("spruce_sofa", createSofaBlock(MapColor.WHITE));
-    public static final Block BIRCH_SOFA = registerBlock("birch_sofa", createSofaBlock(MapColor.WHITE));
-    public static final Block JUNGLE_SOFA = registerBlock("jungle_sofa", createSofaBlock(MapColor.WHITE));
-    public static final Block ACACIA_SOFA = registerBlock("acacia_sofa", createSofaBlock(MapColor.WHITE));
-    public static final Block DARK_OAK_SOFA = registerBlock("dark_oak_sofa", createSofaBlock(MapColor.WHITE));
-    public static final Block MANGROVE_SOFA = registerBlock("mangrove_sofa", createSofaBlock(MapColor.WHITE));
-    public static final Block CHERRY_SOFA = registerBlock("cherry_sofa", createSofaBlock(MapColor.WHITE));
-    public static final Block BAMBOO_SOFA = registerBlock("bamboo_sofa", createSofaBlock(MapColor.WHITE));
-    public static final Block CRIMSON_SOFA = registerBlock("crimson_sofa", createSofaBlock(MapColor.WHITE));
-    public static final Block WARPED_SOFA = registerBlock("warped_sofa", createSofaBlock(MapColor.WHITE));
+    public static final Block OAK_SOFA = registerBlock("oak_sofa", createSofaBlock());
+    public static final Block SPRUCE_SOFA = registerBlock("spruce_sofa", createSofaBlock());
+    public static final Block BIRCH_SOFA = registerBlock("birch_sofa", createSofaBlock());
+    public static final Block JUNGLE_SOFA = registerBlock("jungle_sofa", createSofaBlock());
+    public static final Block ACACIA_SOFA = registerBlock("acacia_sofa", createSofaBlock());
+    public static final Block DARK_OAK_SOFA = registerBlock("dark_oak_sofa", createSofaBlock());
+    public static final Block MANGROVE_SOFA = registerBlock("mangrove_sofa", createSofaBlock());
+    public static final Block CHERRY_SOFA = registerBlock("cherry_sofa", createSofaBlock());
+    public static final Block BAMBOO_SOFA = registerBlock("bamboo_sofa", createSofaBlock());
+    public static final Block CRIMSON_SOFA = registerBlock("crimson_sofa", createSofaBlock());
+    public static final Block WARPED_SOFA = registerBlock("warped_sofa", createSofaBlock());
 
     // Wall Mirrors
     public static final Block OAK_WALL_MIRROR = registerBlock("oak_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
@@ -246,6 +277,19 @@ private static Block createColorLampBlock() {
     public static final Block BAMBOO_WALL_MIRROR = registerBlock("bamboo_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
     public static final Block CRIMSON_WALL_MIRROR = registerBlock("crimson_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
     public static final Block WARPED_WALL_MIRROR = registerBlock("warped_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
+
+    // Wall Mirrors
+    public static final Block OAK_WALL_CLOCK = registerBlock("oak_wall_clock", createWallClock(BlockSoundGroup.WOOD));
+    public static final Block SPRUCE_WALL_CLOCK = registerBlock("spruce_wall_clock", createWallClock(BlockSoundGroup.WOOD));
+    public static final Block BIRCH_WALL_CLOCK = registerBlock("birch_wall_clock", createWallClock(BlockSoundGroup.WOOD));
+    public static final Block JUNGLE_WALL_CLOCK = registerBlock("jungle_wall_clock", createWallClock(BlockSoundGroup.WOOD));
+    public static final Block ACACIA_WALL_CLOCK = registerBlock("acacia_wall_clock", createWallClock(BlockSoundGroup.WOOD));
+    public static final Block DARK_OAK_WALL_CLOCK = registerBlock("dark_oak_wall_clock", createWallClock(BlockSoundGroup.WOOD));
+    public static final Block MANGROVE_WALL_CLOCK = registerBlock("mangrove_wall_clock", createWallClock(BlockSoundGroup.WOOD));
+    public static final Block CHERRY_WALL_CLOCK = registerBlock("cherry_wall_clock", createWallClock(BlockSoundGroup.CHERRY_WOOD));
+    public static final Block BAMBOO_WALL_CLOCK = registerBlock("bamboo_wall_clock", createWallClock(BlockSoundGroup.BAMBOO_WOOD));
+    public static final Block CRIMSON_WALL_CLOCK = registerBlock("crimson_wall_clock", createWallClock(BlockSoundGroup.NETHER_WOOD));
+    public static final Block WARPED_WALL_CLOCK = registerBlock("warped_wall_clock", createWallClock(BlockSoundGroup.NETHER_WOOD));
 
     // Tables
     public static final Block OAK_TABLE = registerBlock("oak_table", createTable(BlockSoundGroup.WOOD));
@@ -273,12 +317,39 @@ private static Block createColorLampBlock() {
     public static final Block CRIMSON_DESK = registerBlock("crimson_desk", createDesk(BlockSoundGroup.NETHER_WOOD));
     public static final Block WARPED_DESK = registerBlock("warped_desk", createDesk(BlockSoundGroup.NETHER_WOOD));
 
+    // Bird Baths
+    public static final Block STONE_BRICKS_BIRD_BATH = registerBlock("stone_bricks_bird_bath", createBirdBath(BlockSoundGroup.STONE));
+    public static final Block TUFF_BIRD_BATH = registerBlock("tuff_bird_bath", createBirdBath(BlockSoundGroup.POLISHED_TUFF));
+
+    // Beams
+    public static final Block OAK_BEAM = registerBlock("oak_beam", createBeam(BlockSoundGroup.WOOD));
+    public static final Block SPRUCE_BEAM = registerBlock("spruce_beam", createBeam(BlockSoundGroup.WOOD));
+    public static final Block BIRCH_BEAM = registerBlock("birch_beam", createBeam(BlockSoundGroup.WOOD));
+    public static final Block JUNGLE_BEAM = registerBlock("jungle_beam", createBeam(BlockSoundGroup.WOOD));
+    public static final Block ACACIA_BEAM = registerBlock("acacia_beam", createBeam(BlockSoundGroup.WOOD));
+    public static final Block DARK_OAK_BEAM = registerBlock("dark_oak_beam", createBeam(BlockSoundGroup.WOOD));
+    public static final Block MANGROVE_BEAM = registerBlock("mangrove_beam", createBeam(BlockSoundGroup.WOOD));
+    public static final Block CHERRY_BEAM = registerBlock("cherry_beam", createBeam(BlockSoundGroup.CHERRY_WOOD));
+    public static final Block BAMBOO_BEAM = registerBlock("bamboo_beam", createBeam(BlockSoundGroup.BAMBOO_WOOD));
+    public static final Block CRIMSON_BEAM = registerBlock("crimson_beam", createBeam(BlockSoundGroup.NETHER_WOOD));
+    public static final Block WARPED_BEAM = registerBlock("warped_beam", createBeam(BlockSoundGroup.NETHER_WOOD));
+
+    // Returning a light level if the block is LIT
     public static ToIntFunction<BlockState> createLightLevelFromLitBlockState(int litLevel) {
         return state -> state.get(Properties.LIT) ? litLevel : 0;
     }
 
+    // Returning whether a block is LIT
     public static boolean ifLit(BlockState state, BlockView world, BlockPos pos) {
         return state.get(Properties.LIT);
+    }
+
+    // Used for blocks that break when there isn't a block under them or block of the same type.
+    // If you want your block to break when there is not a solid flat surface use Block.sideCoversSmallSquare();
+    public static boolean isBlockBelowOrSame(BlockState state, WorldView world, BlockPos pos) {
+        BlockState blockStateBelow = world.getBlockState(pos.down());
+        Direction direction = Direction.DOWN;
+        return state.getBlock() == blockStateBelow.getBlock() || Block.sideCoversSmallSquare(world, pos.offset(direction), direction.getOpposite());
     }
 
     // Register Block Method
@@ -287,12 +358,13 @@ private static Block createColorLampBlock() {
         return Registry.register(Registries.BLOCK, Identifier.of(CozyHome.MOD_ID, name), block);
     }
 
-    // Helper Method
+    // Helper Method for Register Block Method
     private static void registerBlockItems(String name, Block block){
         Registry.register(Registries.ITEM, Identifier.of(CozyHome.MOD_ID, name),
                 new BlockItem(block, new Item.Settings()));
     }
 
+    // Registering Blocks
     public static void registerModBlocks(){
         CozyHome.LOGGER.info("Registering ModBlocks for " + CozyHome.MOD_ID);
     }

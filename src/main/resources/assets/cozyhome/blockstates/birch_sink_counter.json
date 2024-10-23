@@ -1,0 +1,65 @@
+{
+  "variants": {
+    "facing=north,filled_level_3=0": {
+      "model": "cozyhome:block/counter/types/birch_sink_counter",
+      "y": 180
+    },
+    "facing=east,filled_level_3=0": {
+      "model": "cozyhome:block/counter/types/birch_sink_counter",
+      "y": 270
+    },
+    "facing=south,filled_level_3=0": {
+      "model": "cozyhome:block/counter/types/birch_sink_counter"
+    },
+    "facing=west,filled_level_3=0": {
+      "model": "cozyhome:block/counter/types/birch_sink_counter",
+      "y": 90
+    },
+    "facing=north,filled_level_3=1": {
+      "model": "cozyhome:block/counter/types/birch_sink_counter_1",
+      "y": 180
+    },
+    "facing=east,filled_level_3=1": {
+      "model": "cozyhome:block/counter/types/birch_sink_counter_1",
+      "y": 270
+    },
+    "facing=south,filled_level_3=1": {
+      "model": "cozyhome:block/counter/types/birch_sink_counter_1"
+    },
+    "facing=west,filled_level_3=1": {
+      "model": "cozyhome:block/counter/types/birch_sink_counter_1",
+      "y": 90
+    },
+    "facing=north,filled_level_3=2": {
+      "model": "cozyhome:block/counter/types/birch_sink_counter_2",
+      "y": 180
+    },
+    "facing=east,filled_level_3=2": {
+      "model": "cozyhome:block/counter/types/birch_sink_counter_2",
+      "y": 270
+    },
+    "facing=south,filled_level_3=2": {
+      "model": "cozyhome:block/counter/types/birch_sink_counter_2"
+    },
+    "facing=west,filled_level_3=2": {
+      "model": "cozyhome:block/counter/types/birch_sink_counter_2",
+      "y": 90
+    },
+
+    "facing=north,filled_level_3=3": {
+      "model": "cozyhome:block/counter/types/birch_sink_counter_3",
+      "y": 180
+    },
+    "facing=east,filled_level_3=3": {
+      "model": "cozyhome:block/counter/types/birch_sink_counter_3",
+      "y": 270
+    },
+    "facing=south,filled_level_3=3": {
+      "model": "cozyhome:block/counter/types/birch_sink_counter_3"
+    },
+    "facing=west,filled_level_3=3": {
+      "model": "cozyhome:block/counter/types/birch_sink_counter_3",
+      "y": 90
+    }
+  }
+}

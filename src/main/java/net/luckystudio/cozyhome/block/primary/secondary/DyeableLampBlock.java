@@ -2,6 +2,7 @@ package net.luckystudio.cozyhome.block.primary.secondary;
 
 import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.ModBlockEntities;
+import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.primary.AbstractDyeableBlock;
 import net.luckystudio.cozyhome.block.entity.DyeableBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModProperties;
@@ -85,6 +86,11 @@ public class DyeableLampBlock extends AbstractDyeableBlock {
     }
 
     @Override
+    protected boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        return ModBlocks.isBlockBelowOrSame(state, world, pos);
+    }
+
+    @Override
     protected BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
     }
@@ -134,12 +140,12 @@ public class DyeableLampBlock extends AbstractDyeableBlock {
     public void toggleLight(BlockState state, World world, BlockPos pos, @Nullable PlayerEntity player) {
         state = state.cycle(LIT);
         world.setBlockState(pos, state, Block.NOTIFY_ALL);
-        this.updateNeighbors(state, world, pos);
+        this.updateNeighbors(world, pos);
         playClickSound(player, world, pos, state);
         world.emitGameEvent(player, state.get(LIT) ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, pos);
     }
 
-    private void updateNeighbors(BlockState state, World world, BlockPos pos) {
+    private void updateNeighbors(World world, BlockPos pos) {
         world.updateNeighborsAlways(pos, this);
     }
 
@@ -150,40 +156,28 @@ public class DyeableLampBlock extends AbstractDyeableBlock {
     }
 
     @Override
-    protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
+    protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         // Getting the states of the block above and below our block
         BlockState getBlockAbove = world.getBlockState(pos.up());
         BlockState getBlockBelow = world.getBlockState(pos.down());
-
-        // If the block below is air then lamp block breaks
-        if (getBlockBelow.isAir() && !world.isClient()) {
-            world.breakBlock(pos, true);
-            return;
-        }
-
-        // Getting Vertical Connection Types based on the states of the block above and below.
         LinearConnectionBlock linearConnectionBlockType = getLinearConnectionBlockType(state, getBlockAbove, getBlockBelow);
-        // Checking if the block is on before we make changes
-        boolean wasOn = state.get(LIT);
-        // Creating the new state to update the block to.
-        BlockState updatedState;
-        if (didShapeChange(state, linearConnectionBlockType)) {
-            updatedState = state
-                    .with(STACKABLE_BLOCK, linearConnectionBlockType)
+        if (!state.canPlaceAt(world, pos)) {
+            return Blocks.AIR.getDefaultState();
+        } else if (didShapeChange(state, linearConnectionBlockType)) {
+            return state.with(STACKABLE_BLOCK, linearConnectionBlockType)
                     .with(LIT, false)
                     .with(OMNI_ROTATION, adjustRotation(state, getBlockBelow));
-            // Updating the block to the new state
-            world.setBlockState(pos, updatedState, 3);
         }
+        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     private boolean didShapeChange(BlockState state, LinearConnectionBlock linearConnectionBlockType) {
         return (state.get(STACKABLE_BLOCK) != linearConnectionBlockType);
     }
 
-    private Integer adjustRotation(BlockState state, BlockState blockbelow) {
-        if (blockbelow.getBlock() == state.getBlock()) {
-            return blockbelow.get(OMNI_ROTATION);
+    private Integer adjustRotation(BlockState state, BlockState blockBelow) {
+        if (blockBelow.getBlock() == state.getBlock()) {
+            return blockBelow.get(OMNI_ROTATION);
         } else {
             return state.get(OMNI_ROTATION);
         }
@@ -202,7 +196,7 @@ public class DyeableLampBlock extends AbstractDyeableBlock {
     @Override
     public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
         ItemStack itemStack = super.getPickStack(world, pos, state);
-        world.getBlockEntity(pos, ModBlockEntities.COLOR_LAMP_BLOCK_ENTITY).ifPresent(blockEntity -> blockEntity.setStackNbt(itemStack, world.getRegistryManager()));
+        world.getBlockEntity(pos, ModBlockEntities.DYEABLE_BLOCK_ENTITY).ifPresent(blockEntity -> blockEntity.setStackNbt(itemStack, world.getRegistryManager()));
         return itemStack;
     }
 
@@ -210,7 +204,7 @@ public class DyeableLampBlock extends AbstractDyeableBlock {
     public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         if (!player.isCreative()) {
             ItemStack itemStack = super.getPickStack(world, pos, state);
-            world.getBlockEntity(pos, ModBlockEntities.COLOR_LAMP_BLOCK_ENTITY).ifPresent(blockEntity -> blockEntity.setStackNbt(itemStack, world.getRegistryManager()));
+            world.getBlockEntity(pos, ModBlockEntities.DYEABLE_BLOCK_ENTITY).ifPresent(blockEntity -> blockEntity.setStackNbt(itemStack, world.getRegistryManager()));
             ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, itemStack);
             world.spawnEntity(itemEntity);
         }

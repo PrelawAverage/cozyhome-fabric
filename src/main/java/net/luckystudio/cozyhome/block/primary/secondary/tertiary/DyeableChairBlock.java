@@ -44,7 +44,7 @@ public class DyeableChairBlock extends DyeableSeatBlock implements Waterloggable
     public static final BooleanProperty TUCKED = ModProperties.TUCKED;
     public static final IntProperty ROTATION = Properties.ROTATION;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
-    public static final EnumProperty<CoveredBlock> COVER = ModProperties.COVERED_BLOCK;
+    public static final EnumProperty<CoveredBlock> COVER = ModProperties.COVERED;
 
     public DyeableChairBlock(Settings settings) {
         super(settings);
