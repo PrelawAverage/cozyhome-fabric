@@ -8,15 +8,21 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.luckystudio.cozyhome.block.ModBlocks;
+import net.luckystudio.cozyhome.block.util.ModProperties;
+import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
 import net.luckystudio.cozyhome.entity.ModEntities;
 import net.luckystudio.cozyhome.entity.client.SeatRenderer;
 import net.luckystudio.cozyhome.entity.model.SeatEntityModel;
 import net.luckystudio.cozyhome.screen.StorageCounterScreen;
 import net.luckystudio.cozyhome.util.ModColorHandler;
+import net.minecraft.block.BlockState;
+import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockRenderView;
 
 @Environment(EnvType.CLIENT)
 public class CozyHomeClient implements ClientModInitializer {
@@ -149,8 +155,8 @@ public class CozyHomeClient implements ClientModInitializer {
         );
 
         // Gives blocks the water color
-        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) ->
-                        0x3495eb,
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) ->
+                        BiomeColors.getWaterColor(world, pos),
                 ModBlocks.OAK_SINK_COUNTER,
                 ModBlocks.SPRUCE_SINK_COUNTER,
                 ModBlocks.BIRCH_SINK_COUNTER,
@@ -161,10 +167,14 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.CHERRY_SINK_COUNTER,
                 ModBlocks.BAMBOO_SINK_COUNTER,
                 ModBlocks.CRIMSON_SINK_COUNTER,
-                ModBlocks.WARPED_SINK_COUNTER,
+                ModBlocks.WARPED_SINK_COUNTER
+        );
 
-                ModBlocks.TUFF_BIRD_BATH,
-                ModBlocks.STONE_BRICKS_BIRD_BATH
+        // Blocks that can hold water or grass
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) ->
+                getColorFromState(state, world, pos),
+                ModBlocks.TUFF_FOUNTAIN,
+                ModBlocks.STONE_BRICKS_FOUNTAIN
         );
 
         // Renders the colors on the Items
@@ -172,5 +182,13 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.OAK_LAMP.asItem(),
                 ModBlocks.SPRUCE_LAMP.asItem()
         );
+    }
+    private static int getColorFromState(BlockState state, BlockRenderView world, BlockPos pos) {
+        if (state.get(ModProperties.CONTAINS) == ContainsBlock.WATER){
+            return BiomeColors.getWaterColor(world, pos);
+        } else if (state.get(ModProperties.CONTAINS) == ContainsBlock.GRASS) {
+            return BiomeColors.getGrassColor(world, pos);
+        }
+        return 0xFFFFFF;
     }
 }

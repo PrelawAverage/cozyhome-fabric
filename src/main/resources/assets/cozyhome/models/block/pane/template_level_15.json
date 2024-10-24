@@ -1,0 +1,13 @@
+{
+	"credit": "Made with Blockbench",
+	"elements": [
+		{
+			"from": [0, 15, 0],
+			"to": [16, 15, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -2, 0]},
+			"faces": {
+				"up": {"uv": [0, 0, 16, 16], "texture": "#0", "tintindex": 0}
+			}
+		}
+	]
+}

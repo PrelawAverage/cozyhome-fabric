@@ -1,5 +1,6 @@
 package net.luckystudio.cozyhome.block.util;
 
+import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
 import net.luckystudio.cozyhome.block.util.enums.CoveredBlock;
 import net.luckystudio.cozyhome.block.util.enums.LinearConnectionBlock;
 import net.minecraft.state.property.BooleanProperty;
@@ -13,7 +14,7 @@ public class ModProperties {
     public static final IntProperty OMNI_ROTATION = IntProperty.of("omni_rotation", 0, 3);
     public static final IntProperty FILLED_LEVEL_0_3 = IntProperty.of("level", 0, 3);
     public static final IntProperty FILLED_LEVEL_0_5 = IntProperty.of("level", 0, 5);
-    public static final BooleanProperty CONTAINS = BooleanProperty.of("contains");
+    public static final EnumProperty<ContainsBlock> CONTAINS = EnumProperty.of("contains", ContainsBlock.class);
 
     public static int getOmniRotation(int rotation) {
         if (rotation == 0 || rotation == 4 || rotation == 8 || rotation == 12) return 0;

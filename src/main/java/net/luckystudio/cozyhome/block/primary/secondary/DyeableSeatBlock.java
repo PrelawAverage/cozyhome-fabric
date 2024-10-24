@@ -51,6 +51,7 @@ public abstract class DyeableSeatBlock extends AbstractDyeableBlock implements S
         return 0.5f;
     }
 
+
     public float setRiderRotation(Entity entity) {
         return entity.getYaw();
     }

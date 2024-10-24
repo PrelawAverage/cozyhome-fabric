@@ -7,5 +7,4 @@ public class AbstractSeatBlock extends Block implements SeatBlock {
     public AbstractSeatBlock(Settings settings) {
         super(settings);
     }
-
 }

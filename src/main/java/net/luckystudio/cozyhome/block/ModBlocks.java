@@ -85,8 +85,8 @@ private static Block createColorLampBlock() {
                         .dynamicBounds());
     }
 
-    private static Block createBirdBath(BlockSoundGroup soundGroup) {
-        return new BirdBathBlock(
+    private static Block createFountain(BlockSoundGroup soundGroup) {
+        return new FountainBlock(
                 AbstractBlock.Settings.create()
                         .solid()
                         .hardness(2)
@@ -318,8 +318,8 @@ private static Block createColorLampBlock() {
     public static final Block WARPED_DESK = registerBlock("warped_desk", createDesk(BlockSoundGroup.NETHER_WOOD));
 
     // Bird Baths
-    public static final Block STONE_BRICKS_BIRD_BATH = registerBlock("stone_bricks_bird_bath", createBirdBath(BlockSoundGroup.STONE));
-    public static final Block TUFF_BIRD_BATH = registerBlock("tuff_bird_bath", createBirdBath(BlockSoundGroup.POLISHED_TUFF));
+    public static final Block STONE_BRICKS_FOUNTAIN = registerBlock("stone_bricks_fountain", createFountain(BlockSoundGroup.STONE));
+    public static final Block TUFF_FOUNTAIN = registerBlock("tuff_fountain", createFountain(BlockSoundGroup.POLISHED_TUFF));
 
     // Beams
     public static final Block OAK_BEAM = registerBlock("oak_beam", createBeam(BlockSoundGroup.WOOD));

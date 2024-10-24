@@ -1,0 +1,12 @@
+{
+  "parent": "cozyhome:block/fountain/template_fountain_middle",
+  "textures": {
+    "0": "cozyhome:block/fountain/stone_bricks_fountain_bottom_side",
+    "1": "cozyhome:block/fountain/stone_bricks_fountain_side_middle",
+    "3": "cozyhome:block/fountain/stone_bricks_fountain_inner_side",
+    "4": "cozyhome:block/fountain/stone_bricks_fountain_inner_top_middle",
+    "5": "cozyhome:block/fountain/stone_bricks_fountain_inner_bottom_middle",
+    "6": "cozyhome:block/fountain/stone_bricks_fountain_top_middle",
+    "particle": "cozyhome:block/fountain/stone_bricks_fountain_top_middle"
+  }
+}

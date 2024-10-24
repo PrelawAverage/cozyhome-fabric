@@ -178,7 +178,8 @@ public class ModItemGroups {
 //                        entries.add(ModBlocks.MANGROVE_LAMP);
                         entries.add(ModBlocks.MANGROVE_LANTERN);
 
-                        entries.add(ModBlocks.TUFF_BIRD_BATH);
+                        entries.add(ModBlocks.TUFF_FOUNTAIN);
+                        entries.add(ModBlocks.STONE_BRICKS_FOUNTAIN);
 
                         entries.add(ModBlocks.AUTUMN_STAINED_GLASS);
                         entries.add(ModBlocks.AUTUMN_STAINED_GLASS_PANE);

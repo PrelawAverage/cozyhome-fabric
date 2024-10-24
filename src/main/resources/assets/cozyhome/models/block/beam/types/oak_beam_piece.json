@@ -1,5 +1,5 @@
 {
-  "parent": "cozyhome:block/beam/template_beam",
+  "parent": "cozyhome:block/beam/template_beam_piece",
   "textures": {
     "0": "cozyhome:block/beam/oak_beam",
     "particle": "block/oak_log_top"

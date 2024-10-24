@@ -1,4 +1,4 @@
-// 1.21	2024-10-22T14:12:00.7539567	Cozy Home/Block Loot Tables
+// 1.21	2024-10-23T18:59:44.7806279	Cozy Home/Block Loot Tables
 bd30b753d6ebfa43ba81478248b5172c9feb3124 data\cozyhome\loot_table\blocks\warped_planked_wall.json
 dd2335353cea724c60366ec16822a59400898ef0 data\cozyhome\loot_table\blocks\acacia_counter.json
 21740ac531915bbbe9475897711709cd625b19dc data\cozyhome\loot_table\blocks\warped_wall_mirror.json
@@ -36,8 +36,8 @@ f6069f28c764602300bd64c043294b8b74e2fd17 data\cozyhome\loot_table\blocks\bamboo_
 27229f3aaa2d2fd19ea415666b9a9fa91f9a8b1d data\cozyhome\loot_table\blocks\jungle_planked_wall.json
 0a8ff9be63604daa5c43ec41384ba9448539226d data\cozyhome\loot_table\blocks\crimson_wall_mirror.json
 e4285a1b1b96f6982f37d27677a6e82902c0c85c data\cozyhome\loot_table\blocks\jungle_storage_counter.json
-785dfad9e2186a901eb2e1718887d4043811683c data\cozyhome\loot_table\blocks\oak_storage_counter.json
 a9abf1f293ea2ab31b9b2a601bff0f0f8a2f4281 data\cozyhome\loot_table\blocks\jungle_counter.json
+785dfad9e2186a901eb2e1718887d4043811683c data\cozyhome\loot_table\blocks\oak_storage_counter.json
 42a81d94c6d6f9ac750b9e379122e09e44512139 data\cozyhome\loot_table\blocks\warped_storage_counter.json
 9908a85f190fac8e102ca7d927341d91d6c9b0ce data\cozyhome\loot_table\blocks\oak_wall_mirror.json
 4d6ab4f3c2f7c9bc2f00fbb919dd36c0d0ed39f7 data\cozyhome\loot_table\blocks\dark_oak_wall_mirror.json

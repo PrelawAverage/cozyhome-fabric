@@ -13,6 +13,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
 public class BeamBlock extends ConnectingBlock {
@@ -106,17 +107,16 @@ public class BeamBlock extends ConnectingBlock {
     public static BlockState withConnectionPropertiesCTX(ItemPlacementContext ctx, BlockView world, BlockPos pos, BlockState state) {
         Direction direction = ctx.getSide();
         return state.with(FACING, direction)
-                .withIfExists(DOWN, isStraight(ctx.getWorld(), pos, state))
-                .withIfExists(UP, isStraight(ctx.getWorld(), pos, state))
-                .withIfExists(NORTH, isStraight(ctx.getWorld(), pos, state))
-                .withIfExists(EAST, isStraight(ctx.getWorld(), pos, state))
-                .withIfExists(SOUTH, isStraight(ctx.getWorld(), pos, state))
-                .withIfExists(WEST, isStraight(ctx.getWorld(), pos, state));
+                .withIfExists(DOWN, canBeStraight(ctx.getWorld(), pos, state))
+                .withIfExists(UP, canBeStraight(ctx.getWorld(), pos, state))
+                .withIfExists(NORTH, canBeStraight(ctx.getWorld(), pos, state))
+                .withIfExists(EAST, canBeStraight(ctx.getWorld(), pos, state))
+                .withIfExists(SOUTH, canBeStraight(ctx.getWorld(), pos, state))
+                .withIfExists(WEST, canBeStraight(ctx.getWorld(), pos, state));
     }
 
     @Override
     protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        Direction dir = state.get(FACING);
         return withConnectionProperties(world, pos, state);
     }
 
@@ -127,15 +127,28 @@ public class BeamBlock extends ConnectingBlock {
         BlockState blockStateEast = world.getBlockState(pos.east());
         BlockState blockStateSouth = world.getBlockState(pos.south());
         BlockState blockStateWest = world.getBlockState(pos.west());
-        return state.withIfExists(DOWN, blockStateBelow.isSideSolidFullSquare(world, pos, Direction.UP) && state.get(FACING) == Direction.UP || isStraight(world, pos, state) && blockStateBelow.isSideSolidFullSquare(world, pos, Direction.UP))
-                .withIfExists(UP, blockStateUp.isSideSolidFullSquare(world, pos, Direction.DOWN) && state.get(FACING) == Direction.DOWN || isStraight(world, pos, state) && blockStateUp.isSideSolidFullSquare(world, pos, Direction.DOWN))
-                .withIfExists(NORTH, blockStateNorth.isSideSolidFullSquare(world, pos, Direction.SOUTH) && state.get(FACING) == Direction.SOUTH || isStraight(world, pos, state) && blockStateNorth.isSideSolidFullSquare(world, pos, Direction.SOUTH))
-                .withIfExists(EAST, blockStateEast.isSideSolidFullSquare(world, pos, Direction.WEST) && state.get(FACING) == Direction.WEST || isStraight(world, pos, state) && blockStateEast.isSideSolidFullSquare(world, pos, Direction.DOWN))
-                .withIfExists(SOUTH, blockStateSouth.isSideSolidFullSquare(world, pos, Direction.NORTH) && state.get(FACING) == Direction.NORTH || isStraight(world, pos, state) && blockStateSouth.isSideSolidFullSquare(world, pos, Direction.NORTH))
-                .withIfExists(WEST, blockStateWest.isSideSolidFullSquare(world, pos, Direction.EAST) && state.get(FACING) == Direction.EAST || isStraight(world, pos, state) && blockStateWest.isSideSolidFullSquare(world, pos, Direction.EAST));
+        return state.withIfExists(DOWN, giveDirectionState(state, blockStateBelow ,world, pos, Direction.UP))
+                .withIfExists(UP, giveDirectionState(state, blockStateUp ,world, pos, Direction.DOWN))
+                .withIfExists(NORTH, giveDirectionState(state, blockStateNorth, world, pos, Direction.SOUTH))
+                .withIfExists(EAST, giveDirectionState(state, blockStateEast, world, pos, Direction.WEST))
+                .withIfExists(SOUTH, giveDirectionState(state, blockStateSouth, world, pos, Direction.NORTH))
+                .withIfExists(WEST, giveDirectionState(state, blockStateWest, world, pos, Direction.EAST));
     }
 
-    private static boolean isStraight(WorldAccess world, BlockPos pos, BlockState state) {
+    private static boolean giveDirectionState(BlockState mainBlock, BlockState locationCheck, WorldAccess world, BlockPos pos, Direction OppositeOfDirectionFacing) {
+        Direction directionOfMainBlock = mainBlock.get(FACING);
+        // To make sure we don't set the side that is equal to the original(FACING) true
+        return (directionOfMainBlock != OppositeOfDirectionFacing) && isConnectableFace(world, pos, locationCheck, mainBlock, directionOfMainBlock);
+    }
+
+    private static boolean isConnectableFace(WorldAccess world, BlockPos pos, BlockState locationCheck, BlockState mainBlock, Direction directionChecking) {
+        Direction OppositeDirection = directionChecking.getOpposite();
+        // Checks if the block has a solid face
+        return locationCheck.isSideSolidFullSquare(world, pos, OppositeDirection) && canBeStraight(world, pos, mainBlock);
+    }
+
+    // Testing if the beam is straight
+    private static boolean canBeStraight(WorldAccess world, BlockPos pos, BlockState state) {
         Direction dir = state.get(FACING);
         BlockState blockStateBelow = world.getBlockState(pos.down());
         BlockState blockStateUp = world.getBlockState(pos.up());
@@ -144,12 +157,12 @@ public class BeamBlock extends ConnectingBlock {
         BlockState blockStateSouth = world.getBlockState(pos.south());
         BlockState blockStateWest = world.getBlockState(pos.west());
         return switch (dir) {
-            case UP -> blockStateUp.isSideSolidFullSquare(world, pos, Direction.DOWN);
-            case DOWN -> blockStateBelow.isSideSolidFullSquare(world, pos, Direction.UP);
-            case NORTH -> blockStateNorth.isSideSolidFullSquare(world, pos, Direction.SOUTH);
-            case SOUTH -> blockStateSouth.isSideSolidFullSquare(world, pos, Direction.NORTH);
-            case WEST -> blockStateWest.isSideSolidFullSquare(world, pos, Direction.EAST);
-            case EAST -> blockStateEast.isSideSolidFullSquare(world, pos, Direction.WEST);
+            case UP -> blockStateUp.isSideSolidFullSquare(world, pos, dir.getOpposite());
+            case DOWN -> blockStateBelow.isSideSolidFullSquare(world, pos, dir.getOpposite());
+            case NORTH -> blockStateNorth.isSideSolidFullSquare(world, pos, dir.getOpposite());
+            case SOUTH -> blockStateSouth.isSideSolidFullSquare(world, pos, dir.getOpposite());
+            case WEST -> blockStateWest.isSideSolidFullSquare(world, pos, dir.getOpposite());
+            case EAST -> blockStateEast.isSideSolidFullSquare(world, pos, dir.getOpposite());
         };
     }
 
