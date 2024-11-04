@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/fountain/template_fountain",
+  "textures": {
+    "1": "cozyhome:block/fountain/red_nether_brick_fountain",
+    "particle": "block/chiseled_red_nether_brick"
+  }
+}

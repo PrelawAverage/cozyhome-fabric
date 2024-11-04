@@ -1,6 +1,0 @@
-{
-  "parent": "cozyhome:block/liquid/template_liquid_10_by_10_level_15",
-  "textures": {
-    "liquid": "cozyhome:block/liquid/water_10_by_10"
-  }
-}

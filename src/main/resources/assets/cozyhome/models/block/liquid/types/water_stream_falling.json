@@ -1,0 +1,6 @@
+{
+  "parent": "cozyhome:block/liquid/template_stream_falling",
+  "textures": {
+    "1": "block/water_flow"
+  }
+}

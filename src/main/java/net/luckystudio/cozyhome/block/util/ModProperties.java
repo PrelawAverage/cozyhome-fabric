@@ -11,9 +11,14 @@ public class ModProperties {
     public static final EnumProperty<LinearConnectionBlock> LINEAR_CONNECTION = EnumProperty.of("linear_connection", LinearConnectionBlock.class);
     public static final EnumProperty<CoveredBlock> COVERED = EnumProperty.of("cover", CoveredBlock.class);
     public static final BooleanProperty TUCKED = BooleanProperty.of("tucked");
+    public static final BooleanProperty HAS_UNDER = BooleanProperty.of("has_under");
     public static final IntProperty OMNI_ROTATION = IntProperty.of("omni_rotation", 0, 3);
     public static final IntProperty FILLED_LEVEL_0_3 = IntProperty.of("level", 0, 3);
     public static final IntProperty FILLED_LEVEL_0_5 = IntProperty.of("level", 0, 5);
+    public static final BooleanProperty NORTH_EAST = BooleanProperty.of("north_east");
+    public static final BooleanProperty NORTH_WEST = BooleanProperty.of("north_west");
+    public static final BooleanProperty SOUTH_EAST = BooleanProperty.of("south_east");
+    public static final BooleanProperty SOUTH_WEST = BooleanProperty.of("south_west");
     public static final EnumProperty<ContainsBlock> CONTAINS = EnumProperty.of("contains", ContainsBlock.class);
 
     public static int getOmniRotation(int rotation) {

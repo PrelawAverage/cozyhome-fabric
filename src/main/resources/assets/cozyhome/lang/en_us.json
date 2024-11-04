@@ -113,12 +113,28 @@
   "block.cozyhome.warped_beam": "Crimson Beam",
   "block.cozyhome.crimson_beam": "Warped Beam",
 
-  "block.cozyhome.stone_bricks_fountain": "Stone Brick Fountain",
+  "block.cozyhome.stone_brick_fountain": "Stone Brick Fountain",
+  "block.cozyhome.mossy_stone_brick_fountain": "Mossy Stone Brick Fountain",
+  "block.cozyhome.granite_fountain": "Granite Fountain",
+  "block.cozyhome.diorite_fountain": "Diorite Fountain",
+  "block.cozyhome.andesite_fountain": "Andesite Fountain",
+  "block.cozyhome.deepslate_fountain": "Deepslate Fountain",
   "block.cozyhome.tuff_fountain": "Tuff Fountain",
+  "block.cozyhome.brick_fountain": "Brick Fountain",
+  "block.cozyhome.mud_fountain": "Mud Fountain",
+  "block.cozyhome.sandstone_fountain": "Sandstone Fountain",
+  "block.cozyhome.red_sandstone_fountain": "Red Sandstone Fountain",
+  "block.cozyhome.prismarine_fountain": "Prismarine Fountain",
+  "block.cozyhome.nether_brick_fountain": "Nether Brick Fountain",
+  "block.cozyhome.red_nether_brick_fountain": "Red Nether Brick Fountain",
+  "block.cozyhome.blackstone_fountain": "Blackstone Fountain",
+  "block.cozyhome.endstone_fountain": "Endstone Fountain",
+  "block.cozyhome.purpur_fountain": "Purpur Fountain",
 
   "container.cozyhome.storage_counter": "Storage Counter",
 
   "tooltip.cozyhome.block.planked_wall": "§7Stackable",
+  "tooltip.cozyhome.block.fountain": "§7Can Add:",
   "tooltip.cozyhome.block.dyeable": "§7Dyeable",
   "tooltip.cozyhome.block.dyed": "Dyed",
 
@@ -126,6 +142,8 @@
   "sounds.cozyhome.fireplace_loop": "Fireplace Crackles",
   "sounds.cozyhome.grandfather_clock_tick": "Grandfather Clock Ticks",
   "sounds.cozyhome.grandfather_clock_midnight": "Grandfather Clock Midnight",
+  "sounds.cozyhome.light_water_flow": "Water Flowing",
+  "sounds.cozyhome.splash": "Water Splash",
 
   "text.cozyhome.grandfather_clock.day": "☀",
   "text.cozyhome.grandfather_clock.night": "☾"

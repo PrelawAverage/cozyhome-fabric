@@ -12,6 +12,8 @@ public class ModSounds {
     public static final SoundEvent LAMP_TOGGLE = registerSoundEvent("lamp_toggle");
     public static final SoundEvent FIREPLACE_LOOP = registerSoundEvent("fireplace_loop");
     public static final SoundEvent GRANDFATHER_CLOCK_TICK = registerSoundEvent("grandfather_clock_tick");
+    public static final SoundEvent LIGHT_WATER_FLOW = registerSoundEvent("light_water_flow");
+    public static final SoundEvent SPLASH = registerSoundEvent("splash");
 
     // Block Sound Group
 //    public static final BlockSoundGroup EXAMPLE = new BlockSoundGroup(1,1,

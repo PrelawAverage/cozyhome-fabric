@@ -7,6 +7,9 @@ import net.luckystudio.cozyhome.block.primary.secondary.DyeableLampBlock;
 import net.luckystudio.cozyhome.block.primary.secondary.tertiary.DyeableChairBlock;
 import net.luckystudio.cozyhome.block.primary.secondary.tertiary.DyeableSofaBlock;
 import net.luckystudio.cozyhome.block.special.MangroveLanternBlock;
+import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
+import net.luckystudio.cozyhome.block.util.ModProperties;
+import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.SinkBehavior;
 import net.minecraft.block.*;
 
@@ -38,8 +41,8 @@ public class ModBlocks {
 private static Block createColorLampBlock() {
     return new DyeableLampBlock(
             AbstractBlock.Settings.create()
-                    .luminance(createLightLevelFromLitBlockState(9))
-                    .emissiveLighting(ModBlocks::ifLit)
+                    .luminance(ModBlockUtilities.createLightLevelFromLitBlockState(9))
+                    .emissiveLighting(ModBlockUtilities::ifLit)
                     .nonOpaque()
                     .burnable()
                     .sounds(BlockSoundGroup.LANTERN));
@@ -85,12 +88,24 @@ private static Block createColorLampBlock() {
                         .dynamicBounds());
     }
 
-    private static Block createFountain(BlockSoundGroup soundGroup) {
+    private static Block createFountain(float hardness, float resistance, BlockSoundGroup soundGroup) {
         return new FountainBlock(
                 AbstractBlock.Settings.create()
+                        .luminance(ModBlockUtilities.createLightLevelFromContainsBlockState(15))
                         .solid()
-                        .hardness(2)
-                        .strength(3)
+                        .hardness(hardness)
+                        .strength(resistance)
+                        .sounds(soundGroup)
+                        .dynamicBounds());
+    }
+
+    private static Block createFountainSprout(float hardness, float resistance, BlockSoundGroup soundGroup) {
+        return new FountainSproutBlock(
+                AbstractBlock.Settings.create()
+                        .luminance(ModBlockUtilities.createLightLevelFromContainsBlockState(15))
+                        .solid()
+                        .hardness(hardness)
+                        .strength(resistance)
                         .sounds(soundGroup)
                         .dynamicBounds());
     }
@@ -248,9 +263,9 @@ private static Block createColorLampBlock() {
 
     public static final Block MANGROVE_LANTERN = registerBlock("mangrove_lantern",
             new MangroveLanternBlock(AbstractBlock.Settings.create()
-                    .luminance(createLightLevelFromLitBlockState(9))
+                    .luminance(ModBlockUtilities.createLightLevelFromLitBlockState(9))
                     .nonOpaque()
-                    .emissiveLighting(ModBlocks::ifLit)));
+                    .emissiveLighting(ModBlockUtilities::ifLit)));
 
     // Sofas
     public static final Block OAK_SOFA = registerBlock("oak_sofa", createSofaBlock());
@@ -317,9 +332,43 @@ private static Block createColorLampBlock() {
     public static final Block CRIMSON_DESK = registerBlock("crimson_desk", createDesk(BlockSoundGroup.NETHER_WOOD));
     public static final Block WARPED_DESK = registerBlock("warped_desk", createDesk(BlockSoundGroup.NETHER_WOOD));
 
-    // Bird Baths
-    public static final Block STONE_BRICKS_FOUNTAIN = registerBlock("stone_bricks_fountain", createFountain(BlockSoundGroup.STONE));
-    public static final Block TUFF_FOUNTAIN = registerBlock("tuff_fountain", createFountain(BlockSoundGroup.POLISHED_TUFF));
+    // Fountains
+    public static final Block STONE_BRICK_FOUNTAIN = registerBlock("stone_brick_fountain", createFountain(1.5f,6, BlockSoundGroup.STONE));
+    public static final Block MOSSY_STONE_BRICK_FOUNTAIN = registerBlock("mossy_stone_brick_fountain", createFountain(1.5f,6, BlockSoundGroup.STONE));
+    public static final Block GRANITE_FOUNTAIN = registerBlock("granite_fountain", createFountain(1.5f,6, BlockSoundGroup.STONE));
+    public static final Block DIORITE_FOUNTAIN = registerBlock("diorite_fountain", createFountain(1.5f,6, BlockSoundGroup.STONE));
+    public static final Block ANDESITE_FOUNTAIN = registerBlock("andesite_fountain", createFountain(1.5f,6, BlockSoundGroup.STONE));
+    public static final Block DEEPSLATE_FOUNTAIN = registerBlock("deepslate_fountain", createFountain(3,6, BlockSoundGroup.DEEPSLATE_BRICKS));
+    public static final Block TUFF_FOUNTAIN = registerBlock("tuff_fountain", createFountain(1.5f,6, BlockSoundGroup.POLISHED_TUFF));
+    public static final Block BRICK_FOUNTAIN = registerBlock("brick_fountain", createFountain(2,6, BlockSoundGroup.STONE));
+    public static final Block MUD_FOUNTAIN = registerBlock("mud_fountain", createFountain(1.5f,3, BlockSoundGroup.MUD_BRICKS));
+    public static final Block SANDSTONE_FOUNTAIN = registerBlock("sandstone_fountain", createFountain(2,6, BlockSoundGroup.STONE));
+    public static final Block RED_SANDSTONE_FOUNTAIN = registerBlock("red_sandstone_fountain", createFountain(2,6, BlockSoundGroup.STONE));
+    public static final Block PRISMARINE_FOUNTAIN = registerBlock("prismarine_fountain", createFountain(1.5f,6, BlockSoundGroup.STONE));
+    public static final Block NETHER_BRICK_FOUNTAIN = registerBlock("nether_brick_fountain", createFountain(2,6, BlockSoundGroup.NETHER_BRICKS));
+    public static final Block RED_NETHER_BRICK_FOUNTAIN = registerBlock("red_nether_brick_fountain", createFountain(2,6, BlockSoundGroup.NETHER_BRICKS));
+    public static final Block BLACKSTONE_FOUNTAIN = registerBlock("blackstone_fountain", createFountain(1.5f,6, BlockSoundGroup.GILDED_BLACKSTONE));
+    public static final Block ENDSTONE_FOUNTAIN = registerBlock("endstone_fountain", createFountain(3,9, BlockSoundGroup.STONE));
+    public static final Block PURPUR_FOUNTAIN = registerBlock("purpur_fountain", createFountain(1.5f,6, BlockSoundGroup.STONE));
+
+    // Fountains Sprouts
+    public static final Block STONE_BRICK_FOUNTAIN_SPROUT = registerBlock("stone_brick_fountain_sprout", createFountainSprout(1.5f,6, BlockSoundGroup.STONE));
+    public static final Block MOSSY_STONE_BRICK_FOUNTAIN_SPROUT = registerBlock("mossy_stone_brick_fountain_sprout", createFountainSprout(1.5f,6, BlockSoundGroup.STONE));
+    public static final Block GRANITE_FOUNTAIN_SPROUT = registerBlock("granite_fountain_sprout", createFountainSprout(1.5f,6, BlockSoundGroup.STONE));
+    public static final Block DIORITE_FOUNTAIN_SPROUT = registerBlock("diorite_fountain_sprout", createFountainSprout(1.5f,6, BlockSoundGroup.STONE));
+    public static final Block ANDESITE_FOUNTAIN_SPROUT = registerBlock("andesite_fountain_sprout", createFountainSprout(1.5f,6, BlockSoundGroup.STONE));
+    public static final Block DEEPSLATE_FOUNTAIN_SPROUT = registerBlock("deepslate_fountain_sprout", createFountainSprout(3,6, BlockSoundGroup.DEEPSLATE_BRICKS));
+    public static final Block TUFF_FOUNTAIN_SPROUT = registerBlock("tuff_fountain_sprout", createFountainSprout(1.5f,6, BlockSoundGroup.POLISHED_TUFF));
+    public static final Block BRICK_FOUNTAIN_SPROUT = registerBlock("brick_fountain_sprout", createFountainSprout(2,6, BlockSoundGroup.STONE));
+    public static final Block MUD_FOUNTAIN_SPROUT = registerBlock("mud_fountain_sprout", createFountainSprout(1.5f,3, BlockSoundGroup.MUD_BRICKS));
+    public static final Block SANDSTONE_FOUNTAIN_SPROUT = registerBlock("sandstone_fountain_sprout", createFountainSprout(2,6, BlockSoundGroup.STONE));
+    public static final Block RED_SANDSTONE_FOUNTAIN_SPROUT = registerBlock("red_sandstone_fountain_sprout", createFountainSprout(2,6, BlockSoundGroup.STONE));
+    public static final Block PRISMARINE_FOUNTAIN_SPROUT = registerBlock("prismarine_fountain_sprout", createFountainSprout(1.5f,6, BlockSoundGroup.STONE));
+    public static final Block NETHER_BRICK_FOUNTAIN_SPROUT = registerBlock("nether_brick_fountain_sprout", createFountainSprout(2,6, BlockSoundGroup.NETHER_BRICKS));
+    public static final Block RED_NETHER_BRICK_FOUNTAIN_SPROUT = registerBlock("red_nether_brick_fountain_sprout", createFountainSprout(2,6, BlockSoundGroup.NETHER_BRICKS));
+    public static final Block BLACKSTONE_FOUNTAIN_SPROUT = registerBlock("blackstone_fountain_sprout", createFountainSprout(1.5f,6, BlockSoundGroup.GILDED_BLACKSTONE));
+    public static final Block ENDSTONE_FOUNTAIN_SPROUT = registerBlock("endstone_fountain_sprout", createFountainSprout(3,9, BlockSoundGroup.STONE));
+    public static final Block PURPUR_FOUNTAIN_SPROUT = registerBlock("purpur_fountain_sprout", createFountainSprout(1.5f,6, BlockSoundGroup.STONE));
 
     // Beams
     public static final Block OAK_BEAM = registerBlock("oak_beam", createBeam(BlockSoundGroup.WOOD));
@@ -333,24 +382,6 @@ private static Block createColorLampBlock() {
     public static final Block BAMBOO_BEAM = registerBlock("bamboo_beam", createBeam(BlockSoundGroup.BAMBOO_WOOD));
     public static final Block CRIMSON_BEAM = registerBlock("crimson_beam", createBeam(BlockSoundGroup.NETHER_WOOD));
     public static final Block WARPED_BEAM = registerBlock("warped_beam", createBeam(BlockSoundGroup.NETHER_WOOD));
-
-    // Returning a light level if the block is LIT
-    public static ToIntFunction<BlockState> createLightLevelFromLitBlockState(int litLevel) {
-        return state -> state.get(Properties.LIT) ? litLevel : 0;
-    }
-
-    // Returning whether a block is LIT
-    public static boolean ifLit(BlockState state, BlockView world, BlockPos pos) {
-        return state.get(Properties.LIT);
-    }
-
-    // Used for blocks that break when there isn't a block under them or block of the same type.
-    // If you want your block to break when there is not a solid flat surface use Block.sideCoversSmallSquare();
-    public static boolean isBlockBelowOrSame(BlockState state, WorldView world, BlockPos pos) {
-        BlockState blockStateBelow = world.getBlockState(pos.down());
-        Direction direction = Direction.DOWN;
-        return state.getBlock() == blockStateBelow.getBlock() || Block.sideCoversSmallSquare(world, pos.offset(direction), direction.getOpposite());
-    }
 
     // Register Block Method
     private static Block registerBlock(String name, Block block) {

@@ -28,5 +28,27 @@
     "sounds": [
       "cozyhome:grandfather_clock_midnight"
     ]
+  },
+  "light_water_flow": {
+    "subtitle": "sounds.cozyhome.light_water_flow",
+    "sounds": [
+      "cozyhome:light_water_flow_1",
+      "cozyhome:light_water_flow_2",
+      "cozyhome:light_water_flow_3",
+      "cozyhome:light_water_flow_4"
+    ]
+  },
+  "splash": {
+    "subtitle": "sounds.cozyhome.splash",
+    "sounds": [
+      "cozyhome:splash_01",
+      "cozyhome:splash_02",
+      "cozyhome:splash_03",
+      "cozyhome:splash_04",
+      "cozyhome:splash_05",
+      "cozyhome:splash_06",
+      "cozyhome:splash_07",
+      "cozyhome:splash_08"
+    ]
   }
 }

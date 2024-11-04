@@ -1,0 +1,110 @@
+{
+  "multipart": [
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain"},
+      "when": {"north": false, "east": false, "south": false, "west": false}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_double"},
+      "when": {"north": false, "east": false, "south": true, "west": false}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_double","y": 90},
+      "when": {"north": false, "east": false, "south": false, "west": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_double","y": 180},
+      "when": {"north": true, "east": false, "south": false, "west": false}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_double","y": 270},
+      "when": {"north": false, "east": true, "south": false, "west": false}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_middle"},
+      "when": {"north": false, "east": true, "south": false, "west": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_middle","y": 90},
+      "when": {"north": true, "east": false, "south": true, "west": false}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_inner_corner_piece"},
+      "when": {"south_east": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_inner_corner_piece","y": 90},
+      "when": {"south_west": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_inner_corner_piece","y": 180},
+      "when": {"north_west": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_inner_corner_piece","y": 270},
+      "when": {"north_east": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_corner_piece"},
+      "when": {"south": true, "east": true,"south_east": false}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_corner_piece","y": 90},
+      "when": {"south": true, "west": true,"south_west": false}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_corner_piece","y": 180},
+      "when": {"north": true,"west": true,"north_west": false}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_corner_piece","y": 270},
+      "when": {"north": true, "east": true,"north_east": false}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_corner"},
+      "when": {"north": false, "east": true, "south": true, "west": false}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_corner", "y": 90},
+      "when": {"north": false, "east": false, "south": true, "west": true}
+    },    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_corner","y": 180},
+      "when": {"north": true, "east": false, "south": false, "west": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_corner","y": 270},
+      "when": {"north": true, "east": true, "south": false, "west": false}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_side"},
+      "when": {"north": false, "east": true, "south": true, "west": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_side","y": 90},
+      "when": {"north": true, "east": false, "south": true, "west": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_side","y": 180},
+      "when": {"north": true, "east": true, "south": false, "west": true}
+    },    {
+      "apply": {"model": "cozyhome:block/fountain/types/endstone_fountain_side", "y": 270},
+      "when": {"north": true, "east": true, "south": true, "west": false}
+    },
+    {
+      "apply": {"model": "cozyhome:block/pane/types/water_level_15"},
+      "when": {"contains": "water"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/pane/types/grass_level_15"},
+      "when": {"contains": "grass"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/pane/types/lava_level_15"},
+      "when": {"contains": "lava"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/pane/types/powder_snow_level_15"},
+      "when": {"contains": "powder_snow"}
+    }
+  ]
+}

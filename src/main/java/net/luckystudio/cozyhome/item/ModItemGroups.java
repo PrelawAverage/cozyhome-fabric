@@ -175,25 +175,42 @@ public class ModItemGroups {
                         entries.add(ModBlocks.WARPED_DESK);
 
                         // Specials (Mangrove)
-//                        entries.add(ModBlocks.MANGROVE_LAMP);
                         entries.add(ModBlocks.MANGROVE_LANTERN);
 
+                        // Fountains
+                        entries.add(ModBlocks.STONE_BRICK_FOUNTAIN);
+                        entries.add(ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN);
+                        entries.add(ModBlocks.GRANITE_FOUNTAIN);
+                        entries.add(ModBlocks.DIORITE_FOUNTAIN);
+                        entries.add(ModBlocks.ANDESITE_FOUNTAIN);
+                        entries.add(ModBlocks.DEEPSLATE_FOUNTAIN);
                         entries.add(ModBlocks.TUFF_FOUNTAIN);
-                        entries.add(ModBlocks.STONE_BRICKS_FOUNTAIN);
+                        entries.add(ModBlocks.BRICK_FOUNTAIN);
+                        entries.add(ModBlocks.MUD_FOUNTAIN);
+                        entries.add(ModBlocks.SANDSTONE_FOUNTAIN);
+                        entries.add(ModBlocks.RED_SANDSTONE_FOUNTAIN);
+                        entries.add(ModBlocks.PRISMARINE_FOUNTAIN);
+                        entries.add(ModBlocks.NETHER_BRICK_FOUNTAIN);
+                        entries.add(ModBlocks.RED_NETHER_BRICK_FOUNTAIN);
+                        entries.add(ModBlocks.BLACKSTONE_FOUNTAIN);
+                        entries.add(ModBlocks.ENDSTONE_FOUNTAIN);
+                        entries.add(ModBlocks.PURPUR_FOUNTAIN);
 
+                        // Glass
                         entries.add(ModBlocks.AUTUMN_STAINED_GLASS);
                         entries.add(ModBlocks.AUTUMN_STAINED_GLASS_PANE);
                         entries.add(ModBlocks.GOLD_FRAMED_GLASS);
                         entries.add(ModBlocks.GOLD_FRAMED_GLASS_PANE);
 
+                        // Misc. Blocks/Items
                         entries.add(ModBlocks.DYE_VAT);
                         entries.add(ModItems.PAINT_BRUSH);
 
-                        // Compat with Ecologics Mod - https://www.curseforge.com/minecraft/mc-mods/ecologics
+                        // Compatibility with Ecologics Mod - https://www.curseforge.com/minecraft/mc-mods/ecologics
                         if (FabricLoader.getInstance().isModLoaded("ecologics")) {
 
                         }
-                        // Compat with Biomes O Plenty Mod - https://www.curseforge.com/minecraft/mc-mods/biomes-o-plenty
+                        // Compatibility with Biomes O Plenty Mod - https://www.curseforge.com/minecraft/mc-mods/biomes-o-plenty
                         if (FabricLoader.getInstance().isModLoaded("biomesoplenty")) {
 
                         }

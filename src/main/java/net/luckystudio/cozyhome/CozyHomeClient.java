@@ -119,9 +119,43 @@ public class CozyHomeClient implements ClientModInitializer {
                 ModBlocks.CRIMSON_WALL_CLOCK,
                 ModBlocks.WARPED_WALL_CLOCK,
 
+                // Fountains
+                ModBlocks.STONE_BRICK_FOUNTAIN,
+                ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN,
+                ModBlocks.GRANITE_FOUNTAIN,
+                ModBlocks.DIORITE_FOUNTAIN,
+                ModBlocks.ANDESITE_FOUNTAIN,
+                ModBlocks.DEEPSLATE_FOUNTAIN,
+                ModBlocks.TUFF_FOUNTAIN,
+                ModBlocks.BRICK_FOUNTAIN,
+                ModBlocks.MUD_FOUNTAIN,
+                ModBlocks.SANDSTONE_FOUNTAIN,
+                ModBlocks.RED_SANDSTONE_FOUNTAIN,
+                ModBlocks.PRISMARINE_FOUNTAIN,
+                ModBlocks.NETHER_BRICK_FOUNTAIN,
+                ModBlocks.RED_NETHER_BRICK_FOUNTAIN,
+                ModBlocks.BLACKSTONE_FOUNTAIN,
+                ModBlocks.ENDSTONE_FOUNTAIN,
+                ModBlocks.PURPUR_FOUNTAIN,
+
+                // Beams
+                ModBlocks.OAK_BEAM,
+                ModBlocks.SPRUCE_BEAM,
+                ModBlocks.BIRCH_BEAM,
+                ModBlocks.JUNGLE_BEAM,
+                ModBlocks.ACACIA_BEAM,
+                ModBlocks.DARK_OAK_BEAM,
+                ModBlocks.MANGROVE_BEAM,
+                ModBlocks.CHERRY_BEAM,
+                ModBlocks.BAMBOO_BEAM,
+                ModBlocks.CRIMSON_BEAM,
+                ModBlocks.WARPED_BEAM,
+
+                // Glass
                 ModBlocks.GOLD_FRAMED_GLASS,
                 ModBlocks.GOLD_FRAMED_GLASS_PANE,
 
+                // Misc
                 ModBlocks.DYE_VAT
         );
 
@@ -173,8 +207,40 @@ public class CozyHomeClient implements ClientModInitializer {
         // Blocks that can hold water or grass
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) ->
                 getColorFromState(state, world, pos),
+                ModBlocks.STONE_BRICK_FOUNTAIN,
+                ModBlocks.STONE_BRICK_FOUNTAIN_SPROUT,
+                ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN,
+                ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN_SPROUT,
+                ModBlocks.GRANITE_FOUNTAIN,
+                ModBlocks.GRANITE_FOUNTAIN_SPROUT,
+                ModBlocks.DIORITE_FOUNTAIN,
+                ModBlocks.DIORITE_FOUNTAIN_SPROUT,
+                ModBlocks.ANDESITE_FOUNTAIN,
+                ModBlocks.ANDESITE_FOUNTAIN_SPROUT,
+                ModBlocks.DEEPSLATE_FOUNTAIN,
+                ModBlocks.DEEPSLATE_FOUNTAIN_SPROUT,
                 ModBlocks.TUFF_FOUNTAIN,
-                ModBlocks.STONE_BRICKS_FOUNTAIN
+                ModBlocks.TUFF_FOUNTAIN_SPROUT,
+                ModBlocks.BRICK_FOUNTAIN,
+                ModBlocks.BRICK_FOUNTAIN_SPROUT,
+                ModBlocks.MUD_FOUNTAIN,
+                ModBlocks.MUD_FOUNTAIN_SPROUT,
+                ModBlocks.SANDSTONE_FOUNTAIN,
+                ModBlocks.SANDSTONE_FOUNTAIN_SPROUT,
+                ModBlocks.RED_SANDSTONE_FOUNTAIN,
+                ModBlocks.RED_SANDSTONE_FOUNTAIN_SPROUT,
+                ModBlocks.PRISMARINE_FOUNTAIN,
+                ModBlocks.PRISMARINE_FOUNTAIN_SPROUT,
+                ModBlocks.NETHER_BRICK_FOUNTAIN,
+                ModBlocks.NETHER_BRICK_FOUNTAIN_SPROUT,
+                ModBlocks.RED_NETHER_BRICK_FOUNTAIN,
+                ModBlocks.RED_NETHER_BRICK_FOUNTAIN_SPROUT,
+                ModBlocks.BLACKSTONE_FOUNTAIN,
+                ModBlocks.BLACKSTONE_FOUNTAIN_SPROUT,
+                ModBlocks.ENDSTONE_FOUNTAIN,
+                ModBlocks.ENDSTONE_FOUNTAIN_SPROUT,
+                ModBlocks.PURPUR_FOUNTAIN,
+                ModBlocks.PURPUR_FOUNTAIN_SPROUT
         );
 
         // Renders the colors on the Items
