@@ -1,20 +1,20 @@
 package net.luckystudio.cozyhome.block.primary;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.util.enums.LinearConnectionBlock;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+
+import java.util.EnumMap;
+import java.util.Map;
 
 public class BeamBlock extends ConnectingBlock {
     public static final DirectionProperty FACING = Properties.FACING;
@@ -86,7 +86,7 @@ public class BeamBlock extends ConnectingBlock {
         int i = 0;
 
         for (int j = 0; j < FACINGS.length; j++) {
-            if ((Boolean)state.get((Property)FACING_PROPERTIES.get(FACINGS[j]))) {
+            if ((Boolean)state.get(FACING_PROPERTIES.get(FACINGS[j]))) {
                 i |= 1 << j;
             }
         }
@@ -101,72 +101,64 @@ public class BeamBlock extends ConnectingBlock {
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return withConnectionPropertiesCTX(ctx, ctx.getWorld(), ctx.getBlockPos(), this.getDefaultState());
-    }
+        BlockState state = this.getDefaultState();
 
-    public static BlockState withConnectionPropertiesCTX(ItemPlacementContext ctx, BlockView world, BlockPos pos, BlockState state) {
-        Direction direction = ctx.getSide();
-        return state.with(FACING, direction)
-                .withIfExists(DOWN, canBeStraight(ctx.getWorld(), pos, state))
-                .withIfExists(UP, canBeStraight(ctx.getWorld(), pos, state))
-                .withIfExists(NORTH, canBeStraight(ctx.getWorld(), pos, state))
-                .withIfExists(EAST, canBeStraight(ctx.getWorld(), pos, state))
-                .withIfExists(SOUTH, canBeStraight(ctx.getWorld(), pos, state))
-                .withIfExists(WEST, canBeStraight(ctx.getWorld(), pos, state));
+        state = state.withIfExists(FACING, ctx.getSide());
+
+        return updateConnectionProperties(ctx.getWorld(), ctx.getBlockPos(), state);
     }
 
     @Override
     protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        return withConnectionProperties(world, pos, state);
+        return updateConnectionProperties(world, pos, state);
     }
 
-    public static BlockState withConnectionProperties(WorldAccess world, BlockPos pos, BlockState state) {
-        BlockState blockStateBelow = world.getBlockState(pos.down());
-        BlockState blockStateUp = world.getBlockState(pos.up());
-        BlockState blockStateNorth = world.getBlockState(pos.north());
-        BlockState blockStateEast = world.getBlockState(pos.east());
-        BlockState blockStateSouth = world.getBlockState(pos.south());
-        BlockState blockStateWest = world.getBlockState(pos.west());
-        return state.withIfExists(DOWN, giveDirectionState(state, blockStateBelow ,world, pos, Direction.UP))
-                .withIfExists(UP, giveDirectionState(state, blockStateUp ,world, pos, Direction.DOWN))
-                .withIfExists(NORTH, giveDirectionState(state, blockStateNorth, world, pos, Direction.SOUTH))
-                .withIfExists(EAST, giveDirectionState(state, blockStateEast, world, pos, Direction.WEST))
-                .withIfExists(SOUTH, giveDirectionState(state, blockStateSouth, world, pos, Direction.NORTH))
-                .withIfExists(WEST, giveDirectionState(state, blockStateWest, world, pos, Direction.EAST));
+    public static BlockState updateConnectionProperties(WorldAccess world, BlockPos pos, BlockState state) {
+        Map<Direction, BlockState> blockStates = getBlockDirections(world, pos);
+
+        for (Direction direction : Direction.values()) {
+            state = state.withIfExists(FACING_PROPERTIES.get(direction), isConnectableFace(state, blockStates.get(direction), world, pos, direction));
+        }
+
+        return state;
     }
 
-    private static boolean giveDirectionState(BlockState mainBlock, BlockState locationCheck, WorldAccess world, BlockPos pos, Direction OppositeOfDirectionFacing) {
-        Direction directionOfMainBlock = mainBlock.get(FACING);
-        // To make sure we don't set the side that is equal to the original(FACING) true
-        return (directionOfMainBlock != OppositeOfDirectionFacing) && isConnectableFace(world, pos, locationCheck, mainBlock, directionOfMainBlock);
+    private static boolean isConnectableFace(BlockState originBlock, BlockState targetBlock, WorldAccess world, BlockPos pos, Direction currentDirection) {
+        if (targetBlock.isSideSolidFullSquare(world, pos, currentDirection.getOpposite())) return Boolean.TRUE;
+    
+        if (isBeamBlock(targetBlock.getBlock())
+                && isContinuousBeamFace(originBlock, currentDirection)) return Boolean.TRUE;
+
+        if (isBeamBlock(targetBlock.getBlock())
+                && !isContinuousBeamFace(originBlock, currentDirection)
+                && !isParallel(originBlock, targetBlock)) return Boolean.TRUE;
+
+        return Boolean.FALSE;
     }
 
-    private static boolean isConnectableFace(WorldAccess world, BlockPos pos, BlockState locationCheck, BlockState mainBlock, Direction directionChecking) {
-        Direction OppositeDirection = directionChecking.getOpposite();
-        // Checks if the block has a solid face
-        return locationCheck.isSideSolidFullSquare(world, pos, OppositeDirection) && canBeStraight(world, pos, mainBlock);
+    private static boolean isContinuousBeamFace(BlockState originBlock, Direction currentDirection) {
+        Direction blockFacing = originBlock.get(FACING);
+        return (currentDirection == blockFacing || currentDirection == blockFacing.getOpposite());
     }
 
-    // Testing if the beam is straight
-    private static boolean canBeStraight(WorldAccess world, BlockPos pos, BlockState state) {
-        Direction dir = state.get(FACING);
-        BlockState blockStateBelow = world.getBlockState(pos.down());
-        BlockState blockStateUp = world.getBlockState(pos.up());
-        BlockState blockStateNorth = world.getBlockState(pos.north());
-        BlockState blockStateEast = world.getBlockState(pos.east());
-        BlockState blockStateSouth = world.getBlockState(pos.south());
-        BlockState blockStateWest = world.getBlockState(pos.west());
-        return switch (dir) {
-            case UP -> blockStateUp.isSideSolidFullSquare(world, pos, dir.getOpposite());
-            case DOWN -> blockStateBelow.isSideSolidFullSquare(world, pos, dir.getOpposite());
-            case NORTH -> blockStateNorth.isSideSolidFullSquare(world, pos, dir.getOpposite());
-            case SOUTH -> blockStateSouth.isSideSolidFullSquare(world, pos, dir.getOpposite());
-            case WEST -> blockStateWest.isSideSolidFullSquare(world, pos, dir.getOpposite());
-            case EAST -> blockStateEast.isSideSolidFullSquare(world, pos, dir.getOpposite());
-        };
+    private static boolean isParallel(BlockState originBlock, BlockState targetBlock) {
+        Direction blockFacing = originBlock.get(FACING);
+        Direction targetFacing = targetBlock.get(FACING);
+        return (blockFacing == targetFacing || blockFacing == targetFacing.getOpposite());
     }
 
     private static boolean isBeamBlock(Block block) {
         return block instanceof BeamBlock;
+    }
+
+    // Testing if the beam can be straight
+    public static Map<Direction, BlockState> getBlockDirections(WorldAccess world, BlockPos pos) {
+        Map<Direction, BlockState> blockStates = new EnumMap<>(Direction.class);
+
+        for (Direction direction : Direction.values()) {
+            blockStates.put(direction, world.getBlockState(pos.offset(direction)));
+        }
+
+        return blockStates;
     }
 }
