@@ -6,7 +6,6 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -87,7 +86,7 @@ public class BeamBlock extends ConnectingBlock {
         int i = 0;
 
         for (int j = 0; j < FACINGS.length; j++) {
-            if ((Boolean)state.get((Property)FACING_PROPERTIES.get(FACINGS[j]))) {
+            if ((Boolean)state.get(FACING_PROPERTIES.get(FACINGS[j]))) {
                 i |= 1 << j;
             }
         }
@@ -102,17 +101,11 @@ public class BeamBlock extends ConnectingBlock {
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return updateConnectionPropertiesCTX(ctx, ctx.getBlockPos(), this.getDefaultState());
-    }
+        BlockState state = this.getDefaultState();
 
-    public static BlockState updateConnectionPropertiesCTX(ItemPlacementContext ctx, BlockPos pos, BlockState state) {
-        state = state.with(FACING, ctx.getSide());
+        state = state.withIfExists(FACING, ctx.getSide());
 
-        for (Direction direction: Direction.values()) {
-            state = state.withIfExists(FACING_PROPERTIES.get(direction), canBeStraight(ctx.getWorld(), pos, state));
-        }
-
-        return state;
+        return updateConnectionProperties(ctx.getWorld(), ctx.getBlockPos(), state);
     }
 
     @Override
@@ -124,13 +117,41 @@ public class BeamBlock extends ConnectingBlock {
         Map<Direction, BlockState> blockStates = getBlockDirections(world, pos);
 
         for (Direction direction : Direction.values()) {
-            Direction opposite = direction.getOpposite();
-            state = state.withIfExists(FACING_PROPERTIES.get(direction), giveDirectionState(state, blockStates.get(direction), world, pos, opposite));
+            state = state.withIfExists(FACING_PROPERTIES.get(direction), isConnectableFace(state, blockStates.get(direction), world, pos, direction));
         }
 
         return state;
     }
 
+    private static boolean isConnectableFace(BlockState originBlock, BlockState targetBlock, WorldAccess world, BlockPos pos, Direction currentDirection) {
+        if (targetBlock.isSideSolidFullSquare(world, pos, currentDirection.getOpposite())) return Boolean.TRUE;
+    
+        if (isBeamBlock(targetBlock.getBlock())
+                && isContinuousBeamFace(originBlock, currentDirection)) return Boolean.TRUE;
+
+        if (isBeamBlock(targetBlock.getBlock())
+                && !isContinuousBeamFace(originBlock, currentDirection)
+                && !isParallel(originBlock, targetBlock)) return Boolean.TRUE;
+
+        return Boolean.FALSE;
+    }
+
+    private static boolean isContinuousBeamFace(BlockState originBlock, Direction currentDirection) {
+        Direction blockFacing = originBlock.get(FACING);
+        return (currentDirection == blockFacing || currentDirection == blockFacing.getOpposite());
+    }
+
+    private static boolean isParallel(BlockState originBlock, BlockState targetBlock) {
+        Direction blockFacing = originBlock.get(FACING);
+        Direction targetFacing = targetBlock.get(FACING);
+        return (blockFacing == targetFacing || blockFacing == targetFacing.getOpposite());
+    }
+
+    private static boolean isBeamBlock(Block block) {
+        return block instanceof BeamBlock;
+    }
+
+    // Testing if the beam can be straight
     public static Map<Direction, BlockState> getBlockDirections(WorldAccess world, BlockPos pos) {
         Map<Direction, BlockState> blockStates = new EnumMap<>(Direction.class);
 
@@ -139,36 +160,5 @@ public class BeamBlock extends ConnectingBlock {
         }
 
         return blockStates;
-    }
-
-    private static boolean giveDirectionState(BlockState mainBlock, BlockState locationCheck, WorldAccess world, BlockPos pos, Direction OppositeOfDirectionFacing) {
-        Direction directionOfMainBlock = mainBlock.get(FACING);
-        boolean flag1 =directionOfMainBlock != OppositeOfDirectionFacing;
-        boolean flag2 = isConnectableFace(world, pos, locationCheck, mainBlock, directionOfMainBlock);
-
-        // To make sure we don't set the side that is equal to the original(FACING) true
-        return flag1 && flag2;
-    }
-
-    private static boolean isConnectableFace(WorldAccess world, BlockPos pos, BlockState locationCheck, BlockState mainBlock, Direction directionChecking) {
-        Direction OppositeDirection = directionChecking.getOpposite();
-
-        // Checks if the block has a solid face
-        return locationCheck.isSideSolidFullSquare(world, pos, OppositeDirection) && canBeStraight(world, pos, mainBlock);
-    }
-
-    // Testing if the beam can be straight
-    private static boolean canBeStraight(WorldAccess world, BlockPos pos, BlockState state) {
-        Map<Direction, BlockState> blockStates = getBlockDirections(world, pos);
-
-        BlockState blockState = blockStates.get(state.get(FACING));
-
-        Direction oppositeDirection = state.get(FACING).getOpposite();
-
-        return blockState.isSideSolidFullSquare(world, pos, oppositeDirection);
-    }
-
-    private static boolean isBeamBlock(Block block) {
-        return block instanceof BeamBlock;
     }
 }
