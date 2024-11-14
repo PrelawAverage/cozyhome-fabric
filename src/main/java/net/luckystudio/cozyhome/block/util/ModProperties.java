@@ -2,6 +2,7 @@ package net.luckystudio.cozyhome.block.util;
 
 import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
 import net.luckystudio.cozyhome.block.util.enums.CoveredBlock;
+import net.luckystudio.cozyhome.block.util.enums.HasUnderBlock;
 import net.luckystudio.cozyhome.block.util.enums.LinearConnectionBlock;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
@@ -10,8 +11,8 @@ import net.minecraft.state.property.IntProperty;
 public class ModProperties {
     public static final EnumProperty<LinearConnectionBlock> LINEAR_CONNECTION = EnumProperty.of("linear_connection", LinearConnectionBlock.class);
     public static final EnumProperty<CoveredBlock> COVERED = EnumProperty.of("cover", CoveredBlock.class);
+    public static final EnumProperty<HasUnderBlock> HAS_UNDER = EnumProperty.of("has_under", HasUnderBlock.class);
     public static final BooleanProperty TUCKED = BooleanProperty.of("tucked");
-    public static final BooleanProperty HAS_UNDER = BooleanProperty.of("has_under");
     public static final IntProperty OMNI_ROTATION = IntProperty.of("omni_rotation", 0, 3);
     public static final IntProperty FILLED_LEVEL_0_3 = IntProperty.of("level", 0, 3);
     public static final IntProperty FILLED_LEVEL_0_5 = IntProperty.of("level", 0, 5);

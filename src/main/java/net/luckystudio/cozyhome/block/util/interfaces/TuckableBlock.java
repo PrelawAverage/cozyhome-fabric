@@ -63,7 +63,7 @@ public interface TuckableBlock {
 
     static void playMoveSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, BlockState state) {
         // Just alters the pitch when the lamp is being turned on and off.
-        float f = state.get(TUCKED) ? 0.8F : 1F;
+        float f = state.get(TUCKED) ? 1.4F : 1.2F;
         world.playSound(player, pos, SoundEvents.BLOCK_BARREL_OPEN, SoundCategory.BLOCKS, 1F, f);
     }
 

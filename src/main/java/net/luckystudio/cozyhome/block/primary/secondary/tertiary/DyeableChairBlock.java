@@ -87,23 +87,6 @@ public class DyeableChairBlock extends DyeableSeatBlock implements Waterloggable
             Block.createCuboidShape(-8, 0, 2, 4, 10, 14),
             Block.createCuboidShape(2, 10, 2, 4, 24, 14));
 
-    // Will use these later, maybe
-    public static final VoxelShape ROT_1 = VoxelShapes.union(
-            Block.createCuboidShape(9, 0, 13, 12, 24, 16),
-            Block.createCuboidShape(6, 0, 12, 9, 24, 14),
-            Block.createCuboidShape(3, 0, 11, 6, 24, 13),
-            Block.createCuboidShape(0, 0, 9, 3, 24, 12),
-            BASE_SHAPE);
-    public static final VoxelShape ROT_2 = VoxelShapes.union(
-            Block.createCuboidShape(0, 0, 7, 2, 24, 9),
-            Block.createCuboidShape(7, 0, 14, 9, 24, 16),
-            Block.createCuboidShape(6, 0, 13, 7, 24, 14),
-            Block.createCuboidShape(5, 0, 12, 6, 24, 13),
-            Block.createCuboidShape(4, 0, 11, 5, 24, 12),
-            Block.createCuboidShape(2, 0, 9, 3, 24, 10),
-            Block.createCuboidShape(3, 0, 10, 4, 24, 11),
-            BASE_SHAPE);
-
     // This is the hit-box of the block, we are applying our VoxelShape to it.
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -142,7 +125,6 @@ public class DyeableChairBlock extends DyeableSeatBlock implements Waterloggable
         if (world.isClient) return ItemActionResult.SUCCESS;
         TuckableBlock.tryTuck(state, world, pos, player);
         return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
-
     }
 
     @Override

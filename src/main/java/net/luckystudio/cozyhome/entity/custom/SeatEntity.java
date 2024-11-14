@@ -1,5 +1,6 @@
 package net.luckystudio.cozyhome.entity.custom;
 
+import net.luckystudio.cozyhome.block.primary.AbstractSeatBlock;
 import net.luckystudio.cozyhome.block.primary.secondary.DyeableSeatBlock;
 import net.luckystudio.cozyhome.block.primary.secondary.tertiary.DyeableChairBlock;
 import net.minecraft.block.BlockState;
@@ -39,35 +40,30 @@ public class SeatEntity extends Entity {
 
     }
 
+    // Can player ride entity
     @Override
     protected boolean canStartRiding(Entity entity) {
         return true;
     }
 
+    // Runs when
     @Override
     protected void addPassenger(Entity passenger) {
         BlockPos pos = this.getBlockPos();
         BlockState state = this.getWorld().getBlockState(pos);
-        if (state.getBlock() instanceof DyeableSeatBlock seatBlock) {
+        if (state.getBlock() instanceof AbstractSeatBlock seatBlock) {
             passenger.setYaw(seatBlock.setRiderRotation(this));
             super.addPassenger(passenger);
         }
     }
 
-    @Override
-    public Vec3d getPassengerRidingPos(Entity passenger) {
-        return super.getPassengerRidingPos(passenger);
-    }
-
     // This method makes sure the dismount location is valid.
     // This is the same as the pig class, maybe try and access it instead?
+    // Also, this method handles the despawning of the entity when the player dismounts
     @Override
     public Vec3d updatePassengerForDismount(LivingEntity passenger) {
         Direction direction = this.getMovementDirection();
-        if (direction.getAxis() == Direction.Axis.Y) {
-            this.remove(RemovalReason.DISCARDED);
-            return super.updatePassengerForDismount(passenger);
-        } else {
+        if (direction.getAxis() != Direction.Axis.Y) {
             int[][] is = Dismounting.getDismountOffsets(direction);
             BlockPos blockPos = this.getBlockPos();
             BlockPos.Mutable mutable = new BlockPos.Mutable();
@@ -88,16 +84,16 @@ public class SeatEntity extends Entity {
                     }
                 }
             }
-            this.remove(RemovalReason.DISCARDED);
-            return super.updatePassengerForDismount(passenger);
         }
+        this.remove(RemovalReason.DISCARDED);
+        return super.updatePassengerForDismount(passenger);
     }
 
     @Override
     protected void updatePassengerPosition(Entity passenger, PositionUpdater positionUpdater) {
         if (passenger instanceof PlayerEntity player) {
             // Get the yaw of the entity and the player
-            float entityYaw = this.getYaw();
+            float entityYaw = this.getYaw() + 180;
             // If the yaw difference exceeds the threshold, rotate the player's body
             passenger.setBodyYaw(entityYaw);
             // Update the player's position relative to the entity
@@ -110,7 +106,7 @@ public class SeatEntity extends Entity {
     private float getHeightOffset() {
         BlockPos pos = this.getBlockPos();
         BlockState state = getWorld().getBlockState(pos);
-        if (state.getBlock() instanceof DyeableChairBlock abstractSeatBlock) {
+        if (state.getBlock() instanceof AbstractSeatBlock abstractSeatBlock) {
             return abstractSeatBlock.getSeatHeight(state);
         }
         return 0f;
@@ -120,8 +116,8 @@ public class SeatEntity extends Entity {
     protected BlockPos getPosWithYOffset(float offset) {
         BlockPos pos = this.getBlockPos();
         BlockState state = getWorld().getBlockState(pos);
-        if (state.getBlock() instanceof DyeableSeatBlock seatBlock) {
-            return new BlockPos((int) this.getX(), (int) (this.getY() + seatBlock.getSeatHeight(state)),(int)  this.getZ());
+        if (state.getBlock() instanceof AbstractSeatBlock abstractSeatBlock) {
+            return new BlockPos((int) this.getX(), (int) (this.getY() + abstractSeatBlock.getSeatHeight(state)),(int)  this.getZ());
         }
         return super.getPosWithYOffset(offset);
     }

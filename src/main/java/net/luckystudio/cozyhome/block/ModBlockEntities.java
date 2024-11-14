@@ -1,9 +1,7 @@
 package net.luckystudio.cozyhome.block;
 
 import net.luckystudio.cozyhome.CozyHome;
-import net.luckystudio.cozyhome.block.entity.DyeVatBlockEntity;
-import net.luckystudio.cozyhome.block.entity.DyeableBlockEntity;
-import net.luckystudio.cozyhome.block.entity.StorageCounterBlockEntity;
+import net.luckystudio.cozyhome.block.entity.*;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -60,8 +58,29 @@ public class ModBlockEntities {
 
     public static final BlockEntityType<DyeVatBlockEntity> DYE_VAT_BLOCK_ENTITY = Registry.register(
             Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "dye_vat_block_entity"),
-            BlockEntityType.Builder.create(DyeVatBlockEntity::new,
-                    ModBlocks.DYE_VAT
+            BlockEntityType.Builder.create(DyeVatBlockEntity::new, ModBlocks.DYE_VAT).build());
+
+    public static final BlockEntityType<TelescopeBlockEntity> TELESCOPE_BLOCK_ENTITY = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "telescope_block_entity"),
+            BlockEntityType.Builder.create(TelescopeBlockEntity::new, ModBlocks.TELESCOPE).build());
+
+    public static final BlockEntityType<ChairBlockEntity> CHAIR_BLOCK_ENTITY = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "chair_block_entity"),
+            BlockEntityType.Builder.create(ChairBlockEntity::new,
+                    ModBlocks.OAK_CHAIR,
+                    ModBlocks.SPRUCE_CHAIR,
+                    ModBlocks.BIRCH_CHAIR,
+                    ModBlocks.JUNGLE_CHAIR,
+                    ModBlocks.ACACIA_CHAIR,
+                    ModBlocks.DARK_OAK_CHAIR,
+                    ModBlocks.MANGROVE_CHAIR,
+                    ModBlocks.CHERRY_CHAIR,
+                    ModBlocks.BAMBOO_CHAIR,
+                    ModBlocks.CRIMSON_CHAIR,
+                    ModBlocks.WARPED_CHAIR,
+                    ModBlocks.PRINCESS_CHAIR,
+                    ModBlocks.UNDEAD_CHAIR,
+                    ModBlocks.TRIAL_CHAIR
             ).build());
 
     public static void registerBlockEntities() {

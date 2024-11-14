@@ -203,8 +203,12 @@ public class ModItemGroups {
                         entries.add(ModBlocks.GOLD_FRAMED_GLASS_PANE);
 
                         // Misc. Blocks/Items
+                        entries.add(ModBlocks.TELESCOPE);
                         entries.add(ModBlocks.DYE_VAT);
                         entries.add(ModItems.PAINT_BRUSH);
+                        entries.add(ModItems.CUSHION);
+                        entries.add(ModItems.HAY_CUSHION);
+                        entries.add(ModItems.TRADER_CUSHION);
 
                         // Compatibility with Ecologics Mod - https://www.curseforge.com/minecraft/mc-mods/ecologics
                         if (FabricLoader.getInstance().isModLoaded("ecologics")) {

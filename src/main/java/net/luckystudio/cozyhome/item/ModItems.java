@@ -1,6 +1,7 @@
 package net.luckystudio.cozyhome.item;
 
 import net.luckystudio.cozyhome.CozyHome;
+import net.luckystudio.cozyhome.item.custom.CushionItem;
 import net.luckystudio.cozyhome.item.custom.PaintBrushItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -11,6 +12,9 @@ public class ModItems {
 
     // Register Items Here
     public static final Item PAINT_BRUSH =registerItem("paint_brush", new PaintBrushItem(new Item.Settings()));
+    public static final Item CUSHION =registerItem("cushion", new CushionItem(new Item.Settings()));
+    public static final Item HAY_CUSHION =registerItem("hay_cushion", new CushionItem(new Item.Settings()));
+    public static final Item TRADER_CUSHION =registerItem("trader_cushion", new CushionItem(new Item.Settings()));
 
     // Helper Method to register items
     private static Item registerItem(String name, Item item) {

@@ -4,7 +4,9 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.ModBlockEntities;
+import net.luckystudio.cozyhome.block.compat.BiomesOPlentyBlocks;
 import net.luckystudio.cozyhome.block.util.ModBurnableBlocks;
+import net.luckystudio.cozyhome.components.ModDataComponents;
 import net.luckystudio.cozyhome.item.ModFuels;
 import net.luckystudio.cozyhome.item.ModItemGroups;
 import net.luckystudio.cozyhome.item.ModItems;
@@ -26,18 +28,17 @@ public class CozyHome implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-
 		ModItems.registerModItems();
-		if (FabricLoader.getInstance().isModLoaded("ecologics")) {
-			ModBlocks.registerModBlocks();
+		if (FabricLoader.getInstance().isModLoaded("biomesoplenty")) {
+			BiomesOPlentyBlocks.registerModBlocks();
 		}
-
 		ModBlocks.registerModBlocks();
 		ModBlockEntities.registerBlockEntities();
 		ModItemGroups.registerModItemGroups();
 		ModFuels.registerFuels();
 		ModBurnableBlocks.registerFlammableBlocks();
 		ModSounds.registerSounds();
+		ModDataComponents.registerModDataComponents();
 	}
 
 	public static Identifier id(String path) {

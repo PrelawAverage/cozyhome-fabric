@@ -124,6 +124,8 @@ public class BeamBlock extends ConnectingBlock {
     }
 
     private static boolean isConnectableFace(BlockState originBlock, BlockState targetBlock, WorldAccess world, BlockPos pos, Direction currentDirection) {
+        if (originBlock.get(FACING) == currentDirection.getOpposite()) return false;
+
         if (targetBlock.isSideSolidFullSquare(world, pos, currentDirection.getOpposite())) return Boolean.TRUE;
     
         if (isBeamBlock(targetBlock.getBlock())

@@ -2,35 +2,35 @@ package net.luckystudio.cozyhome.block;
 
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.primary.*;
+import net.luckystudio.cozyhome.block.primary.secondary.ChairBlock;
 import net.luckystudio.cozyhome.block.primary.secondary.DyeVatBlock;
 import net.luckystudio.cozyhome.block.primary.secondary.DyeableLampBlock;
-import net.luckystudio.cozyhome.block.primary.secondary.tertiary.DyeableChairBlock;
 import net.luckystudio.cozyhome.block.primary.secondary.tertiary.DyeableSofaBlock;
 import net.luckystudio.cozyhome.block.special.MangroveLanternBlock;
 import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
-import net.luckystudio.cozyhome.block.util.ModProperties;
-import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.SinkBehavior;
 import net.minecraft.block.*;
-
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.state.property.Properties;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.WorldView;
 import net.minecraft.world.biome.Biome;
-
-import java.util.function.ToIntFunction;
 
 public class ModBlocks {
     private static Block createPlankedWall(BlockSoundGroup soundGroup) {
         return new PlankedWallBlock(
+                AbstractBlock.Settings.create()
+                        .hardness(2)
+                        .strength(3)
+                        .burnable()
+                        .sounds(soundGroup)
+                        .dynamicBounds());
+    }
+    private static Block createChair(ChairBlock.ChairType chairType, BlockSoundGroup soundGroup) {
+        return new ChairBlock(chairType,
                 AbstractBlock.Settings.create()
                         .hardness(2)
                         .strength(3)
@@ -116,6 +116,15 @@ private static Block createColorLampBlock() {
                         .hardness(2)
                         .strength(3)
                         .requiresTool()
+                        .sounds(soundGroup)
+                        .dynamicBounds());
+    }
+
+    private static Block createLargeStump(BlockSoundGroup soundGroup) {
+        return new LargeStumpBlock(AbstractBlock.Settings.create()
+                        .hardness(2)
+                        .strength(2)
+                        .burnable()
                         .sounds(soundGroup)
                         .dynamicBounds());
     }
@@ -223,30 +232,20 @@ private static Block createColorLampBlock() {
             new PaneBlock(AbstractBlock.Settings.copy(Blocks.BLACK_STAINED_GLASS_PANE)));
 
     // Chairs
-    public static final Block OAK_CHAIR = registerBlock("oak_chair",
-            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
-    public static final Block SPRUCE_CHAIR = registerBlock("spruce_chair",
-            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.SPRUCE_PLANKS)));
-    public static final Block BIRCH_CHAIR = registerBlock("birch_chair",
-            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.BIRCH_PLANKS)));
-    public static final Block JUNGLE_CHAIR = registerBlock("jungle_chair",
-            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.JUNGLE_PLANKS)));
-    public static final Block ACACIA_CHAIR = registerBlock("acacia_chair",
-            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.ACACIA_PLANKS)));
-    public static final Block DARK_OAK_CHAIR = registerBlock("dark_oak_chair",
-            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.DARK_OAK_PLANKS)));
-    public static final Block MANGROVE_CHAIR = registerBlock("mangrove_chair",
-            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_PLANKS)));
-    public static final Block CHERRY_CHAIR = registerBlock("cherry_chair",
-            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS)));
-    public static final Block BAMBOO_CHAIR = registerBlock("bamboo_chair",
-            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.BAMBOO_PLANKS)));
-    public static final Block CRIMSON_CHAIR = registerBlock("crimson_chair",
-            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.CRIMSON_PLANKS)));
-    public static final Block WARPED_CHAIR = registerBlock("warped_chair",
-            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.WARPED_PLANKS)));
-    public static final Block PRINCESS_CHAIR = registerBlock("princess_chair",
-            new DyeableChairBlock(AbstractBlock.Settings.copy(Blocks.QUARTZ_BLOCK)));
+    public static final Block OAK_CHAIR = registerBlock("oak_chair", createChair(ChairBlock.Type.OAK, BlockSoundGroup.WOOD));
+    public static final Block SPRUCE_CHAIR = registerBlock("spruce_chair", createChair(ChairBlock.Type.SPRUCE, BlockSoundGroup.WOOD));
+    public static final Block BIRCH_CHAIR = registerBlock("birch_chair", createChair(ChairBlock.Type.BIRCH, BlockSoundGroup.WOOD));
+    public static final Block JUNGLE_CHAIR = registerBlock("jungle_chair", createChair(ChairBlock.Type.JUNGLE, BlockSoundGroup.WOOD));
+    public static final Block ACACIA_CHAIR = registerBlock("acacia_chair", createChair(ChairBlock.Type.ACACIA, BlockSoundGroup.WOOD));
+    public static final Block DARK_OAK_CHAIR = registerBlock("dark_oak_chair", createChair(ChairBlock.Type.DARK_OAK, BlockSoundGroup.WOOD));
+    public static final Block MANGROVE_CHAIR = registerBlock("mangrove_chair", createChair(ChairBlock.Type.MANGROVE, BlockSoundGroup.WOOD));
+    public static final Block CHERRY_CHAIR = registerBlock("cherry_chair", createChair(ChairBlock.Type.CHERRY, BlockSoundGroup.CHERRY_WOOD));
+    public static final Block BAMBOO_CHAIR = registerBlock("bamboo_chair", createChair(ChairBlock.Type.BAMBOO, BlockSoundGroup.BAMBOO_WOOD));
+    public static final Block CRIMSON_CHAIR = registerBlock("crimson_chair", createChair(ChairBlock.Type.CRIMSON, BlockSoundGroup.NETHER_WOOD));
+    public static final Block WARPED_CHAIR = registerBlock("warped_chair", createChair(ChairBlock.Type.WARPED, BlockSoundGroup.NETHER_WOOD));
+    public static final Block PRINCESS_CHAIR = registerBlock("princess_chair", createChair(ChairBlock.Type.PRINCESS, BlockSoundGroup.WOOD));
+    public static final Block UNDEAD_CHAIR = registerBlock("undead_chair", createChair(ChairBlock.Type.UNDEAD, BlockSoundGroup.VAULT));
+    public static final Block TRIAL_CHAIR = registerBlock("trial_chair", createChair(ChairBlock.Type.TRIAL, BlockSoundGroup.TRIAL_SPAWNER));
 
     // Lamps
     public static final Block OAK_LAMP = registerBlock("oak_lamp", createColorLampBlock());
@@ -370,6 +369,10 @@ private static Block createColorLampBlock() {
     public static final Block ENDSTONE_FOUNTAIN_SPROUT = registerBlock("endstone_fountain_sprout", createFountainSprout(3,9, BlockSoundGroup.STONE));
     public static final Block PURPUR_FOUNTAIN_SPROUT = registerBlock("purpur_fountain_sprout", createFountainSprout(1.5f,6, BlockSoundGroup.STONE));
 
+    public static final Block FALLING_LIQUID = registerBlock("falling_liquid", new FallingLiquidBlock(AbstractBlock.Settings.create()
+            .replaceable()
+            .luminance(ModBlockUtilities.createLightLevelFromContainsBlockState(15))));
+
     // Beams
     public static final Block OAK_BEAM = registerBlock("oak_beam", createBeam(BlockSoundGroup.WOOD));
     public static final Block SPRUCE_BEAM = registerBlock("spruce_beam", createBeam(BlockSoundGroup.WOOD));
@@ -382,6 +385,27 @@ private static Block createColorLampBlock() {
     public static final Block BAMBOO_BEAM = registerBlock("bamboo_beam", createBeam(BlockSoundGroup.BAMBOO_WOOD));
     public static final Block CRIMSON_BEAM = registerBlock("crimson_beam", createBeam(BlockSoundGroup.NETHER_WOOD));
     public static final Block WARPED_BEAM = registerBlock("warped_beam", createBeam(BlockSoundGroup.NETHER_WOOD));
+
+    // Large Stumps
+    public static final Block OAK_LARGE_STUMP = registerBlock("oak_large_stump", createLargeStump(BlockSoundGroup.WOOD));
+    public static final Block SPRUCE_LARGE_STUMP = registerBlock("spruce_large_stump", createLargeStump(BlockSoundGroup.WOOD));
+    public static final Block BIRCH_LARGE_STUMP = registerBlock("birch_large_stump", createLargeStump(BlockSoundGroup.WOOD));
+    public static final Block JUNGLE_LARGE_STUMP = registerBlock("jungle_large_stump", createLargeStump(BlockSoundGroup.WOOD));
+    public static final Block ACACIA_LARGE_STUMP = registerBlock("acacia_large_stump", createLargeStump(BlockSoundGroup.WOOD));
+    public static final Block DARK_OAK_LARGE_STUMP = registerBlock("dark_oak_large_stump", createLargeStump(BlockSoundGroup.WOOD));
+    public static final Block MANGROVE_LARGE_STUMP = registerBlock("mangrove_large_stump", createLargeStump(BlockSoundGroup.WOOD));
+    public static final Block CHERRY_LARGE_STUMP = registerBlock("cherry_large_stump", createLargeStump(BlockSoundGroup.CHERRY_WOOD));
+    public static final Block BAMBOO_LARGE_STUMP = registerBlock("bamboo_large_stump", createLargeStump(BlockSoundGroup.BAMBOO_WOOD));
+    public static final Block CRIMSON_LARGE_STUMP = registerBlock("crimson_large_stump", createLargeStump(BlockSoundGroup.NETHER_WOOD));
+    public static final Block WARPED_LARGE_STUMP = registerBlock("warped_large_stump", createLargeStump(BlockSoundGroup.NETHER_WOOD));
+
+    public static final Block TELESCOPE = registerBlock("telescope", new TelescopeBlock(AbstractBlock.Settings.create()
+            .breakInstantly()
+            .mapColor(DyeColor.ORANGE)
+            .sounds(BlockSoundGroup.COPPER)));
+    public static final Block SADDLE_BLOCK = registerBlock("saddle_block", new SaddleBlock(AbstractBlock.Settings.create()
+            .breakInstantly()
+            .mapColor(DyeColor.ORANGE)));
 
     // Register Block Method
     private static Block registerBlock(String name, Block block) {

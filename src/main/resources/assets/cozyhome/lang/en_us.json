@@ -1,9 +1,6 @@
 {
   "itemgroup.cozyhome.cozyhome": "Cozy Home",
 
-  "block.cozyhome.dye_vat": "Dye Vat",
-  "item.cozyhome.paint_brush": "Paint Brush",
-
   "block.cozyhome.oak_planked_wall": "Oak Planked Wall",
   "block.cozyhome.spruce_planked_wall": "Spruce Planked Wall",
   "block.cozyhome.birch_planked_wall": "Birch Planked Wall",
@@ -76,6 +73,8 @@
 
   "block.cozyhome.mangrove_zaisu": "Mangrove Zaisu",
 
+  "block.cozyhome.chairs": "Chairs",
+
   "block.cozyhome.oak_chair": "Oak Chair",
   "block.cozyhome.spruce_chair": "Spruce Chair",
   "block.cozyhome.birch_chair": "Birch Chair",
@@ -88,6 +87,8 @@
   "block.cozyhome.crimson_chair": "Crimson Chair",
   "block.cozyhome.warped_chair": "Warped Chair",
   "block.cozyhome.princess_chair": "Princess Chair",
+  "block.cozyhome.undead_chair": "Undead Chair",
+  "block.cozyhome.trial_chair": "Trial Chair",
 
   "block.cozyhome.oak_wall_mirror": "Oak Wall Mirror",
   "block.cozyhome.spruce_wall_mirror": "Spruce Wall Mirror",
@@ -131,12 +132,23 @@
   "block.cozyhome.endstone_fountain": "Endstone Fountain",
   "block.cozyhome.purpur_fountain": "Purpur Fountain",
 
+  "block.cozyhome.telescope": "Telescope",
+  "block.cozyhome.saddle_block": "Saddle",
+
+  "block.cozyhome.dye_vat": "Dye Vat",
+  "item.cozyhome.paint_brush": "Paint Brush",
+  "item.cozyhome.cushion": "Cushion",
+  "item.cozyhome.hay_cushion": "Hay Cushion",
+  "item.cozyhome.trader_cushion": "Trader Cushion",
+
   "container.cozyhome.storage_counter": "Storage Counter",
 
   "tooltip.cozyhome.block.planked_wall": "§7Stackable",
   "tooltip.cozyhome.block.fountain": "§7Can Add:",
   "tooltip.cozyhome.block.dyeable": "§7Dyeable",
   "tooltip.cozyhome.block.dyed": "Dyed",
+  "tooltip.cozyhome.applies_to": "Applies to:",
+  "tooltip.cozyhome.has": "Has:",
 
   "sounds.cozyhome.lamp_toggle": "Lamp Toggled",
   "sounds.cozyhome.fireplace_loop": "Fireplace Crackles",
@@ -145,6 +157,7 @@
   "sounds.cozyhome.light_water_flow": "Water Flowing",
   "sounds.cozyhome.splash": "Water Splash",
 
-  "text.cozyhome.grandfather_clock.day": "☀",
-  "text.cozyhome.grandfather_clock.night": "☾"
+  "message.cozyhome.remove_with_shear": "Can Remove With Shears",
+  "message.cozyhome.grandfather_clock.day": "☀",
+  "message.cozyhome.grandfather_clock.night": "☾"
 }

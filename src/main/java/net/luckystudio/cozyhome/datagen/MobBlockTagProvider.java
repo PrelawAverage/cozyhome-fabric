@@ -7,6 +7,7 @@ import net.luckystudio.cozyhome.util.ModTags;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.FluidTags;
 
 import java.util.concurrent.CompletableFuture;
 

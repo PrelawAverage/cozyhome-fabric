@@ -3,7 +3,10 @@ package net.luckystudio.cozyhome.block.primary;
 import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.LinearConnectionBlock;
+import net.luckystudio.cozyhome.screen.MirrorScreen;
 import net.minecraft.block.*;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -11,6 +14,8 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -38,7 +43,7 @@ public class WallMirrorBlock extends HorizontalFacingBlock implements Waterlogga
     protected MapCodec<? extends HorizontalFacingBlock> getCodec() {
         return CODEC;
     }
-    public WallMirrorBlock(AbstractBlock.Settings settings) {
+    public WallMirrorBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState()
                 .with(FACING, Direction.NORTH)
@@ -128,5 +133,15 @@ public class WallMirrorBlock extends HorizontalFacingBlock implements Waterlogga
     @Override
     protected FluidState getFluidState(BlockState state) {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
+    @Override
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        if (world.isClient()) {
+            boolean type = state.get(STACKABLE_BLOCK) != LinearConnectionBlock.SINGLE ? true : false;
+            MinecraftClient.getInstance().setScreen(new MirrorScreen(player, type));
+            return ActionResult.SUCCESS;
+        }
+        return ActionResult.PASS;
     }
 }
