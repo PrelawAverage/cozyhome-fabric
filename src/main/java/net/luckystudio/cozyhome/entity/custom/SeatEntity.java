@@ -1,13 +1,16 @@
 package net.luckystudio.cozyhome.entity.custom;
 
+import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.primary.AbstractSeatBlock;
-import net.luckystudio.cozyhome.block.primary.secondary.DyeableSeatBlock;
-import net.luckystudio.cozyhome.block.primary.secondary.tertiary.DyeableChairBlock;
+import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.*;
@@ -46,6 +49,7 @@ public class SeatEntity extends Entity {
         return true;
     }
 
+
     // Runs when
     @Override
     protected void addPassenger(Entity passenger) {
@@ -56,10 +60,29 @@ public class SeatEntity extends Entity {
             super.addPassenger(passenger);
         }
     }
-
-    // This method makes sure the dismount location is valid.
-    // This is the same as the pig class, maybe try and access it instead?
-    // Also, this method handles the despawning of the entity when the player dismounts
+    /**
+     This method handles the unique functionality of some chairs when a player dismounts them.
+     In this case it turns off the DETECTED_PLAYER and OMINOUS values in the Ominous Chair
+     */
+    @Override
+    public void stopRiding() {
+        World world = this.getWorld();
+        BlockPos pos = this.getBlockPos();
+        if (world.getBlockState(pos).getBlock() == ModBlocks.OMINOUS_CHAIR) {
+            BlockState state = world.getBlockState(pos);
+            world.setBlockState(pos, state
+                    .with(ModProperties.DETECTED_PLAYER, false)
+                    .with(Properties.OMINOUS, false));
+            world.playSoundAtBlockCenter(pos, SoundEvents.BLOCK_VAULT_DEACTIVATE, SoundCategory.BLOCKS, 1, 1, true);
+        } else {
+            super.stopRiding();
+        }
+    }
+/**
+     This method makes sure the dismount location is valid.
+     This is the same as the pig class, maybe try and access it instead?
+     Also, this method handles the despawning of the entity when the player dismounts
+ */
     @Override
     public Vec3d updatePassengerForDismount(LivingEntity passenger) {
         Direction direction = this.getMovementDirection();
@@ -87,6 +110,18 @@ public class SeatEntity extends Entity {
         }
         this.remove(RemovalReason.DISCARDED);
         return super.updatePassengerForDismount(passenger);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+
+        if (this.getFirstPassenger() instanceof PlayerEntity player) {
+            // Example condition: Force re-mounting
+            if (!player.isSneaking()) {
+                player.startRiding(this, true);
+            }
+        }
     }
 
     @Override

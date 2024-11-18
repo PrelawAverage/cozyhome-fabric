@@ -1,6 +1,6 @@
 package net.luckystudio.cozyhome.block.entity;
 
-import net.luckystudio.cozyhome.block.ModBlockEntities;
+import net.luckystudio.cozyhome.block.ModBlockEntityTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -15,7 +15,7 @@ public class DyeableBlockEntity extends BlockEntity {
     public int color = 0xFFFFFF;
 
     public DyeableBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.DYEABLE_BLOCK_ENTITY, pos, state);
+        super(ModBlockEntityTypes.DYEABLE_BLOCK_ENTITY, pos, state);
     }
 
     // The following two methods specify serialization of color data.

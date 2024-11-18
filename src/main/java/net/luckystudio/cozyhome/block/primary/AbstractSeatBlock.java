@@ -2,7 +2,6 @@ package net.luckystudio.cozyhome.block.primary;
 
 import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.entity.ChairBlockEntity;
-import net.luckystudio.cozyhome.block.primary.secondary.ChairBlock;
 import net.luckystudio.cozyhome.block.primary.secondary.tertiary.DyeableChairBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.SeatBlock;
 import net.minecraft.block.*;

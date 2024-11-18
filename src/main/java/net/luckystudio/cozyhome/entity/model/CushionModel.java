@@ -1,18 +1,12 @@
-package net.luckystudio.cozyhome.entity.model;// Made with Blockbench 4.11.2
-// Exported for Minecraft version 1.17+ for Yarn
-// Paste this class into your mod and generate all required imports
+package net.luckystudio.cozyhome.entity.model;
 
-import net.luckystudio.cozyhome.CozyHome;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.Identifier;
 
 public class CushionModel extends EntityModel<Entity> {
-	public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(Identifier.of(CozyHome.MOD_ID, "cushion_model"), "main");
 	private final ModelPart bb_main;
 	public CushionModel(ModelPart root) {
 		this.bb_main = root.getChild("bb_main");

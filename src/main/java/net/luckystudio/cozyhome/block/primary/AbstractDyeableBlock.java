@@ -1,7 +1,7 @@
 package net.luckystudio.cozyhome.block.primary;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.ModBlockEntities;
+import net.luckystudio.cozyhome.block.ModBlockEntityTypes;
 import net.luckystudio.cozyhome.block.entity.DyeableBlockEntity;
 import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.block.*;
@@ -56,13 +56,15 @@ public abstract class AbstractDyeableBlock extends BlockWithEntity {
         super.appendTooltip(stack, context, tooltip, options);
     }
 
+    // Needed so when a player middle mouse picks the block, the dye comes with it.
     @Override
     public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
         ItemStack itemStack = super.getPickStack(world, pos, state);
-        world.getBlockEntity(pos, ModBlockEntities.DYEABLE_BLOCK_ENTITY).ifPresent(blockEntity -> blockEntity.setStackNbt(itemStack, world.getRegistryManager()));
+        world.getBlockEntity(pos, ModBlockEntityTypes.DYEABLE_BLOCK_ENTITY).ifPresent(blockEntity -> blockEntity.setStackNbt(itemStack, world.getRegistryManager()));
         return itemStack;
     }
 
+    // Dyeing a block functionality.
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         // Simple Dyeing of the Block functionality.

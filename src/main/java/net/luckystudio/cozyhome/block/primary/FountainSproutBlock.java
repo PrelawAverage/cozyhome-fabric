@@ -5,7 +5,7 @@ import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
 import net.luckystudio.cozyhome.block.util.enums.HasUnderBlock;
-import net.luckystudio.cozyhome.sound.ModSounds;
+import net.luckystudio.cozyhome.sound.ModSoundEvents;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.BlockFace;
 import net.minecraft.entity.Entity;
@@ -203,7 +203,7 @@ public class FountainSproutBlock extends WallMountedBlock {
             // Reset the counter
             tickCounter = 0;
             // Place your code here that should run every 5 seconds
-            if (state.get(CONTAINS) == ContainsBlock.WATER) world.playSound(null, pos, ModSounds.LIGHT_WATER_FLOW, SoundCategory.AMBIENT, 0.1f, 1);
+            if (state.get(CONTAINS) == ContainsBlock.WATER) world.playSound(null, pos, ModSoundEvents.LIGHT_WATER_FLOW, SoundCategory.AMBIENT, 0.1f, 1);
         }
         world.scheduleBlockTick(pos, this, 20);
     }

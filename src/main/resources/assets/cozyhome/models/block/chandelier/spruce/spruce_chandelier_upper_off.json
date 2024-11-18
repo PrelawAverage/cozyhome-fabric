@@ -1,0 +1,7 @@
+{
+	"parent": "cozyhome:block/chandelier/spruce/template_spruce_chandelier_upper",
+	"textures": {
+		"0": "cozyhome:block/chandelier/spruce_chandelier_off",
+		"particle": "cozyhome:block/chandelier/spruce_chandelier_off"
+	}
+}

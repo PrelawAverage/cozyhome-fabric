@@ -1,6 +1,6 @@
 package net.luckystudio.cozyhome.block.entity;
 
-import net.luckystudio.cozyhome.block.ModBlockEntities;
+import net.luckystudio.cozyhome.block.ModBlockEntityTypes;
 import net.luckystudio.cozyhome.block.primary.StorageCounterBlock;
 import net.luckystudio.cozyhome.screen.StorageCounterScreenHandler;
 import net.luckystudio.cozyhome.block.util.interfaces.ImplementedInventory;
@@ -57,7 +57,7 @@ public class StorageCounterBlockEntity extends LootableContainerBlockEntity impl
     };
 
     public StorageCounterBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.STORAGE_COUNTER_BLOCK_ENTITY, pos, state);
+        super(ModBlockEntityTypes.STORAGE_COUNTER_BLOCK_ENTITY, pos, state);
     }
 
     @Override

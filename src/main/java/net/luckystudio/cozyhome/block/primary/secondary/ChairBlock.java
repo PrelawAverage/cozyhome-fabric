@@ -203,8 +203,10 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock {
         CRIMSON("crimson"),
         WARPED("warped"),
         PRINCESS("princess"),
+        IRON("iron"),
+        GLASS("iron"),
         UNDEAD("undead"),
-        TRIAL("trial");
+        OMINOUS("ominous");
 
         private final String id;
 

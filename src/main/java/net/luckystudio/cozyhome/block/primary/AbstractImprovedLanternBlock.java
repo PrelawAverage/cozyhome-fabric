@@ -2,7 +2,7 @@ package net.luckystudio.cozyhome.block.primary;
 
 import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.util.ModProperties;
-import net.luckystudio.cozyhome.sound.ModSounds;
+import net.luckystudio.cozyhome.sound.ModSoundEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -80,7 +80,7 @@ public class AbstractImprovedLanternBlock extends Block {
     protected static void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, BlockState state) {
         // Just alters the pitch when the lamp is being turned on and off.
         float f = state.get(LIT) ? 1F : 0.9F;
-        world.playSound(player, pos, ModSounds.LAMP_TOGGLE, SoundCategory.BLOCKS, 1F, f);
+        world.playSound(player, pos, ModSoundEvents.LAMP_TOGGLE, SoundCategory.BLOCKS, 1F, f);
     }
 
     @Override

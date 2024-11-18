@@ -22,6 +22,7 @@ public class ModItemGroups {
 
                         // Oak
                         entries.add(ModBlocks.OAK_PLANKED_WALL);
+                        entries.add(ModBlocks.OAK_GRANDFATHER_CLOCK);
                         entries.add(ModBlocks.OAK_BEAM);
                         entries.add(ModBlocks.OAK_COUNTER);
                         entries.add(ModBlocks.OAK_SINK_COUNTER);
@@ -36,6 +37,7 @@ public class ModItemGroups {
 
                         // Spruce
                         entries.add(ModBlocks.SPRUCE_PLANKED_WALL);
+                        entries.add(ModBlocks.SPRUCE_GRANDFATHER_CLOCK);
                         entries.add(ModBlocks.SPRUCE_BEAM);
                         entries.add(ModBlocks.SPRUCE_COUNTER);
                         entries.add(ModBlocks.SPRUCE_SINK_COUNTER);
@@ -50,6 +52,7 @@ public class ModItemGroups {
 
                         // Birch
                         entries.add(ModBlocks.BIRCH_PLANKED_WALL);
+                        entries.add(ModBlocks.BIRCH_GRANDFATHER_CLOCK);
                         entries.add(ModBlocks.BIRCH_BEAM);
                         entries.add(ModBlocks.BIRCH_COUNTER);
                         entries.add(ModBlocks.BIRCH_SINK_COUNTER);
@@ -64,6 +67,7 @@ public class ModItemGroups {
 
                         // Jungle
                         entries.add(ModBlocks.JUNGLE_PLANKED_WALL);
+                        entries.add(ModBlocks.JUNGLE_GRANDFATHER_CLOCK);
                         entries.add(ModBlocks.JUNGLE_BEAM);
                         entries.add(ModBlocks.JUNGLE_COUNTER);
                         entries.add(ModBlocks.JUNGLE_SINK_COUNTER);
@@ -78,6 +82,7 @@ public class ModItemGroups {
 
                         // Acacia
                         entries.add(ModBlocks.ACACIA_PLANKED_WALL);
+                        entries.add(ModBlocks.ACACIA_GRANDFATHER_CLOCK);
                         entries.add(ModBlocks.ACACIA_BEAM);
                         entries.add(ModBlocks.ACACIA_COUNTER);
                         entries.add(ModBlocks.ACACIA_SINK_COUNTER);
@@ -92,6 +97,7 @@ public class ModItemGroups {
 
                         // Dark Oak
                         entries.add(ModBlocks.DARK_OAK_PLANKED_WALL);
+                        entries.add(ModBlocks.DARK_OAK_GRANDFATHER_CLOCK);
                         entries.add(ModBlocks.DARK_OAK_BEAM);
                         entries.add(ModBlocks.DARK_OAK_COUNTER);
                         entries.add(ModBlocks.DARK_OAK_SINK_COUNTER);
@@ -106,6 +112,7 @@ public class ModItemGroups {
 
                         // Mangrove
                         entries.add(ModBlocks.MANGROVE_PLANKED_WALL);
+                        entries.add(ModBlocks.MANGROVE_GRANDFATHER_CLOCK);
                         entries.add(ModBlocks.MANGROVE_BEAM);
                         entries.add(ModBlocks.MANGROVE_COUNTER);
                         entries.add(ModBlocks.MANGROVE_SINK_COUNTER);
@@ -120,6 +127,7 @@ public class ModItemGroups {
 
                         // Cherry
                         entries.add(ModBlocks.CHERRY_PLANKED_WALL);
+                        entries.add(ModBlocks.CHERRY_GRANDFATHER_CLOCK);
                         entries.add(ModBlocks.CHERRY_BEAM);
                         entries.add(ModBlocks.CHERRY_COUNTER);
                         entries.add(ModBlocks.CHERRY_SINK_COUNTER);
@@ -134,6 +142,7 @@ public class ModItemGroups {
 
                         // Bamboo
                         entries.add(ModBlocks.BAMBOO_PLANKED_WALL);
+                        entries.add(ModBlocks.BAMBOO_GRANDFATHER_CLOCK);
                         entries.add(ModBlocks.BAMBOO_BEAM);
                         entries.add(ModBlocks.BAMBOO_COUNTER);
                         entries.add(ModBlocks.BAMBOO_SINK_COUNTER);
@@ -148,6 +157,7 @@ public class ModItemGroups {
 
                         // Crimson
                         entries.add(ModBlocks.CRIMSON_PLANKED_WALL);
+                        entries.add(ModBlocks.CRIMSON_GRANDFATHER_CLOCK);
                         entries.add(ModBlocks.CRIMSON_BEAM);
                         entries.add(ModBlocks.CRIMSON_COUNTER);
                         entries.add(ModBlocks.CRIMSON_SINK_COUNTER);
@@ -162,6 +172,7 @@ public class ModItemGroups {
 
                         // Warped
                         entries.add(ModBlocks.WARPED_PLANKED_WALL);
+                        entries.add(ModBlocks.WARPED_GRANDFATHER_CLOCK);
                         entries.add(ModBlocks.WARPED_BEAM);
                         entries.add(ModBlocks.WARPED_COUNTER);
                         entries.add(ModBlocks.WARPED_SINK_COUNTER);
@@ -203,6 +214,10 @@ public class ModItemGroups {
                         entries.add(ModBlocks.GOLD_FRAMED_GLASS_PANE);
 
                         // Misc. Blocks/Items
+                        entries.add(ModBlocks.IRON_CHAIR);
+                        entries.add(ModBlocks.GLASS_CHAIR);
+                        entries.add(ModBlocks.UNDEAD_CHAIR);
+                        entries.add(ModBlocks.OMINOUS_CHAIR);
                         entries.add(ModBlocks.TELESCOPE);
                         entries.add(ModBlocks.DYE_VAT);
                         entries.add(ModItems.PAINT_BRUSH);

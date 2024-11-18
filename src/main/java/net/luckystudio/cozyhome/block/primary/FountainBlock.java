@@ -39,14 +39,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class FountainBlock extends AbstractHorizontalConnectingBlock {
+public class FountainBlock extends AbstractAllSidesConnectingBlock {
     public static final MapCodec<FountainBlock> CODEC = createCodec(FountainBlock::new);
     public static final EnumProperty<ContainsBlock> CONTAINS = ModProperties.CONTAINS;
-
-    public static final BooleanProperty NORTH_EAST = ModProperties.NORTH_EAST;
-    public static final BooleanProperty NORTH_WEST = ModProperties.NORTH_WEST;
-    public static final BooleanProperty SOUTH_EAST = ModProperties.SOUTH_EAST;
-    public static final BooleanProperty SOUTH_WEST = ModProperties.SOUTH_WEST;
 
     public static final VoxelShape TOP_PIECE = Block.createCuboidShape(0, 10, 0, 16, 16, 16);
     public static final VoxelShape TOP_PIECE_VOID = Block.createCuboidShape(2, 14, 2, 14, 16, 14);
@@ -58,12 +53,7 @@ public class FountainBlock extends AbstractHorizontalConnectingBlock {
     public FountainBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState()
-                .with(CONTAINS, ContainsBlock.NONE)
-                .with(NORTH_EAST, false)
-                .with(NORTH_WEST, false)
-                .with(SOUTH_EAST, false)
-                .with(SOUTH_WEST, false)
-        );
+                .with(CONTAINS, ContainsBlock.NONE));
     }
 
     @Override
@@ -73,7 +63,7 @@ public class FountainBlock extends AbstractHorizontalConnectingBlock {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(CONTAINS, NORTH_EAST, NORTH_WEST, SOUTH_EAST, SOUTH_WEST);
+        builder.add(CONTAINS);
         super.appendProperties(builder);
     }
 

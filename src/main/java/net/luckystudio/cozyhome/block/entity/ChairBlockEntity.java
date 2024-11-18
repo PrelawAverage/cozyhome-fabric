@@ -1,6 +1,6 @@
 package net.luckystudio.cozyhome.block.entity;
 
-import net.luckystudio.cozyhome.block.ModBlockEntities;
+import net.luckystudio.cozyhome.block.ModBlockEntityTypes;
 import net.luckystudio.cozyhome.components.ModDataComponents;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -19,7 +19,7 @@ public class ChairBlockEntity extends BlockEntity {
     public String cushion_type;
 
     public ChairBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.CHAIR_BLOCK_ENTITY, pos, state); // Pass the correct BlockEntityType here
+        super(ModBlockEntityTypes.CHAIR_BLOCK_ENTITY, pos, state); // Pass the correct BlockEntityType here
         this.color = 0xFFFFFF;
         this.cushion_type = "";
         this.currentOffset = 0;  // Default zoom level

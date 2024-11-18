@@ -1,0 +1,76 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [128, 128],
+	"textures": {
+		"0": "cozyhome:block/table/glass_table",
+		"particle": "cozyhome:block/break/glass_furniture"
+	},
+	"elements": [
+		{
+			"name": "top",
+			"from": [0, 14, 0],
+			"to": [16, 16, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 15, 8]},
+			"faces": {
+				"north": {"uv": [4, 4, 2, 4.25], "texture": "#0", "cullface": "north"},
+				"south": {"uv": [2, 4, 4, 4.25], "texture": "#0", "cullface": "south"},
+				"up": {"uv": [2, 0, 4, 2], "texture": "#0", "cullface": "up"},
+				"down": {"uv": [4, 6, 2, 8], "rotation": 180, "texture": "#0"}
+			}
+		},
+		{
+			"name": "east_inner",
+			"from": [0, 14, 16],
+			"to": [16, 16, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 15, 8]},
+			"faces": {
+				"north": {"uv": [2, 4, 4, 4.25], "texture": "#0", "cullface": "south"}
+			}
+		},
+		{
+			"name": "west_inner",
+			"from": [0, 14, 0],
+			"to": [16, 16, 0],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 15, 8]},
+			"faces": {
+				"south": {"uv": [2, 4, 4, 4.25], "texture": "#0", "cullface": "south"}
+			}
+		},
+		{
+			"name": "inner_top",
+			"from": [0, 14, 0],
+			"to": [16, 14, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 12, 8]},
+			"faces": {
+				"up": {"uv": [2, 10, 4, 12], "texture": "#0"}
+			}
+		},
+		{
+			"name": "bottom",
+			"from": [0, 4, 0],
+			"to": [16, 5, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4, 8]},
+			"faces": {
+				"north": {"uv": [2, 5.375, 4, 5.5], "texture": "#0", "cullface": "north"},
+				"south": {"uv": [2, 5.375, 4, 5.5], "texture": "#0", "cullface": "south"},
+				"up": {"uv": [2, 8, 4, 10], "texture": "#0"},
+				"down": {"uv": [4, 8, 2, 10], "rotation": 180, "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "top",
+			"origin": [8, 15, 8],
+			"color": 0,
+			"children": [0, 1, 2, 3]
+		},
+		{
+			"name": "legs",
+			"origin": [8, 0, 8],
+			"color": 0,
+			"children": []
+		},
+		4
+	]
+}

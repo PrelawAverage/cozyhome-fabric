@@ -12,7 +12,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.Identifier;
 
 public class TelescopeModel extends EntityModel<Entity> {
-	public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(Identifier.of(CozyHome.MOD_ID, "telescope_model"), "main");
 	private final ModelPart head;
 	private final ModelPart holder;
 	public TelescopeModel(ModelPart root) {

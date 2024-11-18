@@ -2,9 +2,9 @@ package net.luckystudio.cozyhome.item.renderer;
 
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.luckystudio.cozyhome.block.primary.secondary.ChairBlock;
-import net.luckystudio.cozyhome.block.renderer.ChairBlockEntityRenderer;
+import net.luckystudio.cozyhome.block.renderer.blockrenders.ChairBlockEntityRenderer;
 import net.luckystudio.cozyhome.components.ModDataComponents;
-import net.luckystudio.cozyhome.entity.model.ChairModel;
+import net.luckystudio.cozyhome.block.renderer.models.ChairModel;
 import net.luckystudio.cozyhome.entity.model.CushionModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -37,7 +37,7 @@ public class ChairItemRenderer implements BuiltinItemRendererRegistry.DynamicIte
         BlockState blockState = block.getDefaultState();
         ChairBlock.ChairType chairType = ((ChairBlock)blockState.getBlock()).getChairType();
 
-        RenderLayer chairRenderLayer = ChairBlockEntityRenderer.getChairRenderLayer(chairType);
+        RenderLayer chairRenderLayer = ChairBlockEntityRenderer.getChairRenderLayer(chairType, blockState);
         VertexConsumer chairVertexConsumer = vertexConsumers.getBuffer(chairRenderLayer);
         chair.render(matrices, chairVertexConsumer, light, overlay);
 

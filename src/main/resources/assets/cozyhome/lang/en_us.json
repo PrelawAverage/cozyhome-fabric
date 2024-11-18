@@ -87,8 +87,10 @@
   "block.cozyhome.crimson_chair": "Crimson Chair",
   "block.cozyhome.warped_chair": "Warped Chair",
   "block.cozyhome.princess_chair": "Princess Chair",
+  "block.cozyhome.iron_chair": "Iron Chair",
+  "block.cozyhome.glass_chair": "Glass Chair",
   "block.cozyhome.undead_chair": "Undead Chair",
-  "block.cozyhome.trial_chair": "Trial Chair",
+  "block.cozyhome.ominous_chair": "Ominous Chair",
 
   "block.cozyhome.oak_wall_mirror": "Oak Wall Mirror",
   "block.cozyhome.spruce_wall_mirror": "Spruce Wall Mirror",
@@ -113,6 +115,32 @@
   "block.cozyhome.bamboo_beam": "Bamboo Beam",
   "block.cozyhome.warped_beam": "Crimson Beam",
   "block.cozyhome.crimson_beam": "Warped Beam",
+
+  "block.cozyhome.oak_table": "Oak Table",
+  "block.cozyhome.spruce_table": "Spruce Table",
+  "block.cozyhome.birch_table": "Birch Table",
+  "block.cozyhome.jungle_table": "Jungle Table",
+  "block.cozyhome.acacia_table": "Acacia Table",
+  "block.cozyhome.dark_oak_table": "Dark Oak Table",
+  "block.cozyhome.mangrove_table": "Mangrove Table",
+  "block.cozyhome.cherry_table": "Cherry Table",
+  "block.cozyhome.bamboo_table": "Bamboo Table",
+  "block.cozyhome.warped_table": "Crimson Table",
+  "block.cozyhome.crimson_table": "Warped Table",
+  "block.cozyhome.glass_table": "Glass Table",
+
+  "block.cozyhome.oak_grandfather_clock": "Oak Grandfather Clock",
+  "block.cozyhome.spruce_grandfather_clock": "Spruce Grandfather Clock",
+  "block.cozyhome.birch_grandfather_clock": "Birch Grandfather Clock",
+  "block.cozyhome.jungle_grandfather_clock": "Jungle Grandfather Clock",
+  "block.cozyhome.acacia_grandfather_clock": "Acacia Grandfather Clock",
+  "block.cozyhome.dark_oak_grandfather_clock": "Dark Oak Grandfather Clock",
+  "block.cozyhome.mangrove_grandfather_clock": "Mangrove Grandfather Clock",
+  "block.cozyhome.cherry_grandfather_clock": "Cherry Grandfather Clock",
+  "block.cozyhome.bamboo_grandfather_clock": "Bamboo Grandfather Clock",
+  "block.cozyhome.warped_grandfather_clock": "Crimson Grandfather Clock",
+  "block.cozyhome.crimson_grandfather_clock": "Warped Grandfather Clock",
+  "block.cozyhome.glass_grandfather_clock": "Glass Grandfather Clock",
 
   "block.cozyhome.stone_brick_fountain": "Stone Brick Fountain",
   "block.cozyhome.mossy_stone_brick_fountain": "Mossy Stone Brick Fountain",
@@ -157,7 +185,5 @@
   "sounds.cozyhome.light_water_flow": "Water Flowing",
   "sounds.cozyhome.splash": "Water Splash",
 
-  "message.cozyhome.remove_with_shear": "Can Remove With Shears",
-  "message.cozyhome.grandfather_clock.day": "☀",
-  "message.cozyhome.grandfather_clock.night": "☾"
+  "message.cozyhome.remove_with_shear": "Can Remove With Shears"
 }
