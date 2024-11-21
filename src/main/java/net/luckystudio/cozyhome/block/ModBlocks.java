@@ -455,7 +455,7 @@ public class ModBlocks {
     public static final Block IRON_GRANDFATHER_CLOCK = registerBlock("iron_grandfather_clock", createGrandfatherClock(GrandfatherClockBlock.Type.IRON, BlockSoundGroup.METAL));
     public static final Block GLASS_GRANDFATHER_CLOCK = registerBlock("glass_grandfather_clock", createGrandfatherClock(GrandfatherClockBlock.Type.GLASS, BlockSoundGroup.GLASS));
     public static final Block UNDEAD_GRANDFATHER_CLOCK = registerBlock("undead_grandfather_clock", createGrandfatherClock(GrandfatherClockBlock.Type.UNDEAD, BlockSoundGroup.VAULT));
-    public static final Block OMINOUS_GRANDFATHER_CLOCK = registerBlock("ominous_grandfather_clock", createGrandfatherClock(GrandfatherClockBlock.Type.OMINOUS, BlockSoundGroup.TRIAL_SPAWNER));
+    public static final Block OMINOUS_GRANDFATHER_CLOCK = registerBlock("ominous_grandfather_clock", new OminousGrandfatherClockBlock(GrandfatherClockBlock.Type.OMINOUS, AbstractBlock.Settings.create().sounds(BlockSoundGroup.TRIAL_SPAWNER)));
 
     public static final Block TELESCOPE = registerBlock("telescope", new TelescopeBlock(AbstractBlock.Settings.create()
             .breakInstantly()

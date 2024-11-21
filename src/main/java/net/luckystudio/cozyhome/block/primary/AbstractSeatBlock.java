@@ -68,7 +68,7 @@ public abstract class AbstractSeatBlock extends BlockWithEntity implements SeatB
     }
 
     public float setRiderRotation(Entity entity) {
-        return entity.getYaw() + 180;
+        return entity.getYaw();
     }
 
     public float getSeatHeight(BlockState state) {

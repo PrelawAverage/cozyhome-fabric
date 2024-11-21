@@ -1,6 +1,8 @@
 package net.luckystudio.cozyhome.block.entity;
 
 import net.luckystudio.cozyhome.block.ModBlockEntityTypes;
+import net.luckystudio.cozyhome.block.ModBlocks;
+import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.sound.ModSoundEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -11,6 +13,8 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -33,11 +37,28 @@ public class GrandfatherClockBlockEntity extends BlockEntity {
 
         // Get the in-game time
         long worldTime = blockEntity.getWorld().getTimeOfDay() % 24000;
-        System.out.println(worldTime);
 
         // Check if it's midnight and play sound
         if (worldTime == 18000) { // Ensure this only triggers once per second
             world.playSoundAtBlockCenter(pos, ModSoundEvents.GRANDFATHER_CLOCK_MIDNIGHT, SoundCategory.BLOCKS, 0.5f, 1.0f, true);
+            if (blockEntity.getCachedState().getBlock() == ModBlocks.OMINOUS_GRANDFATHER_CLOCK) {
+                blockEntity.getCachedState().with(Properties.OMINOUS, true);
+            }
+        }
+        // Check if it's midnight and play sound
+        if (worldTime == 18000) { // Ensure this only triggers once per second
+            world.playSoundAtBlockCenter(pos, ModSoundEvents.GRANDFATHER_CLOCK_MIDNIGHT, SoundCategory.BLOCKS, 0.5f, 1.0f, true);
+            if (blockEntity.getCachedState().getBlock() == ModBlocks.OMINOUS_GRANDFATHER_CLOCK) {
+                world.playSoundAtBlockCenter(pos, SoundEvents.BLOCK_VAULT_ACTIVATE, SoundCategory.BLOCKS, 1.0f, 1.0f, true);
+                blockEntity.getCachedState().with(Properties.OMINOUS, true);
+            }
+        }
+        // Check if it's midnight and play sound
+        if (worldTime == 18380) { // Ensure this only triggers once per second
+            if (blockEntity.getCachedState().getBlock() == ModBlocks.OMINOUS_GRANDFATHER_CLOCK) {
+                world.playSoundAtBlockCenter(pos, SoundEvents.BLOCK_VAULT_DEACTIVATE, SoundCategory.BLOCKS, 1.0f, 1.0f, true);
+                blockEntity.getCachedState().with(Properties.OMINOUS, false);
+            }
         }
 
         // Hour hand calculation (12-hour format)

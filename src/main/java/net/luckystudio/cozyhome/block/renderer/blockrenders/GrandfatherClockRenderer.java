@@ -27,22 +27,22 @@ import java.util.Map;
 public class GrandfatherClockRenderer implements BlockEntityRenderer<GrandfatherClockBlockEntity> {
     private final GrandfatherClockModel grandfather_clock;
     private static final Map<GrandfatherClockBlock.GrandfatherClockType, Identifier> grandfather_clock_TEXTURES = Util.make(Maps.newHashMap(), map -> {
-        map.put(GrandfatherClockBlock.Type.OAK, Identifier.of(CozyHome.MOD_ID,"textures/block/clock/grandfather_clock/oak_grandfather_clock.png"));
-        map.put(GrandfatherClockBlock.Type.SPRUCE, Identifier.of(CozyHome.MOD_ID,"textures/block/clock/grandfather_clock/spruce_grandfather_clock.png"));
-        map.put(GrandfatherClockBlock.Type.BIRCH, Identifier.of(CozyHome.MOD_ID,"textures/block/clock/grandfather_clock/birch_grandfather_clock.png"));
-        map.put(GrandfatherClockBlock.Type.JUNGLE, Identifier.of(CozyHome.MOD_ID,"textures/block/clock/grandfather_clock/jungle_grandfather_clock.png"));
-        map.put(GrandfatherClockBlock.Type.ACACIA, Identifier.of(CozyHome.MOD_ID,"textures/block/clock/grandfather_clock/acacia_grandfather_clock.png"));
-        map.put(GrandfatherClockBlock.Type.DARK_OAK, Identifier.of(CozyHome.MOD_ID,"textures/block/clock/grandfather_clock/dark_oak_grandfather_clock.png"));
-        map.put(GrandfatherClockBlock.Type.MANGROVE, Identifier.of(CozyHome.MOD_ID,"textures/block/clock/grandfather_clock/mangrove_grandfather_clock.png"));
-        map.put(GrandfatherClockBlock.Type.CHERRY, Identifier.of(CozyHome.MOD_ID,"textures/block/clock/grandfather_clock/cherry_grandfather_clock.png"));
-        map.put(GrandfatherClockBlock.Type.BAMBOO, Identifier.of(CozyHome.MOD_ID,"textures/block/clock/grandfather_clock/bamboo_grandfather_clock.png"));
-        map.put(GrandfatherClockBlock.Type.CRIMSON, Identifier.of(CozyHome.MOD_ID,"textures/block/clock/grandfather_clock/crimson_grandfather_clock.png"));
-        map.put(GrandfatherClockBlock.Type.WARPED, Identifier.of(CozyHome.MOD_ID,"textures/block/clock/grandfather_clock/warped_grandfather_clock.png"));
-        map.put(GrandfatherClockBlock.Type.PRINCESS, Identifier.of(CozyHome.MOD_ID,"textures/block/clock/grandfather_clock/princess_grandfather_clock.png"));
-        map.put(GrandfatherClockBlock.Type.IRON, Identifier.of(CozyHome.MOD_ID,"textures/block/clock/grandfather_clock/iron_grandfather_clock.png"));
-        map.put(GrandfatherClockBlock.Type.GLASS, Identifier.of(CozyHome.MOD_ID,"textures/block/clock/grandfather_clock/glass_grandfather_clock.png"));
-        map.put(GrandfatherClockBlock.Type.UNDEAD, Identifier.of(CozyHome.MOD_ID,"textures/block/clock/grandfather_clock/undead_grandfather_clock.png"));
-        map.put(GrandfatherClockBlock.Type.OMINOUS, Identifier.of(CozyHome.MOD_ID,"textures/block/clock/grandfather_clock/trial_grandfather_clock_inactive.png"));
+        map.put(GrandfatherClockBlock.Type.OAK, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/oak_grandfather_clock.png"));
+        map.put(GrandfatherClockBlock.Type.SPRUCE, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/spruce_grandfather_clock.png"));
+        map.put(GrandfatherClockBlock.Type.BIRCH, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/birch_grandfather_clock.png"));
+        map.put(GrandfatherClockBlock.Type.JUNGLE, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/jungle_grandfather_clock.png"));
+        map.put(GrandfatherClockBlock.Type.ACACIA, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/acacia_grandfather_clock.png"));
+        map.put(GrandfatherClockBlock.Type.DARK_OAK, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/dark_oak_grandfather_clock.png"));
+        map.put(GrandfatherClockBlock.Type.MANGROVE, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/mangrove_grandfather_clock.png"));
+        map.put(GrandfatherClockBlock.Type.CHERRY, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/cherry_grandfather_clock.png"));
+        map.put(GrandfatherClockBlock.Type.BAMBOO, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/bamboo_grandfather_clock.png"));
+        map.put(GrandfatherClockBlock.Type.CRIMSON, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/crimson_grandfather_clock.png"));
+        map.put(GrandfatherClockBlock.Type.WARPED, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/warped_grandfather_clock.png"));
+        map.put(GrandfatherClockBlock.Type.PRINCESS, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/princess_grandfather_clock.png"));
+        map.put(GrandfatherClockBlock.Type.IRON, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/iron_grandfather_clock.png"));
+        map.put(GrandfatherClockBlock.Type.GLASS, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/glass_grandfather_clock.png"));
+        map.put(GrandfatherClockBlock.Type.UNDEAD, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/undead_grandfather_clock.png"));
+        map.put(GrandfatherClockBlock.Type.OMINOUS, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/trial_grandfather_clock_inactive.png"));
     });
 
     // How far does this block render.
@@ -97,11 +97,11 @@ public class GrandfatherClockRenderer implements BlockEntityRenderer<Grandfather
         if (type == GrandfatherClockBlock.Type.OMINOUS) {
             // If the grandfather_clock type is TRIAL and a player is detected
             if (blockState.get(ModProperties.DETECTED_PLAYER) && blockState.get(Properties.OMINOUS)) {
-                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/clock/grandfather_clock/trial_grandfather_clock_active_ominous.png");
+                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/grandfather_clock/trial_grandfather_clock_active_ominous.png");
             } else if (blockState.get(ModProperties.DETECTED_PLAYER)) {
-                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/clock/grandfather_clock/trial_grandfather_clock_active.png");
+                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/grandfather_clock/trial_grandfather_clock_active.png");
             } else {
-                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/clock/grandfather_clock/trial_grandfather_clock_inactive.png");
+                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/grandfather_clock/trial_grandfather_clock_inactive.png");
             }
         } else {
             // If the grandfather_clock type is not TRIAL, get the identifier from the texture map

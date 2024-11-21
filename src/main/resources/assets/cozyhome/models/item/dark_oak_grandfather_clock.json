@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "cozyhome:block/clock/grandfather_clock/item/dark_oak_grandfather_clock_item"
+    "layer0": "cozyhome:block/grandfather_clock/item/dark_oak_grandfather_clock_item"
   }
 }

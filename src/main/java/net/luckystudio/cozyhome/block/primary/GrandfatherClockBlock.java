@@ -219,7 +219,7 @@ public class GrandfatherClockBlock extends BlockWithEntity implements Waterlogga
         if (!world.isClient && player instanceof ServerPlayerEntity) {
             long time = world.getTimeOfDay() % 24000; // Get the in-game time (0-23999)
             String formattedTime = formatInGameTime(time); // Convert to readable format
-            String symbol = (time >= 0 && time < 12300) || (time > 23850) ? "§6☀§f" : "§9☽§f"; // Night: 0-12300, 23850-24000; Day: 12300-23850
+            String symbol = (time >= 0 && time < 12300) || (time > 23850) ? "§6☀§f " : "§9☽§f "; // Night: 0-12300, 23850-24000; Day: 12300-23850
             player.sendMessage(Text.literal(symbol + formattedTime), true);
         }
         return ActionResult.SUCCESS;

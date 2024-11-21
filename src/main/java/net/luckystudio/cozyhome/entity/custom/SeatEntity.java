@@ -128,7 +128,7 @@ public class SeatEntity extends Entity {
     protected void updatePassengerPosition(Entity passenger, PositionUpdater positionUpdater) {
         if (passenger instanceof PlayerEntity player) {
             // Get the yaw of the entity and the player
-            float entityYaw = this.getYaw() + 180;
+            float entityYaw = this.getYaw();
             // If the yaw difference exceeds the threshold, rotate the player's body
             passenger.setBodyYaw(entityYaw);
             // Update the player's position relative to the entity
