@@ -1,5 +1,6 @@
 package net.luckystudio.cozyhome.block.util.interfaces;
 
+import net.luckystudio.cozyhome.block.primary.secondary.ChairBlock;
 import net.luckystudio.cozyhome.block.primary.secondary.tertiary.DyeableChairBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.util.ModTags;
@@ -50,11 +51,11 @@ public interface TuckableBlock {
         BlockState left = world.getBlockState(pos.offset(facing).offset(facing.rotateCounterclockwise(Direction.Axis.Y)));
         BlockState right = world.getBlockState(pos.offset(facing).offset(facing.rotateClockwise(Direction.Axis.Y)));
 
-        if (left.getBlock() instanceof DyeableChairBlock) {
+        if (left.getBlock() instanceof ChairBlock) {
             Direction leftDir = direction(left);
             return left.get(TUCKED) && leftDir == facing.rotateClockwise(Direction.Axis.Y);
         }
-        if (right.getBlock() instanceof DyeableChairBlock) {
+        if (right.getBlock() instanceof ChairBlock) {
             Direction rightDir = direction(left);
             return right.get(TUCKED) && rightDir == facing.rotateCounterclockwise(Direction.Axis.Y);
         }

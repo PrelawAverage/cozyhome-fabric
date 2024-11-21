@@ -6,6 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import net.luckystudio.cozyhome.block.entity.ChairBlockEntity;
 import net.luckystudio.cozyhome.block.primary.AbstractSeatBlock;
+import net.luckystudio.cozyhome.block.primary.GrandfatherClockBlock;
 import net.luckystudio.cozyhome.block.primary.secondary.tertiary.DyeableChairBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.interfaces.TuckableBlock;
@@ -13,6 +14,7 @@ import net.luckystudio.cozyhome.components.ModDataComponents;
 import net.luckystudio.cozyhome.item.ModItems;
 import net.luckystudio.cozyhome.item.custom.CushionItem;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -42,9 +44,12 @@ import java.util.Map;
 
 public class ChairBlock extends AbstractSeatBlock implements TuckableBlock {
     public static final MapCodec<ChairBlock> CODEC = RecordCodecBuilder.mapCodec(
-            instance -> instance.group(ChairType.CODEC.fieldOf("kind").forGetter(ChairBlock::getChairType), createSettingsCodec())
-                    .apply(instance, ChairBlock::new)
+            instance -> instance.group(
+                    ChairBlock.ChairType.CODEC.fieldOf("kind").forGetter(ChairBlock::getChairType),
+                    createSettingsCodec() // Ensure this exists and works as expected
+            ).apply(instance, ChairBlock::new)
     );
+
     public static final BooleanProperty TUCKED = ModProperties.TUCKED;
     private static final VoxelShape BASE_SHAPE = DyeableChairBlock.createCuboidShape(2,0,2,14,10,14);
     public static final VoxelShape TUCKED_NORTH = VoxelShapes.union(
@@ -106,22 +111,28 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock {
 
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ChairBlockEntity chairBlockEntity = (ChairBlockEntity) world.getBlockEntity(pos);
-        if (!(chairBlockEntity instanceof ChairBlockEntity)) {
-            return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        }
+        // Check if the BlockEntity at the position is a ChairBlockEntity
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof ChairBlockEntity chairBlockEntity) {
+            // Handle interactions with items
+            if (stack.getItem() instanceof CushionItem) {
+                return handleCushionItem(stack, chairBlockEntity, state, world, pos, player);
+            } else if (stack.getItem() == Items.SHEARS) {
+                return handleShearsItem(stack, chairBlockEntity, state, world, pos, player);
+            } else if (stack.getItem() instanceof DyeItem dyeItem) {
+                return handleDyeItem(stack, chairBlockEntity, dyeItem, state, world, pos, player);
+            }
 
-        if (stack.getItem() instanceof CushionItem) {
-            return handleCushionItem(stack, chairBlockEntity, state, world, pos, player);
-        } else if (stack.getItem() == Items.SHEARS) {
-            return handleShearsItem(stack, chairBlockEntity, state, world, pos, player);
-        } else if (stack.getItem() instanceof DyeItem dyeItem) {
-            return handleDyeItem(stack, chairBlockEntity, dyeItem, state, world, pos, player);
+            // Call tuckable logic or fallback to super
+            TuckableBlock.tryTuck(state, world, pos, player);
+        } else {
+            // Log unexpected block entities to debug the issue
+            System.out.println("Unexpected BlockEntity at position " + pos + ": " + blockEntity);
         }
-
-        TuckableBlock.tryTuck(state, world, pos, player);
         return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
     }
+
+
 
     private ItemActionResult handleCushionItem(ItemStack stack, ChairBlockEntity chairBlockEntity, BlockState state, World world, BlockPos pos, PlayerEntity player) {
         if (chairBlockEntity.cushion_type.isEmpty()) {

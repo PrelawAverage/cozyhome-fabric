@@ -41,7 +41,7 @@ public class ChairBlockEntityRenderer implements BlockEntityRenderer<ChairBlockE
         map.put(ChairBlock.Type.IRON, Identifier.of(CozyHome.MOD_ID,"textures/block/chair/iron_chair.png"));
         map.put(ChairBlock.Type.GLASS, Identifier.of(CozyHome.MOD_ID,"textures/block/chair/glass_chair.png"));
         map.put(ChairBlock.Type.UNDEAD, Identifier.of(CozyHome.MOD_ID,"textures/block/chair/undead_chair.png"));
-        map.put(ChairBlock.Type.OMINOUS, Identifier.of(CozyHome.MOD_ID,"textures/block/chair/trial_chair_inactive.png"));
+        map.put(ChairBlock.Type.OMINOUS, Identifier.of(CozyHome.MOD_ID,"textures/block/chair/ominous_chair_inactive.png"));
     });
 
     private static final Map<String, Identifier> CUSHION_TEXTURES = Util.make(Maps.newHashMap(), map -> {
@@ -112,16 +112,16 @@ public class ChairBlockEntityRenderer implements BlockEntityRenderer<ChairBlockE
 
     private void getLocationForTuck(ChairBlockEntity entity, MatrixStack matrices) {
         if (entity.getCachedState().get(ChairBlock.ROTATION) == 0) {
-            matrices.translate(0.5, 1.5, 0.5 + entity.currentOffset); // Apply offset here
-        }
-        if (entity.getCachedState().get(ChairBlock.ROTATION) == 4) {
-            matrices.translate(0.5 - entity.currentOffset, 1.5, 0.5); // Apply offset here
-        }
-        if (entity.getCachedState().get(ChairBlock.ROTATION) == 8) {
             matrices.translate(0.5, 1.5, 0.5 - entity.currentOffset); // Apply offset here
         }
-        if (entity.getCachedState().get(ChairBlock.ROTATION) == 12) {
+        if (entity.getCachedState().get(ChairBlock.ROTATION) == 4) {
             matrices.translate(0.5 + entity.currentOffset, 1.5, 0.5); // Apply offset here
+        }
+        if (entity.getCachedState().get(ChairBlock.ROTATION) == 8) {
+            matrices.translate(0.5, 1.5, 0.5 + entity.currentOffset); // Apply offset here
+        }
+        if (entity.getCachedState().get(ChairBlock.ROTATION) == 12) {
+            matrices.translate(0.5 - entity.currentOffset, 1.5, 0.5); // Apply offset here
         }
     }
 
@@ -129,16 +129,16 @@ public class ChairBlockEntityRenderer implements BlockEntityRenderer<ChairBlockE
         Identifier identifier;
 
         if (type == ChairBlock.Type.OMINOUS) {
-            // If the chair type is TRIAL and a player is detected
+            // If the chair type is ominous and a player is detected
             if (blockState.get(ModProperties.DETECTED_PLAYER) && blockState.get(Properties.OMINOUS)) {
-                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/chair/trial_chair_active_ominous.png");
+                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/chair/ominous_chair_active_ominous.png");
             } else if (blockState.get(ModProperties.DETECTED_PLAYER)) {
-                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/chair/trial_chair_active.png");
+                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/chair/ominous_chair_active.png");
             } else {
-                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/chair/trial_chair_inactive.png");
+                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/chair/ominous_chair_inactive.png");
             }
         } else {
-            // If the chair type is not TRIAL, get the identifier from the texture map
+            // If the chair type is not ominous, get the identifier from the texture map
             identifier = CHAIR_TEXTURES.get(type);
         }
         return RenderLayer.getEntityCutoutNoCullZOffset(identifier);

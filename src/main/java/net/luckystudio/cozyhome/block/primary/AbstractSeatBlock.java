@@ -24,7 +24,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class AbstractSeatBlock extends BlockWithEntity implements SeatBlock {
+public abstract class AbstractSeatBlock extends BlockWithEntity implements SeatBlock, Waterloggable {
     public static final MapCodec<DyeableChairBlock> CODEC = createCodec(DyeableChairBlock::new);
     public static final IntProperty ROTATION = Properties.ROTATION;
     private static final VoxelShape BASE_SHAPE = DyeableChairBlock.createCuboidShape(2,0,2,14,10,14);
@@ -37,7 +37,9 @@ public abstract class AbstractSeatBlock extends BlockWithEntity implements SeatB
     protected MapCodec<? extends BlockWithEntity> getCodec() {return CODEC;}
 
     @Override
-    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {return new ChairBlockEntity(pos,state);}
+    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new ChairBlockEntity(pos,state);
+    }
 
     @Override
     protected boolean canPathfindThrough(BlockState state, NavigationType type) {
@@ -48,7 +50,9 @@ public abstract class AbstractSeatBlock extends BlockWithEntity implements SeatB
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {builder.add(ROTATION);}
 
     @Override
-    protected BlockRenderType getRenderType(BlockState state) {return BlockRenderType.INVISIBLE;}
+    protected BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.INVISIBLE;
+    }
 
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -67,11 +71,13 @@ public abstract class AbstractSeatBlock extends BlockWithEntity implements SeatB
         return SeatBlock.sitDown(state, world, pos, player);
     }
 
+    @Override
     public float setRiderRotation(Entity entity) {
         return entity.getYaw();
     }
 
+    @Override
     public float getSeatHeight(BlockState state) {
-        return 0.0f;
+        return 0.5f;
     }
 }

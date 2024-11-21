@@ -42,7 +42,7 @@ public class GrandfatherClockRenderer implements BlockEntityRenderer<Grandfather
         map.put(GrandfatherClockBlock.Type.IRON, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/iron_grandfather_clock.png"));
         map.put(GrandfatherClockBlock.Type.GLASS, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/glass_grandfather_clock.png"));
         map.put(GrandfatherClockBlock.Type.UNDEAD, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/undead_grandfather_clock.png"));
-        map.put(GrandfatherClockBlock.Type.OMINOUS, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/trial_grandfather_clock_inactive.png"));
+        map.put(GrandfatherClockBlock.Type.OMINOUS, Identifier.of(CozyHome.MOD_ID,"textures/block/grandfather_clock/ominous_grandfather_clock_inactive.png"));
     });
 
     // How far does this block render.
@@ -97,11 +97,11 @@ public class GrandfatherClockRenderer implements BlockEntityRenderer<Grandfather
         if (type == GrandfatherClockBlock.Type.OMINOUS) {
             // If the grandfather_clock type is TRIAL and a player is detected
             if (blockState.get(ModProperties.DETECTED_PLAYER) && blockState.get(Properties.OMINOUS)) {
-                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/grandfather_clock/trial_grandfather_clock_active_ominous.png");
+                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/grandfather_clock/ominous_grandfather_clock_active_ominous.png");
             } else if (blockState.get(ModProperties.DETECTED_PLAYER)) {
-                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/grandfather_clock/trial_grandfather_clock_active.png");
+                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/grandfather_clock/ominous_grandfather_clock_active.png");
             } else {
-                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/grandfather_clock/trial_grandfather_clock_inactive.png");
+                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/grandfather_clock/ominous_grandfather_clock_inactive.png");
             }
         } else {
             // If the grandfather_clock type is not TRIAL, get the identifier from the texture map

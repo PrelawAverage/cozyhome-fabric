@@ -29,8 +29,12 @@ public interface SeatBlock {
         BlockState seatBlock = world.getBlockState(pos);
         return (seatBlock.get(Properties.ROTATION) * 22.5f) + 180f;
     }
-    static float setRiderRotation(Entity entity) {
+
+    default float setRiderRotation(Entity entity) {
         return entity.getYaw();
     }
 
+    default float getSeatHeight(BlockState state) {
+        return 0.0f;
+    }
 }

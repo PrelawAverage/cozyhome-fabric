@@ -99,7 +99,7 @@ public class GrandfatherClockBlock extends BlockWithEntity implements Waterlogga
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return (world.isClient && state.get(TRIPLE_TALL_BLOCK) == TripleTallBlock.TOP) ? validateTicker(type, ModBlockEntityTypes.GRANDFATHER_CLOCK_BLOCK_ENTITY, GrandfatherClockBlockEntity::tick) : null;
+        return (state.get(TRIPLE_TALL_BLOCK) == TripleTallBlock.TOP) ? validateTicker(type, ModBlockEntityTypes.GRANDFATHER_CLOCK_BLOCK_ENTITY, GrandfatherClockBlockEntity::tick) : null;
     }
 
     @Override

@@ -42,22 +42,16 @@ public class GrandfatherClockBlockEntity extends BlockEntity {
         if (worldTime == 18000) { // Ensure this only triggers once per second
             world.playSoundAtBlockCenter(pos, ModSoundEvents.GRANDFATHER_CLOCK_MIDNIGHT, SoundCategory.BLOCKS, 0.5f, 1.0f, true);
             if (blockEntity.getCachedState().getBlock() == ModBlocks.OMINOUS_GRANDFATHER_CLOCK) {
-                blockEntity.getCachedState().with(Properties.OMINOUS, true);
-            }
-        }
-        // Check if it's midnight and play sound
-        if (worldTime == 18000) { // Ensure this only triggers once per second
-            world.playSoundAtBlockCenter(pos, ModSoundEvents.GRANDFATHER_CLOCK_MIDNIGHT, SoundCategory.BLOCKS, 0.5f, 1.0f, true);
-            if (blockEntity.getCachedState().getBlock() == ModBlocks.OMINOUS_GRANDFATHER_CLOCK) {
                 world.playSoundAtBlockCenter(pos, SoundEvents.BLOCK_VAULT_ACTIVATE, SoundCategory.BLOCKS, 1.0f, 1.0f, true);
-                blockEntity.getCachedState().with(Properties.OMINOUS, true);
+                world.setBlockState(pos, state.with(ModProperties.DETECTED_PLAYER, true));
             }
         }
+
         // Check if it's midnight and play sound
-        if (worldTime == 18380) { // Ensure this only triggers once per second
+        if (worldTime == 18360) { // Ensure this only triggers once per second
             if (blockEntity.getCachedState().getBlock() == ModBlocks.OMINOUS_GRANDFATHER_CLOCK) {
                 world.playSoundAtBlockCenter(pos, SoundEvents.BLOCK_VAULT_DEACTIVATE, SoundCategory.BLOCKS, 1.0f, 1.0f, true);
-                blockEntity.getCachedState().with(Properties.OMINOUS, false);
+                world.setBlockState(pos, state.with(ModProperties.DETECTED_PLAYER, false));
             }
         }
 

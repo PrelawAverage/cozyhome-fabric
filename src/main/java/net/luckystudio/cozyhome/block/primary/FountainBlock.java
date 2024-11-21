@@ -125,7 +125,11 @@ public class FountainBlock extends AbstractAllSidesConnectingBlock {
                 .with(NORTH, checkDirectionalNeighbor(state, Direction.NORTH, world, pos))
                 .with(EAST, checkDirectionalNeighbor(state, Direction.EAST, world, pos))
                 .with(SOUTH, checkDirectionalNeighbor(state, Direction.SOUTH, world, pos))
-                .with(WEST, checkDirectionalNeighbor(state, Direction.WEST, world, pos));
+                .with(WEST, checkDirectionalNeighbor(state, Direction.WEST, world, pos))
+                .with(NORTH_EAST, checkDiagonalNeighbor(state, Direction.NORTH, Direction.EAST, world, pos))
+                .with(NORTH_WEST, checkDiagonalNeighbor(state, Direction.NORTH, Direction.WEST, world, pos))
+                .with(SOUTH_EAST, checkDiagonalNeighbor(state, Direction.SOUTH, Direction.EAST, world, pos))
+                .with(SOUTH_WEST, checkDiagonalNeighbor(state, Direction.SOUTH, Direction.WEST, world, pos));
     }
 
     @Override

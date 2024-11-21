@@ -27,9 +27,9 @@ public class ChairBlockEntity extends BlockEntity {
 
     @Override
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        super.writeNbt(nbt, registryLookup);
         nbt.putInt("color", color);
         nbt.putString("cushion_type", cushion_type);
-        super.writeNbt(nbt, registryLookup);
     }
 
     @Override
