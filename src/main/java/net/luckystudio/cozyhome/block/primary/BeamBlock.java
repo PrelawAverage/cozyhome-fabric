@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
@@ -126,27 +127,67 @@ public class BeamBlock extends ConnectingBlock {
     private static boolean isConnectableFace(BlockState originBlock, BlockState targetBlock, WorldAccess world, BlockPos pos, Direction currentDirection) {
         if (originBlock.get(FACING) == currentDirection.getOpposite()) return false;
 
-        if (targetBlock.isSideSolidFullSquare(world, pos, currentDirection.getOpposite())) return Boolean.TRUE;
-    
-        if (isBeamBlock(targetBlock.getBlock())
-                && isContinuousBeamFace(originBlock, currentDirection)) return Boolean.TRUE;
+        if (targetBlock.isAir()) return Boolean.FALSE;
 
-        if (isBeamBlock(targetBlock.getBlock())
-                && !isContinuousBeamFace(originBlock, currentDirection)
-                && !isParallel(originBlock, targetBlock)) return Boolean.TRUE;
+        if (originBlock.get(FACING) == currentDirection || originBlock.get(FACING) == currentDirection.getOpposite()) {
+            if (targetBlock.isSideSolidFullSquare(world, pos, currentDirection)) return Boolean.TRUE;
+            if (isLongBeam(targetBlock) || isSameAxis(targetBlock, currentDirection)) return Boolean.TRUE;
+            return Boolean.FALSE;
+        }
+
+        if (!isLongBeam(originBlock, world, pos)) return Boolean.FALSE;
+
+        if (targetBlock.isSideSolidFullSquare(world, pos, currentDirection)) return Boolean.TRUE;
+
+        if (!isBeamBlock(targetBlock.getBlock())) return Boolean.FALSE;
+
+        if (isSameAxis(targetBlock, currentDirection)) return Boolean.TRUE;
 
         return Boolean.FALSE;
+
     }
 
-    private static boolean isContinuousBeamFace(BlockState originBlock, Direction currentDirection) {
-        Direction blockFacing = originBlock.get(FACING);
-        return (currentDirection == blockFacing || currentDirection == blockFacing.getOpposite());
+    private static boolean isSameAxis(BlockState targetBlock, Direction currentDirection) {
+        return currentDirection == targetBlock.get(FACING) || currentDirection == targetBlock.get(FACING).getOpposite();
     }
 
-    private static boolean isParallel(BlockState originBlock, BlockState targetBlock) {
-        Direction blockFacing = originBlock.get(FACING);
-        Direction targetFacing = targetBlock.get(FACING);
-        return (blockFacing == targetFacing || blockFacing == targetFacing.getOpposite());
+    private static boolean isLongBeam(BlockState targetBlock) {
+        boolean frontFaceConnected = targetBlock.get(getFacingProperty(targetBlock.get(FACING)));
+        boolean backFaceConnected  = targetBlock.get(getFacingProperty(targetBlock.get(FACING).getOpposite()));
+
+        return frontFaceConnected && backFaceConnected;
+    }
+
+    private static boolean isLongBeam(BlockState originBlock, WorldAccess world, BlockPos pos) {
+        Direction frontFacing = originBlock.get(FACING);
+        Direction backFacing = frontFacing.getOpposite();
+
+        BlockState frontBlock = world.getBlockState(pos.offset(frontFacing));
+        BlockState backBlock = world.getBlockState(pos.offset(backFacing));
+
+        if(frontBlock.isAir() || backBlock.isAir()) return Boolean.FALSE;
+
+        boolean isFrontConnected = frontBlock.isSideSolidFullSquare(world, pos, frontFacing.getOpposite());
+        boolean isBackConnected = backBlock.isSideSolidFullSquare(world, pos, backFacing.getOpposite());
+
+        if (isBeamBlock(frontBlock.getBlock()) && isSameAxis(frontBlock, originBlock.get(FACING))) isFrontConnected = true;
+        if (isBeamBlock(backBlock.getBlock()) && isSameAxis(backBlock, originBlock.get(FACING))) isBackConnected = true;
+
+        if (isBeamBlock(frontBlock.getBlock()) && !isSameAxis(backBlock, originBlock.get(FACING)) && isLongBeam(frontBlock)) isFrontConnected = true;
+        if (isBeamBlock(backBlock.getBlock()) && !isSameAxis(backBlock, originBlock.get(FACING)) && isLongBeam(backBlock)) isBackConnected = true;
+
+        return isFrontConnected && isBackConnected;
+    }
+
+    private static BooleanProperty getFacingProperty(Direction direction) {
+        return switch (direction) {
+            case Direction.UP -> UP;
+            case Direction.DOWN -> DOWN;
+            case Direction.WEST -> WEST;
+            case Direction.EAST -> EAST;
+            case Direction.NORTH -> NORTH;
+            case Direction.SOUTH -> SOUTH;
+        };
     }
 
     private static boolean isBeamBlock(Block block) {
