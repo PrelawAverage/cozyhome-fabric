@@ -1,6 +1,7 @@
 package net.luckystudio.cozyhome.block.primary;
 
 import com.mojang.serialization.MapCodec;
+import net.luckystudio.cozyhome.CozyHome;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
@@ -144,18 +145,6 @@ public class BeamBlock extends ConnectingBlock {
         if (isSameAxis(targetBlock, currentDirection)) return Boolean.TRUE;
 
         return Boolean.FALSE;
-
-    }
-
-    private static boolean isSameAxis(BlockState targetBlock, Direction currentDirection) {
-        return currentDirection == targetBlock.get(FACING) || currentDirection == targetBlock.get(FACING).getOpposite();
-    }
-
-    private static boolean isLongBeam(BlockState targetBlock) {
-        boolean frontFaceConnected = targetBlock.get(getFacingProperty(targetBlock.get(FACING)));
-        boolean backFaceConnected  = targetBlock.get(getFacingProperty(targetBlock.get(FACING).getOpposite()));
-
-        return frontFaceConnected && backFaceConnected;
     }
 
     private static boolean isLongBeam(BlockState originBlock, WorldAccess world, BlockPos pos) {
@@ -165,18 +154,35 @@ public class BeamBlock extends ConnectingBlock {
         BlockState frontBlock = world.getBlockState(pos.offset(frontFacing));
         BlockState backBlock = world.getBlockState(pos.offset(backFacing));
 
-        if(frontBlock.isAir() || backBlock.isAir()) return Boolean.FALSE;
+        boolean isFrontConnected;
+        boolean isBackConnected;
 
-        boolean isFrontConnected = frontBlock.isSideSolidFullSquare(world, pos, frontFacing.getOpposite());
-        boolean isBackConnected = backBlock.isSideSolidFullSquare(world, pos, backFacing.getOpposite());
+        if (frontBlock.isAir()) return Boolean.FALSE;
 
-        if (isBeamBlock(frontBlock.getBlock()) && isSameAxis(frontBlock, originBlock.get(FACING))) isFrontConnected = true;
-        if (isBeamBlock(backBlock.getBlock()) && isSameAxis(backBlock, originBlock.get(FACING))) isBackConnected = true;
+        isFrontConnected = frontBlock.isSideSolidFullSquare(world, pos, frontFacing.getOpposite());
+        isBackConnected = backBlock.isSideSolidFullSquare(world, pos, backFacing.getOpposite()) || backBlock.isAir();
 
-        if (isBeamBlock(frontBlock.getBlock()) && !isSameAxis(backBlock, originBlock.get(FACING)) && isLongBeam(frontBlock)) isFrontConnected = true;
-        if (isBeamBlock(backBlock.getBlock()) && !isSameAxis(backBlock, originBlock.get(FACING)) && isLongBeam(backBlock)) isBackConnected = true;
+        if (isBeamBlock(frontBlock.getBlock())) {
+            if (isSameAxis(frontBlock, originBlock.get(FACING))) isFrontConnected = true;
+            if (!isSameAxis(frontBlock, originBlock.get(FACING)) && isLongBeam(frontBlock)) isFrontConnected = true;
+        }
+
+        if (isBeamBlock(backBlock.getBlock())) {
+            if (isSameAxis(backBlock, originBlock.get(FACING))) isBackConnected = true;
+            if (!isSameAxis(backBlock, originBlock.get(FACING)) && isLongBeam(backBlock)) isBackConnected = true;
+        }
 
         return isFrontConnected && isBackConnected;
+    }
+
+    private static boolean isSameAxis(BlockState targetBlock, Direction currentDirection) {
+        if (!isBeamBlock(targetBlock.getBlock())) return false;
+        return currentDirection == targetBlock.get(FACING) || currentDirection == targetBlock.get(FACING).getOpposite();
+    }
+
+    private static boolean isLongBeam(BlockState targetBlock) {
+        if (!isBeamBlock(targetBlock.getBlock())) return false;
+        return targetBlock.get(getFacingProperty(targetBlock.get(FACING)));
     }
 
     private static BooleanProperty getFacingProperty(Direction direction) {
@@ -187,6 +193,7 @@ public class BeamBlock extends ConnectingBlock {
             case Direction.EAST -> EAST;
             case Direction.NORTH -> NORTH;
             case Direction.SOUTH -> SOUTH;
+            default -> throw new IllegalStateException("Unexpected value: " + direction + " from " + CozyHome.MOD_ID);
         };
     }
 
