@@ -1,5 +1,11 @@
 {
 	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "cozyhome:block/chimney/tuff/tuff_chimney_top",
+		"1": "cozyhome:block/chimney/tuff/tuff_chimney_side",
+		"2": "cozyhome:block/chimney/tuff/tuff_chimney_bottom",
+		"particle": "cozyhome:block/chimney/tuff/tuff_chimney_top"
+	},
 	"elements": [
 		{
 			"from": [2, 0, 2],
