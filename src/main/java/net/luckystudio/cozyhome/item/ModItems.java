@@ -2,19 +2,21 @@ package net.luckystudio.cozyhome.item;
 
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.item.custom.CushionItem;
+import net.luckystudio.cozyhome.item.custom.DyeableCushionItem;
 import net.luckystudio.cozyhome.item.custom.PaintBrushItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 
 public class ModItems {
 
     // Register Items Here
-    public static final Item PAINT_BRUSH =registerItem("paint_brush", new PaintBrushItem(new Item.Settings()));
-    public static final Item CUSHION =registerItem("cushion", new CushionItem(new Item.Settings()));
-    public static final Item HAY_CUSHION =registerItem("hay_cushion", new CushionItem(new Item.Settings()));
-    public static final Item TRADER_CUSHION =registerItem("trader_cushion", new CushionItem(new Item.Settings()));
+    public static final Item PAINT_BRUSH = registerItem("paint_brush", new PaintBrushItem(new Item.Settings()));
+    public static final Item CUSHION = registerItem("cushion", new DyeableCushionItem(new Item.Settings()));
+    public static final Item HAY_CUSHION = registerItem("hay_cushion", new CushionItem(new Item.Settings()));
+    public static final Item TRADER_CUSHION = registerItem("trader_cushion", new CushionItem(new Item.Settings().rarity(Rarity.UNCOMMON)));
 
     // Helper Method to register items
     private static Item registerItem(String name, Item item) {

@@ -3,6 +3,6 @@
   "textures": {
     "0": "cozyhome:block/beam/warped_beam",
     "1": "cozyhome:block/beam/blank_beam_overlay",
-    "particle": "block/warped_log_top"
+    "particle": "block/warped_stem_top"
   }
 }

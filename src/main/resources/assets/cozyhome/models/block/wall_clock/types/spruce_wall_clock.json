@@ -1,6 +1,0 @@
-{
-  "parent": "cozyhome:block/wall_clock/template_wall_clock",
-  "textures": {
-    "particle": "cozyhome:block/wall_clock/spruce_wall_clock"
-  }
-}

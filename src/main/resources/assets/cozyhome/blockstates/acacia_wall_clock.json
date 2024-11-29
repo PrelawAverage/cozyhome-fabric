@@ -1,19 +1,7 @@
 {
   "variants": {
-    "facing=north": {
-      "model": "cozyhome:block/wall_clock/types/acacia_wall_clock"
-    },
-    "facing=east": {
-      "model": "cozyhome:block/wall_clock/types/acacia_wall_clock",
-      "y": 90
-    },
-    "facing=south": {
-      "model": "cozyhome:block/wall_clock/types/acacia_wall_clock",
-      "y": 180
-    },
-    "facing=west": {
-      "model": "cozyhome:block/wall_clock/types/acacia_wall_clock",
-      "y": 270
+    "": {
+      "model": "cozyhome:block/wall_clock/acacia_wall_clock"
     }
   }
 }

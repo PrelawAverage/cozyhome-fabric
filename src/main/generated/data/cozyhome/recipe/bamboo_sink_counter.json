@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:bamboo_planks"
+    },
+    "@": {
+      "item": "minecraft:bamboo_block"
+    },
+    "C": {
+      "item": "minecraft:cauldron"
+    }
+  },
+  "pattern": [
+    "@@@",
+    "#C#",
+    "###"
+  ],
+  "result": {
+    "count": 3,
+    "id": "cozyhome:bamboo_sink_counter"
+  }
+}

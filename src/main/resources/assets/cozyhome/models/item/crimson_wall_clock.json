@@ -1,3 +1,4 @@
 {
-  "parent": "cozyhome:block/wall_clock/types/crimson_wall_clock"
+  "parent": "cozyhome:item/template/template_wall_clock"
 }
+

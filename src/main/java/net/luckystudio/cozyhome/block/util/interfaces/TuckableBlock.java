@@ -1,7 +1,6 @@
 package net.luckystudio.cozyhome.block.util.interfaces;
 
-import net.luckystudio.cozyhome.block.primary.secondary.ChairBlock;
-import net.luckystudio.cozyhome.block.primary.secondary.tertiary.DyeableChairBlock;
+import net.luckystudio.cozyhome.block.custom.chairs.ChairBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.util.ModTags;
 import net.minecraft.block.BlockState;
@@ -29,7 +28,7 @@ public interface TuckableBlock {
                 playMoveSound(player, world, pos, state);
                 return ItemActionResult.SUCCESS;
             }
-            boolean isTuckable = player.isSneaking() && !isBlockedFromTucking(state, world, pos) && canTuckUnderBlockInfront(state, world, pos);
+            boolean isTuckable = player.isSneaking() && !isBlockedFromTucking(state, world, pos) && canTuckUnderBlockInFront(state, world, pos);
 
             if (isTuckable) {
                 world.setBlockState(pos, state.with(TUCKED, true));
@@ -40,9 +39,10 @@ public interface TuckableBlock {
         return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
-    static boolean canTuckUnderBlockInfront(BlockState state, World world, BlockPos pos) {
+    // NEEDS FIXING
+    static boolean canTuckUnderBlockInFront(BlockState state, World world, BlockPos pos) {
         BlockState forwardState = world.getBlockState(pos.offset(direction(state)));
-        return forwardState.isIn(ModTags.Blocks.TUCKABLE);
+        return true;
     }
 
     // This method will prevent two chairs from tucking into the same block.

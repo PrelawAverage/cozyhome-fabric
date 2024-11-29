@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:dark_oak_planks"
+    },
+    "@": {
+      "item": "cozyhome:dark_oak_wall_clock"
+    }
+  },
+  "pattern": [
+    " @ ",
+    " # ",
+    " # "
+  ],
+  "result": {
+    "count": 3,
+    "id": "cozyhome:dark_oak_grandfather_clock"
+  }
+}

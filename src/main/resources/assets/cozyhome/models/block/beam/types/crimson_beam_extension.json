@@ -3,6 +3,6 @@
   "textures": {
     "0": "cozyhome:block/beam/crimson_beam",
     "1": "cozyhome:block/beam/blank_beam_overlay",
-    "particle": "block/crimson_log_top"
+    "particle": "block/crimson_stem_top"
   }
 }

@@ -1,8 +1,9 @@
 package net.luckystudio.cozyhome.entity.custom;
 
 import net.luckystudio.cozyhome.block.ModBlocks;
-import net.luckystudio.cozyhome.block.primary.AbstractSeatBlock;
+import net.luckystudio.cozyhome.block.custom.abstracts.AbstractSeatBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
+import net.luckystudio.cozyhome.block.util.enums.OminousBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.data.DataTracker;
@@ -10,7 +11,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.*;
@@ -71,8 +71,7 @@ public class SeatEntity extends Entity {
         if (world.getBlockState(pos).getBlock() == ModBlocks.OMINOUS_CHAIR) {
             BlockState state = world.getBlockState(pos);
             world.setBlockState(pos, state
-                    .with(ModProperties.DETECTED_PLAYER, false)
-                    .with(Properties.OMINOUS, false));
+                    .with(ModProperties.OMINOUS, OminousBlock.INACTIVE));
             world.playSoundAtBlockCenter(pos, SoundEvents.BLOCK_VAULT_DEACTIVATE, SoundCategory.BLOCKS, 1, 1, true);
         } else {
             super.stopRiding();

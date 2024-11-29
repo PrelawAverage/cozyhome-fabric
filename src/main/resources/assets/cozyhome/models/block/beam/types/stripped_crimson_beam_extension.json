@@ -1,0 +1,8 @@
+{
+  "parent": "cozyhome:block/beam/template_beam_extension",
+  "textures": {
+    "0": "cozyhome:block/beam/stripped_crimson_beam",
+    "1": "cozyhome:block/beam/blank_beam_overlay",
+    "particle": "block/crimson_log_top"
+  }
+}

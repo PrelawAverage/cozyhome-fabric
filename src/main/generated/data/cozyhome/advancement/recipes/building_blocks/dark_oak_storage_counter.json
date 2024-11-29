@@ -1,16 +1,6 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_chest": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:chest"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_dark_oak_planks": {
       "conditions": {
         "items": [
@@ -42,8 +32,7 @@
     [
       "has_the_recipe",
       "has_deepslate_tiles",
-      "has_dark_oak_planks",
-      "has_chest"
+      "has_dark_oak_planks"
     ]
   ],
   "rewards": {

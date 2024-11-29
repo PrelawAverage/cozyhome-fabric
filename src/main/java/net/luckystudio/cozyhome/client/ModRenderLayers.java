@@ -1,27 +1,19 @@
 package net.luckystudio.cozyhome.client;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
-import net.luckystudio.cozyhome.util.ModColorHandler;
-import net.minecraft.block.BlockState;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.world.BlockRenderView;
-import net.minecraft.util.math.BlockPos;
 
+@Environment(EnvType.CLIENT)
 public class ModRenderLayers {
 
     public static void registerBlockRenderLayers() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
-                // Lamps
-                ModBlocks.OAK_LAMP,
-                ModBlocks.SPRUCE_LAMP,
-                // Lanterns
-                ModBlocks.MANGROVE_LANTERN,
-                // Sofas
-                ModBlocks.OAK_SOFA,
                 // Counters
                 ModBlocks.OAK_COUNTER,
                 ModBlocks.OAK_SINK_COUNTER,
@@ -110,6 +102,17 @@ public class ModRenderLayers {
                 ModBlocks.BAMBOO_BEAM,
                 ModBlocks.CRIMSON_BEAM,
                 ModBlocks.WARPED_BEAM,
+                ModBlocks.STRIPPED_OAK_BEAM,
+                ModBlocks.STRIPPED_SPRUCE_BEAM,
+                ModBlocks.STRIPPED_BIRCH_BEAM,
+                ModBlocks.STRIPPED_JUNGLE_BEAM,
+                ModBlocks.STRIPPED_ACACIA_BEAM,
+                ModBlocks.STRIPPED_DARK_OAK_BEAM,
+                ModBlocks.STRIPPED_MANGROVE_BEAM,
+                ModBlocks.STRIPPED_CHERRY_BEAM,
+                ModBlocks.STRIPPED_BAMBOO_BEAM,
+                ModBlocks.STRIPPED_CRIMSON_BEAM,
+                ModBlocks.STRIPPED_WARPED_BEAM,
                 // Tables
                 ModBlocks.OAK_TABLE,
                 ModBlocks.SPRUCE_TABLE,
@@ -122,24 +125,12 @@ public class ModRenderLayers {
                 ModBlocks.BAMBOO_TABLE,
                 ModBlocks.CRIMSON_TABLE,
                 ModBlocks.WARPED_TABLE,
+                ModBlocks.IRON_TABLE,
                 ModBlocks.GLASS_TABLE,
-                // Chandeliers
-                ModBlocks.OAK_CHANDELIER,
-                ModBlocks.SPRUCE_CHANDELIER,
-                ModBlocks.BIRCH_CHANDELIER,
-                ModBlocks.JUNGLE_CHANDELIER,
-                ModBlocks.ACACIA_CHANDELIER,
-                ModBlocks.DARK_OAK_CHANDELIER,
-                ModBlocks.MANGROVE_CHANDELIER,
-                ModBlocks.CHERRY_CHANDELIER,
-                ModBlocks.BAMBOO_CHANDELIER,
-                ModBlocks.CRIMSON_CHANDELIER,
-                ModBlocks.WARPED_CHANDELIER,
                 // Glass
                 ModBlocks.GOLD_FRAMED_GLASS,
                 ModBlocks.GOLD_FRAMED_GLASS_PANE,
                 // Misc
-                ModBlocks.DYE_VAT,
                 ModBlocks.TELESCOPE
         );
 
@@ -206,16 +197,11 @@ public class ModRenderLayers {
                 ModBlocks.FALLING_LIQUID
         );
 
-        // Renders the colors on the Items
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ModColorHandler.getItemColor(stack),
-                ModBlocks.OAK_LAMP.asItem(),
-                ModBlocks.SPRUCE_LAMP.asItem()
-        );
-    }
-
-    private static int getColorFromContainsState(BlockState state, BlockRenderView world, BlockPos pos) {
-        // Your logic for determining the color
-        return 0xFFFFFF;
+//        // Renders the colors on the Items
+//        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ModColorHandler.getItemColor(stack),
+//                ModBlocks.OAK_LAMP.asItem(),
+//                ModBlocks.SPRUCE_LAMP.asItem()
+//        );
     }
 }
 

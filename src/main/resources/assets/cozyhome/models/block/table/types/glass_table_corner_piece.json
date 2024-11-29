@@ -1,68 +1,7 @@
 {
-	"credit": "Made with Blockbench",
-	"texture_size": [128, 128],
+	"parent": "cozyhome:block/table/template_shelf_table_corner_piece",
 	"textures": {
 		"0": "cozyhome:block/table/glass_table",
 		"particle": "cozyhome:block/break/glass_furniture"
-	},
-	"elements": [
-		{
-			"name": "top",
-			"from": [8, 14, 8],
-			"to": [16, 16, 16],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 15, 8]},
-			"faces": {
-				"up": {"uv": [1, 1, 2, 2], "texture": "#0", "cullface": "up"},
-				"down": {"uv": [1, 7, 2, 8], "rotation": 270, "texture": "#0"}
-			}
-		},
-		{
-			"name": "inner_top",
-			"from": [8, 14, 8],
-			"to": [16, 14, 16],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, 12, 0]},
-			"faces": {
-				"up": {"uv": [1, 11, 2, 12], "texture": "#0"}
-			}
-		},
-		{
-			"name": "south_east",
-			"from": [13, 0, 13],
-			"to": [15, 14, 15],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
-			"faces": {
-				"north": {"uv": [7.625, 4.25, 7.875, 6], "texture": "#0"},
-				"east": {"uv": [6.125, 4.25, 6.375, 6], "texture": "#0"},
-				"south": {"uv": [7.625, 4.25, 7.875, 6], "texture": "#0"},
-				"west": {"uv": [6.125, 4.25, 6.375, 6], "texture": "#0"},
-				"up": {"uv": [8, 4.25, 8.25, 4.5], "rotation": 270, "texture": "#0"},
-				"down": {"uv": [8, 5.75, 8.25, 6], "rotation": 270, "texture": "#0", "cullface": "down"}
-			}
-		},
-		{
-			"name": "bottom",
-			"from": [8, 4, 8],
-			"to": [16, 5, 16],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, 4, 0]},
-			"faces": {
-				"up": {"uv": [1, 9, 2, 10], "texture": "#0"},
-				"down": {"uv": [1, 9, 2, 10], "rotation": 270, "texture": "#0"}
-			}
-		}
-	],
-	"groups": [
-		{
-			"name": "top",
-			"origin": [8, 15, 8],
-			"color": 0,
-			"children": [0, 1]
-		},
-		{
-			"name": "legs",
-			"origin": [8, 0, 8],
-			"color": 0,
-			"children": [2]
-		},
-		3
-	]
+	}
 }

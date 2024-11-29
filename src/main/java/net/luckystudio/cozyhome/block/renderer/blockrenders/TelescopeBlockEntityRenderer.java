@@ -2,7 +2,7 @@ package net.luckystudio.cozyhome.block.renderer.blockrenders;
 
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.entity.TelescopeBlockEntity;
-import net.luckystudio.cozyhome.block.primary.TelescopeBlock;
+import net.luckystudio.cozyhome.block.custom.TelescopeBlock;
 import net.luckystudio.cozyhome.client.ModEntityModelLayers;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.RenderLayer;

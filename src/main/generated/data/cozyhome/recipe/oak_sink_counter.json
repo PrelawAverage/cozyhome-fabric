@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:oak_planks"
+    },
+    "@": {
+      "item": "minecraft:bricks"
+    },
+    "C": {
+      "item": "minecraft:cauldron"
+    }
+  },
+  "pattern": [
+    "@@@",
+    "#C#",
+    "###"
+  ],
+  "result": {
+    "count": 3,
+    "id": "cozyhome:oak_sink_counter"
+  }
+}

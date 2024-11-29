@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_jungle_wall_clock": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cozyhome:jungle_wall_clock"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "cozyhome:jungle_grandfather_clock"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_jungle_wall_clock"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cozyhome:jungle_grandfather_clock"
+    ]
+  }
+}

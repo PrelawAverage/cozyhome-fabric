@@ -1,8 +1,8 @@
 package net.luckystudio.cozyhome.block.entity;
 
 import net.luckystudio.cozyhome.block.ModBlockEntityTypes;
-import net.luckystudio.cozyhome.block.primary.StorageCounterBlock;
-import net.luckystudio.cozyhome.screen.StorageCounterScreenHandler;
+import net.luckystudio.cozyhome.block.custom.counters.StorageCounterBlock;
+import net.luckystudio.cozyhome.screen.storage_counter.StorageCounterScreenHandler;
 import net.luckystudio.cozyhome.block.util.interfaces.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.*;

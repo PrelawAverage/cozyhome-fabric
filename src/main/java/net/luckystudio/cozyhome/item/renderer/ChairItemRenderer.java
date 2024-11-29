@@ -1,7 +1,7 @@
 package net.luckystudio.cozyhome.item.renderer;
 
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
-import net.luckystudio.cozyhome.block.primary.secondary.ChairBlock;
+import net.luckystudio.cozyhome.block.custom.chairs.ChairBlock;
 import net.luckystudio.cozyhome.block.renderer.blockrenders.ChairBlockEntityRenderer;
 import net.luckystudio.cozyhome.components.ModDataComponents;
 import net.luckystudio.cozyhome.block.renderer.models.ChairModel;

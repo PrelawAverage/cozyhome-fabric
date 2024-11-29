@@ -13,11 +13,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.BlockStateParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.screen.ScreenTexts;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Arm;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -29,6 +31,9 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class PaintBrushItem extends BrushItem {
+
+    private static final Formatting CAPTION = Formatting.GRAY;
+
     public PaintBrushItem(Settings settings) {
         super(settings);
     }
@@ -67,7 +72,6 @@ public class PaintBrushItem extends BrushItem {
 
                 return;
             }
-
             user.stopUsingItem();
         } else {
             user.stopUsingItem();
@@ -99,9 +103,7 @@ public class PaintBrushItem extends BrushItem {
             );
         }
     }
-    static record DustParticlesOffset(double xd, double yd, double zd) {
-        private static final double field_42685 = 1.0;
-        private static final double field_42686 = 0.1;
+    record DustParticlesOffset(double xd, double yd, double zd) {
 
         public static PaintBrushItem.DustParticlesOffset fromSide(Vec3d userRotation, Direction side) {
             double d = 0.0;
@@ -115,9 +117,11 @@ public class PaintBrushItem extends BrushItem {
             };
         }
     }
+
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        tooltip.add(Text.translatable("tooltip.cozyhome.item.color"));
         super.appendTooltip(stack, context, tooltip, type);
+        tooltip.add(ScreenTexts.EMPTY);
+        tooltip.add(Text.translatable("tooltip.cozyhome.item.paint_brush").formatted(Formatting.GRAY));
     }
 }

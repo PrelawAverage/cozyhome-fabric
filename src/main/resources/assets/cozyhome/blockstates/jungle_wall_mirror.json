@@ -1,63 +1,63 @@
 {
   "variants": {
-    "facing=north,linear_connection=single": {
+    "facing=north,vertical_connection=single": {
       "model": "cozyhome:block/mirror/wall/types/jungle_wall_mirror_single"
     },
-    "facing=east,linear_connection=single": {
+    "facing=east,vertical_connection=single": {
       "model": "cozyhome:block/mirror/wall/types/jungle_wall_mirror_single",
       "y": 90
     },
-    "facing=south,linear_connection=single": {
+    "facing=south,vertical_connection=single": {
       "model": "cozyhome:block/mirror/wall/types/jungle_wall_mirror_single",
       "y": 180
     },
-    "facing=west,linear_connection=single": {
+    "facing=west,vertical_connection=single": {
       "model": "cozyhome:block/mirror/wall/types/jungle_wall_mirror_single",
       "y": 270
     },
-    "facing=north,linear_connection=head": {
+    "facing=north,vertical_connection=head": {
       "model": "cozyhome:block/mirror/wall/types/jungle_wall_mirror_top"
     },
-    "facing=east,linear_connection=head": {
+    "facing=east,vertical_connection=head": {
       "model": "cozyhome:block/mirror/wall/types/jungle_wall_mirror_top",
       "y": 90
     },
-    "facing=south,linear_connection=head": {
+    "facing=south,vertical_connection=head": {
       "model": "cozyhome:block/mirror/wall/types/jungle_wall_mirror_top",
       "y": 180
     },
-    "facing=west,linear_connection=head": {
+    "facing=west,vertical_connection=head": {
       "model": "cozyhome:block/mirror/wall/types/jungle_wall_mirror_top",
       "y": 270
     },
-    "facing=north,linear_connection=middle": {
+    "facing=north,vertical_connection=middle": {
       "model": "cozyhome:block/mirror/wall/types/jungle_wall_mirror_middle"
     },
-    "facing=east,linear_connection=middle": {
+    "facing=east,vertical_connection=middle": {
       "model": "cozyhome:block/mirror/wall/types/jungle_wall_mirror_middle",
       "y": 90
     },
-    "facing=south,linear_connection=middle": {
+    "facing=south,vertical_connection=middle": {
       "model": "cozyhome:block/mirror/wall/types/jungle_wall_mirror_middle",
       "y": 180
     },
-    "facing=west,linear_connection=middle": {
+    "facing=west,vertical_connection=middle": {
       "model": "cozyhome:block/mirror/wall/types/jungle_wall_mirror_middle",
       "y": 270
     },
 
-    "facing=north,linear_connection=tail": {
+    "facing=north,vertical_connection=tail": {
       "model": "cozyhome:block/mirror/wall/types/jungle_wall_mirror_bottom"
     },
-    "facing=east,linear_connection=tail": {
+    "facing=east,vertical_connection=tail": {
       "model": "cozyhome:block/mirror/wall/types/jungle_wall_mirror_bottom",
       "y": 90
     },
-    "facing=south,linear_connection=tail": {
+    "facing=south,vertical_connection=tail": {
       "model": "cozyhome:block/mirror/wall/types/jungle_wall_mirror_bottom",
       "y": 180
     },
-    "facing=west,linear_connection=tail": {
+    "facing=west,vertical_connection=tail": {
       "model": "cozyhome:block/mirror/wall/types/jungle_wall_mirror_bottom",
       "y": 270
     }

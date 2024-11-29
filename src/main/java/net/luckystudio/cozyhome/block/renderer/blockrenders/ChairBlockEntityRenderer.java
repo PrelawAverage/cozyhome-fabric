@@ -3,8 +3,9 @@ package net.luckystudio.cozyhome.block.renderer.blockrenders;
 import com.google.common.collect.Maps;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.entity.ChairBlockEntity;
-import net.luckystudio.cozyhome.block.primary.secondary.ChairBlock;
+import net.luckystudio.cozyhome.block.custom.chairs.ChairBlock;
 import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
+import net.luckystudio.cozyhome.block.util.enums.OminousBlock;
 import net.luckystudio.cozyhome.client.ModEntityModelLayers;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.minecraft.block.BlockState;
@@ -15,7 +16,6 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.RotationAxis;
@@ -130,9 +130,9 @@ public class ChairBlockEntityRenderer implements BlockEntityRenderer<ChairBlockE
 
         if (type == ChairBlock.Type.OMINOUS) {
             // If the chair type is ominous and a player is detected
-            if (blockState.get(ModProperties.DETECTED_PLAYER) && blockState.get(Properties.OMINOUS)) {
+            if (blockState.get(ModProperties.OMINOUS) == OminousBlock.OMINOUS) {
                 identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/chair/ominous_chair_active_ominous.png");
-            } else if (blockState.get(ModProperties.DETECTED_PLAYER)) {
+            } else if (blockState.get(ModProperties.OMINOUS) == OminousBlock.ACTIVE) {
                 identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/chair/ominous_chair_active.png");
             } else {
                 identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/chair/ominous_chair_inactive.png");

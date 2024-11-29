@@ -1,0 +1,7 @@
+{
+	"parent": "cozyhome:block/tool_rack/template_tool_rack",
+	"textures": {
+		"0": "cozyhome:block/tool_rack/warped_tool_rack",
+		"particle": "block/warped_planks"
+	}
+}

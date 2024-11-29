@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:spruce_planks"
+    },
+    "@": {
+      "item": "minecraft:spruce_slab"
+    }
+  },
+  "pattern": [
+    "@@@",
+    "# #",
+    "# #"
+  ],
+  "result": {
+    "count": 3,
+    "id": "cozyhome:spruce_desk"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "cozyhome:block/tool_rack/types/undead_tool_rack"
+    },
+    "facing=east": {
+      "model": "cozyhome:block/tool_rack/types/undead_tool_rack",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "cozyhome:block/tool_rack/types/undead_tool_rack",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "cozyhome:block/tool_rack/types/undead_tool_rack",
+      "y": 270
+    }
+  }
+}

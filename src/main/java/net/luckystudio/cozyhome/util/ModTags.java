@@ -13,7 +13,6 @@ public class ModTags {
 
     public static class Blocks {
 
-        public static final TagKey<Block> TUCKABLE = createTag("tuckable");
         public static final TagKey<Block> DYEABLE = createTag("dyeable");
 
         private static TagKey<Block> createTag(String name) {

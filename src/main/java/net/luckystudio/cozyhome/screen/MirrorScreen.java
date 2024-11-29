@@ -1,6 +1,8 @@
 package net.luckystudio.cozyhome.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
@@ -13,13 +15,14 @@ import org.jetbrains.annotations.Nullable;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
+@Environment(EnvType.CLIENT)
 public class MirrorScreen extends Screen {
     private final PlayerEntity player;
     private static boolean face;
     public MirrorScreen(PlayerEntity player, boolean face) {
-        super(Text.translatable("container.cozyhome.mirror"));
-        this.face = face;
+        super(Text.translatable("cozyhome."));
         this.player = player;
+        this.face = face;
     }
 
     @Override

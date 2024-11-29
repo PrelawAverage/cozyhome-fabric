@@ -1,0 +1,76 @@
+{
+  "multipart": [
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam"},
+      "when": {"facing": "up"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam", "x": 180},
+      "when": {"facing": "down"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam", "x": 90},
+      "when": {"facing": "north"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam", "x": 90, "y": 90},
+      "when": {"facing": "east"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam", "x": 90, "y": 180},
+      "when": {"facing": "south"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam", "x": 90, "y": 270},
+      "when": {"facing": "west"}
+    },
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam_extension"},
+      "when": {"facing": "up", "up": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam_extension", "x": 180},
+      "when": {"facing": "down", "down": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam_extension", "x": 90},
+      "when": {"facing": "north", "north": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam_extension", "x": 90, "y": 90},
+      "when": {"facing": "east", "east": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam_extension", "x": 90, "y": 180},
+      "when": {"facing": "south", "south": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam_extension", "x": 90, "y": 270},
+      "when": {"facing": "west", "west": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam_piece", "x": 180},
+      "when": {"down": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam_piece"},
+      "when": {"up": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam_piece", "x": 90, "y": 180},
+      "when": {"south": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam_piece", "x": 90, "y": 270},
+      "when": {"west": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam_piece", "x": 90},
+      "when": {"north": true}
+    },
+    {
+      "apply": {"model": "cozyhome:block/beam/types/stripped_spruce_beam_piece", "x": 90, "y": 90},
+      "when": {"east": true}
+    }
+  ]
+}

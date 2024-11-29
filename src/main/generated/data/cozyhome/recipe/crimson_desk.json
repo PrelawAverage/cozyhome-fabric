@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:crimson_planks"
+    },
+    "@": {
+      "item": "minecraft:crimson_slab"
+    }
+  },
+  "pattern": [
+    "@@@",
+    "# #",
+    "# #"
+  ],
+  "result": {
+    "count": 3,
+    "id": "cozyhome:crimson_desk"
+  }
+}

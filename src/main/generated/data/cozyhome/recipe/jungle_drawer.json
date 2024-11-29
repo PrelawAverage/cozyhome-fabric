@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:jungle_planks"
+    },
+    "@": {
+      "item": "minecraft:jungle_slab"
+    },
+    "C": {
+      "item": "minecraft:chest"
+    }
+  },
+  "pattern": [
+    "@@@",
+    "#C#",
+    "# #"
+  ],
+  "result": {
+    "count": 3,
+    "id": "cozyhome:jungle_drawer"
+  }
+}

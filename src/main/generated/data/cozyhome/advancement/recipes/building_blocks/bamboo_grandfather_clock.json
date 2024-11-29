@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_bamboo_wall_clock": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cozyhome:bamboo_wall_clock"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "cozyhome:bamboo_grandfather_clock"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_bamboo_wall_clock"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cozyhome:bamboo_grandfather_clock"
+    ]
+  }
+}

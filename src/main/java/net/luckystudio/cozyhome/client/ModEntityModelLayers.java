@@ -1,12 +1,15 @@
 package net.luckystudio.cozyhome.client;
 
 import com.google.common.collect.Sets;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.luckystudio.cozyhome.CozyHome;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
 
 import java.util.Set;
 
+@Environment(EnvType.CLIENT)
 public class ModEntityModelLayers {
 
     private static final String MAIN = "main";
@@ -17,6 +20,7 @@ public class ModEntityModelLayers {
     public static final EntityModelLayer CHAIR = registerMain("chair");
     public static final EntityModelLayer CUSHION = registerMain("cushion");
     public static final EntityModelLayer GRANDFATHER_CLOCK = registerMain("grandfather_clock");
+    public static final EntityModelLayer WALL_CLOCK = registerMain("wall_clock");
 
     private static EntityModelLayer registerMain(String id) {
         return register(id, MAIN);

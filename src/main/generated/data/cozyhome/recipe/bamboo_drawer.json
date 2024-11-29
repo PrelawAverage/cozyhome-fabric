@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:bamboo_planks"
+    },
+    "@": {
+      "item": "minecraft:bamboo_slab"
+    },
+    "C": {
+      "item": "minecraft:chest"
+    }
+  },
+  "pattern": [
+    "@@@",
+    "#C#",
+    "# #"
+  ],
+  "result": {
+    "count": 3,
+    "id": "cozyhome:bamboo_drawer"
+  }
+}

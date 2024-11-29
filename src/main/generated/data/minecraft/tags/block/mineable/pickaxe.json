@@ -21,6 +21,25 @@
     "cozyhome:cherry_storage_counter",
     "cozyhome:bamboo_storage_counter",
     "cozyhome:crimson_storage_counter",
-    "cozyhome:warped_storage_counter"
+    "cozyhome:warped_storage_counter",
+    "cozyhome:oak_sink_counter",
+    "cozyhome:spruce_sink_counter",
+    "cozyhome:birch_sink_counter",
+    "cozyhome:jungle_sink_counter",
+    "cozyhome:acacia_sink_counter",
+    "cozyhome:dark_oak_sink_counter",
+    "cozyhome:mangrove_sink_counter",
+    "cozyhome:cherry_sink_counter",
+    "cozyhome:bamboo_sink_counter",
+    "cozyhome:crimson_sink_counter",
+    "cozyhome:warped_sink_counter",
+    "cozyhome:iron_wall_clock",
+    "cozyhome:glass_wall_clock",
+    "cozyhome:undead_wall_clock",
+    "cozyhome:ominous_wall_clock",
+    "cozyhome:iron_wall_clock",
+    "cozyhome:glass_wall_clock",
+    "cozyhome:undead_wall_clock",
+    "cozyhome:ominous_wall_clock"
   ]
 }
