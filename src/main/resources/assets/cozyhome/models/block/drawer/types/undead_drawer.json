@@ -1,0 +1,11 @@
+{
+	"parent": "cozyhome:block/drawer/template_drawer",
+	"textures": {
+		"0": "cozyhome:block/drawer/undead/undead_drawer_top",
+		"1": "cozyhome:block/drawer/undead/undead_drawer_side",
+		"2": "cozyhome:block/drawer/undead/undead_drawer_bottom",
+		"3": "cozyhome:block/drawer/undead/undead_drawer_side_inner",
+		"4": "cozyhome:block/drawer/undead/undead_drawer_front",
+		"particle": "cozyhome:block/drawer/undead/undead_drawer_side"
+	}
+}

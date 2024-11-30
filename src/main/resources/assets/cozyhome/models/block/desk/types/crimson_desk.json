@@ -1,0 +1,11 @@
+{
+	"parent": "cozyhome:block/desk/template_desk",
+	"textures": {
+		"8": "cozyhome:block/drawer/crimson/crimson_drawer_top",
+		"9": "cozyhome:block/drawer/crimson/crimson_drawer_side",
+		"10": "cozyhome:block/drawer/crimson/crimson_drawer_bottom",
+		"11": "cozyhome:block/drawer/crimson/crimson_drawer_side_inner",
+		"12": "cozyhome:block/drawer/crimson/crimson_drawer_front",
+		"particle": "cozyhome:block/drawer/crimson/crimson_drawer_side"
+	}
+}

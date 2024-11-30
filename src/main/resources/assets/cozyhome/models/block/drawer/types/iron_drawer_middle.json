@@ -1,0 +1,10 @@
+{
+	"parent": "cozyhome:block/drawer/template_drawer_middle",
+	"textures": {
+		"0": "cozyhome:block/drawer/iron/iron_drawer_top_middle",
+		"2": "cozyhome:block/drawer/iron/iron_drawer_bottom_middle",
+		"5": "cozyhome:block/drawer/iron/iron_drawer_side_middle",
+		"9": "cozyhome:block/drawer/iron/iron_drawer_front_middle",
+		"particle": "cozyhome:block/drawer/iron/iron_drawer_side"
+	}
+}

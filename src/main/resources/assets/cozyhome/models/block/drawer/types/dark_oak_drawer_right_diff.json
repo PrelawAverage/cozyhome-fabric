@@ -1,0 +1,15 @@
+{
+	"parent": "cozyhome:block/drawer/template_drawer_right_diff",
+	"textures": {
+		"0": "cozyhome:block/drawer/dark_oak/dark_oak_drawer_top_side",
+		"1": "cozyhome:block/drawer/dark_oak/dark_oak_drawer_side",
+		"2": "cozyhome:block/drawer/dark_oak/dark_oak_drawer_bottom",
+		"3": "cozyhome:block/drawer/dark_oak/dark_oak_drawer_side_inner",
+		"4": "cozyhome:block/drawer/dark_oak/dark_oak_drawer_front",
+		"5": "cozyhome:block/drawer/dark_oak/dark_oak_drawer_side_middle",
+		"6": "cozyhome:block/drawer/dark_oak/dark_oak_drawer_bottom_middle",
+		"7": "cozyhome:block/drawer/dark_oak/dark_oak_drawer_side_back",
+		"8": "cozyhome:block/drawer/dark_oak/dark_oak_drawer_side_front",
+		"particle": "cozyhome:block/drawer/dark_oak/dark_oak_drawer_side"
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"parent": "cozyhome:block/desk/template_desk_middle",
+	"textures": {
+		"2": "cozyhome:block/drawer/spruce/spruce_drawer_side_middle",
+		"4": "cozyhome:block/drawer/spruce/spruce_drawer_top_middle",
+		"9": "cozyhome:block/drawer/spruce/spruce_drawer_bottom_middle",
+		"particle": "cozyhome:block/drawer/spruce/spruce_drawer_side"
+	}
+}

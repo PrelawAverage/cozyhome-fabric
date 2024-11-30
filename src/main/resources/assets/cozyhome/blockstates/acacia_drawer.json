@@ -1,0 +1,148 @@
+{
+  "variants": {
+    "facing=north,horizontal_connection=single": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=left": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_left",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=middle": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_middle",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=right": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_right",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=left_diff": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_left_diff",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=middle_diff": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_middle_diff",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=right_diff": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_right_diff",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=left_diff_left": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_left_diff_left",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=right_diff_right": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_right_diff_right",
+      "y": 180
+    },
+    "facing=south,horizontal_connection=single": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer",
+      "y": 0
+    },
+    "facing=south,horizontal_connection=left": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_left",
+      "y": 0
+    },
+    "facing=south,horizontal_connection=middle": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_middle",
+      "y": 0
+    },
+    "facing=south,horizontal_connection=right": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_right",
+      "y": 0
+    },
+    "facing=south,horizontal_connection=left_diff": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_left_diff",
+      "y": 0
+    },
+    "facing=south,horizontal_connection=middle_diff": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_middle_diff",
+      "y": 0
+    },
+    "facing=south,horizontal_connection=right_diff": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_right_diff",
+      "y": 0
+    },
+    "facing=south,horizontal_connection=left_diff_left": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_left_diff_left",
+      "y": 0
+    },
+    "facing=south,horizontal_connection=right_diff_right": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_right_diff_right",
+      "y": 0
+    },
+    "facing=east,horizontal_connection=single": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=left": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_left",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=middle": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_middle",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=right": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_right",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=left_diff": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_left_diff",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=middle_diff": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_middle_diff",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=right_diff": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_right_diff",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=left_diff_left": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_left_diff_left",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=right_diff_right": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_right_diff_right",
+      "y": 270
+    },
+    "facing=west,horizontal_connection=single": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=left": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_left",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=middle": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_middle",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=right": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_right",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=left_diff": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_left_diff",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=middle_diff": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_middle_diff",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=right_diff": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_right_diff",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=left_diff_left": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_left_diff_left",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=right_diff_right": {
+      "model": "cozyhome:block/drawer/types/acacia_drawer_right_diff_right",
+      "y": 90
+    }
+  }
+}

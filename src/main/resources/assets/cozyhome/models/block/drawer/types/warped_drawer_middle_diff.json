@@ -1,0 +1,13 @@
+{
+	"parent": "cozyhome:block/drawer/template_drawer_middle_diff",
+	"textures": {
+		"0": "cozyhome:block/drawer/warped/warped_drawer_top_middle",
+		"1": "cozyhome:block/drawer/warped/warped_drawer_side",
+		"2": "cozyhome:block/drawer/warped/warped_drawer_bottom",
+		"3": "cozyhome:block/drawer/warped/warped_drawer_side_inner",
+		"4": "cozyhome:block/drawer/warped/warped_drawer_front",
+		"5": "cozyhome:block/drawer/warped/warped_drawer_side_middle",
+		"6": "cozyhome:block/drawer/warped/warped_drawer_bottom_middle",
+		"particle": "cozyhome:block/drawer/warped/warped_drawer_side"
+	}
+}

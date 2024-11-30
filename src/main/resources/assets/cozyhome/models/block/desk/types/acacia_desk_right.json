@@ -1,0 +1,12 @@
+{
+	"parent": "cozyhome:block/desk/template_desk_right",
+	"textures": {
+		"3": "cozyhome:block/drawer/acacia/acacia_drawer_side_front",
+		"4": "cozyhome:block/drawer/acacia/acacia_drawer_side_back",
+		"5": "cozyhome:block/drawer/acacia/acacia_drawer_side_inner",
+		"7": "cozyhome:block/drawer/acacia/acacia_drawer_side",
+		"8": "cozyhome:block/drawer/acacia/acacia_drawer_top_side",
+		"9": "cozyhome:block/drawer/acacia/acacia_drawer_bottom_side",
+		"particle": "cozyhome:block/drawer/acacia/acacia_drawer_side"
+	}
+}

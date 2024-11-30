@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=north,horizontal_connection=single": {
+      "model": "cozyhome:block/desk/types/spruce_desk",
+      "y": 180
+    },
+    "facing=east,horizontal_connection=single": {
+      "model": "cozyhome:block/desk/types/spruce_desk",
+      "y": 270
+    },
+    "facing=south,horizontal_connection=single": {
+      "model": "cozyhome:block/desk/types/spruce_desk"
+    },
+    "facing=west,horizontal_connection=single": {
+      "model": "cozyhome:block/desk/types/spruce_desk",
+      "y": 90
+    },
+    "facing=north,horizontal_connection=left": {
+      "model": "cozyhome:block/desk/types/spruce_desk_left",
+      "y": 180
+    },
+    "facing=east,horizontal_connection=left": {
+      "model": "cozyhome:block/desk/types/spruce_desk_left",
+      "y": 270
+    },
+    "facing=south,horizontal_connection=left": {
+      "model": "cozyhome:block/desk/types/spruce_desk_left"
+    },
+    "facing=west,horizontal_connection=left": {
+      "model": "cozyhome:block/desk/types/spruce_desk_left",
+      "y": 90
+    },
+    "facing=north,horizontal_connection=right": {
+      "model": "cozyhome:block/desk/types/spruce_desk_right",
+      "y": 180
+    },
+    "facing=east,horizontal_connection=right": {
+      "model": "cozyhome:block/desk/types/spruce_desk_right",
+      "y": 270
+    },
+    "facing=south,horizontal_connection=right": {
+      "model": "cozyhome:block/desk/types/spruce_desk_right"
+    },
+    "facing=west,horizontal_connection=right": {
+      "model": "cozyhome:block/desk/types/spruce_desk_right",
+      "y": 90
+    },
+    "facing=north,horizontal_connection=middle": {
+      "model": "cozyhome:block/desk/types/spruce_desk_middle",
+      "y": 180
+    },
+    "facing=east,horizontal_connection=middle": {
+      "model": "cozyhome:block/desk/types/spruce_desk_middle",
+      "y": 270
+    },
+    "facing=south,horizontal_connection=middle": {
+      "model": "cozyhome:block/desk/types/spruce_desk_middle"
+    },
+    "facing=west,horizontal_connection=middle": {
+      "model": "cozyhome:block/desk/types/spruce_desk_middle",
+      "y": 90
+    }
+  }
+}
