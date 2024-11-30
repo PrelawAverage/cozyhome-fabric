@@ -69,67 +69,75 @@ public class WallMirrorBlock extends HorizontalFacingBlock implements Waterlogga
     }
 
     @Override
-    protected BlockState getStateForNeighborUpdate(
-            BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos
-    ) {
-        if (direction.getOpposite() == state.get(FACING) && !state.canPlaceAt(world, pos)) {
-            return Blocks.AIR.getDefaultState();
-        } else {
-            if (state.get(WATERLOGGED)) {
-                world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
-            }
-
-            return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-        }
-    }
-
-    @Nullable
-    @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        if (!ctx.canReplaceExisting()) {
-            BlockState blockState = ctx.getWorld().getBlockState(ctx.getBlockPos().offset(ctx.getSide().getOpposite()));
-            if (blockState.isOf(this) && blockState.get(FACING) == ctx.getSide()) {
-                return null;
-            }
-        }
-
-        BlockState blockState = this.getDefaultState();
-        WorldView worldView = ctx.getWorld();
-        BlockPos blockPos = ctx.getBlockPos();
-        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
-
-        for (Direction direction : ctx.getPlacementDirections()) {
-            if (direction.getAxis().isHorizontal()) {
-                blockState = blockState.with(FACING, direction.getOpposite());
-                if (blockState.canPlaceAt(worldView, blockPos)) {
-                    return blockState.with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
-                }
-            }
-        }
-
-        return null;
-    }
-
-    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING, STACKABLE_BLOCK, WATERLOGGED);
     }
 
     @Override
-    protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
-        if(world.isClient) return;
-        BlockPos blockPosAbove = pos.up();
-        BlockPos blockPosBelow = pos.down();
-        BlockState relativeHeadBlock = world.getBlockState(blockPosAbove);
-        BlockState relativeTailBlock = world.getBlockState(blockPosBelow);
-        VerticalLinearConnectionBlock LinearConnectionBlockType = getLinearConnectionBlockType(state, relativeHeadBlock, relativeTailBlock);
-        BlockState updatedState = state.with(STACKABLE_BLOCK, LinearConnectionBlockType);
-        world.setBlockState(pos, updatedState, 3);
+    protected boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        return world.getBlockState(pos.offset(state.get(FACING).getOpposite())).isSolid();
     }
 
-    private VerticalLinearConnectionBlock getLinearConnectionBlockType(BlockState state, BlockState getBlockAbove, BlockState getBlockBelow) {
-        boolean above = getBlockAbove.getBlock() == state.getBlock() && getBlockAbove.get(FACING) == state.get(FACING);
-        boolean below = getBlockBelow.getBlock() == state.getBlock() && getBlockBelow.get(FACING) == state.get(FACING);
+    @Nullable
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        BlockState blockState = this.getDefaultState();
+        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
+        WorldView worldView = ctx.getWorld();
+        BlockPos blockPos = ctx.getBlockPos();
+        Direction[] directions = ctx.getPlacementDirections();
+
+        for (Direction direction : directions) {
+            if (direction.getAxis().isHorizontal()) {
+                Direction direction2 = direction.getOpposite();
+                blockState = blockState.with(FACING, direction2);
+                if (blockState.canPlaceAt(worldView, blockPos)) {
+                    return blockState.with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+                }
+            }
+        }
+        return null;
+    }
+    @Override
+    public BlockState getStateForNeighborUpdate(
+            BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos
+    ) {
+        // Check if the block can remain in place
+        if (direction.getOpposite() == state.get(FACING) && !state.canPlaceAt(world, pos)) {
+            return Blocks.AIR.getDefaultState();
+        }
+
+        // Schedule fluid tick if waterlogged
+        if (state.get(WATERLOGGED)) {
+            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
+
+        // Update stackable state
+        updateStackableState(world, pos, state);
+
+        // Return updated state
+        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+    }
+
+    // Helper method to update the stackable state
+    private void updateStackableState(WorldAccess world, BlockPos pos, BlockState state) {
+        BlockPos blockPosAbove = pos.up();
+        BlockPos blockPosBelow = pos.down();
+
+        BlockState relativeHeadBlock = world.getBlockState(blockPosAbove);
+        BlockState relativeTailBlock = world.getBlockState(blockPosBelow);
+
+        VerticalLinearConnectionBlock linearConnectionBlockType = getLinearConnectionBlockType(state, relativeHeadBlock, relativeTailBlock);
+        BlockState updatedState = state.with(STACKABLE_BLOCK, linearConnectionBlockType);
+
+        world.setBlockState(pos, updatedState, 3); // Use flags for block updates
+    }
+
+    // Determines the type of connection based on neighbors
+    private VerticalLinearConnectionBlock getLinearConnectionBlockType(BlockState state, BlockState blockAbove, BlockState blockBelow) {
+        boolean above = blockAbove.getBlock() == state.getBlock() && blockAbove.get(FACING) == state.get(FACING);
+        boolean below = blockBelow.getBlock() == state.getBlock() && blockBelow.get(FACING) == state.get(FACING);
+
         if (above && below) return VerticalLinearConnectionBlock.MIDDLE;
         if (above) return VerticalLinearConnectionBlock.TAIL;
         if (below) return VerticalLinearConnectionBlock.HEAD;

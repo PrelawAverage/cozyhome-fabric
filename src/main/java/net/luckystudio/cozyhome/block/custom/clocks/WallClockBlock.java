@@ -95,46 +95,45 @@ public class WallClockBlock extends BlockWithEntity implements Waterloggable{
     }
 
     @Override
-    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        Direction facing = state.get(FACING);
-        BlockPos attachedPos = pos.offset(facing.getOpposite());
-        return Block.sideCoversSmallSquare(world, attachedPos, facing);
+    protected boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        return world.getBlockState(pos.offset(state.get(FACING).getOpposite())).isSolid();
     }
 
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        if (!ctx.canReplaceExisting()) {
-            BlockState blockState = ctx.getWorld().getBlockState(ctx.getBlockPos().offset(ctx.getSide().getOpposite()));
-            if (blockState.isOf(this) && blockState.get(FACING) == ctx.getSide()) {
-                return null;
-            }
-        }
-
         BlockState blockState = this.getDefaultState();
+        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
         WorldView worldView = ctx.getWorld();
         BlockPos blockPos = ctx.getBlockPos();
-        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
+        Direction[] directions = ctx.getPlacementDirections();
 
-        for (Direction direction : ctx.getPlacementDirections()) {
+        for (Direction direction : directions) {
             if (direction.getAxis().isHorizontal()) {
-                blockState = blockState.with(FACING, direction.getOpposite());
+                Direction direction2 = direction.getOpposite();
+                blockState = blockState.with(FACING, direction2);
                 if (blockState.canPlaceAt(worldView, blockPos)) {
                     return blockState.with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
                 }
             }
         }
-
         return null;
     }
-
     @Override
-    protected BlockState getStateForNeighborUpdate(
+    public BlockState getStateForNeighborUpdate(
             BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos
     ) {
-        return !state.canPlaceAt(world, pos)
-                ? Blocks.AIR.getDefaultState()
-                : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+        // Check if the block can remain in place
+        if (direction.getOpposite() == state.get(FACING) && !state.canPlaceAt(world, pos)) {
+            return Blocks.AIR.getDefaultState();
+        }
+
+        // Schedule fluid tick if waterlogged
+        if (state.get(WATERLOGGED)) {
+            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
+        // Return updated state
+        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     @Override

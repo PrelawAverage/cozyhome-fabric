@@ -42,8 +42,7 @@ public class ModBlocks {
                         .hardness(2)
                         .strength(3)
                         .burnable()
-                        .sounds(soundGroup)
-                        .dynamicBounds());
+                        .sounds(soundGroup));
     }
 
     private static Block createCounterBlock(Block block, Boolean bool) {
