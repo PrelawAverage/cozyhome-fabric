@@ -39,7 +39,9 @@ public class DrawerScreen extends HandledScreen<DrawerScreenHandler> {
     @Override
     protected void init() {
         super.init();
-        // Center the title
+        // Center the title horizontally
         titleX = (backgroundWidth - textRenderer.getWidth(title)) / 2;
+        // Move the title 36 pixels down
+        titleY = 6 + 36; // Default titleY is 6, so add 36 to move it down
     }
 }

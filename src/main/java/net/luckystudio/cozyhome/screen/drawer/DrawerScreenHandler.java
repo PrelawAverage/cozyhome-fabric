@@ -13,35 +13,28 @@ public class DrawerScreenHandler extends ScreenHandler {
     private final Inventory inventory;
 
     public DrawerScreenHandler(int syncId, PlayerInventory playerInventory) {
-        this(syncId, playerInventory, new SimpleInventory(18));
+        this(syncId, playerInventory, new SimpleInventory(9)); // Change size to 9
     }
 
     public DrawerScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
         super(CozyHomeClient.DRAWER_SCREEN_HANDLER, syncId);
-        checkSize(inventory, 18);
+        checkSize(inventory, 9); // Ensure inventory size matches
         this.inventory = inventory;
         inventory.onOpen(playerInventory.player);
 
-        int l;
         int left_padding = 8;
+        int vertical_offset = 36; // Offset to move the custom inventory down by 36 pixels
 
-        // Our inventory: Row 1
-        for (l = 0; l < 9; ++l) {
+        // Our inventory: Single row (9 slots)
+        for (int l = 0; l < 9; ++l) {
             int x = left_padding + l * 18;
-            int y = 17; // First row
+            int y = 17 + vertical_offset; // Add the offset here
             this.addSlot(new Slot(inventory, l, x, y));
-        }
-
-        // Our inventory: Row 2 (skipped row, add 9 more slots here)
-        for (l = 0; l < 9; ++l) {
-            int x = left_padding + l * 18;
-            int y = 17 + 36; // Skip one row (18 pixels per row, so skip 18)
-            this.addSlot(new Slot(inventory, l + 9, x, y));
         }
 
         // The player inventory
         for (int m = 0; m < 3; ++m) {
-            for (l = 0; l < 9; ++l) {
+            for (int l = 0; l < 9; ++l) {
                 this.addSlot(new Slot(playerInventory, l + m * 9 + 9, 8 + l * 18, 84 + m * 18));
             }
         }
@@ -50,6 +43,7 @@ public class DrawerScreenHandler extends ScreenHandler {
             this.addSlot(new Slot(playerInventory, m, 8 + m * 18, 142));
         }
     }
+
 
     @Override
     public boolean canUse(PlayerEntity player) {
@@ -88,5 +82,7 @@ public class DrawerScreenHandler extends ScreenHandler {
         this.inventory.onClose(player);
     }
 
-    public Inventory getInventory() { return this.inventory; }
+    public Inventory getInventory() {
+        return this.inventory;
+    }
 }

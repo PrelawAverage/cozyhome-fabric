@@ -22,12 +22,11 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
 public class DrawerBlockEntity extends LootableContainerBlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
-    private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(18, ItemStack.EMPTY);
+    private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(9, ItemStack.EMPTY);
     private final ViewerCountManager stateManager = new ViewerCountManager() {
         @Override
         protected void onContainerOpen(World world, BlockPos pos, BlockState state) {
@@ -105,7 +104,7 @@ public class DrawerBlockEntity extends LootableContainerBlockEntity implements N
 
     @Override
     public int size() {
-        return 18;
+        return 9;
     }
 
     @Override
@@ -134,7 +133,7 @@ public class DrawerBlockEntity extends LootableContainerBlockEntity implements N
     }
 
     void playSound(BlockState state, SoundEvent soundEvent) {
-        Vec3i vec3i = ((Direction)state.get(DrawerBlock.FACING)).getVector();
+        Vec3i vec3i = state.get(DrawerBlock.FACING).getVector();
         double d = (double)this.pos.getX() + 0.5 + (double)vec3i.getX() / 2.0;
         double e = (double)this.pos.getY() + 0.5 + (double)vec3i.getY() / 2.0;
         double f = (double)this.pos.getZ() + 0.5 + (double)vec3i.getZ() / 2.0;
