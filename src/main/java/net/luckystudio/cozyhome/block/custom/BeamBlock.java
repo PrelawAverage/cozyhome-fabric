@@ -138,7 +138,8 @@ public class BeamBlock extends ConnectingBlock implements Waterloggable, Strippa
         if (targetBlock.isAir()) return Boolean.FALSE;
 
         if (originBlock.get(FACING) == currentDirection || originBlock.get(FACING) == currentDirection.getOpposite()) {
-            if (targetBlock.isSideSolidFullSquare(world, pos, currentDirection)) return Boolean.TRUE;
+            if (targetBlock.isSideSolid(world, pos, currentDirection.getOpposite(), SideShapeType.CENTER)) return Boolean.TRUE;
+            if (targetBlock.isSideSolidFullSquare(world, pos, currentDirection.getOpposite())) return Boolean.TRUE;
             if (isLongBeam(targetBlock) || isSameAxis(targetBlock, currentDirection)) return Boolean.TRUE;
             return Boolean.FALSE;
         }
@@ -146,8 +147,6 @@ public class BeamBlock extends ConnectingBlock implements Waterloggable, Strippa
         if (!isLongBeam(originBlock, world, pos)) return Boolean.FALSE;
 
         if (targetBlock.isSideSolid(world, pos, currentDirection.getOpposite(), SideShapeType.CENTER)) return Boolean.TRUE;
-
-//        if (targetBlock.isSideSolidFullSquare(world, pos, currentDirection.getOpposite())) return Boolean.TRUE;
 
         if (!isBeamBlock(targetBlock.getBlock())) return Boolean.FALSE;
 
@@ -209,7 +208,6 @@ public class BeamBlock extends ConnectingBlock implements Waterloggable, Strippa
         return block instanceof BeamBlock;
     }
 
-    // Testing if the beam can be straight
     public static Map<Direction, BlockState> getBlockDirections(WorldAccess world, BlockPos pos) {
         Map<Direction, BlockState> blockStates = new EnumMap<>(Direction.class);
 
