@@ -1,4 +1,4 @@
-package net.luckystudio.cozyhome.item;
+package net.luckystudio.cozyhome.util;
 
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.luckystudio.cozyhome.block.ModBlocks;
