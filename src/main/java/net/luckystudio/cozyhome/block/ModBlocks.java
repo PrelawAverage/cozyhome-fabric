@@ -36,28 +36,22 @@ public class ModBlocks {
             Rarity.EPIC, Set.of("legendary", "arcane")
     );
 
-    private static Block createPlankedWallBlock(BlockSoundGroup soundGroup) {
+    private static Block createPlankedWallBlock(Block block) {
         return new PlankedWallBlock(
-                AbstractBlock.Settings.create()
-                        .hardness(2)
-                        .strength(3)
-                        .burnable()
-                        .sounds(soundGroup));
+                AbstractBlock.Settings.copy(block));
     }
 
-    private static Block createCounterBlock(Block block, Boolean bool) {
+    private static Block createCounterBlock(Block block, Boolean requiresTool, Boolean burnable) {
         AbstractBlock.Settings settings = AbstractBlock.Settings.copy(block);
-        if (bool) {
-            settings.requiresTool();
-        }
+        if (requiresTool) settings.requiresTool();
+        if (burnable) settings.burnable();
         return new CounterBlock(settings);
     }
 
-    private static Block createStorageCounterBlock(Block block, Boolean bool) {
+    private static Block createStorageCounterBlock(Block block, Boolean requiresTool, Boolean burnable) {
         AbstractBlock.Settings settings = AbstractBlock.Settings.copy(block);
-        if (bool) {
-            settings.requiresTool();
-        }
+        if (requiresTool) settings.requiresTool();
+        if (burnable) settings.burnable();
         return new StorageCounterBlock(settings);
     }
 
@@ -138,43 +132,43 @@ public class ModBlocks {
     }
 
     // Add Blocks Here
-    public static final Block OAK_PLANKED_WALL = registerBlock("oak_planked_wall", createPlankedWallBlock(BlockSoundGroup.WOOD));
-    public static final Block SPRUCE_PLANKED_WALL = registerBlock("spruce_planked_wall", createPlankedWallBlock(BlockSoundGroup.WOOD));
-    public static final Block BIRCH_PLANKED_WALL = registerBlock("birch_planked_wall", createPlankedWallBlock(BlockSoundGroup.WOOD));
-    public static final Block JUNGLE_PLANKED_WALL = registerBlock("jungle_planked_wall", createPlankedWallBlock(BlockSoundGroup.WOOD));
-    public static final Block ACACIA_PLANKED_WALL = registerBlock("acacia_planked_wall", createPlankedWallBlock(BlockSoundGroup.WOOD));
-    public static final Block DARK_OAK_PLANKED_WALL = registerBlock("dark_oak_planked_wall", createPlankedWallBlock(BlockSoundGroup.WOOD));
-    public static final Block MANGROVE_PLANKED_WALL = registerBlock("mangrove_planked_wall", createPlankedWallBlock(BlockSoundGroup.WOOD));
-    public static final Block CHERRY_PLANKED_WALL = registerBlock("cherry_planked_wall", createPlankedWallBlock(BlockSoundGroup.WOOD));
-    public static final Block BAMBOO_PLANKED_WALL = registerBlock("bamboo_planked_wall", createPlankedWallBlock(BlockSoundGroup.WOOD));
-    public static final Block CRIMSON_PLANKED_WALL = registerBlock("crimson_planked_wall", createPlankedWallBlock(BlockSoundGroup.NETHER_WOOD));
-    public static final Block WARPED_PLANKED_WALL = registerBlock("warped_planked_wall", createPlankedWallBlock(BlockSoundGroup.NETHER_WOOD));
+    public static final Block OAK_PLANKED_WALL = registerBlock("oak_planked_wall", createPlankedWallBlock(Blocks.OAK_PLANKS));
+    public static final Block SPRUCE_PLANKED_WALL = registerBlock("spruce_planked_wall", createPlankedWallBlock(Blocks.SPRUCE_PLANKS));
+    public static final Block BIRCH_PLANKED_WALL = registerBlock("birch_planked_wall", createPlankedWallBlock(Blocks.BIRCH_PLANKS));
+    public static final Block JUNGLE_PLANKED_WALL = registerBlock("jungle_planked_wall", createPlankedWallBlock(Blocks.JUNGLE_PLANKS));
+    public static final Block ACACIA_PLANKED_WALL = registerBlock("acacia_planked_wall", createPlankedWallBlock(Blocks.ACACIA_PLANKS));
+    public static final Block DARK_OAK_PLANKED_WALL = registerBlock("dark_oak_planked_wall", createPlankedWallBlock(Blocks.DARK_OAK_PLANKS));
+    public static final Block MANGROVE_PLANKED_WALL = registerBlock("mangrove_planked_wall", createPlankedWallBlock(Blocks.MANGROVE_PLANKS));
+    public static final Block CHERRY_PLANKED_WALL = registerBlock("cherry_planked_wall", createPlankedWallBlock(Blocks.CHERRY_PLANKS));
+    public static final Block BAMBOO_PLANKED_WALL = registerBlock("bamboo_planked_wall", createPlankedWallBlock(Blocks.BAMBOO_PLANKS));
+    public static final Block CRIMSON_PLANKED_WALL = registerBlock("crimson_planked_wall", createPlankedWallBlock(Blocks.CRIMSON_PLANKS));
+    public static final Block WARPED_PLANKED_WALL = registerBlock("warped_planked_wall", createPlankedWallBlock(Blocks.WARPED_PLANKS));
 
     // Counters
-    public static final Block OAK_COUNTER = registerBlock("oak_counter", createCounterBlock(Blocks.OAK_PLANKS, false));
-    public static final Block SPRUCE_COUNTER = registerBlock("spruce_counter", createCounterBlock(Blocks.SPRUCE_PLANKS, false));
-    public static final Block BIRCH_COUNTER = registerBlock("birch_counter", createCounterBlock(Blocks.BIRCH_PLANKS, false));
-    public static final Block JUNGLE_COUNTER = registerBlock("jungle_counter", createCounterBlock(Blocks.JUNGLE_PLANKS, false));
-    public static final Block ACACIA_COUNTER = registerBlock("acacia_counter", createCounterBlock(Blocks.ACACIA_PLANKS, false));
-    public static final Block DARK_OAK_COUNTER = registerBlock("dark_oak_counter", createCounterBlock(Blocks.DARK_OAK_PLANKS, false));
-    public static final Block MANGROVE_COUNTER = registerBlock("mangrove_counter", createCounterBlock(Blocks.MANGROVE_PLANKS, false));
-    public static final Block CHERRY_COUNTER = registerBlock("cherry_counter", createCounterBlock(Blocks.CHERRY_PLANKS, false));
-    public static final Block BAMBOO_COUNTER = registerBlock("bamboo_counter", createCounterBlock(Blocks.BAMBOO_PLANKS, false));
-    public static final Block CRIMSON_COUNTER = registerBlock("crimson_counter", createCounterBlock(Blocks.CRIMSON_PLANKS, false));
-    public static final Block WARPED_COUNTER = registerBlock("warped_counter", createCounterBlock(Blocks.WARPED_PLANKS, false));
+    public static final Block OAK_COUNTER = registerBlock("oak_counter", createCounterBlock(Blocks.OAK_PLANKS, false, true));
+    public static final Block SPRUCE_COUNTER = registerBlock("spruce_counter", createCounterBlock(Blocks.SPRUCE_PLANKS, false, true));
+    public static final Block BIRCH_COUNTER = registerBlock("birch_counter", createCounterBlock(Blocks.BIRCH_PLANKS, false, true));
+    public static final Block JUNGLE_COUNTER = registerBlock("jungle_counter", createCounterBlock(Blocks.JUNGLE_PLANKS, false, true));
+    public static final Block ACACIA_COUNTER = registerBlock("acacia_counter", createCounterBlock(Blocks.ACACIA_PLANKS, false, true));
+    public static final Block DARK_OAK_COUNTER = registerBlock("dark_oak_counter", createCounterBlock(Blocks.DARK_OAK_PLANKS, false, true));
+    public static final Block MANGROVE_COUNTER = registerBlock("mangrove_counter", createCounterBlock(Blocks.MANGROVE_PLANKS, false, true));
+    public static final Block CHERRY_COUNTER = registerBlock("cherry_counter", createCounterBlock(Blocks.CHERRY_PLANKS, false, true));
+    public static final Block BAMBOO_COUNTER = registerBlock("bamboo_counter", createCounterBlock(Blocks.BAMBOO_PLANKS, false, true));
+    public static final Block CRIMSON_COUNTER = registerBlock("crimson_counter", createCounterBlock(Blocks.CRIMSON_PLANKS, false, false));
+    public static final Block WARPED_COUNTER = registerBlock("warped_counter", createCounterBlock(Blocks.WARPED_PLANKS, false, false));
 
     // Storage Counters
-    public static final Block OAK_STORAGE_COUNTER = registerBlock("oak_storage_counter", createStorageCounterBlock(Blocks.OAK_PLANKS, false));
-    public static final Block SPRUCE_STORAGE_COUNTER = registerBlock("spruce_storage_counter", createStorageCounterBlock(Blocks.SPRUCE_PLANKS, false));
-    public static final Block BIRCH_STORAGE_COUNTER = registerBlock("birch_storage_counter", createStorageCounterBlock(Blocks.BIRCH_PLANKS, false));
-    public static final Block JUNGLE_STORAGE_COUNTER = registerBlock("jungle_storage_counter", createStorageCounterBlock(Blocks.JUNGLE_PLANKS, false));
-    public static final Block ACACIA_STORAGE_COUNTER = registerBlock("acacia_storage_counter", createStorageCounterBlock(Blocks.ACACIA_PLANKS, false));
-    public static final Block DARK_OAK_STORAGE_COUNTER = registerBlock("dark_oak_storage_counter", createStorageCounterBlock(Blocks.DARK_OAK_PLANKS, false));
-    public static final Block MANGROVE_STORAGE_COUNTER = registerBlock("mangrove_storage_counter", createStorageCounterBlock(Blocks.MANGROVE_PLANKS, false));
-    public static final Block CHERRY_STORAGE_COUNTER = registerBlock("cherry_storage_counter", createStorageCounterBlock(Blocks.CHERRY_PLANKS, false));
-    public static final Block BAMBOO_STORAGE_COUNTER = registerBlock("bamboo_storage_counter", createStorageCounterBlock(Blocks.BAMBOO_PLANKS, false));
-    public static final Block CRIMSON_STORAGE_COUNTER = registerBlock("crimson_storage_counter", createStorageCounterBlock(Blocks.CRIMSON_PLANKS, false));
-    public static final Block WARPED_STORAGE_COUNTER = registerBlock("warped_storage_counter", createStorageCounterBlock(Blocks.WARPED_PLANKS, false));
+    public static final Block OAK_STORAGE_COUNTER = registerBlock("oak_storage_counter", createStorageCounterBlock(Blocks.OAK_PLANKS, false, true));
+    public static final Block SPRUCE_STORAGE_COUNTER = registerBlock("spruce_storage_counter", createStorageCounterBlock(Blocks.SPRUCE_PLANKS, false, true));
+    public static final Block BIRCH_STORAGE_COUNTER = registerBlock("birch_storage_counter", createStorageCounterBlock(Blocks.BIRCH_PLANKS, false, true));
+    public static final Block JUNGLE_STORAGE_COUNTER = registerBlock("jungle_storage_counter", createStorageCounterBlock(Blocks.JUNGLE_PLANKS, false, true));
+    public static final Block ACACIA_STORAGE_COUNTER = registerBlock("acacia_storage_counter", createStorageCounterBlock(Blocks.ACACIA_PLANKS, false, true));
+    public static final Block DARK_OAK_STORAGE_COUNTER = registerBlock("dark_oak_storage_counter", createStorageCounterBlock(Blocks.DARK_OAK_PLANKS, false, true));
+    public static final Block MANGROVE_STORAGE_COUNTER = registerBlock("mangrove_storage_counter", createStorageCounterBlock(Blocks.MANGROVE_PLANKS, false, true));
+    public static final Block CHERRY_STORAGE_COUNTER = registerBlock("cherry_storage_counter", createStorageCounterBlock(Blocks.CHERRY_PLANKS, false, true));
+    public static final Block BAMBOO_STORAGE_COUNTER = registerBlock("bamboo_storage_counter", createStorageCounterBlock(Blocks.BAMBOO_PLANKS, false, true));
+    public static final Block CRIMSON_STORAGE_COUNTER = registerBlock("crimson_storage_counter", createStorageCounterBlock(Blocks.CRIMSON_PLANKS, false, false));
+    public static final Block WARPED_STORAGE_COUNTER = registerBlock("warped_storage_counter", createStorageCounterBlock(Blocks.WARPED_PLANKS, false, false));
 
     // Sink Counters
     public static final Block OAK_SINK_COUNTER = registerBlock("oak_sink_counter",
