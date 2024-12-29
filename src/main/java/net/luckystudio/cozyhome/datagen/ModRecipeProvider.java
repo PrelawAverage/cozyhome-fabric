@@ -4,10 +4,12 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.luckystudio.cozyhome.block.ModBlocks;
 import net.minecraft.block.Blocks;
+import net.minecraft.data.server.recipe.ComplexRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
+import net.minecraft.recipe.ArmorDyeRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 
@@ -18,18 +20,6 @@ import java.util.concurrent.CompletableFuture;
 public class ModRecipeProvider extends FabricRecipeProvider {
     public ModRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
-    }
-
-    public static void offerPlankedWallRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
-        ShapedRecipeJsonBuilder.create(
-                        RecipeCategory.BUILDING_BLOCKS,
-                output, 3)
-                .pattern("#")
-                .pattern("#")
-                .pattern("#")
-                .input('#', input)
-                .criterion(hasItem(input), conditionsFromItem(input))
-                .offerTo(exporter);
     }
 
     public static void offerCounterRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2) {
@@ -76,6 +66,34 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
     }
 
+    public static void offerTableRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2) {
+        ShapedRecipeJsonBuilder.create(
+                        RecipeCategory.BUILDING_BLOCKS,
+                        output, 4)
+                .pattern("###")
+                .pattern("@ @")
+                .pattern("@ @")
+                .input('@', input1)
+                .input('#', input2)
+                .criterion(hasItem(input1), conditionsFromItem(input1))
+                .criterion(hasItem(input2), conditionsFromItem(input2))
+                .offerTo(exporter);
+    }
+
+    public static void offerChairRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2) {
+        ShapedRecipeJsonBuilder.create(
+                        RecipeCategory.BUILDING_BLOCKS,
+                        output, 4)
+                .pattern("#  ")
+                .pattern("@@@")
+                .pattern("# #")
+                .input('#', input1)
+                .input('@', input2)
+                .criterion(hasItem(input1), conditionsFromItem(input1))
+                .criterion(hasItem(input2), conditionsFromItem(input2))
+                .offerTo(exporter);
+    }
+
     public static void offerWallClockRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
         ShapedRecipeJsonBuilder.create(
                         RecipeCategory.BUILDING_BLOCKS,
@@ -98,6 +116,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .pattern(" # ")
                 .input('@', input)
                 .input('#', input2)
+                .criterion(hasItem(input), conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
+    public static void offerSofaRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
+        ShapedRecipeJsonBuilder.create(
+                        RecipeCategory.BUILDING_BLOCKS,
+                        output, 1)
+                .pattern("@@")
+                .pattern("@@")
+                .pattern("##")
+                .input('@', Items.WHITE_WOOL)
+                .input('#', input)
                 .criterion(hasItem(input), conditionsFromItem(input))
                 .offerTo(exporter);
     }
@@ -146,25 +177,27 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     // Criterion needs to be fixed to take in a tag instead of a singular item, instead it should be tag planks
-    public static void offerToolRackRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input, ItemConvertible input2) {
+    public static void offerTelescopeRecipe(RecipeExporter exporter) {
         ShapedRecipeJsonBuilder.create(
                         RecipeCategory.BUILDING_BLOCKS,
-                        output, 3)
-                .pattern("#@#")
-                .input('@', input)
-                .input('#', input2)
-                .criterion(hasItem(input), conditionsFromItem(input))
+                        ModBlocks.TELESCOPE, 1)
+                .pattern(" # ")
+                .pattern(" @ ")
+                .pattern("@ @")
+                .input('#', Items.SPYGLASS)
+                .input('@', Items.COPPER_INGOT)
+                .criterion(hasItem(Items.SPYGLASS), conditionsFromItem(Items.SPYGLASS))
                 .offerTo(exporter);
     }
 
     // Criterion needs to be fixed to take in a tag instead of a singular item, instead it should be tag planks
-    public static void offerBeamRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
+    public static void offerChimneyRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
         ShapedRecipeJsonBuilder.create(
                         RecipeCategory.BUILDING_BLOCKS,
                         output, 3)
-                .pattern("#")
-                .pattern("#")
-                .pattern("#")
+                .pattern("# #")
+                .pattern("# #")
+                .pattern("# #")
                 .input('#', input)
                 .criterion(hasItem(input), conditionsFromItem(input))
                 .offerTo(exporter);
@@ -172,31 +205,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
     @Override
     public void generate(RecipeExporter exporter) {
-
-        // Planked Walls
-        offerPlankedWallRecipe(exporter, ModBlocks.OAK_PLANKED_WALL, Blocks.OAK_PLANKS);
-        offerPlankedWallRecipe(exporter, ModBlocks.SPRUCE_PLANKED_WALL, Blocks.SPRUCE_PLANKS);
-        offerPlankedWallRecipe(exporter, ModBlocks.BIRCH_PLANKED_WALL, Blocks.BIRCH_PLANKS);
-        offerPlankedWallRecipe(exporter, ModBlocks.JUNGLE_PLANKED_WALL, Blocks.JUNGLE_PLANKS);
-        offerPlankedWallRecipe(exporter, ModBlocks.ACACIA_PLANKED_WALL, Blocks.ACACIA_PLANKS);
-        offerPlankedWallRecipe(exporter, ModBlocks.DARK_OAK_PLANKED_WALL, Blocks.DARK_OAK_PLANKS);
-        offerPlankedWallRecipe(exporter, ModBlocks.MANGROVE_PLANKED_WALL, Blocks.MANGROVE_PLANKS);
-        offerPlankedWallRecipe(exporter, ModBlocks.BAMBOO_PLANKED_WALL, Blocks.BAMBOO_PLANKS);
-        offerPlankedWallRecipe(exporter, ModBlocks.CRIMSON_PLANKED_WALL, Blocks.CRIMSON_PLANKS);
-        offerPlankedWallRecipe(exporter, ModBlocks.WARPED_PLANKED_WALL, Blocks.WARPED_PLANKS);
-
-        // Planked Walls to regular vanilla planks
-        offerSingleOutputShapelessRecipe(exporter, Items.OAK_PLANKS, ModBlocks.OAK_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());
-        offerSingleOutputShapelessRecipe(exporter, Items.SPRUCE_PLANKS, ModBlocks.SPRUCE_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());
-        offerSingleOutputShapelessRecipe(exporter, Items.BIRCH_PLANKS, ModBlocks.BIRCH_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());
-        offerSingleOutputShapelessRecipe(exporter, Items.JUNGLE_PLANKS, ModBlocks.JUNGLE_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());
-        offerSingleOutputShapelessRecipe(exporter, Items.ACACIA_PLANKS, ModBlocks.ACACIA_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());
-        offerSingleOutputShapelessRecipe(exporter, Items.DARK_OAK_PLANKS, ModBlocks.DARK_OAK_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());
-        offerSingleOutputShapelessRecipe(exporter, Items.MANGROVE_PLANKS, ModBlocks.MANGROVE_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());
-        offerSingleOutputShapelessRecipe(exporter, Items.CHERRY_PLANKS, ModBlocks.CHERRY_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());
-        offerSingleOutputShapelessRecipe(exporter, Items.BAMBOO_PLANKS, ModBlocks.BAMBOO_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());
-        offerSingleOutputShapelessRecipe(exporter, Items.CRIMSON_PLANKS, ModBlocks.CRIMSON_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());
-        offerSingleOutputShapelessRecipe(exporter, Items.WARPED_PLANKS, ModBlocks.WARPED_PLANKED_WALL, RecipeCategory.BUILDING_BLOCKS.getName());
 
         // Counters
         offerCounterRecipe(exporter, ModBlocks.OAK_COUNTER, Blocks.BRICKS, Blocks.OAK_PLANKS);
@@ -234,6 +242,33 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerSinkCounterRecipe(exporter, ModBlocks.CRIMSON_SINK_COUNTER, Blocks.NETHER_WART_BLOCK, Blocks.CRIMSON_PLANKS);
         offerSinkCounterRecipe(exporter, ModBlocks.WARPED_SINK_COUNTER, Blocks.WARPED_WART_BLOCK, Blocks.WARPED_PLANKS);
 
+        // Tables
+        offerTableRecipe(exporter, ModBlocks.OAK_TABLE, Blocks.OAK_PLANKS, Blocks.OAK_SLAB);
+        offerTableRecipe(exporter, ModBlocks.SPRUCE_TABLE, Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_SLAB);
+        offerTableRecipe(exporter, ModBlocks.BIRCH_TABLE, Blocks.BIRCH_PLANKS, Blocks.BIRCH_SLAB);
+        offerTableRecipe(exporter, ModBlocks.JUNGLE_TABLE, Blocks.JUNGLE_PLANKS, Blocks.JUNGLE_SLAB);
+        offerTableRecipe(exporter, ModBlocks.ACACIA_TABLE, Blocks.ACACIA_PLANKS, Blocks.ACACIA_SLAB);
+        offerTableRecipe(exporter, ModBlocks.DARK_OAK_TABLE, Blocks.DARK_OAK_PLANKS, Blocks.DARK_OAK_SLAB);
+        offerTableRecipe(exporter, ModBlocks.MANGROVE_TABLE, Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_SLAB);
+        offerTableRecipe(exporter, ModBlocks.BAMBOO_TABLE, Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_SLAB);
+        offerTableRecipe(exporter, ModBlocks.CRIMSON_TABLE, Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_SLAB);
+        offerTableRecipe(exporter, ModBlocks.WARPED_TABLE, Blocks.WARPED_PLANKS, Blocks.WARPED_SLAB);
+        offerTableRecipe(exporter, ModBlocks.IRON_TABLE, Items.IRON_INGOT, Items.IRON_NUGGET);
+        offerTableRecipe(exporter, ModBlocks.GLASS_TABLE, Blocks.GLASS, Blocks.GLASS_PANE);
+
+        // Chair
+        offerChairRecipe(exporter, ModBlocks.OAK_CHAIR, Blocks.OAK_PLANKS, Blocks.OAK_SLAB);
+        offerChairRecipe(exporter, ModBlocks.SPRUCE_CHAIR, Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_SLAB);
+        offerChairRecipe(exporter, ModBlocks.BIRCH_CHAIR, Blocks.BIRCH_PLANKS, Blocks.BIRCH_SLAB);
+        offerChairRecipe(exporter, ModBlocks.JUNGLE_CHAIR, Blocks.JUNGLE_PLANKS, Blocks.JUNGLE_SLAB);
+        offerChairRecipe(exporter, ModBlocks.ACACIA_CHAIR, Blocks.ACACIA_PLANKS, Blocks.ACACIA_SLAB);
+        offerChairRecipe(exporter, ModBlocks.DARK_OAK_CHAIR, Blocks.DARK_OAK_PLANKS, Blocks.DARK_OAK_SLAB);
+        offerChairRecipe(exporter, ModBlocks.MANGROVE_CHAIR, Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_SLAB);
+        offerChairRecipe(exporter, ModBlocks.CHERRY_CHAIR, Blocks.CHERRY_PLANKS, Blocks.CHERRY_SLAB);
+        offerChairRecipe(exporter, ModBlocks.BAMBOO_CHAIR, Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_SLAB);
+        offerChairRecipe(exporter, ModBlocks.CRIMSON_CHAIR, Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_SLAB);
+        offerChairRecipe(exporter, ModBlocks.WARPED_CHAIR, Blocks.WARPED_PLANKS, Blocks.WARPED_SLAB);
+
         // Wall Clock
         offerWallClockRecipe(exporter, ModBlocks.OAK_WALL_CLOCK, Blocks.OAK_SLAB);
         offerWallClockRecipe(exporter, ModBlocks.SPRUCE_WALL_CLOCK, Blocks.SPRUCE_SLAB);
@@ -257,6 +292,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerGrandfatherClockRecipe(exporter, ModBlocks.BAMBOO_GRANDFATHER_CLOCK, ModBlocks.BAMBOO_WALL_CLOCK, Blocks.BAMBOO_PLANKS);
         offerGrandfatherClockRecipe(exporter, ModBlocks.CRIMSON_GRANDFATHER_CLOCK, ModBlocks.CRIMSON_WALL_CLOCK, Blocks.CRIMSON_PLANKS);
         offerGrandfatherClockRecipe(exporter, ModBlocks.WARPED_GRANDFATHER_CLOCK, ModBlocks.WARPED_WALL_CLOCK, Blocks.WARPED_PLANKS);
+
+        // Sofa
+        offerSofaRecipe(exporter, ModBlocks.OAK_SOFA, Blocks.OAK_SLAB);
+        offerSofaRecipe(exporter, ModBlocks.SPRUCE_SOFA, Blocks.SPRUCE_SLAB);
+        offerSofaRecipe(exporter, ModBlocks.BIRCH_SOFA, Blocks.BIRCH_SLAB);
+        offerSofaRecipe(exporter, ModBlocks.JUNGLE_SOFA, Blocks.JUNGLE_SLAB);
+        offerSofaRecipe(exporter, ModBlocks.ACACIA_SOFA, Blocks.ACACIA_SLAB);
+        offerSofaRecipe(exporter, ModBlocks.DARK_OAK_SOFA, Blocks.DARK_OAK_SLAB);
+        offerSofaRecipe(exporter, ModBlocks.MANGROVE_SOFA, Blocks.MANGROVE_SLAB);
+        offerSofaRecipe(exporter, ModBlocks.CHERRY_SOFA, Blocks.CHERRY_SLAB);
+        offerSofaRecipe(exporter, ModBlocks.BAMBOO_SOFA, Blocks.BAMBOO_SLAB);
+        offerSofaRecipe(exporter, ModBlocks.CRIMSON_SOFA, Blocks.CRIMSON_SLAB);
+        offerSofaRecipe(exporter, ModBlocks.WARPED_SOFA, Blocks.WARPED_SLAB);
 
         // Desk
         offerDeskRecipe(exporter, ModBlocks.OAK_DESK, Blocks.OAK_SLAB, Blocks.OAK_PLANKS);
@@ -282,30 +330,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerDrawerRecipe(exporter, ModBlocks.CRIMSON_DRAWER, Blocks.CRIMSON_SLAB, Blocks.CRIMSON_PLANKS);
         offerDrawerRecipe(exporter, ModBlocks.WARPED_DRAWER, Blocks.WARPED_SLAB, Blocks.WARPED_PLANKS);
 
-        // Tool Racks
-        offerToolRackRecipe(exporter, ModBlocks.OAK_TOOL_RACK, Blocks.OAK_SLAB, Items.IRON_INGOT);
-        offerToolRackRecipe(exporter, ModBlocks.SPRUCE_TOOL_RACK, Blocks.SPRUCE_SLAB, Items.IRON_INGOT);
-        offerToolRackRecipe(exporter, ModBlocks.BIRCH_TOOL_RACK, Blocks.BIRCH_SLAB, Items.IRON_INGOT);
-        offerToolRackRecipe(exporter, ModBlocks.JUNGLE_TOOL_RACK, Blocks.JUNGLE_SLAB, Items.IRON_INGOT);
-        offerToolRackRecipe(exporter, ModBlocks.ACACIA_TOOL_RACK, Blocks.ACACIA_SLAB, Items.IRON_INGOT);
-        offerToolRackRecipe(exporter, ModBlocks.DARK_OAK_TOOL_RACK, Blocks.DARK_OAK_SLAB, Items.IRON_INGOT);
-        offerToolRackRecipe(exporter, ModBlocks.MANGROVE_TOOL_RACK, Blocks.MANGROVE_SLAB, Items.IRON_INGOT);
-        offerToolRackRecipe(exporter, ModBlocks.BAMBOO_TOOL_RACK, Blocks.BAMBOO_SLAB, Items.IRON_INGOT);
-        offerToolRackRecipe(exporter, ModBlocks.CRIMSON_TOOL_RACK, Blocks.CRIMSON_SLAB, Items.IRON_INGOT);
-        offerToolRackRecipe(exporter, ModBlocks.WARPED_TOOL_RACK, Blocks.WARPED_SLAB, Items.IRON_INGOT);
-
-        // Beams
-        offerBeamRecipe(exporter, ModBlocks.OAK_BEAM, Blocks.OAK_LOG);
-        offerBeamRecipe(exporter, ModBlocks.SPRUCE_BEAM, Blocks.SPRUCE_LOG);
-        offerBeamRecipe(exporter, ModBlocks.BIRCH_BEAM, Blocks.BIRCH_LOG);
-        offerBeamRecipe(exporter, ModBlocks.JUNGLE_BEAM, Blocks.JUNGLE_LOG);
-        offerBeamRecipe(exporter, ModBlocks.ACACIA_BEAM, Blocks.ACACIA_LOG);
-        offerBeamRecipe(exporter, ModBlocks.DARK_OAK_BEAM, Blocks.DARK_OAK_LOG);
-        offerBeamRecipe(exporter, ModBlocks.MANGROVE_BEAM, Blocks.MANGROVE_LOG);
-        offerBeamRecipe(exporter, ModBlocks.BAMBOO_BEAM, Blocks.BAMBOO_BLOCK);
-        offerBeamRecipe(exporter, ModBlocks.CRIMSON_BEAM, Blocks.CRIMSON_STEM);
-        offerBeamRecipe(exporter, ModBlocks.WARPED_BEAM, Blocks.WARPED_STEM);
-
         // Wall Mirrors
         offerWallMirrorRecipe(exporter, ModBlocks.OAK_WALL_MIRROR, Blocks.GLASS ,Blocks.OAK_PLANKS);
         offerWallMirrorRecipe(exporter, ModBlocks.SPRUCE_WALL_MIRROR, Blocks.GLASS ,Blocks.SPRUCE_PLANKS);
@@ -317,5 +341,28 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerWallMirrorRecipe(exporter, ModBlocks.BAMBOO_WALL_MIRROR, Blocks.GLASS ,Blocks.BAMBOO_PLANKS);
         offerWallMirrorRecipe(exporter, ModBlocks.CRIMSON_WALL_MIRROR, Blocks.GLASS ,Blocks.CRIMSON_PLANKS);
         offerWallMirrorRecipe(exporter, ModBlocks.WARPED_WALL_MIRROR, Blocks.GLASS ,Blocks.WARPED_PLANKS);
+
+        // Chimneys
+        offerChimneyRecipe(exporter, ModBlocks.STONE_BRICK_CHIMNEY, Blocks.STONE_BRICKS);
+        offerChimneyRecipe(exporter, ModBlocks.MOSSY_STONE_BRICK_CHIMNEY, Blocks.MOSSY_STONE_BRICKS);
+        offerChimneyRecipe(exporter, ModBlocks.GRANITE_CHIMNEY, Blocks.POLISHED_GRANITE);
+        offerChimneyRecipe(exporter, ModBlocks.DIORITE_CHIMNEY, Blocks.POLISHED_DIORITE);
+        offerChimneyRecipe(exporter, ModBlocks.ANDESITE_CHIMNEY, Blocks.POLISHED_ANDESITE);
+        offerChimneyRecipe(exporter, ModBlocks.DEEPSLATE_CHIMNEY, Blocks.POLISHED_DEEPSLATE);
+        offerChimneyRecipe(exporter, ModBlocks.TUFF_CHIMNEY, Blocks.TUFF);
+        offerChimneyRecipe(exporter, ModBlocks.BRICK_CHIMNEY, Blocks.BRICKS);
+        offerChimneyRecipe(exporter, ModBlocks.MUD_CHIMNEY, Blocks.MUD);
+        offerChimneyRecipe(exporter, ModBlocks.SANDSTONE_CHIMNEY, Blocks.SANDSTONE);
+        offerChimneyRecipe(exporter, ModBlocks.RED_SANDSTONE_CHIMNEY, Blocks.RED_SANDSTONE);
+        offerChimneyRecipe(exporter, ModBlocks.PRISMARINE_CHIMNEY, Blocks.PRISMARINE);
+        offerChimneyRecipe(exporter, ModBlocks.NETHER_BRICK_CHIMNEY, Blocks.NETHER_BRICKS);
+        offerChimneyRecipe(exporter, ModBlocks.RED_NETHER_BRICK_CHIMNEY, Blocks.RED_NETHER_BRICKS);
+        offerChimneyRecipe(exporter, ModBlocks.BLACKSTONE_CHIMNEY, Blocks.BLACKSTONE);
+        offerChimneyRecipe(exporter, ModBlocks.ENDSTONE_CHIMNEY, Blocks.END_STONE);
+        offerChimneyRecipe(exporter, ModBlocks.PURPUR_CHIMNEY, Blocks.PURPUR_BLOCK);
+
+//        ComplexRecipeJsonBuilder.create(ArmorDyeRecipe::new).offerTo(exporter, "armor_dye");
+
+        offerTelescopeRecipe(exporter);
     }
 }

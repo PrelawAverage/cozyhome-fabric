@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"ambientocclusion": false,
 	"textures": {
-		"2": "cozyhome:block/desk/oak/oak_drawer_side_middle",
-		"4": "cozyhome:block/desk/oak/oak_drawer_top_middle",
-		"9": "cozyhome:block/desk/oak/oak_drawer_bottom_middle"
+		"top": "cozyhome:block/drawer/oak/oak_drawer_top_middle",
+		"bottom": "cozyhome:block/drawer/oak/oak_drawer_bottom_middle",
+		"back": "cozyhome:block/drawer/oak/oak_drawer_back_middle"
 	},
 	"elements": [
 		{
@@ -12,10 +12,10 @@
 			"to": [16, 16, 16],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
 			"faces": {
-				"north": {"uv": [0, 0, 16, 4], "texture": "#2", "cullface": "north"},
-				"south": {"uv": [16, 0, 0, 4], "texture": "#2", "cullface": "south"},
-				"up": {"uv": [16, 0, 0, 16], "texture": "#4", "cullface": "up"},
-				"down": {"uv": [16, 16, 0, 0], "texture": "#9"}
+				"north": {"uv": [0, 0, 16, 4], "texture": "#back", "cullface": "north"},
+				"south": {"uv": [16, 0, 0, 4], "texture": "#back", "cullface": "south"},
+				"up": {"uv": [16, 0, 0, 16], "texture": "#top", "cullface": "up"},
+				"down": {"uv": [16, 16, 0, 0], "texture": "#bottom"}
 			}
 		},
 		{
@@ -23,9 +23,9 @@
 			"to": [16, 12, 15],
 			"rotation": {"angle": 0, "axis": "y", "origin": [14, 0, 2]},
 			"faces": {
-				"north": {"uv": [0, 4, 16, 12], "texture": "#2"},
-				"south": {"uv": [16, 4, 0, 12], "texture": "#2"},
-				"down": {"uv": [0, 12, 16, 15], "rotation": 180, "texture": "#9"}
+				"north": {"uv": [0, 4, 16, 12], "texture": "#back"},
+				"south": {"uv": [16, 4, 0, 12], "texture": "#back"},
+				"down": {"uv": [0, 12, 16, 15], "rotation": 180, "texture": "#bottom"}
 			}
 		}
 	]

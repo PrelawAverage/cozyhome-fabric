@@ -14,16 +14,15 @@ import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.RotationAxis;
 
 public class ChairItemRenderer implements BuiltinItemRendererRegistry.DynamicItemRenderer {
     private final ModelPart chair;
-    private final ModelPart cushion;
 
     public ChairItemRenderer() {
         this.chair = ChairModel.getTexturedModelData().createModel();
-        this.cushion = CushionModel.getTexturedModelData().createModel();
     }
 
     @Override
@@ -40,14 +39,6 @@ public class ChairItemRenderer implements BuiltinItemRendererRegistry.DynamicIte
         RenderLayer chairRenderLayer = ChairBlockEntityRenderer.getChairRenderLayer(chairType, blockState);
         VertexConsumer chairVertexConsumer = vertexConsumers.getBuffer(chairRenderLayer);
         chair.render(matrices, chairVertexConsumer, light, overlay);
-
-        if (!stack.getOrDefault(ModDataComponents.CUSHION_TYPE, "").isEmpty()) {
-            String type = stack.getOrDefault(ModDataComponents.CUSHION_TYPE, "");
-            RenderLayer cushionRenderLayer = ChairBlockEntityRenderer.getCushionRenderLayer(type);
-            VertexConsumer cushionVertexConsumer = vertexConsumers.getBuffer(cushionRenderLayer);
-            int color = stack.getOrDefault(ModDataComponents.COLOR, 0xFFFFFF);
-            cushion.render(matrices, cushionVertexConsumer, light, overlay, color);
-        }
 
         matrices.pop();
     }

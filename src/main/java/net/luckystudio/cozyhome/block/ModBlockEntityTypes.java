@@ -63,6 +63,22 @@ public class ModBlockEntityTypes {
                     ModBlocks.OMINOUS_CHAIR
             ).build());
 
+    public static final BlockEntityType<SofaBlockEntity> SOFA_BLOCK_ENTITY = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "sofa_block_entity"),
+            BlockEntityType.Builder.create(SofaBlockEntity::new,
+                    ModBlocks.OAK_SOFA,
+                    ModBlocks.SPRUCE_SOFA,
+                    ModBlocks.BIRCH_SOFA,
+                    ModBlocks.JUNGLE_SOFA,
+                    ModBlocks.ACACIA_SOFA,
+                    ModBlocks.DARK_OAK_SOFA,
+                    ModBlocks.MANGROVE_SOFA,
+                    ModBlocks.CHERRY_SOFA,
+                    ModBlocks.BAMBOO_SOFA,
+                    ModBlocks.CRIMSON_SOFA,
+                    ModBlocks.WARPED_SOFA
+            ).build());
+
     public static final BlockEntityType<WallClockBlockEntity> WALL_CLOCK_BLOCK_ENTITY = Registry.register(
             Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "clock_block_entity"),
             BlockEntityType.Builder.create(WallClockBlockEntity::new,
@@ -103,24 +119,27 @@ public class ModBlockEntityTypes {
                     ModBlocks.OMINOUS_GRANDFATHER_CLOCK
             ).build());
 
-    public static final BlockEntityType<ItemRackBlockEntity> ITEM_RACK_BLOCK_ENTITY = Registry.register(
-            Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "item_rack_block_entity"),
-            BlockEntityType.Builder.create(ItemRackBlockEntity::new,
-                    ModBlocks.OAK_TOOL_RACK,
-                    ModBlocks.SPRUCE_TOOL_RACK,
-                    ModBlocks.BIRCH_TOOL_RACK,
-                    ModBlocks.JUNGLE_TOOL_RACK,
-                    ModBlocks.ACACIA_TOOL_RACK,
-                    ModBlocks.DARK_OAK_TOOL_RACK,
-                    ModBlocks.MANGROVE_TOOL_RACK,
-                    ModBlocks.CHERRY_TOOL_RACK,
-                    ModBlocks.BAMBOO_TOOL_RACK,
-                    ModBlocks.CRIMSON_TOOL_RACK,
-                    ModBlocks.WARPED_TOOL_RACK,
-                    ModBlocks.IRON_TOOL_RACK,
-                    ModBlocks.GLASS_TOOL_RACK,
-                    ModBlocks.UNDEAD_TOOL_RACK,
-                    ModBlocks.OMINOUS_TOOL_RACK
+    public static final BlockEntityType<ChimneyBlockEntity> CHIMNEY_BLOCK_ENTITY = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "chimney_block_entity"),
+            BlockEntityType.Builder.create(ChimneyBlockEntity::new,
+                    ModBlocks.STONE_BRICK_CHIMNEY,
+                    ModBlocks.MOSSY_STONE_BRICK_CHIMNEY,
+                    ModBlocks.GRANITE_CHIMNEY,
+                    ModBlocks.DIORITE_CHIMNEY,
+                    ModBlocks.ANDESITE_CHIMNEY,
+                    ModBlocks.DEEPSLATE_CHIMNEY,
+                    ModBlocks.TUFF_CHIMNEY,
+                    ModBlocks.BRICK_CHIMNEY,
+                    ModBlocks.MUD_CHIMNEY,
+                    ModBlocks.SANDSTONE_CHIMNEY,
+                    ModBlocks.RED_SANDSTONE_CHIMNEY,
+                    ModBlocks.PRISMARINE_CHIMNEY,
+                    ModBlocks.NETHER_BRICK_CHIMNEY,
+                    ModBlocks.RED_NETHER_BRICK_CHIMNEY,
+                    ModBlocks.BLACKSTONE_CHIMNEY,
+                    ModBlocks.ENDSTONE_CHIMNEY,
+                    ModBlocks.PURPUR_CHIMNEY
+
             ).build());
 
     public static final BlockEntityType<TelescopeBlockEntity> TELESCOPE_BLOCK_ENTITY = Registry.register(

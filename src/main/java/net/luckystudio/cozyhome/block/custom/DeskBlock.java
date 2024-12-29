@@ -3,7 +3,8 @@ package net.luckystudio.cozyhome.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.util.ModProperties;
-import net.luckystudio.cozyhome.block.util.enums.HorizontalLinearConnectionBlock;
+import net.luckystudio.cozyhome.block.util.enums.AdvancedHorizontalLinearConnectionBlock;
+import net.luckystudio.cozyhome.block.util.interfaces.ConnectingBlock;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -21,10 +22,12 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
-public class DeskBlock extends Block implements Waterloggable {
+import static net.luckystudio.cozyhome.block.util.ModProperties.updateAdvancedHorizontalConnections;
+
+public class DeskBlock extends Block implements Waterloggable, ConnectingBlock {
     public static final MapCodec<DeskBlock> CODEC = createCodec(DeskBlock::new);
 
-    public static final EnumProperty<HorizontalLinearConnectionBlock> HORIZONTAL_CONNECTION = ModProperties.HORIZONTAL_CONNECTION;
+    public static final EnumProperty<AdvancedHorizontalLinearConnectionBlock> HORIZONTAL_CONNECTION = ModProperties.ADVANCED_HORIZONTAL_CONNECTION;
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
@@ -113,7 +116,7 @@ public class DeskBlock extends Block implements Waterloggable {
     public DeskBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState()
-                .with(HORIZONTAL_CONNECTION, HorizontalLinearConnectionBlock.SINGLE)
+                .with(HORIZONTAL_CONNECTION, AdvancedHorizontalLinearConnectionBlock.SINGLE)
                 .with(FACING, Direction.NORTH)
                 .with(WATERLOGGED, Boolean.FALSE));
     }
@@ -130,7 +133,7 @@ public class DeskBlock extends Block implements Waterloggable {
 
     private VoxelShape getShape(BlockState state) {
         Direction direction = state.get(FACING);
-        HorizontalLinearConnectionBlock horz = state.get(HORIZONTAL_CONNECTION);
+        AdvancedHorizontalLinearConnectionBlock horz = state.get(HORIZONTAL_CONNECTION);
         return switch (direction) {
             case NORTH -> switch (horz) {
                 case LEFT -> DESK_NORTH_LEFT_SHAPE;
@@ -162,16 +165,12 @@ public class DeskBlock extends Block implements Waterloggable {
 
     @Override
     public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
-
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
         boolean bl = fluidState.getFluid() == Fluids.WATER;
-        // Start with the block's default state
         BlockState defaultState = this.getDefaultState()
                 .with(FACING, ctx.getHorizontalPlayerFacing()) // Face the player by default
                 .with(WATERLOGGED, bl);
-
-        // Update connections based on neighboring blocks
-        return updateConnections(defaultState, ctx.getWorld(), ctx.getBlockPos());
+        return defaultState;
     }
 
     @Override
@@ -179,96 +178,16 @@ public class DeskBlock extends Block implements Waterloggable {
         if (state.get(WATERLOGGED)) {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
-        if (direction.getAxis().isHorizontal()) {
-            return updateConnections(state, world, pos);
-        }
-        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-    }
-
-    private BlockState updateConnections(BlockState state, WorldAccess world, BlockPos pos) {
-        Direction facing = state.get(FACING);
-        // Determine left and right directions based on the block's facing
-        Direction left = facing.rotateYClockwise();
-        Direction right = facing.rotateYCounterclockwise();
-
-        BlockState stateLeft = world.getBlockState(pos.offset(left));
-        BlockState stateRight = world.getBlockState(pos.offset(right));
-
-        if (state.get(HORIZONTAL_CONNECTION) == HorizontalLinearConnectionBlock.LEFT) {
-            if (sameBlock(stateLeft) && isMiddle(stateLeft)) {
-                    return state;
-            }
-        } else if (state.get(HORIZONTAL_CONNECTION) == HorizontalLinearConnectionBlock.MIDDLE) {
-            if (sameBlock(stateLeft) && sameBlock(stateRight)) {
-                if (isLeft(stateLeft) && isRight(stateRight)) {
-                    return state;
-                }
-            }
-        } else if (state.get(HORIZONTAL_CONNECTION) == HorizontalLinearConnectionBlock.RIGHT) {
-            if (sameBlock(stateRight) && isMiddle(stateRight)) {
-                return state;
-            }
-        }
-        return setConnections(state, world, pos, left, right);
-    }
-
-    private BlockState setConnections(BlockState state, WorldAccess world, BlockPos pos, Direction left, Direction right) {
-        boolean canConnectLeft = canConnect(state, world, pos, left);
-        boolean canConnectRight = canConnect(state, world, pos, right);
-
-        BlockState stateLeft = world.getBlockState(pos.offset(left));
-        BlockState stateRight = world.getBlockState(pos.offset(right));
-
-        HorizontalLinearConnectionBlock connection = HorizontalLinearConnectionBlock.SINGLE;
-
-        if (canConnectLeft && canConnectRight) {
-            if (stateLeft.get(HORIZONTAL_CONNECTION) == HorizontalLinearConnectionBlock.MIDDLE) {
-                connection = HorizontalLinearConnectionBlock.LEFT;
-            } else if (stateRight.get(HORIZONTAL_CONNECTION) == HorizontalLinearConnectionBlock.MIDDLE) {
-                connection = HorizontalLinearConnectionBlock.RIGHT;
-            } else {
-                connection = HorizontalLinearConnectionBlock.MIDDLE;
-            }
-        } else if (canConnectLeft) {
-            connection = HorizontalLinearConnectionBlock.LEFT;
-        } else if (canConnectRight) {
-            connection = HorizontalLinearConnectionBlock.RIGHT;
-        }
-        return state.with(HORIZONTAL_CONNECTION, connection);
-    }
-
-    private boolean canConnect(BlockState state, WorldAccess world, BlockPos pos, Direction direction) {
-        BlockState neighborState = world.getBlockState(pos.offset(direction));
-        BlockState neighborState2 = world.getBlockState(pos.offset(direction,2));
-        // Test if the block next to it is already connected to a block
-        if (sameBlock(neighborState2) && neighborState2.get(FACING) == state.get(FACING) && isMiddle(neighborState2)) return false;
-        return sameBlock(neighborState) && neighborState.get(FACING) == state.get(FACING);
-    }
-
-    private boolean sameBlock(BlockState state) {
-        return state.getBlock() instanceof DrawerBlock || state.getBlock() instanceof DeskBlock;
-    }
-
-    private boolean isLeft(BlockState state) {
-        HorizontalLinearConnectionBlock connectionBlock = state.get(HORIZONTAL_CONNECTION);
-        return connectionBlock == HorizontalLinearConnectionBlock.LEFT || connectionBlock == HorizontalLinearConnectionBlock.LEFT_DIFF;
-    }
-
-    private boolean isRight(BlockState state) {
-        HorizontalLinearConnectionBlock connectionBlock = state.get(HORIZONTAL_CONNECTION);
-        return connectionBlock == HorizontalLinearConnectionBlock.RIGHT || connectionBlock == HorizontalLinearConnectionBlock.RIGHT_DIFF;
-    }
-
-    private boolean isMiddle(BlockState state) {
-        HorizontalLinearConnectionBlock connectionBlock = state.get(HORIZONTAL_CONNECTION);
-        return connectionBlock == HorizontalLinearConnectionBlock.MIDDLE ||
-                connectionBlock == HorizontalLinearConnectionBlock.MIDDLE_DIFF ||
-                connectionBlock == HorizontalLinearConnectionBlock.LEFT_DIFF_LEFT ||
-                connectionBlock == HorizontalLinearConnectionBlock.RIGHT_DIFF_RIGHT;
+        return state.with(HORIZONTAL_CONNECTION, updateAdvancedHorizontalConnections(state, world, pos));
     }
 
     @Override
     protected FluidState getFluidState(BlockState state) {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
+    @Override
+    public boolean isMatchingBlock(BlockState targetState) {
+        return targetState.getBlock() instanceof DrawerBlock || targetState.getBlock() instanceof DeskBlock;
     }
 }

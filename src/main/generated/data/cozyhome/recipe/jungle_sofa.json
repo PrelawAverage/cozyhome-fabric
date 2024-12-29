@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:jungle_slab"
+    },
+    "@": {
+      "item": "minecraft:white_wool"
+    }
+  },
+  "pattern": [
+    "@@",
+    "@@",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyhome:jungle_sofa"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/chimney/template_chimney_middle",
+  "textures": {
+    "particle": "cozyhome:block/chimney/deepslate_chimney_top",
+    "side": "cozyhome:block/chimney/deepslate_chimney_middle"
+  }
+}

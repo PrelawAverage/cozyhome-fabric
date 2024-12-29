@@ -1,0 +1,9 @@
+{
+  "parent": "cozyhome:block/chimney/template_chimney_top",
+  "textures": {
+    "bottom": "cozyhome:block/chimney/granite_chimney_bottom",
+    "particle": "cozyhome:block/chimney/granite_chimney_top",
+    "side": "cozyhome:block/chimney/granite_chimney_side",
+    "top": "cozyhome:block/chimney/granite_chimney_top"
+  }
+}

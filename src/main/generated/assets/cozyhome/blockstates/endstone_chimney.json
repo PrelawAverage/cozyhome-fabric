@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "vertical_connection=head": {
+      "model": "cozyhome:block/endstone_chimney_top"
+    },
+    "vertical_connection=middle": {
+      "model": "cozyhome:block/endstone_chimney_side"
+    },
+    "vertical_connection=single": {
+      "model": "cozyhome:block/endstone_chimney"
+    },
+    "vertical_connection=tail": {
+      "model": "cozyhome:block/endstone_chimney_bottom"
+    }
+  }
+}

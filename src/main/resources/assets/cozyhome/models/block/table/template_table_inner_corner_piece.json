@@ -1,0 +1,33 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [128, 128],
+	"textures": {
+		"all": "cozyhome:block/table/oak_table"
+	},
+	"elements": [
+		{
+			"name": "top",
+			"from": [8, 12, 8],
+			"to": [16, 16, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 15, 8]},
+			"faces": {
+				"up": {"uv": [9, 1, 10, 2], "texture": "#all", "cullface": "up"},
+				"down": {"uv": [9, 1, 10, 2], "rotation": 270, "texture": "#all"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "top",
+			"origin": [8, 15, 8],
+			"color": 0,
+			"children": [0]
+		},
+		{
+			"name": "legs",
+			"origin": [8, 0, 8],
+			"color": 0,
+			"children": []
+		}
+	]
+}

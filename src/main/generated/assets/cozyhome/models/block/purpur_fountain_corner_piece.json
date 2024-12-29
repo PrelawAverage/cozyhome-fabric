@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/fountain/template_fountain_corner_piece",
+  "textures": {
+    "all": "cozyhome:block/fountain/purpur_fountain",
+    "particle": "minecraft:block/purpur_block"
+  }
+}

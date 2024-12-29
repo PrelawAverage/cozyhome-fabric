@@ -1,0 +1,281 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain"
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_double"
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "true",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_double",
+        "y": 90
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_double",
+        "y": 180
+      },
+      "when": {
+        "east": "false",
+        "north": "true",
+        "south": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_double",
+        "y": 270
+      },
+      "when": {
+        "east": "true",
+        "north": "false",
+        "south": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_middle"
+      },
+      "when": {
+        "east": "true",
+        "north": "false",
+        "south": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_middle",
+        "y": 90
+      },
+      "when": {
+        "east": "false",
+        "north": "true",
+        "south": "true",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_inner_corner_piece"
+      },
+      "when": {
+        "south_east": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_inner_corner_piece",
+        "y": 90
+      },
+      "when": {
+        "south_west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_inner_corner_piece",
+        "y": 180
+      },
+      "when": {
+        "north_west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_inner_corner_piece",
+        "y": 270
+      },
+      "when": {
+        "north_east": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_corner_piece"
+      },
+      "when": {
+        "east": "true",
+        "south": "true",
+        "south_east": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_corner_piece",
+        "y": 90
+      },
+      "when": {
+        "south": "true",
+        "south_west": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_corner_piece",
+        "y": 180
+      },
+      "when": {
+        "north": "true",
+        "north_west": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_corner_piece",
+        "y": 270
+      },
+      "when": {
+        "east": "true",
+        "north": "true",
+        "north_east": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_corner"
+      },
+      "when": {
+        "east": "true",
+        "north": "false",
+        "south": "true",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_corner",
+        "y": 90
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "true",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_corner",
+        "y": 180
+      },
+      "when": {
+        "east": "false",
+        "north": "true",
+        "south": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_corner",
+        "y": 270
+      },
+      "when": {
+        "east": "true",
+        "north": "true",
+        "south": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_side"
+      },
+      "when": {
+        "east": "true",
+        "north": "false",
+        "south": "true",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_side",
+        "y": 90
+      },
+      "when": {
+        "east": "false",
+        "north": "true",
+        "south": "true",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_side",
+        "y": 180
+      },
+      "when": {
+        "east": "true",
+        "north": "true",
+        "south": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/mossy_stone_brick_fountain_side",
+        "y": 270
+      },
+      "when": {
+        "east": "true",
+        "north": "true",
+        "south": "true",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/inset_water_pane"
+      },
+      "when": {
+        "contains": "water"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/inset_lava_pane"
+      },
+      "when": {
+        "contains": "lava"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/inset_ice_pane"
+      },
+      "when": {
+        "contains": "ice"
+      }
+    }
+  ]
+}

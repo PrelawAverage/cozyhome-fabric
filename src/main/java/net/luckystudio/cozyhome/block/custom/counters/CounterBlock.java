@@ -1,8 +1,6 @@
 package net.luckystudio.cozyhome.block.custom.counters;
 
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.luckystudio.cozyhome.block.custom.DeskBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.StairShape;
 import net.minecraft.item.ItemPlacementContext;
@@ -17,7 +15,6 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
-
 
 public class CounterBlock extends Block {
     public static final MapCodec<CounterBlock> CODEC = createCodec(CounterBlock::new);

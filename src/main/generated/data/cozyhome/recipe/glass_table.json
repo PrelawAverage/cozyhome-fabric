@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:glass_pane"
+    },
+    "@": {
+      "item": "minecraft:glass"
+    }
+  },
+  "pattern": [
+    "###",
+    "@ @",
+    "@ @"
+  ],
+  "result": {
+    "count": 4,
+    "id": "cozyhome:glass_table"
+  }
+}

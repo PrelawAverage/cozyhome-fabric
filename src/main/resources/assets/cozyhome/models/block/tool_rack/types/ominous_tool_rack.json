@@ -1,7 +1,0 @@
-{
-	"parent": "cozyhome:block/tool_rack/template_tool_rack",
-	"textures": {
-		"0": "cozyhome:block/tool_rack/ominous_tool_rack",
-		"particle": "minecraft:block/trial_spawner_side_inactive"
-	}
-}

@@ -22,7 +22,7 @@ public interface TuckableBlock {
 
     // This is where we try and tuck the block in.
     static ItemActionResult tryTuck(BlockState state, World world, BlockPos pos, PlayerEntity player) {
-        if (isFacingDirection(state,world,pos)) {
+        if (isFacingDirection(state)) {
             if (state.get(TUCKED)) {
                 world.setBlockState(pos, state.with(TUCKED, false), 3);
                 playMoveSound(player, world, pos, state);
@@ -73,7 +73,7 @@ public interface TuckableBlock {
         return RotationPropertyHelper.toDirection(rotation).orElse(null);
     }
 
-    static boolean isFacingDirection(BlockState state, World world, BlockPos pos) {
+    static boolean isFacingDirection(BlockState state) {
         int rotation = state.get(Properties.ROTATION);
         return RotationPropertyHelper.toDirection(rotation).isPresent();
     }

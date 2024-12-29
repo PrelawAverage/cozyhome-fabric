@@ -13,12 +13,14 @@ import java.util.Set;
 public class ModEntityModelLayers {
 
     private static final String MAIN = "main";
-    private static final Set<EntityModelLayer> LAYERS = Sets.<EntityModelLayer>newHashSet();
+    private static final Set<EntityModelLayer> LAYERS = Sets.newHashSet();
 
     public static final EntityModelLayer SEAT = registerMain("seat");
     public static final EntityModelLayer TELESCOPE = registerMain("telescope");
+    public static final EntityModelLayer SOFA = registerMain("sofa");
     public static final EntityModelLayer CHAIR = registerMain("chair");
     public static final EntityModelLayer CUSHION = registerMain("cushion");
+    public static final EntityModelLayer SOFA_CUSHION = registerMain("sofa_cushion");
     public static final EntityModelLayer GRANDFATHER_CLOCK = registerMain("grandfather_clock");
     public static final EntityModelLayer WALL_CLOCK = registerMain("wall_clock");
 

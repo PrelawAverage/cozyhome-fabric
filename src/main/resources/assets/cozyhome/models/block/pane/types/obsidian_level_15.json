@@ -1,7 +1,0 @@
-{
-  "parent": "cozyhome:block/pane/template_level_15",
-  "textures": {
-    "0": "block/obsidian",
-    "particle": "block/obsidian"
-  }
-}

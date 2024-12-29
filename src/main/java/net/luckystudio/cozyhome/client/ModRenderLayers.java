@@ -6,8 +6,10 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
+import net.luckystudio.cozyhome.item.ModItems;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.component.type.DyedColorComponent;
 
 @Environment(EnvType.CLIENT)
 public class ModRenderLayers {
@@ -48,6 +50,20 @@ public class ModRenderLayers {
                 ModBlocks.WARPED_COUNTER,
                 ModBlocks.WARPED_SINK_COUNTER,
                 ModBlocks.WARPED_STORAGE_COUNTER,
+                // Tables
+                ModBlocks.OAK_TABLE,
+                ModBlocks.SPRUCE_TABLE,
+                ModBlocks.BIRCH_TABLE,
+                ModBlocks.JUNGLE_TABLE,
+                ModBlocks.ACACIA_TABLE,
+                ModBlocks.DARK_OAK_TABLE,
+                ModBlocks.MANGROVE_TABLE,
+                ModBlocks.CHERRY_TABLE,
+                ModBlocks.BAMBOO_TABLE,
+                ModBlocks.CRIMSON_TABLE,
+                ModBlocks.WARPED_TABLE,
+                ModBlocks.IRON_TABLE,
+                ModBlocks.GLASS_TABLE,
                 // Wall Mirrors
                 ModBlocks.OAK_WALL_MIRROR,
                 ModBlocks.SPRUCE_WALL_MIRROR,
@@ -90,53 +106,11 @@ public class ModRenderLayers {
                 ModBlocks.BLACKSTONE_FOUNTAIN,
                 ModBlocks.ENDSTONE_FOUNTAIN,
                 ModBlocks.PURPUR_FOUNTAIN,
-                // Beams
-                ModBlocks.OAK_BEAM,
-                ModBlocks.SPRUCE_BEAM,
-                ModBlocks.BIRCH_BEAM,
-                ModBlocks.JUNGLE_BEAM,
-                ModBlocks.ACACIA_BEAM,
-                ModBlocks.DARK_OAK_BEAM,
-                ModBlocks.MANGROVE_BEAM,
-                ModBlocks.CHERRY_BEAM,
-                ModBlocks.BAMBOO_BEAM,
-                ModBlocks.CRIMSON_BEAM,
-                ModBlocks.WARPED_BEAM,
-                ModBlocks.STRIPPED_OAK_BEAM,
-                ModBlocks.STRIPPED_SPRUCE_BEAM,
-                ModBlocks.STRIPPED_BIRCH_BEAM,
-                ModBlocks.STRIPPED_JUNGLE_BEAM,
-                ModBlocks.STRIPPED_ACACIA_BEAM,
-                ModBlocks.STRIPPED_DARK_OAK_BEAM,
-                ModBlocks.STRIPPED_MANGROVE_BEAM,
-                ModBlocks.STRIPPED_CHERRY_BEAM,
-                ModBlocks.STRIPPED_BAMBOO_BEAM,
-                ModBlocks.STRIPPED_CRIMSON_BEAM,
-                ModBlocks.STRIPPED_WARPED_BEAM,
-                // Tables
-                ModBlocks.OAK_TABLE,
-                ModBlocks.SPRUCE_TABLE,
-                ModBlocks.BIRCH_TABLE,
-                ModBlocks.JUNGLE_TABLE,
-                ModBlocks.ACACIA_TABLE,
-                ModBlocks.DARK_OAK_TABLE,
-                ModBlocks.MANGROVE_TABLE,
-                ModBlocks.CHERRY_TABLE,
-                ModBlocks.BAMBOO_TABLE,
-                ModBlocks.CRIMSON_TABLE,
-                ModBlocks.WARPED_TABLE,
-                ModBlocks.IRON_TABLE,
-                ModBlocks.GLASS_TABLE,
-                // Glass
-                ModBlocks.GOLD_FRAMED_GLASS,
-                ModBlocks.GOLD_FRAMED_GLASS_PANE,
                 // Misc
                 ModBlocks.TELESCOPE
         );
 
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
-                ModBlocks.AUTUMN_STAINED_GLASS,
-                ModBlocks.AUTUMN_STAINED_GLASS_PANE
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent()
         );
     }
 
@@ -197,11 +171,7 @@ public class ModRenderLayers {
                 ModBlocks.FALLING_LIQUID
         );
 
-//        // Renders the colors on the Items
-//        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ModColorHandler.getItemColor(stack),
-//                ModBlocks.OAK_LAMP.asItem(),
-//                ModBlocks.SPRUCE_LAMP.asItem()
-//        );
+        ColorProviderRegistry.ITEM.register(((stack, tintIndex) -> DyedColorComponent.getColor(stack, -17170434)), ModItems.CUSHION);
     }
 }
 

@@ -1,7 +1,0 @@
-{
-	"parent": "cozyhome:block/table/template_shelf_table_double",
-	"textures": {
-		"0": "cozyhome:block/table/glass_table",
-		"particle": "cozyhome:block/break/glass_furniture"
-	}
-}

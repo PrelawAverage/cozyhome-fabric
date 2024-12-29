@@ -1,7 +1,0 @@
-{
-  "parent": "cozyhome:block/fountain/template_fountain_middle",
-  "textures": {
-    "0": "cozyhome:block/fountain/granite_fountain",
-    "particle": "cozyhome:block/fountain/granite_fountain"
-  }
-}

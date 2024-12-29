@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "vertical_connection=head": {
+      "model": "cozyhome:block/andesite_chimney_top"
+    },
+    "vertical_connection=middle": {
+      "model": "cozyhome:block/andesite_chimney_side"
+    },
+    "vertical_connection=single": {
+      "model": "cozyhome:block/andesite_chimney"
+    },
+    "vertical_connection=tail": {
+      "model": "cozyhome:block/andesite_chimney_bottom"
+    }
+  }
+}

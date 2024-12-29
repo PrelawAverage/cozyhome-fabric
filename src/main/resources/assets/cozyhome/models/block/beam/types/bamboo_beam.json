@@ -1,8 +1,0 @@
-{
-  "parent": "cozyhome:block/beam/template_beam",
-  "textures": {
-    "0": "cozyhome:block/beam/bamboo_beam",
-    "1": "cozyhome:block/beam/bamboo_beam_overlay",
-    "particle": "block/bamboo_block"
-  }
-}

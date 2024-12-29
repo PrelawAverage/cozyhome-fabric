@@ -1,0 +1,9 @@
+{
+  "parent": "cozyhome:block/chimney/template_chimney",
+  "textures": {
+    "bottom": "cozyhome:block/chimney/endstone_chimney_intake_bottom",
+    "particle": "cozyhome:block/chimney/endstone_chimney_top",
+    "side": "cozyhome:block/chimney/endstone_chimney_single",
+    "top": "cozyhome:block/chimney/endstone_chimney_top"
+  }
+}
