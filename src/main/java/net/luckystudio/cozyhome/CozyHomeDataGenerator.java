@@ -9,7 +9,7 @@ public class CozyHomeDataGenerator implements DataGeneratorEntrypoint {
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		FabricDataGenerator.Pack PACK = fabricDataGenerator.createPack();
 
-		PACK.addProvider(MobBlockTagProvider::new);
+		PACK.addProvider(ModBlockTagProvider::new);
 		PACK.addProvider(ModItemTagProvider::new);
 		PACK.addProvider(ModLootTableProvider::new);
 		PACK.addProvider(ModModelProvider::new);

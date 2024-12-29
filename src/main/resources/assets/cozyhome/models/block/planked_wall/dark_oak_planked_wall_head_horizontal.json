@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column_horizontal",
-  "textures": {
-    "end": "cozyhome:block/planked_wall/dark_oak_planked_wall_vertical",
-    "side": "cozyhome:block/planked_wall/dark_oak_planked_wall_head"
-  }
-}

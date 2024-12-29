@@ -6,6 +6,7 @@ public enum HasUnderBlock implements StringIdentifiable {
     NONE("none"),
     FLAT("flat"),
     LOWERED("lowered"),
+    FALLING("falling"),
     DEEP("deep");
 
     private final String name;

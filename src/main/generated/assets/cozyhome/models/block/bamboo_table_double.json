@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/table/template_table_double",
+  "textures": {
+    "all": "cozyhome:block/table/bamboo_table",
+    "particle": "minecraft:block/bamboo_planks"
+  }
+}

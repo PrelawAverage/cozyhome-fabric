@@ -12,29 +12,25 @@ import net.luckystudio.cozyhome.components.ModDataComponents;
 import net.luckystudio.cozyhome.item.ModItems;
 import net.luckystudio.cozyhome.item.custom.CushionItem;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ItemActionResult;
-import net.minecraft.util.StringIdentifiable;
+import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
+import net.minecraft.world.event.GameEvent;
 
 import java.util.List;
 import java.util.Map;
@@ -63,13 +59,11 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock {
             Block.createCuboidShape(2, 10, 2, 4, 24, 14));
     private final ChairType type;
     private static final Formatting TITLE_FORMATTING = Formatting.GRAY;
-    public int color;
 
     public ChairBlock(ChairType chairType, Settings settings) {
         super(settings);
         this.getDefaultState().with(TUCKED, false);
         this.type = chairType;
-        this.color = 0xFFFFFF;
     }
 
 
@@ -109,94 +103,89 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock {
 
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        // Check if the BlockEntity at the position is a ChairBlockEntity
-        BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof ChairBlockEntity chairBlockEntity) {
-            // Handle interactions with items
+        // Check if the block at the given position has an ItemRackBlockEntity associated with it.
+        if (world.getBlockEntity(pos) instanceof ChairBlockEntity chairBlockEntity) {
+            // Get the item stack that is currently stored in the block
+            ItemStack storedItem = chairBlockEntity.getStack();
+
+            // Check if the item in hand is a valid tool or weapon.
             if (stack.getItem() instanceof CushionItem) {
-                return handleCushionItem(stack, chairBlockEntity, state, world, pos, player);
-            } else if (stack.getItem() == Items.SHEARS) {
-                return handleShearsItem(stack, chairBlockEntity, state, world, pos, player);
-            } else if (stack.getItem() instanceof DyeItem dyeItem) {
-                return handleDyeItem(stack, chairBlockEntity, dyeItem, state, world, pos, player);
+                // If the stack is not empty, and the rack is either empty or can accept the item (same type and enough space),
+                // proceed to insert the item into the block.
+                if (!stack.isEmpty() && (storedItem.isEmpty())) {
+
+                    // Increment the player's use stat for the item in their hand.
+                    player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
+
+                    // Split the stack unless the player is in creative mode (in which case the item won't be removed).
+                    ItemStack itemStack2 = stack.splitUnlessCreative(1, player);
+
+                    // If the block was empty, store the item directly.
+                    if (chairBlockEntity.isEmpty()) {
+                        chairBlockEntity.setStack(itemStack2);
+                    }
+
+                    if (chairBlockEntity.getStack() == ModItems.HAY_CUSHION.getDefaultStack()) {
+                        world.playSound(player, pos, SoundEvents.BLOCK_GRASS_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    } else {
+                        world.playSound(player, pos, SoundEvents.BLOCK_WOOL_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    }
+
+                    // Mark the block entity as dirty, indicating it has changed.
+                    chairBlockEntity.markDirty();
+
+                    // Notify the world that the block state has changed and trigger the block update.
+                    world.updateListeners(pos, state, state, Block.NOTIFY_ALL);
+
+                    // Emit a game event to notify of the block's state change
+                    world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+
+                    // Return a successful result to stop further interaction processing.
+                    return ItemActionResult.SUCCESS;
+                }
+            } else if (!chairBlockEntity.isEmpty() && stack.getItem() == Items.SHEARS) {
+                // Get the item stack currently in the block
+                ItemStack storedStack = chairBlockEntity.getStack();
+
+                // Try to give the player the item from the block
+                ItemStack itemToGive = storedStack.copy();  // Create a copy of the stored item
+
+                // If the player can hold the item (inventory space check)
+                if (player.getInventory().insertStack(itemToGive)) {
+                    // Remove the item from the block (decrement the stack)
+                    storedStack.decrement(1);  // Decrease the count of the item in the block
+
+                    // If the block is now empty, clear the item rack
+                    if (storedStack.isEmpty()) {
+                        chairBlockEntity.setStack(ItemStack.EMPTY);
+                    }
+
+                    world.playSound(player, pos, SoundEvents.ENTITY_SHEEP_SHEAR, SoundCategory.BLOCKS, 1.0F, 1.0F);
+
+                    // Mark the block entity as dirty to save the changes
+                    chairBlockEntity.markDirty();
+
+                    // Notify the world about the block's state change
+                    world.updateListeners(pos, state, state, Block.NOTIFY_ALL);
+
+                    // Emit a game event to notify of the block's state change
+                    world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+
+                    // Return a success result
+                    return ItemActionResult.SUCCESS;
+                }
+            } else if (player.isSneaking()) {
+                // Call tuckable logic or fallback to super
+                TuckableBlock.tryTuck(state, world, pos, player);
+                return ItemActionResult.SUCCESS;
+            } else {
+                return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
             }
-
-            // Call tuckable logic or fallback to super
-            TuckableBlock.tryTuck(state, world, pos, player);
-        } else {
-            // Log unexpected block entities to debug the issue
-            System.out.println("Unexpected BlockEntity at position " + pos + ": " + blockEntity);
+            // If no valid interaction was made, let the game handle default block interactions.
+            return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
-        return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
-    }
-
-
-
-    private ItemActionResult handleCushionItem(ItemStack stack, ChairBlockEntity chairBlockEntity, BlockState state, World world, BlockPos pos, PlayerEntity player) {
-        if (chairBlockEntity.cushion_type.isEmpty()) {
-            chairBlockEntity.color = stack.getOrDefault(ModDataComponents.COLOR, 0xFFFFFF);
-            stack.decrementUnlessCreative(1, player);
-            chairBlockEntity.cushion_type = getCushionType(stack.getItem());
-            updateChairBlockEntity(world, pos, chairBlockEntity, state);
-            world.playSound(player, pos, SoundEvents.BLOCK_WOOL_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            player.sendMessage(Text.translatable("message.cozyhome.remove_with_shear"), true);
-            return ItemActionResult.SUCCESS;
-        }
-        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-    }
-
-    public String getCushionType(Item item) {
-        if (item == ModItems.CUSHION) {
-            return "generic";
-        } else if (item == ModItems.HAY_CUSHION) {
-            return "hay";
-        } else if (item == ModItems.TRADER_CUSHION) {
-            return "trader";
-        } else {
-            return "";
-        }
-    }
-
-    private ItemActionResult handleShearsItem(ItemStack stack, ChairBlockEntity chairBlockEntity, BlockState state, World world, BlockPos pos, PlayerEntity player) {
-        if (!chairBlockEntity.cushion_type.isEmpty()) {
-            stack.damage(1, player, EquipmentSlot.MAINHAND);
-            ItemStack cushionStack = new ItemStack(getCushionItem(chairBlockEntity.cushion_type));
-
-            spawnItemEntity(world, pos, cushionStack);
-            world.playSound(player, pos, SoundEvents.ENTITY_SHEEP_SHEAR, SoundCategory.BLOCKS, 1.0F, 1.0F);
-
-            chairBlockEntity.cushion_type = "";
-            chairBlockEntity.color = 0xFFFFFF;
-            updateChairBlockEntity(world, pos, chairBlockEntity, state);
-
-            return ItemActionResult.SUCCESS;
-        }
-        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-    }
-
-    public Item getCushionItem(String type) {
-        return switch (type) {
-            case "hay" -> ModItems.HAY_CUSHION;
-            case "trader" -> ModItems.TRADER_CUSHION;
-            default -> ModItems.CUSHION;
-        };
-    }
-
-    private ItemActionResult handleDyeItem(ItemStack stack, ChairBlockEntity chairBlockEntity, DyeItem dyeItem, BlockState state, World world, BlockPos pos, PlayerEntity player) {
-        int newColor = dyeItem.getColor().getEntityColor();
-        chairBlockEntity.color = ColorHelper.Argb.averageArgb(newColor, chairBlockEntity.color);
-        stack.decrementUnlessCreative(1, player);
-        updateChairBlockEntity(world, pos, chairBlockEntity, state);
-        return ItemActionResult.SUCCESS;
-    }
-
-    private void updateChairBlockEntity(World world, BlockPos pos, ChairBlockEntity chairBlockEntity, BlockState state) {
-        chairBlockEntity.markDirty();
-        world.updateListeners(pos, state, state, 3);
-    }
-
-    private void spawnItemEntity(World world, BlockPos pos, ItemStack itemStack) {
-        world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.75, pos.getZ() + 0.5, itemStack));
+            // If the block at the given position doesn't have a block entity (ItemRackBlockEntity), skip default interaction.
+            return ItemActionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
     }
 
     public enum Type implements ChairType {
@@ -255,5 +244,26 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock {
                 tooltip.add(ScreenTexts.space().append(Text.translatable("item.cozyhome.cushion").formatted(TITLE_FORMATTING)));
             }
         }
+    }
+
+    @Override
+    public void onBroken(WorldAccess world, BlockPos pos, BlockState state) {
+        if ((world.getBlockEntity(pos) instanceof ChairBlockEntity chairBlockEntity)) {
+            if (!chairBlockEntity.isEmpty()) {
+                if (chairBlockEntity.getStack() == ModItems.HAY_CUSHION.getDefaultStack()) {
+                    world.playSound(null, pos, SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                } else {
+                    world.playSound(null, pos, SoundEvents.BLOCK_WOOL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                }
+            }
+        }
+        super.onBroken(world, pos, state);
+    }
+
+    // Causes the contents of the block to drop when block is broken.
+    @Override
+    protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        ItemScatterer.onStateReplaced(state, newState, world, pos);
+        super.onStateReplaced(state, world, pos, newState, moved);
     }
 }

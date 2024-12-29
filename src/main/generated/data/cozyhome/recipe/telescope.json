@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:spyglass"
+    },
+    "@": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "pattern": [
+    " # ",
+    " @ ",
+    "@ @"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyhome:telescope"
+  }
+}

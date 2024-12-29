@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:jungle_slab"
+    },
+    "@": {
+      "item": "minecraft:jungle_planks"
+    }
+  },
+  "pattern": [
+    "###",
+    "@ @",
+    "@ @"
+  ],
+  "result": {
+    "count": 4,
+    "id": "cozyhome:jungle_table"
+  }
+}

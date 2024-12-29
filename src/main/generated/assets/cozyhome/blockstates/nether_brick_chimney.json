@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "vertical_connection=head": {
+      "model": "cozyhome:block/nether_brick_chimney_top"
+    },
+    "vertical_connection=middle": {
+      "model": "cozyhome:block/nether_brick_chimney_side"
+    },
+    "vertical_connection=single": {
+      "model": "cozyhome:block/nether_brick_chimney"
+    },
+    "vertical_connection=tail": {
+      "model": "cozyhome:block/nether_brick_chimney_bottom"
+    }
+  }
+}

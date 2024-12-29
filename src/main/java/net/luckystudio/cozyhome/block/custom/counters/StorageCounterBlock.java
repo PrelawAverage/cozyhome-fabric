@@ -1,7 +1,6 @@
 package net.luckystudio.cozyhome.block.custom.counters;
 
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.luckystudio.cozyhome.block.entity.StorageCounterBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -27,7 +26,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class StorageCounterBlock extends BlockWithEntity implements BlockEntityProvider{
+public class StorageCounterBlock extends BlockWithEntity implements BlockEntityProvider {
     public static final MapCodec<StorageCounterBlock> CODEC = createCodec(StorageCounterBlock::new);
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final BooleanProperty OPEN = Properties.OPEN;

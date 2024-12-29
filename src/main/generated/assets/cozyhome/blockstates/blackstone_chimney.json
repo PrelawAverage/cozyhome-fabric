@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "vertical_connection=head": {
+      "model": "cozyhome:block/blackstone_chimney_top"
+    },
+    "vertical_connection=middle": {
+      "model": "cozyhome:block/blackstone_chimney_side"
+    },
+    "vertical_connection=single": {
+      "model": "cozyhome:block/blackstone_chimney"
+    },
+    "vertical_connection=tail": {
+      "model": "cozyhome:block/blackstone_chimney_bottom"
+    }
+  }
+}

@@ -8,6 +8,8 @@ import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
 import net.luckystudio.cozyhome.block.util.enums.OminousBlock;
 import net.luckystudio.cozyhome.client.ModEntityModelLayers;
 import net.luckystudio.cozyhome.block.util.ModProperties;
+import net.luckystudio.cozyhome.components.ModDataComponents;
+import net.luckystudio.cozyhome.item.ModItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.RenderLayer;
@@ -16,6 +18,8 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.component.type.DyedColorComponent;
+import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.RotationAxis;
@@ -44,10 +48,10 @@ public class ChairBlockEntityRenderer implements BlockEntityRenderer<ChairBlockE
         map.put(ChairBlock.Type.OMINOUS, Identifier.of(CozyHome.MOD_ID,"textures/block/chair/ominous_chair_inactive.png"));
     });
 
-    private static final Map<String, Identifier> CUSHION_TEXTURES = Util.make(Maps.newHashMap(), map -> {
-        map.put("generic", Identifier.of(CozyHome.MOD_ID,"textures/block/cushion/cushion.png"));
-        map.put("hay", Identifier.of(CozyHome.MOD_ID,"textures/block/cushion/hay_cushion.png"));
-        map.put("trader", Identifier.of(CozyHome.MOD_ID,"textures/block/cushion/trader_cushion.png"));
+    private static final Map<Item, Identifier> CUSHION_TEXTURES = Util.make(Maps.newHashMap(), map -> {
+        map.put(ModItems.CUSHION, Identifier.of(CozyHome.MOD_ID,"textures/block/cushion/cushion.png"));
+        map.put(ModItems.HAY_CUSHION, Identifier.of(CozyHome.MOD_ID,"textures/block/cushion/hay_cushion.png"));
+        map.put(ModItems.TRADER_CUSHION, Identifier.of(CozyHome.MOD_ID,"textures/block/cushion/trader_cushion.png"));
     });
 
     // How far does this block render.
@@ -65,7 +69,6 @@ public class ChairBlockEntityRenderer implements BlockEntityRenderer<ChairBlockE
     @Override
     public void render(ChairBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         matrices.push();
-
         // Update position based on the `tucked` state of this chair
         handleSlide(entity, tickDelta);
         if (canTuck(entity)) {
@@ -83,11 +86,11 @@ public class ChairBlockEntityRenderer implements BlockEntityRenderer<ChairBlockE
         VertexConsumer chairVertexConsumer = vertexConsumers.getBuffer(chairRenderLayer);
         chair.render(matrices, chairVertexConsumer, light, overlay);
 
-        if (!entity.cushion_type.isEmpty()) {
-            String type = entity.cushion_type;
-            RenderLayer cushionRenderLayer = getCushionRenderLayer(type);
+        if (!entity.isEmpty()) {
+            Item item = entity.getStack().getItem();
+            int color = DyedColorComponent.getColor(entity.getStack(), -17170434);
+            RenderLayer cushionRenderLayer = getCushionRenderLayer(item);
             VertexConsumer cushionVertexConsumer = vertexConsumers.getBuffer(cushionRenderLayer);
-            int color = entity.color;
             cushion.render(matrices, cushionVertexConsumer, light, overlay, color);
         }
 
@@ -144,8 +147,8 @@ public class ChairBlockEntityRenderer implements BlockEntityRenderer<ChairBlockE
         return RenderLayer.getEntityCutoutNoCullZOffset(identifier);
     }
 
-    public static RenderLayer getCushionRenderLayer(String type) {
-        Identifier identifier = CUSHION_TEXTURES.get(type);
+    public static RenderLayer getCushionRenderLayer(Item item) {
+        Identifier identifier = CUSHION_TEXTURES.get(item);
         return RenderLayer.getEntityCutoutNoCullZOffset(identifier);
     }
 }

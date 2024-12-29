@@ -85,97 +85,97 @@ public class StoolBlock extends AbstractSeatBlock implements TuckableBlock {
                 .with(TUCKED, false);
     }
 
-    @Override
-    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        // Check if the BlockEntity at the position is a ChairBlockEntity
-        BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof ChairBlockEntity chairBlockEntity) {
-            // Handle interactions with items
-            if (stack.getItem() instanceof CushionItem) {
-                return handleCushionItem(stack, chairBlockEntity, state, world, pos, player);
-            } else if (stack.getItem() == Items.SHEARS) {
-                return handleShearsItem(stack, chairBlockEntity, state, world, pos, player);
-            } else if (stack.getItem() instanceof DyeItem dyeItem) {
-                return handleDyeItem(stack, chairBlockEntity, dyeItem, state, world, pos, player);
-            }
-
-            // Call tuckable logic or fallback to super
-            TuckableBlock.tryTuck(state, world, pos, player);
-        } else {
-            // Log unexpected block entities to debug the issue
-            System.out.println("Unexpected BlockEntity at position " + pos + ": " + blockEntity);
-        }
-        return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
-    }
-
-
-
-    private ItemActionResult handleCushionItem(ItemStack stack, ChairBlockEntity chairBlockEntity, BlockState state, World world, BlockPos pos, PlayerEntity player) {
-        if (chairBlockEntity.cushion_type.isEmpty()) {
-            chairBlockEntity.color = stack.getOrDefault(ModDataComponents.COLOR, 0xFFFFFF);
-            stack.decrementUnlessCreative(1, player);
-            chairBlockEntity.cushion_type = getCushionType(stack.getItem());
-            updateChairBlockEntity(world, pos, chairBlockEntity, state);
-            world.playSound(player, pos, SoundEvents.BLOCK_WOOL_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            player.sendMessage(Text.translatable("message.cozyhome.remove_with_shear"), true);
-            return ItemActionResult.SUCCESS;
-        }
-        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-    }
-
-    public String getCushionType(Item item) {
-        if (item == ModItems.CUSHION) {
-            return "generic";
-        } else if (item == ModItems.HAY_CUSHION) {
-            return "hay";
-        } else if (item == ModItems.TRADER_CUSHION) {
-            return "trader";
-        } else {
-            return "";
-        }
-    }
-
-    private ItemActionResult handleShearsItem(ItemStack stack, ChairBlockEntity chairBlockEntity, BlockState state, World world, BlockPos pos, PlayerEntity player) {
-        if (!chairBlockEntity.cushion_type.isEmpty()) {
-            stack.damage(1, player, EquipmentSlot.MAINHAND);
-            ItemStack cushionStack = new ItemStack(getCushionItem(chairBlockEntity.cushion_type));
-
-            spawnItemEntity(world, pos, cushionStack);
-            world.playSound(player, pos, SoundEvents.ENTITY_SHEEP_SHEAR, SoundCategory.BLOCKS, 1.0F, 1.0F);
-
-            chairBlockEntity.cushion_type = "";
-            chairBlockEntity.color = 0xFFFFFF;
-            updateChairBlockEntity(world, pos, chairBlockEntity, state);
-
-            return ItemActionResult.SUCCESS;
-        }
-        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-    }
-
-    public Item getCushionItem(String type) {
-        return switch (type) {
-            case "hay" -> ModItems.HAY_CUSHION;
-            case "trader" -> ModItems.TRADER_CUSHION;
-            default -> ModItems.CUSHION;
-        };
-    }
-
-    private ItemActionResult handleDyeItem(ItemStack stack, ChairBlockEntity chairBlockEntity, DyeItem dyeItem, BlockState state, World world, BlockPos pos, PlayerEntity player) {
-        int newColor = dyeItem.getColor().getEntityColor();
-        chairBlockEntity.color = ColorHelper.Argb.averageArgb(newColor, chairBlockEntity.color);
-        stack.decrementUnlessCreative(1, player);
-        updateChairBlockEntity(world, pos, chairBlockEntity, state);
-        return ItemActionResult.SUCCESS;
-    }
-
-    private void updateChairBlockEntity(World world, BlockPos pos, ChairBlockEntity chairBlockEntity, BlockState state) {
-        chairBlockEntity.markDirty();
-        world.updateListeners(pos, state, state, 3);
-    }
-
-    private void spawnItemEntity(World world, BlockPos pos, ItemStack itemStack) {
-        world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.75, pos.getZ() + 0.5, itemStack));
-    }
+//    @Override
+//    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+//        // Check if the BlockEntity at the position is a ChairBlockEntity
+//        BlockEntity blockEntity = world.getBlockEntity(pos);
+//        if (blockEntity instanceof ChairBlockEntity chairBlockEntity) {
+//            // Handle interactions with items
+//            if (stack.getItem() instanceof CushionItem) {
+//                return handleCushionItem(stack, chairBlockEntity, state, world, pos, player);
+//            } else if (stack.getItem() == Items.SHEARS) {
+//                return handleShearsItem(stack, chairBlockEntity, state, world, pos, player);
+//            } else if (stack.getItem() instanceof DyeItem dyeItem) {
+//                return handleDyeItem(stack, chairBlockEntity, dyeItem, state, world, pos, player);
+//            }
+//
+//            // Call tuckable logic or fallback to super
+//            TuckableBlock.tryTuck(state, world, pos, player);
+//        } else {
+//            // Log unexpected block entities to debug the issue
+//            System.out.println("Unexpected BlockEntity at position " + pos + ": " + blockEntity);
+//        }
+//        return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
+//    }
+//
+//
+//
+//    private ItemActionResult handleCushionItem(ItemStack stack, ChairBlockEntity chairBlockEntity, BlockState state, World world, BlockPos pos, PlayerEntity player) {
+//        if (chairBlockEntity.cushion_type.isEmpty()) {
+//            chairBlockEntity.cushionColor = stack.getOrDefault(ModDataComponents.COLOR, 0xFFFFFF);
+//            stack.decrementUnlessCreative(1, player);
+//            chairBlockEntity.cushion_type = getCushionType(stack.getItem());
+//            updateChairBlockEntity(world, pos, chairBlockEntity, state);
+//            world.playSound(player, pos, SoundEvents.BLOCK_WOOL_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+//            player.sendMessage(Text.translatable("message.cozyhome.remove_with_shear"), true);
+//            return ItemActionResult.SUCCESS;
+//        }
+//        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+//    }
+//
+//    public String getCushionType(Item item) {
+//        if (item == ModItems.CUSHION) {
+//            return "generic";
+//        } else if (item == ModItems.HAY_CUSHION) {
+//            return "hay";
+//        } else if (item == ModItems.TRADER_CUSHION) {
+//            return "trader";
+//        } else {
+//            return "";
+//        }
+//    }
+//
+//    private ItemActionResult handleShearsItem(ItemStack stack, ChairBlockEntity chairBlockEntity, BlockState state, World world, BlockPos pos, PlayerEntity player) {
+//        if (!chairBlockEntity.cushion_type.isEmpty()) {
+//            stack.damage(1, player, EquipmentSlot.MAINHAND);
+//            ItemStack cushionStack = new ItemStack(getCushionItem(chairBlockEntity.cushion_type));
+//
+//            spawnItemEntity(world, pos, cushionStack);
+//            world.playSound(player, pos, SoundEvents.ENTITY_SHEEP_SHEAR, SoundCategory.BLOCKS, 1.0F, 1.0F);
+//
+//            chairBlockEntity.cushion_type = "";
+//            chairBlockEntity.cushionColor = 0xFFFFFF;
+//            updateChairBlockEntity(world, pos, chairBlockEntity, state);
+//
+//            return ItemActionResult.SUCCESS;
+//        }
+//        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+//    }
+//
+//    public Item getCushionItem(String type) {
+//        return switch (type) {
+//            case "hay" -> ModItems.HAY_CUSHION;
+//            case "trader" -> ModItems.TRADER_CUSHION;
+//            default -> ModItems.CUSHION;
+//        };
+//    }
+//
+//    private ItemActionResult handleDyeItem(ItemStack stack, ChairBlockEntity chairBlockEntity, DyeItem dyeItem, BlockState state, World world, BlockPos pos, PlayerEntity player) {
+//        int newColor = dyeItem.getColor().getEntityColor();
+//        chairBlockEntity.cushionColor = ColorHelper.Argb.averageArgb(newColor, chairBlockEntity.cushionColor);
+//        stack.decrementUnlessCreative(1, player);
+//        updateChairBlockEntity(world, pos, chairBlockEntity, state);
+//        return ItemActionResult.SUCCESS;
+//    }
+//
+//    private void updateChairBlockEntity(World world, BlockPos pos, ChairBlockEntity chairBlockEntity, BlockState state) {
+//        chairBlockEntity.markDirty();
+//        world.updateListeners(pos, state, state, 3);
+//    }
+//
+//    private void spawnItemEntity(World world, BlockPos pos, ItemStack itemStack) {
+//        world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.75, pos.getZ() + 0.5, itemStack));
+//    }
 
     public enum Type implements StoolType {
         OAK("oak"),

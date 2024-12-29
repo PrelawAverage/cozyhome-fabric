@@ -7,15 +7,14 @@ import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.luckystudio.cozyhome.block.ModBlockEntityTypes;
 import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.renderer.blockrenders.*;
-import net.luckystudio.cozyhome.block.renderer.models.GrandfatherClockModel;
-import net.luckystudio.cozyhome.block.renderer.models.WallClockModel;
+import net.luckystudio.cozyhome.block.renderer.models.*;
 import net.luckystudio.cozyhome.client.ModEntityModelLayers;
-import net.luckystudio.cozyhome.block.renderer.models.ChairModel;
 import net.luckystudio.cozyhome.client.ModRenderLayers;
 import net.luckystudio.cozyhome.entity.ModEntities;
 import net.luckystudio.cozyhome.entity.client.SeatRenderer;
 import net.luckystudio.cozyhome.entity.model.*;
 import net.luckystudio.cozyhome.item.renderer.ChairItemRenderer;
+import net.luckystudio.cozyhome.item.renderer.SofaItemRenderer;
 import net.luckystudio.cozyhome.item.renderer.WallClockItemRenderer;
 import net.luckystudio.cozyhome.screen.drawer.DrawerScreen;
 import net.luckystudio.cozyhome.screen.drawer.DrawerScreenHandler;
@@ -51,6 +50,10 @@ public class CozyHomeClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(ModEntityModelLayers.TELESCOPE, TelescopeModel::getTexturedModelData);
         BlockEntityRendererFactories.register(ModBlockEntityTypes.TELESCOPE_BLOCK_ENTITY, TelescopeBlockEntityRenderer::new);
 
+        EntityModelLayerRegistry.registerModelLayer(ModEntityModelLayers.SOFA, SofaModel::getTexturedModelData);
+        BlockEntityRendererFactories.register(ModBlockEntityTypes.SOFA_BLOCK_ENTITY, SofaBlockEntityRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(ModEntityModelLayers.SOFA_CUSHION, SofaCushionModel::getTexturedModelData);
+
         EntityModelLayerRegistry.registerModelLayer(ModEntityModelLayers.CHAIR, ChairModel::getTexturedModelData);
         BlockEntityRendererFactories.register(ModBlockEntityTypes.CHAIR_BLOCK_ENTITY, ChairBlockEntityRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModEntityModelLayers.CUSHION, CushionModel::getTexturedModelData);
@@ -60,9 +63,6 @@ public class CozyHomeClient implements ClientModInitializer {
 
         EntityModelLayerRegistry.registerModelLayer(ModEntityModelLayers.WALL_CLOCK, WallClockModel::getTexturedModelData);
         BlockEntityRendererFactories.register(ModBlockEntityTypes.WALL_CLOCK_BLOCK_ENTITY, WallClockBlockEntityRenderer::new);
-
-        // No model associated with block, as it uses json model and built-in item models.
-        BlockEntityRendererFactories.register(ModBlockEntityTypes.ITEM_RACK_BLOCK_ENTITY, ToolRackBlockEntityRenderer::new);
 
         ItemConvertible[] chairItems = {
                 ModBlocks.OAK_CHAIR,
@@ -85,6 +85,23 @@ public class CozyHomeClient implements ClientModInitializer {
             BuiltinItemRendererRegistry.INSTANCE.register(chair, new ChairItemRenderer());
         }
 
+        ItemConvertible[] sofaItems = {
+                ModBlocks.OAK_SOFA,
+                ModBlocks.SPRUCE_SOFA,
+                ModBlocks.BIRCH_SOFA,
+                ModBlocks.JUNGLE_SOFA,
+                ModBlocks.ACACIA_SOFA,
+                ModBlocks.DARK_OAK_SOFA,
+                ModBlocks.MANGROVE_SOFA,
+                ModBlocks.CHERRY_SOFA,
+                ModBlocks.BAMBOO_SOFA,
+                ModBlocks.CRIMSON_SOFA,
+                ModBlocks.WARPED_SOFA
+        };
+        for (ItemConvertible sofa : sofaItems) {
+            BuiltinItemRendererRegistry.INSTANCE.register(sofa, new SofaItemRenderer());
+        }
+
         ItemConvertible[] wallClockItems = {
                 ModBlocks.OAK_WALL_CLOCK,
                 ModBlocks.SPRUCE_WALL_CLOCK,
@@ -105,7 +122,6 @@ public class CozyHomeClient implements ClientModInitializer {
         for (ItemConvertible wallClock : wallClockItems) {
             BuiltinItemRendererRegistry.INSTANCE.register(wallClock, new WallClockItemRenderer());
         }
-
         ModRenderLayers.registerBlockRenderLayers();
         ModRenderLayers.registerColorProviders();
     }

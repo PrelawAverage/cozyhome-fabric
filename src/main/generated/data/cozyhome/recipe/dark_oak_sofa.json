@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:dark_oak_slab"
+    },
+    "@": {
+      "item": "minecraft:white_wool"
+    }
+  },
+  "pattern": [
+    "@@",
+    "@@",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyhome:dark_oak_sofa"
+  }
+}

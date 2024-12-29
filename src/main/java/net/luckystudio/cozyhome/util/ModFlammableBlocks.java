@@ -8,17 +8,6 @@ public class ModFlammableBlocks {
     public static void registerFlammables() {
         FlammableBlockRegistry flammableBlockRegistry = FlammableBlockRegistry.getDefaultInstance();
 
-        // PLANKED WALLS
-        flammableBlockRegistry.add(ModBlocks.OAK_PLANKED_WALL, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.SPRUCE_PLANKED_WALL, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.BIRCH_PLANKED_WALL, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.JUNGLE_PLANKED_WALL, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.ACACIA_PLANKED_WALL, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.DARK_OAK_PLANKED_WALL, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.MANGROVE_PLANKED_WALL, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.CHERRY_PLANKED_WALL, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.BAMBOO_PLANKED_WALL, 5, 20);
-
         // COUNTERS
         flammableBlockRegistry.add(ModBlocks.OAK_COUNTER, 5, 20);
         flammableBlockRegistry.add(ModBlocks.SPRUCE_COUNTER, 5, 20);
@@ -135,37 +124,5 @@ public class ModFlammableBlocks {
         flammableBlockRegistry.add(ModBlocks.MANGROVE_WALL_MIRROR, 5, 20);
         flammableBlockRegistry.add(ModBlocks.CHERRY_WALL_MIRROR, 5, 20);
         flammableBlockRegistry.add(ModBlocks.BAMBOO_WALL_MIRROR, 5, 20);
-
-        // TOOL_RACKS
-        flammableBlockRegistry.add(ModBlocks.OAK_TOOL_RACK, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.SPRUCE_TOOL_RACK, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.BIRCH_TOOL_RACK, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.JUNGLE_TOOL_RACK, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.ACACIA_TOOL_RACK, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.DARK_OAK_TOOL_RACK, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.MANGROVE_TOOL_RACK, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.CHERRY_TOOL_RACK, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.BAMBOO_TOOL_RACK, 5, 20);
-
-        // BEAMS
-        flammableBlockRegistry.add(ModBlocks.OAK_BEAM, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.SPRUCE_BEAM, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.BIRCH_BEAM, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.JUNGLE_BEAM, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.ACACIA_BEAM, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.DARK_OAK_BEAM, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.MANGROVE_BEAM, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.CHERRY_BEAM, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.BAMBOO_BEAM, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.STRIPPED_OAK_BEAM, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.STRIPPED_SPRUCE_BEAM, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.STRIPPED_BIRCH_BEAM, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.STRIPPED_JUNGLE_BEAM, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.STRIPPED_ACACIA_BEAM, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.STRIPPED_DARK_OAK_BEAM, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.STRIPPED_MANGROVE_BEAM, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.STRIPPED_CHERRY_BEAM, 5, 20);
-        flammableBlockRegistry.add(ModBlocks.STRIPPED_BAMBOO_BEAM, 5, 20);
-
     }
 }

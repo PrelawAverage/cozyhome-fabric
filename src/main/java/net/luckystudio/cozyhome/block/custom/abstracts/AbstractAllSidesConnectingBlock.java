@@ -1,8 +1,8 @@
 package net.luckystudio.cozyhome.block.custom.abstracts;
 
 import net.luckystudio.cozyhome.block.util.ModProperties;
+import net.luckystudio.cozyhome.block.util.interfaces.AllSidesConnectingBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Waterloggable;
 import net.minecraft.fluid.FluidState;
@@ -16,7 +16,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class AbstractAllSidesConnectingBlock extends Block implements Waterloggable {
+public abstract class AbstractAllSidesConnectingBlock extends Block implements Waterloggable, AllSidesConnectingBlock {
     public static final BooleanProperty NORTH = Properties.NORTH;
     public static final BooleanProperty EAST = Properties.EAST;
     public static final BooleanProperty SOUTH = Properties.SOUTH;
@@ -48,11 +48,6 @@ public abstract class AbstractAllSidesConnectingBlock extends Block implements W
     }
 
     @Override
-    protected BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
-    }
-
-    @Override
     public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockState state = this.getDefaultState();
         BlockPos pos = ctx.getBlockPos();
@@ -60,10 +55,10 @@ public abstract class AbstractAllSidesConnectingBlock extends Block implements W
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
         boolean bl = fluidState.getFluid() == Fluids.WATER;
         return state
-                .with(NORTH, checkDirectionalNeighbor(Direction.NORTH, world, pos))
-                .with(EAST, checkDirectionalNeighbor(Direction.EAST, world, pos))
-                .with(SOUTH, checkDirectionalNeighbor(Direction.SOUTH, world, pos))
-                .with(WEST, checkDirectionalNeighbor(Direction.WEST, world, pos))
+                .with(NORTH, checkDirectionalNeighbor(state, Direction.NORTH, world, pos))
+                .with(EAST, checkDirectionalNeighbor(state, Direction.EAST, world, pos))
+                .with(SOUTH, checkDirectionalNeighbor(state, Direction.SOUTH, world, pos))
+                .with(WEST, checkDirectionalNeighbor(state, Direction.WEST, world, pos))
                 .with(NORTH_EAST, checkDiagonalNeighbor(state, Direction.NORTH, Direction.EAST, world, pos))
                 .with(NORTH_WEST, checkDiagonalNeighbor(state, Direction.NORTH, Direction.WEST, world, pos))
                 .with(SOUTH_EAST, checkDiagonalNeighbor(state, Direction.SOUTH, Direction.EAST, world, pos))
@@ -77,19 +72,19 @@ public abstract class AbstractAllSidesConnectingBlock extends Block implements W
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
         return state
-                .with(NORTH, checkDirectionalNeighbor(Direction.NORTH, world, pos))
-                .with(EAST, checkDirectionalNeighbor(Direction.EAST, world, pos))
-                .with(SOUTH, checkDirectionalNeighbor(Direction.SOUTH, world, pos))
-                .with(WEST, checkDirectionalNeighbor(Direction.WEST, world, pos))
+                .with(NORTH, checkDirectionalNeighbor(state, Direction.NORTH, world, pos))
+                .with(EAST, checkDirectionalNeighbor(state, Direction.EAST, world, pos))
+                .with(SOUTH, checkDirectionalNeighbor(state, Direction.SOUTH, world, pos))
+                .with(WEST, checkDirectionalNeighbor(state, Direction.WEST, world, pos))
                 .with(NORTH_EAST, checkDiagonalNeighbor(state, Direction.NORTH, Direction.EAST, world, pos))
                 .with(NORTH_WEST, checkDiagonalNeighbor(state, Direction.NORTH, Direction.WEST, world, pos))
                 .with(SOUTH_EAST, checkDiagonalNeighbor(state, Direction.SOUTH, Direction.EAST, world, pos))
                 .with(SOUTH_WEST, checkDiagonalNeighbor(state, Direction.SOUTH, Direction.WEST, world, pos));
     }
 
-    private boolean checkDirectionalNeighbor(Direction direction, WorldAccess world, BlockPos pos) {
+    private boolean checkDirectionalNeighbor(BlockState state, Direction direction, WorldAccess world, BlockPos pos) {
         BlockPos targetPos = pos.offset(direction);
-        return isMatchingBlock(world.getBlockState(targetPos));
+        return isMatchingBlock(state, world.getBlockState(targetPos));
     }
 
     private boolean checkDiagonalNeighbor(BlockState state, Direction direction1, Direction direction2, WorldAccess world, BlockPos pos) {
@@ -101,7 +96,7 @@ public abstract class AbstractAllSidesConnectingBlock extends Block implements W
 
         // Check the diagonal position offset by direction1 and direction2
         BlockPos targetPos = pos.offset(direction1).offset(direction2);
-        return isMatchingBlock(world.getBlockState(targetPos));
+        return isMatchingBlock(state, world.getBlockState(targetPos));
     }
 
     private BooleanProperty getDirectionalProperty(Direction direction) {
@@ -114,8 +109,9 @@ public abstract class AbstractAllSidesConnectingBlock extends Block implements W
         };
     }
 
-    private boolean isMatchingBlock(BlockState targetState) {
-        return targetState.getBlock() instanceof AbstractAllSidesConnectingBlock;
+    @Override
+    public boolean isMatchingBlock(BlockState state, BlockState targetState) {
+        return targetState.getBlock() == this;
     }
 
     @Override

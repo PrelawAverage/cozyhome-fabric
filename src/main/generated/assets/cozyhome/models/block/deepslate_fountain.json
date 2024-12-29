@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/fountain/template_fountain",
+  "textures": {
+    "all": "cozyhome:block/fountain/deepslate_fountain",
+    "particle": "minecraft:block/deepslate"
+  }
+}

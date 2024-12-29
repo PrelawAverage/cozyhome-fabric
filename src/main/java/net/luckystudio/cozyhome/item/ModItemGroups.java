@@ -20,19 +20,6 @@ public class ModItemGroups {
                     .displayName(Text.translatable("itemgroup.cozyhome.cozyhome"))
                     .entries((displayContext, entries) -> {
 
-                        // Planked Walls
-                        entries.add(ModBlocks.OAK_PLANKED_WALL);
-                        entries.add(ModBlocks.SPRUCE_PLANKED_WALL);
-                        entries.add(ModBlocks.BIRCH_PLANKED_WALL);
-                        entries.add(ModBlocks.JUNGLE_PLANKED_WALL);
-                        entries.add(ModBlocks.ACACIA_PLANKED_WALL);
-                        entries.add(ModBlocks.DARK_OAK_PLANKED_WALL);
-                        entries.add(ModBlocks.MANGROVE_PLANKED_WALL);
-                        entries.add(ModBlocks.CHERRY_PLANKED_WALL);
-                        entries.add(ModBlocks.BAMBOO_PLANKED_WALL);
-                        entries.add(ModBlocks.CRIMSON_PLANKED_WALL);
-                        entries.add(ModBlocks.WARPED_PLANKED_WALL);
-
                         // Counters
                         entries.add(ModBlocks.OAK_COUNTER);
                         entries.add(ModBlocks.SPRUCE_COUNTER);
@@ -71,6 +58,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.BAMBOO_SINK_COUNTER);
                         entries.add(ModBlocks.CRIMSON_SINK_COUNTER);
                         entries.add(ModBlocks.WARPED_SINK_COUNTER);
+
+                        // Stools
 
                         // Tables
                         entries.add(ModBlocks.OAK_TABLE);
@@ -140,6 +129,19 @@ public class ModItemGroups {
                         entries.add(ModBlocks.UNDEAD_GRANDFATHER_CLOCK);
                         entries.add(ModBlocks.OMINOUS_GRANDFATHER_CLOCK);
 
+                        // Sofas
+                        entries.add(ModBlocks.OAK_SOFA);
+                        entries.add(ModBlocks.SPRUCE_SOFA);
+                        entries.add(ModBlocks.BIRCH_SOFA);
+                        entries.add(ModBlocks.JUNGLE_SOFA);
+                        entries.add(ModBlocks.ACACIA_SOFA);
+                        entries.add(ModBlocks.DARK_OAK_SOFA);
+                        entries.add(ModBlocks.MANGROVE_SOFA);
+                        entries.add(ModBlocks.CHERRY_SOFA);
+                        entries.add(ModBlocks.BAMBOO_SOFA);
+                        entries.add(ModBlocks.CRIMSON_SOFA);
+                        entries.add(ModBlocks.WARPED_SOFA);
+
                         // Desks
                         entries.add(ModBlocks.OAK_DESK);
                         entries.add(ModBlocks.SPRUCE_DESK);
@@ -179,23 +181,6 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CRIMSON_WALL_MIRROR);
                         entries.add(ModBlocks.WARPED_WALL_MIRROR);
 
-                        // Wall Mirrors
-                        entries.add(ModBlocks.OAK_TOOL_RACK);
-                        entries.add(ModBlocks.SPRUCE_TOOL_RACK);
-                        entries.add(ModBlocks.BIRCH_TOOL_RACK);
-                        entries.add(ModBlocks.JUNGLE_TOOL_RACK);
-                        entries.add(ModBlocks.ACACIA_TOOL_RACK);
-                        entries.add(ModBlocks.DARK_OAK_TOOL_RACK);
-                        entries.add(ModBlocks.MANGROVE_TOOL_RACK);
-                        entries.add(ModBlocks.CHERRY_TOOL_RACK);
-                        entries.add(ModBlocks.BAMBOO_TOOL_RACK);
-                        entries.add(ModBlocks.CRIMSON_TOOL_RACK);
-                        entries.add(ModBlocks.WARPED_TOOL_RACK);
-                        entries.add(ModBlocks.IRON_TOOL_RACK);
-                        entries.add(ModBlocks.GLASS_TOOL_RACK);
-                        entries.add(ModBlocks.UNDEAD_TOOL_RACK);
-                        entries.add(ModBlocks.OMINOUS_TOOL_RACK);
-
                         // Fountains
                         entries.add(ModBlocks.STONE_BRICK_FOUNTAIN);
                         entries.add(ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN);
@@ -234,36 +219,24 @@ public class ModItemGroups {
                         entries.add(ModBlocks.ENDSTONE_FOUNTAIN_SPROUT);
                         entries.add(ModBlocks.PURPUR_FOUNTAIN_SPROUT);
 
-                        // Beams
-                        entries.add(ModBlocks.OAK_BEAM);
-                        entries.add(ModBlocks.SPRUCE_BEAM);
-                        entries.add(ModBlocks.BIRCH_BEAM);
-                        entries.add(ModBlocks.JUNGLE_BEAM);
-                        entries.add(ModBlocks.ACACIA_BEAM);
-                        entries.add(ModBlocks.DARK_OAK_BEAM);
-                        entries.add(ModBlocks.MANGROVE_BEAM);
-                        entries.add(ModBlocks.CHERRY_BEAM);
-                        entries.add(ModBlocks.BAMBOO_BEAM);
-                        entries.add(ModBlocks.CRIMSON_BEAM);
-                        entries.add(ModBlocks.WARPED_BEAM);
-                        entries.add(ModBlocks.STRIPPED_OAK_BEAM);
-                        entries.add(ModBlocks.STRIPPED_SPRUCE_BEAM);
-                        entries.add(ModBlocks.STRIPPED_BIRCH_BEAM);
-                        entries.add(ModBlocks.STRIPPED_JUNGLE_BEAM);
-                        entries.add(ModBlocks.STRIPPED_ACACIA_BEAM);
-                        entries.add(ModBlocks.STRIPPED_DARK_OAK_BEAM);
-                        entries.add(ModBlocks.STRIPPED_MANGROVE_BEAM);
-                        entries.add(ModBlocks.STRIPPED_CHERRY_BEAM);
-                        entries.add(ModBlocks.STRIPPED_BAMBOO_BEAM);
-                        entries.add(ModBlocks.STRIPPED_CRIMSON_BEAM);
-                        entries.add(ModBlocks.STRIPPED_WARPED_BEAM);
-
-                        // Glass
-                        entries.add(ModBlocks.AUTUMN_STAINED_GLASS);
-                        entries.add(ModBlocks.AUTUMN_STAINED_GLASS_PANE);
-                        entries.add(ModBlocks.GOLD_FRAMED_GLASS);
-                        entries.add(ModBlocks.GOLD_FRAMED_GLASS_PANE);
-
+                        // Fountain Sprouts
+                        entries.add(ModBlocks.STONE_BRICK_CHIMNEY);
+                        entries.add(ModBlocks.MOSSY_STONE_BRICK_CHIMNEY);
+                        entries.add(ModBlocks.GRANITE_CHIMNEY);
+                        entries.add(ModBlocks.DIORITE_CHIMNEY);
+                        entries.add(ModBlocks.ANDESITE_CHIMNEY);
+                        entries.add(ModBlocks.DEEPSLATE_CHIMNEY);
+                        entries.add(ModBlocks.TUFF_CHIMNEY);
+                        entries.add(ModBlocks.BRICK_CHIMNEY);
+                        entries.add(ModBlocks.MUD_CHIMNEY);
+                        entries.add(ModBlocks.SANDSTONE_CHIMNEY);
+                        entries.add(ModBlocks.RED_SANDSTONE_CHIMNEY);
+                        entries.add(ModBlocks.PRISMARINE_CHIMNEY);
+                        entries.add(ModBlocks.NETHER_BRICK_CHIMNEY);
+                        entries.add(ModBlocks.RED_NETHER_BRICK_CHIMNEY);
+                        entries.add(ModBlocks.BLACKSTONE_CHIMNEY);
+                        entries.add(ModBlocks.ENDSTONE_CHIMNEY);
+                        entries.add(ModBlocks.PURPUR_CHIMNEY);
                         // Misc. Blocks/Items
                         entries.add(ModBlocks.TELESCOPE);
                         entries.add(ModItems.PAINT_BRUSH);

@@ -2,55 +2,66 @@ package net.luckystudio.cozyhome.block.entity;
 
 import net.luckystudio.cozyhome.block.ModBlockEntityTypes;
 import net.luckystudio.cozyhome.components.ModDataComponents;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.component.ComponentMap;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.inventory.LootableInventory;
+import net.minecraft.inventory.SingleStackInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.loot.LootTable;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
-public class ChairBlockEntity extends BlockEntity {
+public class ChairBlockEntity extends BlockEntity implements LootableInventory, SingleStackInventory.SingleStackBlockEntityInventory {
+    protected RegistryKey<LootTable> lootTableId;
+    protected long lootTableSeed;
+    private ItemStack stack;
     public float currentOffset;
     public int color;
-    public String cushion_type;
 
     public ChairBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntityTypes.CHAIR_BLOCK_ENTITY, pos, state); // Pass the correct BlockEntityType here
-        this.color = 0xFFFFFF;
-        this.cushion_type = "";
+        this.stack = ItemStack.EMPTY;
         this.currentOffset = 0;  // Default zoom level
     }
 
     @Override
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.writeNbt(nbt, registryLookup);
-        nbt.putInt("color", color);
-        nbt.putString("cushion_type", cushion_type);
+        if (!this.writeLootTable(nbt) && !this.stack.isEmpty()) {
+            nbt.put("item", this.stack.encode(registryLookup));
+        }
     }
 
     @Override
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
-        color = nbt.getInt("color");
-        cushion_type = nbt.getString("cushion_type");
+        if (!this.readLootTable(nbt)) {
+            if (nbt.contains("item", NbtElement.COMPOUND_TYPE)) {
+                this.stack = ItemStack.fromNbt(registryLookup, nbt.getCompound("item")).orElse(ItemStack.EMPTY);
+            } else {
+                this.stack = ItemStack.EMPTY;
+            }
+        }
     }
 
     @Override
     protected void readComponents(ComponentsAccess components) {
         super.readComponents(components);
-        this.color = components.getOrDefault(ModDataComponents.COLOR, 0xFFFFFF);
-        this.cushion_type = components.getOrDefault(ModDataComponents.CUSHION_TYPE, "");
     }
 
     @Override
     protected void addComponents(ComponentMap.Builder componentMapBuilder) {
         super.addComponents(componentMapBuilder);
-        componentMapBuilder.add(ModDataComponents.COLOR, color);
-        componentMapBuilder.add(ModDataComponents.CUSHION_TYPE, cushion_type);
     }
 
     // This Syncs the Client and Server
@@ -68,7 +79,55 @@ public class ChairBlockEntity extends BlockEntity {
 
     @Override
     public void removeFromCopiedStackNbt(NbtCompound nbt) {
-        nbt.remove("color");
-        nbt.remove("cushion_type");
+        super.removeFromCopiedStackNbt(nbt);
+        nbt.remove("item");
+    }
+
+    @Override
+    public @Nullable RegistryKey<LootTable> getLootTable() {
+        return this.lootTableId;
+    }
+
+    @Override
+    public void setLootTable(@Nullable RegistryKey<LootTable> lootTable) {
+        this.lootTableId = lootTable;
+    }
+
+    @Override
+    public long getLootTableSeed() {
+        return this.lootTableSeed;
+    }
+
+    @Override
+    public void setLootTableSeed(long lootTableSeed) {
+        this.lootTableSeed = lootTableSeed;
+    }
+
+    @Override
+    public ItemStack getStack() {
+        this.generateLoot(null);
+        return this.stack;
+    }
+
+    @Override
+    public void setStack(ItemStack stack) {
+        this.generateLoot(null);
+        this.stack = stack;
+        updateListeners();
+    }
+
+    private void updateListeners() {
+        this.markDirty();
+        this.getWorld().updateListeners(this.getPos(), this.getCachedState(), this.getCachedState(), Block.NOTIFY_ALL);
+    }
+
+    @Override
+    public BlockEntity asBlockEntity() {
+        return this;
+    }
+
+    @Override
+    public int getMaxCountPerStack() {
+        return 1;
     }
 }

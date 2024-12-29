@@ -3,11 +3,15 @@ package net.luckystudio.cozyhome.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.luckystudio.cozyhome.block.ModBlocks;
-import net.luckystudio.cozyhome.block.custom.clocks.GrandfatherClockBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.TripleTallBlock;
 import net.minecraft.block.Block;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
+import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.function.CopyComponentsLootFunction;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
@@ -21,21 +25,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     public void generate() {
 
         // Blocks that save the color they are dyed do not get registered here as they had a custom method that determines their drops
+        // and that method is called in the block's constructor.
 
-        // Planked Walls
-        addDrop(ModBlocks.OAK_PLANKED_WALL);
-        addDrop(ModBlocks.SPRUCE_PLANKED_WALL);
-        addDrop(ModBlocks.BIRCH_PLANKED_WALL);
-        addDrop(ModBlocks.JUNGLE_PLANKED_WALL);
-        addDrop(ModBlocks.ACACIA_PLANKED_WALL);
-        addDrop(ModBlocks.DARK_OAK_PLANKED_WALL);
-        addDrop(ModBlocks.MANGROVE_PLANKED_WALL);
-        addDrop(ModBlocks.CHERRY_PLANKED_WALL);
-        addDrop(ModBlocks.BAMBOO_PLANKED_WALL);
-        addDrop(ModBlocks.CRIMSON_PLANKED_WALL);
-        addDrop(ModBlocks.WARPED_PLANKED_WALL);
-
-        // Counters
+        // COUNTERS
         addDrop(ModBlocks.OAK_COUNTER);
         addDrop(ModBlocks.SPRUCE_COUNTER);
         addDrop(ModBlocks.BIRCH_COUNTER);
@@ -48,7 +40,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CRIMSON_COUNTER);
         addDrop(ModBlocks.WARPED_COUNTER);
 
-        // Storage Counters
+        // STORAGE COUNTERS
         addDrop(ModBlocks.OAK_STORAGE_COUNTER);
         addDrop(ModBlocks.SPRUCE_STORAGE_COUNTER);
         addDrop(ModBlocks.BIRCH_STORAGE_COUNTER);
@@ -61,7 +53,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CRIMSON_STORAGE_COUNTER);
         addDrop(ModBlocks.WARPED_STORAGE_COUNTER);
 
-        // Sink Counters
+        // SINK COUNTERS
         addDrop(ModBlocks.OAK_SINK_COUNTER);
         addDrop(ModBlocks.SPRUCE_SINK_COUNTER);
         addDrop(ModBlocks.BIRCH_SINK_COUNTER);
@@ -74,7 +66,40 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CRIMSON_SINK_COUNTER);
         addDrop(ModBlocks.WARPED_SINK_COUNTER);
 
-        // Wall Clocks
+        // TABLES
+        addDrop(ModBlocks.OAK_TABLE);
+        addDrop(ModBlocks.SPRUCE_TABLE);
+        addDrop(ModBlocks.BIRCH_TABLE);
+        addDrop(ModBlocks.JUNGLE_TABLE);
+        addDrop(ModBlocks.ACACIA_TABLE);
+        addDrop(ModBlocks.DARK_OAK_TABLE);
+        addDrop(ModBlocks.MANGROVE_TABLE);
+        addDrop(ModBlocks.CHERRY_TABLE);
+        addDrop(ModBlocks.BAMBOO_TABLE);
+        addDrop(ModBlocks.CRIMSON_TABLE);
+        addDrop(ModBlocks.WARPED_TABLE);
+        addDrop(ModBlocks.IRON_TABLE);
+        addDrop(ModBlocks.GLASS_TABLE);
+        addDrop(ModBlocks.UNDEAD_TABLE);
+        addDrop(ModBlocks.OMINOUS_TABLE);
+
+        addDrop(ModBlocks.OAK_CHAIR);
+        addDrop(ModBlocks.SPRUCE_CHAIR);
+        addDrop(ModBlocks.BIRCH_CHAIR);
+        addDrop(ModBlocks.JUNGLE_CHAIR);
+        addDrop(ModBlocks.ACACIA_CHAIR);
+        addDrop(ModBlocks.DARK_OAK_CHAIR);
+        addDrop(ModBlocks.MANGROVE_CHAIR);
+        addDrop(ModBlocks.CHERRY_CHAIR);
+        addDrop(ModBlocks.BAMBOO_CHAIR);
+        addDrop(ModBlocks.CRIMSON_CHAIR);
+        addDrop(ModBlocks.WARPED_CHAIR);
+        addDrop(ModBlocks.IRON_CHAIR);
+        addDrop(ModBlocks.GLASS_CHAIR);
+        addDrop(ModBlocks.UNDEAD_CHAIR);
+        addDrop(ModBlocks.OMINOUS_CHAIR);
+
+        // WALL CLOCK
         addDrop(ModBlocks.OAK_WALL_CLOCK);
         addDrop(ModBlocks.SPRUCE_WALL_CLOCK);
         addDrop(ModBlocks.BIRCH_WALL_CLOCK);
@@ -91,7 +116,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.UNDEAD_WALL_CLOCK);
         addDrop(ModBlocks.OMINOUS_WALL_CLOCK);
 
-        // Grandfather Clocks
+        // GRANDFATHER CLOCK
         addTripleTallBlockDrop(ModBlocks.OAK_GRANDFATHER_CLOCK);
         addTripleTallBlockDrop(ModBlocks.SPRUCE_GRANDFATHER_CLOCK);
         addTripleTallBlockDrop(ModBlocks.BIRCH_GRANDFATHER_CLOCK);
@@ -108,7 +133,19 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addTripleTallBlockDrop(ModBlocks.UNDEAD_GRANDFATHER_CLOCK);
         addTripleTallBlockDrop(ModBlocks.OMINOUS_GRANDFATHER_CLOCK);
 
-        // Desk
+        addDyedBlockDrop(ModBlocks.OAK_SOFA);
+        addDyedBlockDrop(ModBlocks.SPRUCE_SOFA);
+        addDyedBlockDrop(ModBlocks.BIRCH_SOFA);
+        addDyedBlockDrop(ModBlocks.JUNGLE_SOFA);
+        addDyedBlockDrop(ModBlocks.ACACIA_SOFA);
+        addDyedBlockDrop(ModBlocks.DARK_OAK_SOFA);
+        addDyedBlockDrop(ModBlocks.MANGROVE_SOFA);
+        addDyedBlockDrop(ModBlocks.CHERRY_SOFA);
+        addDyedBlockDrop(ModBlocks.BAMBOO_SOFA);
+        addDyedBlockDrop(ModBlocks.CRIMSON_SOFA);
+        addDyedBlockDrop(ModBlocks.WARPED_SOFA);
+
+        // DESK
         addDrop(ModBlocks.OAK_DESK);
         addDrop(ModBlocks.SPRUCE_DESK);
         addDrop(ModBlocks.BIRCH_DESK);
@@ -121,7 +158,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CRIMSON_DESK);
         addDrop(ModBlocks.WARPED_DESK);
 
-        // Drawer
+        // DRAWER
         addDrop(ModBlocks.OAK_DRAWER);
         addDrop(ModBlocks.SPRUCE_DRAWER);
         addDrop(ModBlocks.BIRCH_DRAWER);
@@ -134,7 +171,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CRIMSON_DRAWER);
         addDrop(ModBlocks.WARPED_DRAWER);
 
-        // Wall Mirrors
+        // WALL MIRROR
         addDrop(ModBlocks.OAK_WALL_MIRROR);
         addDrop(ModBlocks.SPRUCE_WALL_MIRROR);
         addDrop(ModBlocks.BIRCH_WALL_MIRROR);
@@ -147,47 +184,51 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CRIMSON_WALL_MIRROR);
         addDrop(ModBlocks.WARPED_WALL_MIRROR);
 
-        // Tools Racks
-        addDrop(ModBlocks.OAK_TOOL_RACK);
-        addDrop(ModBlocks.SPRUCE_TOOL_RACK);
-        addDrop(ModBlocks.BIRCH_TOOL_RACK);
-        addDrop(ModBlocks.JUNGLE_TOOL_RACK);
-        addDrop(ModBlocks.ACACIA_TOOL_RACK);
-        addDrop(ModBlocks.DARK_OAK_TOOL_RACK);
-        addDrop(ModBlocks.MANGROVE_TOOL_RACK);
-        addDrop(ModBlocks.CHERRY_TOOL_RACK);
-        addDrop(ModBlocks.BAMBOO_TOOL_RACK);
-        addDrop(ModBlocks.CRIMSON_TOOL_RACK);
-        addDrop(ModBlocks.WARPED_TOOL_RACK);
-        addDrop(ModBlocks.IRON_TOOL_RACK);
-        addDrop(ModBlocks.GLASS_TOOL_RACK);
-        addDrop(ModBlocks.UNDEAD_TOOL_RACK);
-        addDrop(ModBlocks.OMINOUS_TOOL_RACK);
+        // CHIMNEY
+        addDrop(ModBlocks.STONE_BRICK_CHIMNEY);
+        addDrop(ModBlocks.MOSSY_STONE_BRICK_CHIMNEY);
+        addDrop(ModBlocks.GRANITE_CHIMNEY);
+        addDrop(ModBlocks.DIORITE_CHIMNEY);
+        addDrop(ModBlocks.ANDESITE_CHIMNEY);
+        addDrop(ModBlocks.DEEPSLATE_CHIMNEY);
+        addDrop(ModBlocks.TUFF_CHIMNEY);
+        addDrop(ModBlocks.BRICK_CHIMNEY);
+        addDrop(ModBlocks.MUD_CHIMNEY);
+        addDrop(ModBlocks.SANDSTONE_CHIMNEY);
+        addDrop(ModBlocks.RED_SANDSTONE_CHIMNEY);
+        addDrop(ModBlocks.PRISMARINE_CHIMNEY);
+        addDrop(ModBlocks.NETHER_BRICK_CHIMNEY);
+        addDrop(ModBlocks.RED_NETHER_BRICK_CHIMNEY);
+        addDrop(ModBlocks.BLACKSTONE_CHIMNEY);
+        addDrop(ModBlocks.ENDSTONE_CHIMNEY);
+        addDrop(ModBlocks.PURPUR_CHIMNEY);
 
-        // Beams
-        addDrop(ModBlocks.OAK_BEAM);
-        addDrop(ModBlocks.SPRUCE_BEAM);
-        addDrop(ModBlocks.BIRCH_BEAM);
-        addDrop(ModBlocks.JUNGLE_BEAM);
-        addDrop(ModBlocks.ACACIA_BEAM);
-        addDrop(ModBlocks.DARK_OAK_BEAM);
-        addDrop(ModBlocks.MANGROVE_BEAM);
-        addDrop(ModBlocks.CHERRY_BEAM);
-        addDrop(ModBlocks.BAMBOO_BEAM);
-        addDrop(ModBlocks.CRIMSON_BEAM);
-        addDrop(ModBlocks.WARPED_BEAM);
-        addDrop(ModBlocks.STRIPPED_OAK_BEAM);
-        addDrop(ModBlocks.STRIPPED_SPRUCE_BEAM);
-        addDrop(ModBlocks.STRIPPED_BIRCH_BEAM);
-        addDrop(ModBlocks.STRIPPED_JUNGLE_BEAM);
-        addDrop(ModBlocks.STRIPPED_ACACIA_BEAM);
-        addDrop(ModBlocks.STRIPPED_DARK_OAK_BEAM);
-        addDrop(ModBlocks.STRIPPED_MANGROVE_BEAM);
-        addDrop(ModBlocks.STRIPPED_CHERRY_BEAM);
-        addDrop(ModBlocks.STRIPPED_BAMBOO_BEAM);
-        addDrop(ModBlocks.STRIPPED_CRIMSON_BEAM);
-        addDrop(ModBlocks.STRIPPED_WARPED_BEAM);
+        addDrop(ModBlocks.TELESCOPE);
     }
+
+    // This will drop only the bottom part of triple tall blocks that are one block together
+    private void addDyedBlockDrop(Block block) {
+        addDrop(block, dropWithDyedComponent(block));
+    }
+
+    public LootTable.Builder dropWithDyedComponent(Block drop) {
+        return LootTable.builder()
+                .pool(
+                        this.addSurvivesExplosionCondition(
+                                drop,
+                                LootPool.builder()
+                                        .rolls(ConstantLootNumberProvider.create(1.0F))
+                                        .with(
+                                                ItemEntry.builder(drop)
+                                                        .apply(
+                                                                CopyComponentsLootFunction.builder(CopyComponentsLootFunction.Source.BLOCK_ENTITY)
+                                                                        .include(DataComponentTypes.DYED_COLOR)
+                                                        )
+                                        )
+                        )
+                );
+    }
+
     // This will drop only the bottom part of triple tall blocks that are one block together
     private void addTripleTallBlockDrop(Block block) {
         addDrop(block, dropsWithProperty(block, ModProperties.TRIPLE_TALL_BLOCK, TripleTallBlock.BOTTOM));

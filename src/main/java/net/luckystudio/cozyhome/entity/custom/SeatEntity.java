@@ -112,18 +112,6 @@ public class SeatEntity extends Entity {
     }
 
     @Override
-    public void tick() {
-        super.tick();
-
-        if (this.getFirstPassenger() instanceof PlayerEntity player) {
-            // Example condition: Force re-mounting
-            if (!player.isSneaking()) {
-                player.startRiding(this, true);
-            }
-        }
-    }
-
-    @Override
     protected void updatePassengerPosition(Entity passenger, PositionUpdater positionUpdater) {
         if (passenger instanceof PlayerEntity player) {
             // Get the yaw of the entity and the player

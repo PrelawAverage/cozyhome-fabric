@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/fountain/template_fountain_middle",
+  "textures": {
+    "all": "cozyhome:block/fountain/prismarine_fountain",
+    "particle": "minecraft:block/prismarine_bricks"
+  }
+}

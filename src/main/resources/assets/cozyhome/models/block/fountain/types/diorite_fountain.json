@@ -1,7 +1,0 @@
-{
-  "parent": "cozyhome:block/fountain/template_fountain",
-  "textures": {
-    "1": "cozyhome:block/fountain/diorite_fountain",
-    "particle": "block/chiseled_diorite"
-  }
-}

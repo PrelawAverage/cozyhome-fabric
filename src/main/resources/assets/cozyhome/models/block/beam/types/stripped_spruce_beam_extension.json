@@ -1,8 +1,0 @@
-{
-  "parent": "cozyhome:block/beam/template_beam_extension",
-  "textures": {
-    "0": "cozyhome:block/beam/stripped_spruce_beam",
-    "1": "cozyhome:block/beam/blank_beam_overlay",
-    "particle": "block/spruce_log_top"
-  }
-}
