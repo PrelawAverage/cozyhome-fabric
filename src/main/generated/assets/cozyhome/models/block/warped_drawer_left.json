@@ -1,0 +1,12 @@
+{
+  "parent": "cozyhome:block/drawer/template_drawer_left",
+  "textures": {
+    "back": "cozyhome:block/drawer/warped_drawer_back_side",
+    "bottom": "cozyhome:block/drawer/warped_drawer_bottom_side",
+    "front": "cozyhome:block/drawer/warped_drawer_front_side",
+    "particle": "minecraft:block/warped_planks",
+    "side": "cozyhome:block/drawer/warped_drawer_side",
+    "side_inner": "cozyhome:block/drawer/warped_drawer_side_inner",
+    "top": "cozyhome:block/drawer/warped_drawer_top_side"
+  }
+}

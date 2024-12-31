@@ -1,0 +1,10 @@
+{
+  "parent": "cozyhome:block/desk/template_desk",
+  "textures": {
+    "bottom": "cozyhome:block/drawer/dark_oak_drawer_bottom",
+    "particle": "minecraft:block/dark_oak_planks",
+    "side": "cozyhome:block/drawer/dark_oak_drawer_side",
+    "side_inner": "cozyhome:block/drawer/dark_oak_drawer_side_inner",
+    "top": "cozyhome:block/drawer/dark_oak_drawer_top"
+  }
+}

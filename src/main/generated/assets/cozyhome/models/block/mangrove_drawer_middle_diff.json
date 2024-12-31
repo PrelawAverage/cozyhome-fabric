@@ -1,0 +1,11 @@
+{
+  "parent": "cozyhome:block/drawer/template_drawer_middle_diff",
+  "textures": {
+    "bottom": "cozyhome:block/drawer/mangrove_drawer_bottom",
+    "front": "cozyhome:block/drawer/mangrove_drawer_front",
+    "particle": "minecraft:block/mangrove_planks",
+    "side": "cozyhome:block/drawer/mangrove_drawer_side",
+    "side_inner": "cozyhome:block/drawer/mangrove_drawer_side_inner",
+    "top": "cozyhome:block/drawer/mangrove_drawer_top_middle"
+  }
+}

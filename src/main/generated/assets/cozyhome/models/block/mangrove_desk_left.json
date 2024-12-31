@@ -1,0 +1,11 @@
+{
+  "parent": "cozyhome:block/desk/template_desk_left",
+  "textures": {
+    "back": "cozyhome:block/drawer/mangrove_drawer_back_side",
+    "bottom": "cozyhome:block/drawer/mangrove_drawer_bottom_side",
+    "particle": "minecraft:block/mangrove_planks",
+    "side": "cozyhome:block/drawer/mangrove_drawer_side",
+    "side_inner": "cozyhome:block/drawer/mangrove_drawer_side_inner",
+    "top": "cozyhome:block/drawer/mangrove_drawer_top_side"
+  }
+}

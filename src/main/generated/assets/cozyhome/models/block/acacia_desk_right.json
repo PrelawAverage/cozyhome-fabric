@@ -1,0 +1,11 @@
+{
+  "parent": "cozyhome:block/desk/template_desk_right",
+  "textures": {
+    "back": "cozyhome:block/drawer/acacia_drawer_back_side",
+    "bottom": "cozyhome:block/drawer/acacia_drawer_bottom_side",
+    "particle": "minecraft:block/acacia_planks",
+    "side": "cozyhome:block/drawer/acacia_drawer_side",
+    "side_inner": "cozyhome:block/drawer/acacia_drawer_side_inner",
+    "top": "cozyhome:block/drawer/acacia_drawer_top_side"
+  }
+}

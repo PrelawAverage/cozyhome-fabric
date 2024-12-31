@@ -1,0 +1,12 @@
+{
+  "parent": "cozyhome:block/drawer/template_drawer_left_diff_left",
+  "textures": {
+    "back": "cozyhome:block/drawer/crimson_drawer_back_side",
+    "bottom": "cozyhome:block/drawer/crimson_drawer_bottom_side",
+    "front": "cozyhome:block/drawer/crimson_drawer_front_side",
+    "particle": "minecraft:block/crimson_planks",
+    "side": "cozyhome:block/drawer/crimson_drawer_side",
+    "side_inner": "cozyhome:block/drawer/crimson_drawer_side_inner",
+    "top": "cozyhome:block/drawer/crimson_drawer_top_middle"
+  }
+}

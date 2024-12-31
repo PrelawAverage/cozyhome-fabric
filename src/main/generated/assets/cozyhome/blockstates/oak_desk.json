@@ -1,0 +1,139 @@
+{
+  "variants": {
+    "advanced_horizontal_connection=left,facing=east": {
+      "model": "cozyhome:block/oak_desk_left",
+      "y": 270
+    },
+    "advanced_horizontal_connection=left,facing=north": {
+      "model": "cozyhome:block/oak_desk_left",
+      "y": 180
+    },
+    "advanced_horizontal_connection=left,facing=south": {
+      "model": "cozyhome:block/oak_desk_left"
+    },
+    "advanced_horizontal_connection=left,facing=west": {
+      "model": "cozyhome:block/oak_desk_left",
+      "y": 90
+    },
+    "advanced_horizontal_connection=left_diff,facing=east": {
+      "model": "cozyhome:block/oak_desk_left",
+      "y": 270
+    },
+    "advanced_horizontal_connection=left_diff,facing=north": {
+      "model": "cozyhome:block/oak_desk_left",
+      "y": 180
+    },
+    "advanced_horizontal_connection=left_diff,facing=south": {
+      "model": "cozyhome:block/oak_desk_left"
+    },
+    "advanced_horizontal_connection=left_diff,facing=west": {
+      "model": "cozyhome:block/oak_desk_left",
+      "y": 90
+    },
+    "advanced_horizontal_connection=left_diff_left,facing=east": {
+      "model": "cozyhome:block/oak_desk_middle",
+      "y": 270
+    },
+    "advanced_horizontal_connection=left_diff_left,facing=north": {
+      "model": "cozyhome:block/oak_desk_middle",
+      "y": 180
+    },
+    "advanced_horizontal_connection=left_diff_left,facing=south": {
+      "model": "cozyhome:block/oak_desk_middle"
+    },
+    "advanced_horizontal_connection=left_diff_left,facing=west": {
+      "model": "cozyhome:block/oak_desk_middle",
+      "y": 90
+    },
+    "advanced_horizontal_connection=middle,facing=east": {
+      "model": "cozyhome:block/oak_desk_middle",
+      "y": 270
+    },
+    "advanced_horizontal_connection=middle,facing=north": {
+      "model": "cozyhome:block/oak_desk_middle",
+      "y": 180
+    },
+    "advanced_horizontal_connection=middle,facing=south": {
+      "model": "cozyhome:block/oak_desk_middle"
+    },
+    "advanced_horizontal_connection=middle,facing=west": {
+      "model": "cozyhome:block/oak_desk_middle",
+      "y": 90
+    },
+    "advanced_horizontal_connection=middle_diff,facing=east": {
+      "model": "cozyhome:block/oak_desk_middle",
+      "y": 270
+    },
+    "advanced_horizontal_connection=middle_diff,facing=north": {
+      "model": "cozyhome:block/oak_desk_middle",
+      "y": 180
+    },
+    "advanced_horizontal_connection=middle_diff,facing=south": {
+      "model": "cozyhome:block/oak_desk_middle"
+    },
+    "advanced_horizontal_connection=middle_diff,facing=west": {
+      "model": "cozyhome:block/oak_desk_middle",
+      "y": 90
+    },
+    "advanced_horizontal_connection=right,facing=east": {
+      "model": "cozyhome:block/oak_desk_right",
+      "y": 270
+    },
+    "advanced_horizontal_connection=right,facing=north": {
+      "model": "cozyhome:block/oak_desk_right",
+      "y": 180
+    },
+    "advanced_horizontal_connection=right,facing=south": {
+      "model": "cozyhome:block/oak_desk_right"
+    },
+    "advanced_horizontal_connection=right,facing=west": {
+      "model": "cozyhome:block/oak_desk_right",
+      "y": 90
+    },
+    "advanced_horizontal_connection=right_diff,facing=east": {
+      "model": "cozyhome:block/oak_desk_right",
+      "y": 270
+    },
+    "advanced_horizontal_connection=right_diff,facing=north": {
+      "model": "cozyhome:block/oak_desk_right",
+      "y": 180
+    },
+    "advanced_horizontal_connection=right_diff,facing=south": {
+      "model": "cozyhome:block/oak_desk_right"
+    },
+    "advanced_horizontal_connection=right_diff,facing=west": {
+      "model": "cozyhome:block/oak_desk_right",
+      "y": 90
+    },
+    "advanced_horizontal_connection=right_diff_right,facing=east": {
+      "model": "cozyhome:block/oak_desk_middle",
+      "y": 270
+    },
+    "advanced_horizontal_connection=right_diff_right,facing=north": {
+      "model": "cozyhome:block/oak_desk_middle",
+      "y": 180
+    },
+    "advanced_horizontal_connection=right_diff_right,facing=south": {
+      "model": "cozyhome:block/oak_desk_middle"
+    },
+    "advanced_horizontal_connection=right_diff_right,facing=west": {
+      "model": "cozyhome:block/oak_desk_middle",
+      "y": 90
+    },
+    "advanced_horizontal_connection=single,facing=east": {
+      "model": "cozyhome:block/oak_desk",
+      "y": 270
+    },
+    "advanced_horizontal_connection=single,facing=north": {
+      "model": "cozyhome:block/oak_desk",
+      "y": 180
+    },
+    "advanced_horizontal_connection=single,facing=south": {
+      "model": "cozyhome:block/oak_desk"
+    },
+    "advanced_horizontal_connection=single,facing=west": {
+      "model": "cozyhome:block/oak_desk",
+      "y": 90
+    }
+  }
+}
