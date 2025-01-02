@@ -1,0 +1,49 @@
+{
+	"credit": "Made by LuckyOwl with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"top": "cozyhome:block/counter/oak_counter_inner_top",
+		"side": "cozyhome:block/counter/oak_counter_side",
+		"bottom": "cozyhome:block/counter/oak_counter_inner_bottom",
+		"front": "cozyhome:block/counter/oak_counter_front",
+		"back": "cozyhome:block/counter/oak_counter_back"
+	},
+	"elements": [
+		{
+			"from": [2, 0, 0],
+			"to": [16, 12, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [16, 4, 2, 16], "texture": "#side", "cullface": "north"},
+				"east": {"uv": [0, 4, 16, 16], "texture": "#back", "cullface": "east"},
+				"south": {"uv": [2, 4, 16, 16], "texture": "#back", "cullface": "south"},
+				"west": {"uv": [0, 4, 16, 16], "texture": "#front"},
+				"down": {"uv": [0, 16, 16, 2], "rotation": 90, "texture": "#bottom", "cullface": "down"}
+			}
+		},
+		{
+			"from": [0, 12, 0],
+			"to": [16, 16, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [16, 0, 0, 4], "texture": "#side", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 4], "texture": "#back", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 4], "texture": "#back", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 4], "texture": "#side", "cullface": "west"},
+				"up": {"uv": [16, 16, 0, 0], "rotation": 270, "texture": "#top", "cullface": "up"},
+				"down": {"uv": [16, 0, 0, 16], "rotation": 90, "texture": "#top"}
+			}
+		},
+		{
+			"from": [0, 0, 2],
+			"to": [2, 12, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [14, 4, 16, 16], "texture": "#front"},
+				"south": {"uv": [0, 4, 2, 16], "texture": "#back", "cullface": "south"},
+				"west": {"uv": [2, 4, 16, 16], "texture": "#side", "cullface": "west"},
+				"down": {"uv": [0, 2, 14, 0], "rotation": 90, "texture": "#bottom", "cullface": "down"}
+			}
+		}
+	]
+}

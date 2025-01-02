@@ -1,0 +1,79 @@
+{
+  "variants": {
+    "facing=east,shape=inner_left": {
+      "model": "cozyhome:block/bamboo_counter_inner",
+      "y": 270
+    },
+    "facing=east,shape=inner_right": {
+      "model": "cozyhome:block/bamboo_counter_inner"
+    },
+    "facing=east,shape=outer_left": {
+      "model": "cozyhome:block/bamboo_counter_outer",
+      "y": 270
+    },
+    "facing=east,shape=outer_right": {
+      "model": "cozyhome:block/bamboo_counter_outer"
+    },
+    "facing=east,shape=straight": {
+      "model": "cozyhome:block/bamboo_counter",
+      "y": 270
+    },
+    "facing=north,shape=inner_left": {
+      "model": "cozyhome:block/bamboo_counter_inner",
+      "y": 180
+    },
+    "facing=north,shape=inner_right": {
+      "model": "cozyhome:block/bamboo_counter_inner",
+      "y": 270
+    },
+    "facing=north,shape=outer_left": {
+      "model": "cozyhome:block/bamboo_counter_outer",
+      "y": 180
+    },
+    "facing=north,shape=outer_right": {
+      "model": "cozyhome:block/bamboo_counter_outer",
+      "y": 270
+    },
+    "facing=north,shape=straight": {
+      "model": "cozyhome:block/bamboo_counter",
+      "y": 180
+    },
+    "facing=south,shape=inner_left": {
+      "model": "cozyhome:block/bamboo_counter_inner"
+    },
+    "facing=south,shape=inner_right": {
+      "model": "cozyhome:block/bamboo_counter_inner",
+      "y": 90
+    },
+    "facing=south,shape=outer_left": {
+      "model": "cozyhome:block/bamboo_counter_outer"
+    },
+    "facing=south,shape=outer_right": {
+      "model": "cozyhome:block/bamboo_counter_outer",
+      "y": 90
+    },
+    "facing=south,shape=straight": {
+      "model": "cozyhome:block/bamboo_counter"
+    },
+    "facing=west,shape=inner_left": {
+      "model": "cozyhome:block/bamboo_counter_inner",
+      "y": 90
+    },
+    "facing=west,shape=inner_right": {
+      "model": "cozyhome:block/bamboo_counter_inner",
+      "y": 180
+    },
+    "facing=west,shape=outer_left": {
+      "model": "cozyhome:block/bamboo_counter_outer",
+      "y": 90
+    },
+    "facing=west,shape=outer_right": {
+      "model": "cozyhome:block/bamboo_counter_outer",
+      "y": 180
+    },
+    "facing=west,shape=straight": {
+      "model": "cozyhome:block/bamboo_counter",
+      "y": 90
+    }
+  }
+}

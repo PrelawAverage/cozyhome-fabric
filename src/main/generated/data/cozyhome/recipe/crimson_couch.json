@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:crimson_slab"
+    },
+    "@": {
+      "item": "minecraft:white_wool"
+    }
+  },
+  "pattern": [
+    "@@",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyhome:crimson_couch"
+  }
+}
