@@ -7,6 +7,7 @@ import net.minecraft.util.StringIdentifiable;
  */
 public enum ModBlockTypes implements StringIdentifiable {
     COUNTER("counter"),
+    GRANDFATHER_CLOCK("grandfather_clock"),
     CHIMNEY("chimney"),
     TABLE("table"),
     FOUNTAIN("fountain"),

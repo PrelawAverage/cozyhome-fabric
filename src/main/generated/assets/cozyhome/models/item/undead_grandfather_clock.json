@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cozyhome:block/grandfather_clock/undead_grandfather_clock_item"
+  }
+}

@@ -9,13 +9,11 @@ import net.luckystudio.cozyhome.block.util.enums.AdvancedHorizontalLinearConnect
 import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
 import net.luckystudio.cozyhome.block.util.enums.HorizontalLinearConnectionBlock;
 import net.luckystudio.cozyhome.block.util.enums.VerticalLinearConnectionBlock;
-import net.luckystudio.cozyhome.datagen.util.ModItemTemplates;
-import net.luckystudio.cozyhome.datagen.util.ModModels;
-import net.luckystudio.cozyhome.datagen.util.ModTextureKey;
-import net.luckystudio.cozyhome.datagen.util.TableTypes;
+import net.luckystudio.cozyhome.datagen.util.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.enums.StairShape;
 import net.minecraft.data.client.*;
+import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
@@ -43,6 +41,18 @@ public class ModModelProvider extends FabricModelProvider {
         registerCounter(blockStateModelGenerator, ModBlocks.CRIMSON_COUNTER, CozyHome.id("block/break/crimson_furniture"));
         registerCounter(blockStateModelGenerator, ModBlocks.WARPED_COUNTER, CozyHome.id("block/break/warped_furniture"));
 
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.OAK_STORAGE_COUNTER, CozyHome.id("block/break/oak_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.SPRUCE_STORAGE_COUNTER, CozyHome.id("block/break/spruce_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.BIRCH_STORAGE_COUNTER, CozyHome.id("block/break/birch_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.JUNGLE_STORAGE_COUNTER, CozyHome.id("block/break/jungle_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.ACACIA_STORAGE_COUNTER, CozyHome.id("block/break/acacia_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.DARK_OAK_STORAGE_COUNTER, CozyHome.id("block/break/dark_oak_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.MANGROVE_STORAGE_COUNTER, CozyHome.id("block/break/mangrove_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.CHERRY_STORAGE_COUNTER, CozyHome.id("block/break/cherry_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.BAMBOO_STORAGE_COUNTER, CozyHome.id("block/break/bamboo_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.CRIMSON_STORAGE_COUNTER, CozyHome.id("block/break/crimson_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.WARPED_STORAGE_COUNTER, CozyHome.id("block/break/warped_furniture"));
+
         registerSinkCounter(blockStateModelGenerator, ModBlocks.OAK_SINK_COUNTER, CozyHome.id("block/break/oak_furniture"));
         registerSinkCounter(blockStateModelGenerator, ModBlocks.SPRUCE_SINK_COUNTER, CozyHome.id("block/break/spruce_furniture"));
         registerSinkCounter(blockStateModelGenerator, ModBlocks.BIRCH_SINK_COUNTER, CozyHome.id("block/break/birch_furniture"));
@@ -55,17 +65,93 @@ public class ModModelProvider extends FabricModelProvider {
         registerSinkCounter(blockStateModelGenerator, ModBlocks.CRIMSON_SINK_COUNTER, CozyHome.id("block/break/crimson_furniture"));
         registerSinkCounter(blockStateModelGenerator, ModBlocks.WARPED_SINK_COUNTER, CozyHome.id("block/break/warped_furniture"));
 
-        registerStorageCounter(blockStateModelGenerator, ModBlocks.OAK_STORAGE_COUNTER, CozyHome.id("block/break/oak_furniture"));
-        registerStorageCounter(blockStateModelGenerator, ModBlocks.SPRUCE_STORAGE_COUNTER, CozyHome.id("block/break/spruce_furniture"));
-        registerStorageCounter(blockStateModelGenerator, ModBlocks.BIRCH_STORAGE_COUNTER, CozyHome.id("block/break/birch_furniture"));
-        registerStorageCounter(blockStateModelGenerator, ModBlocks.JUNGLE_STORAGE_COUNTER, CozyHome.id("block/break/jungle_furniture"));
-        registerStorageCounter(blockStateModelGenerator, ModBlocks.ACACIA_STORAGE_COUNTER, CozyHome.id("block/break/acacia_furniture"));
-        registerStorageCounter(blockStateModelGenerator, ModBlocks.DARK_OAK_STORAGE_COUNTER, CozyHome.id("block/break/dark_oak_furniture"));
-        registerStorageCounter(blockStateModelGenerator, ModBlocks.MANGROVE_STORAGE_COUNTER, CozyHome.id("block/break/mangrove_furniture"));
-        registerStorageCounter(blockStateModelGenerator, ModBlocks.CHERRY_STORAGE_COUNTER, CozyHome.id("block/break/cherry_furniture"));
-        registerStorageCounter(blockStateModelGenerator, ModBlocks.BAMBOO_STORAGE_COUNTER, CozyHome.id("block/break/bamboo_furniture"));
-        registerStorageCounter(blockStateModelGenerator, ModBlocks.CRIMSON_STORAGE_COUNTER, CozyHome.id("block/break/crimson_furniture"));
-        registerStorageCounter(blockStateModelGenerator, ModBlocks.WARPED_STORAGE_COUNTER, CozyHome.id("block/break/warped_furniture"));
+        registerTable(blockStateModelGenerator, ModBlocks.OAK_TABLE, TableTypes.GENERIC, Identifier.of("block/oak_planks"));
+        registerTable(blockStateModelGenerator, ModBlocks.SPRUCE_TABLE, TableTypes.GENERIC, Identifier.of("block/spruce_planks"));
+        registerTable(blockStateModelGenerator, ModBlocks.BIRCH_TABLE, TableTypes.GENERIC, Identifier.of("block/birch_planks"));
+        registerTable(blockStateModelGenerator, ModBlocks.JUNGLE_TABLE, TableTypes.GENERIC, Identifier.of("block/jungle_planks"));
+        registerTable(blockStateModelGenerator, ModBlocks.ACACIA_TABLE, TableTypes.GENERIC, Identifier.of("block/acacia_planks"));
+        registerTable(blockStateModelGenerator, ModBlocks.DARK_OAK_TABLE, TableTypes.GENERIC, Identifier.of("block/dark_oak_planks"));
+        registerTable(blockStateModelGenerator, ModBlocks.MANGROVE_TABLE, TableTypes.GENERIC, Identifier.of("block/mangrove_planks"));
+        registerTable(blockStateModelGenerator, ModBlocks.CHERRY_TABLE, TableTypes.GENERIC, Identifier.of("block/cherry_planks"));
+        registerTable(blockStateModelGenerator, ModBlocks.BAMBOO_TABLE, TableTypes.GENERIC, Identifier.of("block/bamboo_planks"));
+        registerTable(blockStateModelGenerator, ModBlocks.CRIMSON_TABLE, TableTypes.GENERIC, Identifier.of("block/crimson_planks"));
+        registerTable(blockStateModelGenerator, ModBlocks.WARPED_TABLE, TableTypes.GENERIC, Identifier.of("block/warped_planks"));
+        registerTable(blockStateModelGenerator, ModBlocks.IRON_TABLE, TableTypes.SHELF, CozyHome.id("block/break/iron_furniture"));
+        registerTable(blockStateModelGenerator, ModBlocks.GLASS_TABLE, TableTypes.SHELF, CozyHome.id("block/break/glass_furniture"));
+        registerTable(blockStateModelGenerator, ModBlocks.UNDEAD_TABLE, TableTypes.GENERIC, CozyHome.id("block/break/undead_furniture"));
+        registerTable(blockStateModelGenerator, ModBlocks.OMINOUS_TABLE, TableTypes.GENERIC, CozyHome.id("block/break/ominous_furniture"));
+
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.OAK_CHAIR, Identifier.of("block/oak_planks"), ModItemTemplates.CHAIR.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.SPRUCE_CHAIR, Identifier.of("block/spruce_planks"), ModItemTemplates.CHAIR.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.BIRCH_CHAIR, Identifier.of("block/birch_planks"), ModItemTemplates.CHAIR.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.JUNGLE_CHAIR, Identifier.of("block/jungle_planks"), ModItemTemplates.CHAIR.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.ACACIA_CHAIR, Identifier.of("block/acacia_planks"), ModItemTemplates.CHAIR.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.DARK_OAK_CHAIR, Identifier.of("block/dark_oak_planks"), ModItemTemplates.CHAIR.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.MANGROVE_CHAIR, Identifier.of("block/mangrove_planks"), ModItemTemplates.CHAIR.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.CHERRY_CHAIR, Identifier.of("block/cherry_planks"), ModItemTemplates.CHAIR.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.BAMBOO_CHAIR, Identifier.of("block/bamboo_planks"), ModItemTemplates.CHAIR.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.CRIMSON_CHAIR, Identifier.of("block/crimson_planks"), ModItemTemplates.CHAIR.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.WARPED_CHAIR, Identifier.of("block/warped_planks"), ModItemTemplates.CHAIR.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.IRON_CHAIR, CozyHome.id("block/break/iron_furniture"), ModItemTemplates.CHAIR.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.GLASS_CHAIR, CozyHome.id("block/break/glass_furniture"), ModItemTemplates.CHAIR.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.UNDEAD_CHAIR, CozyHome.id("block/break/undead_furniture"), ModItemTemplates.CHAIR.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.OMINOUS_CHAIR, CozyHome.id("block/break/ominous_furniture"), ModItemTemplates.CHAIR.get());
+
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.OAK_WALL_CLOCK, Identifier.of("block/oak_planks"), ModItemTemplates.WALL_CLOCK.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.SPRUCE_WALL_CLOCK, Identifier.of("block/spruce_planks"), ModItemTemplates.WALL_CLOCK.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.BIRCH_WALL_CLOCK, Identifier.of("block/birch_planks"), ModItemTemplates.WALL_CLOCK.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.JUNGLE_WALL_CLOCK, Identifier.of("block/jungle_planks"), ModItemTemplates.WALL_CLOCK.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.ACACIA_WALL_CLOCK, Identifier.of("block/acacia_planks"), ModItemTemplates.WALL_CLOCK.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.DARK_OAK_WALL_CLOCK, Identifier.of("block/dark_oak_planks"), ModItemTemplates.WALL_CLOCK.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.MANGROVE_WALL_CLOCK, Identifier.of("block/mangrove_planks"), ModItemTemplates.WALL_CLOCK.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.CHERRY_WALL_CLOCK, Identifier.of("block/cherry_planks"), ModItemTemplates.WALL_CLOCK.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.BAMBOO_WALL_CLOCK, Identifier.of("block/bamboo_planks"), ModItemTemplates.WALL_CLOCK.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.CRIMSON_WALL_CLOCK, Identifier.of("block/crimson_planks"), ModItemTemplates.WALL_CLOCK.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.WARPED_WALL_CLOCK, Identifier.of("block/warped_planks"), ModItemTemplates.WALL_CLOCK.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.IRON_WALL_CLOCK, CozyHome.id("block/break/iron_furniture"), ModItemTemplates.WALL_CLOCK.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.GLASS_WALL_CLOCK, CozyHome.id("block/break/glass_furniture"), ModItemTemplates.WALL_CLOCK.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.UNDEAD_WALL_CLOCK, CozyHome.id("block/break/undead_furniture"), ModItemTemplates.WALL_CLOCK.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.OMINOUS_WALL_CLOCK, CozyHome.id("block/break/ominous_furniture"), ModItemTemplates.WALL_CLOCK.get());
+
+        registerBuiltinWithParticleAndGeneratedItemModel(blockStateModelGenerator, ModBlocks.OAK_GRANDFATHER_CLOCK, ModBlockTypes.GRANDFATHER_CLOCK, Identifier.of("block/oak_planks"));
+        registerBuiltinWithParticleAndGeneratedItemModel(blockStateModelGenerator, ModBlocks.SPRUCE_GRANDFATHER_CLOCK, ModBlockTypes.GRANDFATHER_CLOCK, Identifier.of("block/spruce_planks"));
+        registerBuiltinWithParticleAndGeneratedItemModel(blockStateModelGenerator, ModBlocks.BIRCH_GRANDFATHER_CLOCK, ModBlockTypes.GRANDFATHER_CLOCK, Identifier.of("block/birch_planks"));
+        registerBuiltinWithParticleAndGeneratedItemModel(blockStateModelGenerator, ModBlocks.JUNGLE_GRANDFATHER_CLOCK, ModBlockTypes.GRANDFATHER_CLOCK, Identifier.of("block/jungle_planks"));
+        registerBuiltinWithParticleAndGeneratedItemModel(blockStateModelGenerator, ModBlocks.ACACIA_GRANDFATHER_CLOCK, ModBlockTypes.GRANDFATHER_CLOCK, Identifier.of("block/acacia_planks"));
+        registerBuiltinWithParticleAndGeneratedItemModel(blockStateModelGenerator, ModBlocks.DARK_OAK_GRANDFATHER_CLOCK, ModBlockTypes.GRANDFATHER_CLOCK, Identifier.of("block/dark_oak_planks"));
+        registerBuiltinWithParticleAndGeneratedItemModel(blockStateModelGenerator, ModBlocks.MANGROVE_GRANDFATHER_CLOCK, ModBlockTypes.GRANDFATHER_CLOCK, Identifier.of("block/mangrove_planks"));
+        registerBuiltinWithParticleAndGeneratedItemModel(blockStateModelGenerator, ModBlocks.CHERRY_GRANDFATHER_CLOCK, ModBlockTypes.GRANDFATHER_CLOCK, Identifier.of("block/cherry_planks"));
+        registerBuiltinWithParticleAndGeneratedItemModel(blockStateModelGenerator, ModBlocks.BAMBOO_GRANDFATHER_CLOCK, ModBlockTypes.GRANDFATHER_CLOCK, Identifier.of("block/bamboo_planks"));
+        registerBuiltinWithParticleAndGeneratedItemModel(blockStateModelGenerator, ModBlocks.CRIMSON_GRANDFATHER_CLOCK, ModBlockTypes.GRANDFATHER_CLOCK, Identifier.of("block/crimson_planks"));
+        registerBuiltinWithParticleAndGeneratedItemModel(blockStateModelGenerator, ModBlocks.WARPED_GRANDFATHER_CLOCK, ModBlockTypes.GRANDFATHER_CLOCK, Identifier.of("block/warped_planks"));
+        registerBuiltinWithParticleAndGeneratedItemModel(blockStateModelGenerator, ModBlocks.IRON_GRANDFATHER_CLOCK, ModBlockTypes.GRANDFATHER_CLOCK, CozyHome.id("block/break/iron_furniture"));
+        registerBuiltinWithParticleAndGeneratedItemModel(blockStateModelGenerator, ModBlocks.GLASS_GRANDFATHER_CLOCK, ModBlockTypes.GRANDFATHER_CLOCK, CozyHome.id("block/break/glass_furniture"));
+        registerBuiltinWithParticleAndGeneratedItemModel(blockStateModelGenerator, ModBlocks.UNDEAD_GRANDFATHER_CLOCK, ModBlockTypes.GRANDFATHER_CLOCK, CozyHome.id("block/break/undead_furniture"));
+        registerBuiltinWithParticleAndGeneratedItemModel(blockStateModelGenerator, ModBlocks.OMINOUS_GRANDFATHER_CLOCK, ModBlockTypes.GRANDFATHER_CLOCK, CozyHome.id("block/break/ominous_furniture"));
+
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.OAK_SOFA, Identifier.of("block/oak_planks"), ModItemTemplates.SOFA.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.SPRUCE_SOFA, Identifier.of("block/spruce_planks"), ModItemTemplates.SOFA.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.BIRCH_SOFA, Identifier.of("block/birch_planks"), ModItemTemplates.SOFA.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.JUNGLE_SOFA, Identifier.of("block/jungle_planks"), ModItemTemplates.SOFA.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.ACACIA_SOFA, Identifier.of("block/acacia_planks"), ModItemTemplates.SOFA.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.DARK_OAK_SOFA, Identifier.of("block/dark_oak_planks"), ModItemTemplates.SOFA.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.MANGROVE_SOFA, Identifier.of("block/mangrove_planks"), ModItemTemplates.SOFA.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.CHERRY_SOFA, Identifier.of("block/cherry_planks"), ModItemTemplates.SOFA.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.BAMBOO_SOFA, Identifier.of("block/bamboo_planks"), ModItemTemplates.SOFA.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.CRIMSON_SOFA, Identifier.of("block/crimson_planks"), ModItemTemplates.SOFA.get());
+        registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.WARPED_SOFA, Identifier.of("block/warped_planks"), ModItemTemplates.SOFA.get());
+
+        registerCouch(blockStateModelGenerator, ModBlocks.OAK_COUCH, Identifier.of("block/oak_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.SPRUCE_COUCH, Identifier.of("block/spruce_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.BIRCH_COUCH, Identifier.of("block/birch_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.JUNGLE_COUCH, Identifier.of("block/jungle_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.ACACIA_COUCH, Identifier.of("block/acacia_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.DARK_OAK_COUCH, Identifier.of("block/dark_oak_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.MANGROVE_COUCH, Identifier.of("block/mangrove_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.CHERRY_COUCH, Identifier.of("block/cherry_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.BAMBOO_COUCH, Identifier.of("block/bamboo_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.CRIMSON_COUCH, Identifier.of("block/crimson_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.WARPED_COUCH, Identifier.of("block/warped_planks"));
 
         registerDesk(blockStateModelGenerator, ModBlocks.OAK_DESK, Identifier.of("block/oak_planks"));
         registerDesk(blockStateModelGenerator, ModBlocks.SPRUCE_DESK, Identifier.of("block/spruce_planks"));
@@ -91,22 +177,6 @@ public class ModModelProvider extends FabricModelProvider {
         registerDrawer(blockStateModelGenerator, ModBlocks.CRIMSON_DRAWER, Identifier.of("block/crimson_planks"));
         registerDrawer(blockStateModelGenerator, ModBlocks.WARPED_DRAWER, Identifier.of("block/warped_planks"));
 
-        registerTable(blockStateModelGenerator, ModBlocks.OAK_TABLE, TableTypes.GENERIC, Identifier.of("block/oak_planks"));
-        registerTable(blockStateModelGenerator, ModBlocks.SPRUCE_TABLE, TableTypes.GENERIC, Identifier.of("block/spruce_planks"));
-        registerTable(blockStateModelGenerator, ModBlocks.BIRCH_TABLE, TableTypes.GENERIC, Identifier.of("block/birch_planks"));
-        registerTable(blockStateModelGenerator, ModBlocks.JUNGLE_TABLE, TableTypes.GENERIC, Identifier.of("block/jungle_planks"));
-        registerTable(blockStateModelGenerator, ModBlocks.ACACIA_TABLE, TableTypes.GENERIC, Identifier.of("block/acacia_planks"));
-        registerTable(blockStateModelGenerator, ModBlocks.DARK_OAK_TABLE, TableTypes.GENERIC, Identifier.of("block/dark_oak_planks"));
-        registerTable(blockStateModelGenerator, ModBlocks.MANGROVE_TABLE, TableTypes.GENERIC, Identifier.of("block/mangrove_planks"));
-        registerTable(blockStateModelGenerator, ModBlocks.CHERRY_TABLE, TableTypes.GENERIC, Identifier.of("block/cherry_planks"));
-        registerTable(blockStateModelGenerator, ModBlocks.BAMBOO_TABLE, TableTypes.GENERIC, Identifier.of("block/bamboo_planks"));
-        registerTable(blockStateModelGenerator, ModBlocks.CRIMSON_TABLE, TableTypes.GENERIC, Identifier.of("block/crimson_planks"));
-        registerTable(blockStateModelGenerator, ModBlocks.WARPED_TABLE, TableTypes.GENERIC, Identifier.of("block/warped_planks"));
-        registerTable(blockStateModelGenerator, ModBlocks.IRON_TABLE, TableTypes.SHELF, CozyHome.id("block/break/iron_furniture"));
-        registerTable(blockStateModelGenerator, ModBlocks.GLASS_TABLE, TableTypes.SHELF, CozyHome.id("block/break/glass_furniture"));
-        registerTable(blockStateModelGenerator, ModBlocks.UNDEAD_TABLE, TableTypes.GENERIC, CozyHome.id("block/break/undead_furniture"));
-        registerTable(blockStateModelGenerator, ModBlocks.OMINOUS_TABLE, TableTypes.GENERIC, CozyHome.id("block/break/ominous_furniture"));
-
         registerFountain(blockStateModelGenerator, ModBlocks.STONE_BRICK_FOUNTAIN, Identifier.of("block/stone_bricks"));
         registerFountain(blockStateModelGenerator, ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN, Identifier.of("block/mossy_stone_bricks"));
         registerFountain(blockStateModelGenerator, ModBlocks.GRANITE_FOUNTAIN, Identifier.of("block/granite"));
@@ -125,22 +195,6 @@ public class ModModelProvider extends FabricModelProvider {
         registerFountain(blockStateModelGenerator, ModBlocks.ENDSTONE_FOUNTAIN, Identifier.of("block/end_stone"));
         registerFountain(blockStateModelGenerator, ModBlocks.PURPUR_FOUNTAIN, Identifier.of("block/purpur_block"));
 
-        registerBuiltinWithParticleAndItemModel(blockStateModelGenerator, ModBlocks.OAK_CHAIR, Identifier.of("block/oak_planks"), ModItemTemplates.CHAIR.get());
-        registerBuiltinWithParticleAndItemModel(blockStateModelGenerator, ModBlocks.SPRUCE_CHAIR, Identifier.of("block/spruce_planks"), ModItemTemplates.CHAIR.get());
-        registerBuiltinWithParticleAndItemModel(blockStateModelGenerator, ModBlocks.BIRCH_CHAIR, Identifier.of("block/birch_planks"), ModItemTemplates.CHAIR.get());
-        registerBuiltinWithParticleAndItemModel(blockStateModelGenerator, ModBlocks.JUNGLE_CHAIR, Identifier.of("block/jungle_planks"), ModItemTemplates.CHAIR.get());
-        registerBuiltinWithParticleAndItemModel(blockStateModelGenerator, ModBlocks.ACACIA_CHAIR, Identifier.of("block/acacia_planks"), ModItemTemplates.CHAIR.get());
-        registerBuiltinWithParticleAndItemModel(blockStateModelGenerator, ModBlocks.DARK_OAK_CHAIR, Identifier.of("block/dark_oak_planks"), ModItemTemplates.CHAIR.get());
-        registerBuiltinWithParticleAndItemModel(blockStateModelGenerator, ModBlocks.MANGROVE_CHAIR, Identifier.of("block/mangrove_planks"), ModItemTemplates.CHAIR.get());
-        registerBuiltinWithParticleAndItemModel(blockStateModelGenerator, ModBlocks.CHERRY_CHAIR, Identifier.of("block/cherry_planks"), ModItemTemplates.CHAIR.get());
-        registerBuiltinWithParticleAndItemModel(blockStateModelGenerator, ModBlocks.BAMBOO_CHAIR, Identifier.of("block/bamboo_planks"), ModItemTemplates.CHAIR.get());
-        registerBuiltinWithParticleAndItemModel(blockStateModelGenerator, ModBlocks.CRIMSON_CHAIR, Identifier.of("block/crimson_planks"), ModItemTemplates.CHAIR.get());
-        registerBuiltinWithParticleAndItemModel(blockStateModelGenerator, ModBlocks.WARPED_CHAIR, Identifier.of("block/warped_planks"), ModItemTemplates.CHAIR.get());
-        registerBuiltinWithParticleAndItemModel(blockStateModelGenerator, ModBlocks.IRON_CHAIR, CozyHome.id("block/break/iron_furniture"), ModItemTemplates.CHAIR.get());
-        registerBuiltinWithParticleAndItemModel(blockStateModelGenerator, ModBlocks.GLASS_CHAIR, CozyHome.id("block/break/glass_furniture"), ModItemTemplates.CHAIR.get());
-        registerBuiltinWithParticleAndItemModel(blockStateModelGenerator, ModBlocks.UNDEAD_CHAIR, CozyHome.id("block/break/undead_furniture"), ModItemTemplates.CHAIR.get());
-        registerBuiltinWithParticleAndItemModel(blockStateModelGenerator, ModBlocks.OMINOUS_CHAIR, CozyHome.id("block/break/ominous_furniture"), ModItemTemplates.CHAIR.get());
-
         registerChimney(blockStateModelGenerator, ModBlocks.STONE_BRICK_CHIMNEY);
         registerChimney(blockStateModelGenerator, ModBlocks.MOSSY_STONE_BRICK_CHIMNEY);
         registerChimney(blockStateModelGenerator, ModBlocks.GRANITE_CHIMNEY);
@@ -158,18 +212,6 @@ public class ModModelProvider extends FabricModelProvider {
         registerChimney(blockStateModelGenerator, ModBlocks.BLACKSTONE_CHIMNEY);
         registerChimney(blockStateModelGenerator, ModBlocks.ENDSTONE_CHIMNEY);
         registerChimney(blockStateModelGenerator, ModBlocks.PURPUR_CHIMNEY);
-
-        registerCouch(blockStateModelGenerator, ModBlocks.OAK_COUCH, Identifier.of("block/oak_planks"));
-        registerCouch(blockStateModelGenerator, ModBlocks.SPRUCE_COUCH, Identifier.of("block/spruce_planks"));
-        registerCouch(blockStateModelGenerator, ModBlocks.BIRCH_COUCH, Identifier.of("block/birch_planks"));
-        registerCouch(blockStateModelGenerator, ModBlocks.JUNGLE_COUCH, Identifier.of("block/jungle_planks"));
-        registerCouch(blockStateModelGenerator, ModBlocks.ACACIA_COUCH, Identifier.of("block/acacia_planks"));
-        registerCouch(blockStateModelGenerator, ModBlocks.DARK_OAK_COUCH, Identifier.of("block/dark_oak_planks"));
-        registerCouch(blockStateModelGenerator, ModBlocks.MANGROVE_COUCH, Identifier.of("block/mangrove_planks"));
-        registerCouch(blockStateModelGenerator, ModBlocks.CHERRY_COUCH, Identifier.of("block/cherry_planks"));
-        registerCouch(blockStateModelGenerator, ModBlocks.BAMBOO_COUCH, Identifier.of("block/bamboo_planks"));
-        registerCouch(blockStateModelGenerator, ModBlocks.CRIMSON_COUCH, Identifier.of("block/crimson_planks"));
-        registerCouch(blockStateModelGenerator, ModBlocks.WARPED_COUCH, Identifier.of("block/warped_planks"));
     }
 
     // I have no idea what this does, but it's required.
@@ -190,9 +232,16 @@ public class ModModelProvider extends FabricModelProvider {
                 CozyHome.id("block/inset_ice_pane"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/ice")).put(TextureKey.PARTICLE, Identifier.ofVanilla("block/ice")), blockStateModelGenerator.modelCollector);
     }
 
-    public final void registerBuiltinWithParticleAndItemModel(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier particleSource, Identifier modelPath) {
+    public final void registerBuiltinWithParticleAndParentedItemModel(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier particleSource, Identifier modelPath) {
         blockStateModelGenerator.registerBuiltinWithParticle(block, particleSource);
         blockStateModelGenerator.registerParentedItemModel(block, modelPath);
+    }
+
+    public final void registerBuiltinWithParticleAndGeneratedItemModel(BlockStateModelGenerator blockStateModelGenerator, Block block, ModBlockTypes modBlockTypes, Identifier particleSource) {
+        blockStateModelGenerator.registerBuiltinWithParticle(block, particleSource);
+        Item item = block.asItem();
+        Identifier textureId = Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/" + modBlockTypes + "/" + Registries.BLOCK.getId(block).getPath() + "_item");
+        Models.GENERATED.upload(ModelIds.getItemModelId(item), TextureMap.layer0(textureId), blockStateModelGenerator.modelCollector);
     }
 
     public final void registerCounter(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {

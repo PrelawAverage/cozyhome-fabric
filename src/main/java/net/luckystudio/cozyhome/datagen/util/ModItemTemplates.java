@@ -6,11 +6,13 @@ import net.minecraft.util.Identifier;
 import java.util.function.Supplier;
 
 public enum ModItemTemplates implements Supplier<Identifier> {
-    CHAIR(CozyHome.id("item/template/template_chair"));
+    CHAIR(CozyHome.id("item/template/template_chair")),
+    SOFA(CozyHome.id("item/template/template_sofa")),
+    WALL_CLOCK(CozyHome.id("item/template/template_wall_clock"));
 
     private final Identifier name;
 
-    private ModItemTemplates(final Identifier name) {
+    ModItemTemplates(final Identifier name) {
         this.name = name;
     }
 
