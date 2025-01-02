@@ -3,7 +3,7 @@ package net.luckystudio.cozyhome.block.custom.abstracts;
 import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.entity.ChairBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModProperties;
-import net.luckystudio.cozyhome.block.util.SeatBlock;
+import net.luckystudio.cozyhome.block.util.interfaces.SeatBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
@@ -38,11 +38,6 @@ public abstract class AbstractSeatBlock extends BlockWithEntity implements SeatB
     @Override
     protected boolean canPathfindThrough(BlockState state, NavigationType type) {
         return false;
-    }
-
-    @Override
-    protected BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.INVISIBLE;
     }
 
     @Override

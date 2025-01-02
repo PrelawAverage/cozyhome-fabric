@@ -256,9 +256,4 @@ public class SofaBlock extends AbstractSeatBlock {
     public float getSeatRotation(BlockState state, World world, BlockPos pos) {
         return ModProperties.setSeatRotationFromRotation(state);
     }
-
-    @Override
-    public float getSeatHeight(BlockState state) {
-        return 0.5f;
-    }
 }

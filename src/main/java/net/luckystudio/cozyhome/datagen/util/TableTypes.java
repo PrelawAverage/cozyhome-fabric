@@ -4,12 +4,11 @@ import net.minecraft.util.StringIdentifiable;
 
 public enum TableTypes implements StringIdentifiable {
     GENERIC(""),
-    SHELF("shelf_"),
-    SOLID("solid_");
+    SHELF("shelf_");
 
     private final String name;
 
-    private TableTypes(final String name) {
+    TableTypes(final String name) {
         this.name = name;
     }
 

@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.custom.SofaBlock;
 import net.luckystudio.cozyhome.block.entity.SofaBlockEntity;
-import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.client.ModEntityModelLayers;
 import net.luckystudio.cozyhome.item.ModItems;

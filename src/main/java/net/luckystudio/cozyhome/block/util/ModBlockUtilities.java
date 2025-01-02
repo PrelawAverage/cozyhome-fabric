@@ -1,19 +1,14 @@
 package net.luckystudio.cozyhome.block.util;
 
-import net.luckystudio.cozyhome.block.custom.clocks.GrandfatherClockBlock;
 import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
 import net.luckystudio.cozyhome.block.util.enums.OminousBlock;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.entity.Entity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.*;
 import net.minecraft.world.biome.Biome;
 

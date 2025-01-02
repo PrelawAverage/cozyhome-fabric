@@ -87,42 +87,37 @@ public class CounterBlock extends Block implements ConnectingBlock {
     private VoxelShape getShape(BlockState state) {
         Direction direction = state.get(FACING);
         StairShape shape = state.get(SHAPE);
-        switch (direction) {
-            case NORTH:
-                return switch (shape) {
-                    case STRAIGHT -> NORTH_STRAIGHT;
-                    case INNER_LEFT -> NORTH_INNER_LEFT;
-                    case INNER_RIGHT -> NORTH_INNER_RIGHT;
-                    case OUTER_LEFT -> NORTH_OUTER_LEFT;
-                    case OUTER_RIGHT -> NORTH_OUTER_RIGHT;
-                };
-            case EAST:
-                return switch (shape) {
-                    case STRAIGHT -> EAST_STRAIGHT;
-                    case INNER_LEFT -> EAST_INNER_LEFT;
-                    case INNER_RIGHT -> EAST_INNER_RIGHT;
-                    case OUTER_LEFT -> EAST_OUTER_LEFT;
-                    case OUTER_RIGHT -> EAST_OUTER_RIGHT;
-                };
-            case SOUTH:
-                return switch (shape) {
-                    case STRAIGHT -> SOUTH_STRAIGHT;
-                    case INNER_LEFT -> SOUTH_INNER_LEFT;
-                    case INNER_RIGHT -> SOUTH_INNER_RIGHT;
-                    case OUTER_LEFT -> SOUTH_OUTER_LEFT;
-                    case OUTER_RIGHT -> SOUTH_OUTER_RIGHT;
-                };
-            case WEST:
-                return switch (shape) {
-                    case STRAIGHT -> WEST_STRAIGHT;
-                    case INNER_LEFT -> WEST_INNER_LEFT;
-                    case INNER_RIGHT -> WEST_INNER_RIGHT;
-                    case OUTER_LEFT -> WEST_OUTER_LEFT;
-                    case OUTER_RIGHT -> WEST_OUTER_RIGHT;
-                };
-            default:
-                throw new IllegalStateException("Unexpected value: " + FACING);
-        }
+        return switch (direction) {
+            case NORTH -> switch (shape) {
+                case STRAIGHT -> NORTH_STRAIGHT;
+                case INNER_LEFT -> NORTH_INNER_LEFT;
+                case INNER_RIGHT -> NORTH_INNER_RIGHT;
+                case OUTER_LEFT -> NORTH_OUTER_LEFT;
+                case OUTER_RIGHT -> NORTH_OUTER_RIGHT;
+            };
+            case EAST -> switch (shape) {
+                case STRAIGHT -> EAST_STRAIGHT;
+                case INNER_LEFT -> EAST_INNER_LEFT;
+                case INNER_RIGHT -> EAST_INNER_RIGHT;
+                case OUTER_LEFT -> EAST_OUTER_LEFT;
+                case OUTER_RIGHT -> EAST_OUTER_RIGHT;
+            };
+            case SOUTH -> switch (shape) {
+                case STRAIGHT -> SOUTH_STRAIGHT;
+                case INNER_LEFT -> SOUTH_INNER_LEFT;
+                case INNER_RIGHT -> SOUTH_INNER_RIGHT;
+                case OUTER_LEFT -> SOUTH_OUTER_LEFT;
+                case OUTER_RIGHT -> SOUTH_OUTER_RIGHT;
+            };
+            case WEST -> switch (shape) {
+                case STRAIGHT -> WEST_STRAIGHT;
+                case INNER_LEFT -> WEST_INNER_LEFT;
+                case INNER_RIGHT -> WEST_INNER_RIGHT;
+                case OUTER_LEFT -> WEST_OUTER_LEFT;
+                case OUTER_RIGHT -> WEST_OUTER_RIGHT;
+            };
+            default -> throw new IllegalStateException("Unexpected value: " + FACING);
+        };
     }
 
     @Override
@@ -133,11 +128,6 @@ public class CounterBlock extends Block implements ConnectingBlock {
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return this.getShape(state);
-    }
-
-    @Override
-    protected BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
     }
 
     @Override

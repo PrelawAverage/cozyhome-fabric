@@ -2,6 +2,7 @@ package net.luckystudio.cozyhome.block.util;
 
 import net.luckystudio.cozyhome.block.util.enums.*;
 import net.luckystudio.cozyhome.block.util.interfaces.ConnectingBlock;
+import net.luckystudio.cozyhome.block.util.interfaces.SeatBlock;
 import net.luckystudio.cozyhome.entity.ModEntities;
 import net.luckystudio.cozyhome.entity.custom.SeatEntity;
 import net.minecraft.block.BlockState;

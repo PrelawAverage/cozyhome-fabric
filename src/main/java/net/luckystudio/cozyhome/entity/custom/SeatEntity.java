@@ -55,7 +55,7 @@ public class SeatEntity extends Entity {
     protected void addPassenger(Entity passenger) {
         BlockPos pos = this.getBlockPos();
         BlockState state = this.getWorld().getBlockState(pos);
-        if (state.getBlock() instanceof AbstractSeatBlock seatBlock) {
+        if (state.getBlock() instanceof AbstractSeatBlock) {
             passenger.setYaw(this.getYaw());
             super.addPassenger(passenger);
         }
@@ -113,7 +113,7 @@ public class SeatEntity extends Entity {
 
     @Override
     protected void updatePassengerPosition(Entity passenger, PositionUpdater positionUpdater) {
-        if (passenger instanceof PlayerEntity player) {
+        if (passenger instanceof PlayerEntity) {
             // Get the yaw of the entity and the player
             float entityYaw = this.getYaw();
             // If the yaw difference exceeds the threshold, rotate the player's body

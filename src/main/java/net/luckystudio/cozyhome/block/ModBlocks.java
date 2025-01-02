@@ -34,13 +34,6 @@ import java.util.Set;
 
 public class ModBlocks {
 
-    // Map associating keywords with rarities
-    private static final Map<Rarity, Set<String>> RARITY_KEYWORDS = Map.of(
-            Rarity.UNCOMMON, Set.of("undead", "ominous"),
-            Rarity.RARE, Set.of("ancient", "royal"),
-            Rarity.EPIC, Set.of("legendary", "arcane")
-    );
-
     private static Block createCounterBlock(Block block, Boolean requiresTool, Boolean burnable) {
         AbstractBlock.Settings settings = AbstractBlock.Settings.copy(block);
         if (requiresTool) settings.requiresTool();

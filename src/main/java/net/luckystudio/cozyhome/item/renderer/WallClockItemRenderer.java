@@ -32,7 +32,7 @@ public class WallClockItemRenderer implements BuiltinItemRendererRegistry.Dynami
         BlockState blockState = block.getDefaultState();
         WallClockBlock.ClockType clockType = ((WallClockBlock)blockState.getBlock()).getClockType();
 
-        RenderLayer clockRenderLayer = WallClockBlockEntityRenderer.getClockRenderLayer(clockType, blockState);
+        RenderLayer clockRenderLayer = WallClockBlockEntityRenderer.getClockRenderLayer(clockType);
         VertexConsumer clockVertexConsumer = vertexConsumers.getBuffer(clockRenderLayer);
         wall_clock.render(matrices, clockVertexConsumer, light, overlay);
 

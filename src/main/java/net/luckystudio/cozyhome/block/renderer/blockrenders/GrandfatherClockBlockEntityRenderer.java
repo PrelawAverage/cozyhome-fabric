@@ -5,7 +5,6 @@ import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.entity.clocks.GrandfatherClockBlockEntity;
 import net.luckystudio.cozyhome.block.custom.clocks.GrandfatherClockBlock;
 import net.luckystudio.cozyhome.block.renderer.models.GrandfatherClockModel;
-import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.OminousBlock;
 import net.luckystudio.cozyhome.block.util.enums.TripleTallBlock;

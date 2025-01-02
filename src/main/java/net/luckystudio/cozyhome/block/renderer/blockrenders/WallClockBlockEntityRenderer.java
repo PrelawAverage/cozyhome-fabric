@@ -5,7 +5,6 @@ import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.entity.clocks.WallClockBlockEntity;
 import net.luckystudio.cozyhome.block.custom.clocks.WallClockBlock;
 import net.luckystudio.cozyhome.block.renderer.models.WallClockModel;
-import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.client.ModEntityModelLayers;
 import net.minecraft.block.BlockState;
@@ -74,14 +73,14 @@ public class WallClockBlockEntityRenderer implements BlockEntityRenderer<WallClo
         );
 
         // Render the clock
-        RenderLayer clockRenderLayer = getClockRenderLayer(clockType, blockState);
+        RenderLayer clockRenderLayer = getClockRenderLayer(clockType);
         VertexConsumer clockVertexConsumer = vertexConsumers.getBuffer(clockRenderLayer);
         wall_clock.render(matrices, clockVertexConsumer, light, overlay);
         matrices.pop();
     }
 
-    public static RenderLayer getClockRenderLayer(WallClockBlock.ClockType type, BlockState blockState) {
-        Identifier identifier = grandfather_clock_TEXTURES.get(type);;
+    public static RenderLayer getClockRenderLayer(WallClockBlock.ClockType type) {
+        Identifier identifier = grandfather_clock_TEXTURES.get(type);
         return RenderLayer.getEntityCutoutNoCullZOffset(identifier);
     }
 }
