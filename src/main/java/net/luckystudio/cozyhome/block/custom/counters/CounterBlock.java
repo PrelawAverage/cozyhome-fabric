@@ -1,6 +1,8 @@
 package net.luckystudio.cozyhome.block.custom.counters;
 
 import com.mojang.serialization.MapCodec;
+import net.luckystudio.cozyhome.block.util.ModProperties;
+import net.luckystudio.cozyhome.block.util.interfaces.ConnectingBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.StairShape;
 import net.minecraft.item.ItemPlacementContext;
@@ -16,7 +18,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 
-public class CounterBlock extends Block {
+public class CounterBlock extends Block implements ConnectingBlock {
     public static final MapCodec<CounterBlock> CODEC = createCodec(CounterBlock::new);
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final EnumProperty<StairShape> SHAPE = Properties.STAIR_SHAPE;
@@ -143,7 +145,7 @@ public class CounterBlock extends Block {
         BlockPos blockPos = ctx.getBlockPos();
         BlockState blockState = this.getDefaultState()
                 .with(FACING, ctx.getHorizontalPlayerFacing());
-        return blockState.with(SHAPE, getCounterShape(blockState, ctx.getWorld(), blockPos));
+        return blockState.with(SHAPE, ModProperties.setStairShapeNoFlip(blockState, ctx.getWorld(), blockPos));
     }
 
     @Override
@@ -151,39 +153,8 @@ public class CounterBlock extends Block {
             BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos
     ) {
         return direction.getAxis().isHorizontal()
-                ? state.with(SHAPE, getCounterShape(state, world, pos))
+                ? state.with(SHAPE, ModProperties.setStairShapeNoFlip(state, world, pos))
                 : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-    }
-
-    private static StairShape getCounterShape(BlockState state, BlockView world, BlockPos pos) {
-        Direction direction = state.get(FACING);
-        BlockState blockState = world.getBlockState(pos.offset(direction));
-        if (isCounter(blockState)) {
-            Direction direction2 = blockState.get(FACING);
-            if (direction2.getAxis() != state.get(FACING).getAxis()) {
-                if (direction2 == direction.rotateYCounterclockwise()) {
-                    return StairShape.OUTER_LEFT;
-                }
-
-                return StairShape.OUTER_RIGHT;
-            }
-        }
-        BlockState blockState2 = world.getBlockState(pos.offset(direction.getOpposite()));
-        if (isCounter(blockState2)) {
-            Direction direction3 = blockState2.get(FACING);
-            if (direction3.getAxis() != state.get(FACING).getAxis()) {
-                if (direction3 == direction.rotateYCounterclockwise()) {
-                    return StairShape.INNER_LEFT;
-                }
-                return StairShape.INNER_RIGHT;
-            }
-        }
-        return StairShape.STRAIGHT;
-    }
-
-    public static boolean isCounter(BlockState state) {
-        return state.getBlock() instanceof CounterBlock ||
-                state.getBlock() instanceof StorageCounterBlock;
     }
 
     @Override
@@ -194,5 +165,11 @@ public class CounterBlock extends Block {
     @Override
     protected BlockState rotate(BlockState state, BlockRotation rotation) {
         return state.with(FACING, rotation.rotate(state.get(FACING)));
+    }
+
+    @Override
+    public boolean isMatchingBlock(BlockState targetState) {
+        return targetState.getBlock() instanceof CounterBlock ||
+                targetState.getBlock() instanceof StorageCounterBlock;
     }
 }

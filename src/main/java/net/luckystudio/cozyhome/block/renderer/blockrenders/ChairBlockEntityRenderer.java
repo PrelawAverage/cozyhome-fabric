@@ -77,7 +77,7 @@ public class ChairBlockEntityRenderer implements BlockEntityRenderer<ChairBlockE
             matrices.translate(0.5, 1.5, 0.5);
         }
         matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(180));
-        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(ModBlockUtilities.getRotationAngle(entity)));
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(ModProperties.setSeatRotationFromRotation(entity.getCachedState())));
 
         BlockState blockState = entity.getCachedState();
         ChairBlock.ChairType chairType = ((ChairBlock)blockState.getBlock()).getChairType();

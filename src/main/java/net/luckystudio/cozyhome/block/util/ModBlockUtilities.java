@@ -84,30 +84,4 @@ public class ModBlockUtilities {
         }
         return -17170434;
     }
-
-    public static float getRotationAngle(BlockEntity entity) {
-        // Check if the block state contains the ROTATION property
-        if (entity.getCachedState().contains(Properties.ROTATION)) {
-            int rotation = entity.getCachedState().get(GrandfatherClockBlock.ROTATION);
-            return rotation * 22.5f + 180;
-        } else if (entity.getCachedState().contains(Properties.HORIZONTAL_FACING)) {
-            // Get the direction from the HORIZONTAL_FACING property
-            Direction facing = entity.getCachedState().get(Properties.HORIZONTAL_FACING);
-            // Use a switch statement to determine rotation based on the facing direction
-            switch (facing) {
-                case NORTH:
-                    return 180.0f; // No rotation
-                case EAST:
-                    return 270.0f;
-                case SOUTH:
-                    return 0.0f;
-                case WEST:
-                    return 90.0f;
-                default:
-                    return 0.0f; // Fallback rotation
-            }
-        }
-        // Fallback for cases where neither property exists
-        return 0.0f;
-    }
 }

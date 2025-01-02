@@ -13,6 +13,8 @@ import net.luckystudio.cozyhome.item.ModItems;
 import net.luckystudio.cozyhome.item.custom.CushionItem;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.screen.ScreenTexts;
@@ -21,20 +23,25 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.IntProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.RotationPropertyHelper;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 
 import java.util.List;
 import java.util.Map;
 
-public class ChairBlock extends AbstractSeatBlock implements TuckableBlock {
+public class ChairBlock extends AbstractSeatBlock implements TuckableBlock, Waterloggable {
     public static final MapCodec<ChairBlock> CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(
                     ChairBlock.ChairType.CODEC.fieldOf("kind").forGetter(ChairBlock::getChairType),
@@ -42,7 +49,10 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock {
             ).apply(instance, ChairBlock::new)
     );
 
+    public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final BooleanProperty TUCKED = ModProperties.TUCKED;
+    public static final IntProperty ROTATION = Properties.ROTATION;
+
     private static final VoxelShape BASE_SHAPE = ChairBlock.createCuboidShape(2,0,2,14,10,14);
     public static final VoxelShape TUCKED_SOUTH = VoxelShapes.union(
             Block.createCuboidShape(2, 0, -8, 14, 10, 4),
@@ -61,7 +71,10 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock {
 
     public ChairBlock(ChairType chairType, Settings settings) {
         super(settings);
-        this.getDefaultState().with(TUCKED, false);
+        this.getDefaultState()
+                .with(WATERLOGGED, Boolean.FALSE)
+                .with(TUCKED, false)
+                .with(ROTATION, 0);
         this.type = chairType;
     }
 
@@ -74,7 +87,7 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock {
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(TUCKED);
+        builder.add(WATERLOGGED, TUCKED, ROTATION);
     }
 
     // This is the hit-box of the block, we are applying our VoxelShape to it.
@@ -96,8 +109,22 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock {
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
+        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
+        boolean water = fluidState.getFluid() == Fluids.WATER;
+        boolean isSneaking = ctx.getPlayer().isSneaking();
+        int rotationOffset = isSneaking ? 180 : 0;
         return super.getPlacementState(ctx)
-                .with(TUCKED, false);
+                .with(WATERLOGGED, water)
+                .with(TUCKED, false)
+                .with(ROTATION, RotationPropertyHelper.fromYaw(ctx.getPlayerYaw() + rotationOffset));
+    }
+
+    @Override
+    protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if (state.get(WATERLOGGED)) {
+            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
+        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     @Override
@@ -226,11 +253,6 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock {
     }
 
     @Override
-    public float getSeatHeight(BlockState state) {
-        return 0.5f;
-    }
-
-    @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
         super.appendTooltip(stack, context, tooltip, options);
         String type = stack.getOrDefault(ModDataComponents.CUSHION_TYPE, "");
@@ -248,5 +270,15 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock {
     protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         ItemScatterer.onStateReplaced(state, newState, world, pos);
         super.onStateReplaced(state, world, pos, newState, moved);
+    }
+
+    @Override
+    protected FluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
+    @Override
+    public float getSeatRotation(BlockState state, World world, BlockPos pos) {
+        return ModProperties.setSeatRotationFromRotation(state);
     }
 }

@@ -6,6 +6,7 @@ import net.luckystudio.cozyhome.block.entity.clocks.WallClockBlockEntity;
 import net.luckystudio.cozyhome.block.custom.clocks.WallClockBlock;
 import net.luckystudio.cozyhome.block.renderer.models.WallClockModel;
 import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
+import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.client.ModEntityModelLayers;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.RenderLayer;
@@ -59,8 +60,7 @@ public class WallClockBlockEntityRenderer implements BlockEntityRenderer<WallClo
         matrices.push();
         matrices.translate(0.5, 1.5, 0.5);
         matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(180));
-        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(ModBlockUtilities.getRotationAngle(entity)));
-
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(ModProperties.setSeatRotationFromFacing(entity.getCachedState())));
         WallClockBlock.ClockType clockType = ((WallClockBlock) blockState.getBlock()).getClockType();
 
         // Interpolate angles for smooth rendering

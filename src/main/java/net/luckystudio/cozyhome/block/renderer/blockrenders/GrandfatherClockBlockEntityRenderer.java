@@ -64,7 +64,7 @@ public class GrandfatherClockBlockEntityRenderer implements BlockEntityRenderer<
             matrices.push();
             matrices.translate(0.5, -0.5, 0.5);
             matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(180));
-            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(ModBlockUtilities.getRotationAngle(entity)));
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(ModProperties.setSeatRotationFromRotation(entity.getCachedState())));
 
             GrandfatherClockBlock.GrandfatherClockType clockType = ((GrandfatherClockBlock) blockState.getBlock()).getGrandfatherClockType();
 

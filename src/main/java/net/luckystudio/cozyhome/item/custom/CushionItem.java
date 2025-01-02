@@ -22,7 +22,7 @@ public class CushionItem extends Item {
         tooltip.add(ScreenTexts.EMPTY);
         tooltip.add(Text.translatable("tooltip.cozyhome.applies_to").formatted(TITLE_FORMATTING));
         tooltip.add(ModScreenTexts.entry().append(Text.translatable("blocks.cozyhome.chairs")));
-        tooltip.add(ModScreenTexts.entry().append(Text.translatable("blocks.cozyhome.stools")));
+        tooltip.add(ModScreenTexts.entry().append(Text.translatable("blocks.cozyhome.sofas")));
         tooltip.add(ModScreenTexts.entry().append(Text.translatable("blocks.cozyhome.couches")));
     }
 }

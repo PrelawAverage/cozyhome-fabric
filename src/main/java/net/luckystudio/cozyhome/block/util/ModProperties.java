@@ -2,14 +2,18 @@ package net.luckystudio.cozyhome.block.util;
 
 import net.luckystudio.cozyhome.block.util.enums.*;
 import net.luckystudio.cozyhome.block.util.interfaces.ConnectingBlock;
+import net.luckystudio.cozyhome.entity.ModEntities;
+import net.luckystudio.cozyhome.entity.custom.SeatEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalFacingBlock;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.EnumProperty;
-import net.minecraft.state.property.IntProperty;
-import net.minecraft.state.property.Properties;
+import net.minecraft.block.enums.StairShape;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.state.property.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.RotationPropertyHelper;
+import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
 public class ModProperties {
@@ -29,6 +33,107 @@ public class ModProperties {
     public static final BooleanProperty TUCKED = BooleanProperty.of("tucked");
 
     public static final IntProperty FILLED_LEVEL_0_3 = IntProperty.of("level", 0, 3);
+
+    public static void sitDown(BlockState state, World world, BlockPos pos, PlayerEntity player) {
+        if (state.getBlock() instanceof SeatBlock seatBlock) {
+            // Creates a new entity
+            SeatEntity seat = new SeatEntity(ModEntities.SEAT_ENTITY, world);
+            // Sets it's location
+            seat.setPosition(pos.getX() + 0.5f, pos.getY(), pos.getZ() + 0.5f);
+
+            seat.setYaw(seatBlock.getSeatRotation(state, world, pos));
+            seat.setAngles(seatBlock.getSeatRotation(state, world, pos), 0);
+
+            world.spawnEntity(seat);
+
+            player.startRiding(seat);
+        }
+    }
+
+    public static float setSeatRotationFromFacing(BlockState state) {
+        Direction facing = state.get(HorizontalFacingBlock.FACING);
+        return switch (facing) {
+            case NORTH -> 180;
+            case EAST -> 270;
+            case WEST -> 90;
+            default -> 0;
+        };
+    }
+
+    public static float setSeatRotationFromShape(BlockState state) {
+        StairShape stairShape = state.get(Properties.STAIR_SHAPE);
+        Direction facing = state.get(HorizontalFacingBlock.FACING);
+        return switch (stairShape) {
+            case INNER_LEFT, OUTER_LEFT -> switch (facing) {
+                case NORTH -> 135;
+                case EAST -> 225;
+                case WEST -> 45;
+                default -> 315;
+            };
+            case INNER_RIGHT, OUTER_RIGHT -> switch (facing) {
+                case NORTH -> 225;
+                case EAST -> 315;
+                case WEST -> 135;
+                default -> 45;
+            };
+            default -> setSeatRotationFromFacing(state);
+        };
+    }
+
+    public static float setSeatRotationFromRotation(BlockState state) {
+        int rotation = state.get(Properties.ROTATION);
+        return RotationPropertyHelper.toDegrees(rotation) + 180;
+    }
+
+    public static StairShape setStairShapeNoFlip(BlockState state, BlockView world, BlockPos pos) {
+        Direction direction = state.get(Properties.HORIZONTAL_FACING);
+        BlockState blockState = world.getBlockState(pos.offset(direction));
+        if (state.getBlock() instanceof ConnectingBlock connectingBlock)
+        {
+            if (connectingBlock.isMatchingBlock(blockState)) {
+                Direction direction2 = blockState.get(Properties.HORIZONTAL_FACING);
+                if (direction2.getAxis() != state.get(Properties.HORIZONTAL_FACING).getAxis()) {
+                    if (direction2 == direction.rotateYCounterclockwise()) {
+                        return StairShape.OUTER_LEFT;
+                    }
+
+                    return StairShape.OUTER_RIGHT;
+                }
+            }
+            BlockState blockState2 = world.getBlockState(pos.offset(direction.getOpposite()));
+            if (connectingBlock.isMatchingBlock(blockState2)) {
+                Direction direction3 = blockState2.get(Properties.HORIZONTAL_FACING);
+                if (direction3.getAxis() != state.get(Properties.HORIZONTAL_FACING).getAxis()) {
+                    if (direction3 == direction.rotateYCounterclockwise()) {
+                        return StairShape.INNER_LEFT;
+                    }
+                    return StairShape.INNER_RIGHT;
+                }
+            }
+        }
+        return StairShape.STRAIGHT;
+    }
+
+    public static HorizontalLinearConnectionBlock setHorizontalConnection(BlockState state, WorldAccess world, BlockPos pos) {
+        Direction facing = state.get(HorizontalFacingBlock.FACING);
+
+        Direction left = facing.rotateYClockwise();
+        Direction right = facing.rotateYCounterclockwise();
+
+        BlockState stateLeft = world.getBlockState(pos.offset(left));
+        BlockState stateRight = world.getBlockState(pos.offset(right));
+
+        if (state.getBlock() instanceof ConnectingBlock connectingBlock) {
+            if (connectingBlock.isMatchingBlock(stateLeft) && connectingBlock.isMatchingBlock(stateRight)) {
+                return HorizontalLinearConnectionBlock.MIDDLE;
+            } else if (connectingBlock.isMatchingBlock(stateLeft)) {
+                return HorizontalLinearConnectionBlock.LEFT;
+            } else if (connectingBlock.isMatchingBlock(stateRight)) {
+                return HorizontalLinearConnectionBlock.RIGHT;
+            }
+        }
+        return HorizontalLinearConnectionBlock.SINGLE;
+    }
 
     public static AdvancedHorizontalLinearConnectionBlock updateAdvancedHorizontalConnections(BlockState state, WorldAccess world, BlockPos pos) {
         Direction facing = state.get(HorizontalFacingBlock.FACING);

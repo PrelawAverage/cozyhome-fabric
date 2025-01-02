@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:src/main/java/net/luckystudio/cozyhome/datagen/util/TableTypes.java
 package net.luckystudio.cozyhome.datagen.util;
-========
-package net.luckystudio.cozyhome.datagen;
->>>>>>>> origin/master:src/main/java/net/luckystudio/cozyhome/datagen/TableTypes.java
 
 import net.minecraft.util.StringIdentifiable;
 

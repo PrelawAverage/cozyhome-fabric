@@ -56,7 +56,7 @@ public class SeatEntity extends Entity {
         BlockPos pos = this.getBlockPos();
         BlockState state = this.getWorld().getBlockState(pos);
         if (state.getBlock() instanceof AbstractSeatBlock seatBlock) {
-            passenger.setYaw(seatBlock.setRiderRotation(this));
+            passenger.setYaw(this.getYaw());
             super.addPassenger(passenger);
         }
     }
