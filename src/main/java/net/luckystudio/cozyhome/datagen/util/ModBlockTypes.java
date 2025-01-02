@@ -6,6 +6,7 @@ import net.minecraft.util.StringIdentifiable;
  * An enum representing the different types of block folders inside models to generate to hold and group model files into.
  */
 public enum ModBlockTypes implements StringIdentifiable {
+    COUNTER("counter"),
     CHIMNEY("chimney"),
     TABLE("table"),
     FOUNTAIN("fountain"),
@@ -16,7 +17,7 @@ public enum ModBlockTypes implements StringIdentifiable {
 
     private final String name;
 
-    private ModBlockTypes(final String name) {
+    ModBlockTypes(final String name) {
         this.name = name;
     }
 
