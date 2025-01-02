@@ -11,6 +11,9 @@ public class ModModels {
     public static final Model COUNTER_INNER = modBlockWithTypeAndVariant("counter_inner", ModBlockTypes.COUNTER, "_inner", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
     public static final Model COUNTER_OUTER = modBlockWithTypeAndVariant("counter_outer", ModBlockTypes.COUNTER, "_outer", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.PARTICLE);
 
+    public static final Model STORAGE_COUNTER = modBlockWithTypeAndVariant("storage_counter", ModBlockTypes.COUNTER, "_open", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKey.OPEN, ModTextureKey.CLOSED, TextureKey.BACK, TextureKey.PARTICLE);
+    public static final Model SINK_COUNTER = modBlockWithType("sink_counter", ModBlockTypes.COUNTER, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, ModTextureKey.EXTRA, ModTextureKey.INNER_SIDE, ModTextureKey.INNER_BOTTOM, TextureKey.PARTICLE);
+
     public static final Model CHIMNEY_SINGLE = modBlockWithType("template_chimney", ModBlockTypes.CHIMNEY, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.PARTICLE);
     public static final Model CHIMNEY_TOP = modBlockWithTypeAndVariant("template_chimney_top", ModBlockTypes.CHIMNEY, "_top", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.PARTICLE);
     public static final Model CHIMNEY_MIDDLE = modBlockWithTypeAndVariant("template_chimney_middle", ModBlockTypes.CHIMNEY, "_side", TextureKey.SIDE, TextureKey.PARTICLE);
@@ -49,20 +52,20 @@ public class ModModels {
     public static final Model COUCH_INNER = modBlockWithTypeAndVariant("couch_inner", ModBlockTypes.COUCH, "_inner", TextureKey.ALL, TextureKey.PARTICLE);
     public static final Model COUCH_OUTER = modBlockWithTypeAndVariant("couch_outer", ModBlockTypes.COUCH, "_outer", TextureKey.ALL, TextureKey.PARTICLE);
 
-    public static final Model DRAWER = modBlockWithType("template_drawer", ModBlockTypes.DRAWER, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, ModTextureKay.SIDE_INNER, TextureKey.PARTICLE);
-    public static final Model DRAWER_LEFT = modBlockWithTypeAndVariant("template_drawer_left", ModBlockTypes.DRAWER, "_left", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKay.SIDE_INNER, TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
-    public static final Model DRAWER_LEFT_DIFF = modBlockWithTypeAndVariant("template_drawer_left_diff", ModBlockTypes.DRAWER, "_left_diff", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, ModTextureKay.SIDE_INNER, TextureKey.PARTICLE);
-    public static final Model DRAWER_LEFT_DIFF_LEFT = modBlockWithTypeAndVariant("template_drawer_left_diff_left", ModBlockTypes.DRAWER, "_left_diff_left", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKay.SIDE_INNER, TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
+    public static final Model DRAWER = modBlockWithType("template_drawer", ModBlockTypes.DRAWER, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, ModTextureKey.INNER_SIDE, TextureKey.PARTICLE);
+    public static final Model DRAWER_LEFT = modBlockWithTypeAndVariant("template_drawer_left", ModBlockTypes.DRAWER, "_left", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKey.INNER_SIDE, TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
+    public static final Model DRAWER_LEFT_DIFF = modBlockWithTypeAndVariant("template_drawer_left_diff", ModBlockTypes.DRAWER, "_left_diff", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, ModTextureKey.INNER_SIDE, TextureKey.PARTICLE);
+    public static final Model DRAWER_LEFT_DIFF_LEFT = modBlockWithTypeAndVariant("template_drawer_left_diff_left", ModBlockTypes.DRAWER, "_left_diff_left", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKey.INNER_SIDE, TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
     public static final Model DRAWER_MIDDLE = modBlockWithTypeAndVariant("template_drawer_middle", ModBlockTypes.DRAWER, "_middle", TextureKey.TOP, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
-    public static final Model DRAWER_MIDDLE_DIFF = modBlockWithTypeAndVariant("template_drawer_middle_diff", ModBlockTypes.DRAWER, "_middle_diff", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKay.SIDE_INNER, TextureKey.FRONT, TextureKey.PARTICLE);
-    public static final Model DRAWER_RIGHT = modBlockWithTypeAndVariant("template_drawer_right", ModBlockTypes.DRAWER, "_right", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKay.SIDE_INNER, TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
-    public static final Model DRAWER_RIGHT_DIFF = modBlockWithTypeAndVariant("template_drawer_right_diff", ModBlockTypes.DRAWER, "_right_diff", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, ModTextureKay.SIDE_INNER, TextureKey.PARTICLE);
-    public static final Model DRAWER_RIGHT_DIFF_RIGHT = modBlockWithTypeAndVariant("template_drawer_right_diff_right", ModBlockTypes.DRAWER, "_right_diff_right", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKay.SIDE_INNER, TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
+    public static final Model DRAWER_MIDDLE_DIFF = modBlockWithTypeAndVariant("template_drawer_middle_diff", ModBlockTypes.DRAWER, "_middle_diff", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKey.INNER_SIDE, TextureKey.FRONT, TextureKey.PARTICLE);
+    public static final Model DRAWER_RIGHT = modBlockWithTypeAndVariant("template_drawer_right", ModBlockTypes.DRAWER, "_right", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKey.INNER_SIDE, TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
+    public static final Model DRAWER_RIGHT_DIFF = modBlockWithTypeAndVariant("template_drawer_right_diff", ModBlockTypes.DRAWER, "_right_diff", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, ModTextureKey.INNER_SIDE, TextureKey.PARTICLE);
+    public static final Model DRAWER_RIGHT_DIFF_RIGHT = modBlockWithTypeAndVariant("template_drawer_right_diff_right", ModBlockTypes.DRAWER, "_right_diff_right", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKey.INNER_SIDE, TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
 
-    public static final Model DESK = modBlockWithType("template_desk", ModBlockTypes.DESK, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKay.SIDE_INNER, TextureKey.PARTICLE);
-    public static final Model DESK_LEFT = modBlockWithTypeAndVariant("template_desk_left", ModBlockTypes.DESK, "_left", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKay.SIDE_INNER, TextureKey.BACK, TextureKey.PARTICLE);
+    public static final Model DESK = modBlockWithType("template_desk", ModBlockTypes.DESK, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKey.INNER_SIDE, TextureKey.PARTICLE);
+    public static final Model DESK_LEFT = modBlockWithTypeAndVariant("template_desk_left", ModBlockTypes.DESK, "_left", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKey.INNER_SIDE, TextureKey.BACK, TextureKey.PARTICLE);
     public static final Model DESK_MIDDLE = modBlockWithTypeAndVariant("template_desk_middle", ModBlockTypes.DESK, "_middle", TextureKey.TOP, TextureKey.BOTTOM, TextureKey.BACK, TextureKey.PARTICLE);
-    public static final Model DESK_RIGHT = modBlockWithTypeAndVariant("template_desk_right", ModBlockTypes.DESK, "_right", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKay.SIDE_INNER, TextureKey.BACK, TextureKey.PARTICLE);
+    public static final Model DESK_RIGHT = modBlockWithTypeAndVariant("template_desk_right", ModBlockTypes.DESK, "_right", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKey.INNER_SIDE, TextureKey.BACK, TextureKey.PARTICLE);
 
     private static Model modBlock(String parent, TextureKey... requiredTextureKeys) {
         return new Model(Optional.of(CozyHome.id("block/" + parent)), Optional.empty(), requiredTextureKeys);

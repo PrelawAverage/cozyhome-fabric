@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "cozyhome:block/mangrove_sink_counter",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "cozyhome:block/mangrove_sink_counter",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "cozyhome:block/mangrove_sink_counter"
+    },
+    "facing=west": {
+      "model": "cozyhome:block/mangrove_sink_counter",
+      "y": 90
+    }
+  }
+}

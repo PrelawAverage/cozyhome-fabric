@@ -4,9 +4,9 @@
     "back": "cozyhome:block/drawer/birch_drawer_back_side",
     "bottom": "cozyhome:block/drawer/birch_drawer_bottom_side",
     "front": "cozyhome:block/drawer/birch_drawer_front_side_right",
+    "inner_side": "cozyhome:block/drawer/birch_drawer_side_inner",
     "particle": "minecraft:block/birch_planks",
     "side": "cozyhome:block/drawer/birch_drawer_side",
-    "side_inner": "cozyhome:block/drawer/birch_drawer_side_inner",
     "top": "cozyhome:block/drawer/birch_drawer_top_side"
   }
 }

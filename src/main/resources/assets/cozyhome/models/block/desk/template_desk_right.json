@@ -6,7 +6,7 @@
 		"particle": "cozyhome:block/drawer/oak/oak_drawer_side",
 		"side": "cozyhome:block/drawer/oak/oak_drawer_side",
 		"bottom": "cozyhome:block/drawer/oak/oak_drawer_bottom_side",
-		"side_inner": "cozyhome:block/drawer/oak/oak_drawer_side_inner",
+		"inner_side": "cozyhome:block/drawer/oak/oak_drawer_side_inner",
 		"back": "cozyhome:block/drawer/oak/oak_drawer_back_side"
 	},
 	"elements": [
@@ -15,8 +15,8 @@
 			"to": [4, 12, 15],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
 			"faces": {
-				"north": {"uv": [12, 4, 15, 16], "texture": "#side_inner"},
-				"east": {"uv": [1, 4, 4, 16], "texture": "#side_inner"},
+				"north": {"uv": [12, 4, 15, 16], "texture": "#inner_side"},
+				"east": {"uv": [1, 4, 4, 16], "texture": "#inner_side"},
 				"south": {"uv": [15, 4, 12, 16], "texture": "#back"},
 				"west": {"uv": [12, 4, 15, 16], "texture": "#side"},
 				"down": {"uv": [1, 1, 4, 4], "texture": "#bottom", "cullface": "down"}
@@ -28,8 +28,8 @@
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
 			"faces": {
 				"north": {"uv": [12, 4, 15, 16], "texture": "#back"},
-				"east": {"uv": [12, 4, 15, 16], "texture": "#side_inner"},
-				"south": {"uv": [1, 4, 4, 16], "texture": "#side_inner"},
+				"east": {"uv": [12, 4, 15, 16], "texture": "#inner_side"},
+				"south": {"uv": [1, 4, 4, 16], "texture": "#inner_side"},
 				"west": {"uv": [1, 4, 4, 16], "texture": "#side"},
 				"down": {"uv": [1, 12, 4, 15], "texture": "#bottom", "cullface": "down"}
 			}
@@ -51,7 +51,7 @@
 			"to": [4, 12, 12],
 			"rotation": {"angle": 0, "axis": "y", "origin": [-9, 0, 2]},
 			"faces": {
-				"east": {"uv": [4, 4, 12, 12], "texture": "#side_inner"},
+				"east": {"uv": [4, 4, 12, 12], "texture": "#inner_side"},
 				"west": {"uv": [4, 4, 12, 12], "texture": "#side"},
 				"down": {"uv": [4, 4, 1, 12], "texture": "#bottom"}
 			}

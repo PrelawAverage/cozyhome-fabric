@@ -4,9 +4,9 @@
     "back": "cozyhome:block/drawer/bamboo_drawer_back_side",
     "bottom": "cozyhome:block/drawer/bamboo_drawer_bottom",
     "front": "cozyhome:block/drawer/bamboo_drawer_front",
+    "inner_side": "cozyhome:block/drawer/bamboo_drawer_side_inner",
     "particle": "minecraft:block/bamboo_planks",
     "side": "cozyhome:block/drawer/bamboo_drawer_side",
-    "side_inner": "cozyhome:block/drawer/bamboo_drawer_side_inner",
     "top": "cozyhome:block/drawer/bamboo_drawer_top_side"
   }
 }

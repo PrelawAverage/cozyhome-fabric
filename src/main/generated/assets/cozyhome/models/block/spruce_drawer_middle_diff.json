@@ -3,9 +3,9 @@
   "textures": {
     "bottom": "cozyhome:block/drawer/spruce_drawer_bottom",
     "front": "cozyhome:block/drawer/spruce_drawer_front",
+    "inner_side": "cozyhome:block/drawer/spruce_drawer_side_inner",
     "particle": "minecraft:block/spruce_planks",
     "side": "cozyhome:block/drawer/spruce_drawer_side",
-    "side_inner": "cozyhome:block/drawer/spruce_drawer_side_inner",
     "top": "cozyhome:block/drawer/spruce_drawer_top_middle"
   }
 }

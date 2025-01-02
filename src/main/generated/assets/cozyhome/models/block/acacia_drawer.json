@@ -3,9 +3,9 @@
   "textures": {
     "bottom": "cozyhome:block/drawer/acacia_drawer_bottom",
     "front": "cozyhome:block/drawer/acacia_drawer_front",
+    "inner_side": "cozyhome:block/drawer/acacia_drawer_side_inner",
     "particle": "minecraft:block/acacia_planks",
     "side": "cozyhome:block/drawer/acacia_drawer_side",
-    "side_inner": "cozyhome:block/drawer/acacia_drawer_side_inner",
     "top": "cozyhome:block/drawer/acacia_drawer_top"
   }
 }

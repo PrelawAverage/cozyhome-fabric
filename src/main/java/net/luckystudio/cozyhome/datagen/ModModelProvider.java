@@ -11,7 +11,7 @@ import net.luckystudio.cozyhome.block.util.enums.HorizontalLinearConnectionBlock
 import net.luckystudio.cozyhome.block.util.enums.VerticalLinearConnectionBlock;
 import net.luckystudio.cozyhome.datagen.util.ModItemTemplates;
 import net.luckystudio.cozyhome.datagen.util.ModModels;
-import net.luckystudio.cozyhome.datagen.util.ModTextureKay;
+import net.luckystudio.cozyhome.datagen.util.ModTextureKey;
 import net.luckystudio.cozyhome.datagen.util.TableTypes;
 import net.minecraft.block.Block;
 import net.minecraft.block.enums.StairShape;
@@ -42,6 +42,30 @@ public class ModModelProvider extends FabricModelProvider {
         registerCounter(blockStateModelGenerator, ModBlocks.BAMBOO_COUNTER, CozyHome.id("block/break/bamboo_furniture"));
         registerCounter(blockStateModelGenerator, ModBlocks.CRIMSON_COUNTER, CozyHome.id("block/break/crimson_furniture"));
         registerCounter(blockStateModelGenerator, ModBlocks.WARPED_COUNTER, CozyHome.id("block/break/warped_furniture"));
+
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.OAK_SINK_COUNTER, CozyHome.id("block/break/oak_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.SPRUCE_SINK_COUNTER, CozyHome.id("block/break/spruce_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.BIRCH_SINK_COUNTER, CozyHome.id("block/break/birch_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.JUNGLE_SINK_COUNTER, CozyHome.id("block/break/jungle_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.ACACIA_SINK_COUNTER, CozyHome.id("block/break/acacia_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.DARK_OAK_SINK_COUNTER, CozyHome.id("block/break/dark_oak_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.MANGROVE_SINK_COUNTER, CozyHome.id("block/break/mangrove_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.CHERRY_SINK_COUNTER, CozyHome.id("block/break/cherry_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.BAMBOO_SINK_COUNTER, CozyHome.id("block/break/bamboo_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.CRIMSON_SINK_COUNTER, CozyHome.id("block/break/crimson_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.WARPED_SINK_COUNTER, CozyHome.id("block/break/warped_furniture"));
+
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.OAK_STORAGE_COUNTER, CozyHome.id("block/break/oak_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.SPRUCE_STORAGE_COUNTER, CozyHome.id("block/break/spruce_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.BIRCH_STORAGE_COUNTER, CozyHome.id("block/break/birch_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.JUNGLE_STORAGE_COUNTER, CozyHome.id("block/break/jungle_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.ACACIA_STORAGE_COUNTER, CozyHome.id("block/break/acacia_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.DARK_OAK_STORAGE_COUNTER, CozyHome.id("block/break/dark_oak_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.MANGROVE_STORAGE_COUNTER, CozyHome.id("block/break/mangrove_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.CHERRY_STORAGE_COUNTER, CozyHome.id("block/break/cherry_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.BAMBOO_STORAGE_COUNTER, CozyHome.id("block/break/bamboo_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.CRIMSON_STORAGE_COUNTER, CozyHome.id("block/break/crimson_furniture"));
+        registerStorageCounter(blockStateModelGenerator, ModBlocks.WARPED_STORAGE_COUNTER, CozyHome.id("block/break/warped_furniture"));
 
         registerDesk(blockStateModelGenerator, ModBlocks.OAK_DESK, Identifier.of("block/oak_planks"));
         registerDesk(blockStateModelGenerator, ModBlocks.SPRUCE_DESK, Identifier.of("block/spruce_planks"));
@@ -258,6 +282,86 @@ public class ModModelProvider extends FabricModelProvider {
                 ));
     }
 
+    public final void registerStorageCounter(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
+        Identifier top = Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_storage", "") + "_top");
+        Identifier side = Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_storage", "") + "_side");
+        Identifier bottom = Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_storage", "") + "_bottom");
+        Identifier open = Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_storage", "") + "_open");
+        Identifier closed = Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_storage", "") + "_closed");
+        Identifier back = Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_storage", "") + "_back");
+
+        TextureMap storageCounter = new TextureMap()
+                .put(TextureKey.TOP, top)
+                .put(TextureKey.SIDE, side)
+                .put(TextureKey.BOTTOM, bottom)
+                .put(TextureKey.FRONT, closed)
+                .put(TextureKey.BACK, back)
+                .put(TextureKey.PARTICLE, breakParticle);
+        TextureMap storageCounterOpen = new TextureMap()
+                .put(TextureKey.TOP, top)
+                .put(TextureKey.SIDE, side)
+                .put(TextureKey.BOTTOM, bottom)
+                .put(ModTextureKey.OPEN, open)
+                .put(ModTextureKey.CLOSED, closed)
+                .put(TextureKey.BACK, back)
+                .put(TextureKey.PARTICLE, breakParticle);
+        Identifier storageCounterModelId = ModModels.COUNTER.upload(block, storageCounter, blockStateModelGenerator.modelCollector);
+        Identifier storageCounterOpenModelId = ModModels.STORAGE_COUNTER.upload(block, storageCounterOpen, blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
+                .coordinate(BlockStateVariantMap.create(Properties.HORIZONTAL_FACING, Properties.OPEN)
+                        .register(Direction.NORTH, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, storageCounterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.EAST,false,  BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, storageCounterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.SOUTH, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, storageCounterModelId))
+                        .register(Direction.WEST, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, storageCounterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+
+                        .register(Direction.NORTH, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, storageCounterOpenModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.EAST, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, storageCounterOpenModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.SOUTH, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, storageCounterOpenModelId))
+                        .register(Direction.WEST, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, storageCounterOpenModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                ));
+    }
+
+    public final void registerSinkCounter(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
+        TextureMap baseTexture = new TextureMap()
+                .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_sink", "") + "_sink_top"))
+                .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_sink", "") + "_side"))
+                .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_sink", "") + "_bottom"))
+                .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_sink", "") + "_front"))
+                .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_sink", "") + "_back"))
+                .put(ModTextureKey.EXTRA, CozyHome.id("block/dye_vat/dye_vat_faucet"))
+                .put(ModTextureKey.INNER_SIDE, CozyHome.id("block/dye_vat/dye_vat_inner_side"))
+                .put(ModTextureKey.INNER_BOTTOM, CozyHome.id("block/dye_vat/dye_vat_inner_bottom"))
+                .put(TextureKey.PARTICLE, breakParticle);
+        Identifier sinkCounterModelID = ModModels.SINK_COUNTER.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
+                .coordinate(BlockStateVariantMap.create(Properties.HORIZONTAL_FACING)
+                        .register(Direction.NORTH, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, sinkCounterModelID)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.EAST, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, sinkCounterModelID)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.SOUTH, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, sinkCounterModelID))
+                        .register(Direction.WEST, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, sinkCounterModelID)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))));
+    }
+
     public final void registerTable(BlockStateModelGenerator blockStateModelGenerator, Block block, TableTypes tableTypes, Identifier breakParticle) {
         // Define texture maps
         String blockNamespace = Registries.BLOCK.getId(block).getNamespace();
@@ -470,13 +574,13 @@ public class ModModelProvider extends FabricModelProvider {
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_top"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_side"))
                 .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_bottom"))
-                .put(ModTextureKay.SIDE_INNER, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_side_inner"))
+                .put(ModTextureKey.INNER_SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_side_inner"))
                 .put(TextureKey.PARTICLE, breakParticle);
         TextureMap desk_left = new TextureMap()
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_top_side"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_side"))
                 .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_bottom_side"))
-                .put(ModTextureKay.SIDE_INNER, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_side_inner"))
+                .put(ModTextureKey.INNER_SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_side_inner"))
                 .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_back_side"))
                 .put(TextureKey.PARTICLE, breakParticle);
         TextureMap desk_middle = new TextureMap()
@@ -488,7 +592,7 @@ public class ModModelProvider extends FabricModelProvider {
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_top_side"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_side"))
                 .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_bottom_side"))
-                .put(ModTextureKay.SIDE_INNER, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_side_inner"))
+                .put(ModTextureKey.INNER_SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_side_inner"))
                 .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_back_side"))
                 .put(TextureKey.PARTICLE, breakParticle);
         Identifier deskModelId = ModModels.DESK.upload(block, desk, blockStateModelGenerator.modelCollector);
@@ -614,13 +718,13 @@ public class ModModelProvider extends FabricModelProvider {
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side"))
                 .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_bottom"))
                 .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_front"))
-                .put(ModTextureKay.SIDE_INNER, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side_inner"))
+                .put(ModTextureKey.INNER_SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side_inner"))
                 .put(TextureKey.PARTICLE, breakParticle);
         TextureMap drawer_left = new TextureMap()
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_top_side"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side"))
                 .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_bottom_side"))
-                .put(ModTextureKay.SIDE_INNER, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side_inner"))
+                .put(ModTextureKey.INNER_SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side_inner"))
                 .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_front_side"))
                 .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_back_side"))
                 .put(TextureKey.PARTICLE, breakParticle);
@@ -628,7 +732,7 @@ public class ModModelProvider extends FabricModelProvider {
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_top_side"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side"))
                 .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_bottom"))
-                .put(ModTextureKay.SIDE_INNER, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side_inner"))
+                .put(ModTextureKey.INNER_SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side_inner"))
                 .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_front"))
                 .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_back_side"))
                 .put(TextureKey.PARTICLE, breakParticle);
@@ -636,7 +740,7 @@ public class ModModelProvider extends FabricModelProvider {
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_top_middle"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side"))
                 .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_bottom_side"))
-                .put(ModTextureKay.SIDE_INNER, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side_inner"))
+                .put(ModTextureKey.INNER_SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side_inner"))
                 .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_front_side"))
                 .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_back_side"))
                 .put(TextureKey.PARTICLE, breakParticle);
@@ -650,14 +754,14 @@ public class ModModelProvider extends FabricModelProvider {
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_top_middle"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side"))
                 .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_bottom"))
-                .put(ModTextureKay.SIDE_INNER, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side_inner"))
+                .put(ModTextureKey.INNER_SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side_inner"))
                 .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_front"))
                 .put(TextureKey.PARTICLE, breakParticle);
         TextureMap drawer_right = new TextureMap()
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_top_side"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side"))
                 .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_bottom_side"))
-                .put(ModTextureKay.SIDE_INNER, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side_inner"))
+                .put(ModTextureKey.INNER_SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side_inner"))
                 .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_front_side_right"))
                 .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_back_side"))
                 .put(TextureKey.PARTICLE, breakParticle);
@@ -665,7 +769,7 @@ public class ModModelProvider extends FabricModelProvider {
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_top_side"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side"))
                 .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_bottom"))
-                .put(ModTextureKay.SIDE_INNER, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side_inner"))
+                .put(ModTextureKey.INNER_SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side_inner"))
                 .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_front"))
                 .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_back_side"))
                 .put(TextureKey.PARTICLE, breakParticle);
@@ -673,7 +777,7 @@ public class ModModelProvider extends FabricModelProvider {
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_top_middle"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side"))
                 .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_bottom_side"))
-                .put(ModTextureKay.SIDE_INNER, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side_inner"))
+                .put(ModTextureKey.INNER_SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side_inner"))
                 .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_front_side_right"))
                 .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_back_side"))
                 .put(TextureKey.PARTICLE, breakParticle);

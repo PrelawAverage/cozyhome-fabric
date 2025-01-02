@@ -1,6 +1,7 @@
 package net.luckystudio.cozyhome.datagen;
 
 import net.luckystudio.cozyhome.CozyHome;
+import net.luckystudio.cozyhome.datagen.util.ModBlockTypes;
 import net.minecraft.data.client.Model;
 import net.minecraft.data.client.TextureKey;
 

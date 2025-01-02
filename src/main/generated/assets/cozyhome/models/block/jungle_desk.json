@@ -2,9 +2,9 @@
   "parent": "cozyhome:block/desk/template_desk",
   "textures": {
     "bottom": "cozyhome:block/drawer/jungle_drawer_bottom",
+    "inner_side": "cozyhome:block/drawer/jungle_drawer_side_inner",
     "particle": "minecraft:block/jungle_planks",
     "side": "cozyhome:block/drawer/jungle_drawer_side",
-    "side_inner": "cozyhome:block/drawer/jungle_drawer_side_inner",
     "top": "cozyhome:block/drawer/jungle_drawer_top"
   }
 }
