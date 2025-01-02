@@ -1,7 +1,0 @@
-{
-	"parent": "cozyhome:block/mirror/wall/template_wall_mirror_single",
-	"textures": {
-		"mirror": "cozyhome:block/mirror/wall/birch_mirror",
-		"particle": "cozyhome:block/break/mirror_furniture"
-	}
-}

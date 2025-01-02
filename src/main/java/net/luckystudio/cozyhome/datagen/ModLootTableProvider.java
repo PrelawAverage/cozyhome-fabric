@@ -83,6 +83,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.UNDEAD_TABLE);
         addDrop(ModBlocks.OMINOUS_TABLE);
 
+        // CHAIRS
         addDrop(ModBlocks.OAK_CHAIR);
         addDrop(ModBlocks.SPRUCE_CHAIR);
         addDrop(ModBlocks.BIRCH_CHAIR);

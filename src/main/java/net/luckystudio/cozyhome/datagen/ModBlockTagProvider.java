@@ -147,6 +147,19 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CRIMSON_DESK)
                 .add(ModBlocks.WARPED_DESK)
 
+                // WALL MIRRORS
+                .add(ModBlocks.OAK_WALL_MIRROR)
+                .add(ModBlocks.SPRUCE_WALL_MIRROR)
+                .add(ModBlocks.BIRCH_WALL_MIRROR)
+                .add(ModBlocks.JUNGLE_WALL_MIRROR)
+                .add(ModBlocks.ACACIA_WALL_MIRROR)
+                .add(ModBlocks.DARK_OAK_WALL_MIRROR)
+                .add(ModBlocks.MANGROVE_WALL_MIRROR)
+                .add(ModBlocks.CHERRY_WALL_MIRROR)
+                .add(ModBlocks.BAMBOO_WALL_MIRROR)
+                .add(ModBlocks.CRIMSON_WALL_MIRROR)
+                .add(ModBlocks.WARPED_WALL_MIRROR)
+
                 // DRAWERS
                 .add(ModBlocks.OAK_DRAWER)
                 .add(ModBlocks.SPRUCE_DRAWER)

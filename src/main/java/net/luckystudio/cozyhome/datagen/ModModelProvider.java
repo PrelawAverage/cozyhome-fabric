@@ -177,6 +177,18 @@ public class ModModelProvider extends FabricModelProvider {
         registerDrawer(blockStateModelGenerator, ModBlocks.CRIMSON_DRAWER, Identifier.of("block/crimson_planks"));
         registerDrawer(blockStateModelGenerator, ModBlocks.WARPED_DRAWER, Identifier.of("block/warped_planks"));
 
+        registerWallMirror(blockStateModelGenerator, ModBlocks.OAK_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/mirror"));
+        registerWallMirror(blockStateModelGenerator, ModBlocks.SPRUCE_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/mirror"));
+        registerWallMirror(blockStateModelGenerator, ModBlocks.BIRCH_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/mirror"));
+        registerWallMirror(blockStateModelGenerator, ModBlocks.JUNGLE_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/mirror"));
+        registerWallMirror(blockStateModelGenerator, ModBlocks.ACACIA_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/mirror"));
+        registerWallMirror(blockStateModelGenerator, ModBlocks.DARK_OAK_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/mirror"));
+        registerWallMirror(blockStateModelGenerator, ModBlocks.MANGROVE_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/mirror"));
+        registerWallMirror(blockStateModelGenerator, ModBlocks.CHERRY_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/mirror"));
+        registerWallMirror(blockStateModelGenerator, ModBlocks.BAMBOO_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/mirror"));
+        registerWallMirror(blockStateModelGenerator, ModBlocks.CRIMSON_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/nether_mirror"));
+        registerWallMirror(blockStateModelGenerator, ModBlocks.WARPED_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/nether_mirror"));
+
         registerFountain(blockStateModelGenerator, ModBlocks.STONE_BRICK_FOUNTAIN, Identifier.of("block/stone_bricks"));
         registerFountain(blockStateModelGenerator, ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN, Identifier.of("block/mossy_stone_bricks"));
         registerFountain(blockStateModelGenerator, ModBlocks.GRANITE_FOUNTAIN, Identifier.of("block/granite"));
@@ -516,14 +528,14 @@ public class ModModelProvider extends FabricModelProvider {
         Identifier fountainMiddleModelID;
         Identifier fountainSideModelID;
 
-            // Upload models for various fountain states
-            fountainModelID = ModModels.FOUNTAIN.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
-            fountainCornerModelID = ModModels.FOUNTAIN_CORNER.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
-            fountainCornerPieceModelID = ModModels.FOUNTAIN_CORNER_PIECE.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
-            fountainDoubleModelID = ModModels.FOUNTAIN_DOUBLE.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
-            fountainInnerCornerPieceModelID = ModModels.FOUNTAIN_INNER_CORNER_PIECE.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
-            fountainMiddleModelID = ModModels.FOUNTAIN_MIDDLE.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
-            fountainSideModelID = ModModels.FOUNTAIN_SIDE.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
+        // Upload models for various fountain states
+        fountainModelID = ModModels.FOUNTAIN.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
+        fountainCornerModelID = ModModels.FOUNTAIN_CORNER.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
+        fountainCornerPieceModelID = ModModels.FOUNTAIN_CORNER_PIECE.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
+        fountainDoubleModelID = ModModels.FOUNTAIN_DOUBLE.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
+        fountainInnerCornerPieceModelID = ModModels.FOUNTAIN_INNER_CORNER_PIECE.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
+        fountainMiddleModelID = ModModels.FOUNTAIN_MIDDLE.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
+        fountainSideModelID = ModModels.FOUNTAIN_SIDE.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
 
         blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(block)
                 .with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, false),
@@ -950,6 +962,82 @@ public class ModModelProvider extends FabricModelProvider {
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R90))
                 )
         );
+    }
+
+    public final void registerWallMirror(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier mirrorTexture) {
+        TextureMap wall_mirror = new TextureMap()
+                .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/shared/" + Registries.BLOCK.getId(block).getPath().replace("_wall_mirror", "") + "_frame"))
+                .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/shared/" + Registries.BLOCK.getId(block).getPath().replace("_wall_mirror", "") + "_board"))
+                .put(TextureKey.PARTICLE, mirrorTexture);
+        TextureMap wall_mirror_top = new TextureMap()
+                .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/shared/" + Registries.BLOCK.getId(block).getPath().replace("_wall_mirror", "") + "_frame_top"))
+                .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/shared/" + Registries.BLOCK.getId(block).getPath().replace("_wall_mirror", "") + "_back_top"))
+                .put(TextureKey.PARTICLE, mirrorTexture);
+        TextureMap wall_mirror_middle = new TextureMap()
+                .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/shared/" + Registries.BLOCK.getId(block).getPath().replace("_wall_mirror", "") + "_frame_middle"))
+                .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/shared/" + Registries.BLOCK.getId(block).getPath().replace("_wall_mirror", "") + "_board_middle"))
+                .put(TextureKey.PARTICLE, mirrorTexture);
+        TextureMap wall_mirror_bottom = new TextureMap()
+                .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/shared/" + Registries.BLOCK.getId(block).getPath().replace("_wall_mirror", "") + "_frame_bottom"))
+                .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/shared/" + Registries.BLOCK.getId(block).getPath().replace("_wall_mirror", "") + "_board_bottom"))
+                .put(TextureKey.PARTICLE, mirrorTexture);
+        Identifier wallMirrorModelId = ModModels.WALL_MIRROR.upload(block, wall_mirror, blockStateModelGenerator.modelCollector);
+        Identifier wallMirrorTopModelId = ModModels.WALL_MIRROR_TOP.upload(block, wall_mirror_top, blockStateModelGenerator.modelCollector);
+        Identifier wallMirrorMiddleModelId = ModModels.WALL_MIRROR_MIDDLE.upload(block, wall_mirror_middle, blockStateModelGenerator.modelCollector);
+        Identifier wallMirrorBottomModelId = ModModels.WALL_MIRROR_BOTTOM.upload(block, wall_mirror_bottom, blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
+                .coordinate(BlockStateVariantMap.create(Properties.HORIZONTAL_FACING, ModProperties.VERTICAL_CONNECTION)
+                        .register(Direction.NORTH, VerticalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, wallMirrorModelId))
+                        .register(Direction.NORTH, VerticalLinearConnectionBlock.HEAD, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, wallMirrorTopModelId))
+                        .register(Direction.NORTH, VerticalLinearConnectionBlock.MIDDLE, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, wallMirrorMiddleModelId))
+                        .register(Direction.NORTH, VerticalLinearConnectionBlock.TAIL, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, wallMirrorBottomModelId))
+
+                        // Repeat for SOUTH
+                        .register(Direction.SOUTH, VerticalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, wallMirrorModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.SOUTH, VerticalLinearConnectionBlock.HEAD, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, wallMirrorTopModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.SOUTH, VerticalLinearConnectionBlock.MIDDLE, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, wallMirrorMiddleModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.SOUTH, VerticalLinearConnectionBlock.TAIL, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, wallMirrorBottomModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+
+                        // Repeat for EAST
+                        .register(Direction.EAST, VerticalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, wallMirrorModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.EAST, VerticalLinearConnectionBlock.HEAD, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, wallMirrorTopModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.EAST, VerticalLinearConnectionBlock.MIDDLE, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, wallMirrorMiddleModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.EAST, VerticalLinearConnectionBlock.TAIL, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, wallMirrorBottomModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+
+                        // Repeat for WEST
+                        .register(Direction.WEST, VerticalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, wallMirrorModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.WEST, VerticalLinearConnectionBlock.HEAD, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, wallMirrorTopModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.WEST, VerticalLinearConnectionBlock.MIDDLE, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, wallMirrorMiddleModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.WEST, VerticalLinearConnectionBlock.TAIL, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, wallMirrorBottomModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                ));
     }
 
     public final void registerCouch(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {

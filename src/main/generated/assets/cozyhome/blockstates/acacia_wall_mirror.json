@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=east,vertical_connection=head": {
+      "model": "cozyhome:block/acacia_wall_mirror_top",
+      "y": 90
+    },
+    "facing=east,vertical_connection=middle": {
+      "model": "cozyhome:block/acacia_wall_mirror_middle",
+      "y": 90
+    },
+    "facing=east,vertical_connection=single": {
+      "model": "cozyhome:block/acacia_wall_mirror",
+      "y": 90
+    },
+    "facing=east,vertical_connection=tail": {
+      "model": "cozyhome:block/acacia_wall_mirror_bottom",
+      "y": 90
+    },
+    "facing=north,vertical_connection=head": {
+      "model": "cozyhome:block/acacia_wall_mirror_top"
+    },
+    "facing=north,vertical_connection=middle": {
+      "model": "cozyhome:block/acacia_wall_mirror_middle"
+    },
+    "facing=north,vertical_connection=single": {
+      "model": "cozyhome:block/acacia_wall_mirror"
+    },
+    "facing=north,vertical_connection=tail": {
+      "model": "cozyhome:block/acacia_wall_mirror_bottom"
+    },
+    "facing=south,vertical_connection=head": {
+      "model": "cozyhome:block/acacia_wall_mirror_top",
+      "y": 180
+    },
+    "facing=south,vertical_connection=middle": {
+      "model": "cozyhome:block/acacia_wall_mirror_middle",
+      "y": 180
+    },
+    "facing=south,vertical_connection=single": {
+      "model": "cozyhome:block/acacia_wall_mirror",
+      "y": 180
+    },
+    "facing=south,vertical_connection=tail": {
+      "model": "cozyhome:block/acacia_wall_mirror_bottom",
+      "y": 180
+    },
+    "facing=west,vertical_connection=head": {
+      "model": "cozyhome:block/acacia_wall_mirror_top",
+      "y": 270
+    },
+    "facing=west,vertical_connection=middle": {
+      "model": "cozyhome:block/acacia_wall_mirror_middle",
+      "y": 270
+    },
+    "facing=west,vertical_connection=single": {
+      "model": "cozyhome:block/acacia_wall_mirror",
+      "y": 270
+    },
+    "facing=west,vertical_connection=tail": {
+      "model": "cozyhome:block/acacia_wall_mirror_bottom",
+      "y": 270
+    }
+  }
+}

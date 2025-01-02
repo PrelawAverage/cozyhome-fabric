@@ -1,0 +1,8 @@
+{
+  "parent": "cozyhome:block/wall_mirror/wall_mirror_middle",
+  "textures": {
+    "back": "cozyhome:block/shared/bamboo_board_middle",
+    "front": "cozyhome:block/shared/bamboo_frame_middle",
+    "particle": "cozyhome:block/mirror/mirror"
+  }
+}

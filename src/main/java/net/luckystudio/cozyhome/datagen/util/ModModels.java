@@ -67,6 +67,11 @@ public class ModModels {
     public static final Model DESK_MIDDLE = modBlockWithTypeAndVariant("template_desk_middle", ModBlockTypes.DESK, "_middle", TextureKey.TOP, TextureKey.BOTTOM, TextureKey.BACK, TextureKey.PARTICLE);
     public static final Model DESK_RIGHT = modBlockWithTypeAndVariant("template_desk_right", ModBlockTypes.DESK, "_right", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKey.INNER_SIDE, TextureKey.BACK, TextureKey.PARTICLE);
 
+    public static final Model WALL_MIRROR = modBlockWithType("wall_mirror", ModBlockTypes.WALL_MIRROR, TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
+    public static final Model WALL_MIRROR_TOP = modBlockWithTypeAndVariant("wall_mirror_top", ModBlockTypes.WALL_MIRROR, "_top", TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
+    public static final Model WALL_MIRROR_MIDDLE = modBlockWithTypeAndVariant("wall_mirror_middle", ModBlockTypes.WALL_MIRROR, "_middle", TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
+    public static final Model WALL_MIRROR_BOTTOM = modBlockWithTypeAndVariant("wall_mirror_bottom", ModBlockTypes.WALL_MIRROR, "_bottom", TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
+
     private static Model modBlock(String parent, TextureKey... requiredTextureKeys) {
         return new Model(Optional.of(CozyHome.id("block/" + parent)), Optional.empty(), requiredTextureKeys);
     }

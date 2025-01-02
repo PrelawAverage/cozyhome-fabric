@@ -354,16 +354,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerDrawerRecipe(exporter, ModBlocks.WARPED_DRAWER, Blocks.WARPED_SLAB, Blocks.WARPED_PLANKS);
 
         // Wall Mirrors
-        offerWallMirrorRecipe(exporter, ModBlocks.OAK_WALL_MIRROR, Blocks.GLASS ,Blocks.OAK_PLANKS);
-        offerWallMirrorRecipe(exporter, ModBlocks.SPRUCE_WALL_MIRROR, Blocks.GLASS ,Blocks.SPRUCE_PLANKS);
-        offerWallMirrorRecipe(exporter, ModBlocks.BIRCH_WALL_MIRROR, Blocks.GLASS ,Blocks.BIRCH_PLANKS);
-        offerWallMirrorRecipe(exporter, ModBlocks.ACACIA_WALL_MIRROR, Blocks.GLASS ,Blocks.ACACIA_PLANKS);
-        offerWallMirrorRecipe(exporter, ModBlocks.DARK_OAK_WALL_MIRROR, Blocks.GLASS ,Blocks.DARK_OAK_PLANKS);
-        offerWallMirrorRecipe(exporter, ModBlocks.MANGROVE_WALL_MIRROR, Blocks.GLASS ,Blocks.MANGROVE_PLANKS);
-        offerWallMirrorRecipe(exporter, ModBlocks.CHERRY_WALL_MIRROR, Blocks.GLASS ,Blocks.CHERRY_PLANKS);
-        offerWallMirrorRecipe(exporter, ModBlocks.BAMBOO_WALL_MIRROR, Blocks.GLASS ,Blocks.BAMBOO_PLANKS);
-        offerWallMirrorRecipe(exporter, ModBlocks.CRIMSON_WALL_MIRROR, Blocks.GLASS ,Blocks.CRIMSON_PLANKS);
-        offerWallMirrorRecipe(exporter, ModBlocks.WARPED_WALL_MIRROR, Blocks.GLASS ,Blocks.WARPED_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.OAK_WALL_MIRROR, Items.AMETHYST_SHARD, Blocks.OAK_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.SPRUCE_WALL_MIRROR, Items.AMETHYST_SHARD, Blocks.SPRUCE_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.BIRCH_WALL_MIRROR, Items.AMETHYST_SHARD, Blocks.BIRCH_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.ACACIA_WALL_MIRROR, Items.AMETHYST_SHARD, Blocks.ACACIA_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.DARK_OAK_WALL_MIRROR, Items.AMETHYST_SHARD, Blocks.DARK_OAK_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.MANGROVE_WALL_MIRROR, Items.AMETHYST_SHARD, Blocks.MANGROVE_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.CHERRY_WALL_MIRROR, Items.AMETHYST_SHARD, Blocks.CHERRY_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.BAMBOO_WALL_MIRROR, Items.AMETHYST_SHARD, Blocks.BAMBOO_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.CRIMSON_WALL_MIRROR, Items.AMETHYST_SHARD, Blocks.CRIMSON_PLANKS);
+        offerWallMirrorRecipe(exporter, ModBlocks.WARPED_WALL_MIRROR, Items.AMETHYST_SHARD, Blocks.WARPED_PLANKS);
 
         // Chimneys
         offerChimneyRecipe(exporter, ModBlocks.STONE_BRICK_CHIMNEY, Blocks.STONE_BRICKS);
