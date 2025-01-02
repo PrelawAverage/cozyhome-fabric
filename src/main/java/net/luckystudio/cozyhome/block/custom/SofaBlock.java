@@ -5,9 +5,8 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import net.luckystudio.cozyhome.block.custom.abstracts.AbstractSeatBlock;
-import net.luckystudio.cozyhome.block.entity.ChairBlockEntity;
 import net.luckystudio.cozyhome.block.entity.SofaBlockEntity;
-import net.luckystudio.cozyhome.block.util.interfaces.TuckableBlock;
+import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.components.ModDataComponents;
 import net.luckystudio.cozyhome.item.ModItems;
 import net.luckystudio.cozyhome.item.custom.CushionItem;
@@ -22,10 +21,14 @@ import net.minecraft.screen.ScreenTexts;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.IntProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RotationPropertyHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
@@ -36,20 +39,23 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Map;
 
-public class SofaBlock extends AbstractSeatBlock implements TuckableBlock {
+public class SofaBlock extends AbstractSeatBlock {
     public static final MapCodec<SofaBlock> CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(
                     SofaBlock.SofaType.CODEC.fieldOf("kind").forGetter(SofaBlock::getSofaType),
                     createSettingsCodec() // Ensure this exists and works as expected
             ).apply(instance, SofaBlock::new)
     );
+
+    public static final IntProperty ROTATION = Properties.ROTATION;
+
     private static final VoxelShape BASE_SHAPE = SofaBlock.createCuboidShape(0, 2, 0, 16, 8, 16);
     private final SofaBlock.SofaType type;
     private static final Formatting TITLE_FORMATTING = Formatting.GRAY;
 
     public SofaBlock(SofaBlock.SofaType SofaType, Settings settings) {
         super(settings);
-        this.getDefaultState();
+        this.getDefaultState().with(ROTATION, 0);
         this.type = SofaType;
     }
 
@@ -61,6 +67,20 @@ public class SofaBlock extends AbstractSeatBlock implements TuckableBlock {
     @Override
     protected MapCodec<? extends AbstractSeatBlock> getCodec() {
         return CODEC;
+    }
+
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        super.appendProperties(builder);
+        builder.add(ROTATION);
+    }
+
+    @Override
+    public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
+        boolean isSneaking = ctx.getPlayer().isSneaking();
+        int rotationOffset = isSneaking ? 180 : 0;
+        return super.getPlacementState(ctx)
+                .with(ROTATION, RotationPropertyHelper.fromYaw(ctx.getPlayerYaw() + rotationOffset));
     }
 
     // This is the hit-box of the block, we are applying our VoxelShape to it.
@@ -142,10 +162,6 @@ public class SofaBlock extends AbstractSeatBlock implements TuckableBlock {
                     // Return a success result
                     return ItemActionResult.SUCCESS;
                 }
-            } else if (player.isSneaking()) {
-                // Call tuckable logic or fallback to super
-                TuckableBlock.tryTuck(state, world, pos, player);
-                return ItemActionResult.SUCCESS;
             } else {
                 return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
             }
@@ -195,11 +211,6 @@ public class SofaBlock extends AbstractSeatBlock implements TuckableBlock {
     }
 
     @Override
-    public float getSeatHeight(BlockState state) {
-        return 0.5f;
-    }
-
-    @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
         super.appendTooltip(stack, context, tooltip, options);
         String type = stack.getOrDefault(ModDataComponents.CUSHION_TYPE, "");
@@ -239,5 +250,15 @@ public class SofaBlock extends AbstractSeatBlock implements TuckableBlock {
             double d = entity instanceof LivingEntity ? 1.0 : 0.8;
             entity.setVelocity(vec3d.x, -vec3d.y * 0.66F * d, vec3d.z);
         }
+    }
+
+    @Override
+    public float getSeatRotation(BlockState state, World world, BlockPos pos) {
+        return ModProperties.setSeatRotationFromRotation(state);
+    }
+
+    @Override
+    public float getSeatHeight(BlockState state) {
+        return 0.5f;
     }
 }

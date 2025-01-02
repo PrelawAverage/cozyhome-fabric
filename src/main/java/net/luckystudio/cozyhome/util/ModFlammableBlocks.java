@@ -92,6 +92,17 @@ public class ModFlammableBlocks {
         flammableBlockRegistry.add(ModBlocks.CHERRY_SOFA, 5, 20);
         flammableBlockRegistry.add(ModBlocks.BAMBOO_SOFA, 5, 20);
 
+        // COUCHES
+        flammableBlockRegistry.add(ModBlocks.OAK_COUCH, 5, 20);
+        flammableBlockRegistry.add(ModBlocks.SPRUCE_COUCH, 5, 20);
+        flammableBlockRegistry.add(ModBlocks.BIRCH_COUCH, 5, 20);
+        flammableBlockRegistry.add(ModBlocks.JUNGLE_COUCH, 5, 20);
+        flammableBlockRegistry.add(ModBlocks.ACACIA_COUCH, 5, 20);
+        flammableBlockRegistry.add(ModBlocks.DARK_OAK_COUCH, 5, 20);
+        flammableBlockRegistry.add(ModBlocks.MANGROVE_COUCH, 5, 20);
+        flammableBlockRegistry.add(ModBlocks.CHERRY_COUCH, 5, 20);
+        flammableBlockRegistry.add(ModBlocks.BAMBOO_COUCH, 5, 20);
+
         // DESKS
         flammableBlockRegistry.add(ModBlocks.OAK_DESK, 5, 20);
         flammableBlockRegistry.add(ModBlocks.SPRUCE_DESK, 5, 20);

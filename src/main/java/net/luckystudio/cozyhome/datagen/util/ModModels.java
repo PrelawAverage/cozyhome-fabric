@@ -7,6 +7,8 @@ import net.minecraft.data.client.TextureKey;
 import java.util.Optional;
 
 public class ModModels {
+    public static final Model COUNTER = modBlockWithType("template_counter", ModBlockTypes.COUNTER, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.PARTICLE);
+
     public static final Model CHIMNEY_SINGLE = modBlockWithType("template_chimney", ModBlockTypes.CHIMNEY, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.PARTICLE);
     public static final Model CHIMNEY_TOP = modBlockWithTypeAndVariant("template_chimney_top", ModBlockTypes.CHIMNEY, "_top", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.PARTICLE);
     public static final Model CHIMNEY_MIDDLE = modBlockWithTypeAndVariant("template_chimney_middle", ModBlockTypes.CHIMNEY, "_side", TextureKey.SIDE, TextureKey.PARTICLE);
@@ -38,14 +40,12 @@ public class ModModels {
     public static final Model INSET_LAVA_PANE = modBlockWithTypeAndVariant("template_pane_15", ModBlockTypes.PLANE,"lava", TextureKey.UP, TextureKey.PARTICLE);
     public static final Model INSET_ICE_PANE = modBlockWithTypeAndVariant("template_pane_15", ModBlockTypes.PLANE,"ice", TextureKey.UP, TextureKey.PARTICLE);
 
-    public static final Model COUCH = modBlockWithType("template_couch", ModBlockTypes.COUCH, TextureKey.ALL, TextureKey.PARTICLE);
-    public static final Model COUCH_LEFT = modBlockWithTypeAndVariant("template_couch_left", ModBlockTypes.COUCH, "_left", TextureKey.ALL, TextureKey.PARTICLE);
-    public static final Model COUCH_RIGHT = modBlockWithTypeAndVariant("template_couch_right", ModBlockTypes.COUCH, "_right", TextureKey.ALL, TextureKey.PARTICLE);
-    public static final Model COUCH_MIDDLE = modBlockWithTypeAndVariant("template_couch_middle", ModBlockTypes.COUCH, "_middle", TextureKey.ALL, TextureKey.PARTICLE);
-    public static final Model COUCH_INNER_LEFT = modBlockWithTypeAndVariant("template_couch_inner_left", ModBlockTypes.COUCH, "_inner_left", TextureKey.ALL, TextureKey.PARTICLE);
-    public static final Model COUCH_INNER_RIGHT = modBlockWithTypeAndVariant("template_couch_inner_right", ModBlockTypes.COUCH, "_inner_right", TextureKey.ALL, TextureKey.PARTICLE);
-    public static final Model COUCH_OUTER_LEFT = modBlockWithTypeAndVariant("template_couch_outer_left", ModBlockTypes.COUCH, "_outer_left", TextureKey.ALL, TextureKey.PARTICLE);
-    public static final Model COUCH_OUTER_RIGHT = modBlockWithTypeAndVariant("template_couch_outer_right", ModBlockTypes.COUCH, "_outer_right", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model COUCH = modBlockWithType("couch", ModBlockTypes.COUCH, TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model COUCH_LEFT = modBlockWithTypeAndVariant("couch_left", ModBlockTypes.COUCH, "_left", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model COUCH_RIGHT = modBlockWithTypeAndVariant("couch_right", ModBlockTypes.COUCH, "_right", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model COUCH_MIDDLE = modBlockWithTypeAndVariant("couch_middle", ModBlockTypes.COUCH, "_middle", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model COUCH_INNER = modBlockWithTypeAndVariant("couch_inner", ModBlockTypes.COUCH, "_inner", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model COUCH_OUTER = modBlockWithTypeAndVariant("couch_outer", ModBlockTypes.COUCH, "_outer", TextureKey.ALL, TextureKey.PARTICLE);
 
     public static final Model DRAWER = modBlockWithType("template_drawer", ModBlockTypes.DRAWER, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, ModTextureKay.SIDE_INNER, TextureKey.PARTICLE);
     public static final Model DRAWER_LEFT = modBlockWithTypeAndVariant("template_drawer_left", ModBlockTypes.DRAWER, "_left", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKay.SIDE_INNER, TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);

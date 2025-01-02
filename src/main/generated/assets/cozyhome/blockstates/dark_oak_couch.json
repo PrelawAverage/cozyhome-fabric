@@ -1,0 +1,304 @@
+{
+  "variants": {
+    "facing=east,horizontal_connection=left,shape=inner_left": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=left,shape=inner_right": {
+      "model": "cozyhome:block/dark_oak_couch_inner"
+    },
+    "facing=east,horizontal_connection=left,shape=outer_left": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 180
+    },
+    "facing=east,horizontal_connection=left,shape=outer_right": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=left,shape=straight": {
+      "model": "cozyhome:block/dark_oak_couch_left",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=middle,shape=inner_left": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=middle,shape=inner_right": {
+      "model": "cozyhome:block/dark_oak_couch_inner"
+    },
+    "facing=east,horizontal_connection=middle,shape=outer_left": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 180
+    },
+    "facing=east,horizontal_connection=middle,shape=outer_right": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=middle,shape=straight": {
+      "model": "cozyhome:block/dark_oak_couch_middle",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=right,shape=inner_left": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=right,shape=inner_right": {
+      "model": "cozyhome:block/dark_oak_couch_inner"
+    },
+    "facing=east,horizontal_connection=right,shape=outer_left": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 180
+    },
+    "facing=east,horizontal_connection=right,shape=outer_right": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=right,shape=straight": {
+      "model": "cozyhome:block/dark_oak_couch_right",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=single,shape=inner_left": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=single,shape=inner_right": {
+      "model": "cozyhome:block/dark_oak_couch_inner"
+    },
+    "facing=east,horizontal_connection=single,shape=outer_left": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 180
+    },
+    "facing=east,horizontal_connection=single,shape=outer_right": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 270
+    },
+    "facing=east,horizontal_connection=single,shape=straight": {
+      "model": "cozyhome:block/dark_oak_couch",
+      "y": 270
+    },
+    "facing=north,horizontal_connection=left,shape=inner_left": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=left,shape=inner_right": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 270
+    },
+    "facing=north,horizontal_connection=left,shape=outer_left": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 90
+    },
+    "facing=north,horizontal_connection=left,shape=outer_right": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=left,shape=straight": {
+      "model": "cozyhome:block/dark_oak_couch_left",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=middle,shape=inner_left": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=middle,shape=inner_right": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 270
+    },
+    "facing=north,horizontal_connection=middle,shape=outer_left": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 90
+    },
+    "facing=north,horizontal_connection=middle,shape=outer_right": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=middle,shape=straight": {
+      "model": "cozyhome:block/dark_oak_couch_middle",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=right,shape=inner_left": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=right,shape=inner_right": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 270
+    },
+    "facing=north,horizontal_connection=right,shape=outer_left": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 90
+    },
+    "facing=north,horizontal_connection=right,shape=outer_right": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=right,shape=straight": {
+      "model": "cozyhome:block/dark_oak_couch_right",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=single,shape=inner_left": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=single,shape=inner_right": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 270
+    },
+    "facing=north,horizontal_connection=single,shape=outer_left": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 90
+    },
+    "facing=north,horizontal_connection=single,shape=outer_right": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 180
+    },
+    "facing=north,horizontal_connection=single,shape=straight": {
+      "model": "cozyhome:block/dark_oak_couch",
+      "y": 180
+    },
+    "facing=south,horizontal_connection=left,shape=inner_left": {
+      "model": "cozyhome:block/dark_oak_couch_inner"
+    },
+    "facing=south,horizontal_connection=left,shape=inner_right": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 90
+    },
+    "facing=south,horizontal_connection=left,shape=outer_left": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 270
+    },
+    "facing=south,horizontal_connection=left,shape=outer_right": {
+      "model": "cozyhome:block/dark_oak_couch_outer"
+    },
+    "facing=south,horizontal_connection=left,shape=straight": {
+      "model": "cozyhome:block/dark_oak_couch_left"
+    },
+    "facing=south,horizontal_connection=middle,shape=inner_left": {
+      "model": "cozyhome:block/dark_oak_couch_inner"
+    },
+    "facing=south,horizontal_connection=middle,shape=inner_right": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 90
+    },
+    "facing=south,horizontal_connection=middle,shape=outer_left": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 270
+    },
+    "facing=south,horizontal_connection=middle,shape=outer_right": {
+      "model": "cozyhome:block/dark_oak_couch_outer"
+    },
+    "facing=south,horizontal_connection=middle,shape=straight": {
+      "model": "cozyhome:block/dark_oak_couch_middle"
+    },
+    "facing=south,horizontal_connection=right,shape=inner_left": {
+      "model": "cozyhome:block/dark_oak_couch_inner"
+    },
+    "facing=south,horizontal_connection=right,shape=inner_right": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 90
+    },
+    "facing=south,horizontal_connection=right,shape=outer_left": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 270
+    },
+    "facing=south,horizontal_connection=right,shape=outer_right": {
+      "model": "cozyhome:block/dark_oak_couch_outer"
+    },
+    "facing=south,horizontal_connection=right,shape=straight": {
+      "model": "cozyhome:block/dark_oak_couch_right"
+    },
+    "facing=south,horizontal_connection=single,shape=inner_left": {
+      "model": "cozyhome:block/dark_oak_couch_inner"
+    },
+    "facing=south,horizontal_connection=single,shape=inner_right": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 90
+    },
+    "facing=south,horizontal_connection=single,shape=outer_left": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 270
+    },
+    "facing=south,horizontal_connection=single,shape=outer_right": {
+      "model": "cozyhome:block/dark_oak_couch_outer"
+    },
+    "facing=south,horizontal_connection=single,shape=straight": {
+      "model": "cozyhome:block/dark_oak_couch"
+    },
+    "facing=west,horizontal_connection=left,shape=inner_left": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=left,shape=inner_right": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 180
+    },
+    "facing=west,horizontal_connection=left,shape=outer_left": {
+      "model": "cozyhome:block/dark_oak_couch_outer"
+    },
+    "facing=west,horizontal_connection=left,shape=outer_right": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=left,shape=straight": {
+      "model": "cozyhome:block/dark_oak_couch_left",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=middle,shape=inner_left": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=middle,shape=inner_right": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 180
+    },
+    "facing=west,horizontal_connection=middle,shape=outer_left": {
+      "model": "cozyhome:block/dark_oak_couch_outer"
+    },
+    "facing=west,horizontal_connection=middle,shape=outer_right": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=middle,shape=straight": {
+      "model": "cozyhome:block/dark_oak_couch_middle",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=right,shape=inner_left": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=right,shape=inner_right": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 180
+    },
+    "facing=west,horizontal_connection=right,shape=outer_left": {
+      "model": "cozyhome:block/dark_oak_couch_outer"
+    },
+    "facing=west,horizontal_connection=right,shape=outer_right": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=right,shape=straight": {
+      "model": "cozyhome:block/dark_oak_couch_right",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=single,shape=inner_left": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=single,shape=inner_right": {
+      "model": "cozyhome:block/dark_oak_couch_inner",
+      "y": 180
+    },
+    "facing=west,horizontal_connection=single,shape=outer_left": {
+      "model": "cozyhome:block/dark_oak_couch_outer"
+    },
+    "facing=west,horizontal_connection=single,shape=outer_right": {
+      "model": "cozyhome:block/dark_oak_couch_outer",
+      "y": 90
+    },
+    "facing=west,horizontal_connection=single,shape=straight": {
+      "model": "cozyhome:block/dark_oak_couch",
+      "y": 90
+    }
+  }
+}

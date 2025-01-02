@@ -142,18 +142,18 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CRIMSON_SOFA);
                         entries.add(ModBlocks.WARPED_SOFA);
 
-//                        // Couches
-//                        entries.add(ModBlocks.OAK_COUCH);
-//                        entries.add(ModBlocks.SPRUCE_COUCH);
-//                        entries.add(ModBlocks.BIRCH_COUCH);
-//                        entries.add(ModBlocks.JUNGLE_COUCH);
-//                        entries.add(ModBlocks.ACACIA_COUCH);
-//                        entries.add(ModBlocks.DARK_OAK_COUCH);
-//                        entries.add(ModBlocks.MANGROVE_COUCH);
-//                        entries.add(ModBlocks.CHERRY_COUCH);
-//                        entries.add(ModBlocks.BAMBOO_COUCH);
-//                        entries.add(ModBlocks.CRIMSON_COUCH);
-//                        entries.add(ModBlocks.WARPED_COUCH);
+                        // Couches
+                        entries.add(ModBlocks.OAK_COUCH);
+                        entries.add(ModBlocks.SPRUCE_COUCH);
+                        entries.add(ModBlocks.BIRCH_COUCH);
+                        entries.add(ModBlocks.JUNGLE_COUCH);
+                        entries.add(ModBlocks.ACACIA_COUCH);
+                        entries.add(ModBlocks.DARK_OAK_COUCH);
+                        entries.add(ModBlocks.MANGROVE_COUCH);
+                        entries.add(ModBlocks.CHERRY_COUCH);
+                        entries.add(ModBlocks.BAMBOO_COUCH);
+                        entries.add(ModBlocks.CRIMSON_COUCH);
+                        entries.add(ModBlocks.WARPED_COUCH);
 
                         // Desks
                         entries.add(ModBlocks.OAK_DESK);

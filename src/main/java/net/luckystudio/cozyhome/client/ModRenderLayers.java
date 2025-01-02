@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
 import net.luckystudio.cozyhome.item.ModItems;
+import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.component.type.DyedColorComponent;
@@ -171,7 +172,31 @@ public class ModRenderLayers {
                 ModBlocks.FALLING_LIQUID
         );
 
-        ColorProviderRegistry.ITEM.register(((stack, tintIndex) -> DyedColorComponent.getColor(stack, -17170434)), ModItems.CUSHION);
+        ColorProviderRegistry.ITEM.register(((stack, tintIndex) -> DyedColorComponent.getColor(stack, -17170434)),
+                ModItems.CUSHION,
+                ModBlocks.OAK_COUCH,
+                ModBlocks.SPRUCE_COUCH,
+                ModBlocks.BIRCH_COUCH,
+                ModBlocks.JUNGLE_COUCH,
+                ModBlocks.ACACIA_COUCH,
+                ModBlocks.DARK_OAK_COUCH,
+                ModBlocks.MANGROVE_COUCH,
+                ModBlocks.CHERRY_COUCH,
+                ModBlocks.BAMBOO_COUCH,
+                ModBlocks.CRIMSON_COUCH,
+                ModBlocks.WARPED_COUCH);
+        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && view.getBlockEntityRenderData(pos) instanceof Integer integer ? integer : -17170434,
+                ModBlocks.OAK_COUCH,
+                ModBlocks.SPRUCE_COUCH,
+                ModBlocks.BIRCH_COUCH,
+                ModBlocks.JUNGLE_COUCH,
+                ModBlocks.ACACIA_COUCH,
+                ModBlocks.DARK_OAK_COUCH,
+                ModBlocks.MANGROVE_COUCH,
+                ModBlocks.CHERRY_COUCH,
+                ModBlocks.BAMBOO_COUCH,
+                ModBlocks.CRIMSON_COUCH,
+                ModBlocks.WARPED_COUCH);
     }
 }
 

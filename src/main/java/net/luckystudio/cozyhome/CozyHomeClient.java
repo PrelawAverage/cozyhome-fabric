@@ -54,6 +54,9 @@ public class CozyHomeClient implements ClientModInitializer {
         BlockEntityRendererFactories.register(ModBlockEntityTypes.SOFA_BLOCK_ENTITY, SofaBlockEntityRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModEntityModelLayers.SOFA_CUSHION, SofaCushionModel::getTexturedModelData);
 
+        EntityModelLayerRegistry.registerModelLayer(ModEntityModelLayers.COUCH_CUSHION, CouchCushionModel::getTexturedModelData);
+        BlockEntityRendererFactories.register(ModBlockEntityTypes.COUCH_BLOCK_ENTITY, CouchBlockEntityRenderer::new);
+
         EntityModelLayerRegistry.registerModelLayer(ModEntityModelLayers.CHAIR, ChairModel::getTexturedModelData);
         BlockEntityRendererFactories.register(ModBlockEntityTypes.CHAIR_BLOCK_ENTITY, ChairBlockEntityRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModEntityModelLayers.CUSHION, CushionModel::getTexturedModelData);

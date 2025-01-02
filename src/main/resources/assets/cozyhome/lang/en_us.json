@@ -113,6 +113,18 @@
   "block.cozyhome.crimson_sofa": "Crimson Sofa",
   "block.cozyhome.warped_sofa": "Warped Sofa",
 
+  "block.cozyhome.oak_couch": "Oak Couch",
+  "block.cozyhome.spruce_couch": "Spruce Couch",
+  "block.cozyhome.birch_couch": "Birch Couch",
+  "block.cozyhome.jungle_couch": "Jungle Couch",
+  "block.cozyhome.acacia_couch": "Acacia Couch",
+  "block.cozyhome.dark_oak_couch": "Dark Oak Couch",
+  "block.cozyhome.mangrove_couch": "Mangrove Couch",
+  "block.cozyhome.cherry_couch": "Cherry Couch",
+  "block.cozyhome.bamboo_couch": "Bamboo Couch",
+  "block.cozyhome.crimson_couch": "Crimson Couch",
+  "block.cozyhome.warped_couch": "Warped Couch",
+
   "block.cozyhome.oak_desk": "Oak Desk",
   "block.cozyhome.spruce_desk": "Spruce Desk",
   "block.cozyhome.birch_desk": "Birch Desk",
@@ -225,7 +237,7 @@
   "block.cozyhome.gold_framed_glass_pane": "Gold Framed Glass Pane",
 
   "blocks.cozyhome.chairs": "Chairs",
-  "blocks.cozyhome.stools": "Stools",
+  "blocks.cozyhome.sofas": "Sofas",
   "blocks.cozyhome.couches": "Couches",
 
   "block.cozyhome.telescope": "Telescope",

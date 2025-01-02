@@ -133,6 +133,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
     }
 
+    public static void offerCouchRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
+        ShapedRecipeJsonBuilder.create(
+                        RecipeCategory.BUILDING_BLOCKS,
+                        output, 1)
+                .pattern("@@")
+                .pattern("##")
+                .input('@', Items.WHITE_WOOL)
+                .input('#', input)
+                .criterion(hasItem(input), conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
     public static void offerDeskRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2) {
         ShapedRecipeJsonBuilder.create(
                         RecipeCategory.BUILDING_BLOCKS,
@@ -305,6 +317,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerSofaRecipe(exporter, ModBlocks.BAMBOO_SOFA, Blocks.BAMBOO_SLAB);
         offerSofaRecipe(exporter, ModBlocks.CRIMSON_SOFA, Blocks.CRIMSON_SLAB);
         offerSofaRecipe(exporter, ModBlocks.WARPED_SOFA, Blocks.WARPED_SLAB);
+
+        // Couch
+        offerCouchRecipe(exporter, ModBlocks.OAK_COUCH, Blocks.OAK_SLAB);
+        offerCouchRecipe(exporter, ModBlocks.SPRUCE_COUCH, Blocks.SPRUCE_SLAB);
+        offerCouchRecipe(exporter, ModBlocks.BIRCH_COUCH, Blocks.BIRCH_SLAB);
+        offerCouchRecipe(exporter, ModBlocks.JUNGLE_COUCH, Blocks.JUNGLE_SLAB);
+        offerCouchRecipe(exporter, ModBlocks.ACACIA_COUCH, Blocks.ACACIA_SLAB);
+        offerCouchRecipe(exporter, ModBlocks.DARK_OAK_COUCH, Blocks.DARK_OAK_SLAB);
+        offerCouchRecipe(exporter, ModBlocks.MANGROVE_COUCH, Blocks.MANGROVE_SLAB);
+        offerCouchRecipe(exporter, ModBlocks.CHERRY_COUCH, Blocks.CHERRY_SLAB);
+        offerCouchRecipe(exporter, ModBlocks.BAMBOO_COUCH, Blocks.BAMBOO_SLAB);
+        offerCouchRecipe(exporter, ModBlocks.CRIMSON_COUCH, Blocks.CRIMSON_SLAB);
+        offerCouchRecipe(exporter, ModBlocks.WARPED_COUCH, Blocks.WARPED_SLAB);
 
         // Desk
         offerDeskRecipe(exporter, ModBlocks.OAK_DESK, Blocks.OAK_SLAB, Blocks.OAK_PLANKS);

@@ -7,12 +7,14 @@ import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.AdvancedHorizontalLinearConnectionBlock;
 import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
+import net.luckystudio.cozyhome.block.util.enums.HorizontalLinearConnectionBlock;
 import net.luckystudio.cozyhome.block.util.enums.VerticalLinearConnectionBlock;
 import net.luckystudio.cozyhome.datagen.util.ModItemTemplates;
 import net.luckystudio.cozyhome.datagen.util.ModModels;
 import net.luckystudio.cozyhome.datagen.util.ModTextureKay;
 import net.luckystudio.cozyhome.datagen.util.TableTypes;
 import net.minecraft.block.Block;
+import net.minecraft.block.enums.StairShape;
 import net.minecraft.data.client.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
@@ -28,6 +30,18 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         registerGenerals(blockStateModelGenerator);
+
+        registerCounter(blockStateModelGenerator, ModBlocks.OAK_COUNTER, CozyHome.id("block/break/oak_furniture"));
+        registerCounter(blockStateModelGenerator, ModBlocks.SPRUCE_COUNTER, CozyHome.id("block/break/spruce_furniture"));
+        registerCounter(blockStateModelGenerator, ModBlocks.BIRCH_COUNTER, CozyHome.id("block/break/birch_furniture"));
+        registerCounter(blockStateModelGenerator, ModBlocks.JUNGLE_COUNTER, CozyHome.id("block/break/jungle_furniture"));
+        registerCounter(blockStateModelGenerator, ModBlocks.ACACIA_COUNTER, CozyHome.id("block/break/acacia_furniture"));
+        registerCounter(blockStateModelGenerator, ModBlocks.DARK_OAK_COUNTER, CozyHome.id("block/break/dark_oak_furniture"));
+        registerCounter(blockStateModelGenerator, ModBlocks.MANGROVE_COUNTER, CozyHome.id("block/break/mangrove_furniture"));
+        registerCounter(blockStateModelGenerator, ModBlocks.CHERRY_COUNTER, CozyHome.id("block/break/cherry_furniture"));
+        registerCounter(blockStateModelGenerator, ModBlocks.BAMBOO_COUNTER, CozyHome.id("block/break/bamboo_furniture"));
+        registerCounter(blockStateModelGenerator, ModBlocks.CRIMSON_COUNTER, CozyHome.id("block/break/crimson_furniture"));
+        registerCounter(blockStateModelGenerator, ModBlocks.WARPED_COUNTER, CozyHome.id("block/break/warped_furniture"));
 
         registerDesk(blockStateModelGenerator, ModBlocks.OAK_DESK, Identifier.of("block/oak_planks"));
         registerDesk(blockStateModelGenerator, ModBlocks.SPRUCE_DESK, Identifier.of("block/spruce_planks"));
@@ -121,17 +135,17 @@ public class ModModelProvider extends FabricModelProvider {
         registerChimney(blockStateModelGenerator, ModBlocks.ENDSTONE_CHIMNEY);
         registerChimney(blockStateModelGenerator, ModBlocks.PURPUR_CHIMNEY);
 
-//        registerCouch(blockStateModelGenerator, ModBlocks.OAK_COUCH, Identifier.of("block/oak_planks"));
-//        registerCouch(blockStateModelGenerator, ModBlocks.SPRUCE_COUCH, Identifier.of("block/spruce_planks"));
-//        registerCouch(blockStateModelGenerator, ModBlocks.BIRCH_COUCH, Identifier.of("block/birch_planks"));
-//        registerCouch(blockStateModelGenerator, ModBlocks.JUNGLE_COUCH, Identifier.of("block/jungle_planks"));
-//        registerCouch(blockStateModelGenerator, ModBlocks.ACACIA_COUCH, Identifier.of("block/acacia_planks"));
-//        registerCouch(blockStateModelGenerator, ModBlocks.DARK_OAK_COUCH, Identifier.of("block/dark_oak_planks"));
-//        registerCouch(blockStateModelGenerator, ModBlocks.MANGROVE_COUCH, Identifier.of("block/mangrove_planks"));
-//        registerCouch(blockStateModelGenerator, ModBlocks.CHERRY_COUCH, Identifier.of("block/cherry_planks"));
-//        registerCouch(blockStateModelGenerator, ModBlocks.BAMBOO_COUCH, Identifier.of("block/bamboo_planks"));
-//        registerCouch(blockStateModelGenerator, ModBlocks.CRIMSON_COUCH, Identifier.of("block/crimson_planks"));
-//        registerCouch(blockStateModelGenerator, ModBlocks.WARPED_COUCH, Identifier.of("block/warped_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.OAK_COUCH, Identifier.of("block/oak_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.SPRUCE_COUCH, Identifier.of("block/spruce_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.BIRCH_COUCH, Identifier.of("block/birch_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.JUNGLE_COUCH, Identifier.of("block/jungle_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.ACACIA_COUCH, Identifier.of("block/acacia_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.DARK_OAK_COUCH, Identifier.of("block/dark_oak_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.MANGROVE_COUCH, Identifier.of("block/mangrove_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.CHERRY_COUCH, Identifier.of("block/cherry_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.BAMBOO_COUCH, Identifier.of("block/bamboo_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.CRIMSON_COUCH, Identifier.of("block/crimson_planks"));
+        registerCouch(blockStateModelGenerator, ModBlocks.WARPED_COUCH, Identifier.of("block/warped_planks"));
     }
 
     // I have no idea what this does, but it's required.
@@ -152,21 +166,87 @@ public class ModModelProvider extends FabricModelProvider {
                 CozyHome.id("block/inset_ice_pane"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/ice")).put(TextureKey.PARTICLE, Identifier.ofVanilla("block/ice")), blockStateModelGenerator.modelCollector);
     }
 
-    /**
-     * Some blocks are rendered and don't have actual models to them, but they still require blockstate, block, and item files for certain features like break particles. We also give these blocks a custom item model.
-     */
     public final void registerBuiltinWithParticleAndItemModel(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier particleSource, Identifier modelPath) {
         blockStateModelGenerator.registerBuiltinWithParticle(block, particleSource);
         blockStateModelGenerator.registerParentedItemModel(block, modelPath);
     }
 
-    /**
-     * Registering Tables
-     * @param blockStateModelGenerator
-     * @param block
-     * @param tableTypes
-     * @param breakParticle
-     */
+    public final void registerCounter(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
+        TextureMap counter = new TextureMap()
+                .put(TextureKey.ALL, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath()))
+                .put(TextureKey.PARTICLE, breakParticle);
+        TextureMap counterInner = new TextureMap()
+                .put(TextureKey.ALL, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath()))
+                .put(TextureKey.PARTICLE, breakParticle);
+        TextureMap counterOuter = new TextureMap()
+                .put(TextureKey.ALL, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath()))
+                .put(TextureKey.PARTICLE, breakParticle);
+        Identifier counterModelId = ModModels.COUCH.upload(block, counter, blockStateModelGenerator.modelCollector);
+        Identifier counterInnerModelId = ModModels.COUCH_INNER.upload(block, counterInner, blockStateModelGenerator.modelCollector);
+        Identifier counterOuterModelId = ModModels.COUCH_OUTER.upload(block, counterOuter, blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
+                .coordinate(BlockStateVariantMap.create(Properties.HORIZONTAL_FACING, Properties.STAIR_SHAPE)
+                        .register(Direction.NORTH, StairShape.STRAIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.NORTH, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.NORTH, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.NORTH, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.NORTH, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+
+                        .register(Direction.SOUTH, StairShape.STRAIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterModelId))
+                        .register(Direction.SOUTH, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterInnerModelId))
+                        .register(Direction.SOUTH, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.SOUTH, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.SOUTH, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterOuterModelId))
+
+                        .register(Direction.WEST, StairShape.STRAIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.WEST, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.WEST, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.WEST, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterOuterModelId))
+                        .register(Direction.WEST, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+
+                        .register(Direction.EAST, StairShape.STRAIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.EAST, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.EAST, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterInnerModelId))
+                        .register(Direction.EAST, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.EAST, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, counterOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                ));
+    }
+
     public final void registerTable(BlockStateModelGenerator blockStateModelGenerator, Block block, TableTypes tableTypes, Identifier breakParticle) {
         // Define texture maps
         String blockNamespace = Registries.BLOCK.getId(block).getNamespace();
@@ -254,11 +334,6 @@ public class ModModelProvider extends FabricModelProvider {
         );
     }
 
-    /**
-     * Registering Fountains
-     * @param blockStateModelGenerator
-     * @param block
-     */
     public final void registerFountain(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
         // Define texture maps
         String blockNamespace = Registries.BLOCK.getId(block).getNamespace();
@@ -341,13 +416,8 @@ public class ModModelProvider extends FabricModelProvider {
                         BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_ice_pane")))
         );
     }
-    /**
-     * Registering Chimneys
-     * @param blockStateModelGenerator
-     * @param block
-     */
-    public final void registerChimney (
-            BlockStateModelGenerator blockStateModelGenerator, Block block) {
+
+    public final void registerChimney(BlockStateModelGenerator blockStateModelGenerator, Block block) {
         TextureMap chimney_single = new TextureMap()
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_top"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_single"))
@@ -384,12 +454,7 @@ public class ModModelProvider extends FabricModelProvider {
         );
     }
 
-    /**
-     * Registering Drawer
-     * @param blockStateModelGenerator
-     * @param block
-     */
-    public final void registerDesk (BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
+    public final void registerDesk(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
         TextureMap desk = new TextureMap()
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_top"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath().replace("desk", "drawer") + "_side"))
@@ -532,12 +597,7 @@ public class ModModelProvider extends FabricModelProvider {
         );
     }
 
-    /**
-     * Registering Drawer
-     * @param blockStateModelGenerator
-     * @param block
-     */
-    public final void registerDrawer (BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
+    public final void registerDrawer(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
         TextureMap drawer = new TextureMap()
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_top"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/drawer/" + Registries.BLOCK.getId(block).getPath() + "_side"))
@@ -728,8 +788,7 @@ public class ModModelProvider extends FabricModelProvider {
         );
     }
 
-    /**
-    public final void registerCouch (BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
+    public final void registerCouch(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
         TextureMap couch = new TextureMap()
                 .put(TextureKey.ALL, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/couch/" + Registries.BLOCK.getId(block).getPath()))
                 .put(TextureKey.PARTICLE, breakParticle);
@@ -742,102 +801,243 @@ public class ModModelProvider extends FabricModelProvider {
         TextureMap couchMiddle = new TextureMap()
                 .put(TextureKey.ALL, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/couch/" + Registries.BLOCK.getId(block).getPath()))
                 .put(TextureKey.PARTICLE, breakParticle);
-        TextureMap couchInnerLeft = new TextureMap()
+        TextureMap couchInner = new TextureMap()
                 .put(TextureKey.ALL, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/couch/" + Registries.BLOCK.getId(block).getPath()))
                 .put(TextureKey.PARTICLE, breakParticle);
-        TextureMap couchInnerRight = new TextureMap()
-                .put(TextureKey.ALL, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/couch/" + Registries.BLOCK.getId(block).getPath()))
-                .put(TextureKey.PARTICLE, breakParticle);
-        TextureMap couchOuterLeft = new TextureMap()
-                .put(TextureKey.ALL, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/couch/" + Registries.BLOCK.getId(block).getPath()))
-                .put(TextureKey.PARTICLE, breakParticle);
-        TextureMap couchOuterRight = new TextureMap()
+        TextureMap couchOuter = new TextureMap()
                 .put(TextureKey.ALL, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/couch/" + Registries.BLOCK.getId(block).getPath()))
                 .put(TextureKey.PARTICLE, breakParticle);
         Identifier couchModelId = ModModels.COUCH.upload(block, couch, blockStateModelGenerator.modelCollector);
         Identifier couchLeftModelId = ModModels.COUCH_LEFT.upload(block, couchLeft, blockStateModelGenerator.modelCollector);
         Identifier couchRightModelId = ModModels.COUCH_RIGHT.upload(block, couchRight, blockStateModelGenerator.modelCollector);
         Identifier couchMiddleModelId = ModModels.COUCH_MIDDLE.upload(block, couchMiddle, blockStateModelGenerator.modelCollector);
-        Identifier couchInnerLeftModelId = ModModels.COUCH_INNER_LEFT.upload(block, couchInnerLeft, blockStateModelGenerator.modelCollector);
-        Identifier couchInnerRightModelId = ModModels.COUCH_INNER_RIGHT.upload(block, couchInnerRight, blockStateModelGenerator.modelCollector);
-        Identifier couchOuterLeftModelId = ModModels.COUCH_OUTER_LEFT.upload(block, couchOuterLeft, blockStateModelGenerator.modelCollector);
-        Identifier couchOuterRightModelId = ModModels.COUCH_OUTER_RIGHT.upload(block, couchOuterRight, blockStateModelGenerator.modelCollector);
+        Identifier couchInnerModelId = ModModels.COUCH_INNER.upload(block, couchInner, blockStateModelGenerator.modelCollector);
+        Identifier couchOuterModelId = ModModels.COUCH_OUTER.upload(block, couchOuter, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
-                .coordinate(BlockStateVariantMap.create(Properties.HORIZONTAL_FACING, Properties.STAIR_SHAPE, ModProperties.HORIZONTAL_CONNECTION)
-                        // NORTH
-                        .register(Direction.NORTH, StairShape.STRAIGHT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
+                .coordinate(BlockStateVariantMap.create(Properties.HORIZONTAL_FACING, ModProperties.HORIZONTAL_CONNECTION, Properties.STAIR_SHAPE)
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.SINGLE, StairShape.STRAIGHT, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, couchModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(Direction.NORTH, StairShape.STRAIGHT, HorizontalLinearConnectionBlock.LEFT, BlockStateVariant.create()
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.SINGLE, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.SINGLE, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.SINGLE, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.SINGLE, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.LEFT, StairShape.STRAIGHT, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, couchLeftModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(Direction.NORTH, StairShape.STRAIGHT, HorizontalLinearConnectionBlock.RIGHT, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchRightModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(Direction.NORTH, StairShape.STRAIGHT, HorizontalLinearConnectionBlock.MIDDLE, BlockStateVariant.create()
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.MIDDLE, StairShape.STRAIGHT, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, couchMiddleModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(Direction.NORTH, StairShape.INNER_LEFT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchInnerLeftModelId)
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.RIGHT, StairShape.STRAIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchRightModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(Direction.NORTH, StairShape.INNER_RIGHT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchInnerRightModelId)
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.LEFT, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(Direction.NORTH, StairShape.OUTER_LEFT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchOuterLeftModelId)
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.LEFT, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.LEFT, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.LEFT, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(Direction.NORTH, StairShape.OUTER_RIGHT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchOuterRightModelId)
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.MIDDLE, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.MIDDLE, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.MIDDLE, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.MIDDLE, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.RIGHT, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.RIGHT, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.RIGHT, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.RIGHT, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R180))
 
-                        // EAST
-                        .register(Direction.EAST, StairShape.STRAIGHT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchModelId)
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.LEFT, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId))
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.LEFT, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.LEFT, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R270))
-                        .register(Direction.EAST, StairShape.INNER_LEFT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchInnerLeftModelId)
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.LEFT, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId))
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.MIDDLE, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId))
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.MIDDLE, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.MIDDLE, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R270))
-                        .register(Direction.EAST, StairShape.INNER_RIGHT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchInnerRightModelId)
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.MIDDLE, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId))
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.RIGHT, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId))
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.RIGHT, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.RIGHT, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R270))
-                        .register(Direction.EAST, StairShape.OUTER_LEFT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchOuterLeftModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
-                        .register(Direction.EAST, StairShape.OUTER_RIGHT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchOuterRightModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
-
-                        // SOUTH
-                        .register(Direction.SOUTH, StairShape.STRAIGHT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.RIGHT, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId))
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.SINGLE, StairShape.STRAIGHT, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, couchModelId))
-                        .register(Direction.SOUTH, StairShape.INNER_LEFT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchInnerLeftModelId))
-                        .register(Direction.SOUTH, StairShape.INNER_RIGHT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchInnerRightModelId))
-                        .register(Direction.SOUTH, StairShape.OUTER_LEFT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchOuterLeftModelId))
-                        .register(Direction.SOUTH, StairShape.OUTER_RIGHT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchOuterRightModelId))
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.SINGLE, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId))
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.SINGLE, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.SINGLE, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.SINGLE, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId))
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.LEFT, StairShape.STRAIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchLeftModelId))
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.MIDDLE, StairShape.STRAIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchMiddleModelId))
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.RIGHT, StairShape.STRAIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchRightModelId))
 
-                        // WEST
-                        .register(Direction.WEST, StairShape.STRAIGHT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.SINGLE, StairShape.STRAIGHT, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, couchModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                        .register(Direction.WEST, StairShape.INNER_LEFT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchInnerLeftModelId)
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.SINGLE, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                        .register(Direction.WEST, StairShape.INNER_RIGHT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchInnerRightModelId)
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.SINGLE, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.SINGLE, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId))
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.SINGLE, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                        .register(Direction.WEST, StairShape.OUTER_LEFT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchOuterLeftModelId)
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.LEFT, StairShape.STRAIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchLeftModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                        .register(Direction.WEST, StairShape.OUTER_RIGHT, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, couchOuterRightModelId)
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.LEFT, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                )
-        );
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.LEFT, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.LEFT, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId))
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.LEFT, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.MIDDLE, StairShape.STRAIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchMiddleModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.MIDDLE, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.MIDDLE, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.MIDDLE, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId))
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.MIDDLE, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.RIGHT, StairShape.STRAIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchRightModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.RIGHT, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.RIGHT, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.RIGHT, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId))
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.RIGHT, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
 
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.SINGLE, StairShape.STRAIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.SINGLE, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.SINGLE, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.SINGLE, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.SINGLE, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.LEFT, StairShape.STRAIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchLeftModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.LEFT, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.LEFT, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.LEFT, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.LEFT, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.MIDDLE, StairShape.STRAIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchMiddleModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.MIDDLE, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.MIDDLE, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.MIDDLE, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.MIDDLE, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.RIGHT, StairShape.STRAIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchRightModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.RIGHT, StairShape.INNER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.RIGHT, StairShape.INNER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchInnerModelId))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.RIGHT, StairShape.OUTER_LEFT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.RIGHT, StairShape.OUTER_RIGHT, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, couchOuterModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                ));
     }
-        */
 }

@@ -121,6 +121,19 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CRIMSON_SOFA)
                 .add(ModBlocks.WARPED_SOFA)
 
+                // COUCH
+                .add(ModBlocks.OAK_COUCH)
+                .add(ModBlocks.SPRUCE_COUCH)
+                .add(ModBlocks.BIRCH_COUCH)
+                .add(ModBlocks.JUNGLE_COUCH)
+                .add(ModBlocks.ACACIA_COUCH)
+                .add(ModBlocks.DARK_OAK_COUCH)
+                .add(ModBlocks.MANGROVE_COUCH)
+                .add(ModBlocks.CHERRY_COUCH)
+                .add(ModBlocks.BAMBOO_COUCH)
+                .add(ModBlocks.CRIMSON_COUCH)
+                .add(ModBlocks.WARPED_COUCH)
+
                 // DESKS
                 .add(ModBlocks.OAK_DESK)
                 .add(ModBlocks.SPRUCE_DESK)

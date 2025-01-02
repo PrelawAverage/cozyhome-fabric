@@ -5,6 +5,7 @@ import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.custom.SofaBlock;
 import net.luckystudio.cozyhome.block.entity.SofaBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
+import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.client.ModEntityModelLayers;
 import net.luckystudio.cozyhome.item.ModItems;
 import net.luckystudio.cozyhome.util.ModColorHandler;
@@ -73,7 +74,7 @@ public class SofaBlockEntityRenderer implements BlockEntityRenderer<SofaBlockEnt
 
         matrices.translate(0.5, 1.5, 0.5);
         matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(180));
-        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(ModBlockUtilities.getRotationAngle(entity)));
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(ModProperties.setSeatRotationFromRotation(entity.getCachedState())));
 
         BlockState blockState = entity.getCachedState();
         SofaBlock.SofaType sofaType = ((SofaBlock)blockState.getBlock()).getSofaType();

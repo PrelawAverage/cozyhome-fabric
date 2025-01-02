@@ -79,6 +79,22 @@ public class ModBlockEntityTypes {
                     ModBlocks.WARPED_SOFA
             ).build());
 
+    public static final BlockEntityType<CouchBlockEntity> COUCH_BLOCK_ENTITY = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "couch_block_entity"),
+            BlockEntityType.Builder.create(CouchBlockEntity::new,
+                    ModBlocks.OAK_COUCH,
+                    ModBlocks.SPRUCE_COUCH,
+                    ModBlocks.BIRCH_COUCH,
+                    ModBlocks.JUNGLE_COUCH,
+                    ModBlocks.ACACIA_COUCH,
+                    ModBlocks.DARK_OAK_COUCH,
+                    ModBlocks.MANGROVE_COUCH,
+                    ModBlocks.CHERRY_COUCH,
+                    ModBlocks.BAMBOO_COUCH,
+                    ModBlocks.CRIMSON_COUCH,
+                    ModBlocks.WARPED_COUCH
+            ).build());
+
     public static final BlockEntityType<WallClockBlockEntity> WALL_CLOCK_BLOCK_ENTITY = Registry.register(
             Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "clock_block_entity"),
             BlockEntityType.Builder.create(WallClockBlockEntity::new,

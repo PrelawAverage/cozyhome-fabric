@@ -96,9 +96,9 @@ public class ModBlocks {
                 AbstractBlock.Settings.copy(block).dynamicBounds());
     }
 
-//    private static Block createCouch(Block block) {
-//        return new CouchBlock(AbstractBlock.Settings.copy(block).dynamicBounds());
-//    }
+    private static Block createCouch(Block block) {
+        return new CouchBlock(AbstractBlock.Settings.copy(block).dynamicBounds());
+    }
 
     private static Block createDesk(Block block) {
         return new DeskBlock(
@@ -293,18 +293,18 @@ public class ModBlocks {
     public static final Block CRIMSON_SOFA = registerDyedBlock("crimson_sofa", createSofa(SofaBlock.Type.CRIMSON, Blocks.CRIMSON_PLANKS));
     public static final Block WARPED_SOFA = registerDyedBlock("warped_sofa", createSofa(SofaBlock.Type.WARPED, Blocks.WARPED_PLANKS));
 
-//    // Couches
-//    public static final Block OAK_COUCH = registerDyedBlock("oak_couch", createCouch(Blocks.OAK_PLANKS));
-//    public static final Block SPRUCE_COUCH = registerDyedBlock("spruce_couch", createCouch(Blocks.SPRUCE_PLANKS));
-//    public static final Block BIRCH_COUCH = registerDyedBlock("birch_couch", createCouch(Blocks.BIRCH_PLANKS));
-//    public static final Block JUNGLE_COUCH = registerDyedBlock("jungle_couch", createCouch(Blocks.JUNGLE_PLANKS));
-//    public static final Block ACACIA_COUCH = registerDyedBlock("acacia_couch", createCouch(Blocks.ACACIA_PLANKS));
-//    public static final Block DARK_OAK_COUCH = registerDyedBlock("dark_oak_couch", createCouch(Blocks.DARK_OAK_PLANKS));
-//    public static final Block MANGROVE_COUCH = registerDyedBlock("mangrove_couch", createCouch(Blocks.MANGROVE_PLANKS));
-//    public static final Block CHERRY_COUCH = registerDyedBlock("cherry_couch", createCouch(Blocks.CHERRY_PLANKS));
-//    public static final Block BAMBOO_COUCH = registerDyedBlock("bamboo_couch", createCouch(Blocks.BAMBOO_PLANKS));
-//    public static final Block CRIMSON_COUCH = registerDyedBlock("crimson_couch", createCouch(Blocks.CRIMSON_PLANKS));
-//    public static final Block WARPED_COUCH = registerDyedBlock("warped_couch", createCouch(Blocks.WARPED_PLANKS));
+    // Couches
+    public static final Block OAK_COUCH = registerDyedBlock("oak_couch", createCouch(Blocks.OAK_PLANKS));
+    public static final Block SPRUCE_COUCH = registerDyedBlock("spruce_couch", createCouch(Blocks.SPRUCE_PLANKS));
+    public static final Block BIRCH_COUCH = registerDyedBlock("birch_couch", createCouch(Blocks.BIRCH_PLANKS));
+    public static final Block JUNGLE_COUCH = registerDyedBlock("jungle_couch", createCouch(Blocks.JUNGLE_PLANKS));
+    public static final Block ACACIA_COUCH = registerDyedBlock("acacia_couch", createCouch(Blocks.ACACIA_PLANKS));
+    public static final Block DARK_OAK_COUCH = registerDyedBlock("dark_oak_couch", createCouch(Blocks.DARK_OAK_PLANKS));
+    public static final Block MANGROVE_COUCH = registerDyedBlock("mangrove_couch", createCouch(Blocks.MANGROVE_PLANKS));
+    public static final Block CHERRY_COUCH = registerDyedBlock("cherry_couch", createCouch(Blocks.CHERRY_PLANKS));
+    public static final Block BAMBOO_COUCH = registerDyedBlock("bamboo_couch", createCouch(Blocks.BAMBOO_PLANKS));
+    public static final Block CRIMSON_COUCH = registerDyedBlock("crimson_couch", createCouch(Blocks.CRIMSON_PLANKS));
+    public static final Block WARPED_COUCH = registerDyedBlock("warped_couch", createCouch(Blocks.WARPED_PLANKS));
 
     // Desks
     public static final Block OAK_DESK = registerBlock("oak_desk", createDesk(Blocks.OAK_PLANKS));

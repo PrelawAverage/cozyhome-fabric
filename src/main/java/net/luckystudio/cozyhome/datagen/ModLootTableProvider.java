@@ -133,6 +133,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addTripleTallBlockDrop(ModBlocks.UNDEAD_GRANDFATHER_CLOCK);
         addTripleTallBlockDrop(ModBlocks.OMINOUS_GRANDFATHER_CLOCK);
 
+        // SOFA
         addDyedBlockDrop(ModBlocks.OAK_SOFA);
         addDyedBlockDrop(ModBlocks.SPRUCE_SOFA);
         addDyedBlockDrop(ModBlocks.BIRCH_SOFA);
@@ -144,6 +145,19 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDyedBlockDrop(ModBlocks.BAMBOO_SOFA);
         addDyedBlockDrop(ModBlocks.CRIMSON_SOFA);
         addDyedBlockDrop(ModBlocks.WARPED_SOFA);
+
+        // COUCH
+        addDyedBlockDrop(ModBlocks.OAK_COUCH);
+        addDyedBlockDrop(ModBlocks.SPRUCE_COUCH);
+        addDyedBlockDrop(ModBlocks.BIRCH_COUCH);
+        addDyedBlockDrop(ModBlocks.JUNGLE_COUCH);
+        addDyedBlockDrop(ModBlocks.ACACIA_COUCH);
+        addDyedBlockDrop(ModBlocks.DARK_OAK_COUCH);
+        addDyedBlockDrop(ModBlocks.MANGROVE_COUCH);
+        addDyedBlockDrop(ModBlocks.CHERRY_COUCH);
+        addDyedBlockDrop(ModBlocks.BAMBOO_COUCH);
+        addDyedBlockDrop(ModBlocks.CRIMSON_COUCH);
+        addDyedBlockDrop(ModBlocks.WARPED_COUCH);
 
         // DESK
         addDrop(ModBlocks.OAK_DESK);

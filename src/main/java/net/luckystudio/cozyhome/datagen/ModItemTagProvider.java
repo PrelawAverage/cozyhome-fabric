@@ -22,6 +22,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(ItemTags.DYEABLE)
                 .add(ModItems.CUSHION)
+
                 .add(ModBlocks.OAK_SOFA.asItem())
                 .add(ModBlocks.SPRUCE_SOFA.asItem())
                 .add(ModBlocks.BIRCH_SOFA.asItem())
@@ -32,7 +33,19 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModBlocks.CHERRY_SOFA.asItem())
                 .add(ModBlocks.BAMBOO_SOFA.asItem())
                 .add(ModBlocks.CRIMSON_SOFA.asItem())
-                .add(ModBlocks.WARPED_SOFA.asItem());
-                ;
+                .add(ModBlocks.WARPED_SOFA.asItem())
+
+                .add(ModBlocks.OAK_COUCH.asItem())
+                .add(ModBlocks.SPRUCE_COUCH.asItem())
+                .add(ModBlocks.BIRCH_COUCH.asItem())
+                .add(ModBlocks.JUNGLE_COUCH.asItem())
+                .add(ModBlocks.ACACIA_COUCH.asItem())
+                .add(ModBlocks.DARK_OAK_COUCH.asItem())
+                .add(ModBlocks.MANGROVE_COUCH.asItem())
+                .add(ModBlocks.CHERRY_COUCH.asItem())
+                .add(ModBlocks.BAMBOO_COUCH.asItem())
+                .add(ModBlocks.CRIMSON_COUCH.asItem())
+                .add(ModBlocks.WARPED_COUCH.asItem())
+        ;
     }
 }
