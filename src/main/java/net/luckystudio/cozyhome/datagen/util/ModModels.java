@@ -33,17 +33,14 @@ public class ModModels {
     public static final Model SHELF_TABLE_MIDDLE = modBlockWithTypeAndVariant("template_shelf_table_middle", ModBlockTypes.TABLE, "_middle", TextureKey.ALL, TextureKey.PARTICLE);
     public static final Model SHELF_TABLE_SIDE = modBlockWithTypeAndVariant("template_shelf_table_side", ModBlockTypes.TABLE, "_side", TextureKey.ALL, TextureKey.PARTICLE);
 
-    public static final Model FOUNTAIN = modBlockWithType("template_fountain", ModBlockTypes.FOUNTAIN, TextureKey.ALL, TextureKey.PARTICLE);
-    public static final Model FOUNTAIN_CORNER = modBlockWithTypeAndVariant("template_fountain_corner", ModBlockTypes.FOUNTAIN, "_corner", TextureKey.ALL, TextureKey.PARTICLE);
-    public static final Model FOUNTAIN_CORNER_PIECE = modBlockWithTypeAndVariant("template_fountain_corner_piece", ModBlockTypes.FOUNTAIN, "_corner_piece", TextureKey.ALL, TextureKey.PARTICLE);
-    public static final Model FOUNTAIN_DOUBLE = modBlockWithTypeAndVariant("template_fountain_double", ModBlockTypes.FOUNTAIN, "_double", TextureKey.ALL, TextureKey.PARTICLE);
-    public static final Model FOUNTAIN_INNER_CORNER_PIECE = modBlockWithTypeAndVariant("template_fountain_inner_corner_piece", ModBlockTypes.FOUNTAIN, "_inner_corner_piece", TextureKey.ALL, TextureKey.PARTICLE);
-    public static final Model FOUNTAIN_MIDDLE = modBlockWithTypeAndVariant("template_fountain_middle", ModBlockTypes.FOUNTAIN, "_middle", TextureKey.ALL, TextureKey.PARTICLE);
-    public static final Model FOUNTAIN_SIDE = modBlockWithTypeAndVariant("template_fountain_side", ModBlockTypes.FOUNTAIN, "_side", TextureKey.ALL, TextureKey.PARTICLE);
-
-    public static final Model INSET_WATER_PANE = modBlockWithTypeAndVariant("template_pane_15", ModBlockTypes.PLANE,"water", TextureKey.UP, TextureKey.PARTICLE);
-    public static final Model INSET_LAVA_PANE = modBlockWithTypeAndVariant("template_pane_15", ModBlockTypes.PLANE,"lava", TextureKey.UP, TextureKey.PARTICLE);
-    public static final Model INSET_ICE_PANE = modBlockWithTypeAndVariant("template_pane_15", ModBlockTypes.PLANE,"ice", TextureKey.UP, TextureKey.PARTICLE);
+    public static final Model GENERIC_LAMP = modBlockWithType("generic_lamp", ModBlockTypes.LAMP,TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model GENERIC_LAMP_ON = modBlockWithTypeAndVariant("generic_lamp", ModBlockTypes.LAMP, "_on", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model GENERIC_LAMP_HEAD = modBlockWithTypeAndVariant("generic_lamp_top", ModBlockTypes.LAMP, "_head", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model GENERIC_LAMP_HEAD_ON = modBlockWithTypeAndVariant("generic_lamp_top", ModBlockTypes.LAMP, "_head_on", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model GENERIC_LAMP_MIDDLE = modBlockWithTypeAndVariant("generic_lamp_middle", ModBlockTypes.LAMP,"_middle", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model GENERIC_LAMP_MIDDLE_ON = modBlockWithTypeAndVariant("generic_lamp_middle", ModBlockTypes.LAMP,"_middle_on", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model GENERIC_LAMP_BASE = modBlockWithTypeAndVariant("generic_lamp_base", ModBlockTypes.LAMP, "_base", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model GENERIC_LAMP_BASE_ON = modBlockWithTypeAndVariant("generic_lamp_base", ModBlockTypes.LAMP, "_base_on", TextureKey.ALL, TextureKey.PARTICLE);
 
     public static final Model COUCH = modBlockWithType("couch", ModBlockTypes.COUCH, TextureKey.ALL, TextureKey.PARTICLE);
     public static final Model COUCH_LEFT = modBlockWithTypeAndVariant("couch_left", ModBlockTypes.COUCH, "_left", TextureKey.ALL, TextureKey.PARTICLE);
@@ -72,6 +69,18 @@ public class ModModels {
     public static final Model WALL_MIRROR_MIDDLE = modBlockWithTypeAndVariant("wall_mirror_middle", ModBlockTypes.WALL_MIRROR, "_middle", TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
     public static final Model WALL_MIRROR_BOTTOM = modBlockWithTypeAndVariant("wall_mirror_bottom", ModBlockTypes.WALL_MIRROR, "_bottom", TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
 
+    public static final Model FOUNTAIN = modBlockWithType("template_fountain", ModBlockTypes.FOUNTAIN, TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model FOUNTAIN_CORNER = modBlockWithTypeAndVariant("template_fountain_corner", ModBlockTypes.FOUNTAIN, "_corner", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model FOUNTAIN_CORNER_PIECE = modBlockWithTypeAndVariant("template_fountain_corner_piece", ModBlockTypes.FOUNTAIN, "_corner_piece", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model FOUNTAIN_DOUBLE = modBlockWithTypeAndVariant("template_fountain_double", ModBlockTypes.FOUNTAIN, "_double", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model FOUNTAIN_INNER_CORNER_PIECE = modBlockWithTypeAndVariant("template_fountain_inner_corner_piece", ModBlockTypes.FOUNTAIN, "_inner_corner_piece", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model FOUNTAIN_MIDDLE = modBlockWithTypeAndVariant("template_fountain_middle", ModBlockTypes.FOUNTAIN, "_middle", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model FOUNTAIN_SIDE = modBlockWithTypeAndVariant("template_fountain_side", ModBlockTypes.FOUNTAIN, "_side", TextureKey.ALL, TextureKey.PARTICLE);
+
+    public static final Model INSET_WATER_PANE = modBlockWithTypeAndVariant("template_pane_15", ModBlockTypes.PLANE,"water", TextureKey.UP, TextureKey.PARTICLE);
+    public static final Model INSET_LAVA_PANE = modBlockWithTypeAndVariant("template_pane_15", ModBlockTypes.PLANE,"lava", TextureKey.UP, TextureKey.PARTICLE);
+    public static final Model INSET_ICE_PANE = modBlockWithTypeAndVariant("template_pane_15", ModBlockTypes.PLANE,"ice", TextureKey.UP, TextureKey.PARTICLE);
+
     private static Model modBlock(String parent, TextureKey... requiredTextureKeys) {
         return new Model(Optional.of(CozyHome.id("block/" + parent)), Optional.empty(), requiredTextureKeys);
     }
@@ -80,11 +89,11 @@ public class ModModels {
         return new Model(Optional.of(CozyHome.id("block/" + parent)), Optional.of(variant), requiredTextureKeys);
     }
 
-    private static Model modBlockWithType(String parent, ModBlockTypes type, TextureKey... requiredTextureKeys) {
+    public static Model modBlockWithType(String parent, ModBlockTypes type, TextureKey... requiredTextureKeys) {
         return new Model(Optional.of(CozyHome.id("block/" + type + "/" + parent)), Optional.empty(), requiredTextureKeys);
     }
 
-    private static Model modBlockWithTypeAndVariant(String parent, ModBlockTypes type, String variant, TextureKey... requiredTextureKeys) {
+    public static Model modBlockWithTypeAndVariant(String parent, ModBlockTypes type, String variant, TextureKey... requiredTextureKeys) {
         return new Model(Optional.of(CozyHome.id("block/" + type + "/" + parent)), Optional.of(variant), requiredTextureKeys);
     }
 }

@@ -63,6 +63,22 @@ public class ModBlockEntityTypes {
                     ModBlocks.OMINOUS_CHAIR
             ).build());
 
+    public static final BlockEntityType<LampBlockEntity> LAMP_BLOCK_ENTITY = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "lamp_block_entity"),
+            BlockEntityType.Builder.create(LampBlockEntity::new,
+                    ModBlocks.OAK_LAMP,
+                    ModBlocks.SPRUCE_LAMP,
+                    ModBlocks.BIRCH_LAMP,
+                    ModBlocks.JUNGLE_LAMP,
+                    ModBlocks.ACACIA_LAMP,
+                    ModBlocks.DARK_OAK_LAMP,
+                    ModBlocks.MANGROVE_LAMP,
+                    ModBlocks.CHERRY_LAMP,
+                    ModBlocks.BAMBOO_LAMP,
+                    ModBlocks.CRIMSON_LAMP,
+                    ModBlocks.WARPED_LAMP
+            ).build());
+
     public static final BlockEntityType<SofaBlockEntity> SOFA_BLOCK_ENTITY = Registry.register(
             Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "sofa_block_entity"),
             BlockEntityType.Builder.create(SofaBlockEntity::new,

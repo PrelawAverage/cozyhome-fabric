@@ -10,8 +10,12 @@ import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.components.ModDataComponents;
 import net.luckystudio.cozyhome.item.ModItems;
 import net.luckystudio.cozyhome.item.custom.CushionItem;
+import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.component.ComponentMap;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.DyedColorComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,6 +32,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.RotationPropertyHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
@@ -93,11 +98,26 @@ public class SofaBlock extends AbstractSeatBlock {
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         // Check if the block at the given position has an ItemRackBlockEntity associated with it.
         if (world.getBlockEntity(pos) instanceof SofaBlockEntity sofaBlockEntity) {
-            // Get the item stack that is currently stored in the block
-            ItemStack storedItem = sofaBlockEntity.getStack();
+            if (stack.getItem() instanceof DyeItem dyeItem) {
+                final int itemColor = dyeItem.getColor().getEntityColor();
+                final int blockColor = ModColorHandler.getBlockColor(sofaBlockEntity, -17170434);
+                final int newColor = ColorHelper.Argb.averageArgb(blockColor, itemColor);
+                if (blockColor == newColor) {
+                    return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+                }
+                ComponentMap components = ComponentMap.builder().add(DataComponentTypes.DYED_COLOR, new DyedColorComponent(newColor, false)).build();
+                sofaBlockEntity.setComponents(components);
+
+                stack.decrementUnlessCreative(1, player);
+                sofaBlockEntity.markDirty();
+                world.updateListeners(pos, state, state, 0);
+                return ItemActionResult.SUCCESS;
+            }
 
             // Check if the item in hand is a valid tool or weapon.
             if (stack.getItem() instanceof CushionItem) {
+                // Get the item stack that is currently stored in the block
+                ItemStack storedItem = sofaBlockEntity.getStack();
                 // If the stack is not empty, and the rack is either empty or can accept the item (same type and enough space),
                 // proceed to insert the item into the block.
                 if (!stack.isEmpty() && (storedItem.isEmpty())) {

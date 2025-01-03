@@ -1,7 +1,0 @@
-{
-  "parent": "cozyhome:block/lamp/spruce/template_spruce_lamp_1",
-  "textures": {
-    "lamp": "cozyhome:block/lamp/spruce/spruce_lamp",
-    "particle": "block/white_wool"
-  }
-}

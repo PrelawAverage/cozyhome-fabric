@@ -15,6 +15,9 @@ import net.luckystudio.cozyhome.block.custom.TelescopeBlock;
 import net.luckystudio.cozyhome.block.custom.includes_liquid.FallingLiquidBlock;
 import net.luckystudio.cozyhome.block.custom.includes_liquid.FountainBlock;
 import net.luckystudio.cozyhome.block.custom.includes_liquid.FountainSproutBlock;
+import net.luckystudio.cozyhome.block.custom.lamps.GenericLampBlock;
+import net.luckystudio.cozyhome.block.custom.lamps.JungleLampBlock;
+import net.luckystudio.cozyhome.block.custom.lamps.SpruceLampBlock;
 import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
 import net.luckystudio.cozyhome.block.util.interfaces.SinkBehavior;
 import net.luckystudio.cozyhome.item.custom.DyedBlockItem;
@@ -26,11 +29,9 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Rarity;
 import net.minecraft.world.biome.Biome;
 
-import java.util.Map;
-import java.util.Set;
+import static net.minecraft.block.Blocks.createLightLevelFromLitBlockState;
 
 public class ModBlocks {
 
@@ -82,6 +83,14 @@ public class ModBlocks {
                         .burnable()
                         .sounds(soundGroup)
                         .dynamicBounds());
+    }
+
+    private static Block createGenericLamp() {
+        return new GenericLampBlock(AbstractBlock.Settings.create()
+                .luminance(createLightLevelFromLitBlockState(10))
+                .breakInstantly()
+                .dynamicBounds()
+                .sounds(BlockSoundGroup.LANTERN));
     }
 
     private static Block createSofa(SofaBlock.SofaType sofaType, Block block) {
@@ -272,6 +281,17 @@ public class ModBlocks {
                     .luminance(ModBlockUtilities.createLightLevelFromOminousBehaviour(12))));
 
     // Lamps
+    public static final Block OAK_LAMP = registerBlock("oak_lamp", createGenericLamp());
+    public static final Block SPRUCE_LAMP = registerBlock("spruce_lamp", new SpruceLampBlock(AbstractBlock.Settings.copy(ModBlocks.OAK_LAMP)));
+    public static final Block BIRCH_LAMP = registerBlock("birch_lamp", createGenericLamp());
+    public static final Block JUNGLE_LAMP = registerBlock("jungle_lamp", new JungleLampBlock(AbstractBlock.Settings.copy(ModBlocks.OAK_LAMP)));
+    public static final Block ACACIA_LAMP = registerBlock("acacia_lamp", createGenericLamp());
+    public static final Block DARK_OAK_LAMP = registerBlock("dark_oak_lamp", createGenericLamp());
+    public static final Block MANGROVE_LAMP = registerBlock("mangrove_lamp", createGenericLamp());
+    public static final Block CHERRY_LAMP = registerBlock("cherry_lamp", createGenericLamp());
+    public static final Block BAMBOO_LAMP = registerBlock("bamboo_lamp", createGenericLamp());
+    public static final Block CRIMSON_LAMP = registerBlock("crimson_lamp", createGenericLamp());
+    public static final Block WARPED_LAMP = registerBlock("warped_lamp", createGenericLamp());
 
     // Sofas
     public static final Block OAK_SOFA = registerDyedBlock("oak_sofa", createSofa(SofaBlock.Type.OAK, Blocks.OAK_PLANKS));

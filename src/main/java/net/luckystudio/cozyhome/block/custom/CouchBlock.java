@@ -9,12 +9,16 @@ import net.luckystudio.cozyhome.block.util.interfaces.ConnectingBlock;
 import net.luckystudio.cozyhome.components.ModDataComponents;
 import net.luckystudio.cozyhome.item.ModItems;
 import net.luckystudio.cozyhome.item.custom.CushionItem;
+import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.enums.StairShape;
+import net.minecraft.component.ComponentMap;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.DyedColorComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -32,6 +36,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
@@ -109,6 +114,22 @@ public class CouchBlock extends AbstractSeatBlock implements ConnectingBlock {
         if (world.getBlockEntity(pos) instanceof CouchBlockEntity couchBlockEntity) {
             // Get the item stack that is currently stored in the block
             ItemStack storedItem = couchBlockEntity.getStack();
+
+            if (stack.getItem() instanceof DyeItem dyeItem) {
+                final int itemColor = dyeItem.getColor().getEntityColor();
+                final int blockColor = ModColorHandler.getBlockColor(couchBlockEntity, -17170434);
+                final int newColor = ColorHelper.Argb.averageArgb(blockColor, itemColor);
+                if (blockColor == newColor) {
+                    return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+                }
+                ComponentMap components = ComponentMap.builder().add(DataComponentTypes.DYED_COLOR, new DyedColorComponent(newColor, false)).build();
+                couchBlockEntity.setComponents(components);
+
+                stack.decrementUnlessCreative(1, player);
+                couchBlockEntity.markDirty();
+                world.updateListeners(pos, state, state, 0);
+                return ItemActionResult.SUCCESS;
+            }
 
             // Check if the item in hand is a valid tool or weapon.
             if (stack.getItem() instanceof CushionItem) {

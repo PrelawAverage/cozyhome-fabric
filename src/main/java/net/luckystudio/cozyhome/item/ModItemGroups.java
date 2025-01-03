@@ -59,8 +59,6 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CRIMSON_SINK_COUNTER);
                         entries.add(ModBlocks.WARPED_SINK_COUNTER);
 
-                        // Stools
-
                         // Tables
                         entries.add(ModBlocks.OAK_TABLE);
                         entries.add(ModBlocks.SPRUCE_TABLE);
@@ -128,6 +126,19 @@ public class ModItemGroups {
                         entries.add(ModBlocks.GLASS_GRANDFATHER_CLOCK);
                         entries.add(ModBlocks.UNDEAD_GRANDFATHER_CLOCK);
                         entries.add(ModBlocks.OMINOUS_GRANDFATHER_CLOCK);
+
+                        // Lamps
+                        entries.add(ModBlocks.OAK_LAMP);
+                        entries.add(ModBlocks.SPRUCE_LAMP);
+                        entries.add(ModBlocks.BIRCH_LAMP);
+                        entries.add(ModBlocks.JUNGLE_LAMP);
+                        entries.add(ModBlocks.ACACIA_LAMP);
+                        entries.add(ModBlocks.DARK_OAK_LAMP);
+                        entries.add(ModBlocks.MANGROVE_LAMP);
+                        entries.add(ModBlocks.CHERRY_LAMP);
+                        entries.add(ModBlocks.BAMBOO_LAMP);
+                        entries.add(ModBlocks.CRIMSON_LAMP);
+                        entries.add(ModBlocks.WARPED_LAMP);
 
                         // Sofas
                         entries.add(ModBlocks.OAK_SOFA);

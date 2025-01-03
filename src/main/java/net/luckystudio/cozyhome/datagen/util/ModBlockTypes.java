@@ -12,10 +12,11 @@ public enum ModBlockTypes implements StringIdentifiable {
     TABLE("table"),
     FOUNTAIN("fountain"),
     PLANE("pane"),
+    LAMP("lamp"),
     COUCH("couch"),
     DRAWER("drawer"),
     DESK("desk"),
-    WALL_MIRROR("wall_mirror"),;
+    WALL_MIRROR("wall_mirror");
 
     private final String name;
 

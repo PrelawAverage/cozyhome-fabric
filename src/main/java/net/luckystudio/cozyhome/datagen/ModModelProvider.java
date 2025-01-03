@@ -129,6 +129,15 @@ public class ModModelProvider extends FabricModelProvider {
         registerBuiltinWithParticleAndGeneratedItemModel(blockStateModelGenerator, ModBlocks.UNDEAD_GRANDFATHER_CLOCK, ModBlockTypes.GRANDFATHER_CLOCK, CozyHome.id("block/break/undead_furniture"));
         registerBuiltinWithParticleAndGeneratedItemModel(blockStateModelGenerator, ModBlocks.OMINOUS_GRANDFATHER_CLOCK, ModBlockTypes.GRANDFATHER_CLOCK, CozyHome.id("block/break/ominous_furniture"));
 
+        registerLamp(blockStateModelGenerator, ModBlocks.OAK_LAMP, Identifier.of("block/oak_planks"), true, true, true);
+        registerLamp(blockStateModelGenerator, ModBlocks.SPRUCE_LAMP, Identifier.of("block/spruce_planks"), false,true, true);
+        registerLamp(blockStateModelGenerator, ModBlocks.BIRCH_LAMP, Identifier.of("block/birch_planks"), true, true, true);
+        registerLamp(blockStateModelGenerator, ModBlocks.JUNGLE_LAMP, Identifier.of("block/jungle_planks"), false, true, true);
+        registerLamp(blockStateModelGenerator, ModBlocks.ACACIA_LAMP, Identifier.of("block/acacia_planks"), true, true, true);
+        registerLamp(blockStateModelGenerator, ModBlocks.DARK_OAK_LAMP, Identifier.of("block/dark_oak_planks"), false, true, true);
+        registerLamp(blockStateModelGenerator, ModBlocks.MANGROVE_LAMP, Identifier.of("block/mangrove_planks"), false, false, false);
+        registerLamp(blockStateModelGenerator, ModBlocks.CHERRY_LAMP, Identifier.of("block/cherry_planks"), true, true, true);
+
         registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.OAK_SOFA, Identifier.of("block/oak_planks"), ModItemTemplates.SOFA.get());
         registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.SPRUCE_SOFA, Identifier.of("block/spruce_planks"), ModItemTemplates.SOFA.get());
         registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.BIRCH_SOFA, Identifier.of("block/birch_planks"), ModItemTemplates.SOFA.get());
@@ -508,6 +517,77 @@ public class ModModelProvider extends FabricModelProvider {
                 .with(When.create().set(Properties.NORTH, true).set(Properties.EAST, true).set(Properties.SOUTH, true).set(Properties.WEST, false),
                         BlockStateVariant.create().put(VariantSettings.MODEL, tableSideModelID).put(VariantSettings.Y, VariantSettings.Rotation.R270))
         );
+    }
+
+    public final void registerLamp(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle, boolean useGenericLampModel, boolean useGenericMiddleModel, boolean useGenericBaseModel) {
+        TextureMap lamp = new TextureMap()
+                .put(TextureKey.ALL, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/lamp/" + Registries.BLOCK.getId(block).getPath()))
+                .put(TextureKey.PARTICLE, breakParticle);
+        TextureMap lampOn = new TextureMap()
+                .put(TextureKey.ALL, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/lamp/" + Registries.BLOCK.getId(block).getPath() + "_on"))
+                .put(TextureKey.PARTICLE, breakParticle);
+
+        Identifier lampModelId;
+        Identifier lampOnModelId;
+
+        Identifier lampTopModelId;
+        Identifier lampTopOnModelId;
+
+        Identifier lampMiddleModelId;
+        Identifier lampMiddleOnModelId;
+
+        Identifier lampBaseModelId;
+        Identifier lampBaseOnModelId;
+
+        if (useGenericLampModel) {
+            lampModelId = ModModels.GENERIC_LAMP.upload(block, lamp, blockStateModelGenerator.modelCollector);
+            lampOnModelId = ModModels.GENERIC_LAMP_ON.upload(block, lampOn, blockStateModelGenerator.modelCollector);
+            lampTopModelId = ModModels.GENERIC_LAMP_HEAD.upload(block, lamp, blockStateModelGenerator.modelCollector);
+            lampTopOnModelId = ModModels.GENERIC_LAMP_HEAD_ON.upload(block, lampOn, blockStateModelGenerator.modelCollector);
+        } else {
+            lampModelId = ModModels.modBlockWithType(String.valueOf(Registries.BLOCK.getId(block)), ModBlockTypes.LAMP, TextureKey.ALL, TextureKey.PARTICLE).upload(block, lamp, blockStateModelGenerator.modelCollector);
+            lampOnModelId = ModModels.modBlockWithTypeAndVariant(Registries.BLOCK.getId(block) + "_on", ModBlockTypes.LAMP, "_on", TextureKey.ALL, TextureKey.PARTICLE).upload(block, lampOn, blockStateModelGenerator.modelCollector);
+            lampTopModelId = ModModels.modBlockWithTypeAndVariant(Registries.BLOCK.getId(block) + "_head", ModBlockTypes.LAMP, "_head", TextureKey.ALL, TextureKey.PARTICLE).upload(block, lamp, blockStateModelGenerator.modelCollector);
+            lampTopOnModelId = ModModels.modBlockWithTypeAndVariant(Registries.BLOCK.getId(block) + "_head", ModBlockTypes.LAMP, "_head_on", TextureKey.ALL, TextureKey.PARTICLE).upload(block, lampOn, blockStateModelGenerator.modelCollector);
+        }
+
+        if (useGenericMiddleModel) {
+            lampMiddleModelId = ModModels.GENERIC_LAMP_MIDDLE.upload(block, lamp, blockStateModelGenerator.modelCollector);
+            lampMiddleOnModelId = ModModels.GENERIC_LAMP_MIDDLE_ON.upload(block, lampOn, blockStateModelGenerator.modelCollector);
+        } else {
+            lampMiddleModelId = ModModels.modBlockWithTypeAndVariant(Registries.BLOCK.getId(block) + "_middle", ModBlockTypes.LAMP, "_middle", TextureKey.ALL, TextureKey.PARTICLE).upload(block, lamp, blockStateModelGenerator.modelCollector);
+            lampMiddleOnModelId = ModModels.modBlockWithTypeAndVariant(Registries.BLOCK.getId(block) + "_middle", ModBlockTypes.LAMP, "_middle_on", TextureKey.ALL, TextureKey.PARTICLE).upload(block, lampOn, blockStateModelGenerator.modelCollector);
+        }
+
+        if (useGenericBaseModel) {
+            lampBaseModelId = ModModels.GENERIC_LAMP_BASE.upload(block, lamp, blockStateModelGenerator.modelCollector);
+            lampBaseOnModelId = ModModels.GENERIC_LAMP_BASE_ON.upload(block, lampOn, blockStateModelGenerator.modelCollector);
+        } else {
+            lampBaseModelId = ModModels.modBlockWithTypeAndVariant(Registries.BLOCK.getId(block) + "_base", ModBlockTypes.LAMP, "_base", TextureKey.ALL, TextureKey.PARTICLE).upload(block, lamp, blockStateModelGenerator.modelCollector);
+            lampBaseOnModelId = ModModels.modBlockWithTypeAndVariant(Registries.BLOCK.getId(block) + "_base", ModBlockTypes.LAMP, "_base_on", TextureKey.ALL, TextureKey.PARTICLE).upload(block, lampOn, blockStateModelGenerator.modelCollector);
+        }
+
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
+                .coordinate(BlockStateVariantMap.create(ModProperties.VERTICAL_CONNECTION, Properties.LIT)
+                        .register(VerticalLinearConnectionBlock.SINGLE, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampModelId))
+                        .register(VerticalLinearConnectionBlock.SINGLE, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampOnModelId))
+                        .register(VerticalLinearConnectionBlock.HEAD, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampModelId))
+                        .register(VerticalLinearConnectionBlock.HEAD, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampTopModelId))
+                        .register(VerticalLinearConnectionBlock.HEAD, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampTopOnModelId))
+                        .register(VerticalLinearConnectionBlock.MIDDLE, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampMiddleModelId))
+                        .register(VerticalLinearConnectionBlock.MIDDLE, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampMiddleOnModelId))
+                        .register(VerticalLinearConnectionBlock.TAIL, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampBaseModelId))
+                        .register(VerticalLinearConnectionBlock.TAIL, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampBaseOnModelId))
+                ));
     }
 
     public final void registerFountain(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {

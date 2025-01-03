@@ -86,6 +86,18 @@ public class ModProperties {
         return RotationPropertyHelper.toDegrees(rotation) + 180;
     }
 
+    public static VerticalLinearConnectionBlock setVerticalConnection(BlockState state, WorldAccess world, BlockPos pos) {
+        if (state.getBlock() instanceof ConnectingBlock connectingBlock) {
+            boolean isMatchingBlockAbove = connectingBlock.isMatchingBlock(world.getBlockState(pos.up()));
+            boolean isMatchingBlockBelow = connectingBlock.isMatchingBlock(world.getBlockState(pos.down()));
+
+            if (isMatchingBlockAbove && isMatchingBlockBelow) return VerticalLinearConnectionBlock.MIDDLE;
+            if (isMatchingBlockAbove) return VerticalLinearConnectionBlock.TAIL;
+            if (isMatchingBlockBelow) return VerticalLinearConnectionBlock.HEAD;
+        }
+        return VerticalLinearConnectionBlock.SINGLE;
+    }
+
     public static StairShape setStairShapeNoFlip(BlockState state, BlockView world, BlockPos pos) {
         Direction direction = state.get(Properties.HORIZONTAL_FACING);
         BlockState blockState = world.getBlockState(pos.offset(direction));

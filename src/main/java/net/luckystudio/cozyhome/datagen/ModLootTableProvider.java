@@ -134,6 +134,19 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addTripleTallBlockDrop(ModBlocks.UNDEAD_GRANDFATHER_CLOCK);
         addTripleTallBlockDrop(ModBlocks.OMINOUS_GRANDFATHER_CLOCK);
 
+        // LAMP
+        addDyedBlockDrop(ModBlocks.OAK_LAMP);
+//        addDyedBlockDrop(ModBlocks.SPRUCE_LAMP);
+//        addDyedBlockDrop(ModBlocks.BIRCH_LAMP);
+//        addDyedBlockDrop(ModBlocks.JUNGLE_LAMP);
+//        addDyedBlockDrop(ModBlocks.ACACIA_LAMP);
+//        addDyedBlockDrop(ModBlocks.DARK_OAK_LAMP);
+//        addDyedBlockDrop(ModBlocks.MANGROVE_LAMP);
+//        addDyedBlockDrop(ModBlocks.CHERRY_LAMP);
+//        addDyedBlockDrop(ModBlocks.BAMBOO_LAMP);
+//        addDyedBlockDrop(ModBlocks.CRIMSON_LAMP);
+//        addDyedBlockDrop(ModBlocks.WARPED_LAMP);
+
         // SOFA
         addDyedBlockDrop(ModBlocks.OAK_SOFA);
         addDyedBlockDrop(ModBlocks.SPRUCE_SOFA);

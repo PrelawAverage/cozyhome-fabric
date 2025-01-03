@@ -1,6 +1,18 @@
 {
   "values": [
+    "cozyhome:paint_brush",
     "cozyhome:cushion",
+    "cozyhome:oak_lamp",
+    "cozyhome:spruce_lamp",
+    "cozyhome:birch_lamp",
+    "cozyhome:jungle_lamp",
+    "cozyhome:acacia_lamp",
+    "cozyhome:dark_oak_lamp",
+    "cozyhome:mangrove_lamp",
+    "cozyhome:cherry_lamp",
+    "cozyhome:bamboo_lamp",
+    "cozyhome:crimson_lamp",
+    "cozyhome:warped_lamp",
     "cozyhome:oak_sofa",
     "cozyhome:spruce_sofa",
     "cozyhome:birch_sofa",
