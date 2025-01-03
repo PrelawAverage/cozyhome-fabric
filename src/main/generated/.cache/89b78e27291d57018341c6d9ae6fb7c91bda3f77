@@ -1,4 +1,4 @@
-// 1.21	2025-01-02T14:52:00.6929286	Cozy Home/Recipes
+// 1.21	2025-01-03T16:32:16.3969708	Cozy Home/Recipes
 4e264932c7f6b73fa370be24bbe974b445df2989 data\cozyhome\advancement\recipes\building_blocks\crimson_chair.json
 cf7cda8037082f61f6be20c2ec9bc0552039a125 data\cozyhome\recipe\cherry_chair.json
 7925894981df15cf8d6fed182ddf626a92b9605b data\cozyhome\recipe\red_nether_brick_chimney.json
@@ -28,6 +28,7 @@ fa237bdfa043e5b7f9f8d9a291067200e9bdc73f data\cozyhome\recipe\warped_sink_counte
 39db4f43ed61c915f98fbbc266e4f6e2b9552883 data\cozyhome\recipe\warped_desk.json
 edeadbf128f11224332e97c48ca375a8523edfa2 data\cozyhome\advancement\recipes\building_blocks\birch_wall_mirror.json
 3c281750c4fe99c3cea68e26705ec7b84c96f2cb data\cozyhome\recipe\dark_oak_wall_mirror.json
+23dc540950474f7148a60ac7310813672f72f07d data\cozyhome\recipe\hay_cushion.json
 b72150a5736305dcba6ec5f43b6c5bd000b2ebfd data\cozyhome\advancement\recipes\building_blocks\jungle_drawer.json
 f414c2862f151f1de783ef594b684eca8975cedf data\cozyhome\recipe\spruce_table.json
 27f3ccfc75c941c579b3f552dec46e171c55ee7f data\cozyhome\advancement\recipes\building_blocks\warped_sofa.json
@@ -48,6 +49,7 @@ a1807ad885db72edba4144d451039054166a5480 data\cozyhome\recipe\cherry_sofa.json
 92c0e9a556f4f524a27ab9a28cbe56a3a0ad391b data\cozyhome\recipe\crimson_wall_clock.json
 f7b69688e49f94cbc1469c7b0ccb523a13cdaa05 data\cozyhome\recipe\prismarine_chimney.json
 501f6896f13553c14da52a11ad88aa278074ab7f data\cozyhome\recipe\warped_grandfather_clock.json
+6ab46113a466f5c825e6cfa1aa06fbff5a5ea524 data\cozyhome\recipe\cushion.json
 030ceb01b5ce5a345dcbfbc1c8906547ca2d0532 data\cozyhome\advancement\recipes\building_blocks\glass_table.json
 42634eefe2e0a372fe2058d548714ae13e2c3013 data\cozyhome\recipe\mangrove_sofa.json
 43d1c9227fe2cc73a530a7ff55cf65dc807d858d data\cozyhome\advancement\recipes\building_blocks\oak_storage_counter.json
@@ -197,6 +199,7 @@ a407fa4eeedcace384f31338db850edf1c4aefd3 data\cozyhome\recipe\dark_oak_chair.jso
 e748fa7a03fde001e53580f14df01680d52358cc data\cozyhome\advancement\recipes\building_blocks\birch_drawer.json
 23f516ba882576472dbd51083e994507f107e5b8 data\cozyhome\advancement\recipes\building_blocks\acacia_couch.json
 cfbd0822065265bf072d66aebbb9e08dd03f098c data\cozyhome\recipe\mud_chimney.json
+011ea4b3524f132c25465afc030be914d9ece159 data\cozyhome\advancement\recipes\building_blocks\hay_cushion.json
 edc309d6717af0c492ecdb39fde97003c0b2e845 data\cozyhome\recipe\bamboo_wall_clock.json
 31657edaa81a21f4c8a795692da4363b609df62a data\cozyhome\advancement\recipes\building_blocks\crimson_wall_mirror.json
 24a5220f5594316adf9c4a4ae978683d17f7f21c data\cozyhome\recipe\jungle_counter.json
@@ -235,6 +238,7 @@ eda617936023f583f97973ec91524412000851ff data\cozyhome\recipe\birch_drawer.json
 5e27755c0eb79e9e80540eddda21798da39eaafc data\cozyhome\advancement\recipes\building_blocks\acacia_grandfather_clock.json
 6eafc7523a2b57ed7d57eb8e706d146db2782960 data\cozyhome\recipe\oak_sofa.json
 1aa8d7fb16307365c3935ce56175546f513005d4 data\cozyhome\recipe\acacia_couch.json
+3528896f8d16235b871400433a057f9da963e3d6 data\cozyhome\advancement\recipes\building_blocks\cushion.json
 a5430beb4ec9fad9f707a6527090e04a4e33a588 data\cozyhome\recipe\crimson_table.json
 bb15dd2cd2ebeed86acd23cb2ffa48007bab69e9 data\cozyhome\recipe\dark_oak_counter.json
 d4542d82f297a43cfe1cf72800597d79a70f37c2 data\cozyhome\recipe\birch_wall_clock.json

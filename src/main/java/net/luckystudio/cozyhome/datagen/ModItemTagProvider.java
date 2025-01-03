@@ -19,7 +19,20 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(ItemTags.DYEABLE)
+                .add(ModItems.PAINT_BRUSH)
                 .add(ModItems.CUSHION)
+
+                .add(ModBlocks.OAK_LAMP.asItem())
+                .add(ModBlocks.SPRUCE_LAMP.asItem())
+                .add(ModBlocks.BIRCH_LAMP.asItem())
+                .add(ModBlocks.JUNGLE_LAMP.asItem())
+                .add(ModBlocks.ACACIA_LAMP.asItem())
+                .add(ModBlocks.DARK_OAK_LAMP.asItem())
+                .add(ModBlocks.MANGROVE_LAMP.asItem())
+                .add(ModBlocks.CHERRY_LAMP.asItem())
+                .add(ModBlocks.BAMBOO_LAMP.asItem())
+                .add(ModBlocks.CRIMSON_LAMP.asItem())
+                .add(ModBlocks.WARPED_LAMP.asItem())
 
                 .add(ModBlocks.OAK_SOFA.asItem())
                 .add(ModBlocks.SPRUCE_SOFA.asItem())

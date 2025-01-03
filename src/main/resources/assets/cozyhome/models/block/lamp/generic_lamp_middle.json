@@ -1,0 +1,20 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"particle": "cozyhome:block/lamp/bamboo_lamp",
+		"all": "cozyhome:block/lamp/bamboo_lamp"
+	},
+	"elements": [
+		{
+			"from": [7, 0, 7],
+			"to": [9, 16, 9],
+			"faces": {
+				"north": {"uv": [14.5, 8, 15.5, 16], "texture": "#all"},
+				"east": {"uv": [15.5, 8, 14.5, 16], "texture": "#all"},
+				"south": {"uv": [14.5, 8, 15.5, 16], "texture": "#all"},
+				"west": {"uv": [15.5, 8, 14.5, 16], "texture": "#all"}
+			}
+		}
+	]
+}

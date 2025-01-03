@@ -183,7 +183,19 @@ public class ModRenderLayers {
                 ModBlocks.CHERRY_COUCH,
                 ModBlocks.BAMBOO_COUCH,
                 ModBlocks.CRIMSON_COUCH,
-                ModBlocks.WARPED_COUCH);
+                ModBlocks.WARPED_COUCH,
+                ModBlocks.OAK_LAMP,
+                ModBlocks.SPRUCE_LAMP,
+                ModBlocks.BIRCH_LAMP,
+                ModBlocks.JUNGLE_LAMP,
+                ModBlocks.ACACIA_LAMP,
+                ModBlocks.DARK_OAK_LAMP,
+                ModBlocks.MANGROVE_LAMP,
+                ModBlocks.CHERRY_LAMP,
+                ModBlocks.BAMBOO_LAMP,
+                ModBlocks.CRIMSON_LAMP,
+                ModBlocks.WARPED_LAMP
+        );
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && view.getBlockEntityRenderData(pos) instanceof Integer integer ? integer : -17170434,
                 ModBlocks.OAK_COUCH,
                 ModBlocks.SPRUCE_COUCH,
@@ -195,7 +207,19 @@ public class ModRenderLayers {
                 ModBlocks.CHERRY_COUCH,
                 ModBlocks.BAMBOO_COUCH,
                 ModBlocks.CRIMSON_COUCH,
-                ModBlocks.WARPED_COUCH);
+                ModBlocks.WARPED_COUCH,
+                ModBlocks.OAK_LAMP,
+                ModBlocks.SPRUCE_LAMP,
+                ModBlocks.BIRCH_LAMP,
+                ModBlocks.JUNGLE_LAMP,
+                ModBlocks.ACACIA_LAMP,
+                ModBlocks.DARK_OAK_LAMP,
+                ModBlocks.MANGROVE_LAMP,
+                ModBlocks.CHERRY_LAMP,
+                ModBlocks.BAMBOO_LAMP,
+                ModBlocks.CRIMSON_LAMP,
+                ModBlocks.WARPED_LAMP
+        );
     }
 }
 

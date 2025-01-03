@@ -101,6 +101,18 @@
   "block.cozyhome.undead_grandfather_clock": "Undead Grandfather Clock",
   "block.cozyhome.ominous_grandfather_clock": "Ominous Grandfather Clock",
 
+  "block.cozyhome.oak_lamp": "Oak Lamp",
+  "block.cozyhome.spruce_lamp": "Spruce Lamp",
+  "block.cozyhome.birch_lamp": "Birch Lamp",
+  "block.cozyhome.jungle_lamp": "Jungle Lamp",
+  "block.cozyhome.acacia_lamp": "Acacia Lamp",
+  "block.cozyhome.dark_oak_lamp": "Dark Oak Lamp",
+  "block.cozyhome.mangrove_lamp": "Mangrove Lamp",
+  "block.cozyhome.cherry_lamp": "Cherry Lamp",
+  "block.cozyhome.bamboo_lamp": "Bamboo Lamp",
+  "block.cozyhome.crimson_lamp": "Crimson Lamp",
+  "block.cozyhome.warped_lamp": "Warped Lamp",
+
   "block.cozyhome.oak_sofa": "Oak Sofa",
   "block.cozyhome.spruce_sofa": "Spruce Sofa",
   "block.cozyhome.birch_sofa": "Birch Sofa",
@@ -272,7 +284,7 @@
   "sounds.cozyhome.splash": "Water Splash",
 
   "message.cozyhome.remove_with_shear": "Can Remove With Shears",
-
+  "message.cozyhome.light_with_flint_and_steel": "Light with Flint and Steel",
   "message.cozyhome.telescope.cant_use": "Ouch my eyes! I should wait til night to use this.",
 
   "message.cozyhome.telescope.moon_fact_0": "Interesting... The moon completes it's cycles every 8 nights.",

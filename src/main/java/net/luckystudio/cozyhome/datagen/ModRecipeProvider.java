@@ -3,6 +3,7 @@ package net.luckystudio.cozyhome.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.luckystudio.cozyhome.block.ModBlocks;
+import net.luckystudio.cozyhome.item.ModItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
@@ -187,6 +188,34 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     // Criterion needs to be fixed to take in a tag instead of a singular item, instead it should be tag planks
+    public static void offerChimneyRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
+        ShapedRecipeJsonBuilder.create(
+                        RecipeCategory.BUILDING_BLOCKS,
+                        output, 3)
+                .pattern("# #")
+                .pattern("# #")
+                .pattern("# #")
+                .input('#', input)
+                .criterion(hasItem(input), conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
+
+    // Criterion needs to be fixed to take in a tag instead of a singular item, instead it should be tag planks
+    public static void offerCushionRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input, ItemConvertible input2) {
+        ShapedRecipeJsonBuilder.create(
+                        RecipeCategory.BUILDING_BLOCKS,
+                        output, 1)
+                .pattern(" # ")
+                .pattern("#@#")
+                .pattern(" # ")
+                .input('@', input)
+                .input('#', input2)
+                .criterion(hasItem(Items.SPYGLASS), conditionsFromItem(Items.SPYGLASS))
+                .offerTo(exporter);
+    }
+
+    // Criterion needs to be fixed to take in a tag instead of a singular item, instead it should be tag planks
     public static void offerTelescopeRecipe(RecipeExporter exporter) {
         ShapedRecipeJsonBuilder.create(
                         RecipeCategory.BUILDING_BLOCKS,
@@ -197,19 +226,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('#', Items.SPYGLASS)
                 .input('@', Items.COPPER_INGOT)
                 .criterion(hasItem(Items.SPYGLASS), conditionsFromItem(Items.SPYGLASS))
-                .offerTo(exporter);
-    }
-
-    // Criterion needs to be fixed to take in a tag instead of a singular item, instead it should be tag planks
-    public static void offerChimneyRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
-        ShapedRecipeJsonBuilder.create(
-                        RecipeCategory.BUILDING_BLOCKS,
-                        output, 3)
-                .pattern("# #")
-                .pattern("# #")
-                .pattern("# #")
-                .input('#', input)
-                .criterion(hasItem(input), conditionsFromItem(input))
                 .offerTo(exporter);
     }
 
@@ -384,7 +400,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerChimneyRecipe(exporter, ModBlocks.ENDSTONE_CHIMNEY, Blocks.END_STONE);
         offerChimneyRecipe(exporter, ModBlocks.PURPUR_CHIMNEY, Blocks.PURPUR_BLOCK);
 
-//        ComplexRecipeJsonBuilder.create(ArmorDyeRecipe::new).offerTo(exporter, "armor_dye");
+        offerCushionRecipe(exporter, ModItems.CUSHION, Blocks.WHITE_WOOL, Items.STRING);
+        offerCushionRecipe(exporter, ModItems.HAY_CUSHION, Blocks.HAY_BLOCK, Items.STRING);
 
         offerTelescopeRecipe(exporter);
     }
