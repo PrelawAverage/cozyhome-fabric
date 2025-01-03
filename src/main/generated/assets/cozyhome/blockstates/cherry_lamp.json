@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "lit=false,vertical_connection=head": {
+      "model": "cozyhome:block/cherry_lamp_head"
+    },
+    "lit=false,vertical_connection=middle": {
+      "model": "cozyhome:block/cherry_lamp_middle"
+    },
+    "lit=false,vertical_connection=single": {
+      "model": "cozyhome:block/cherry_lamp"
+    },
+    "lit=false,vertical_connection=tail": {
+      "model": "cozyhome:block/cherry_lamp_base"
+    },
+    "lit=true,vertical_connection=head": {
+      "model": "cozyhome:block/cherry_lamp_head_on"
+    },
+    "lit=true,vertical_connection=middle": {
+      "model": "cozyhome:block/cherry_lamp_middle_on"
+    },
+    "lit=true,vertical_connection=single": {
+      "model": "cozyhome:block/cherry_lamp_on"
+    },
+    "lit=true,vertical_connection=tail": {
+      "model": "cozyhome:block/cherry_lamp_base_on"
+    }
+  }
+}

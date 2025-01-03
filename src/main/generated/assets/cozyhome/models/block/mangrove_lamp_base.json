@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/lamp/mangrove_lamp_base",
+  "textures": {
+    "all": "cozyhome:block/lamp/mangrove_lamp",
+    "particle": "minecraft:block/mangrove_planks"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/lamp/generic_lamp_middle",
+  "textures": {
+    "all": "cozyhome:block/lamp/oak_lamp_on",
+    "particle": "minecraft:block/oak_planks"
+  }
+}
