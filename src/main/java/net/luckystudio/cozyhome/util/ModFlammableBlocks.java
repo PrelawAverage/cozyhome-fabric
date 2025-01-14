@@ -134,5 +134,15 @@ public class ModFlammableBlocks {
         flammableBlockRegistry.add(ModBlocks.MANGROVE_WALL_MIRROR, 5, 20);
         flammableBlockRegistry.add(ModBlocks.CHERRY_WALL_MIRROR, 5, 20);
         flammableBlockRegistry.add(ModBlocks.BAMBOO_WALL_MIRROR, 5, 20);
+
+        flammableBlockRegistry.add(ModBlocks.OAK_LARGE_STUMP, 5, 20);
+        flammableBlockRegistry.add(ModBlocks.SPRUCE_LARGE_STUMP, 5, 20);
+        flammableBlockRegistry.add(ModBlocks.BIRCH_LARGE_STUMP, 5, 20);
+        flammableBlockRegistry.add(ModBlocks.JUNGLE_LARGE_STUMP, 5, 20);
+        flammableBlockRegistry.add(ModBlocks.ACACIA_LARGE_STUMP, 5, 20);
+        flammableBlockRegistry.add(ModBlocks.DARK_OAK_LARGE_STUMP, 5, 20);
+        flammableBlockRegistry.add(ModBlocks.MANGROVE_LARGE_STUMP, 5, 20);
+        flammableBlockRegistry.add(ModBlocks.CHERRY_LARGE_STUMP, 5, 20);
+        flammableBlockRegistry.add(ModBlocks.BAMBOO_LARGE_STUMP, 5, 20);
     }
 }

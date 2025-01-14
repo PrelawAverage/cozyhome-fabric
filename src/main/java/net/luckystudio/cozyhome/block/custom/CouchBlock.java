@@ -1,7 +1,6 @@
 package net.luckystudio.cozyhome.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.custom.abstracts.AbstractSeatBlock;
 import net.luckystudio.cozyhome.block.entity.CouchBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.HorizontalLinearConnectionBlock;
@@ -62,11 +61,10 @@ public class CouchBlock extends AbstractSeatBlock implements ConnectingBlock {
 
     public CouchBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.getStateManager()
-                .getDefaultState()
+        this.getDefaultState()
                 .with(CONNECTION, HorizontalLinearConnectionBlock.SINGLE)
                 .with(SHAPE, StairShape.STRAIGHT)
-                .with(FACING, Direction.NORTH));
+                .with(FACING, Direction.NORTH);
     }
 
     @Override
@@ -87,6 +85,7 @@ public class CouchBlock extends AbstractSeatBlock implements ConnectingBlock {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        super.appendProperties(builder);
         builder.add(FACING, CONNECTION, SHAPE);
     }
 
@@ -120,7 +119,8 @@ public class CouchBlock extends AbstractSeatBlock implements ConnectingBlock {
                 final int blockColor = ModColorHandler.getBlockColor(couchBlockEntity, -17170434);
                 final int newColor = ColorHelper.Argb.averageArgb(blockColor, itemColor);
                 if (blockColor == newColor) {
-                    return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+                    player.sendMessage(Text.translatable("message.cozyhome.same_color"), true);
+                    return ItemActionResult.SUCCESS;
                 }
                 ComponentMap components = ComponentMap.builder().add(DataComponentTypes.DYED_COLOR, new DyedColorComponent(newColor, false)).build();
                 couchBlockEntity.setComponents(components);

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:white_wool"
+    },
+    "@": {
+      "item": "minecraft:lantern"
+    },
+    "C": {
+      "item": "minecraft:oak_planks"
+    }
+  },
+  "pattern": [
+    "#",
+    "@",
+    "C"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyhome:oak_lamp"
+  }
+}

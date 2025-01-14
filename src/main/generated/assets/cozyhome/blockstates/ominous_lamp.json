@@ -1,0 +1,124 @@
+{
+  "variants": {
+    "facing=east,lit=false,vertical_connection=head": {
+      "model": "cozyhome:block/ominous_lamp_head",
+      "y": 90
+    },
+    "facing=east,lit=false,vertical_connection=middle": {
+      "model": "cozyhome:block/ominous_lamp_middle",
+      "y": 90
+    },
+    "facing=east,lit=false,vertical_connection=single": {
+      "model": "cozyhome:block/ominous_lamp",
+      "y": 90
+    },
+    "facing=east,lit=false,vertical_connection=tail": {
+      "model": "cozyhome:block/ominous_lamp_base",
+      "y": 90
+    },
+    "facing=east,lit=true,vertical_connection=head": {
+      "model": "cozyhome:block/ominous_lamp_head_on",
+      "y": 90
+    },
+    "facing=east,lit=true,vertical_connection=middle": {
+      "model": "cozyhome:block/ominous_lamp_middle_on",
+      "y": 90
+    },
+    "facing=east,lit=true,vertical_connection=single": {
+      "model": "cozyhome:block/ominous_lamp_on",
+      "y": 90
+    },
+    "facing=east,lit=true,vertical_connection=tail": {
+      "model": "cozyhome:block/ominous_lamp_base_on",
+      "y": 90
+    },
+    "facing=north,lit=false,vertical_connection=head": {
+      "model": "cozyhome:block/ominous_lamp_head"
+    },
+    "facing=north,lit=false,vertical_connection=middle": {
+      "model": "cozyhome:block/ominous_lamp_middle"
+    },
+    "facing=north,lit=false,vertical_connection=single": {
+      "model": "cozyhome:block/ominous_lamp"
+    },
+    "facing=north,lit=false,vertical_connection=tail": {
+      "model": "cozyhome:block/ominous_lamp_base"
+    },
+    "facing=north,lit=true,vertical_connection=head": {
+      "model": "cozyhome:block/ominous_lamp_head_on"
+    },
+    "facing=north,lit=true,vertical_connection=middle": {
+      "model": "cozyhome:block/ominous_lamp_middle_on"
+    },
+    "facing=north,lit=true,vertical_connection=single": {
+      "model": "cozyhome:block/ominous_lamp_on"
+    },
+    "facing=north,lit=true,vertical_connection=tail": {
+      "model": "cozyhome:block/ominous_lamp_base_on"
+    },
+    "facing=south,lit=false,vertical_connection=head": {
+      "model": "cozyhome:block/ominous_lamp_head",
+      "y": 180
+    },
+    "facing=south,lit=false,vertical_connection=middle": {
+      "model": "cozyhome:block/ominous_lamp_middle",
+      "y": 180
+    },
+    "facing=south,lit=false,vertical_connection=single": {
+      "model": "cozyhome:block/ominous_lamp",
+      "y": 180
+    },
+    "facing=south,lit=false,vertical_connection=tail": {
+      "model": "cozyhome:block/ominous_lamp_base",
+      "y": 180
+    },
+    "facing=south,lit=true,vertical_connection=head": {
+      "model": "cozyhome:block/ominous_lamp_head_on",
+      "y": 180
+    },
+    "facing=south,lit=true,vertical_connection=middle": {
+      "model": "cozyhome:block/ominous_lamp_middle_on",
+      "y": 180
+    },
+    "facing=south,lit=true,vertical_connection=single": {
+      "model": "cozyhome:block/ominous_lamp_on",
+      "y": 180
+    },
+    "facing=south,lit=true,vertical_connection=tail": {
+      "model": "cozyhome:block/ominous_lamp_base_on",
+      "y": 180
+    },
+    "facing=west,lit=false,vertical_connection=head": {
+      "model": "cozyhome:block/ominous_lamp_head",
+      "y": 270
+    },
+    "facing=west,lit=false,vertical_connection=middle": {
+      "model": "cozyhome:block/ominous_lamp_middle",
+      "y": 270
+    },
+    "facing=west,lit=false,vertical_connection=single": {
+      "model": "cozyhome:block/ominous_lamp",
+      "y": 270
+    },
+    "facing=west,lit=false,vertical_connection=tail": {
+      "model": "cozyhome:block/ominous_lamp_base",
+      "y": 270
+    },
+    "facing=west,lit=true,vertical_connection=head": {
+      "model": "cozyhome:block/ominous_lamp_head_on",
+      "y": 270
+    },
+    "facing=west,lit=true,vertical_connection=middle": {
+      "model": "cozyhome:block/ominous_lamp_middle_on",
+      "y": 270
+    },
+    "facing=west,lit=true,vertical_connection=single": {
+      "model": "cozyhome:block/ominous_lamp_on",
+      "y": 270
+    },
+    "facing=west,lit=true,vertical_connection=tail": {
+      "model": "cozyhome:block/ominous_lamp_base_on",
+      "y": 270
+    }
+  }
+}

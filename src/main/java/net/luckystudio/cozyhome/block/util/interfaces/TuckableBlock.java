@@ -1,8 +1,7 @@
 package net.luckystudio.cozyhome.block.util.interfaces;
 
-import net.luckystudio.cozyhome.block.custom.chairs.ChairBlock;
+import net.luckystudio.cozyhome.block.custom.ChairBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
-import net.luckystudio.cozyhome.util.ModTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;

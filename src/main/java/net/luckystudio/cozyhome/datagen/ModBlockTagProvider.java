@@ -172,6 +172,19 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BAMBOO_DRAWER)
                 .add(ModBlocks.CRIMSON_DRAWER)
                 .add(ModBlocks.WARPED_DRAWER)
+
+                // LARGE STUMPS
+                .add(ModBlocks.OAK_LARGE_STUMP)
+                .add(ModBlocks.SPRUCE_LARGE_STUMP)
+                .add(ModBlocks.BIRCH_LARGE_STUMP)
+                .add(ModBlocks.JUNGLE_LARGE_STUMP)
+                .add(ModBlocks.ACACIA_LARGE_STUMP)
+                .add(ModBlocks.DARK_OAK_LARGE_STUMP)
+                .add(ModBlocks.MANGROVE_LARGE_STUMP)
+                .add(ModBlocks.CHERRY_LARGE_STUMP)
+                .add(ModBlocks.BAMBOO_LARGE_STUMP)
+                .add(ModBlocks.CRIMSON_LARGE_STUMP)
+                .add(ModBlocks.WARPED_LARGE_STUMP)
         ;
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)

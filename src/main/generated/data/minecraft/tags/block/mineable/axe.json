@@ -131,6 +131,17 @@
     "cozyhome:cherry_drawer",
     "cozyhome:bamboo_drawer",
     "cozyhome:crimson_drawer",
-    "cozyhome:warped_drawer"
+    "cozyhome:warped_drawer",
+    "cozyhome:oak_large_stump",
+    "cozyhome:spruce_large_stump",
+    "cozyhome:birch_large_stump",
+    "cozyhome:jungle_large_stump",
+    "cozyhome:acacia_large_stump",
+    "cozyhome:dark_oak_large_stump",
+    "cozyhome:mangrove_large_stump",
+    "cozyhome:cherry_large_stump",
+    "cozyhome:bamboo_large_stump",
+    "cozyhome:crimson_large_stump",
+    "cozyhome:warped_large_stump"
   ]
 }

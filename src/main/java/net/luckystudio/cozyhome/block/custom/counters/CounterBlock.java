@@ -160,6 +160,7 @@ public class CounterBlock extends Block implements ConnectingBlock {
     @Override
     public boolean isMatchingBlock(BlockState targetState) {
         return targetState.getBlock() instanceof CounterBlock ||
-                targetState.getBlock() instanceof StorageCounterBlock;
+                targetState.getBlock() instanceof StorageCounterBlock ||
+                targetState.getBlock() instanceof SinkCounterBlock;
     }
 }

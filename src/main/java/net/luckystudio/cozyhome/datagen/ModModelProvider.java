@@ -138,6 +138,12 @@ public class ModModelProvider extends FabricModelProvider {
         registerLamp(blockStateModelGenerator, ModBlocks.MANGROVE_LAMP, Identifier.of("block/mangrove_planks"), false, false, false);
         registerLamp(blockStateModelGenerator, ModBlocks.CHERRY_LAMP, Identifier.of("block/cherry_planks"), true, true, true);
         registerLamp(blockStateModelGenerator, ModBlocks.BAMBOO_LAMP, Identifier.of("block/bamboo_planks"), false, true, false);
+        registerLamp(blockStateModelGenerator, ModBlocks.CRIMSON_LAMP, Identifier.of("block/crimson_planks"), false, false, false);
+        registerLamp(blockStateModelGenerator, ModBlocks.WARPED_LAMP, Identifier.of("block/warped_planks"), false, false, false);
+        registerLamp(blockStateModelGenerator, ModBlocks.IRON_LAMP, CozyHome.id("block/break/iron_furniture"), false, false, false);
+        registerLamp(blockStateModelGenerator, ModBlocks.GLASS_LAMP, CozyHome.id("block/break/glass_furniture"), false, false, false);
+        registerLamp(blockStateModelGenerator, ModBlocks.UNDEAD_LAMP, CozyHome.id("block/break/undead_furniture"), false, false, false);
+        registerLamp(blockStateModelGenerator, ModBlocks.OMINOUS_LAMP, CozyHome.id("block/break/ominous_furniture"), false, false, false);
 
         registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.OAK_SOFA, Identifier.of("block/oak_planks"), ModItemTemplates.SOFA.get());
         registerBuiltinWithParticleAndParentedItemModel(blockStateModelGenerator, ModBlocks.SPRUCE_SOFA, Identifier.of("block/spruce_planks"), ModItemTemplates.SOFA.get());
@@ -198,6 +204,18 @@ public class ModModelProvider extends FabricModelProvider {
         registerWallMirror(blockStateModelGenerator, ModBlocks.BAMBOO_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/mirror"));
         registerWallMirror(blockStateModelGenerator, ModBlocks.CRIMSON_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/nether_mirror"));
         registerWallMirror(blockStateModelGenerator, ModBlocks.WARPED_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/nether_mirror"));
+
+        registerLargeStump(blockStateModelGenerator, ModBlocks.OAK_LARGE_STUMP, Identifier.of("oak_log"));
+        registerLargeStump(blockStateModelGenerator, ModBlocks.SPRUCE_LARGE_STUMP, Identifier.of("spruce_log"));
+        registerLargeStump(blockStateModelGenerator, ModBlocks.BIRCH_LARGE_STUMP, Identifier.of("birch_log"));
+        registerLargeStump(blockStateModelGenerator, ModBlocks.JUNGLE_LARGE_STUMP, Identifier.of("jungle_log"));
+        registerLargeStump(blockStateModelGenerator, ModBlocks.ACACIA_LARGE_STUMP, Identifier.of("acacia_log"));
+        registerLargeStump(blockStateModelGenerator, ModBlocks.DARK_OAK_LARGE_STUMP, Identifier.of("dark_oak_log"));
+        registerLargeStump(blockStateModelGenerator, ModBlocks.MANGROVE_LARGE_STUMP, Identifier.of("mangrove_log"));
+        registerLargeStump(blockStateModelGenerator, ModBlocks.CHERRY_LARGE_STUMP, Identifier.of("cherry_log"));
+        registerLargeStump(blockStateModelGenerator, ModBlocks.BAMBOO_LARGE_STUMP, Identifier.of("bamboo_block"));
+        registerLargeStump(blockStateModelGenerator, ModBlocks.CRIMSON_LARGE_STUMP, Identifier.of("crimson_stem"));
+        registerLargeStump(blockStateModelGenerator, ModBlocks.WARPED_LARGE_STUMP, Identifier.of("warped_stem"));
 
         registerFountain(blockStateModelGenerator, ModBlocks.STONE_BRICK_FOUNTAIN, Identifier.of("block/stone_bricks"));
         registerFountain(blockStateModelGenerator, ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN, Identifier.of("block/mossy_stone_bricks"));
@@ -547,7 +565,7 @@ public class ModModelProvider extends FabricModelProvider {
             lampTopOnModelId = ModModels.GENERIC_LAMP_HEAD_ON.upload(block, lampOn, blockStateModelGenerator.modelCollector);
         } else {
             lampModelId = ModModels.modBlockWithType(String.valueOf(Registries.BLOCK.getId(block).getPath()), ModBlockTypes.LAMP, TextureKey.ALL, TextureKey.PARTICLE).upload(block, lamp, blockStateModelGenerator.modelCollector);
-            lampOnModelId = ModModels.modBlockWithTypeAndVariant(Registries.BLOCK.getId(block).getPath() + "_on", ModBlockTypes.LAMP, "_on", TextureKey.ALL, TextureKey.PARTICLE).upload(block, lampOn, blockStateModelGenerator.modelCollector);
+            lampOnModelId = ModModels.modBlockWithTypeAndVariant(Registries.BLOCK.getId(block).getPath(), ModBlockTypes.LAMP, "_on", TextureKey.ALL, TextureKey.PARTICLE).upload(block, lampOn, blockStateModelGenerator.modelCollector);
             lampTopModelId = ModModels.modBlockWithTypeAndVariant(Registries.BLOCK.getId(block).getPath() + "_head", ModBlockTypes.LAMP, "_head", TextureKey.ALL, TextureKey.PARTICLE).upload(block, lamp, blockStateModelGenerator.modelCollector);
             lampTopOnModelId = ModModels.modBlockWithTypeAndVariant(Registries.BLOCK.getId(block).getPath() + "_head", ModBlockTypes.LAMP, "_head_on", TextureKey.ALL, TextureKey.PARTICLE).upload(block, lampOn, blockStateModelGenerator.modelCollector);
         }
@@ -569,24 +587,103 @@ public class ModModelProvider extends FabricModelProvider {
         }
 
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
-                .coordinate(BlockStateVariantMap.create(ModProperties.VERTICAL_CONNECTION, Properties.LIT)
-                        .register(VerticalLinearConnectionBlock.SINGLE, false, BlockStateVariant.create()
+                .coordinate(BlockStateVariantMap.create(ModProperties.VERTICAL_CONNECTION, Properties.HORIZONTAL_FACING, Properties.LIT)
+                        .register(VerticalLinearConnectionBlock.SINGLE, Direction.NORTH, false, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, lampModelId))
-                        .register(VerticalLinearConnectionBlock.SINGLE, true, BlockStateVariant.create()
+                        .register(VerticalLinearConnectionBlock.SINGLE, Direction.NORTH, true, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, lampOnModelId))
-                        .register(VerticalLinearConnectionBlock.HEAD, false, BlockStateVariant.create()
+                        .register(VerticalLinearConnectionBlock.HEAD, Direction.NORTH, false, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, lampTopModelId))
-                        .register(VerticalLinearConnectionBlock.HEAD, true, BlockStateVariant.create()
+                        .register(VerticalLinearConnectionBlock.HEAD, Direction.NORTH, true, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, lampTopOnModelId))
-                        .register(VerticalLinearConnectionBlock.MIDDLE, false, BlockStateVariant.create()
+                        .register(VerticalLinearConnectionBlock.MIDDLE, Direction.NORTH, false, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, lampMiddleModelId))
-                        .register(VerticalLinearConnectionBlock.MIDDLE, true, BlockStateVariant.create()
+                        .register(VerticalLinearConnectionBlock.MIDDLE, Direction.NORTH, true, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, lampMiddleOnModelId))
-                        .register(VerticalLinearConnectionBlock.TAIL, false, BlockStateVariant.create()
+                        .register(VerticalLinearConnectionBlock.TAIL, Direction.NORTH, false, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, lampBaseModelId))
-                        .register(VerticalLinearConnectionBlock.TAIL, true, BlockStateVariant.create()
+                        .register(VerticalLinearConnectionBlock.TAIL, Direction.NORTH, true, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, lampBaseOnModelId))
+
+                        // EAST
+                        .register(VerticalLinearConnectionBlock.SINGLE, Direction.EAST, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(VerticalLinearConnectionBlock.SINGLE, Direction.EAST, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampOnModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(VerticalLinearConnectionBlock.HEAD, Direction.EAST, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampTopModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(VerticalLinearConnectionBlock.HEAD, Direction.EAST, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampTopOnModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(VerticalLinearConnectionBlock.MIDDLE, Direction.EAST, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampMiddleModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(VerticalLinearConnectionBlock.MIDDLE, Direction.EAST, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampMiddleOnModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(VerticalLinearConnectionBlock.TAIL, Direction.EAST, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampBaseModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(VerticalLinearConnectionBlock.TAIL, Direction.EAST, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampBaseOnModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+
+                        // SOUTH
+                        .register(VerticalLinearConnectionBlock.SINGLE, Direction.SOUTH, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(VerticalLinearConnectionBlock.SINGLE, Direction.SOUTH, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampOnModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(VerticalLinearConnectionBlock.HEAD, Direction.SOUTH, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampTopModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(VerticalLinearConnectionBlock.HEAD, Direction.SOUTH, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampTopOnModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(VerticalLinearConnectionBlock.MIDDLE, Direction.SOUTH, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampMiddleModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(VerticalLinearConnectionBlock.MIDDLE, Direction.SOUTH, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampMiddleOnModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(VerticalLinearConnectionBlock.TAIL, Direction.SOUTH, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampBaseModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(VerticalLinearConnectionBlock.TAIL, Direction.SOUTH, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampBaseOnModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+
+                        // WEST
+                        .register(VerticalLinearConnectionBlock.SINGLE, Direction.WEST, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(VerticalLinearConnectionBlock.SINGLE, Direction.WEST, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampOnModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(VerticalLinearConnectionBlock.HEAD, Direction.WEST, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampTopModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(VerticalLinearConnectionBlock.HEAD, Direction.WEST, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampTopOnModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(VerticalLinearConnectionBlock.MIDDLE, Direction.WEST, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampMiddleModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(VerticalLinearConnectionBlock.MIDDLE, Direction.WEST, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampMiddleOnModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(VerticalLinearConnectionBlock.TAIL, Direction.WEST, false, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampBaseModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(VerticalLinearConnectionBlock.TAIL, Direction.WEST, true, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, lampBaseOnModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
                 ));
+
     }
 
     public final void registerFountain(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
@@ -1117,6 +1214,91 @@ public class ModModelProvider extends FabricModelProvider {
                                 .put(VariantSettings.MODEL, wallMirrorBottomModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R270))
                 ));
+    }
+
+    public final void registerLargeStump(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier baseBlock) {
+        // Define texture maps
+        String blockNamespace = baseBlock.getNamespace();
+        String blockPath = baseBlock.getPath();
+        String baseTexturePath = "block/" + blockPath;
+
+        TextureMap baseTexture = new TextureMap()
+                .put(TextureKey.TOP, Identifier.of(blockNamespace, baseTexturePath + "_top"))
+                .put(TextureKey.SIDE, Identifier.of(blockNamespace, baseTexturePath));
+
+        TextureMap cornerTexture = new TextureMap()
+                .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/large_stump/" + Registries.BLOCK.getId(block).getPath() + "_corner_top"))
+                .put(TextureKey.SIDE, Identifier.of(blockNamespace, baseTexturePath));
+
+        TextureMap doubleTexture = new TextureMap()
+                .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/large_stump/" + Registries.BLOCK.getId(block).getPath() + "_double_top"))
+                .put(TextureKey.SIDE, Identifier.of(blockNamespace, baseTexturePath));
+
+        TextureMap innerCornerPieceTexture = new TextureMap()
+                .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/large_stump/" + Registries.BLOCK.getId(block).getPath() + "_corner_inner_top"))
+                .put(TextureKey.SIDE, Identifier.of(blockNamespace, baseTexturePath));
+
+        TextureMap middleTexture = new TextureMap()
+                .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/large_stump/" + Registries.BLOCK.getId(block).getPath() + "_middle_top"))
+                .put(TextureKey.SIDE, Identifier.of(blockNamespace, baseTexturePath));
+
+        // Upload models for various stump states
+        Identifier stumpModelID = ModModels.LARGE_STUMP.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
+        Identifier stumpCornerModelID = ModModels.LARGE_STUMP_CORNER.upload(block, cornerTexture, blockStateModelGenerator.modelCollector);
+        Identifier stumpCornerPieceModelID = ModModels.LARGE_STUMP_CORNER_PIECE.upload(block, cornerTexture, blockStateModelGenerator.modelCollector);
+        Identifier stumpDoubleModelID = ModModels.LARGE_STUMP_DOUBLE.upload(block, doubleTexture, blockStateModelGenerator.modelCollector);
+        Identifier stumpInnerCornerPieceModelID = ModModels.LARGE_STUMP_INNER_CORNER_PIECE.upload(block, innerCornerPieceTexture, blockStateModelGenerator.modelCollector);
+        Identifier stumpMiddleModelID = ModModels.LARGE_STUMP_MIDDLE.upload(block, middleTexture, blockStateModelGenerator.modelCollector);
+        Identifier stumpSideModelID = ModModels.LARGE_STUMP_SIDE.upload(block, middleTexture, blockStateModelGenerator.modelCollector);
+
+        blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(block)
+                .with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, false),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpModelID))
+                .with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, true).set(Properties.WEST, false),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpDoubleModelID))
+                .with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpDoubleModelID).put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                .with(When.create().set(Properties.NORTH, true).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, false),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpDoubleModelID).put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                .with(When.create().set(Properties.NORTH, false).set(Properties.EAST, true).set(Properties.SOUTH, false).set(Properties.WEST, false),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpDoubleModelID).put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                .with(When.create().set(Properties.NORTH, false).set(Properties.EAST, true).set(Properties.SOUTH, false).set(Properties.WEST, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpMiddleModelID))
+                .with(When.create().set(Properties.NORTH, true).set(Properties.EAST, false).set(Properties.SOUTH, true).set(Properties.WEST, false),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpMiddleModelID).put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                .with(When.create().set(ModProperties.SOUTH_EAST, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpInnerCornerPieceModelID))
+                .with(When.create().set(ModProperties.SOUTH_WEST, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpInnerCornerPieceModelID).put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                .with(When.create().set(ModProperties.NORTH_WEST, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpInnerCornerPieceModelID).put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                .with(When.create().set(ModProperties.NORTH_EAST, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpInnerCornerPieceModelID).put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                .with(When.create().set(Properties.SOUTH, true).set(Properties.EAST, true).set(ModProperties.SOUTH_EAST, false),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpCornerPieceModelID))
+                .with(When.create().set(Properties.SOUTH, true).set(Properties.WEST, true).set(ModProperties.SOUTH_WEST, false),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpCornerPieceModelID).put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                .with(When.create().set(Properties.NORTH, true).set(Properties.WEST, true).set(ModProperties.NORTH_WEST, false),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpCornerPieceModelID).put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                .with(When.create().set(Properties.NORTH, true).set(Properties.EAST, true).set(ModProperties.NORTH_EAST, false),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpCornerPieceModelID).put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                .with(When.create().set(Properties.NORTH, false).set(Properties.EAST, true).set(Properties.SOUTH, true).set(Properties.WEST, false),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpCornerModelID))
+                .with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, true).set(Properties.WEST, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpCornerModelID).put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                .with(When.create().set(Properties.NORTH, true).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpCornerModelID).put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                .with(When.create().set(Properties.NORTH, true).set(Properties.EAST, true).set(Properties.SOUTH, false).set(Properties.WEST, false),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpCornerModelID).put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                .with(When.create().set(Properties.NORTH, false).set(Properties.EAST, true).set(Properties.SOUTH, true).set(Properties.WEST, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpSideModelID))
+                .with(When.create().set(Properties.NORTH, true).set(Properties.EAST, false).set(Properties.SOUTH, true).set(Properties.WEST, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpSideModelID).put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                .with(When.create().set(Properties.NORTH, true).set(Properties.EAST, true).set(Properties.SOUTH, false).set(Properties.WEST, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpSideModelID).put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                .with(When.create().set(Properties.NORTH, true).set(Properties.EAST, true).set(Properties.SOUTH, true).set(Properties.WEST, false),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, stumpSideModelID).put(VariantSettings.Y, VariantSettings.Rotation.R270))
+        );
     }
 
     public final void registerCouch(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {

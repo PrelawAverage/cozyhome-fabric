@@ -33,6 +33,10 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModBlocks.BAMBOO_LAMP.asItem())
                 .add(ModBlocks.CRIMSON_LAMP.asItem())
                 .add(ModBlocks.WARPED_LAMP.asItem())
+                .add(ModBlocks.IRON_LAMP.asItem())
+                .add(ModBlocks.GLASS_LAMP.asItem())
+                .add(ModBlocks.UNDEAD_LAMP.asItem())
+                .add(ModBlocks.OMINOUS_LAMP.asItem())
 
                 .add(ModBlocks.OAK_SOFA.asItem())
                 .add(ModBlocks.SPRUCE_SOFA.asItem())

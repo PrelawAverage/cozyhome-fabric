@@ -10,7 +10,7 @@ public enum ContainsBlock implements StringIdentifiable {
 
     private final String name;
 
-    private ContainsBlock(final String name) {
+    ContainsBlock(final String name) {
         this.name = name;
     }
 

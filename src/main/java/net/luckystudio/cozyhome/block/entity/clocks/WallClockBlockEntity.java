@@ -28,7 +28,7 @@ public class WallClockBlockEntity extends BlockEntity implements ClockBlock {
 
     public static void tick(World world, BlockPos pos, BlockState state, WallClockBlockEntity blockEntity) {
         blockEntity.incrementTicks();
-        ClockFunctionalityHandler.handleHandRotations(world, state, blockEntity);
+        ClockFunctionalityHandler.handleHandRotations(world, pos, state, blockEntity);
     }
 
 

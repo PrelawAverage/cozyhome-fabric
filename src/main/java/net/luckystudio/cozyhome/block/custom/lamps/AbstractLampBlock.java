@@ -1,10 +1,10 @@
 package net.luckystudio.cozyhome.block.custom.lamps;
 
-import net.luckystudio.cozyhome.block.entity.CouchBlockEntity;
 import net.luckystudio.cozyhome.block.entity.LampBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.VerticalLinearConnectionBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.ConnectingBlock;
+import net.luckystudio.cozyhome.sound.ModSoundEvents;
 import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -13,12 +13,12 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.DyedColorComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DyeItem;
-import net.minecraft.item.FlintAndSteelItem;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
@@ -27,30 +27,22 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class AbstractLampBlock extends BlockWithEntity implements ConnectingBlock {
     public static final EnumProperty<VerticalLinearConnectionBlock> CONNECTION = ModProperties.VERTICAL_CONNECTION;
+    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
-
-    public static final VoxelShape TOP_PIECE = Block.createCuboidShape(4, 4, 4, 12, 14, 12);
-    public static final VoxelShape BOTTOM_PIECE = Block.createCuboidShape(4, 0, 4, 12, 2, 12);
-
-    public static final VoxelShape SINGLE_SHAPE = Block.createCuboidShape(4, 0, 4, 12, 14, 12);
-    public static final VoxelShape TOP_SHAPE = VoxelShapes.union(TOP_PIECE, Block.createCuboidShape(6, 0, 6, 10, 4, 10));
-    public static final VoxelShape MIDDLE_SHAPE = Block.createCuboidShape(6, 0, 6, 10, 16, 10);
-    public static final VoxelShape BOTTOM_SHAPE = VoxelShapes.union(BOTTOM_PIECE, Block.createCuboidShape(6, 2, 6, 10, 16, 10));
 
     public AbstractLampBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.getDefaultState()
                 .with(CONNECTION, VerticalLinearConnectionBlock.SINGLE)
-                .with(LIT, Boolean.valueOf(false)));
+                .with(FACING, Direction.NORTH)
+                .with(LIT, Boolean.FALSE));
     }
 
     @Override
@@ -60,7 +52,7 @@ public abstract class AbstractLampBlock extends BlockWithEntity implements Conne
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(CONNECTION, LIT);
+        builder.add(CONNECTION, FACING, LIT);
     }
 
     @Override
@@ -69,51 +61,80 @@ public abstract class AbstractLampBlock extends BlockWithEntity implements Conne
     }
 
     @Override
-    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return switch (state.get(CONNECTION)) {
-            case HEAD -> TOP_SHAPE;
-            case MIDDLE -> MIDDLE_SHAPE;
-            case TAIL -> BOTTOM_SHAPE;
-            default -> SINGLE_SHAPE;
-        };
+    protected boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        if (world.getBlockState(pos.down()).getBlock() == this) {
+            if (world.getBlockState(pos.down(2)).getBlock() == this) {
+                return world.getBlockState(pos.down(2)).get(CONNECTION) != VerticalLinearConnectionBlock.MIDDLE;
+            } else {
+                return true;
+            }
+        } else {
+            return Block.sideCoversSmallSquare(world, pos.down(), Direction.UP);
+        }
+    }
+
+    @Override
+    public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
+        Direction direction;
+        if (canPlaceAt(ctx.getWorld().getBlockState(ctx.getBlockPos()), ctx.getWorld(), ctx.getBlockPos())) {
+            if (ctx.getWorld().getBlockState(ctx.getBlockPos().down()).getBlock() == this) {
+                direction = ctx.getWorld().getBlockState(ctx.getBlockPos().down()).get(FACING);
+                return this.getDefaultState()
+                        .with(CONNECTION, VerticalLinearConnectionBlock.HEAD)
+                        .with(FACING, direction)
+                        .with(LIT, ctx.getWorld().getBlockState(ctx.getBlockPos().down()).get(LIT));
+            }
+        }
+        return super.getPlacementState(ctx).with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (world.getBlockEntity(pos) instanceof LampBlockEntity lampBlockEntity) {
-            if (state.get(CONNECTION) == VerticalLinearConnectionBlock.HEAD) {
+            VerticalLinearConnectionBlock connection = state.get(CONNECTION);
                 if (stack.getItem() instanceof DyeItem dyeItem) {
                     final int itemColor = dyeItem.getColor().getEntityColor();
                     final int blockColor = ModColorHandler.getBlockColor(lampBlockEntity, -17170434);
                     final int newColor = ColorHelper.Argb.averageArgb(blockColor, itemColor);
-                    if (blockColor == newColor) return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+                    if (blockColor == newColor) {
+                        player.sendMessage(Text.translatable("message.cozyhome.same_color"), true);
+                        return ItemActionResult.SUCCESS;
+                    }
                     ComponentMap components = ComponentMap.builder().add(DataComponentTypes.DYED_COLOR, new DyedColorComponent(newColor, false)).build();
                     lampBlockEntity.setComponents(components);
                     stack.decrementUnlessCreative(1, player);
                     lampBlockEntity.markDirty();
                     world.updateListeners(pos, state, state, 0);
-                    return ItemActionResult.SUCCESS;
-                } else if (stack.getItem() instanceof FlintAndSteelItem) {
-                    state = state.with(LIT, true);
-                    world.setBlockState(pos, state, Block.NOTIFY_ALL);
-                    world.playSound(player, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 0.3F, 1);
-                    return ItemActionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
-                } else if (state.get(LIT)) {
-                    state = state.with(LIT, false);
-                    world.setBlockState(pos, state, Block.NOTIFY_ALL);
-                    world.playSound(player, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.3F, 1);
-                    return ItemActionResult.CONSUME;
+                } else if (stack.getItem() == this.asItem() && hit.getSide() == Direction.UP) {
+                    return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
                 } else {
-                    player.sendMessage(Text.translatable("message.cozyhome.light_with_flint_and_steel"), true);
+                    state = state.cycle(LIT);
+                    float f = state.get(LIT) ? 1.0F : 0.8F;
+                    if (connection == VerticalLinearConnectionBlock.HEAD) {
+                        world.setBlockState(pos.down(), state, Block.NOTIFY_ALL);
+                        if (world.getBlockState(pos.down(2)).getBlock() == this) {
+                            world.setBlockState(pos.down(2), state, Block.NOTIFY_ALL);
+                        }
+                    } else if (connection == VerticalLinearConnectionBlock.MIDDLE) {
+                        world.setBlockState(pos.up(), state, Block.NOTIFY_ALL);
+                        world.setBlockState(pos.down(), state, Block.NOTIFY_ALL);
+                    } else if (connection == VerticalLinearConnectionBlock.TAIL) {
+                        world.setBlockState(pos.up(), state, Block.NOTIFY_ALL);
+                        if (world.getBlockState(pos.up(2)).getBlock() == this) {
+                            world.setBlockState(pos.up(2), state, Block.NOTIFY_ALL);
+                        }
+                    }
+                    world.setBlockState(pos, state, Block.NOTIFY_ALL);
+                    world.playSound(player, pos, ModSoundEvents.LAMP_TOGGLE, SoundCategory.BLOCKS, 0.3F, f);
                 }
-            }
+                return ItemActionResult.SUCCESS;
         }
         return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     @Override
     protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        return state.with(CONNECTION, ModProperties.setVerticalConnection(state, world, pos));
+        return canPlaceAt(state, world, pos) ? state.with(CONNECTION, ModProperties.setVerticalConnection(state, world, pos)) : Blocks.AIR.getDefaultState();
     }
 
     @Override

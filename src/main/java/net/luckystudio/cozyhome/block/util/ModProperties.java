@@ -2,19 +2,14 @@ package net.luckystudio.cozyhome.block.util;
 
 import net.luckystudio.cozyhome.block.util.enums.*;
 import net.luckystudio.cozyhome.block.util.interfaces.ConnectingBlock;
-import net.luckystudio.cozyhome.block.util.interfaces.SeatBlock;
-import net.luckystudio.cozyhome.entity.ModEntities;
-import net.luckystudio.cozyhome.entity.custom.SeatEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.enums.StairShape;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.state.property.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.RotationPropertyHelper;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
 public class ModProperties {
@@ -25,7 +20,6 @@ public class ModProperties {
     public static final EnumProperty<TripleTallBlock> TRIPLE_TALL_BLOCK = EnumProperty.of("part", TripleTallBlock.class);
     public static final EnumProperty<HasUnderBlock> HAS_UNDER = EnumProperty.of("has_under", HasUnderBlock.class);
     public static final EnumProperty<ContainsBlock> CONTAINS = EnumProperty.of("contains", ContainsBlock.class);
-    public static final EnumProperty<OminousBlock> OMINOUS = EnumProperty.of("ominous", OminousBlock.class);
 
     public static final BooleanProperty NORTH_EAST = BooleanProperty.of("north_east");
     public static final BooleanProperty NORTH_WEST = BooleanProperty.of("north_west");
@@ -34,22 +28,6 @@ public class ModProperties {
     public static final BooleanProperty TUCKED = BooleanProperty.of("tucked");
 
     public static final IntProperty FILLED_LEVEL_0_3 = IntProperty.of("level", 0, 3);
-
-    public static void sitDown(BlockState state, World world, BlockPos pos, PlayerEntity player) {
-        if (state.getBlock() instanceof SeatBlock seatBlock) {
-            // Creates a new entity
-            SeatEntity seat = new SeatEntity(ModEntities.SEAT_ENTITY, world);
-            // Sets it's location
-            seat.setPosition(pos.getX() + 0.5f, pos.getY(), pos.getZ() + 0.5f);
-
-            seat.setYaw(seatBlock.getSeatRotation(state, world, pos));
-            seat.setAngles(seatBlock.getSeatRotation(state, world, pos), 0);
-
-            world.spawnEntity(seat);
-
-            player.startRiding(seat);
-        }
-    }
 
     public static float setSeatRotationFromFacing(BlockState state) {
         Direction facing = state.get(HorizontalFacingBlock.FACING);

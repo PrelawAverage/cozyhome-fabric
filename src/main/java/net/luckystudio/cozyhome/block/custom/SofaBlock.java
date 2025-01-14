@@ -4,7 +4,6 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import net.luckystudio.cozyhome.block.custom.abstracts.AbstractSeatBlock;
 import net.luckystudio.cozyhome.block.entity.SofaBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.components.ModDataComponents;
@@ -103,7 +102,8 @@ public class SofaBlock extends AbstractSeatBlock {
                 final int blockColor = ModColorHandler.getBlockColor(sofaBlockEntity, -17170434);
                 final int newColor = ColorHelper.Argb.averageArgb(blockColor, itemColor);
                 if (blockColor == newColor) {
-                    return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+                    player.sendMessage(Text.translatable("message.cozyhome.same_color"), true);
+                    return ItemActionResult.SUCCESS;
                 }
                 ComponentMap components = ComponentMap.builder().add(DataComponentTypes.DYED_COLOR, new DyedColorComponent(newColor, false)).build();
                 sofaBlockEntity.setComponents(components);

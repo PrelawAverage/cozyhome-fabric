@@ -4,6 +4,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.DyedColorComponent;
 import net.minecraft.util.math.ColorHelper;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,7 +41,10 @@ public class ModColorHandler {
         return "Custom Dyed";
     }
 
-    public static int getBlockColor(BlockEntity entity, int defaultColor) {
+    public static int getBlockColor(@Nullable BlockEntity entity, int defaultColor) {
+        if (entity == null) {
+            return defaultColor;
+        }
         DyedColorComponent dyedColorComponent = entity.getComponents().get(DataComponentTypes.DYED_COLOR);
         return dyedColorComponent != null ? ColorHelper.Argb.fullAlpha(dyedColorComponent.rgb()) : defaultColor;
     }

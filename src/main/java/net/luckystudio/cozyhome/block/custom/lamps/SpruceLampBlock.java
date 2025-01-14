@@ -15,7 +15,7 @@ public class SpruceLampBlock extends AbstractLampBlock {
     public static final VoxelShape TOP_PIECE = Block.createCuboidShape(2, 4, 2, 14, 14, 14);
     public static final VoxelShape BOTTOM_PIECE = Block.createCuboidShape(4, 0, 4, 12, 2, 12);
 
-    public static final VoxelShape SINGLE_SHAPE = Block.createCuboidShape(4, 0, 4, 12, 14, 12);
+    public static final VoxelShape SINGLE_SHAPE = VoxelShapes.union(TOP_PIECE, BOTTOM_PIECE);
     public static final VoxelShape TOP_SHAPE = VoxelShapes.union(TOP_PIECE, Block.createCuboidShape(6, 0, 6, 10, 4, 10));
     public static final VoxelShape MIDDLE_SHAPE = Block.createCuboidShape(6, 0, 6, 10, 16, 10);
     public static final VoxelShape BOTTOM_SHAPE = VoxelShapes.union(BOTTOM_PIECE, Block.createCuboidShape(6, 2, 6, 10, 16, 10));

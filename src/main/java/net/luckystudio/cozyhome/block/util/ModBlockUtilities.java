@@ -1,12 +1,10 @@
 package net.luckystudio.cozyhome.block.util;
 
 import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
-import net.luckystudio.cozyhome.block.util.enums.OminousBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.entity.Entity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.*;
@@ -17,24 +15,9 @@ import java.util.function.ToIntFunction;
 
 public class ModBlockUtilities {
 
-    // Returning a light level if the block is LIT
-    public static ToIntFunction<BlockState> createLightLevelFromLitBlockState(int litLevel) {
-        return state -> state.get(Properties.LIT) ? litLevel : 0;
-    }
-
     // Returning a light level if the block contain LAVA
     public static ToIntFunction<BlockState> createLightLevelFromContainsBlockState(int litLevel) {
         return state -> state.get(ModProperties.CONTAINS) == ContainsBlock.LAVA ? litLevel : 0;
-    }
-
-    // Returning a light level if the block contain LAVA
-    public static ToIntFunction<BlockState> createLightLevelFromOminousBehaviour(int litLevel) {
-        return state -> state.get(ModProperties.OMINOUS) == OminousBlock.OMINOUS ? litLevel : 6;
-    }
-
-    // Returning whether a block is LIT, world and pos are still needed even though it states they aren't used.
-    public static boolean ifLit(BlockState state, BlockView world, BlockPos pos) {
-        return state.get(Properties.LIT);
     }
 
     public static void tryMelt(BlockState state, World world, BlockPos pos, BlockState getMeltedState) {

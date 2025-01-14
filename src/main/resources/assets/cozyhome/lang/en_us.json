@@ -1,5 +1,5 @@
 {
-  "itemgroup.cozyhome.cozyhome": "Cozy Home",
+  "itemgroup.cozyhome.cozyhome": "Furniture",
 
   "block.cozyhome.oak_counter": "Oak Counter",
   "block.cozyhome.oak_sink_counter": "Oak Sink Counter",
@@ -50,7 +50,6 @@
   "block.cozyhome.iron_table": "Iron Table",
   "block.cozyhome.undead_table": "Undead Table",
   "block.cozyhome.ominous_table": "Ominous Table",
-
 
   "block.cozyhome.oak_chair": "Oak Chair",
   "block.cozyhome.spruce_chair": "Spruce Chair",
@@ -112,6 +111,10 @@
   "block.cozyhome.bamboo_lamp": "Bamboo Lamp",
   "block.cozyhome.crimson_lamp": "Crimson Lamp",
   "block.cozyhome.warped_lamp": "Warped Lamp",
+  "block.cozyhome.iron_lamp": "Iron Lamp",
+  "block.cozyhome.glass_lamp": "Glass Lamp",
+  "block.cozyhome.undead_lamp": "Undead Lamp",
+  "block.cozyhome.ominous_lamp": "Ominous Lamp",
 
   "block.cozyhome.oak_sofa": "Oak Sofa",
   "block.cozyhome.spruce_sofa": "Spruce Sofa",
@@ -173,6 +176,18 @@
   "block.cozyhome.crimson_wall_mirror": "Crimson Wall Mirror",
   "block.cozyhome.warped_wall_mirror": "Warped Wall Mirror",
 
+  "block.cozyhome.oak_large_stump": "Oak Large Stump",
+  "block.cozyhome.spruce_large_stump": "Spruce Large Stump",
+  "block.cozyhome.birch_large_stump": "Birch Large Stump",
+  "block.cozyhome.jungle_large_stump": "Jungle Large Stump",
+  "block.cozyhome.acacia_large_stump": "Acacia Large Stump",
+  "block.cozyhome.dark_oak_large_stump": "Dark Oak Large Stump",
+  "block.cozyhome.mangrove_large_stump": "Mangrove Large Stump",
+  "block.cozyhome.cherry_large_stump": "Cherry Large Stump",
+  "block.cozyhome.bamboo_large_stump": "Bamboo Large Stump",
+  "block.cozyhome.crimson_large_stump": "Crimson Large Stump",
+  "block.cozyhome.warped_large_stump": "Warped Large Stump",
+
   "block.cozyhome.stone_brick_chimney": "Stone Brick Chimney",
   "block.cozyhome.mossy_stone_brick_chimney": "Mossy Stone Brick Chimney",
   "block.cozyhome.granite_chimney": "Granite Chimney",
@@ -227,27 +242,6 @@
   "block.cozyhome.endstone_fountain_sprout": "Endstone Fountain Sprout",
   "block.cozyhome.purpur_fountain_sprout": "Purpur Fountain Sprout",
 
-  "block.cozyhome.oak_tool_rack": "Oak Tool Rack",
-  "block.cozyhome.spruce_tool_rack": "Spruce Tool Rack",
-  "block.cozyhome.birch_tool_rack": "Birch Tool Rack",
-  "block.cozyhome.jungle_tool_rack": "Jungle Tool Rack",
-  "block.cozyhome.acacia_tool_rack": "Acacia Tool Rack",
-  "block.cozyhome.dark_oak_tool_rack": "Dark Oak Tool Rack",
-  "block.cozyhome.mangrove_tool_rack": "Mangrove Tool Rack",
-  "block.cozyhome.cherry_tool_rack": "Cherry TOol Rack",
-  "block.cozyhome.bamboo_tool_rack": "Bamboo Tool Rack",
-  "block.cozyhome.crimson_tool_rack": "Crimson Oak Tool Rack",
-  "block.cozyhome.warped_tool_rack": "Warped Tool Rack",
-  "block.cozyhome.iron_tool_rack": "Iron Tool Rack",
-  "block.cozyhome.glass_tool_rack": "Glass Tool Rack",
-  "block.cozyhome.undead_tool_rack": "Undead Tool Rack",
-  "block.cozyhome.ominous_tool_rack": "Ominous Tool Rack",
-
-  "block.cozyhome.autumn_stained_glass": "Autumn Stained Glass",
-  "block.cozyhome.autumn_stained_glass_pane": "Autumn Stained Glass Pane",
-  "block.cozyhome.gold_framed_glass": "Gold Framed Glass",
-  "block.cozyhome.gold_framed_glass_pane": "Gold Framed Glass Pane",
-
   "blocks.cozyhome.chairs": "Chairs",
   "blocks.cozyhome.sofas": "Sofas",
   "blocks.cozyhome.couches": "Couches",
@@ -284,6 +278,7 @@
   "sounds.cozyhome.splash": "Water Splash",
 
   "message.cozyhome.remove_with_shear": "Can Remove With Shears",
+  "message.cozyhome.same_color": "Same Color",
   "message.cozyhome.light_with_flint_and_steel": "Light with Flint and Steel",
   "message.cozyhome.telescope.cant_use": "Ouch my eyes! I should wait til night to use this.",
 

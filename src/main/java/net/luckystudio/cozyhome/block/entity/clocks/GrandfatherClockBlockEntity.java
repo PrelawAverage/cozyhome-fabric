@@ -1,11 +1,7 @@
 package net.luckystudio.cozyhome.block.entity.clocks;
 
 import net.luckystudio.cozyhome.block.ModBlockEntityTypes;
-import net.luckystudio.cozyhome.block.ModBlocks;
-import net.luckystudio.cozyhome.block.util.ModProperties;
-import net.luckystudio.cozyhome.block.util.enums.OminousBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.ClockBlock;
-import net.luckystudio.cozyhome.sound.ModSoundEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.component.ComponentMap;
@@ -14,8 +10,6 @@ import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -37,8 +31,8 @@ public class GrandfatherClockBlockEntity extends BlockEntity implements ClockBlo
 
     public static void tick(World world, BlockPos pos, BlockState state, GrandfatherClockBlockEntity blockEntity) {
         blockEntity.incrementTicks();
-        ClockFunctionalityHandler.handleHandRotations(world, state, blockEntity);
-        ClockFunctionalityHandler.handlePendulumMotion(world, pos, blockEntity, 7.5f);
+        ClockFunctionalityHandler.handleHandRotations(world, pos, state, blockEntity);
+        ClockFunctionalityHandler.handleGrandfatherClock(world, pos, state, blockEntity, 7.5f);
     }
 
     @Override

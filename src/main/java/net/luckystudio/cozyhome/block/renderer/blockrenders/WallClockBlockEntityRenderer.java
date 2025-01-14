@@ -3,7 +3,7 @@ package net.luckystudio.cozyhome.block.renderer.blockrenders;
 import com.google.common.collect.Maps;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.entity.clocks.WallClockBlockEntity;
-import net.luckystudio.cozyhome.block.custom.clocks.WallClockBlock;
+import net.luckystudio.cozyhome.block.custom.WallClockBlock;
 import net.luckystudio.cozyhome.block.renderer.models.WallClockModel;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.client.ModEntityModelLayers;

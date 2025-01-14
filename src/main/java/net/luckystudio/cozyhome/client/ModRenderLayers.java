@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
 import net.luckystudio.cozyhome.item.ModItems;
+import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.component.type.DyedColorComponent;
@@ -17,39 +18,17 @@ public class ModRenderLayers {
     public static void registerBlockRenderLayers() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
                 // Counters
-                ModBlocks.OAK_COUNTER,
                 ModBlocks.OAK_SINK_COUNTER,
-                ModBlocks.OAK_STORAGE_COUNTER,
-                ModBlocks.SPRUCE_COUNTER,
                 ModBlocks.SPRUCE_SINK_COUNTER,
-                ModBlocks.SPRUCE_STORAGE_COUNTER,
-                ModBlocks.BIRCH_COUNTER,
                 ModBlocks.BIRCH_SINK_COUNTER,
-                ModBlocks.BIRCH_STORAGE_COUNTER,
-                ModBlocks.JUNGLE_COUNTER,
                 ModBlocks.JUNGLE_SINK_COUNTER,
-                ModBlocks.JUNGLE_STORAGE_COUNTER,
-                ModBlocks.ACACIA_COUNTER,
                 ModBlocks.ACACIA_SINK_COUNTER,
-                ModBlocks.ACACIA_STORAGE_COUNTER,
-                ModBlocks.DARK_OAK_COUNTER,
                 ModBlocks.DARK_OAK_SINK_COUNTER,
-                ModBlocks.DARK_OAK_STORAGE_COUNTER,
-                ModBlocks.MANGROVE_COUNTER,
                 ModBlocks.MANGROVE_SINK_COUNTER,
-                ModBlocks.MANGROVE_STORAGE_COUNTER,
-                ModBlocks.CHERRY_COUNTER,
                 ModBlocks.CHERRY_SINK_COUNTER,
-                ModBlocks.CHERRY_STORAGE_COUNTER,
-                ModBlocks.BAMBOO_COUNTER,
                 ModBlocks.BAMBOO_SINK_COUNTER,
-                ModBlocks.BAMBOO_STORAGE_COUNTER,
-                ModBlocks.CRIMSON_COUNTER,
                 ModBlocks.CRIMSON_SINK_COUNTER,
-                ModBlocks.CRIMSON_STORAGE_COUNTER,
-                ModBlocks.WARPED_COUNTER,
                 ModBlocks.WARPED_SINK_COUNTER,
-                ModBlocks.WARPED_STORAGE_COUNTER,
                 // Tables
                 ModBlocks.OAK_TABLE,
                 ModBlocks.SPRUCE_TABLE,
@@ -194,9 +173,14 @@ public class ModRenderLayers {
                 ModBlocks.CHERRY_LAMP,
                 ModBlocks.BAMBOO_LAMP,
                 ModBlocks.CRIMSON_LAMP,
-                ModBlocks.WARPED_LAMP
+                ModBlocks.WARPED_LAMP,
+                ModBlocks.IRON_LAMP,
+                ModBlocks.GLASS_LAMP,
+                ModBlocks.UNDEAD_LAMP,
+                ModBlocks.OMINOUS_LAMP
         );
-        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && view.getBlockEntityRenderData(pos) instanceof Integer integer ? integer : -17170434,
+
+        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> ModColorHandler.getBlockColor(view.getBlockEntity(pos), -17170434),
                 ModBlocks.OAK_COUCH,
                 ModBlocks.SPRUCE_COUCH,
                 ModBlocks.BIRCH_COUCH,
@@ -218,7 +202,11 @@ public class ModRenderLayers {
                 ModBlocks.CHERRY_LAMP,
                 ModBlocks.BAMBOO_LAMP,
                 ModBlocks.CRIMSON_LAMP,
-                ModBlocks.WARPED_LAMP
+                ModBlocks.WARPED_LAMP,
+                ModBlocks.IRON_LAMP,
+                ModBlocks.GLASS_LAMP,
+                ModBlocks.UNDEAD_LAMP,
+                ModBlocks.OMINOUS_LAMP
         );
     }
 }

@@ -69,6 +69,14 @@ public class ModModels {
     public static final Model WALL_MIRROR_MIDDLE = modBlockWithTypeAndVariant("wall_mirror_middle", ModBlockTypes.WALL_MIRROR, "_middle", TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
     public static final Model WALL_MIRROR_BOTTOM = modBlockWithTypeAndVariant("wall_mirror_bottom", ModBlockTypes.WALL_MIRROR, "_bottom", TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
 
+    public static final Model LARGE_STUMP = modBlockWithType("template_large_stump", ModBlockTypes.LARGE_STUMP, TextureKey.TOP, TextureKey.SIDE);
+    public static final Model LARGE_STUMP_CORNER = modBlockWithTypeAndVariant("template_large_stump_corner", ModBlockTypes.LARGE_STUMP, "_corner", TextureKey.TOP, TextureKey.SIDE);
+    public static final Model LARGE_STUMP_CORNER_PIECE = modBlockWithTypeAndVariant("template_large_stump_corner_piece", ModBlockTypes.LARGE_STUMP, "_corner_piece", TextureKey.TOP, TextureKey.SIDE);
+    public static final Model LARGE_STUMP_DOUBLE = modBlockWithTypeAndVariant("template_large_stump_double", ModBlockTypes.LARGE_STUMP, "_double", TextureKey.TOP, TextureKey.SIDE);
+    public static final Model LARGE_STUMP_INNER_CORNER_PIECE = modBlockWithTypeAndVariant("template_large_stump_inner_corner_piece", ModBlockTypes.LARGE_STUMP, "_inner_corner_piece", TextureKey.TOP);
+    public static final Model LARGE_STUMP_MIDDLE = modBlockWithTypeAndVariant("template_large_stump_middle", ModBlockTypes.LARGE_STUMP, "_middle", TextureKey.TOP, TextureKey.SIDE);
+    public static final Model LARGE_STUMP_SIDE = modBlockWithTypeAndVariant("template_large_stump_side", ModBlockTypes.LARGE_STUMP, "_side", TextureKey.TOP, TextureKey.SIDE);
+
     public static final Model FOUNTAIN = modBlockWithType("template_fountain", ModBlockTypes.FOUNTAIN, TextureKey.ALL, TextureKey.PARTICLE);
     public static final Model FOUNTAIN_CORNER = modBlockWithTypeAndVariant("template_fountain_corner", ModBlockTypes.FOUNTAIN, "_corner", TextureKey.ALL, TextureKey.PARTICLE);
     public static final Model FOUNTAIN_CORNER_PIECE = modBlockWithTypeAndVariant("template_fountain_corner_piece", ModBlockTypes.FOUNTAIN, "_corner_piece", TextureKey.ALL, TextureKey.PARTICLE);

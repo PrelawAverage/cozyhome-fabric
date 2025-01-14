@@ -3,10 +3,9 @@ package net.luckystudio.cozyhome.block.renderer.blockrenders;
 import com.google.common.collect.Maps;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.entity.clocks.GrandfatherClockBlockEntity;
-import net.luckystudio.cozyhome.block.custom.clocks.GrandfatherClockBlock;
+import net.luckystudio.cozyhome.block.custom.GrandfatherClockBlock;
 import net.luckystudio.cozyhome.block.renderer.models.GrandfatherClockModel;
 import net.luckystudio.cozyhome.block.util.ModProperties;
-import net.luckystudio.cozyhome.block.util.enums.OminousBlock;
 import net.luckystudio.cozyhome.block.util.enums.TripleTallBlock;
 import net.luckystudio.cozyhome.client.ModEntityModelLayers;
 import net.minecraft.block.BlockState;
@@ -16,6 +15,7 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
@@ -95,9 +95,7 @@ public class GrandfatherClockBlockEntityRenderer implements BlockEntityRenderer<
 
         if (type == GrandfatherClockBlock.Type.OMINOUS) {
             // If the grandfather_clock type is TRIAL and a player is detected
-            if (blockState.get(ModProperties.OMINOUS) == OminousBlock.OMINOUS) {
-                identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/grandfather_clock/ominous_grandfather_clock_active_ominous.png");
-            } else if (blockState.get(ModProperties.OMINOUS) == OminousBlock.ACTIVE) {
+            if (blockState.get(Properties.TRIGGERED)) {
                 identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/grandfather_clock/ominous_grandfather_clock_active.png");
             } else {
                 identifier = Identifier.of(CozyHome.MOD_ID, "textures/block/grandfather_clock/ominous_grandfather_clock_inactive.png");

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:paper"
+    },
+    "@": {
+      "item": "minecraft:candle"
+    },
+    "C": {
+      "item": "minecraft:mangrove_planks"
+    }
+  },
+  "pattern": [
+    "#",
+    "@",
+    "C"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyhome:mangrove_lamp"
+  }
+}

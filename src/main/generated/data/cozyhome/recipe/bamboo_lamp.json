@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:bamboo_planks"
+    },
+    "@": {
+      "item": "minecraft:candle"
+    },
+    "C": {
+      "item": "minecraft:bamboo_planks"
+    }
+  },
+  "pattern": [
+    "#",
+    "@",
+    "C"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyhome:bamboo_lamp"
+  }
+}

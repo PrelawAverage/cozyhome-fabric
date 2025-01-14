@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:warped_fungus"
+    },
+    "@": {
+      "item": "minecraft:warped_nylium"
+    },
+    "C": {
+      "item": "minecraft:flower_pot"
+    }
+  },
+  "pattern": [
+    "#",
+    "@",
+    "C"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyhome:warped_lamp"
+  }
+}

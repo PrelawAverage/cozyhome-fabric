@@ -1,11 +1,9 @@
 package net.luckystudio.cozyhome.item.renderer;
 
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
-import net.luckystudio.cozyhome.block.custom.chairs.ChairBlock;
+import net.luckystudio.cozyhome.block.custom.ChairBlock;
 import net.luckystudio.cozyhome.block.renderer.blockrenders.ChairBlockEntityRenderer;
-import net.luckystudio.cozyhome.components.ModDataComponents;
 import net.luckystudio.cozyhome.block.renderer.models.ChairModel;
-import net.luckystudio.cozyhome.entity.model.CushionModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.model.ModelPart;
@@ -14,7 +12,6 @@ import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.RotationAxis;
 

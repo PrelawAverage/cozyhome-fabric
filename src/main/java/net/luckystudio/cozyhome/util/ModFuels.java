@@ -5,36 +5,6 @@ import net.luckystudio.cozyhome.block.ModBlocks;
 
 public class ModFuels {
     public static void registerFuels() {
-        FuelRegistry.INSTANCE.add(ModBlocks.OAK_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.SPRUCE_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.BIRCH_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.JUNGLE_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.ACACIA_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.DARK_OAK_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.MANGROVE_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.CHERRY_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.BAMBOO_COUNTER, 200);
-
-        FuelRegistry.INSTANCE.add(ModBlocks.OAK_STORAGE_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.SPRUCE_STORAGE_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.BIRCH_STORAGE_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.JUNGLE_STORAGE_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.ACACIA_STORAGE_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.DARK_OAK_STORAGE_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.MANGROVE_STORAGE_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.CHERRY_STORAGE_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.BAMBOO_STORAGE_COUNTER, 200);
-
-        FuelRegistry.INSTANCE.add(ModBlocks.OAK_SINK_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.SPRUCE_SINK_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.BIRCH_SINK_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.JUNGLE_SINK_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.ACACIA_SINK_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.DARK_OAK_SINK_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.MANGROVE_SINK_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.CHERRY_SINK_COUNTER, 200);
-        FuelRegistry.INSTANCE.add(ModBlocks.BAMBOO_SINK_COUNTER, 200);
-
         FuelRegistry.INSTANCE.add(ModBlocks.OAK_TABLE, 300);
         FuelRegistry.INSTANCE.add(ModBlocks.SPRUCE_TABLE, 300);
         FuelRegistry.INSTANCE.add(ModBlocks.BIRCH_TABLE, 300);
@@ -114,5 +84,15 @@ public class ModFuels {
         FuelRegistry.INSTANCE.add(ModBlocks.MANGROVE_WALL_MIRROR, 100);
         FuelRegistry.INSTANCE.add(ModBlocks.CHERRY_WALL_MIRROR, 100);
         FuelRegistry.INSTANCE.add(ModBlocks.BAMBOO_WALL_MIRROR, 100);
+
+        FuelRegistry.INSTANCE.add(ModBlocks.OAK_LARGE_STUMP, 100);
+        FuelRegistry.INSTANCE.add(ModBlocks.SPRUCE_LARGE_STUMP, 100);
+        FuelRegistry.INSTANCE.add(ModBlocks.BIRCH_LARGE_STUMP, 100);
+        FuelRegistry.INSTANCE.add(ModBlocks.JUNGLE_LARGE_STUMP, 100);
+        FuelRegistry.INSTANCE.add(ModBlocks.ACACIA_LARGE_STUMP, 100);
+        FuelRegistry.INSTANCE.add(ModBlocks.DARK_OAK_LARGE_STUMP, 100);
+        FuelRegistry.INSTANCE.add(ModBlocks.MANGROVE_LARGE_STUMP, 100);
+        FuelRegistry.INSTANCE.add(ModBlocks.CHERRY_LARGE_STUMP, 100);
+        FuelRegistry.INSTANCE.add(ModBlocks.BAMBOO_LARGE_STUMP, 100);
     }
 }

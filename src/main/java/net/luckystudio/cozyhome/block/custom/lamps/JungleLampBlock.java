@@ -1,6 +1,7 @@
 package net.luckystudio.cozyhome.block.custom.lamps;
 
 import com.mojang.serialization.MapCodec;
+import net.luckystudio.cozyhome.block.util.enums.VerticalLinearConnectionBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
@@ -15,10 +16,10 @@ import net.minecraft.world.World;
 
 public class JungleLampBlock extends AbstractLampBlock {
     public static final MapCodec<JungleLampBlock> CODEC = createCodec(JungleLampBlock::new);
-    public static final VoxelShape TOP_PIECE = Block.createCuboidShape(2, 4, 2, 14, 14, 14);
-    public static final VoxelShape BOTTOM_PIECE = Block.createCuboidShape(4, 0, 4, 12, 2, 12);
+    public static final VoxelShape TOP_PIECE = Block.createCuboidShape(3, 4, 3, 13, 13, 13);
+    public static final VoxelShape BOTTOM_PIECE = Block.createCuboidShape(6, 0, 6, 10, 4, 10);
 
-    public static final VoxelShape SINGLE_SHAPE = Block.createCuboidShape(4, 0, 4, 12, 14, 12);
+    public static final VoxelShape SINGLE_SHAPE = VoxelShapes.union(TOP_PIECE, BOTTOM_PIECE);
     public static final VoxelShape TOP_SHAPE = VoxelShapes.union(TOP_PIECE, Block.createCuboidShape(6, 0, 6, 10, 4, 10));
     public static final VoxelShape MIDDLE_SHAPE = Block.createCuboidShape(6, 0, 6, 10, 16, 10);
     public static final VoxelShape BOTTOM_SHAPE = VoxelShapes.union(BOTTOM_PIECE, Block.createCuboidShape(6, 2, 6, 10, 16, 10));
@@ -46,11 +47,14 @@ public class JungleLampBlock extends AbstractLampBlock {
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         super.randomDisplayTick(state, world, pos, random);
-        if (state.get(LIT)) {
-            double x = pos.getX() + 0.5D;
-            double y = pos.getY() + 0.525D;
-            double z = pos.getZ() + 0.5D;
-            world.addParticle(ParticleTypes.FLAME, x, y, z, 0.0D, 0.0D, 0.0D);
+        if (state.get(CONNECTION) == VerticalLinearConnectionBlock.HEAD || state.get(CONNECTION) == VerticalLinearConnectionBlock.SINGLE) {
+            if (state.get(LIT)) {
+                double x = pos.getX() + 0.5D;
+                double y = pos.getY() + 0.55D;
+                double z = pos.getZ() + 0.5D;
+                world.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
+                world.addParticle(ParticleTypes.SMALL_FLAME, x, y, z, 0.0D, 0.0D, 0.0D);
+            }
         }
     }
 }

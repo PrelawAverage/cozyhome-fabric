@@ -1,0 +1,32 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "block/oak_log",
+		"side": "block/oak_log",
+		"top": "cozyhome:block/stump_table/oak_stump_table_double_top"
+	},
+	"elements": [
+		{
+			"from": [0, 10, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 6], "texture": "#side", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 6], "texture": "#side", "cullface": "east"},
+				"west": {"uv": [0, 0, 16, 6], "texture": "#side", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#top", "cullface": "up"},
+				"down": {"uv": [0, 16, 16, 0], "texture": "#top"}
+			}
+		},
+		{
+			"from": [4, 0, 4],
+			"to": [12, 10, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 0, 4]},
+			"faces": {
+				"north": {"uv": [4, 6, 12, 16], "texture": "#side"},
+				"east": {"uv": [0, 6, 12, 16], "texture": "#side"},
+				"west": {"uv": [4, 6, 16, 16], "texture": "#side"},
+				"down": {"uv": [4, 16, 12, 4], "texture": "#top"}
+			}
+		}
+	]
+}

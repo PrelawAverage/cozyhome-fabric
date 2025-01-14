@@ -1,6 +1,5 @@
 package net.luckystudio.cozyhome.block.util.interfaces;
 
-import net.luckystudio.cozyhome.block.custom.includes_liquid.FountainBlock;
 import net.minecraft.block.BlockState;
 
 /**
