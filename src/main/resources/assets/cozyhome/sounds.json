@@ -50,5 +50,20 @@
       "cozyhome:splash_07",
       "cozyhome:splash_08"
     ]
+  },
+  "sink_toggle": {
+    "subtitle": "sounds.cozyhome.sink_toggle",
+    "sounds": [
+      "cozyhome:sink_toggle"
+    ]
+  },
+  "running_water": {
+    "subtitle": "sounds.cozyhome.running_water",
+    "sounds": [
+      "cozyhome:running_water_0",
+      "cozyhome:running_water_1",
+      "cozyhome:running_water_2",
+      "cozyhome:running_water_3"
+    ]
   }
 }

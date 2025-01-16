@@ -1,5 +1,6 @@
 package net.luckystudio.cozyhome.block;
 
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.entity.*;
 import net.luckystudio.cozyhome.block.entity.clocks.GrandfatherClockBlockEntity;
@@ -26,6 +27,22 @@ public class ModBlockEntityTypes {
                 ModBlocks.CRIMSON_STORAGE_COUNTER,
                 ModBlocks.WARPED_STORAGE_COUNTER
         ).build());
+
+//    public static final BlockEntityType<SinkBlockEntity> SINK_COUNTER_BLOCK_ENTITY = Registry.register(
+//            Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "sink_counter_block_entity"),
+//            BlockEntityType.Builder.create(SinkBlockEntity::new,
+//                    ModBlocks.OAK_SINK_COUNTER,
+//                    ModBlocks.SPRUCE_SINK_COUNTER,
+//                    ModBlocks.BIRCH_SINK_COUNTER,
+//                    ModBlocks.JUNGLE_SINK_COUNTER,
+//                    ModBlocks.ACACIA_SINK_COUNTER,
+//                    ModBlocks.DARK_OAK_SINK_COUNTER,
+//                    ModBlocks.MANGROVE_SINK_COUNTER,
+//                    ModBlocks.CHERRY_SINK_COUNTER,
+//                    ModBlocks.BAMBOO_SINK_COUNTER,
+//                    ModBlocks.CRIMSON_SINK_COUNTER,
+//                    ModBlocks.WARPED_SINK_COUNTER
+//            ).build());
 
     public static final BlockEntityType<DrawerBlockEntity> DRAWER_BLOCK_ENTITY = Registry.register(
             Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "drawer_block_entity"),
@@ -76,7 +93,11 @@ public class ModBlockEntityTypes {
                     ModBlocks.CHERRY_LAMP,
                     ModBlocks.BAMBOO_LAMP,
                     ModBlocks.CRIMSON_LAMP,
-                    ModBlocks.WARPED_LAMP
+                    ModBlocks.WARPED_LAMP,
+                    ModBlocks.IRON_LAMP,
+                    ModBlocks.GLASS_LAMP,
+                    ModBlocks.UNDEAD_LAMP,
+                    ModBlocks.OMINOUS_LAMP
             ).build());
 
     public static final BlockEntityType<SofaBlockEntity> SOFA_BLOCK_ENTITY = Registry.register(

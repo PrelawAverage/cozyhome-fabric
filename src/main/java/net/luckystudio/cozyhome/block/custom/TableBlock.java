@@ -26,8 +26,6 @@ public class TableBlock extends AbstractHorizontalConnectingBlock implements Wat
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         VoxelShape shape = TABLE_TOP;
-
-
         shape = VoxelShapes.union(shape, Block.createCuboidShape(
                 state.get(WEST) ? 0 : 1,
                 12,

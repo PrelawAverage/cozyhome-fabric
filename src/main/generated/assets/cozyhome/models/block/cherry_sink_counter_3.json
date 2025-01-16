@@ -1,0 +1,15 @@
+{
+  "parent": "cozyhome:block/counter/sink_counter_3",
+  "textures": {
+    "back": "cozyhome:block/counter/cherry_counter_back",
+    "bottom": "cozyhome:block/counter/cherry_counter_bottom",
+    "extra": "cozyhome:block/dye_vat/dye_vat_faucet",
+    "front": "cozyhome:block/counter/cherry_counter_front",
+    "inner_bottom": "cozyhome:block/dye_vat/dye_vat_inner_bottom",
+    "inner_side": "cozyhome:block/dye_vat/dye_vat_inner_side",
+    "liquid": "cozyhome:block/small_water_still",
+    "particle": "cozyhome:block/break/cherry_furniture",
+    "side": "cozyhome:block/counter/cherry_counter_side",
+    "top": "cozyhome:block/counter/cherry_counter_sink_top"
+  }
+}

@@ -14,19 +14,16 @@ import net.luckystudio.cozyhome.block.custom.FountainBlock;
 import net.luckystudio.cozyhome.block.custom.FountainSproutBlock;
 import net.luckystudio.cozyhome.block.custom.lamps.*;
 import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
-import net.luckystudio.cozyhome.block.util.interfaces.SinkBehavior;
 import net.luckystudio.cozyhome.item.custom.DyedBlockItem;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.biome.Biome;
 
 import static net.minecraft.block.Blocks.createLightLevelFromLitBlockState;
 
@@ -177,27 +174,27 @@ public class ModBlocks {
 
     // Sink Counters
     public static final Block OAK_SINK_COUNTER = registerBlock("oak_sink_counter",
-            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
     public static final Block SPRUCE_SINK_COUNTER = registerBlock("spruce_sink_counter",
-            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
     public static final Block BIRCH_SINK_COUNTER = registerBlock("birch_sink_counter",
-            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
     public static final Block JUNGLE_SINK_COUNTER = registerBlock("jungle_sink_counter",
-            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
     public static final Block ACACIA_SINK_COUNTER = registerBlock("acacia_sink_counter",
-            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
     public static final Block DARK_OAK_SINK_COUNTER = registerBlock("dark_oak_sink_counter",
-            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
     public static final Block MANGROVE_SINK_COUNTER = registerBlock("mangrove_sink_counter",
-            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
     public static final Block CHERRY_SINK_COUNTER = registerBlock("cherry_sink_counter",
-            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
     public static final Block BAMBOO_SINK_COUNTER = registerBlock("bamboo_sink_counter",
-            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
     public static final Block CRIMSON_SINK_COUNTER = registerBlock("crimson_sink_counter",
-            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
     public static final Block WARPED_SINK_COUNTER = registerBlock("warped_sink_counter",
-            new SinkCounterBlock(Biome.Precipitation.RAIN, SinkBehavior.EMPTY_CAULDRON_BEHAVIOR, AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
 
     // Tables
     public static final Block OAK_TABLE = registerBlock("oak_table", createTable(Blocks.OAK_PLANKS));
@@ -292,12 +289,12 @@ public class ModBlocks {
     public static final Block MANGROVE_LAMP = registerDyedBlock("mangrove_lamp", new MangroveLampBlock(AbstractBlock.Settings.copy(ModBlocks.OAK_LAMP)));
     public static final Block CHERRY_LAMP = registerDyedBlock("cherry_lamp", createGenericLamp());
     public static final Block BAMBOO_LAMP = registerDyedBlock("bamboo_lamp", new BambooLampBlock(AbstractBlock.Settings.copy(ModBlocks.OAK_LAMP)));
-    public static final Block CRIMSON_LAMP = registerDyedBlock("crimson_lamp", new CrimsonLampBlock(ParticleTypes.CRIMSON_SPORE, AbstractBlock.Settings.copy(ModBlocks.OAK_LAMP)));
-    public static final Block WARPED_LAMP = registerDyedBlock("warped_lamp", new WarpedLampBlock(ParticleTypes.WARPED_SPORE, AbstractBlock.Settings.copy(ModBlocks.OAK_LAMP)));
+    public static final Block CRIMSON_LAMP = registerBlock("crimson_lamp", new CrimsonLampBlock(AbstractBlock.Settings.copy(ModBlocks.OAK_LAMP)));
+    public static final Block WARPED_LAMP = registerBlock("warped_lamp", new WarpedLampBlock(AbstractBlock.Settings.copy(ModBlocks.OAK_LAMP)));
     public static final Block IRON_LAMP = registerDyedBlock("iron_lamp", new IronLampBlock(AbstractBlock.Settings.copy(ModBlocks.OAK_LAMP)));
     public static final Block GLASS_LAMP = registerDyedBlock("glass_lamp", new GlassLampBlock(AbstractBlock.Settings.copy(ModBlocks.OAK_LAMP)));
     public static final Block UNDEAD_LAMP = registerDyedBlock("undead_lamp", new UndeadLampBlock(AbstractBlock.Settings.copy(ModBlocks.OAK_LAMP)));
-    public static final Block OMINOUS_LAMP = registerDyedBlock("ominous_lamp", new OminousLampBlock(AbstractBlock.Settings.copy(ModBlocks.OAK_LAMP)));
+    public static final Block OMINOUS_LAMP = registerBlock("ominous_lamp", new OminousLampBlock(AbstractBlock.Settings.copy(ModBlocks.OAK_LAMP)));
 
     // Sofas
     public static final Block OAK_SOFA = registerDyedBlock("oak_sofa", createSofa(SofaBlock.Type.OAK, Blocks.OAK_PLANKS));

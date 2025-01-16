@@ -12,7 +12,11 @@ public class ModModels {
     public static final Model COUNTER_OUTER = modBlockWithTypeAndVariant("counter_outer", ModBlockTypes.COUNTER, "_outer", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.PARTICLE);
 
     public static final Model STORAGE_COUNTER = modBlockWithTypeAndVariant("storage_counter", ModBlockTypes.COUNTER, "_open", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKey.OPEN, ModTextureKey.CLOSED, TextureKey.BACK, TextureKey.PARTICLE);
+
     public static final Model SINK_COUNTER = modBlockWithType("sink_counter", ModBlockTypes.COUNTER, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, ModTextureKey.EXTRA, ModTextureKey.INNER_SIDE, ModTextureKey.INNER_BOTTOM, TextureKey.PARTICLE);
+    public static final Model SINK_COUNTER_1 = modBlockWithTypeAndVariant("sink_counter_1", ModBlockTypes.COUNTER, "_1", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, ModTextureKey.EXTRA, ModTextureKey.INNER_SIDE, ModTextureKey.INNER_BOTTOM, ModTextureKey.LIQUID, TextureKey.PARTICLE);
+    public static final Model SINK_COUNTER_2 = modBlockWithTypeAndVariant("sink_counter_2", ModBlockTypes.COUNTER, "_2", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, ModTextureKey.EXTRA, ModTextureKey.INNER_SIDE, ModTextureKey.INNER_BOTTOM, ModTextureKey.LIQUID, TextureKey.PARTICLE);
+    public static final Model SINK_COUNTER_3 = modBlockWithTypeAndVariant("sink_counter_3", ModBlockTypes.COUNTER, "_3", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, ModTextureKey.EXTRA, ModTextureKey.INNER_SIDE, ModTextureKey.INNER_BOTTOM, ModTextureKey.LIQUID, TextureKey.PARTICLE);
 
     public static final Model CHIMNEY_SINGLE = modBlockWithType("template_chimney", ModBlockTypes.CHIMNEY, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.PARTICLE);
     public static final Model CHIMNEY_TOP = modBlockWithTypeAndVariant("template_chimney_top", ModBlockTypes.CHIMNEY, "_top", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.PARTICLE);

@@ -276,6 +276,8 @@
   "sounds.cozyhome.grandfather_clock_midnight": "Grandfather Clock Midnight",
   "sounds.cozyhome.light_water_flow": "Water Flowing",
   "sounds.cozyhome.splash": "Water Splash",
+  "sounds.cozyhome.sink_toggle": "Sink Toggled",
+  "sounds.cozyhome.running_water": "Running Water",
 
   "message.cozyhome.remove_with_shear": "Can Remove With Shears",
   "message.cozyhome.same_color": "Same Color",

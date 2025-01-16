@@ -3,6 +3,8 @@ package net.luckystudio.cozyhome.block.util.interfaces;
 import com.mojang.serialization.Codec;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import net.luckystudio.cozyhome.block.custom.counters.SinkCounterBlock;
+import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.minecraft.block.*;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BannerPatternsComponent;
@@ -31,59 +33,18 @@ public interface SinkBehavior {
     Map<String, SinkBehavior.SinkBehaviorMap> BEHAVIOR_MAPS = new Object2ObjectArrayMap<>();
     Codec<SinkBehavior.SinkBehaviorMap> CODEC = Codec.stringResolver(SinkBehavior.SinkBehaviorMap::name, BEHAVIOR_MAPS::get);
     /**
-     * The cauldron behaviors for empty cauldrons.
+     * The sink behaviors for water sinks.
      *
      * @see #createMap
      */
-    SinkBehavior.SinkBehaviorMap EMPTY_CAULDRON_BEHAVIOR = createMap("empty");
+    SinkBehavior.SinkBehaviorMap BASE = createMap("base");
     /**
-     * The cauldron behaviors for water cauldrons.
+     * A behavior that fills sinks with water.
      *
-     * @see #createMap
+     * @see #fillSink
      */
-    SinkBehavior.SinkBehaviorMap WATER_CAULDRON_BEHAVIOR = createMap("water");
-    /**
-     * The cauldron behaviors for lava cauldrons.
-     *
-     * @see #createMap
-     */
-    SinkBehavior.SinkBehaviorMap LAVA_CAULDRON_BEHAVIOR = createMap("lava");
-    /**
-     * The cauldron behaviors for powder snow cauldrons.
-     *
-     * @see #createMap
-     */
-    SinkBehavior.SinkBehaviorMap POWDER_SNOW_CAULDRON_BEHAVIOR = createMap("powder_snow");
-    /**
-     * A behavior that fills cauldrons with water.
-     *
-     * @see #fillCauldron
-     */
-    SinkBehavior FILL_WITH_WATER = (state, world, pos, player, hand, stack) -> fillCauldron(
-            world, pos, player, hand, stack, Blocks.WATER_CAULDRON.getDefaultState().with(LeveledCauldronBlock.LEVEL, Integer.valueOf(3)), SoundEvents.ITEM_BUCKET_EMPTY
-    );
-    /**
-     * A behavior that fills cauldrons with lava.
-     *
-     * @see #fillCauldron
-     */
-    SinkBehavior FILL_WITH_LAVA = (state, world, pos, player, hand, stack) -> fillCauldron(
-            world, pos, player, hand, stack, Blocks.LAVA_CAULDRON.getDefaultState(), SoundEvents.ITEM_BUCKET_EMPTY_LAVA
-    );
-    /**
-     * A behavior that fills cauldrons with powder snow.
-     *
-     * @see #fillCauldron
-     */
-    SinkBehavior FILL_WITH_POWDER_SNOW = (state, world, pos, player, hand, stack) -> fillCauldron(
-            world,
-            pos,
-            player,
-            hand,
-            stack,
-            Blocks.POWDER_SNOW_CAULDRON.getDefaultState().with(LeveledCauldronBlock.LEVEL, Integer.valueOf(3)),
-            SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW
-    );
+    SinkBehavior FILL_WITH_WATER = (state, world, pos, player, hand, stack) -> 
+            fillSink(world, pos, player, hand, stack, state.with(ModProperties.FILLED_LEVEL_0_3, 3), SoundEvents.ITEM_BUCKET_EMPTY);
     /**
      * A behavior that cleans dyed shulker boxes.
      */
@@ -96,7 +57,7 @@ public interface SinkBehavior {
                 ItemStack itemStack = stack.copyComponentsToNewStack(Blocks.SHULKER_BOX, 1);
                 player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, itemStack, false));
                 player.incrementStat(Stats.CLEAN_SHULKER_BOX);
-                LeveledCauldronBlock.decrementFluidLevel(state, world, pos);
+                SinkCounterBlock.decrementFluidLevel(state, world, pos);
             }
 
             return ItemActionResult.success(world.isClient);
@@ -115,12 +76,13 @@ public interface SinkBehavior {
                 itemStack.set(DataComponentTypes.BANNER_PATTERNS, bannerPatternsComponent.withoutTopLayer());
                 player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, itemStack, false));
                 player.incrementStat(Stats.CLEAN_BANNER);
-                LeveledCauldronBlock.decrementFluidLevel(state, world, pos);
+                SinkCounterBlock.decrementFluidLevel(state, world, pos);
             }
 
             return ItemActionResult.success(world.isClient);
         }
     };
+
     /**
      * A behavior that cleans dyeable items.
      */
@@ -133,7 +95,7 @@ public interface SinkBehavior {
             if (!world.isClient) {
                 stack.remove(DataComponentTypes.DYED_COLOR);
                 player.incrementStat(Stats.CLEAN_ARMOR);
-                LeveledCauldronBlock.decrementFluidLevel(state, world, pos);
+                SinkCounterBlock.decrementFluidLevel(state, world, pos);
             }
 
             return ItemActionResult.success(world.isClient);
@@ -176,31 +138,11 @@ public interface SinkBehavior {
      * Registers the vanilla cauldron behaviors.
      */
     static void registerBehavior() {
-        Map<Item, SinkBehavior> map = EMPTY_CAULDRON_BEHAVIOR.map();
-        registerBucketBehavior(map);
-        map.put(Items.POTION, (SinkBehavior) (state, world, pos, player, hand, stack) -> {
-            PotionContentsComponent potionContentsComponent = stack.get(DataComponentTypes.POTION_CONTENTS);
-            if (potionContentsComponent != null && potionContentsComponent.matches(Potions.WATER)) {
-                if (!world.isClient) {
-                    Item item = stack.getItem();
-                    player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.GLASS_BOTTLE)));
-                    player.incrementStat(Stats.USE_CAULDRON);
-                    player.incrementStat(Stats.USED.getOrCreateStat(item));
-                    world.setBlockState(pos, Blocks.WATER_CAULDRON.getDefaultState());
-                    world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                    world.emitGameEvent(null, GameEvent.FLUID_PLACE, pos);
-                }
-
-                return ItemActionResult.success(world.isClient);
-            } else {
-                return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-            }
-        });
-        Map<Item, SinkBehavior> map2 = WATER_CAULDRON_BEHAVIOR.map();
+        Map<Item, SinkBehavior> map2 = BASE.map();
         registerBucketBehavior(map2);
         map2.put(
                 Items.BUCKET,
-                (SinkBehavior)(state, world, pos, player, hand, stack) -> emptyCauldron(
+                (state, world, pos, player, hand, stack) -> emptyCauldron(
                         state,
                         world,
                         pos,
@@ -208,38 +150,36 @@ public interface SinkBehavior {
                         hand,
                         stack,
                         new ItemStack(Items.WATER_BUCKET),
-                        statex -> (Integer)statex.get(LeveledCauldronBlock.LEVEL) == 3,
+                        statex -> statex.get(ModProperties.FILLED_LEVEL_0_3) == 3,
                         SoundEvents.ITEM_BUCKET_FILL
                 )
         );
-        map2.put(Items.GLASS_BOTTLE, (SinkBehavior)(state, world, pos, player, hand, stack) -> {
+        map2.put(Items.GLASS_BOTTLE, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
                 Item item = stack.getItem();
                 player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, PotionContentsComponent.createStack(Items.POTION, Potions.WATER)));
                 player.incrementStat(Stats.USE_CAULDRON);
                 player.incrementStat(Stats.USED.getOrCreateStat(item));
-                LeveledCauldronBlock.decrementFluidLevel(state, world, pos);
+                SinkCounterBlock.decrementFluidLevel(state, world, pos);
                 world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 world.emitGameEvent(null, GameEvent.FLUID_PICKUP, pos);
             }
 
             return ItemActionResult.success(world.isClient);
         });
-        map2.put(Items.POTION, (SinkBehavior)(state, world, pos, player, hand, stack) -> {
-            if ((Integer)state.get(LeveledCauldronBlock.LEVEL) == 3) {
+        map2.put(Items.POTION, (state, world, pos, player, hand, stack) -> {
+            if (state.get(ModProperties.FILLED_LEVEL_0_3) == 3) {
                 return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
             } else {
                 PotionContentsComponent potionContentsComponent = stack.get(DataComponentTypes.POTION_CONTENTS);
                 if (potionContentsComponent != null && potionContentsComponent.matches(Potions.WATER)) {
                     if (!world.isClient) {
                         player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.GLASS_BOTTLE)));
-                        player.incrementStat(Stats.USE_CAULDRON);
                         player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
-                        world.setBlockState(pos, state.cycle(LeveledCauldronBlock.LEVEL));
+                        SinkCounterBlock.incrementFluidLevel(state, world, pos);
                         world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                         world.emitGameEvent(null, GameEvent.FLUID_PLACE, pos);
                     }
-
                     return ItemActionResult.success(world.isClient);
                 } else {
                     return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
@@ -284,39 +224,13 @@ public interface SinkBehavior {
         map2.put(Items.PURPLE_SHULKER_BOX, CLEAN_SHULKER_BOX);
         map2.put(Items.RED_SHULKER_BOX, CLEAN_SHULKER_BOX);
         map2.put(Items.YELLOW_SHULKER_BOX, CLEAN_SHULKER_BOX);
-        Map<Item, SinkBehavior> map3 = LAVA_CAULDRON_BEHAVIOR.map();
-        map3.put(
-                Items.BUCKET,
-                (SinkBehavior)(state, world, pos, player, hand, stack) -> emptyCauldron(
-                        state, world, pos, player, hand, stack, new ItemStack(Items.LAVA_BUCKET), statex -> true, SoundEvents.ITEM_BUCKET_FILL_LAVA
-                )
-        );
-        registerBucketBehavior(map3);
-        Map<Item, SinkBehavior> map4 = POWDER_SNOW_CAULDRON_BEHAVIOR.map();
-        map4.put(
-                Items.BUCKET,
-                (SinkBehavior)(state, world, pos, player, hand, stack) -> emptyCauldron(
-                        state,
-                        world,
-                        pos,
-                        player,
-                        hand,
-                        stack,
-                        new ItemStack(Items.POWDER_SNOW_BUCKET),
-                        statex -> (Integer)statex.get(LeveledCauldronBlock.LEVEL) == 3,
-                        SoundEvents.ITEM_BUCKET_FILL_POWDER_SNOW
-                )
-        );
-        registerBucketBehavior(map4);
     }
 
     /**
      * Registers the behavior for filled buckets in the specified behavior map.
      */
     static void registerBucketBehavior(Map<Item, SinkBehavior> behavior) {
-        behavior.put(Items.LAVA_BUCKET, FILL_WITH_LAVA);
         behavior.put(Items.WATER_BUCKET, FILL_WITH_WATER);
-        behavior.put(Items.POWDER_SNOW_BUCKET, FILL_WITH_POWDER_SNOW);
     }
 
     /**
@@ -353,7 +267,7 @@ public interface SinkBehavior {
                 player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, output));
                 player.incrementStat(Stats.USE_CAULDRON);
                 player.incrementStat(Stats.USED.getOrCreateStat(item));
-                world.setBlockState(pos, Blocks.CAULDRON.getDefaultState());
+                world.setBlockState(pos, state.with(ModProperties.FILLED_LEVEL_0_3, 0));
                 world.playSound(null, pos, soundEvent, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 world.emitGameEvent(null, GameEvent.FLUID_PICKUP, pos);
             }
@@ -378,7 +292,7 @@ public interface SinkBehavior {
      * @param pos the cauldron's position
      * @param world the world where the cauldron is located
      */
-    static ItemActionResult fillCauldron(World world, BlockPos pos, PlayerEntity player, Hand hand, ItemStack stack, BlockState state, SoundEvent soundEvent) {
+    static ItemActionResult fillSink(World world, BlockPos pos, PlayerEntity player, Hand hand, ItemStack stack, BlockState state, SoundEvent soundEvent) {
         if (!world.isClient) {
             Item item = stack.getItem();
             player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.BUCKET)));
@@ -392,6 +306,6 @@ public interface SinkBehavior {
         return ItemActionResult.success(world.isClient);
     }
 
-    public static record SinkBehaviorMap(String name, Map<Item, SinkBehavior> map) {
+    record SinkBehaviorMap(String name, Map<Item, SinkBehavior> map) {
     }
 }

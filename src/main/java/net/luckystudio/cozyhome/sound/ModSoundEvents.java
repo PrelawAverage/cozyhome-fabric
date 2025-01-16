@@ -15,6 +15,8 @@ public class ModSoundEvents {
     public static final SoundEvent GRANDFATHER_CLOCK_MIDNIGHT = registerSoundEvent("grandfather_clock_midnight");
     public static final SoundEvent LIGHT_WATER_FLOW = registerSoundEvent("light_water_flow");
     public static final SoundEvent SPLASH = registerSoundEvent("splash");
+    public static final SoundEvent SINK_TOGGLE = registerSoundEvent("sink_toggle");
+    public static final SoundEvent RUNNING_WATER = registerSoundEvent("running_water");
 
     // Block Sound Group
 //    public static final BlockSoundGroup EXAMPLE = new BlockSoundGroup(1,1,

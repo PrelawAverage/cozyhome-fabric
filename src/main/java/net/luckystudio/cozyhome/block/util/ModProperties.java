@@ -28,6 +28,7 @@ public class ModProperties {
     public static final BooleanProperty TUCKED = BooleanProperty.of("tucked");
 
     public static final IntProperty FILLED_LEVEL_0_3 = IntProperty.of("level", 0, 3);
+    public static final IntProperty NEXT_LEVEL = IntProperty.of("next_level", 0, 20);
 
     public static float setSeatRotationFromFacing(BlockState state) {
         Direction facing = state.get(HorizontalFacingBlock.FACING);

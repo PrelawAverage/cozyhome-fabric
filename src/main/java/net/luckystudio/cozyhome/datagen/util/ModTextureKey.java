@@ -8,4 +8,5 @@ public class ModTextureKey {
     public static final TextureKey EXTRA = TextureKey.of("extra");
     public static final TextureKey OPEN = TextureKey.of("open");
     public static final TextureKey CLOSED = TextureKey.of("closed");
+    public static final TextureKey LIQUID = TextureKey.of("liquid");
 }

@@ -4,11 +4,7 @@ import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.component.ComponentMap;
 import net.minecraft.component.type.DyedColorComponent;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
-
-import java.util.List;
 
 public class DyeableCushionItem extends CushionItem {
     public DyeableCushionItem(Settings settings) {
@@ -24,13 +20,6 @@ public class DyeableCushionItem extends CushionItem {
     @Override
     public ComponentMap getComponents() {
         return super.getComponents();
-    }
-
-    @Override
-    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        super.appendTooltip(stack, context, tooltip, type);
-        tooltip.add(ScreenTexts.EMPTY);
-        tooltip.add(Text.translatable("tooltip.cozyhome.block.dyeable"));
     }
 
     @Override

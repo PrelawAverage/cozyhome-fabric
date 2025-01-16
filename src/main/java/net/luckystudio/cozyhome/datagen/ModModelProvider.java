@@ -435,20 +435,71 @@ public class ModModelProvider extends FabricModelProvider {
                 .put(ModTextureKey.INNER_SIDE, CozyHome.id("block/dye_vat/dye_vat_inner_side"))
                 .put(ModTextureKey.INNER_BOTTOM, CozyHome.id("block/dye_vat/dye_vat_inner_bottom"))
                 .put(TextureKey.PARTICLE, breakParticle);
+        TextureMap waterTexture = new TextureMap()
+                .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_sink", "") + "_sink_top"))
+                .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_sink", "") + "_side"))
+                .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_sink", "") + "_bottom"))
+                .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_sink", "") + "_front"))
+                .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_sink", "") + "_back"))
+                .put(ModTextureKey.EXTRA, CozyHome.id("block/dye_vat/dye_vat_faucet"))
+                .put(ModTextureKey.INNER_SIDE, CozyHome.id("block/dye_vat/dye_vat_inner_side"))
+                .put(ModTextureKey.INNER_BOTTOM, CozyHome.id("block/dye_vat/dye_vat_inner_bottom"))
+                .put(ModTextureKey.LIQUID, CozyHome.id("block/small_water_still"))
+                .put(TextureKey.PARTICLE, breakParticle);
         Identifier sinkCounterModelID = ModModels.SINK_COUNTER.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
+        Identifier water1CounterModelID = ModModels.SINK_COUNTER_1.upload(block, waterTexture, blockStateModelGenerator.modelCollector);
+        Identifier water2CounterModelID = ModModels.SINK_COUNTER_2.upload(block, waterTexture, blockStateModelGenerator.modelCollector);
+        Identifier water3CounterModelID = ModModels.SINK_COUNTER_3.upload(block, waterTexture, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
-                .coordinate(BlockStateVariantMap.create(Properties.HORIZONTAL_FACING)
-                        .register(Direction.NORTH, BlockStateVariant.create()
+                .coordinate(BlockStateVariantMap.create(Properties.HORIZONTAL_FACING, ModProperties.FILLED_LEVEL_0_3)
+                        .register(Direction.NORTH, 0, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, sinkCounterModelID)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(Direction.EAST, BlockStateVariant.create()
+                        .register(Direction.EAST, 0, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, sinkCounterModelID)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R270))
-                        .register(Direction.SOUTH, BlockStateVariant.create()
+                        .register(Direction.SOUTH, 0, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, sinkCounterModelID))
-                        .register(Direction.WEST, BlockStateVariant.create()
+                        .register(Direction.WEST, 0, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, sinkCounterModelID)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))));
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+
+                        .register(Direction.NORTH, 1, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, water1CounterModelID)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.EAST, 1, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, water1CounterModelID)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.SOUTH, 1, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, water1CounterModelID))
+                        .register(Direction.WEST, 1, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, water1CounterModelID)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+
+                        .register(Direction.NORTH, 2, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, water2CounterModelID)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.EAST, 2, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, water2CounterModelID)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.SOUTH, 2, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, water2CounterModelID))
+                        .register(Direction.WEST, 2, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, water2CounterModelID)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+
+                        .register(Direction.NORTH, 3, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, water3CounterModelID)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                        .register(Direction.EAST, 3, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, water3CounterModelID)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.SOUTH, 3, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, water3CounterModelID))
+                        .register(Direction.WEST, 3, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, water3CounterModelID)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                ));
     }
 
     public final void registerTable(BlockStateModelGenerator blockStateModelGenerator, Block block, TableTypes tableTypes, Identifier breakParticle) {

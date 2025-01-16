@@ -4,6 +4,7 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.block.*;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.math.BlockPos;
@@ -15,18 +16,7 @@ import net.minecraft.world.World;
 
 // Copied from net.minecraft.block.TorchBlock and SporeBlossomBlock
 public class CrimsonLampBlock extends AbstractLampBlock {
-    protected static final MapCodec<SimpleParticleType> PARTICLE_TYPE_CODEC = Registries.PARTICLE_TYPE
-            .getCodec()
-            .<SimpleParticleType>comapFlatMap(
-                    particleType -> particleType instanceof SimpleParticleType simpleParticleType
-                            ? DataResult.success(simpleParticleType)
-                            : DataResult.error(() -> "Not a SimpleParticleType: " + particleType),
-                    particleType -> particleType
-            )
-            .fieldOf("particle_options");
-    public static final MapCodec<CrimsonLampBlock> CODEC = RecordCodecBuilder.mapCodec(
-            instance -> instance.group(PARTICLE_TYPE_CODEC.forGetter(block -> block.particle), createSettingsCodec()).apply(instance, CrimsonLampBlock::new)
-    );
+    public static final MapCodec<CrimsonLampBlock> CODEC = createCodec(CrimsonLampBlock::new);
     public static final VoxelShape TOP_PIECE = Block.createCuboidShape(2, 8, 2, 14, 14, 14);
     public static final VoxelShape POT = Block.createCuboidShape(4, 0, 4, 12, 6, 12);
 
@@ -34,11 +24,9 @@ public class CrimsonLampBlock extends AbstractLampBlock {
     public static final VoxelShape TOP_SHAPE = VoxelShapes.union(TOP_PIECE, Block.createCuboidShape(5, 0, 5, 11, 8, 11));
     public static final VoxelShape MIDDLE_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 16, 11);
     public static final VoxelShape BOTTOM_SHAPE = VoxelShapes.union(POT, Block.createCuboidShape(5, 2, 5, 11, 16, 11));
-    protected final SimpleParticleType particle;
 
-    public CrimsonLampBlock(SimpleParticleType particle, Settings settings) {
+    public CrimsonLampBlock(Settings settings) {
         super(settings);
-        this.particle = particle;
     }
 
     @Override
@@ -65,7 +53,7 @@ public class CrimsonLampBlock extends AbstractLampBlock {
             double d = (double) i + random.nextDouble();
             double e = (double) j + 0.7;
             double f = (double) k + random.nextDouble();
-            world.addParticle(this.particle, d, e, f, 0.0, 0.0, 0.0);
+            world.addParticle(ParticleTypes.CRIMSON_SPORE, d, e, f, 0.0, 0.0, 0.0);
         }
     }
 }
