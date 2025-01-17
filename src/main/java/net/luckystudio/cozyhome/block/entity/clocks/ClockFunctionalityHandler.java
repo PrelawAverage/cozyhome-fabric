@@ -9,6 +9,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
 /**
@@ -73,7 +74,7 @@ public class ClockFunctionalityHandler {
     public static void handleGrandfatherClock(World world, BlockPos pos, BlockState state, ClockBlock blockEntity, float pendulumAmplitude) {
         long worldTime = blockEntity.getWorld().getTimeOfDay() % 24000;
 
-        if (worldTime == 18000) {
+        if (worldTime == 18000 && world.getGameRules().getBoolean(GameRules.DO_DAYLIGHT_CYCLE)) {
             world.setBlockState(pos, state.with(Properties.TRIGGERED, true));
             if (state.getBlock() == ModBlocks.OMINOUS_GRANDFATHER_CLOCK) {
                 world.playSound(
