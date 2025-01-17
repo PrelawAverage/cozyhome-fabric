@@ -3,6 +3,8 @@ package net.luckystudio.cozyhome.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.luckystudio.cozyhome.block.ModBlocks;
+import net.luckystudio.cozyhome.datagen.util.ModTags;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 
@@ -15,6 +17,23 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+
+        getOrCreateTagBuilder(ModTags.Blocks.CAN_TUCK_UNDER)
+                .add(Blocks.SCAFFOLDING)
+                .add(ModBlocks.OAK_TABLE)
+                .add(ModBlocks.SPRUCE_TABLE)
+                .add(ModBlocks.BIRCH_TABLE)
+                .add(ModBlocks.JUNGLE_TABLE)
+                .add(ModBlocks.ACACIA_TABLE)
+                .add(ModBlocks.DARK_OAK_TABLE)
+                .add(ModBlocks.MANGROVE_TABLE)
+                .add(ModBlocks.CHERRY_TABLE)
+                .add(ModBlocks.BAMBOO_TABLE)
+                .add(ModBlocks.CRIMSON_TABLE)
+                .add(ModBlocks.WARPED_TABLE)
+                .add(ModBlocks.UNDEAD_TABLE)
+                .add(ModBlocks.OMINOUS_TABLE)
+        ;
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 // COUNTERS

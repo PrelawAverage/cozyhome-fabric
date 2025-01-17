@@ -149,7 +149,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDyedBlockDrop(ModBlocks.IRON_LAMP);
         addDyedBlockDrop(ModBlocks.GLASS_LAMP);
         addDyedBlockDrop(ModBlocks.UNDEAD_LAMP);
-        addDyedBlockDrop(ModBlocks.OMINOUS_LAMP);
+        addDrop(ModBlocks.OMINOUS_LAMP);
 
         // SOFA
         addDyedBlockDrop(ModBlocks.OAK_SOFA);

@@ -16,6 +16,7 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
@@ -64,6 +65,20 @@ public class SinkCounterBlock extends Block {
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return getShape(state);
+    }
+
+    private VoxelShape getShape(BlockState state) {
+        Direction direction = state.get(FACING);
+        return VoxelShapes.combine(
+                VoxelShapes.union(COUNTER_TOP, Block.createCuboidShape(
+                        direction == Direction.EAST ? 2 : 0,
+                        0,
+                        direction == Direction.SOUTH ? 2 : 0,
+                        direction == Direction.WEST ? 14 : 16,
+                        12,
+                        direction == Direction.NORTH ? 14 : 16)),
+                Block.createCuboidShape(3, 2, 3, 13, 16, 13),
+                BooleanBiFunction.ONLY_FIRST);
     }
 
     @Override
@@ -136,6 +151,7 @@ public class SinkCounterBlock extends Block {
             world.scheduleBlockTick(pos, this, 1);
             return ActionResult.SUCCESS;
         }
+        player.sendMessage(Text.translatable("message.cozyhome.needs_water"), true);
         return ActionResult.CONSUME;
     }
 
@@ -162,20 +178,6 @@ public class SinkCounterBlock extends Block {
 
     private void updateNeighbors(World world, BlockPos pos) {
         world.updateNeighborsAlways(pos, this);
-    }
-
-    private VoxelShape getShape(BlockState state) {
-        Direction direction = state.get(FACING);
-        return VoxelShapes.combine(
-                VoxelShapes.union(COUNTER_TOP, Block.createCuboidShape(
-                        direction == Direction.EAST ? 2 : 0,
-                        0,
-                        direction == Direction.SOUTH ? 2 : 0,
-                        direction == Direction.WEST ? 14 : 16,
-                        12,
-                        direction == Direction.NORTH ? 14 : 16)),
-                Block.createCuboidShape(3, 2, 3, 13, 16, 13),
-                BooleanBiFunction.ONLY_FIRST);
     }
 
     @Override

@@ -3,6 +3,7 @@ package net.luckystudio.cozyhome.block.custom;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.sun.jna.platform.win32.OaIdl;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import net.luckystudio.cozyhome.block.entity.ChairBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModProperties;
@@ -128,11 +129,11 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock, Wate
 
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (world.isClient) return ItemActionResult.SUCCESS;
         // Check if the block at the given position has an ItemRackBlockEntity associated with it.
         if (world.getBlockEntity(pos) instanceof ChairBlockEntity chairBlockEntity) {
             // Get the item stack that is currently stored in the block
             ItemStack storedItem = chairBlockEntity.getStack();
-
             // Check if the item in hand is a valid tool or weapon.
             if (stack.getItem() instanceof CushionItem) {
                 // If the stack is not empty, and the rack is either empty or can accept the item (same type and enough space),
@@ -199,16 +200,21 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock, Wate
                     // Return a success result
                     return ItemActionResult.SUCCESS;
                 }
-            } else if (player.isSneaking()) {
-                // Call tuckable logic or fallback to super
-                TuckableBlock.tryTuck(state, world, pos, player);
-                return ItemActionResult.SUCCESS;
-            } else {
-                return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
             }
         }
         // If the block at the given position doesn't have a block entity (ItemRackBlockEntity), skip default interaction.
-        return ItemActionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    @Override
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        if (world.isClient) return ActionResult.SUCCESS;
+         if (player.isSneaking() || state.get(TUCKED)) {
+            // Call tuckable logic or fallback to super
+            TuckableBlock.toggleTuck(state, world, pos, player);
+            return ActionResult.SUCCESS;
+        }
+         return super.onUse(state, world, pos, player, hit);
     }
 
     public enum Type implements ChairType {

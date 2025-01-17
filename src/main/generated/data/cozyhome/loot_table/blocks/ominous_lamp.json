@@ -11,15 +11,6 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "function": "minecraft:copy_components",
-              "include": [
-                "minecraft:dyed_color"
-              ],
-              "source": "block_entity"
-            }
-          ],
           "name": "cozyhome:ominous_lamp"
         }
       ],

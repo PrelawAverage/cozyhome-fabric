@@ -60,7 +60,6 @@ public class FallingLiquidBlock extends Block {
     @Override
     protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         super.scheduledTick(state, world, pos, random);
-        System.out.println("Scheduled tick");
         if (!canStay(world, pos)) {
             world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
         } else if (!ModBlockUtilities.isEntityObstructing(world, pos) && ModBlockUtilities.canPlaceBelow(world, pos)) {
