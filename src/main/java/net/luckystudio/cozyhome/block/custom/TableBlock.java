@@ -26,6 +26,7 @@ public class TableBlock extends AbstractHorizontalConnectingBlock implements Wat
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         VoxelShape shape = TABLE_TOP;
+        // Added lower part of the table.
         shape = VoxelShapes.union(shape, Block.createCuboidShape(
                 state.get(WEST) ? 0 : 1,
                 12,
@@ -34,6 +35,7 @@ public class TableBlock extends AbstractHorizontalConnectingBlock implements Wat
                 14,
                 state.get(SOUTH) ? 16 : 15));
 
+        // Adding legs to the table.
         if (state.get(NORTH) && state.get(WEST) && !state.get(NORTH_WEST) || !state.get(NORTH) && !state.get(WEST)) shape = VoxelShapes.union(shape, NORTH_WEST_LEG);
         if (state.get(NORTH) && state.get(EAST) && !state.get(NORTH_EAST) || !state.get(NORTH) && !state.get(EAST)) shape = VoxelShapes.union(shape, NORTH_EAST_LEG);
         if (state.get(SOUTH) && state.get(WEST) && !state.get(SOUTH_WEST) || !state.get(SOUTH) && !state.get(WEST)) shape = VoxelShapes.union(shape, SOUTH_WEST_LEG);

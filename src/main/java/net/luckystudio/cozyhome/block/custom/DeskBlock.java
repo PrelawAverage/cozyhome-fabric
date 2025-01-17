@@ -1,7 +1,6 @@
 package net.luckystudio.cozyhome.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.AdvancedHorizontalLinearConnectionBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.ConnectingBlock;
@@ -14,6 +13,7 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -31,87 +31,12 @@ public class DeskBlock extends Block implements Waterloggable, ConnectingBlock {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
-    public static final VoxelShape DESK_TOP_PART = Block.createCuboidShape(0, 12, 0, 16, 16, 16);
-
-    public static final VoxelShape DESK_NORTH_SHAPE = VoxelShapes.union(DESK_TOP_PART,
-            Block.createCuboidShape(12, 0, 12, 15, 12, 15),
-            Block.createCuboidShape(1, 0, 12, 4, 12, 15),
-            Block.createCuboidShape(12, 0, 1, 15, 12, 4),
-            Block.createCuboidShape(1, 0, 1, 4, 12, 4),
-            Block.createCuboidShape(1, 4, 4, 4, 12, 12),
-            Block.createCuboidShape(12, 4, 4, 15, 12, 12),
-            Block.createCuboidShape(4, 4, 1, 12, 12, 4));
-    public static final VoxelShape DESK_EAST_SHAPE = VoxelShapes.union(DESK_TOP_PART,
-            Block.createCuboidShape(1, 0, 12, 4, 12, 15),
-            Block.createCuboidShape(1, 0, 1, 4, 12, 4),
-            Block.createCuboidShape(12, 0, 12, 15, 12, 15),
-            Block.createCuboidShape(12, 0, 1, 15, 12, 4),
-            Block.createCuboidShape(4, 4, 1, 12, 12, 4),
-            Block.createCuboidShape(4, 4, 12, 12, 12, 15),
-            Block.createCuboidShape(12, 4, 4, 15, 12, 12));
-    public static final VoxelShape DESK_SOUTH_SHAPE = VoxelShapes.union(DESK_TOP_PART,
-            Block.createCuboidShape(1, 0, 1, 4, 12, 4),
-            Block.createCuboidShape(12, 0, 1, 15, 12, 4),
-            Block.createCuboidShape(1, 0, 12, 4, 12, 15),
-            Block.createCuboidShape(12, 0, 12, 15, 12, 15),
-            Block.createCuboidShape(12, 4, 4, 15, 12, 12),
-            Block.createCuboidShape(1, 4, 4, 4, 12, 12),
-            Block.createCuboidShape(4, 4, 12, 12, 12, 15));
-    public static final VoxelShape DESK_WEST_SHAPE = VoxelShapes.union(DESK_TOP_PART,
-            Block.createCuboidShape(12, 0, 1, 15, 12, 4),
-            Block.createCuboidShape(12, 0, 12, 15, 12, 15),
-            Block.createCuboidShape(1, 0, 1, 4, 12, 4),
-            Block.createCuboidShape(1, 0, 12, 4, 12, 15),
-            Block.createCuboidShape(4, 4, 12, 12, 12, 15),
-            Block.createCuboidShape(4, 4, 1, 12, 12, 4),
-            Block.createCuboidShape(1, 4, 4, 4, 12, 12));
-
-    public static final VoxelShape DESK_NORTH_LEFT_SHAPE = VoxelShapes.union(DESK_TOP_PART,
-            Block.createCuboidShape(1, 0, 12, 4, 12, 15),
-            Block.createCuboidShape(1, 0, 1, 4, 12, 4),
-            Block.createCuboidShape(1, 4, 4, 4, 12, 12),
-            Block.createCuboidShape(4, 4, 1, 16, 12, 4));
-    public static final VoxelShape DESK_EAST_LEFT_SHAPE = VoxelShapes.union(DESK_TOP_PART,
-            Block.createCuboidShape(1, 0, 1, 4, 12, 4),
-            Block.createCuboidShape(12, 0, 1, 15, 12, 4),
-            Block.createCuboidShape(4, 4, 1, 12, 12, 4),
-            Block.createCuboidShape(12, 4, 4, 15, 12, 16));
-    public static final VoxelShape DESK_SOUTH_LEFT_SHAPE = VoxelShapes.union(DESK_TOP_PART,
-            Block.createCuboidShape(12, 0, 1, 15, 12, 4),
-            Block.createCuboidShape(12, 0, 12, 15, 12, 15),
-            Block.createCuboidShape(12, 4, 4, 15, 12, 12),
-            Block.createCuboidShape(0, 4, 12, 12, 12, 15));
-    public static final VoxelShape DESK_WEST_LEFT_SHAPE = VoxelShapes.union(DESK_TOP_PART,
-            Block.createCuboidShape(12, 0, 12, 15, 12, 15),
-            Block.createCuboidShape(1, 0, 12, 4, 12, 15),
-            Block.createCuboidShape(4, 4, 12, 12, 12, 15),
-            Block.createCuboidShape(1, 4, 0, 4, 12, 12));
-
-    public static final VoxelShape DESK_NORTH_RIGHT_SHAPE = VoxelShapes.union(DESK_TOP_PART,
-            Block.createCuboidShape(12, 0, 12, 15, 12, 15),
-            Block.createCuboidShape(12, 0, 1, 15, 12, 4),
-            Block.createCuboidShape(12, 4, 4, 15, 12, 12),
-            Block.createCuboidShape(0, 4, 1, 12, 12, 4));
-    public static final VoxelShape DESK_EAST_RIGHT_SHAPE = VoxelShapes.union(DESK_TOP_PART,
-            Block.createCuboidShape(1, 0, 12, 4, 12, 15),
-            Block.createCuboidShape(12, 0, 12, 15, 12, 15),
-            Block.createCuboidShape(4, 4, 12, 12, 12, 15),
-            Block.createCuboidShape(12, 4, 0, 15, 12, 12));
-    public static final VoxelShape DESK_SOUTH_RIGHT_SHAPE = VoxelShapes.union(DESK_TOP_PART,
-            Block.createCuboidShape(1, 0, 1, 4, 12, 4),
-            Block.createCuboidShape(1, 0, 12, 4, 12, 15),
-            Block.createCuboidShape(1, 4, 4, 4, 12, 12),
-            Block.createCuboidShape(4, 4, 12, 16, 12, 15));
-    public static final VoxelShape DESK_WEST_RIGHT_SHAPE = VoxelShapes.union(DESK_TOP_PART,
-            Block.createCuboidShape(12, 0, 1, 15, 12, 4),
-            Block.createCuboidShape(1, 0, 1, 4, 12, 4),
-            Block.createCuboidShape(4, 4, 1, 12, 12, 4),
-            Block.createCuboidShape(1, 4, 4, 4, 12, 16));
-
-    public static final VoxelShape DESK_NORTH_MIDDLE_SHAPE = VoxelShapes.union(DESK_TOP_PART, Block.createCuboidShape(0, 4, 1, 16, 12, 4));
-    public static final VoxelShape DESK_EAST_MIDDLE_SHAPE = VoxelShapes.union(DESK_TOP_PART, Block.createCuboidShape(12, 4, 0, 15, 12, 16));
-    public static final VoxelShape DESK_SOUTH_MIDDLE_SHAPE = VoxelShapes.union(DESK_TOP_PART, Block.createCuboidShape(0, 4, 12, 16, 12, 15));
-    public static final VoxelShape DESK_WEST_MIDDLE_SHAPE = VoxelShapes.union(DESK_TOP_PART, Block.createCuboidShape(1, 4, 0, 4, 12, 16));
+    public static final VoxelShape DESK_TOP = Block.createCuboidShape(0, 12, 0, 16, 16, 16);
+    public static final VoxelShape DESK_BODY = Block.createCuboidShape(1, 4, 1, 15, 12, 15);
+    public static final VoxelShape NORTH_WEST_LEG_PIECE = Block.createCuboidShape(1, 0, 1, 4, 4, 4);
+    public static final VoxelShape SOUTH_EAST_LEG_PIECE = Block.createCuboidShape(12, 0, 12, 15, 4, 15);
+    public static final VoxelShape SOUTH_WEST_LEG_PIECE = Block.createCuboidShape(1, 0, 12, 4, 4, 15);
+    public static final VoxelShape NORTH_EAST_LEG_PIECE = Block.createCuboidShape(12, 0, 1, 15, 4, 4);
 
     public DeskBlock(Settings settings) {
         super(settings);
@@ -134,32 +59,94 @@ public class DeskBlock extends Block implements Waterloggable, ConnectingBlock {
     private VoxelShape getShape(BlockState state) {
         Direction direction = state.get(FACING);
         AdvancedHorizontalLinearConnectionBlock horz = state.get(HORIZONTAL_CONNECTION);
+        VoxelShape shape = VoxelShapes.union(DESK_TOP, DESK_BODY);
+
+        // Add the inner cutout based on the direction
+        shape = VoxelShapes.combineAndSimplify(shape, Block.createCuboidShape(
+                x1(direction, horz),
+                        0,
+                        z1(direction, horz),
+                        x2(direction, horz),
+                        12,
+                        z2(direction, horz)),
+                BooleanBiFunction.ONLY_FIRST);
+
+        // Adding legs and returning the shape.
+        return switch (horz) {
+            case SINGLE -> VoxelShapes.union(shape, NORTH_EAST_LEG_PIECE, NORTH_WEST_LEG_PIECE, SOUTH_EAST_LEG_PIECE, SOUTH_WEST_LEG_PIECE);
+            case LEFT, LEFT_DIFF, LEFT_DIFF_LEFT -> switch (direction) {
+                case NORTH -> VoxelShapes.union(shape, NORTH_WEST_LEG_PIECE, SOUTH_WEST_LEG_PIECE);
+                case SOUTH -> VoxelShapes.union(shape, NORTH_EAST_LEG_PIECE, SOUTH_EAST_LEG_PIECE);
+                case WEST -> VoxelShapes.union(shape, SOUTH_EAST_LEG_PIECE, SOUTH_WEST_LEG_PIECE);
+                default -> VoxelShapes.union(shape, NORTH_EAST_LEG_PIECE, NORTH_WEST_LEG_PIECE);
+            };
+            case RIGHT, RIGHT_DIFF, RIGHT_DIFF_RIGHT -> switch (direction) {
+                case NORTH -> VoxelShapes.union(shape, NORTH_EAST_LEG_PIECE, SOUTH_EAST_LEG_PIECE);
+                case SOUTH -> VoxelShapes.union(shape, NORTH_WEST_LEG_PIECE, SOUTH_WEST_LEG_PIECE);
+                case WEST -> VoxelShapes.union(shape, NORTH_WEST_LEG_PIECE, NORTH_EAST_LEG_PIECE);
+                default -> VoxelShapes.union(shape, SOUTH_WEST_LEG_PIECE, SOUTH_EAST_LEG_PIECE);
+            };
+            case MIDDLE, MIDDLE_DIFF -> shape;
+        };
+    }
+
+    private static int x1(Direction direction, AdvancedHorizontalLinearConnectionBlock horz) {
         return switch (direction) {
             case NORTH -> switch (horz) {
-                case LEFT -> DESK_NORTH_LEFT_SHAPE;
-                case MIDDLE -> DESK_NORTH_MIDDLE_SHAPE;
-                case RIGHT -> DESK_NORTH_RIGHT_SHAPE;
-                default -> DESK_NORTH_SHAPE;
-            };
-            case EAST -> switch (horz) {
-                case LEFT -> DESK_EAST_LEFT_SHAPE;
-                case MIDDLE -> DESK_EAST_MIDDLE_SHAPE;
-                case RIGHT -> DESK_EAST_RIGHT_SHAPE;
-                default -> DESK_EAST_SHAPE;
+                case RIGHT, RIGHT_DIFF, RIGHT_DIFF_RIGHT, MIDDLE, MIDDLE_DIFF -> 0;
+                default -> 4;
             };
             case SOUTH -> switch (horz) {
-                case LEFT -> DESK_SOUTH_LEFT_SHAPE;
-                case MIDDLE -> DESK_SOUTH_MIDDLE_SHAPE;
-                case RIGHT -> DESK_SOUTH_RIGHT_SHAPE;
-                default -> DESK_SOUTH_SHAPE;
+                case LEFT, LEFT_DIFF, LEFT_DIFF_LEFT, MIDDLE, MIDDLE_DIFF -> 0;
+                default -> 4;
+            };
+            case WEST -> 4;
+            default -> 0;
+        };
+    }
+
+    private static int z1(Direction direction, AdvancedHorizontalLinearConnectionBlock horz) {
+        return switch (direction) {
+            case EAST -> switch (horz) {
+                case RIGHT, RIGHT_DIFF, RIGHT_DIFF_RIGHT, MIDDLE, MIDDLE_DIFF -> 0;
+                default -> 4;
             };
             case WEST -> switch (horz) {
-                case LEFT -> DESK_WEST_LEFT_SHAPE;
-                case MIDDLE -> DESK_WEST_MIDDLE_SHAPE;
-                case RIGHT -> DESK_WEST_RIGHT_SHAPE;
-                default -> DESK_WEST_SHAPE;
+                case LEFT, LEFT_DIFF, LEFT_DIFF_LEFT, MIDDLE, MIDDLE_DIFF -> 0;
+                default -> 4;
             };
-            default -> throw new IllegalStateException("Unexpected value: " + FACING + " from " + CozyHome.MOD_ID);
+            case NORTH -> 4;
+            default -> 0;
+        };
+    }
+
+    private static int x2(Direction direction, AdvancedHorizontalLinearConnectionBlock horz) {
+        return switch (direction) {
+            case NORTH -> switch (horz) {
+                case LEFT, LEFT_DIFF, LEFT_DIFF_LEFT, MIDDLE, MIDDLE_DIFF -> 16;
+                default -> 12;
+            };
+            case SOUTH -> switch (horz) {
+                case RIGHT, RIGHT_DIFF, RIGHT_DIFF_RIGHT, MIDDLE, MIDDLE_DIFF -> 16;
+                default -> 12;
+            };
+            case EAST -> 12;
+            default -> 16;
+        };
+    }
+
+    private static int z2(Direction direction, AdvancedHorizontalLinearConnectionBlock horz) {
+        return switch (direction) {
+            case EAST -> switch (horz) {
+                case LEFT, LEFT_DIFF, LEFT_DIFF_LEFT, MIDDLE, MIDDLE_DIFF -> 16;
+                default -> 12;
+            };
+            case WEST -> switch (horz) {
+                case RIGHT, RIGHT_DIFF, RIGHT_DIFF_RIGHT, MIDDLE, MIDDLE_DIFF -> 16;
+                default -> 12;
+            };
+            case SOUTH -> 12;
+            default -> 16;
         };
     }
 
