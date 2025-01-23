@@ -14,6 +14,7 @@ import net.luckystudio.cozyhome.block.custom.FountainBlock;
 import net.luckystudio.cozyhome.block.custom.FountainSproutBlock;
 import net.luckystudio.cozyhome.block.custom.lamps.*;
 import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
+import net.luckystudio.cozyhome.block.util.interfaces.SinkBlock;
 import net.luckystudio.cozyhome.item.custom.DyedBlockItem;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
@@ -98,6 +99,10 @@ public class ModBlocks {
 
     private static Block createDrawer(Block block) {
         return new DrawerBlock(block.getDefaultState(), AbstractBlock.Settings.copy(block));
+    }
+
+    private static Block createSink(Block block) {
+        return new SinkBlock(AbstractBlock.Settings.copy(block).nonOpaque().requiresTool());
     }
 
     private static Block createFountain(float hardness, float resistance, BlockSoundGroup soundGroup) {
@@ -360,6 +365,9 @@ public class ModBlocks {
     public static final Block BAMBOO_WALL_MIRROR = registerBlock("bamboo_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
     public static final Block CRIMSON_WALL_MIRROR = registerBlock("crimson_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
     public static final Block WARPED_WALL_MIRROR = registerBlock("warped_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
+
+    // Sinks
+    public static final Block IRON_SINK = registerBlock("iron_sink", createSink(Blocks.IRON_BLOCK));
 
     // Fountains
     public static final Block STONE_BRICK_FOUNTAIN = registerBlock("stone_brick_fountain", createFountain(1.5f,6, BlockSoundGroup.STONE));
