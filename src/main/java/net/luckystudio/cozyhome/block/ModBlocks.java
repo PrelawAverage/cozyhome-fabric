@@ -14,7 +14,7 @@ import net.luckystudio.cozyhome.block.custom.FountainBlock;
 import net.luckystudio.cozyhome.block.custom.FountainSproutBlock;
 import net.luckystudio.cozyhome.block.custom.lamps.*;
 import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
-import net.luckystudio.cozyhome.block.util.interfaces.SinkBlock;
+import net.luckystudio.cozyhome.block.custom.SinkBlock;
 import net.luckystudio.cozyhome.item.custom.DyedBlockItem;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;

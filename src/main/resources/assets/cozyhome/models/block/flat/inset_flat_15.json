@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"particle": "cozyhome:block/inset_water_still",
-		"up": "cozyhome:block/inset_water_still"
+		"particle": "cozyhome:block/liquid/inset_water_still",
+		"up": "cozyhome:block/liquid/inset_water_still"
 	},
 	"elements": [
 		{

@@ -1,64 +1,141 @@
 {
-  "variants": {
-    "facing=east,level=0": {
-      "model": "cozyhome:block/birch_sink_counter",
-      "y": 270
+  "multipart": [
+    {
+      "apply": {
+        "model": "cozyhome:block/birch_sink_counter",
+        "y": 180
+      },
+      "when": {
+        "facing": "north"
+      }
     },
-    "facing=east,level=1": {
-      "model": "cozyhome:block/birch_sink_counter_1",
-      "y": 270
+    {
+      "apply": {
+        "model": "cozyhome:block/birch_sink_counter"
+      },
+      "when": {
+        "facing": "south"
+      }
     },
-    "facing=east,level=2": {
-      "model": "cozyhome:block/birch_sink_counter_2",
-      "y": 270
+    {
+      "apply": {
+        "model": "cozyhome:block/birch_sink_counter",
+        "y": 270
+      },
+      "when": {
+        "facing": "east"
+      }
     },
-    "facing=east,level=3": {
-      "model": "cozyhome:block/birch_sink_counter_3",
-      "y": 270
+    {
+      "apply": {
+        "model": "cozyhome:block/birch_sink_counter",
+        "y": 90
+      },
+      "when": {
+        "facing": "west"
+      }
     },
-    "facing=north,level=0": {
-      "model": "cozyhome:block/birch_sink_counter",
-      "y": 180
+    {
+      "apply": {
+        "model": "cozyhome:block/iron_faucet",
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "triggered": "false"
+      }
     },
-    "facing=north,level=1": {
-      "model": "cozyhome:block/birch_sink_counter_1",
-      "y": 180
+    {
+      "apply": {
+        "model": "cozyhome:block/iron_faucet"
+      },
+      "when": {
+        "facing": "south",
+        "triggered": "false"
+      }
     },
-    "facing=north,level=2": {
-      "model": "cozyhome:block/birch_sink_counter_2",
-      "y": 180
+    {
+      "apply": {
+        "model": "cozyhome:block/iron_faucet",
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "triggered": "false"
+      }
     },
-    "facing=north,level=3": {
-      "model": "cozyhome:block/birch_sink_counter_3",
-      "y": 180
+    {
+      "apply": {
+        "model": "cozyhome:block/iron_faucet",
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "triggered": "false"
+      }
     },
-    "facing=south,level=0": {
-      "model": "cozyhome:block/birch_sink_counter"
+    {
+      "apply": {
+        "model": "cozyhome:block/iron_faucet_on",
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "triggered": "true"
+      }
     },
-    "facing=south,level=1": {
-      "model": "cozyhome:block/birch_sink_counter_1"
+    {
+      "apply": {
+        "model": "cozyhome:block/iron_faucet_on"
+      },
+      "when": {
+        "facing": "south",
+        "triggered": "true"
+      }
     },
-    "facing=south,level=2": {
-      "model": "cozyhome:block/birch_sink_counter_2"
+    {
+      "apply": {
+        "model": "cozyhome:block/iron_faucet_on",
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "triggered": "true"
+      }
     },
-    "facing=south,level=3": {
-      "model": "cozyhome:block/birch_sink_counter_3"
+    {
+      "apply": {
+        "model": "cozyhome:block/iron_faucet_on",
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "triggered": "true"
+      }
     },
-    "facing=west,level=0": {
-      "model": "cozyhome:block/birch_sink_counter",
-      "y": 90
+    {
+      "apply": {
+        "model": "cozyhome:block/inset_water_11"
+      },
+      "when": {
+        "level": "1"
+      }
     },
-    "facing=west,level=1": {
-      "model": "cozyhome:block/birch_sink_counter_1",
-      "y": 90
+    {
+      "apply": {
+        "model": "cozyhome:block/inset_water_13"
+      },
+      "when": {
+        "level": "2"
+      }
     },
-    "facing=west,level=2": {
-      "model": "cozyhome:block/birch_sink_counter_2",
-      "y": 90
-    },
-    "facing=west,level=3": {
-      "model": "cozyhome:block/birch_sink_counter_3",
-      "y": 90
+    {
+      "apply": {
+        "model": "cozyhome:block/inset_water_15"
+      },
+      "when": {
+        "level": "3"
+      }
     }
-  }
+  ]
 }

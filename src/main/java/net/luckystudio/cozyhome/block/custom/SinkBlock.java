@@ -1,7 +1,6 @@
-package net.luckystudio.cozyhome.block.util.interfaces;
+package net.luckystudio.cozyhome.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.custom.counters.AbstractSinkBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -30,5 +29,16 @@ public class SinkBlock extends AbstractSinkBlock {
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return VoxelShapes.combine(SHAPE, Block.createCuboidShape(3, 10, 3, 13, 16, 13), BooleanBiFunction.ONLY_FIRST);
+    }
+
+    @Override
+    public float getWaterLevel(BlockState state) {
+        int level = state.get(LEVEL);
+        return switch (level) {
+            case 1 -> 0.688f;
+            case 2 -> 0.813f;
+            case 3 -> 0.938f;
+            default -> 0.125f;
+        };
     }
 }

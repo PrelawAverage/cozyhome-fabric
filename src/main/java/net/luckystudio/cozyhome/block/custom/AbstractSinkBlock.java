@@ -1,13 +1,12 @@
-package net.luckystudio.cozyhome.block.custom.counters;
+package net.luckystudio.cozyhome.block.custom;
 
-import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.util.ModProperties;
+import net.luckystudio.cozyhome.block.util.interfaces.LeveledWaterHoldingBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.SinkBehavior;
 import net.luckystudio.cozyhome.sound.ModSoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalFacingBlock;
-import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -25,20 +24,17 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemActionResult;
-import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
-public class AbstractSinkBlock extends Block {
+public class AbstractSinkBlock extends Block implements LeveledWaterHoldingBlock {
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final IntProperty LEVEL = ModProperties.FILLED_LEVEL_0_3;
     public static final IntProperty NEXT_LEVEL = ModProperties.NEXT_LEVEL;
@@ -91,16 +87,6 @@ public class AbstractSinkBlock extends Block {
         }
     }
 
-    private static float getWaterLevel(BlockState state) {
-        int level = state.get(LEVEL);
-        return switch (level) {
-            case 1 -> 0.438f;
-            case 2 -> 0.688f;
-            case 3 -> 0.938f;
-            default -> 0.125f;
-        };
-    }
-
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         SinkBehavior sinkBehavior = SinkBehavior.BASE.map().get(stack.getItem());
@@ -111,11 +97,16 @@ public class AbstractSinkBlock extends Block {
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (world.isClient) return ActionResult.SUCCESS;
         if (hasWaterToPull(state, world, pos)) {
-            this.togglePower(state, world, pos, player);
-            world.scheduleBlockTick(pos, this, 1);
-            return ActionResult.SUCCESS;
+            if (state.get(LEVEL) < 3) {
+                this.togglePower(state, world, pos, player);
+                world.scheduleBlockTick(pos, this, 1);
+                return ActionResult.SUCCESS;
+            } else {
+                player.sendMessage(Text.translatable("message.cozyhome.full"), true);
+            }
+        } else {
+            player.sendMessage(Text.translatable("message.cozyhome.needs_water"), true);
         }
-        player.sendMessage(Text.translatable("message.cozyhome.needs_water"), true);
         return ActionResult.CONSUME;
     }
 
@@ -168,5 +159,10 @@ public class AbstractSinkBlock extends Block {
         if (level < 3) {
             world.setBlockState(pos, state.with(LEVEL, level + 1), 3);
         }
+    }
+
+    @Override
+    public float getWaterLevel(BlockState state) {
+        return 0;
     }
 }

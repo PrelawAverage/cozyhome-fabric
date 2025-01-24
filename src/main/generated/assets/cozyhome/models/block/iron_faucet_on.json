@@ -1,0 +1,6 @@
+{
+  "parent": "cozyhome:block/faucet/faucet_on",
+  "textures": {
+    "all": "cozyhome:block/faucet/iron_faucet"
+  }
+}

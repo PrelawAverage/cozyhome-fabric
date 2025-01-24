@@ -1,6 +1,7 @@
 package net.luckystudio.cozyhome.block.custom.counters;
 
 import com.mojang.serialization.MapCodec;
+import net.luckystudio.cozyhome.block.custom.AbstractSinkBlock;
 import net.minecraft.block.*;
 import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.math.BlockPos;
@@ -38,5 +39,16 @@ public class SinkCounterBlock extends AbstractSinkBlock {
                         direction == Direction.NORTH ? 14 : 16)),
                 Block.createCuboidShape(3, 2, 3, 13, 16, 13),
                 BooleanBiFunction.ONLY_FIRST);
+    }
+
+    @Override
+    public float getWaterLevel(BlockState state) {
+        int level = state.get(LEVEL);
+        return switch (level) {
+            case 1 -> 0.438f;
+            case 2 -> 0.688f;
+            case 3 -> 0.938f;
+            default -> 0.125f;
+        };
     }
 }
