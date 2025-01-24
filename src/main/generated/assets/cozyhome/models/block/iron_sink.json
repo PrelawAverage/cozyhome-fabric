@@ -1,0 +1,10 @@
+{
+  "parent": "cozyhome:block/sink/sink",
+  "textures": {
+    "bottom": "cozyhome:block/sink/iron_sink_bottom",
+    "extra": "cozyhome:block/sink/iron_faucet",
+    "particle": "cozyhome:block/break/iron_furniture",
+    "side": "cozyhome:block/sink/iron_sink_side",
+    "top": "cozyhome:block/sink/iron_sink_top"
+  }
+}

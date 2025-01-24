@@ -1,6 +1,8 @@
 package net.luckystudio.cozyhome.block.renderer.blockrenders;
 
 import com.google.common.collect.Maps;
+import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
+import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.entity.ChairBlockEntity;
 import net.luckystudio.cozyhome.block.custom.ChairBlock;
@@ -14,10 +16,14 @@ import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.block.FluidRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
+import net.minecraft.client.texture.Sprite;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.component.type.DyedColorComponent;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.Item;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
@@ -85,6 +91,9 @@ public class ChairBlockEntityRenderer implements BlockEntityRenderer<ChairBlockE
         RenderLayer chairRenderLayer = getChairRenderLayer(chairType, blockState);
         VertexConsumer chairVertexConsumer = vertexConsumers.getBuffer(chairRenderLayer);
         chair.render(matrices, chairVertexConsumer, light, overlay);
+
+        FluidState fluidState = Fluids.WATER.getDefaultState();
+        FluidRenderHandler fluidRenderer = FluidRenderHandlerRegistry.INSTANCE.get(fluidState.getFluid());
 
         if (!entity.isEmpty()) {
             Item item = entity.getStack().getItem();

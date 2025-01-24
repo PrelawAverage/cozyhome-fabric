@@ -203,6 +203,20 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     // Criterion needs to be fixed to take in a tag instead of a singular item, instead it should be tag planks
+    public static void offerSinkRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2) {
+        ShapedRecipeJsonBuilder.create(
+                        RecipeCategory.BUILDING_BLOCKS,
+                        output, 1)
+                .pattern("@@ ")
+                .pattern("# #")
+                .pattern("###")
+                .input('@', input1)
+                .input('#', input2)
+                .criterion(hasItem(input2), conditionsFromItem(input2))
+                .offerTo(exporter);
+    }
+
+    // Criterion needs to be fixed to take in a tag instead of a singular item, instead it should be tag planks
     public static void offerLargeStumpRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
         ShapedRecipeJsonBuilder.create(
                         RecipeCategory.BUILDING_BLOCKS,
@@ -334,6 +348,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerWallClockRecipe(exporter, ModBlocks.BAMBOO_WALL_CLOCK, Blocks.BAMBOO_SLAB);
         offerWallClockRecipe(exporter, ModBlocks.CRIMSON_WALL_CLOCK, Blocks.CRIMSON_SLAB);
         offerWallClockRecipe(exporter, ModBlocks.WARPED_WALL_CLOCK, Blocks.WARPED_SLAB);
+
+        offerSinkRecipe(exporter, ModBlocks.IRON_SINK, Items.IRON_NUGGET, Blocks.IRON_BARS);
 
         // Grandfather Clocks
         offerGrandfatherClockRecipe(exporter, ModBlocks.OAK_GRANDFATHER_CLOCK, ModBlocks.OAK_WALL_CLOCK, Blocks.OAK_PLANKS);

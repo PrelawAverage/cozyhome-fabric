@@ -155,4 +155,18 @@ public class AbstractSinkBlock extends Block {
     protected BlockState rotate(BlockState state, BlockRotation rotation) {
         return state.with(FACING, rotation.rotate(state.get(FACING)));
     }
+
+    public static void decreaseLevel(BlockState state, World world, BlockPos pos) {
+        int level = state.get(LEVEL);
+        if (level > 0) {
+            world.setBlockState(pos, state.with(LEVEL, level - 1), 3);
+        }
+    }
+
+    public static void increaseLevel(BlockState state, World world, BlockPos pos) {
+        int level = state.get(LEVEL);
+        if (level < 3) {
+            world.setBlockState(pos, state.with(LEVEL, level + 1), 3);
+        }
+    }
 }

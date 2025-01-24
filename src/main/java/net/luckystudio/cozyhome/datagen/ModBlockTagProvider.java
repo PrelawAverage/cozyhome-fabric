@@ -264,6 +264,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.UNDEAD_GRANDFATHER_CLOCK)
                 .add(ModBlocks.OMINOUS_GRANDFATHER_CLOCK)
 
+                // SINKS
+                .add(ModBlocks.IRON_SINK)
+
                 // CHIMNEY
                 .add(ModBlocks.STONE_BRICK_CHIMNEY)
                 .add(ModBlocks.MOSSY_STONE_BRICK_CHIMNEY)

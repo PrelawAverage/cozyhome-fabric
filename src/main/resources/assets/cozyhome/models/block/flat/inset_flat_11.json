@@ -1,0 +1,17 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "cozyhome:block/inset_water_still",
+		"up": "cozyhome:block/inset_water_still"
+	},
+	"elements": [
+		{
+			"from": [3, 11, 3],
+			"to": [13, 11, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 11, 8]},
+			"faces": {
+				"up": {"uv": [3, 3, 13, 13], "texture": "#up", "tintindex": 0}
+			}
+		}
+	]
+}

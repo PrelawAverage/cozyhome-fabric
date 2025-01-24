@@ -1,5 +1,5 @@
 {
-  "parent": "cozyhome:block/pane/template_pane_15",
+  "parent": "cozyhome:block/flat/flat_15",
   "textures": {
     "particle": "minecraft:block/ice",
     "up": "minecraft:block/ice"

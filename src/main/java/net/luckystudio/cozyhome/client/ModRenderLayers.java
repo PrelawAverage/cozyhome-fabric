@@ -123,7 +123,8 @@ public class ModRenderLayers {
                 ModBlocks.CHERRY_SINK_COUNTER,
                 ModBlocks.BAMBOO_SINK_COUNTER,
                 ModBlocks.CRIMSON_SINK_COUNTER,
-                ModBlocks.WARPED_SINK_COUNTER
+                ModBlocks.WARPED_SINK_COUNTER,
+                ModBlocks.IRON_SINK
         );
 
 //        // Blocks that can hold water or others

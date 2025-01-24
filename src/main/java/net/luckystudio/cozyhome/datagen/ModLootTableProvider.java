@@ -216,6 +216,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CRIMSON_WALL_MIRROR);
         addDrop(ModBlocks.WARPED_WALL_MIRROR);
 
+        // SINKS
+        addDrop(ModBlocks.IRON_SINK);
+
         // CHIMNEY
         addDrop(ModBlocks.STONE_BRICK_CHIMNEY);
         addDrop(ModBlocks.MOSSY_STONE_BRICK_CHIMNEY);

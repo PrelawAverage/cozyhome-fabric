@@ -14,10 +14,9 @@ import net.minecraft.world.BlockView;
 public class SinkBlock extends AbstractSinkBlock {
     public static final MapCodec<SinkBlock> CODEC = createCodec(SinkBlock::new);
 
-    public static final VoxelShape SHAPE = VoxelShapes.combineAndSimplify(
+    public static final VoxelShape SHAPE = VoxelShapes.union(
             Block.createCuboidShape(0, 14, 0, 16, 16, 16),
-            Block.createCuboidShape(1, 8, 1, 15, 14, 15),
-            BooleanBiFunction.AND);
+            Block.createCuboidShape(1, 8, 1, 15, 14, 15));
 
     public SinkBlock(Settings settings) {
         super(settings);
@@ -30,6 +29,6 @@ public class SinkBlock extends AbstractSinkBlock {
 
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPE;
+        return VoxelShapes.combine(SHAPE, Block.createCuboidShape(3, 10, 3, 13, 16, 13), BooleanBiFunction.ONLY_FIRST);
     }
 }

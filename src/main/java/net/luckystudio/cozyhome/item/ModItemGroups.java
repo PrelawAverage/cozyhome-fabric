@@ -209,6 +209,9 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CRIMSON_WALL_MIRROR);
                         entries.add(ModBlocks.WARPED_WALL_MIRROR);
 
+                        // SINKS
+                        entries.add(ModBlocks.IRON_SINK);
+
                         // Large Stump
                         entries.add(ModBlocks.OAK_LARGE_STUMP);
                         entries.add(ModBlocks.SPRUCE_LARGE_STUMP);

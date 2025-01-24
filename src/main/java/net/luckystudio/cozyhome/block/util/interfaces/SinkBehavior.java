@@ -3,6 +3,7 @@ package net.luckystudio.cozyhome.block.util.interfaces;
 import com.mojang.serialization.Codec;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import net.luckystudio.cozyhome.block.custom.counters.AbstractSinkBlock;
 import net.luckystudio.cozyhome.block.custom.counters.SinkCounterBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.minecraft.block.*;
@@ -57,7 +58,7 @@ public interface SinkBehavior {
                 ItemStack itemStack = stack.copyComponentsToNewStack(Blocks.SHULKER_BOX, 1);
                 player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, itemStack, false));
                 player.incrementStat(Stats.CLEAN_SHULKER_BOX);
-                SinkCounterBlock.decrementFluidLevel(state, world, pos);
+                AbstractSinkBlock.decreaseLevel(state, world, pos);
             }
 
             return ItemActionResult.success(world.isClient);
@@ -76,7 +77,7 @@ public interface SinkBehavior {
                 itemStack.set(DataComponentTypes.BANNER_PATTERNS, bannerPatternsComponent.withoutTopLayer());
                 player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, itemStack, false));
                 player.incrementStat(Stats.CLEAN_BANNER);
-                SinkCounterBlock.decrementFluidLevel(state, world, pos);
+                AbstractSinkBlock.decreaseLevel(state, world, pos);
             }
 
             return ItemActionResult.success(world.isClient);
@@ -95,7 +96,7 @@ public interface SinkBehavior {
             if (!world.isClient) {
                 stack.remove(DataComponentTypes.DYED_COLOR);
                 player.incrementStat(Stats.CLEAN_ARMOR);
-                SinkCounterBlock.decrementFluidLevel(state, world, pos);
+                AbstractSinkBlock.decreaseLevel(state, world, pos);
             }
 
             return ItemActionResult.success(world.isClient);
@@ -156,13 +157,15 @@ public interface SinkBehavior {
         );
         map2.put(Items.GLASS_BOTTLE, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
-                Item item = stack.getItem();
-                player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, PotionContentsComponent.createStack(Items.POTION, Potions.WATER)));
-                player.incrementStat(Stats.USE_CAULDRON);
-                player.incrementStat(Stats.USED.getOrCreateStat(item));
-                SinkCounterBlock.decrementFluidLevel(state, world, pos);
-                world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                world.emitGameEvent(null, GameEvent.FLUID_PICKUP, pos);
+                if (state.get(ModProperties.FILLED_LEVEL_0_3) > 0) {
+                    Item item = stack.getItem();
+                    player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, PotionContentsComponent.createStack(Items.POTION, Potions.WATER)));
+                    player.incrementStat(Stats.USE_CAULDRON);
+                    player.incrementStat(Stats.USED.getOrCreateStat(item));
+                    AbstractSinkBlock.decreaseLevel(state, world, pos);
+                    world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    world.emitGameEvent(null, GameEvent.FLUID_PICKUP, pos);
+                }
             }
 
             return ItemActionResult.success(world.isClient);
@@ -176,7 +179,7 @@ public interface SinkBehavior {
                     if (!world.isClient) {
                         player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.GLASS_BOTTLE)));
                         player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
-                        SinkCounterBlock.incrementFluidLevel(state, world, pos);
+                        AbstractSinkBlock.increaseLevel(state, world, pos);
                         world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                         world.emitGameEvent(null, GameEvent.FLUID_PLACE, pos);
                     }

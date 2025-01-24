@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-17T15:04:44.5395181	Cozy Home/Block Loot Tables
+// 1.21.1	2025-01-23T22:23:28.6892021	Cozy Home/Block Loot Tables
 267086018d7430bcde3b415ec63591a04bf473c2 data\cozyhome\loot_table\blocks\oak_wall_clock.json
 f162243053ab82d939924b44c6f1be71126c37c5 data\cozyhome\loot_table\blocks\bamboo_grandfather_clock.json
 ab4aabed3b63b83454e9690791bd8a5243389233 data\cozyhome\loot_table\blocks\acacia_wall_clock.json
@@ -39,6 +39,7 @@ ee4d30aaac5e6a9d1726158a6d7fcc98fe2ce223 data\cozyhome\loot_table\blocks\iron_ta
 376da7dc159e0ce7154b21434c842f755bb5dd93 data\cozyhome\loot_table\blocks\ominous_grandfather_clock.json
 4688f1795eff6c5983fc4dbf94bc22a210a0470c data\cozyhome\loot_table\blocks\spruce_lamp.json
 78d64ecaff98461f35ae0fa3016b48d803a031a3 data\cozyhome\loot_table\blocks\mangrove_sofa.json
+1c84e642fdf838397487ce366967601bd76c990b data\cozyhome\loot_table\blocks\iron_sink.json
 ba72dbd7127781de003e5b5debdad749f6984e8e data\cozyhome\loot_table\blocks\oak_chair.json
 3f308633c778019036a46efec61ee27d8e106969 data\cozyhome\loot_table\blocks\crimson_sofa.json
 ad6d9b6294b415c74ea29eef6286bb85e51e4ee0 data\cozyhome\loot_table\blocks\acacia_desk.json

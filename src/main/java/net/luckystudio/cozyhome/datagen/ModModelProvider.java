@@ -205,6 +205,8 @@ public class ModModelProvider extends FabricModelProvider {
         registerWallMirror(blockStateModelGenerator, ModBlocks.CRIMSON_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/nether_mirror"));
         registerWallMirror(blockStateModelGenerator, ModBlocks.WARPED_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/nether_mirror"));
 
+        registerSink(blockStateModelGenerator, ModBlocks.IRON_SINK, CozyHome.id("block/break/iron_furniture"));
+
         registerLargeStump(blockStateModelGenerator, ModBlocks.OAK_LARGE_STUMP, Identifier.of("oak_log"));
         registerLargeStump(blockStateModelGenerator, ModBlocks.SPRUCE_LARGE_STUMP, Identifier.of("spruce_log"));
         registerLargeStump(blockStateModelGenerator, ModBlocks.BIRCH_LARGE_STUMP, Identifier.of("birch_log"));
@@ -262,14 +264,23 @@ public class ModModelProvider extends FabricModelProvider {
     /**
      * Many blocks share models in them, but we can't register the shared models in the blockstate generator because it will cause a duplicate model error.
      * So we create a separate method to generate them here and call it at the beginning, for all to use.
+     *
+     * In order to use these models, we just simply call the Cozyhome.id(block).
      */
     public final void registerGenerals(BlockStateModelGenerator blockStateModelGenerator) {
-        Identifier waterModelId = ModModels.INSET_WATER_PANE.upload(
-                CozyHome.id("block/inset_water_pane"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/water_still")).put(TextureKey.PARTICLE, Identifier.ofVanilla("block/water_still")), blockStateModelGenerator.modelCollector);
-        Identifier lavaModelId = ModModels.INSET_LAVA_PANE.upload(
-                CozyHome.id("block/inset_lava_pane"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/lava_still")).put(TextureKey.PARTICLE, Identifier.ofVanilla("block/lava_still")), blockStateModelGenerator.modelCollector);
-        Identifier iceModelId = ModModels.INSET_ICE_PANE.upload(
-                CozyHome.id("block/inset_ice_pane"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/ice")).put(TextureKey.PARTICLE, Identifier.ofVanilla("block/ice")), blockStateModelGenerator.modelCollector);
+        Identifier waterModelId = ModModels.WATER_15.upload(
+                CozyHome.id("block/water_15"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/water_still")).put(TextureKey.PARTICLE, Identifier.ofVanilla("block/water_still")), blockStateModelGenerator.modelCollector);
+        Identifier lavaModelId = ModModels.LAVA_15.upload(
+                CozyHome.id("block/lava_15"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/lava_still")).put(TextureKey.PARTICLE, Identifier.ofVanilla("block/lava_still")), blockStateModelGenerator.modelCollector);
+        Identifier iceModelId = ModModels.ICE_15.upload(
+                CozyHome.id("block/ice_15"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/ice")).put(TextureKey.PARTICLE, Identifier.ofVanilla("block/ice")), blockStateModelGenerator.modelCollector);
+
+        Identifier insetWater15ModelId = ModModels.INSET_WATER_FLAT_15.upload(
+                CozyHome.id("block/inset_water_15"), new TextureMap().put(TextureKey.UP, CozyHome.id("block/liquid/inset_water_still")).put(TextureKey.PARTICLE, CozyHome.id("block/liquid/inset_water_still")), blockStateModelGenerator.modelCollector);
+        Identifier insetWater13ModelId = ModModels.INSET_WATER_FLAT_13.upload(
+                CozyHome.id("block/inset_water_13"), new TextureMap().put(TextureKey.UP, CozyHome.id("block/liquid/inset_water_still")).put(TextureKey.PARTICLE, CozyHome.id("block/liquid/inset_water_still")), blockStateModelGenerator.modelCollector);
+        Identifier insetWater11ModelId = ModModels.INSET_WATER_FLAT_11.upload(
+                CozyHome.id("block/inset_water_11"), new TextureMap().put(TextureKey.UP, CozyHome.id("block/liquid/inset_water_still")).put(TextureKey.PARTICLE, CozyHome.id("block/liquid/inset_water_still")), blockStateModelGenerator.modelCollector);
     }
 
     public final void registerBuiltinWithParticleAndParentedItemModel(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier particleSource, Identifier modelPath) {
@@ -812,11 +823,11 @@ public class ModModelProvider extends FabricModelProvider {
                 .with(When.create().set(Properties.NORTH, true).set(Properties.EAST, true).set(Properties.SOUTH, true).set(Properties.WEST, false),
                         BlockStateVariant.create().put(VariantSettings.MODEL, fountainSideModelID).put(VariantSettings.Y, VariantSettings.Rotation.R270))
                 .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.WATER),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_water_pane")))
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/water_15")))
                 .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.LAVA),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_lava_pane")))
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/lava_15")))
                 .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.ICE),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_ice_pane")))
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/ice_15")))
         );
     }
 
@@ -1265,6 +1276,35 @@ public class ModModelProvider extends FabricModelProvider {
                                 .put(VariantSettings.MODEL, wallMirrorBottomModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R270))
                 ));
+    }
+
+    public final void registerSink(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
+        TextureMap baseTextureMap = new TextureMap()
+                .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/sink/" + Registries.BLOCK.getId(block).getPath() + "_top"))
+                .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/sink/" + Registries.BLOCK.getId(block).getPath() + "_side"))
+                .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/sink/" + Registries.BLOCK.getId(block).getPath() + "_bottom"))
+                .put(ModTextureKey.EXTRA, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/sink/" + Registries.BLOCK.getId(block).getPath().replace("sink", "faucet")))
+                .put(TextureKey.PARTICLE, breakParticle);
+        Identifier baseModelId = ModModels.SINK.upload(block, baseTextureMap, blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(block)
+                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.NORTH),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, baseModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.SOUTH),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, baseModelId))
+                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.EAST),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, baseModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.WEST),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, baseModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 1),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_water_11")))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 2),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_water_13")))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 3),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_water_15")))
+        );
     }
 
     public final void registerLargeStump(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier baseBlock) {

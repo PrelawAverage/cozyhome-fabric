@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/flat/inset_flat_11",
+  "textures": {
+    "particle": "minecraft:block/water_still",
+    "up": "minecraft:block/water_still"
+  }
+}
