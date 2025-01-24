@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:red_nether_bricks"
+    },
+    "@": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "pattern": [
+    "@@ ",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyhome:red_nether_brick_sink"
+  }
+}

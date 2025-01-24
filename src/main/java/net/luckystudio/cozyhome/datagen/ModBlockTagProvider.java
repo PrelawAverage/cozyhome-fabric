@@ -265,6 +265,24 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.OMINOUS_GRANDFATHER_CLOCK)
 
                 // SINKS
+                .add(ModBlocks.STONE_BRICK_SINK)
+                .add(ModBlocks.MOSSY_STONE_BRICK_SINK)
+                .add(ModBlocks.GRANITE_SINK)
+                .add(ModBlocks.DIORITE_SINK)
+                .add(ModBlocks.ANDESITE_SINK)
+                .add(ModBlocks.DEEPSLATE_SINK)
+                .add(ModBlocks.CALCITE_SINK)
+                .add(ModBlocks.TUFF_SINK)
+                .add(ModBlocks.BRICK_SINK)
+                .add(ModBlocks.MUD_SINK)
+                .add(ModBlocks.SANDSTONE_SINK)
+                .add(ModBlocks.RED_SANDSTONE_SINK)
+                .add(ModBlocks.PRISMARINE_SINK)
+                .add(ModBlocks.NETHER_BRICK_SINK)
+                .add(ModBlocks.RED_NETHER_BRICK_SINK)
+                .add(ModBlocks.BLACKSTONE_SINK)
+                .add(ModBlocks.ENDSTONE_SINK)
+                .add(ModBlocks.PURPUR_SINK)
                 .add(ModBlocks.IRON_SINK)
 
                 // CHIMNEY

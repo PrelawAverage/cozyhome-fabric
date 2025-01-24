@@ -210,6 +210,23 @@ public class ModItemGroups {
                         entries.add(ModBlocks.WARPED_WALL_MIRROR);
 
                         // SINKS
+                        entries.add(ModBlocks.STONE_BRICK_SINK);
+                        entries.add(ModBlocks.MOSSY_STONE_BRICK_SINK);
+                        entries.add(ModBlocks.GRANITE_SINK);
+                        entries.add(ModBlocks.DIORITE_SINK);
+                        entries.add(ModBlocks.ANDESITE_SINK);
+                        entries.add(ModBlocks.DEEPSLATE_SINK);
+                        entries.add(ModBlocks.TUFF_SINK);
+                        entries.add(ModBlocks.BRICK_SINK);
+                        entries.add(ModBlocks.MUD_SINK);
+                        entries.add(ModBlocks.SANDSTONE_SINK);
+                        entries.add(ModBlocks.RED_SANDSTONE_SINK);
+                        entries.add(ModBlocks.PRISMARINE_SINK);
+                        entries.add(ModBlocks.NETHER_BRICK_SINK);
+                        entries.add(ModBlocks.RED_NETHER_BRICK_SINK);
+                        entries.add(ModBlocks.BLACKSTONE_SINK);
+                        entries.add(ModBlocks.ENDSTONE_SINK);
+                        entries.add(ModBlocks.PURPUR_SINK);
                         entries.add(ModBlocks.IRON_SINK);
 
                         // Large Stump

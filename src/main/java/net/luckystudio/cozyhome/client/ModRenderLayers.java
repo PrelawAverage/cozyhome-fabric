@@ -5,7 +5,6 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.luckystudio.cozyhome.block.ModBlocks;
-import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
 import net.luckystudio.cozyhome.item.ModItems;
 import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.client.color.world.BiomeColors;
@@ -124,6 +123,24 @@ public class ModRenderLayers {
                 ModBlocks.BAMBOO_SINK_COUNTER,
                 ModBlocks.CRIMSON_SINK_COUNTER,
                 ModBlocks.WARPED_SINK_COUNTER,
+                ModBlocks.STONE_BRICK_SINK,
+                ModBlocks.MOSSY_STONE_BRICK_SINK,
+                ModBlocks.GRANITE_SINK,
+                ModBlocks.DIORITE_SINK,
+                ModBlocks.ANDESITE_SINK,
+                ModBlocks.DEEPSLATE_SINK,
+                ModBlocks.CALCITE_SINK,
+                ModBlocks.TUFF_SINK,
+                ModBlocks.BRICK_SINK,
+                ModBlocks.MUD_SINK,
+                ModBlocks.SANDSTONE_SINK,
+                ModBlocks.RED_SANDSTONE_SINK,
+                ModBlocks.PRISMARINE_SINK,
+                ModBlocks.NETHER_BRICK_SINK,
+                ModBlocks.RED_NETHER_BRICK_SINK,
+                ModBlocks.BLACKSTONE_SINK,
+                ModBlocks.ENDSTONE_SINK,
+                ModBlocks.PURPUR_SINK,
                 ModBlocks.IRON_SINK
         );
 

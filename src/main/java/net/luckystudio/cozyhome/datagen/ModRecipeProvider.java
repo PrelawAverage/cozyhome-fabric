@@ -349,8 +349,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerWallClockRecipe(exporter, ModBlocks.CRIMSON_WALL_CLOCK, Blocks.CRIMSON_SLAB);
         offerWallClockRecipe(exporter, ModBlocks.WARPED_WALL_CLOCK, Blocks.WARPED_SLAB);
 
-        offerSinkRecipe(exporter, ModBlocks.IRON_SINK, Items.IRON_NUGGET, Blocks.IRON_BARS);
-
         // Grandfather Clocks
         offerGrandfatherClockRecipe(exporter, ModBlocks.OAK_GRANDFATHER_CLOCK, ModBlocks.OAK_WALL_CLOCK, Blocks.OAK_PLANKS);
         offerGrandfatherClockRecipe(exporter, ModBlocks.SPRUCE_GRANDFATHER_CLOCK, ModBlocks.SPRUCE_WALL_CLOCK, Blocks.SPRUCE_PLANKS);
@@ -437,6 +435,27 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerWallMirrorRecipe(exporter, ModBlocks.BAMBOO_WALL_MIRROR, Items.AMETHYST_SHARD, Blocks.BAMBOO_PLANKS);
         offerWallMirrorRecipe(exporter, ModBlocks.CRIMSON_WALL_MIRROR, Items.AMETHYST_SHARD, Blocks.CRIMSON_PLANKS);
         offerWallMirrorRecipe(exporter, ModBlocks.WARPED_WALL_MIRROR, Items.AMETHYST_SHARD, Blocks.WARPED_PLANKS);
+
+        // Sinks
+        offerSinkRecipe(exporter, ModBlocks.STONE_BRICK_SINK, Items.IRON_NUGGET, Blocks.STONE_BRICKS);
+        offerSinkRecipe(exporter, ModBlocks.MOSSY_STONE_BRICK_SINK, Items.IRON_NUGGET, Blocks.MOSSY_STONE_BRICKS);
+        offerSinkRecipe(exporter, ModBlocks.GRANITE_SINK, Items.IRON_NUGGET, Blocks.POLISHED_GRANITE);
+        offerSinkRecipe(exporter, ModBlocks.DIORITE_SINK, Items.IRON_NUGGET, Blocks.POLISHED_DIORITE);
+        offerSinkRecipe(exporter, ModBlocks.ANDESITE_SINK, Items.IRON_NUGGET, Blocks.POLISHED_ANDESITE);
+        offerSinkRecipe(exporter, ModBlocks.DEEPSLATE_SINK, Items.IRON_NUGGET, Blocks.POLISHED_DEEPSLATE);
+        offerSinkRecipe(exporter, ModBlocks.CALCITE_SINK, Items.IRON_NUGGET, Blocks.CALCITE);
+        offerSinkRecipe(exporter, ModBlocks.TUFF_SINK, Items.IRON_NUGGET, Blocks.TUFF);
+        offerSinkRecipe(exporter, ModBlocks.BRICK_SINK, Items.IRON_NUGGET, Blocks.BRICKS);
+        offerSinkRecipe(exporter, ModBlocks.MUD_SINK, Items.IRON_NUGGET, Blocks.MUD);
+        offerSinkRecipe(exporter, ModBlocks.SANDSTONE_SINK, Items.IRON_NUGGET, Blocks.SANDSTONE);
+        offerSinkRecipe(exporter, ModBlocks.RED_SANDSTONE_SINK, Items.IRON_NUGGET, Blocks.RED_SANDSTONE);
+        offerSinkRecipe(exporter, ModBlocks.PRISMARINE_SINK, Items.IRON_NUGGET, Blocks.PRISMARINE);
+        offerSinkRecipe(exporter, ModBlocks.NETHER_BRICK_SINK, Items.IRON_NUGGET, Blocks.NETHER_BRICKS);
+        offerSinkRecipe(exporter, ModBlocks.RED_NETHER_BRICK_SINK, Items.IRON_NUGGET, Blocks.RED_NETHER_BRICKS);
+        offerSinkRecipe(exporter, ModBlocks.BLACKSTONE_SINK, Items.IRON_NUGGET, Blocks.BLACKSTONE);
+        offerSinkRecipe(exporter, ModBlocks.ENDSTONE_SINK, Items.IRON_NUGGET, Blocks.END_STONE);
+        offerSinkRecipe(exporter, ModBlocks.PURPUR_SINK, Items.IRON_NUGGET, Blocks.PURPUR_BLOCK);
+        offerSinkRecipe(exporter, ModBlocks.IRON_SINK, Items.IRON_NUGGET, Blocks.IRON_BARS);
 
         // Large Stumps
         offerLargeStumpRecipe(exporter, ModBlocks.OAK_LARGE_STUMP, Blocks.OAK_LOG);

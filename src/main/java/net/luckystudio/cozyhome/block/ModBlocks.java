@@ -367,6 +367,24 @@ public class ModBlocks {
     public static final Block WARPED_WALL_MIRROR = registerBlock("warped_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
 
     // Sinks
+    public static final Block STONE_BRICK_SINK = registerBlock("stone_brick_sink", createSink(Blocks.STONE_BRICKS));
+    public static final Block MOSSY_STONE_BRICK_SINK = registerBlock("mossy_stone_brick_sink", createSink(Blocks.MOSSY_STONE_BRICKS));
+    public static final Block GRANITE_SINK = registerBlock("granite_sink", createSink(Blocks.GRANITE));
+    public static final Block DIORITE_SINK = registerBlock("diorite_sink", createSink(Blocks.DIORITE));
+    public static final Block ANDESITE_SINK = registerBlock("andesite_sink", createSink(Blocks.ANDESITE));
+    public static final Block DEEPSLATE_SINK = registerBlock("deepslate_sink", createSink(Blocks.DEEPSLATE_BRICKS));
+    public static final Block CALCITE_SINK = registerBlock("calcite_sink", createSink(Blocks.CALCITE));
+    public static final Block TUFF_SINK = registerBlock("tuff_sink", createSink(Blocks.TUFF));
+    public static final Block BRICK_SINK = registerBlock("brick_sink", createSink(Blocks.BRICKS));
+    public static final Block MUD_SINK = registerBlock("mud_sink", createSink(Blocks.MUD_BRICKS));
+    public static final Block SANDSTONE_SINK = registerBlock("sandstone_sink", createSink(Blocks.SANDSTONE));
+    public static final Block RED_SANDSTONE_SINK = registerBlock("red_sandstone_sink", createSink(Blocks.RED_SANDSTONE));
+    public static final Block PRISMARINE_SINK = registerBlock("prismarine_sink", createSink(Blocks.PRISMARINE));
+    public static final Block NETHER_BRICK_SINK = registerBlock("nether_brick_sink", createSink(Blocks.NETHER_BRICKS));
+    public static final Block RED_NETHER_BRICK_SINK = registerBlock("red_nether_brick_sink", createSink(Blocks.RED_NETHER_BRICKS));
+    public static final Block BLACKSTONE_SINK = registerBlock("blackstone_sink", createSink(Blocks.BLACKSTONE));
+    public static final Block ENDSTONE_SINK = registerBlock("endstone_sink", createSink(Blocks.END_STONE));
+    public static final Block PURPUR_SINK = registerBlock("purpur_sink", createSink(Blocks.PURPUR_BLOCK));
     public static final Block IRON_SINK = registerBlock("iron_sink", createSink(Blocks.IRON_BLOCK));
 
     // Fountains
@@ -376,6 +394,7 @@ public class ModBlocks {
     public static final Block DIORITE_FOUNTAIN = registerBlock("diorite_fountain", createFountain(1.5f,6, BlockSoundGroup.STONE));
     public static final Block ANDESITE_FOUNTAIN = registerBlock("andesite_fountain", createFountain(1.5f,6, BlockSoundGroup.STONE));
     public static final Block DEEPSLATE_FOUNTAIN = registerBlock("deepslate_fountain", createFountain(3,6, BlockSoundGroup.DEEPSLATE_BRICKS));
+    public static final Block CALCITE_FOUNTAIN = registerBlock("calcite_fountain", createFountain(0.75f,0.75f, BlockSoundGroup.CALCITE));
     public static final Block TUFF_FOUNTAIN = registerBlock("tuff_fountain", createFountain(1.5f,6, BlockSoundGroup.POLISHED_TUFF));
     public static final Block BRICK_FOUNTAIN = registerBlock("brick_fountain", createFountain(2,6, BlockSoundGroup.STONE));
     public static final Block MUD_FOUNTAIN = registerBlock("mud_fountain", createFountain(1.5f,3, BlockSoundGroup.MUD_BRICKS));
@@ -395,6 +414,7 @@ public class ModBlocks {
     public static final Block DIORITE_FOUNTAIN_SPROUT = registerBlock("diorite_fountain_sprout", createFountainSprout(1.5f,6, BlockSoundGroup.STONE));
     public static final Block ANDESITE_FOUNTAIN_SPROUT = registerBlock("andesite_fountain_sprout", createFountainSprout(1.5f,6, BlockSoundGroup.STONE));
     public static final Block DEEPSLATE_FOUNTAIN_SPROUT = registerBlock("deepslate_fountain_sprout", createFountainSprout(3,6, BlockSoundGroup.DEEPSLATE_BRICKS));
+    public static final Block CALCITE_FOUNTAIN_SPROUT = registerBlock("calcite_fountain_sprout", createFountainSprout(0.75f,0.75f, BlockSoundGroup.CALCITE));
     public static final Block TUFF_FOUNTAIN_SPROUT = registerBlock("tuff_fountain_sprout", createFountainSprout(1.5f,6, BlockSoundGroup.POLISHED_TUFF));
     public static final Block BRICK_FOUNTAIN_SPROUT = registerBlock("brick_fountain_sprout", createFountainSprout(2,6, BlockSoundGroup.STONE));
     public static final Block MUD_FOUNTAIN_SPROUT = registerBlock("mud_fountain_sprout", createFountainSprout(1.5f,3, BlockSoundGroup.MUD_BRICKS));
@@ -431,6 +451,7 @@ public class ModBlocks {
     public static final Block DIORITE_CHIMNEY = registerBlock("diorite_chimney", createChimney(1.5f,6, BlockSoundGroup.STONE));
     public static final Block ANDESITE_CHIMNEY = registerBlock("andesite_chimney", createChimney(1.5f,6, BlockSoundGroup.STONE));
     public static final Block DEEPSLATE_CHIMNEY = registerBlock("deepslate_chimney", createChimney(3,6, BlockSoundGroup.DEEPSLATE_BRICKS));
+    public static final Block CALCITE_CHIMNEY = registerBlock("calcite_chimney", createChimney(0.75f,0.75f, BlockSoundGroup.CALCITE));
     public static final Block TUFF_CHIMNEY = registerBlock("tuff_chimney", createChimney(1.5f,6, BlockSoundGroup.POLISHED_TUFF));
     public static final Block BRICK_CHIMNEY = registerBlock("brick_chimney", createChimney(2,6, BlockSoundGroup.STONE));
     public static final Block MUD_CHIMNEY = registerBlock("mud_chimney", createChimney(1.5f,3, BlockSoundGroup.MUD_BRICKS));

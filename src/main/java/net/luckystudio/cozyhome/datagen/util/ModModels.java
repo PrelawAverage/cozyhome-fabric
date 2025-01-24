@@ -91,12 +91,12 @@ public class ModModels {
     public static final Model FAUCET = modBlockWithType("faucet", ModBlockTypes.FAUCET, TextureKey.ALL);
     public static final Model FAUCET_ON = modBlockWithTypeAndVariant("faucet_on", ModBlockTypes.FAUCET, "_on", TextureKey.ALL);
 
-    public static final Model WATER_15 = modBlockWithTypeAndVariant("flat_15", ModBlockTypes.FLAT,"water_15", TextureKey.UP, TextureKey.PARTICLE);
-    public static final Model LAVA_15 = modBlockWithTypeAndVariant("flat_15", ModBlockTypes.FLAT,"lava_15", TextureKey.UP, TextureKey.PARTICLE);
-    public static final Model ICE_15 = modBlockWithTypeAndVariant("flat_15", ModBlockTypes.FLAT,"ice_15", TextureKey.UP, TextureKey.PARTICLE);
-    public static final Model INSET_WATER_FLAT_15 = modBlockWithTypeAndVariant("inset_flat_15", ModBlockTypes.FLAT,"inset_water_15", TextureKey.UP, TextureKey.PARTICLE);
-    public static final Model INSET_WATER_FLAT_13 = modBlockWithTypeAndVariant("inset_flat_13", ModBlockTypes.FLAT,"inset_water_13", TextureKey.UP, TextureKey.PARTICLE);
-    public static final Model INSET_WATER_FLAT_11 = modBlockWithTypeAndVariant("inset_flat_11", ModBlockTypes.FLAT,"inset_water_11", TextureKey.UP, TextureKey.PARTICLE);
+    public static final Model WATER_15 = modBlockWithTypeAndVariant("flat_15", ModBlockTypes.FLAT,"water_15", TextureKey.UP);
+    public static final Model LAVA_15 = modBlockWithTypeAndVariant("flat_15", ModBlockTypes.FLAT,"lava_15", TextureKey.UP);
+    public static final Model ICE_15 = modBlockWithTypeAndVariant("flat_15", ModBlockTypes.FLAT,"ice_15", TextureKey.UP);
+    public static final Model INSET_WATER_FLAT_15 = modBlockWithTypeAndVariant("inset_flat_15", ModBlockTypes.FLAT,"inset_water_15", TextureKey.UP);
+    public static final Model INSET_WATER_FLAT_13 = modBlockWithTypeAndVariant("inset_flat_13", ModBlockTypes.FLAT,"inset_water_13", TextureKey.UP);
+    public static final Model INSET_WATER_FLAT_11 = modBlockWithTypeAndVariant("inset_flat_11", ModBlockTypes.FLAT,"inset_water_11", TextureKey.UP);
 
     private static Model modBlock(String parent, TextureKey... requiredTextureKeys) {
         return new Model(Optional.of(CozyHome.id("block/" + parent)), Optional.empty(), requiredTextureKeys);

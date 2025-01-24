@@ -217,6 +217,24 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.WARPED_WALL_MIRROR);
 
         // SINKS
+        addDrop(ModBlocks.STONE_BRICK_SINK);
+        addDrop(ModBlocks.MOSSY_STONE_BRICK_SINK);
+        addDrop(ModBlocks.GRANITE_SINK);
+        addDrop(ModBlocks.DIORITE_SINK);
+        addDrop(ModBlocks.ANDESITE_SINK);
+        addDrop(ModBlocks.DEEPSLATE_SINK);
+        addDrop(ModBlocks.CALCITE_SINK);
+        addDrop(ModBlocks.TUFF_SINK);
+        addDrop(ModBlocks.BRICK_SINK);
+        addDrop(ModBlocks.MUD_SINK);
+        addDrop(ModBlocks.SANDSTONE_SINK);
+        addDrop(ModBlocks.RED_SANDSTONE_SINK);
+        addDrop(ModBlocks.PRISMARINE_SINK);
+        addDrop(ModBlocks.NETHER_BRICK_SINK);
+        addDrop(ModBlocks.RED_NETHER_BRICK_SINK);
+        addDrop(ModBlocks.BLACKSTONE_SINK);
+        addDrop(ModBlocks.ENDSTONE_SINK);
+        addDrop(ModBlocks.PURPUR_SINK);
         addDrop(ModBlocks.IRON_SINK);
 
         // CHIMNEY

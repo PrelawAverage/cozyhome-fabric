@@ -205,7 +205,25 @@ public class ModModelProvider extends FabricModelProvider {
         registerWallMirror(blockStateModelGenerator, ModBlocks.CRIMSON_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/nether_mirror"));
         registerWallMirror(blockStateModelGenerator, ModBlocks.WARPED_WALL_MIRROR, Identifier.of(CozyHome.MOD_ID, "block/mirror/nether_mirror"));
 
-        registerSink(blockStateModelGenerator, ModBlocks.IRON_SINK, CozyHome.id("block/break/iron_furniture"));
+        registerSink(blockStateModelGenerator, ModBlocks.STONE_BRICK_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/stone_bricks"));
+        registerSink(blockStateModelGenerator, ModBlocks.MOSSY_STONE_BRICK_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/mossy_stone_bricks"));
+        registerSink(blockStateModelGenerator, ModBlocks.GRANITE_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/granite"));
+        registerSink(blockStateModelGenerator, ModBlocks.DIORITE_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/diorite"));
+        registerSink(blockStateModelGenerator, ModBlocks.ANDESITE_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/andesite"));
+        registerSink(blockStateModelGenerator, ModBlocks.DEEPSLATE_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/deepslate"));
+        registerSink(blockStateModelGenerator, ModBlocks.CALCITE_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/calcite"));
+        registerSink(blockStateModelGenerator, ModBlocks.TUFF_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/tuff"));
+        registerSink(blockStateModelGenerator, ModBlocks.BRICK_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/bricks"));
+        registerSink(blockStateModelGenerator, ModBlocks.MUD_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/mud"));
+        registerSink(blockStateModelGenerator, ModBlocks.SANDSTONE_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/sandstone"));
+        registerSink(blockStateModelGenerator, ModBlocks.RED_SANDSTONE_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/red_sandstone"));
+        registerSink(blockStateModelGenerator, ModBlocks.PRISMARINE_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/prismarine_bricks"));
+        registerSink(blockStateModelGenerator, ModBlocks.NETHER_BRICK_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/nether_bricks"));
+        registerSink(blockStateModelGenerator, ModBlocks.RED_NETHER_BRICK_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/red_nether_bricks"));
+        registerSink(blockStateModelGenerator, ModBlocks.BLACKSTONE_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/blackstone"));
+        registerSink(blockStateModelGenerator, ModBlocks.ENDSTONE_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/end_stone"));
+        registerSink(blockStateModelGenerator, ModBlocks.PURPUR_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/purpur_block"));
+        registerSink(blockStateModelGenerator, ModBlocks.IRON_SINK, CozyHome.id("block/faucet/iron_faucet"), CozyHome.id("block/break/iron_furniture"));
 
         registerLargeStump(blockStateModelGenerator, ModBlocks.OAK_LARGE_STUMP, Identifier.of("oak_log"));
         registerLargeStump(blockStateModelGenerator, ModBlocks.SPRUCE_LARGE_STUMP, Identifier.of("spruce_log"));
@@ -1263,12 +1281,12 @@ public class ModModelProvider extends FabricModelProvider {
                 ));
     }
 
-    public final void registerSink(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
+    public final void registerSink(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier faucetTexture, Identifier breakParticle) {
         TextureMap baseTextureMap = new TextureMap()
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/sink/" + Registries.BLOCK.getId(block).getPath() + "_top"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/sink/" + Registries.BLOCK.getId(block).getPath() + "_side"))
                 .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/sink/" + Registries.BLOCK.getId(block).getPath() + "_bottom"))
-                .put(ModTextureKey.EXTRA, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/sink/" + Registries.BLOCK.getId(block).getPath().replace("sink", "faucet")))
+                .put(ModTextureKey.EXTRA, faucetTexture)
                 .put(TextureKey.PARTICLE, breakParticle);
         Identifier baseModelId = ModModels.SINK.upload(block, baseTextureMap, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(block)
