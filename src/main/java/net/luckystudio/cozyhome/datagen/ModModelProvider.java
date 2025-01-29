@@ -1198,7 +1198,7 @@ public class ModModelProvider extends FabricModelProvider {
                 .put(TextureKey.PARTICLE, mirrorTexture);
         TextureMap wall_mirror_top = new TextureMap()
                 .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/shared/" + Registries.BLOCK.getId(block).getPath().replace("_wall_mirror", "") + "_frame_top"))
-                .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/shared/" + Registries.BLOCK.getId(block).getPath().replace("_wall_mirror", "") + "_back_top"))
+                .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/shared/" + Registries.BLOCK.getId(block).getPath().replace("_wall_mirror", "") + "_board_top"))
                 .put(TextureKey.PARTICLE, mirrorTexture);
         TextureMap wall_mirror_middle = new TextureMap()
                 .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/shared/" + Registries.BLOCK.getId(block).getPath().replace("_wall_mirror", "") + "_frame_middle"))
