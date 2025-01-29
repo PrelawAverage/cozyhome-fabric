@@ -1,10 +1,10 @@
 package net.luckystudio.cozyhome.block.custom.lamps;
 
-import net.luckystudio.cozyhome.block.entity.LampBlockEntity;
+import net.luckystudio.cozyhome.block.block_entity.LampBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.VerticalLinearConnectionBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.ConnectingBlock;
-import net.luckystudio.cozyhome.sound.ModSoundEvents;
+import net.luckystudio.cozyhome.util.ModSoundEvents;
 import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;

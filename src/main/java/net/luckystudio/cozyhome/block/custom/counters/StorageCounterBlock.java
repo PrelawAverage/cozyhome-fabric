@@ -1,7 +1,7 @@
 package net.luckystudio.cozyhome.block.custom.counters;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.entity.StorageCounterBlockEntity;
+import net.luckystudio.cozyhome.block.block_entity.StorageCounterBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.mob.PiglinBrain;

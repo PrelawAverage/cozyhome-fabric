@@ -2,7 +2,7 @@ package net.luckystudio.cozyhome.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.luckystudio.cozyhome.block.entity.DrawerBlockEntity;
+import net.luckystudio.cozyhome.block.block_entity.drawer.DrawerBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.AdvancedHorizontalLinearConnectionBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.ConnectingBlock;

@@ -6,7 +6,7 @@ import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
 import net.luckystudio.cozyhome.block.util.enums.HasUnderBlock;
-import net.luckystudio.cozyhome.sound.ModSoundEvents;
+import net.luckystudio.cozyhome.util.ModSoundEvents;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.BlockFace;
 import net.minecraft.entity.Entity;

@@ -3,7 +3,7 @@ package net.luckystudio.cozyhome.block.custom.counters;
 import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.interfaces.SinkBehavior;
-import net.luckystudio.cozyhome.sound.ModSoundEvents;
+import net.luckystudio.cozyhome.util.ModSoundEvents;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
