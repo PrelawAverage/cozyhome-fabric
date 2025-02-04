@@ -5,6 +5,7 @@ import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.util.ModBlockEntityTypes;
 import net.luckystudio.cozyhome.block.util.interfaces.SinkBehavior;
 import net.luckystudio.cozyhome.components.ModDataComponents;
+import net.luckystudio.cozyhome.item.ModBannerPatternTags;
 import net.luckystudio.cozyhome.util.ModFlammableBlocks;
 import net.luckystudio.cozyhome.util.ModFuels;
 import net.luckystudio.cozyhome.item.ModItemGroups;
@@ -21,6 +22,7 @@ public class CozyHome implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModItems.registerModItems();
+		ModBannerPatternTags.registerModBannerPatternTags();
 		ModBlocks.registerModBlocks();
 		SinkBehavior.registerBehavior();
 		ModBlockEntityTypes.registerBlockEntities();
