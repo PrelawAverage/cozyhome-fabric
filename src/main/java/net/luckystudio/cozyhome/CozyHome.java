@@ -5,10 +5,11 @@ import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.util.ModBlockEntityTypes;
 import net.luckystudio.cozyhome.block.util.interfaces.SinkBehavior;
 import net.luckystudio.cozyhome.components.ModDataComponents;
-import net.luckystudio.cozyhome.util.ModFlammableBlocks;
-import net.luckystudio.cozyhome.util.ModFuels;
+import net.luckystudio.cozyhome.entity.ModEntities;
 import net.luckystudio.cozyhome.item.ModItemGroups;
 import net.luckystudio.cozyhome.item.ModItems;
+import net.luckystudio.cozyhome.util.ModFlammableBlocks;
+import net.luckystudio.cozyhome.util.ModFuels;
 import net.luckystudio.cozyhome.util.ModSoundEvents;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
@@ -22,6 +23,7 @@ public class CozyHome implements ModInitializer {
 	public void onInitialize() {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModEntities.registerModEntities();
 		SinkBehavior.registerBehavior();
 		ModBlockEntityTypes.registerBlockEntities();
 		ModItemGroups.registerModItemGroups();
