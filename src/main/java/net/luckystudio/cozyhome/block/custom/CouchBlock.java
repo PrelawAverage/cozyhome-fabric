@@ -258,4 +258,14 @@ public class CouchBlock extends AbstractSeatBlock implements ConnectingBlock {
     public boolean isMatchingBlock(BlockState targetState) {
         return targetState.getBlock() instanceof CouchBlock;
     }
+
+    @Override
+    protected BlockState rotate(BlockState state, BlockRotation rotation) {
+        return state.with(FACING, rotation.rotate(state.get(FACING)));
+    }
+
+    @Override
+    protected BlockState mirror(BlockState state, BlockMirror mirror) {
+        return state.rotate(mirror.getRotation(state.get(FACING)));
+    }
 }

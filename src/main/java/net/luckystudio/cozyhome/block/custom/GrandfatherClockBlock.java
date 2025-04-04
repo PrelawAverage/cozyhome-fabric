@@ -36,7 +36,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 
-public class GrandfatherClockBlock extends BlockWithEntity implements Waterloggable{
+public class GrandfatherClockBlock extends BlockWithEntity implements Waterloggable {
     public static final MapCodec<GrandfatherClockBlock> CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(GrandfatherClockType.CODEC.fieldOf("kind").forGetter(GrandfatherClockBlock::getGrandfatherClockType), createSettingsCodec())
                     .apply(instance, GrandfatherClockBlock::new));

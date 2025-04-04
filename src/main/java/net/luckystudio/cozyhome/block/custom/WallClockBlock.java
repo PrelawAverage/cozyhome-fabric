@@ -152,16 +152,6 @@ public class WallClockBlock extends BlockWithEntity implements Waterloggable{
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
-    @Override
-    protected BlockState rotate(BlockState state, BlockRotation rotation) {
-        return state.with(FACING, rotation.rotate(state.get(FACING)));
-    }
-
-    @Override
-    protected BlockState mirror(BlockState state, BlockMirror mirror) {
-        return state.rotate(mirror.getRotation(state.get(FACING)));
-    }
-
     /**
      * Formats the in-game time to a readable format (e.g., HH:MM AM/PM).
      */
@@ -212,5 +202,15 @@ public class WallClockBlock extends BlockWithEntity implements Waterloggable{
     public interface ClockType extends StringIdentifiable {
         Map<String, ClockType> TYPES = new Object2ObjectArrayMap<>();
         Codec<ClockType> CODEC = Codec.stringResolver(StringIdentifiable::asString, TYPES::get);
+    }
+
+    @Override
+    protected BlockState rotate(BlockState state, BlockRotation rotation) {
+        return state.with(FACING, rotation.rotate(state.get(FACING)));
+    }
+
+    @Override
+    protected BlockState mirror(BlockState state, BlockMirror mirror) {
+        return state.rotate(mirror.getRotation(state.get(FACING)));
     }
 }
