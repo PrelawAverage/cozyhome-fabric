@@ -1,15 +1,12 @@
 package net.luckystudio.cozyhome.block.util.interfaces;
 
-import net.luckystudio.cozyhome.block.custom.ChairBlock;
-import net.luckystudio.cozyhome.block.custom.DeskBlock;
-import net.luckystudio.cozyhome.block.custom.TableBlock;
+import net.luckystudio.cozyhome.block.custom.drawer.DeskBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.TrapdoorBlock;
 import net.minecraft.block.enums.BlockHalf;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.BooleanProperty;
