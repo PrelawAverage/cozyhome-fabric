@@ -9,6 +9,7 @@ import net.luckystudio.cozyhome.components.ModDataComponents;
 import net.luckystudio.cozyhome.item.ModItems;
 import net.luckystudio.cozyhome.item.custom.CushionItem;
 import net.luckystudio.cozyhome.util.ModColorHandler;
+import net.luckystudio.cozyhome.util.ModScreenTexts;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -202,19 +203,6 @@ public class CouchBlock extends AbstractSeatBlock implements ConnectingBlock {
         return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
     }
 
-    @Override
-    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
-        super.appendTooltip(stack, context, tooltip, options);
-        String type = stack.getOrDefault(ModDataComponents.CUSHION_TYPE, "");
-        if (!type.isEmpty()) {
-            tooltip.add(ScreenTexts.EMPTY);
-            tooltip.add(Text.translatable("tooltip.cozyhome.has").formatted(Formatting.GRAY));
-            if (type.equals("generic")) {
-                tooltip.add(ScreenTexts.space().append(Text.translatable("item.cozyhome.cushion").formatted(Formatting.GRAY)));
-            }
-        }
-    }
-
     // Causes the contents of the block to drop when block is broken.
     @Override
     protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
@@ -267,5 +255,11 @@ public class CouchBlock extends AbstractSeatBlock implements ConnectingBlock {
     @Override
     protected BlockState mirror(BlockState state, BlockMirror mirror) {
         return state.rotate(mirror.getRotation(state.get(FACING)));
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
+        super.appendTooltip(stack, context, tooltip, type);
+        tooltip.add(Text.translatable("tooltip.cozyhome.dyeable").formatted(Formatting.GRAY));
     }
 }

@@ -7,6 +7,7 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import net.luckystudio.cozyhome.block.util.ModBlockEntityTypes;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.TripleTallBlock;
+import net.luckystudio.cozyhome.util.ModScreenTexts;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -15,6 +16,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
+import net.minecraft.item.tooltip.TooltipType;
+import net.minecraft.screen.ScreenTexts;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -23,6 +26,7 @@ import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -33,6 +37,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Map;
 
 public class GrandfatherClockBlock extends BlockWithEntity implements Waterloggable {
@@ -278,5 +283,13 @@ public class GrandfatherClockBlock extends BlockWithEntity implements Waterlogga
     public interface GrandfatherClockType extends StringIdentifiable {
         Map<String, GrandfatherClockType> TYPES = new Object2ObjectArrayMap<>();
         Codec<GrandfatherClockType> CODEC = Codec.stringResolver(StringIdentifiable::asString, TYPES::get);
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
+        super.appendTooltip(stack, context, tooltip, type);
+        tooltip.add(ScreenTexts.EMPTY);
+        tooltip.add(Text.translatable("tooltip.cozyhome.interact_with_hand").formatted(Formatting.GRAY));
+        tooltip.add(ModScreenTexts.entry().append(Text.translatable("tooltip.cozyhome.tells_time")));
     }
 }

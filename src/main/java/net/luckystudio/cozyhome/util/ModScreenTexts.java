@@ -12,6 +12,6 @@ public class ModScreenTexts {
     public static final Text ENTRY = entry();
 
     public static MutableText entry() {
-        return Text.literal(" - ").formatted(ENTRIES);
+        return Text.literal(" ").formatted(ENTRIES);
     }
 }

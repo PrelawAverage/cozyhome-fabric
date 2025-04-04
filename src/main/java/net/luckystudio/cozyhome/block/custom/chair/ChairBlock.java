@@ -12,6 +12,7 @@ import net.luckystudio.cozyhome.item.ModItems;
 import net.luckystudio.cozyhome.item.custom.CushionItem;
 import net.luckystudio.cozyhome.util.ModScreenTexts;
 import net.minecraft.block.*;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -261,10 +262,10 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock, Wate
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
         super.appendTooltip(stack, context, tooltip, type);
         tooltip.add(ScreenTexts.EMPTY);
-        tooltip.add(Text.translatable("tooltip.cozyhome.interact_with_hand").formatted(Formatting.GRAY));
-        tooltip.add(ModScreenTexts.entry().append(Text.translatable("items.cozyhome.can_tuck_into_certain_blocks")));
+        tooltip.add(Text.translatable("tooltip.cozyhome.interact_with_hand_while_sneaking").formatted(Formatting.GRAY));
+        tooltip.add(ModScreenTexts.entry().append(Text.translatable("tooltip.cozyhome.can_tuck_into_certain_blocks")));
         tooltip.add(Text.translatable("tooltip.cozyhome.interact_with_cushion").formatted(Formatting.GRAY));
-        tooltip.add(ModScreenTexts.entry().append(Text.translatable("items.cozyhome.adds_cushion")));
+        tooltip.add(ModScreenTexts.entry().append(Text.translatable("tooltip.cozyhome.adds_cushion")));
     }
 
     // Causes the contents of the block to drop when block is broken.

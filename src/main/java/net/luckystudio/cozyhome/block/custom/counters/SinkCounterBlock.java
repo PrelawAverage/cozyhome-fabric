@@ -198,4 +198,13 @@ public class SinkCounterBlock extends Block {
     protected BlockState mirror(BlockState state, BlockMirror mirror) {
         return state.rotate(mirror.getRotation(state.get(FACING)));
     }
+
+    @Override
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
+        super.appendTooltip(stack, context, tooltip, type);
+        tooltip.add(ScreenTexts.EMPTY);
+        tooltip.add(Text.translatable("tooltip.cozyhome.pulls_water_from").formatted(Formatting.GRAY));
+        tooltip.add(ModScreenTexts.entry().append(Text.translatable("tooltip.cozyhome.behind")));
+        tooltip.add(ModScreenTexts.entry().append(Text.translatable("tooltip.cozyhome.below")));
+    }
 }

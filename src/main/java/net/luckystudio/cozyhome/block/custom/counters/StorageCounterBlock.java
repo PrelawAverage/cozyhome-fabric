@@ -163,11 +163,4 @@ public class StorageCounterBlock extends BlockWithEntity implements BlockEntityP
     protected BlockState mirror(BlockState state, BlockMirror mirror) {
         return state.rotate(mirror.getRotation(state.get(FACING)));
     }
-
-    @Override
-    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
-        super.appendTooltip(stack, context, tooltip, type);
-        tooltip.add(ScreenTexts.EMPTY);
-        tooltip.add(Text.translatable("tooltip.cozyhome.block.storage_counter").formatted(Formatting.GRAY));
-    }
 }

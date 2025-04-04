@@ -2,6 +2,7 @@ package net.luckystudio.cozyhome.block.custom.telescope;
 
 import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.CozyHome;
+import net.luckystudio.cozyhome.util.ModScreenTexts;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -235,7 +236,8 @@ public class TelescopeBlock extends BlockWithEntity implements Waterloggable {
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
         super.appendTooltip(stack, context, tooltip, options);
         tooltip.add(ScreenTexts.EMPTY);
-        tooltip.add(Text.translatable("tooltip.cozyhome.block.telescope").formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("tooltip.cozyhome.interact_with_hand_at_night").formatted(Formatting.GRAY));
+        tooltip.add(ModScreenTexts.entry().append(Text.translatable("tooltip.cozyhome.lunar_tips")));
     }
 
     @Override
