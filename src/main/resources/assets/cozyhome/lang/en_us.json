@@ -289,7 +289,11 @@
   "tooltip.cozyhome.block.dyeable": "§7Dyeable",
   "tooltip.cozyhome.block.dyed": "Dyed",
   "tooltip.cozyhome.applies_to": "Applies to:",
+  "tooltip.cozyhome.pulls_water_from": "Pulls Water From:",
   "tooltip.cozyhome.has": "Has:",
+
+  "tooltip.direction.behind": "Behind",
+  "tooltip.direction.below": "Below",
 
   "tooltip.cozyhome.weapons_and_tools": "Weapons & Tools",
 

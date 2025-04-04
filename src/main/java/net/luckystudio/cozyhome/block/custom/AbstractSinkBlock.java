@@ -3,7 +3,7 @@ package net.luckystudio.cozyhome.block.custom;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.interfaces.LeveledWaterHoldingBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.SinkBehavior;
-import net.luckystudio.cozyhome.sound.ModSoundEvents;
+import net.luckystudio.cozyhome.util.ModSoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalFacingBlock;
@@ -20,10 +20,7 @@ import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.BlockRotation;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ItemActionResult;
+import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -34,7 +31,7 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
-public class AbstractSinkBlock extends Block implements LeveledWaterHoldingBlock {
+public abstract class AbstractSinkBlock extends Block implements LeveledWaterHoldingBlock {
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final IntProperty LEVEL = ModProperties.FILLED_LEVEL_0_3;
     public static final IntProperty NEXT_LEVEL = ModProperties.NEXT_LEVEL;
@@ -110,11 +107,7 @@ public class AbstractSinkBlock extends Block implements LeveledWaterHoldingBlock
         return ActionResult.CONSUME;
     }
 
-    private static boolean hasWaterToPull(BlockState state, World world, BlockPos pos) {
-        return isWaterLogged(world, pos.down()) || isWaterLogged(world, pos.offset(state.get(FACING)));
-    }
-
-    private static boolean isWaterLogged(World world, BlockPos pos) {
+    public static boolean isWaterLogged(World world, BlockPos pos) {
         return world.getFluidState(pos).getFluid().matchesType(Fluids.WATER);
     }
 
@@ -142,11 +135,6 @@ public class AbstractSinkBlock extends Block implements LeveledWaterHoldingBlock
                 .with(TRIGGERED, false);
     }
 
-    @Override
-    protected BlockState rotate(BlockState state, BlockRotation rotation) {
-        return state.with(FACING, rotation.rotate(state.get(FACING)));
-    }
-
     public static void decreaseLevel(BlockState state, World world, BlockPos pos) {
         int level = state.get(LEVEL);
         if (level > 0) {
@@ -162,7 +150,15 @@ public class AbstractSinkBlock extends Block implements LeveledWaterHoldingBlock
     }
 
     @Override
-    public float getWaterLevel(BlockState state) {
-        return 0;
+    protected BlockState rotate(BlockState state, BlockRotation rotation) {
+        return state.with(FACING, rotation.rotate(state.get(FACING)));
     }
+
+    @Override
+    protected BlockState mirror(BlockState state, BlockMirror mirror) {
+        return state.rotate(mirror.getRotation(state.get(FACING)));
+    }
+
+    @Override
+    public abstract float getWaterLevel(BlockState state);
 }

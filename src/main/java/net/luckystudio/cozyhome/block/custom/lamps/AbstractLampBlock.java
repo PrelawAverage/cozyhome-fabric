@@ -1,6 +1,5 @@
 package net.luckystudio.cozyhome.block.custom.lamps;
 
-import net.luckystudio.cozyhome.block.block_entity.LampBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.VerticalLinearConnectionBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.ConnectingBlock;
