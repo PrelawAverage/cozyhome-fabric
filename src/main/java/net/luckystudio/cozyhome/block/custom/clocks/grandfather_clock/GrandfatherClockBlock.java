@@ -25,9 +25,7 @@ import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.StringIdentifiable;
+import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -48,6 +46,8 @@ public class GrandfatherClockBlock extends BlockWithEntity implements Waterlogga
     public static final EnumProperty<TripleTallBlock> TRIPLE_TALL_BLOCK = ModProperties.TRIPLE_TALL_BLOCK;
     public static final BooleanProperty TRIGGERED = Properties.TRIGGERED;
     public static final IntProperty ROTATION = Properties.ROTATION;
+    public static final int MAX_ROTATION_INDEX = RotationPropertyHelper.getMax();
+    protected static final int MAX_ROTATIONS = MAX_ROTATION_INDEX + 1;
 
     private static final VoxelShape BOTTOM_BOTTOM_PIECE = GrandfatherClockBlock.createCuboidShape(1, 0, 1, 15, 2, 15);
     private static final VoxelShape BOTTOM_MIDDLE_PIECE = GrandfatherClockBlock.createCuboidShape(2, 2, 2, 14, 30, 14);
@@ -291,5 +291,15 @@ public class GrandfatherClockBlock extends BlockWithEntity implements Waterlogga
         tooltip.add(ScreenTexts.EMPTY);
         tooltip.add(Text.translatable("tooltip.cozyhome.interact_with_hand").formatted(Formatting.GRAY));
         tooltip.add(ModScreenTexts.entry().append(Text.translatable("tooltip.cozyhome.tells_time")));
+    }
+
+    @Override
+    protected BlockState rotate(BlockState state, BlockRotation rotation) {
+        return state.with(ROTATION, Integer.valueOf(rotation.rotate((Integer)state.get(ROTATION), MAX_ROTATIONS)));
+    }
+
+    @Override
+    protected BlockState mirror(BlockState state, BlockMirror mirror) {
+        return state.with(ROTATION, Integer.valueOf(mirror.mirror((Integer)state.get(ROTATION), MAX_ROTATIONS)));
     }
 }

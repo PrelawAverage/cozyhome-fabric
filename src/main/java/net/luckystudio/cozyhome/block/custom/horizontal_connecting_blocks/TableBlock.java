@@ -1,10 +1,8 @@
 package net.luckystudio.cozyhome.block.custom.horizontal_connecting_blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.custom.AbstractHorizontalConnectingBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.block.Waterloggable;
+import net.minecraft.block.*;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
@@ -13,6 +11,14 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
 public class TableBlock extends AbstractHorizontalConnectingBlock implements Waterloggable {
+
+    public static final MapCodec<TableBlock> CODEC = createCodec(TableBlock::new);
+
+    @Override
+    public MapCodec<TableBlock> getCodec() {
+        return CODEC;
+    }
+
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final VoxelShape TABLE_TOP = Block.createCuboidShape(0, 14, 0, 16, 16, 16);
     public static final VoxelShape NORTH_WEST_LEG = Block.createCuboidShape(1, 0, 1, 3, 14, 3);

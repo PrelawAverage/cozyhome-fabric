@@ -1,5 +1,6 @@
 package net.luckystudio.cozyhome.block.custom.horizontal_connecting_blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.custom.AbstractHorizontalConnectingBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -13,6 +14,13 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
 public class ShelfTableBlock extends AbstractHorizontalConnectingBlock implements Waterloggable {
+
+    public static final MapCodec<ShelfTableBlock> CODEC = createCodec(ShelfTableBlock::new);
+
+    @Override
+    public MapCodec<ShelfTableBlock> getCodec() {
+        return CODEC;
+    }
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 

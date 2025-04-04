@@ -1,5 +1,6 @@
 package net.luckystudio.cozyhome.block.custom.horizontal_connecting_blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.custom.AbstractHorizontalConnectingBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.ConnectingBlock;
 import net.minecraft.block.Block;
@@ -10,11 +11,18 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
-public class LargeStump extends AbstractHorizontalConnectingBlock implements ConnectingBlock {
+public class LargeStumpBlock extends AbstractHorizontalConnectingBlock implements ConnectingBlock {
+
+    public static final MapCodec<LargeStumpBlock> CODEC = createCodec(LargeStumpBlock::new);
+
+    @Override
+    public MapCodec<LargeStumpBlock> getCodec() {
+        return CODEC;
+    }
 
     public static final VoxelShape TOP = Block.createCuboidShape(0, 10, 0, 16, 16, 16);
 
-    public LargeStump(Settings settings) {
+    public LargeStumpBlock(Settings settings) {
         super(settings);
     }
 
@@ -35,6 +43,6 @@ public class LargeStump extends AbstractHorizontalConnectingBlock implements Con
 
     @Override
     public boolean isMatchingBlock(BlockState targetState) {
-        return targetState.getBlock() instanceof LargeStump;
+        return targetState.getBlock() instanceof LargeStumpBlock;
     }
 }

@@ -1,4 +1,4 @@
-package net.luckystudio.cozyhome.block.block_entity;
+package net.luckystudio.cozyhome.block.custom.lamps;
 
 import net.luckystudio.cozyhome.block.util.ModBlockEntityTypes;
 import net.minecraft.block.BlockState;
