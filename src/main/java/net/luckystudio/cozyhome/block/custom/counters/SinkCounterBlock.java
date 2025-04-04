@@ -3,12 +3,15 @@ package net.luckystudio.cozyhome.block.custom.counters;
 import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.interfaces.SinkBehavior;
+import net.luckystudio.cozyhome.util.ModScreenTexts;
 import net.luckystudio.cozyhome.util.ModSoundEvents;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.screen.ScreenTexts;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
@@ -30,6 +33,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class SinkCounterBlock extends Block {
     public static final MapCodec<SinkCounterBlock> CODEC = createCodec(SinkCounterBlock::new);

@@ -241,34 +241,38 @@
   "block.cozyhome.blackstone_fountain_sprout": "Blackstone Fountain Sprout",
   "block.cozyhome.endstone_fountain_sprout": "Endstone Fountain Sprout",
   "block.cozyhome.purpur_fountain_sprout": "Purpur Fountain Sprout",
+  "block.cozyhome.dye_vat": "Dye Vat",
+  "block.cozyhome.telescope": "Telescope",
 
   "blocks.cozyhome.chairs": "Chairs",
   "blocks.cozyhome.sofas": "Sofas",
   "blocks.cozyhome.couches": "Couches",
 
-  "block.cozyhome.telescope": "Telescope",
-  "block.cozyhome.saddle_block": "Saddle",
-
-  "block.cozyhome.dye_vat": "Dye Vat",
   "item.cozyhome.paint_brush": "Paint Brush",
   "item.cozyhome.cushion": "Cushion",
   "item.cozyhome.hay_cushion": "Hay Cushion",
   "item.cozyhome.trader_cushion": "Trader Cushion",
 
+  "items.cozyhome.cushions": "Cushions",
+
   "container.cozyhome.storage_counter": "Storage Counter",
   "container.cozyhome.drawer": "Drawer",
 
-  "tooltip.cozyhome.item.paint_brush": "Can set a color on the Dye Vat to paint dyeable furniture",
-  "tooltip.cozyhome.block.planked_wall": "§7Stackable",
-  "tooltip.cozyhome.block.telescope": "Can be used to learn interesting facts about the lunar cycles at night",
-  "tooltip.cozyhome.block.can_hold": "Can Hold: ",
-  "tooltip.cozyhome.block.fountain": "§7Can Add:",
-  "tooltip.cozyhome.block.dyeable": "§7Dyeable",
-  "tooltip.cozyhome.block.dyed": "Dyed",
-  "tooltip.cozyhome.applies_to": "Applies to:",
-  "tooltip.cozyhome.has": "Has:",
+  "tooltip.cozyhome.interact_with_hand": "Interact with Hand:",
+  "tooltip.cozyhome.interact_with_cushion": "Interact with Cushion:",
+  "tooltip.cozyhome.adds_cushion": "Adds a Styled Cushion to the Block",
 
-  "tooltip.cozyhome.weapons_and_tools": "Weapons & Tools",
+  "tooltip.cozyhome.on_interacted_with_dyeable_block": "Interacted With Dyeable Block:",
+  "tooltip.cozyhome.block.storage_counter": "Holds 24 stacks",
+  "tooltip.cozyhome.block.sink_counter": "Pulls Water From:",
+  "tooltip.cozyhome.block.telescope": "Can be used to learn interesting facts about the lunar cycles at night",
+  "tooltip.cozyhome.can_tuck_into_certain_blocks": "Can Tuck into certain Blocks",
+  "tooltip.cozyhome.can_add": "§7Can Add:",
+  "tooltip.cozyhome.on_interact": "Interacted With:",
+  "tooltip.cozyhome.sneaking_on_interact": "Sneaking + Interacted With",
+  "tooltip.cozyhome.dyeable": "§7Dyeable",
+  "tooltip.cozyhome.dyed": "Dyed",
+  "tooltip.cozyhome.applied_when_interacted_with": "Applied When Interacted With:",
 
   "sounds.cozyhome.lamp_toggle": "Lamp Toggled",
   "sounds.cozyhome.fireplace_loop": "Fireplace Crackles",
@@ -302,20 +306,13 @@
   "message.cozyhome.telescope.full_moon_facts_2": "I overheard a witch say cats have a 50% chance of spawning as black during this phase.",
   "message.cozyhome.telescope.full_moon_facts_3": "Spiders have an increased chance to spawn with effects.",
   "message.cozyhome.telescope.full_moon_facts_4": "I was told mobs are at their peak strength tonight, better be careful.",
-
   "message.cozyhome.telescope.waning_gibbous_facts_0": "The moon is waning, its light fading.",
-
   "message.cozyhome.telescope.last_quarter_facts_0": "The last quarter of the moon is visible.",
-
   "message.cozyhome.telescope.waning_crescent_facts_0": "A waning crescent moon graces the night sky.",
-
   "message.cozyhome.telescope.new_moon_facts_0": "The night is darkest with a new moon.",
   "message.cozyhome.telescope.new_moon_facts_1": "Slimes do not spawn during this phase.",
   "message.cozyhome.telescope.new_moon_facts_2": "I was told mobs are at their weakest tonight, perfect time to fulfill some nightly task.",
-
   "message.cozyhome.telescope.waxing_crescent_facts_0": "The moon is waxing into a crescent.",
-
   "message.cozyhome.telescope.first_quarter_facts_0": "The first quarter moon is half-lit.",
-
   "message.cozyhome.telescope.waxing_gibbous_facts_0": "The moon grows fuller in a waxing gibbous phase, tomorrow night will be dangerous."
 }
