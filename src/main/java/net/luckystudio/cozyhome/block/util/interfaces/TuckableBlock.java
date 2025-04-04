@@ -1,6 +1,7 @@
 package net.luckystudio.cozyhome.block.util.interfaces;
 
 import net.luckystudio.cozyhome.block.custom.drawer.DeskBlock;
+import net.luckystudio.cozyhome.block.custom.horizontal_connecting_blocks.TableBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -48,11 +49,15 @@ public interface TuckableBlock {
         return RotationPropertyHelper.toDirection(rotation).isPresent();
     }
 
-    // NEEDS FIXING
     static boolean canTuckUnderBlockInFront(BlockState state, World world, BlockPos pos) {
         BlockState targetState = world.getBlockState(pos.offset(direction(state)));
+        // Allow trapdoors to be tucked under if they are the top half and closed.
         if (targetState.getBlock() instanceof TrapdoorBlock && targetState.get(Properties.BLOCK_HALF) == BlockHalf.TOP && !targetState.get(Properties.OPEN)) return true;
+        // Allow desks to be tucked under if they are facing the same direction.
         if (targetState.getBlock() instanceof DeskBlock && targetState.get(Properties.FACING) == direction(state)) return true;
+        // Allow tables to be tucked under.
+        if (targetState.getBlock() instanceof TableBlock) return true;
+        // Allow blocks that are replaceable or air to be tucked under.
         return targetState.isReplaceable() || targetState.isOf(Blocks.AIR);
     }
 
