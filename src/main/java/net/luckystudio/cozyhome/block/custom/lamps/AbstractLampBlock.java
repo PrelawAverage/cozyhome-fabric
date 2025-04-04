@@ -1,10 +1,10 @@
 package net.luckystudio.cozyhome.block.custom.lamps;
 
-import net.luckystudio.cozyhome.block.entity.LampBlockEntity;
+import net.luckystudio.cozyhome.block.block_entity.LampBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.VerticalLinearConnectionBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.ConnectingBlock;
-import net.luckystudio.cozyhome.sound.ModSoundEvents;
+import net.luckystudio.cozyhome.util.ModSoundEvents;
 import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -21,6 +21,8 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.text.Text;
+import net.minecraft.util.BlockMirror;
+import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
@@ -140,5 +142,15 @@ public abstract class AbstractLampBlock extends BlockWithEntity implements Conne
     @Override
     public boolean isMatchingBlock(BlockState targetState) {
         return targetState.getBlock() == this;
+    }
+
+    @Override
+    protected BlockState rotate(BlockState state, BlockRotation rotation) {
+        return state.with(FACING, rotation.rotate(state.get(FACING)));
+    }
+
+    @Override
+    protected BlockState mirror(BlockState state, BlockMirror mirror) {
+        return state.rotate(mirror.getRotation(state.get(FACING)));
     }
 }

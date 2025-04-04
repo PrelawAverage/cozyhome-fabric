@@ -1,9 +1,9 @@
 package net.luckystudio.cozyhome.item.renderer;
 
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
-import net.luckystudio.cozyhome.block.custom.WallClockBlock;
-import net.luckystudio.cozyhome.block.renderer.blockrenders.WallClockBlockEntityRenderer;
-import net.luckystudio.cozyhome.block.renderer.models.WallClockModel;
+import net.luckystudio.cozyhome.block.custom.clocks.wall_clock.WallClockBlock;
+import net.luckystudio.cozyhome.block.custom.clocks.wall_clock.WallClockBlockEntityRenderer;
+import net.luckystudio.cozyhome.block.custom.clocks.wall_clock.WallClockModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.model.ModelPart;

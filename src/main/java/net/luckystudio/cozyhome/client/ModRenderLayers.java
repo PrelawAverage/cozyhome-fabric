@@ -42,6 +42,8 @@ public class ModRenderLayers {
                 ModBlocks.WARPED_TABLE,
                 ModBlocks.IRON_TABLE,
                 ModBlocks.GLASS_TABLE,
+                ModBlocks.OMINOUS_TABLE,
+                ModBlocks.UNDEAD_TABLE,
                 // Lamps
                 ModBlocks.OAK_LAMP,
                 ModBlocks.SPRUCE_LAMP,

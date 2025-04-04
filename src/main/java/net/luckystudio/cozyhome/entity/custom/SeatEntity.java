@@ -12,6 +12,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.*;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class SeatEntity extends Entity {
 
@@ -45,6 +46,10 @@ public class SeatEntity extends Entity {
         return true;
     }
 
+    @Override
+    public void tick() {
+        super.tick();
+    }
 
     // Runs when
     @Override
@@ -115,13 +120,10 @@ public class SeatEntity extends Entity {
 
     @Override
     protected void updatePassengerPosition(Entity passenger, PositionUpdater positionUpdater) {
+        super.updatePassengerPosition(passenger, positionUpdater);
         if (passenger instanceof PlayerEntity) {
-            // Get the yaw of the entity and the player
-            float entityYaw = this.getYaw();
-            // If the yaw difference exceeds the threshold, rotate the player's body
-            passenger.setBodyYaw(entityYaw);
             // Update the player's position relative to the entity
-            passenger.setPos(this.getX(), this.getY() - 0.5f + getHeightOffset(), this.getZ());
+            passenger.setPos(this.getX(), this.getY() - 0.5F + getHeightOffset(), this.getZ());
         }
     }
 
@@ -132,16 +134,6 @@ public class SeatEntity extends Entity {
             return abstractSeatBlock.getSeatHeight(state);
         }
         return 0f;
-    }
-
-    @Override
-    protected BlockPos getPosWithYOffset(float offset) {
-        BlockPos pos = this.getBlockPos();
-        BlockState state = getWorld().getBlockState(pos);
-        if (state.getBlock() instanceof AbstractSeatBlock abstractSeatBlock) {
-            return new BlockPos((int) this.getX(), (int) (this.getY() + abstractSeatBlock.getSeatHeight(state)),(int)  this.getZ());
-        }
-        return super.getPosWithYOffset(offset);
     }
 
     // This allows the seat entity to get moved by a piston

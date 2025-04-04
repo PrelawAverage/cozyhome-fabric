@@ -26,7 +26,6 @@
 		]
 	},
 	"mixins": [
-		"cozyhome.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.5",

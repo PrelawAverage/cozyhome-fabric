@@ -12,4 +12,6 @@ public class ModEntities {
             Registries.ENTITY_TYPE,
             Identifier.of("cozyhome", "seat"),
             EntityType.Builder.create(SeatEntity::new, SpawnGroup.CREATURE).dimensions(1f, 1f).build());
+
+    public static void registerModEntities() {}
 }
