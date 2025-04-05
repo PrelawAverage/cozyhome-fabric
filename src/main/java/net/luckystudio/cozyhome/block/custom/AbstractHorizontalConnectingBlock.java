@@ -2,29 +2,21 @@ package net.luckystudio.cozyhome.block.custom;
 
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.interfaces.AllSidesConnectingBlock;
-import net.luckystudio.cozyhome.util.ModScreenTexts;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Waterloggable;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.screen.ScreenTexts;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
+import net.minecraft.util.BlockMirror;
+import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 public abstract class AbstractHorizontalConnectingBlock extends Block implements Waterloggable, AllSidesConnectingBlock {
     public static final BooleanProperty NORTH = Properties.NORTH;
@@ -127,5 +119,67 @@ public abstract class AbstractHorizontalConnectingBlock extends Block implements
     @Override
     protected FluidState getFluidState(BlockState state) {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
+    @Override
+    protected BlockState rotate(BlockState state, BlockRotation rotation) {
+        switch (rotation) {
+            case CLOCKWISE_180:
+                return state
+                        .with(NORTH, state.get(SOUTH))
+                        .with(SOUTH, state.get(NORTH))
+                        .with(EAST, state.get(WEST))
+                        .with(WEST, state.get(EAST))
+                        .with(NORTH_EAST, state.get(SOUTH_WEST))
+                        .with(NORTH_WEST, state.get(SOUTH_EAST))
+                        .with(SOUTH_EAST, state.get(NORTH_WEST))
+                        .with(SOUTH_WEST, state.get(NORTH_EAST));
+            case COUNTERCLOCKWISE_90:
+                return state
+                        .with(NORTH, state.get(EAST))
+                        .with(SOUTH, state.get(WEST))
+                        .with(EAST, state.get(SOUTH))
+                        .with(WEST, state.get(NORTH))
+                        .with(NORTH_EAST, state.get(SOUTH_EAST))
+                        .with(SOUTH_EAST, state.get(SOUTH_WEST))
+                        .with(SOUTH_WEST, state.get(NORTH_WEST))
+                        .with(NORTH_WEST, state.get(NORTH_EAST));
+            case CLOCKWISE_90:
+                return state
+                        .with(NORTH, state.get(WEST))
+                        .with(SOUTH, state.get(EAST))
+                        .with(EAST, state.get(NORTH))
+                        .with(WEST, state.get(SOUTH))
+                        .with(NORTH_EAST, state.get(NORTH_WEST))
+                        .with(NORTH_WEST, state.get(SOUTH_WEST))
+                        .with(SOUTH_WEST, state.get(SOUTH_EAST))
+                        .with(SOUTH_EAST, state.get(NORTH_EAST));
+            default:
+                return state;
+        }
+    }
+
+    @Override
+    protected BlockState mirror(BlockState state, BlockMirror mirror) {
+        switch (mirror) {
+            case LEFT_RIGHT:
+                return state
+                        .with(NORTH, state.get(SOUTH))
+                        .with(SOUTH, state.get(NORTH))
+                        .with(NORTH_EAST, state.get(SOUTH_EAST))
+                        .with(SOUTH_EAST, state.get(NORTH_EAST))
+                        .with(NORTH_WEST, state.get(SOUTH_WEST))
+                        .with(SOUTH_WEST, state.get(NORTH_WEST));
+            case FRONT_BACK:
+                return state
+                        .with(EAST, state.get(WEST))
+                        .with(WEST, state.get(EAST))
+                        .with(NORTH_EAST, state.get(NORTH_WEST))
+                        .with(NORTH_WEST, state.get(NORTH_EAST))
+                        .with(SOUTH_EAST, state.get(SOUTH_WEST))
+                        .with(SOUTH_WEST, state.get(SOUTH_EAST));
+            default:
+                return super.mirror(state, mirror);
+        }
     }
 }
