@@ -74,6 +74,7 @@ public class GrandfatherClockBlock extends BlockWithEntity implements Waterlogga
     public GrandfatherClockBlock(GrandfatherClockType grandfatherClockType, Settings settings) {
         super(settings);
         this.setDefaultState(this.getDefaultState()
+                .with(WATERLOGGED, false)
                 .with(TRIPLE_TALL_BLOCK, TripleTallBlock.BOTTOM)
                 .with(TRIGGERED, false)
                 .with(ROTATION, 0));
