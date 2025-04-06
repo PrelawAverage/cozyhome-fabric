@@ -7,6 +7,8 @@ import net.minecraft.util.math.BlockPos;
 
 public class TelescopeBlockEntity extends BlockEntity {
     private int zoomLevel; // Custom field
+    public float yaw = 0;
+    public float pitch = 0;
 
     public TelescopeBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntityTypes.TELESCOPE_BLOCK_ENTITY, pos, state); // Pass the correct BlockEntityType here

@@ -1,5 +1,6 @@
 package net.luckystudio.cozyhome.entity.custom;
 
+import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.custom.AbstractSeatBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
@@ -124,6 +125,23 @@ public class SeatEntity extends Entity {
         if (passenger instanceof PlayerEntity) {
             // Update the player's position relative to the entity
             passenger.setPos(this.getX(), this.getY() - 0.5F + getHeightOffset(), this.getZ());
+        }
+    }
+
+    @Override
+    protected Vec3d getPassengerAttachmentPos(Entity passenger, EntityDimensions dimensions, float scaleFactor) {
+        Vec3d pos = new Vec3d(this.getX(), this.getY() - 0.5F + getHeightOffset(), this.getZ());
+        World world = this.getWorld();
+        BlockPos blockPos = this.getBlockPos();
+        BlockState state = world.getBlockState(blockPos);
+        if (state.getBlock() == ModBlocks.TELESCOPE) {
+            float riderYaw = passenger.getYaw() + 180; // Degrees
+            double radians = Math.toRadians(riderYaw);
+            double offsetX = -Math.sin(radians);
+            double offsetZ = Math.cos(radians);
+            return pos.add(offsetX, 0, offsetZ);
+        } else {
+            return pos;
         }
     }
 
