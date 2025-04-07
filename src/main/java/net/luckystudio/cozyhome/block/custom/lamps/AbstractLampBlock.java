@@ -3,6 +3,7 @@ package net.luckystudio.cozyhome.block.custom.lamps;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.VerticalLinearConnectionBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.ConnectingBlock;
+import net.luckystudio.cozyhome.util.ModScreenTexts;
 import net.luckystudio.cozyhome.util.ModSoundEvents;
 import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.block.*;
@@ -12,18 +13,18 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.DyedColorComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DyeItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipType;
+import net.minecraft.screen.ScreenTexts;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.text.Text;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ItemActionResult;
+import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ColorHelper;
@@ -32,6 +33,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public abstract class AbstractLampBlock extends BlockWithEntity implements ConnectingBlock {
     public static final EnumProperty<VerticalLinearConnectionBlock> CONNECTION = ModProperties.VERTICAL_CONNECTION;
@@ -151,5 +154,16 @@ public abstract class AbstractLampBlock extends BlockWithEntity implements Conne
     @Override
     protected BlockState mirror(BlockState state, BlockMirror mirror) {
         return state.rotate(mirror.getRotation(state.get(FACING)));
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
+        super.appendTooltip(stack, context, tooltip, type);
+        tooltip.add(Text.translatable("tooltip.cozyhome.dyeable").formatted(Formatting.GRAY).append(""));
+        tooltip.add(ScreenTexts.EMPTY);
+        tooltip.add(Text.translatable("tooltip.cozyhome.interact_with_hand").formatted(Formatting.GRAY));
+        tooltip.add(ModScreenTexts.entry().append(Text.translatable("tooltip.cozyhome.toggle_light")));
+        tooltip.add(Text.translatable("tooltip.cozyhome.interact_with_dye").formatted(Formatting.GRAY));
+        tooltip.add(ModScreenTexts.entry().append(Text.translatable("tooltip.cozyhome.sets_block_color")));
     }
 }

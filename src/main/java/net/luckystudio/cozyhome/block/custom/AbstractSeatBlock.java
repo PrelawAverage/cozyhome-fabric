@@ -16,6 +16,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RotationPropertyHelper;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
@@ -24,8 +25,9 @@ import org.jetbrains.annotations.Nullable;
 
 public abstract class AbstractSeatBlock extends BlockWithEntity implements SeatBlock {
     private static final VoxelShape BASE_SHAPE = VoxelShapes.cuboid(2,0,2,14,10,14);
-
     public static final BooleanProperty TRIGGERED = Properties.TRIGGERED;
+    public static final int MAX_ROTATION_INDEX = RotationPropertyHelper.getMax();
+    protected static final int MAX_ROTATIONS = MAX_ROTATION_INDEX + 1;
 
     public AbstractSeatBlock(Settings settings) {
         super(settings);

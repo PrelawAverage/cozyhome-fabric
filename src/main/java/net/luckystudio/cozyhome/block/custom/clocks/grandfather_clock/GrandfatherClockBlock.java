@@ -7,14 +7,18 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import net.luckystudio.cozyhome.block.util.ModBlockEntityTypes;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.TripleTallBlock;
+import net.luckystudio.cozyhome.util.ModScreenTexts;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
+import net.minecraft.item.tooltip.TooltipType;
+import net.minecraft.screen.ScreenTexts;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -22,8 +26,7 @@ import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.StringIdentifiable;
+import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -33,6 +36,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Map;
 
 public class GrandfatherClockBlock extends BlockWithEntity implements Waterloggable {
@@ -42,7 +46,10 @@ public class GrandfatherClockBlock extends BlockWithEntity implements Waterlogga
 
     public static final EnumProperty<TripleTallBlock> TRIPLE_TALL_BLOCK = ModProperties.TRIPLE_TALL_BLOCK;
     public static final BooleanProperty TRIGGERED = Properties.TRIGGERED;
+    public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final IntProperty ROTATION = Properties.ROTATION;
+    public static final int MAX_ROTATION_INDEX = RotationPropertyHelper.getMax();
+    protected static final int MAX_ROTATIONS = MAX_ROTATION_INDEX + 1;
 
     private static final VoxelShape BOTTOM_BOTTOM_PIECE = GrandfatherClockBlock.createCuboidShape(1, 0, 1, 15, 2, 15);
     private static final VoxelShape BOTTOM_MIDDLE_PIECE = GrandfatherClockBlock.createCuboidShape(2, 2, 2, 14, 30, 14);
@@ -67,6 +74,7 @@ public class GrandfatherClockBlock extends BlockWithEntity implements Waterlogga
     public GrandfatherClockBlock(GrandfatherClockType grandfatherClockType, Settings settings) {
         super(settings);
         this.setDefaultState(this.getDefaultState()
+                .with(WATERLOGGED, false)
                 .with(TRIPLE_TALL_BLOCK, TripleTallBlock.BOTTOM)
                 .with(TRIGGERED, false)
                 .with(ROTATION, 0));
@@ -75,7 +83,7 @@ public class GrandfatherClockBlock extends BlockWithEntity implements Waterlogga
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(TRIPLE_TALL_BLOCK, TRIGGERED, ROTATION);
+        builder.add(TRIPLE_TALL_BLOCK, TRIGGERED, ROTATION, WATERLOGGED);
     }
 
     /**
@@ -149,7 +157,10 @@ public class GrandfatherClockBlock extends BlockWithEntity implements Waterlogga
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockPos blockPos = ctx.getBlockPos();
         World world = ctx.getWorld();
+        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
+        boolean water = fluidState.getFluid() == Fluids.WATER;
         return blockPos.getY() < world.getTopY() - 2 && world.getBlockState(blockPos.up()).canReplace(ctx) && world.getBlockState(blockPos.up(2)).canReplace(ctx) ? super.getPlacementState(ctx)
+                .with(WATERLOGGED, water)
                 .with(ROTATION, RotationPropertyHelper.fromYaw(ctx.getPlayerYaw()))
                 .with(TRIPLE_TALL_BLOCK, TripleTallBlock.BOTTOM) : null;
     }
@@ -278,5 +289,28 @@ public class GrandfatherClockBlock extends BlockWithEntity implements Waterlogga
     public interface GrandfatherClockType extends StringIdentifiable {
         Map<String, GrandfatherClockType> TYPES = new Object2ObjectArrayMap<>();
         Codec<GrandfatherClockType> CODEC = Codec.stringResolver(StringIdentifiable::asString, TYPES::get);
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
+        super.appendTooltip(stack, context, tooltip, type);
+        tooltip.add(ScreenTexts.EMPTY);
+        tooltip.add(Text.translatable("tooltip.cozyhome.interact_with_hand").formatted(Formatting.GRAY));
+        tooltip.add(ModScreenTexts.entry().append(Text.translatable("tooltip.cozyhome.tells_time")));
+    }
+
+    @Override
+    protected BlockState rotate(BlockState state, BlockRotation rotation) {
+        return state.with(ROTATION, Integer.valueOf(rotation.rotate((Integer)state.get(ROTATION), MAX_ROTATIONS)));
+    }
+
+    @Override
+    protected BlockState mirror(BlockState state, BlockMirror mirror) {
+        return state.with(ROTATION, Integer.valueOf(mirror.mirror((Integer)state.get(ROTATION), MAX_ROTATIONS)));
+    }
+
+    @Override
+    protected FluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 }

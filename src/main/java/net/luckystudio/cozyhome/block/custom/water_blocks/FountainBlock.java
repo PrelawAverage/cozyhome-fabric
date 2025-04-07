@@ -1,7 +1,7 @@
 package net.luckystudio.cozyhome.block.custom.water_blocks;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.custom.AbstractHorizontalConnectingBlock;
+import net.luckystudio.cozyhome.block.custom.horizontal_connecting_blocks.AbstractHorizontalConnectingBlock;
 import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;

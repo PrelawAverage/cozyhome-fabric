@@ -10,6 +10,7 @@ import net.luckystudio.cozyhome.components.ModDataComponents;
 import net.luckystudio.cozyhome.item.ModItems;
 import net.luckystudio.cozyhome.item.custom.CushionItem;
 import net.luckystudio.cozyhome.util.ModColorHandler;
+import net.luckystudio.cozyhome.util.ModScreenTexts;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.component.ComponentMap;
@@ -230,19 +231,6 @@ public class SofaBlock extends AbstractSeatBlock {
         Codec<SofaBlock.SofaType> CODEC = Codec.stringResolver(StringIdentifiable::asString, TYPES::get);
     }
 
-    @Override
-    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
-        super.appendTooltip(stack, context, tooltip, options);
-        String type = stack.getOrDefault(ModDataComponents.CUSHION_TYPE, "");
-        if (!type.isEmpty()) {
-            tooltip.add(ScreenTexts.EMPTY);
-            tooltip.add(Text.translatable("tooltip.cozyhome.has").formatted(TITLE_FORMATTING));
-            if (type.equals("generic")) {
-                tooltip.add(ScreenTexts.space().append(Text.translatable("item.cozyhome.cushion").formatted(TITLE_FORMATTING)));
-            }
-        }
-    }
-
     // Causes the contents of the block to drop when block is broken.
     @Override
     protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
@@ -275,5 +263,21 @@ public class SofaBlock extends AbstractSeatBlock {
     @Override
     public float getSeatRotation(BlockState state, World world, BlockPos pos) {
         return ModProperties.setSeatRotationFromRotation(state);
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
+        super.appendTooltip(stack, context, tooltip, type);
+        tooltip.add(Text.translatable("tooltip.cozyhome.dyeable").formatted(Formatting.GRAY));
+    }
+
+    @Override
+    protected BlockState rotate(BlockState state, BlockRotation rotation) {
+        return state.with(ROTATION, Integer.valueOf(rotation.rotate((Integer)state.get(ROTATION), MAX_ROTATIONS)));
+    }
+
+    @Override
+    protected BlockState mirror(BlockState state, BlockMirror mirror) {
+        return state.with(ROTATION, Integer.valueOf(mirror.mirror((Integer)state.get(ROTATION), MAX_ROTATIONS)));
     }
 }

@@ -1,10 +1,5 @@
 {
 	"credit": "Made with Blockbench",
-	"textures": {
-		"particle": "block/oak_log",
-		"side": "block/oak_log",
-		"top": "cozyhome:block/large_stump/oak_large_stump_corner_top"
-	},
 	"elements": [
 		{
 			"from": [0, 10, 0],

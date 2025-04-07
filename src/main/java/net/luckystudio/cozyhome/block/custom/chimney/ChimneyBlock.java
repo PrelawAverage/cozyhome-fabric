@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.util.ModBlockEntityTypes;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.VerticalLinearConnectionBlock;
+import net.luckystudio.cozyhome.block.util.enums.VerticalWithExtraConnectionBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -24,7 +25,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class ChimneyBlock extends BlockWithEntity {
     public static final MapCodec<ChimneyBlock> CODEC = createCodec(ChimneyBlock::new);
-    public static final EnumProperty<VerticalLinearConnectionBlock> STACKABLE_BLOCK = ModProperties.VERTICAL_CONNECTION;
+    public static final EnumProperty<VerticalWithExtraConnectionBlock> STACKABLE_BLOCK = ModProperties.VERTICAL_WITH_EXTRA_CONNECTION;
     public static final BooleanProperty LIT = Properties.LIT;
 
     public static final VoxelShape SINGLE = Block.createCuboidShape(0, 0, 0, 16, 16, 16);
@@ -32,6 +33,7 @@ public class ChimneyBlock extends BlockWithEntity {
             Block.createCuboidShape(0,4,0,16,16,16),
             Block.createCuboidShape(2, 0, 2, 14, 4, 14));
     public static final VoxelShape MIDDLE = Block.createCuboidShape(2, 0, 2, 14, 16, 14);
+    public static final VoxelShape EXTRA = Block.createCuboidShape(0, 0, 0, 16, 16, 16);
     public static final VoxelShape BOTTOM = VoxelShapes.union(
             Block.createCuboidShape(2,4,2,14,16,14),
             Block.createCuboidShape(0, 0, 0, 16, 4, 16));
@@ -49,7 +51,7 @@ public class ChimneyBlock extends BlockWithEntity {
     public ChimneyBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState()
-                .with(STACKABLE_BLOCK, VerticalLinearConnectionBlock.SINGLE)
+                .with(STACKABLE_BLOCK, VerticalWithExtraConnectionBlock.HEAD)
                 .with(LIT, false));
     }
 
@@ -64,6 +66,7 @@ public class ChimneyBlock extends BlockWithEntity {
             case SINGLE -> SINGLE;
             case HEAD -> TOP;
             case MIDDLE -> MIDDLE;
+            case EXTENDED -> EXTRA;
             case TAIL -> BOTTOM;
         };
     }
@@ -81,7 +84,7 @@ public class ChimneyBlock extends BlockWithEntity {
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return this.getDefaultState()
-                .with(STACKABLE_BLOCK, VerticalLinearConnectionBlock.SINGLE)
+                .with(STACKABLE_BLOCK, VerticalWithExtraConnectionBlock.SINGLE)
                 .with(LIT, isLIT(ctx.getWorld(), ctx.getBlockPos()));
     }
 
@@ -93,7 +96,16 @@ public class ChimneyBlock extends BlockWithEntity {
         BlockState relativeHeadBlock = world.getBlockState(relativeHeadBlockPos);
         BlockState relativeTailBlock = world.getBlockState(relativeTailBlockPos);
 
-        VerticalLinearConnectionBlock LinearConnectionBlockType = getLinearConnectionBlockType(state, relativeHeadBlock, relativeTailBlock);
+        // Count how many horizontal sides are solid
+        int horizontalSides = 0;
+        for (Direction dir : Direction.Type.HORIZONTAL) {
+            BlockState sideState = world.getBlockState(pos.offset(dir));
+            if (sideState.isSideSolidFullSquare(world, pos.offset(dir), dir.getOpposite())) {
+                horizontalSides++;
+            }
+        }
+
+        VerticalWithExtraConnectionBlock LinearConnectionBlockType = getLinearConnectionBlockType(state, relativeHeadBlock, relativeTailBlock, horizontalSides);
 
         return state.with(STACKABLE_BLOCK, LinearConnectionBlockType).with(LIT, isLIT(world, pos));
     }
@@ -113,19 +125,20 @@ public class ChimneyBlock extends BlockWithEntity {
         return false;
     }
 
-    private VerticalLinearConnectionBlock getLinearConnectionBlockType(BlockState state, BlockState relativeHeadBlock, BlockState relativeBlockTail) {
+    private VerticalWithExtraConnectionBlock getLinearConnectionBlockType(BlockState state, BlockState relativeHeadBlock, BlockState relativeBlockTail , int sides) {
         boolean isHeadBlockConnected = relativeHeadBlock.isOf(state.getBlock());
         boolean isTailBlockConnected = relativeBlockTail.isOf(state.getBlock());
 
-        if (isHeadBlockConnected && isTailBlockConnected) return VerticalLinearConnectionBlock.MIDDLE;
-        if (isHeadBlockConnected) return VerticalLinearConnectionBlock.TAIL;
-        if (isTailBlockConnected) return VerticalLinearConnectionBlock.HEAD;
-        return VerticalLinearConnectionBlock.SINGLE;
+        if (sides >= 3 && isTailBlockConnected) return VerticalWithExtraConnectionBlock.EXTENDED;
+        if (isHeadBlockConnected && isTailBlockConnected) return VerticalWithExtraConnectionBlock.MIDDLE;
+        if (isHeadBlockConnected) return VerticalWithExtraConnectionBlock.TAIL;
+        if (isTailBlockConnected) return VerticalWithExtraConnectionBlock.HEAD;
+        return VerticalWithExtraConnectionBlock.SINGLE;
     }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return world.isClient && state.get(LIT) && state.get(STACKABLE_BLOCK) == VerticalLinearConnectionBlock.HEAD ? validateTicker(type, ModBlockEntityTypes.CHIMNEY_BLOCK_ENTITY, ChimneyBlockEntity::clientTick) : null;
+        return world.isClient && state.get(LIT) && state.get(STACKABLE_BLOCK) == VerticalWithExtraConnectionBlock.HEAD ? validateTicker(type, ModBlockEntityTypes.CHIMNEY_BLOCK_ENTITY, ChimneyBlockEntity::clientTick) : null;
     }
 }

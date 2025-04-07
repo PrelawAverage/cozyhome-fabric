@@ -5,10 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.util.ModProperties;
-import net.luckystudio.cozyhome.block.util.enums.AdvancedHorizontalLinearConnectionBlock;
-import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
-import net.luckystudio.cozyhome.block.util.enums.HorizontalLinearConnectionBlock;
-import net.luckystudio.cozyhome.block.util.enums.VerticalLinearConnectionBlock;
+import net.luckystudio.cozyhome.block.util.enums.*;
 import net.luckystudio.cozyhome.datagen.util.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.enums.StairShape;
@@ -17,6 +14,7 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.math.Direction;
 
 public class ModModelProvider extends FabricModelProvider {
@@ -255,23 +253,23 @@ public class ModModelProvider extends FabricModelProvider {
         registerFountain(blockStateModelGenerator, ModBlocks.ENDSTONE_FOUNTAIN, Identifier.of("block/end_stone"));
         registerFountain(blockStateModelGenerator, ModBlocks.PURPUR_FOUNTAIN, Identifier.of("block/purpur_block"));
 
-        registerChimney(blockStateModelGenerator, ModBlocks.STONE_BRICK_CHIMNEY);
-        registerChimney(blockStateModelGenerator, ModBlocks.MOSSY_STONE_BRICK_CHIMNEY);
-        registerChimney(blockStateModelGenerator, ModBlocks.GRANITE_CHIMNEY);
-        registerChimney(blockStateModelGenerator, ModBlocks.DIORITE_CHIMNEY);
-        registerChimney(blockStateModelGenerator, ModBlocks.ANDESITE_CHIMNEY);
-        registerChimney(blockStateModelGenerator, ModBlocks.DEEPSLATE_CHIMNEY);
-        registerChimney(blockStateModelGenerator, ModBlocks.TUFF_CHIMNEY);
-        registerChimney(blockStateModelGenerator, ModBlocks.BRICK_CHIMNEY);
-        registerChimney(blockStateModelGenerator, ModBlocks.MUD_CHIMNEY);
-        registerChimney(blockStateModelGenerator, ModBlocks.SANDSTONE_CHIMNEY);
-        registerChimney(blockStateModelGenerator, ModBlocks.RED_SANDSTONE_CHIMNEY);
-        registerChimney(blockStateModelGenerator, ModBlocks.PRISMARINE_CHIMNEY);
-        registerChimney(blockStateModelGenerator, ModBlocks.NETHER_BRICK_CHIMNEY);
-        registerChimney(blockStateModelGenerator, ModBlocks.RED_NETHER_BRICK_CHIMNEY);
-        registerChimney(blockStateModelGenerator, ModBlocks.BLACKSTONE_CHIMNEY);
-        registerChimney(blockStateModelGenerator, ModBlocks.ENDSTONE_CHIMNEY);
-        registerChimney(blockStateModelGenerator, ModBlocks.PURPUR_CHIMNEY);
+        registerChimney(blockStateModelGenerator, ModBlocks.STONE_BRICK_CHIMNEY, Identifier.ofVanilla("block/stone_bricks"), ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.MOSSY_STONE_BRICK_CHIMNEY, Identifier.ofVanilla("block/mossy_stone_bricks"), ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.GRANITE_CHIMNEY, Identifier.ofVanilla("block/polished_granite"), ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.DIORITE_CHIMNEY, Identifier.ofVanilla("block/polished_diorite"), ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.ANDESITE_CHIMNEY, Identifier.ofVanilla("block/polished_andesite"), ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.DEEPSLATE_CHIMNEY, Identifier.ofVanilla("block/chiseled_deepslate"), ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.TUFF_CHIMNEY, Identifier.ofVanilla("block/chiseled_tuff"), ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.BRICK_CHIMNEY, Identifier.ofVanilla("block/bricks"), ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.MUD_CHIMNEY, Identifier.ofVanilla("block/bricks"), ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.SANDSTONE_CHIMNEY, Identifier.ofVanilla("block/chiseled_sandstone"),  ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.RED_SANDSTONE_CHIMNEY, Identifier.ofVanilla("block/chiseled_red_sandstone"), ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.PRISMARINE_CHIMNEY, Identifier.ofVanilla("block/prismarine_bricks"), ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.NETHER_BRICK_CHIMNEY, Identifier.ofVanilla("block/nether_bricks"), ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.RED_NETHER_BRICK_CHIMNEY, Identifier.ofVanilla("block/red_nether_bricks"), ChimneyIntake.IRON);;
+        registerChimney(blockStateModelGenerator, ModBlocks.BLACKSTONE_CHIMNEY, Identifier.ofVanilla("block/polished_blackstone_bricks"), ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.ENDSTONE_CHIMNEY, Identifier.ofVanilla("block/end_stone_bricks"), ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.PURPUR_CHIMNEY, Identifier.ofVanilla("block/purpur_block"), ChimneyIntake.IRON);
     }
 
     // I have no idea what this does, but it's required.
@@ -834,41 +832,64 @@ public class ModModelProvider extends FabricModelProvider {
         );
     }
 
-    public final void registerChimney(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+    public final void registerChimney(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier baseBlockTexture, ChimneyIntake intakeType) {
         TextureMap chimney_single = new TextureMap()
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_top"))
-                .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_single"))
-                .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_intake_bottom"))
-                .put(TextureKey.PARTICLE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_top"));
+                .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_side"))
+                .put(ModTextureKey.EXTRA, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_intake_side"))
+                .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + intakeType.asString()))
+                .put(TextureKey.PARTICLE, baseBlockTexture);
         TextureMap chimney_top = new TextureMap()
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_top"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_side"))
-                .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_bottom"))
-                .put(TextureKey.PARTICLE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_top"));
+                .put(TextureKey.PARTICLE, baseBlockTexture);
         TextureMap chimney_middle = new TextureMap()
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_middle"))
-                .put(TextureKey.PARTICLE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_top"));
+                .put(TextureKey.PARTICLE, baseBlockTexture);
+        TextureMap chimney_solid = new TextureMap()
+                .put(TextureKey.END, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_top"))
+                .put(TextureKey.SIDE, baseBlockTexture)
+                .put(TextureKey.PARTICLE, baseBlockTexture);
         TextureMap chimney_intake = new TextureMap()
-                .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_intake_top"))
+                .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_top"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_intake_side"))
-                .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_intake_bottom"))
-                .put(TextureKey.PARTICLE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + Registries.BLOCK.getId(block).getPath() + "_top"));
+                .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/chimney/" + intakeType.asString()))
+                .put(TextureKey.PARTICLE, baseBlockTexture);
         Identifier singleModelId = ModModels.CHIMNEY_SINGLE.upload(block, chimney_single, blockStateModelGenerator.modelCollector);
         Identifier headModelId = ModModels.CHIMNEY_TOP.upload(block, chimney_top, blockStateModelGenerator.modelCollector);
         Identifier middleModelId = ModModels.CHIMNEY_MIDDLE.upload(block, chimney_middle, blockStateModelGenerator.modelCollector);
+        Identifier solidModelId = Models.CUBE_COLUMN.upload(block, "_solid", chimney_solid, blockStateModelGenerator.modelCollector);
         Identifier tailModelId = ModModels.CHIMNEY_INTAKE.upload(block, chimney_intake, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
-                .coordinate(BlockStateVariantMap.create(ModProperties.VERTICAL_CONNECTION)
-                        .register(VerticalLinearConnectionBlock.HEAD, BlockStateVariant.create()
+                .coordinate(BlockStateVariantMap.create(ModProperties.VERTICAL_WITH_EXTRA_CONNECTION)
+                        .register(VerticalWithExtraConnectionBlock.HEAD, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, headModelId))
-                        .register(VerticalLinearConnectionBlock.MIDDLE, BlockStateVariant.create()
+                        .register(VerticalWithExtraConnectionBlock.MIDDLE, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, middleModelId))
-                        .register(VerticalLinearConnectionBlock.TAIL, BlockStateVariant.create()
+                        .register(VerticalWithExtraConnectionBlock.EXTENDED, BlockStateVariant.create()
+                                .put(VariantSettings.MODEL, solidModelId))
+                        .register(VerticalWithExtraConnectionBlock.TAIL, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, tailModelId))
-                        .register(VerticalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
+                        .register(VerticalWithExtraConnectionBlock.SINGLE, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, singleModelId))
                 )
         );
+    }
+
+    public enum ChimneyIntake implements StringIdentifiable {
+        IRON("chimney_intake_iron"),
+        GOLD("chimney_intake_gold");
+
+        private final String type;
+
+        private ChimneyIntake(final String type) {
+            this.type = type;
+        }
+
+        @Override
+        public String asString() {
+            return this.type;
+        }
     }
 
     public final void registerDesk(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
@@ -1343,23 +1364,28 @@ public class ModModelProvider extends FabricModelProvider {
 
         TextureMap baseTexture = new TextureMap()
                 .put(TextureKey.TOP, Identifier.of(blockNamespace, baseTexturePath + "_top"))
-                .put(TextureKey.SIDE, Identifier.of(blockNamespace, baseTexturePath));
+                .put(TextureKey.SIDE, Identifier.of(blockNamespace, baseTexturePath))
+                .put(TextureKey.PARTICLE, Identifier.of(blockNamespace, baseTexturePath));
 
         TextureMap cornerTexture = new TextureMap()
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/large_stump/" + Registries.BLOCK.getId(block).getPath() + "_corner_top"))
-                .put(TextureKey.SIDE, Identifier.of(blockNamespace, baseTexturePath));
+                .put(TextureKey.SIDE, Identifier.of(blockNamespace, baseTexturePath))
+                .put(TextureKey.PARTICLE, Identifier.of(blockNamespace, baseTexturePath));
 
         TextureMap doubleTexture = new TextureMap()
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/large_stump/" + Registries.BLOCK.getId(block).getPath() + "_double_top"))
-                .put(TextureKey.SIDE, Identifier.of(blockNamespace, baseTexturePath));
+                .put(TextureKey.SIDE, Identifier.of(blockNamespace, baseTexturePath))
+                .put(TextureKey.PARTICLE, Identifier.of(blockNamespace, baseTexturePath));
 
         TextureMap innerCornerPieceTexture = new TextureMap()
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/large_stump/" + Registries.BLOCK.getId(block).getPath() + "_corner_inner_top"))
-                .put(TextureKey.SIDE, Identifier.of(blockNamespace, baseTexturePath));
+                .put(TextureKey.SIDE, Identifier.of(blockNamespace, baseTexturePath))
+                .put(TextureKey.PARTICLE, Identifier.of(blockNamespace, baseTexturePath));
 
         TextureMap middleTexture = new TextureMap()
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/large_stump/" + Registries.BLOCK.getId(block).getPath() + "_middle_top"))
-                .put(TextureKey.SIDE, Identifier.of(blockNamespace, baseTexturePath));
+                .put(TextureKey.SIDE, Identifier.of(blockNamespace, baseTexturePath))
+                .put(TextureKey.PARTICLE, Identifier.of(blockNamespace, baseTexturePath));
 
         // Upload models for various stump states
         Identifier stumpModelID = ModModels.LARGE_STUMP.upload(block, baseTexture, blockStateModelGenerator.modelCollector);

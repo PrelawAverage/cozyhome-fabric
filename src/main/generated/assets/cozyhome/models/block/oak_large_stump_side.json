@@ -1,6 +1,7 @@
 {
   "parent": "cozyhome:block/large_stump/template_large_stump_side",
   "textures": {
+    "particle": "minecraft:block/oak_log",
     "side": "minecraft:block/oak_log",
     "top": "cozyhome:block/large_stump/oak_large_stump_middle_top"
   }

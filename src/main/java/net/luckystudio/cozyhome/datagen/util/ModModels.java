@@ -15,8 +15,8 @@ public class ModModels {
 
     public static final Model SINK_COUNTER = modBlockWithType("sink_counter", ModBlockTypes.COUNTER, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, ModTextureKey.INNER_SIDE, ModTextureKey.INNER_BOTTOM, TextureKey.PARTICLE);
 
-    public static final Model CHIMNEY_SINGLE = modBlockWithType("template_chimney", ModBlockTypes.CHIMNEY, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.PARTICLE);
-    public static final Model CHIMNEY_TOP = modBlockWithTypeAndVariant("template_chimney_top", ModBlockTypes.CHIMNEY, "_top", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.PARTICLE);
+    public static final Model CHIMNEY_SINGLE = modBlockWithType("template_chimney", ModBlockTypes.CHIMNEY, TextureKey.TOP, TextureKey.SIDE, ModTextureKey.EXTRA, TextureKey.BOTTOM, TextureKey.PARTICLE);
+    public static final Model CHIMNEY_TOP = modBlockWithTypeAndVariant("template_chimney_top", ModBlockTypes.CHIMNEY, "_top", TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
     public static final Model CHIMNEY_MIDDLE = modBlockWithTypeAndVariant("template_chimney_middle", ModBlockTypes.CHIMNEY, "_side", TextureKey.SIDE, TextureKey.PARTICLE);
     public static final Model CHIMNEY_INTAKE = modBlockWithTypeAndVariant("template_chimney_intake", ModBlockTypes.CHIMNEY, "_bottom", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.PARTICLE);
     public static final Model TABLE = modBlockWithType("template_table", ModBlockTypes.TABLE, TextureKey.ALL, TextureKey.PARTICLE);
@@ -72,13 +72,13 @@ public class ModModels {
 
     public static final Model SINK = modBlockWithType("sink", ModBlockTypes.SINK, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKey.EXTRA, TextureKey.PARTICLE);
 
-    public static final Model LARGE_STUMP = modBlockWithType("template_large_stump", ModBlockTypes.LARGE_STUMP, TextureKey.TOP, TextureKey.SIDE);
-    public static final Model LARGE_STUMP_CORNER = modBlockWithTypeAndVariant("template_large_stump_corner", ModBlockTypes.LARGE_STUMP, "_corner", TextureKey.TOP, TextureKey.SIDE);
-    public static final Model LARGE_STUMP_CORNER_PIECE = modBlockWithTypeAndVariant("template_large_stump_corner_piece", ModBlockTypes.LARGE_STUMP, "_corner_piece", TextureKey.TOP, TextureKey.SIDE);
-    public static final Model LARGE_STUMP_DOUBLE = modBlockWithTypeAndVariant("template_large_stump_double", ModBlockTypes.LARGE_STUMP, "_double", TextureKey.TOP, TextureKey.SIDE);
-    public static final Model LARGE_STUMP_INNER_CORNER_PIECE = modBlockWithTypeAndVariant("template_large_stump_inner_corner_piece", ModBlockTypes.LARGE_STUMP, "_inner_corner_piece", TextureKey.TOP);
-    public static final Model LARGE_STUMP_MIDDLE = modBlockWithTypeAndVariant("template_large_stump_middle", ModBlockTypes.LARGE_STUMP, "_middle", TextureKey.TOP, TextureKey.SIDE);
-    public static final Model LARGE_STUMP_SIDE = modBlockWithTypeAndVariant("template_large_stump_side", ModBlockTypes.LARGE_STUMP, "_side", TextureKey.TOP, TextureKey.SIDE);
+    public static final Model LARGE_STUMP = modBlockWithType("template_large_stump", ModBlockTypes.LARGE_STUMP, TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
+    public static final Model LARGE_STUMP_CORNER = modBlockWithTypeAndVariant("template_large_stump_corner", ModBlockTypes.LARGE_STUMP, "_corner", TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
+    public static final Model LARGE_STUMP_CORNER_PIECE = modBlockWithTypeAndVariant("template_large_stump_corner_piece", ModBlockTypes.LARGE_STUMP, "_corner_piece", TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
+    public static final Model LARGE_STUMP_DOUBLE = modBlockWithTypeAndVariant("template_large_stump_double", ModBlockTypes.LARGE_STUMP, "_double", TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
+    public static final Model LARGE_STUMP_INNER_CORNER_PIECE = modBlockWithTypeAndVariant("template_large_stump_inner_corner_piece", ModBlockTypes.LARGE_STUMP, "_inner_corner_piece", TextureKey.TOP, TextureKey.PARTICLE);
+    public static final Model LARGE_STUMP_MIDDLE = modBlockWithTypeAndVariant("template_large_stump_middle", ModBlockTypes.LARGE_STUMP, "_middle", TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
+    public static final Model LARGE_STUMP_SIDE = modBlockWithTypeAndVariant("template_large_stump_side", ModBlockTypes.LARGE_STUMP, "_side", TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
 
     public static final Model FOUNTAIN = modBlockWithType("template_fountain", ModBlockTypes.FOUNTAIN, TextureKey.ALL, TextureKey.PARTICLE);
     public static final Model FOUNTAIN_CORNER = modBlockWithTypeAndVariant("template_fountain_corner", ModBlockTypes.FOUNTAIN, "_corner", TextureKey.ALL, TextureKey.PARTICLE);

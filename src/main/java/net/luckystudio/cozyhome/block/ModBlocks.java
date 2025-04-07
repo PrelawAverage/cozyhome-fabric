@@ -5,7 +5,7 @@ import net.luckystudio.cozyhome.block.custom.chimney.ChimneyBlock;
 import net.luckystudio.cozyhome.block.custom.drawer.DeskBlock;
 import net.luckystudio.cozyhome.block.custom.drawer.DrawerBlock;
 import net.luckystudio.cozyhome.block.custom.couch.CouchBlock;
-import net.luckystudio.cozyhome.block.custom.horizontal_connecting_blocks.LargeStump;
+import net.luckystudio.cozyhome.block.custom.horizontal_connecting_blocks.LargeStumpBlock;
 import net.luckystudio.cozyhome.block.custom.horizontal_connecting_blocks.ShelfTableBlock;
 import net.luckystudio.cozyhome.block.custom.horizontal_connecting_blocks.TableBlock;
 import net.luckystudio.cozyhome.block.custom.sofa.SofaBlock;
@@ -149,7 +149,7 @@ public class ModBlocks {
     }
 
     private static Block createLargeStump(BlockSoundGroup soundGroup) {
-        return new LargeStump(
+        return new LargeStumpBlock(
                 AbstractBlock.Settings.create()
                         .solid()
                         .requiresTool()

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "cozyhome:block/chimney/red_nether_brick_chimney_top",
+    "side": "minecraft:block/red_nether_bricks"
+  }
+}

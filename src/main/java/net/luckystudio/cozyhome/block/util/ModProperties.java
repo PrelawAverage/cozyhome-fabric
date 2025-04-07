@@ -17,6 +17,7 @@ public class ModProperties {
     public static final EnumProperty<AdvancedHorizontalLinearConnectionBlock> ADVANCED_HORIZONTAL_CONNECTION = EnumProperty.of("advanced_horizontal_connection", AdvancedHorizontalLinearConnectionBlock.class);
     public static final EnumProperty<HorizontalLinearConnectionBlock> HORIZONTAL_CONNECTION = EnumProperty.of("horizontal_connection", HorizontalLinearConnectionBlock.class);
     public static final EnumProperty<VerticalLinearConnectionBlock> VERTICAL_CONNECTION = EnumProperty.of("vertical_connection", VerticalLinearConnectionBlock.class);
+    public static final EnumProperty<VerticalWithExtraConnectionBlock> VERTICAL_WITH_EXTRA_CONNECTION = EnumProperty.of("vertical_with_extra_connection", VerticalWithExtraConnectionBlock.class);
     public static final EnumProperty<TripleTallBlock> TRIPLE_TALL_BLOCK = EnumProperty.of("part", TripleTallBlock.class);
     public static final EnumProperty<HasUnderBlock> HAS_UNDER = EnumProperty.of("has_under", HasUnderBlock.class);
     public static final EnumProperty<ContainsBlock> CONTAINS = EnumProperty.of("contains", ContainsBlock.class);

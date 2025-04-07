@@ -7,11 +7,11 @@ import net.minecraft.util.Formatting;
 public class ModScreenTexts {
 
     private static final Formatting CAPTION = Formatting.GRAY;
-    private static final Formatting ENTRIES = Formatting.YELLOW;
+    private static final Formatting ENTRIES = Formatting.BLUE;
 
     public static final Text ENTRY = entry();
 
     public static MutableText entry() {
-        return Text.literal(" - ").formatted(ENTRIES);
+        return Text.literal(" ").formatted(ENTRIES);
     }
 }
