@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/lamp/bamboo_lamp",
+  "textures": {
+    "all": "cozyhome:block/lamp/bamboo_lamp_on",
+    "particle": "minecraft:block/bamboo_planks"
+  }
+}

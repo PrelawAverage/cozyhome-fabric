@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/lamp/spruce_lamp_head",
+  "textures": {
+    "all": "cozyhome:block/lamp/spruce_lamp_on",
+    "particle": "minecraft:block/spruce_planks"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "cozyhome:block/wall_mirror/wall_mirror",
+  "textures": {
+    "back": "cozyhome:block/shared/oak_board",
+    "front": "cozyhome:block/shared/oak_frame",
+    "particle": "cozyhome:block/mirror/mirror"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "parent": "cozyhome:block/counter/counter",
+  "textures": {
+    "back": "cozyhome:block/counter/jungle_counter_back",
+    "bottom": "cozyhome:block/counter/jungle_counter_bottom",
+    "front": "cozyhome:block/counter/jungle_counter_closed",
+    "particle": "cozyhome:block/break/jungle_furniture",
+    "side": "cozyhome:block/counter/jungle_counter_side",
+    "top": "cozyhome:block/counter/jungle_counter_top"
+  }
+}

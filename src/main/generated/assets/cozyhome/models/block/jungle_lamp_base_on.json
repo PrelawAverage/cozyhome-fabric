@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/lamp/generic_lamp_base",
+  "textures": {
+    "all": "cozyhome:block/lamp/jungle_lamp_on",
+    "particle": "minecraft:block/jungle_planks"
+  }
+}

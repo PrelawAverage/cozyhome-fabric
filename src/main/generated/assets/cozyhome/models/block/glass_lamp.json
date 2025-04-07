@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/lamp/glass_lamp",
+  "textures": {
+    "all": "cozyhome:block/lamp/glass_lamp",
+    "particle": "cozyhome:block/break/glass_furniture"
+  }
+}

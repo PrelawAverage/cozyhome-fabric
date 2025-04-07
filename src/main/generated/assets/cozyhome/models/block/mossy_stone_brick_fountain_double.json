@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/fountain/template_fountain_double",
+  "textures": {
+    "all": "cozyhome:block/fountain/mossy_stone_brick_fountain",
+    "particle": "minecraft:block/mossy_stone_bricks"
+  }
+}

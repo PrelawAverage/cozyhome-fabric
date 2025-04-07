@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/couch/couch_middle",
+  "textures": {
+    "all": "cozyhome:block/couch/bamboo_couch",
+    "particle": "minecraft:block/bamboo_planks"
+  }
+}

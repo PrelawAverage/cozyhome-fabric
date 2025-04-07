@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/table/template_table_inner_corner_piece",
+  "textures": {
+    "all": "cozyhome:block/table/acacia_table",
+    "particle": "minecraft:block/acacia_planks"
+  }
+}

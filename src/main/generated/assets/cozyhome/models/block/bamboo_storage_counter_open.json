@@ -1,0 +1,12 @@
+{
+  "parent": "cozyhome:block/counter/storage_counter",
+  "textures": {
+    "back": "cozyhome:block/counter/bamboo_counter_back",
+    "bottom": "cozyhome:block/counter/bamboo_counter_bottom",
+    "closed": "cozyhome:block/counter/bamboo_counter_closed",
+    "open": "cozyhome:block/counter/bamboo_counter_open",
+    "particle": "cozyhome:block/break/bamboo_furniture",
+    "side": "cozyhome:block/counter/bamboo_counter_side",
+    "top": "cozyhome:block/counter/bamboo_counter_top"
+  }
+}
