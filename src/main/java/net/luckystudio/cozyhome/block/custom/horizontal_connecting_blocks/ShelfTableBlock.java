@@ -1,7 +1,6 @@
 package net.luckystudio.cozyhome.block.custom.horizontal_connecting_blocks;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.custom.AbstractHorizontalConnectingBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;

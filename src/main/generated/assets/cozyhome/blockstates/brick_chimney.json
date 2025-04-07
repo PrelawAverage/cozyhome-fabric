@@ -1,15 +1,18 @@
 {
   "variants": {
-    "vertical_connection=head": {
+    "vertical_with_extra_connection=extended": {
+      "model": "cozyhome:block/brick_chimney_solid"
+    },
+    "vertical_with_extra_connection=head": {
       "model": "cozyhome:block/brick_chimney_top"
     },
-    "vertical_connection=middle": {
+    "vertical_with_extra_connection=middle": {
       "model": "cozyhome:block/brick_chimney_side"
     },
-    "vertical_connection=single": {
+    "vertical_with_extra_connection=single": {
       "model": "cozyhome:block/brick_chimney"
     },
-    "vertical_connection=tail": {
+    "vertical_with_extra_connection=tail": {
       "model": "cozyhome:block/brick_chimney_bottom"
     }
   }

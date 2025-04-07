@@ -1,9 +1,10 @@
 {
   "parent": "cozyhome:block/chimney/template_chimney",
   "textures": {
-    "bottom": "cozyhome:block/chimney/granite_chimney_intake_bottom",
-    "particle": "cozyhome:block/chimney/granite_chimney_top",
-    "side": "cozyhome:block/chimney/granite_chimney_single",
+    "bottom": "cozyhome:block/chimney/chimney_intake_iron",
+    "extra": "cozyhome:block/chimney/granite_chimney_intake_side",
+    "particle": "minecraft:block/polished_granite",
+    "side": "cozyhome:block/chimney/granite_chimney_side",
     "top": "cozyhome:block/chimney/granite_chimney_top"
   }
 }

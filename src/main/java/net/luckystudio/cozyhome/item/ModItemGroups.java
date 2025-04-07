@@ -260,24 +260,24 @@ public class ModItemGroups {
 //                        entries.add(ModBlocks.ENDSTONE_FOUNTAIN_SPROUT);
 //                        entries.add(ModBlocks.PURPUR_FOUNTAIN_SPROUT);
 //
-//                        // Chimneys
-//                        entries.add(ModBlocks.STONE_BRICK_CHIMNEY);
-//                        entries.add(ModBlocks.MOSSY_STONE_BRICK_CHIMNEY);
-//                        entries.add(ModBlocks.GRANITE_CHIMNEY);
-//                        entries.add(ModBlocks.DIORITE_CHIMNEY);
-//                        entries.add(ModBlocks.ANDESITE_CHIMNEY);
-//                        entries.add(ModBlocks.DEEPSLATE_CHIMNEY);
-//                        entries.add(ModBlocks.TUFF_CHIMNEY);
-//                        entries.add(ModBlocks.BRICK_CHIMNEY);
-//                        entries.add(ModBlocks.MUD_CHIMNEY);
-//                        entries.add(ModBlocks.SANDSTONE_CHIMNEY);
-//                        entries.add(ModBlocks.RED_SANDSTONE_CHIMNEY);
-//                        entries.add(ModBlocks.PRISMARINE_CHIMNEY);
-//                        entries.add(ModBlocks.NETHER_BRICK_CHIMNEY);
-//                        entries.add(ModBlocks.RED_NETHER_BRICK_CHIMNEY);
-//                        entries.add(ModBlocks.BLACKSTONE_CHIMNEY);
-//                        entries.add(ModBlocks.ENDSTONE_CHIMNEY);
-//                        entries.add(ModBlocks.PURPUR_CHIMNEY);
+                        // Chimneys
+                        entries.add(ModBlocks.STONE_BRICK_CHIMNEY);
+                        entries.add(ModBlocks.MOSSY_STONE_BRICK_CHIMNEY);
+                        entries.add(ModBlocks.GRANITE_CHIMNEY);
+                        entries.add(ModBlocks.DIORITE_CHIMNEY);
+                        entries.add(ModBlocks.ANDESITE_CHIMNEY);
+                        entries.add(ModBlocks.DEEPSLATE_CHIMNEY);
+                        entries.add(ModBlocks.TUFF_CHIMNEY);
+                        entries.add(ModBlocks.BRICK_CHIMNEY);
+                        entries.add(ModBlocks.MUD_CHIMNEY);
+                        entries.add(ModBlocks.SANDSTONE_CHIMNEY);
+                        entries.add(ModBlocks.RED_SANDSTONE_CHIMNEY);
+                        entries.add(ModBlocks.PRISMARINE_CHIMNEY);
+                        entries.add(ModBlocks.NETHER_BRICK_CHIMNEY);
+                        entries.add(ModBlocks.RED_NETHER_BRICK_CHIMNEY);
+                        entries.add(ModBlocks.BLACKSTONE_CHIMNEY);
+                        entries.add(ModBlocks.ENDSTONE_CHIMNEY);
+                        entries.add(ModBlocks.PURPUR_CHIMNEY);
                         // Misc. Blocks/Items
                         entries.add(ModBlocks.TELESCOPE);
                         entries.add(ModItems.PAINT_BRUSH);
