@@ -1,6 +1,0 @@
-{
-  "parent": "cozyhome:block/large_stump/template_large_stump_inner_corner_piece",
-  "textures": {
-    "top": "cozyhome:block/large_stump/birch_large_stump_corner_inner_top"
-  }
-}

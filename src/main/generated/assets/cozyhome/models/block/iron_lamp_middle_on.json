@@ -1,7 +1,0 @@
-{
-  "parent": "cozyhome:block/lamp/iron_lamp_middle",
-  "textures": {
-    "all": "cozyhome:block/lamp/iron_lamp_on",
-    "particle": "cozyhome:block/break/iron_furniture"
-  }
-}

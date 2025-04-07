@@ -1,7 +1,0 @@
-{
-  "parent": "cozyhome:block/pane/template_pane_15",
-  "textures": {
-    "particle": "minecraft:block/lava_still",
-    "up": "minecraft:block/lava_still"
-  }
-}

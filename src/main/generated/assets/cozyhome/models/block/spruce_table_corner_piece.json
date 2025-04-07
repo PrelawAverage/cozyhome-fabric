@@ -1,7 +1,0 @@
-{
-  "parent": "cozyhome:block/table/template_table_corner_piece",
-  "textures": {
-    "all": "cozyhome:block/table/spruce_table",
-    "particle": "minecraft:block/spruce_planks"
-  }
-}

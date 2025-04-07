@@ -11,10 +11,10 @@ import java.util.function.UnaryOperator;
 
 public class ModDataComponents {
 
-    public static final ComponentType<Integer> COLOR = register("color", builder ->
-            builder.codec(Codec.INT));
-    public static final ComponentType<String> CUSHION_TYPE = register("cushion_type", builder ->
-            builder.codec(Codec.STRING));
+    public static final ComponentType<Float> YAW = register("yaw", builder ->
+            builder.codec(Codec.FLOAT));
+    public static final ComponentType<Float> PITCH = register("pitch", builder ->
+            builder.codec(Codec.FLOAT));
 
     public static <T> ComponentType<T> register(String path, UnaryOperator<ComponentType.Builder<T>> builderOperator) {
         return Registry.register(Registries.DATA_COMPONENT_TYPE, Identifier.of(CozyHome.MOD_ID, path), builderOperator.apply(ComponentType.builder()).build());

@@ -1,7 +1,0 @@
-{
-  "parent": "cozyhome:block/lamp/crimson_lamp_middle",
-  "textures": {
-    "all": "cozyhome:block/lamp/crimson_lamp",
-    "particle": "minecraft:block/crimson_planks"
-  }
-}

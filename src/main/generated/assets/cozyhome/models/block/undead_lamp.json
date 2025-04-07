@@ -1,7 +1,0 @@
-{
-  "parent": "cozyhome:block/lamp/undead_lamp",
-  "textures": {
-    "all": "cozyhome:block/lamp/undead_lamp",
-    "particle": "cozyhome:block/break/undead_furniture"
-  }
-}

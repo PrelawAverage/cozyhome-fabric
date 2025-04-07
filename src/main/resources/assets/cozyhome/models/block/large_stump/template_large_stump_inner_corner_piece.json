@@ -1,9 +1,5 @@
 {
 	"credit": "Made with Blockbench",
-	"textures": {
-		"particle": "cozyhome:block/stump_table/oak_stump_table_corner_inner_top",
-		"top": "cozyhome:block/stump_table/oak_stump_table_corner_inner_top"
-	},
 	"elements": [
 		{
 			"from": [8, 0, 8],

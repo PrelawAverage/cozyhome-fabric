@@ -2,9 +2,12 @@ package net.luckystudio.cozyhome.block.custom.telescope;
 
 import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.CozyHome;
+import net.luckystudio.cozyhome.entity.ModEntities;
+import net.luckystudio.cozyhome.entity.custom.SeatEntity;
 import net.luckystudio.cozyhome.util.ModScreenTexts;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -166,7 +169,15 @@ public class TelescopeBlock extends BlockWithEntity implements Waterloggable {
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         boolean isDay = world.isDay();
-        if (!world.isClient()) {
+        if (!player.isSneaking()) {
+            // Creates a new entity
+            SeatEntity seat = new SeatEntity(ModEntities.SEAT_ENTITY, world);
+            // Sets it's location
+            seat.setPosition(pos.getX() + 0.5f, pos.getY(), pos.getZ() + 0.5f);
+            world.spawnEntity(seat);
+            player.startRiding(seat);
+            return ActionResult.SUCCESS;
+        } else if (!world.isClient) {
             if (isDay) {
                 player.sendMessage(Text.translatable("message.cozyhome.telescope.cant_use"), true);
             } else {

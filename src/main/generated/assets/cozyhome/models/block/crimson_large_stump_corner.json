@@ -1,7 +1,0 @@
-{
-  "parent": "cozyhome:block/large_stump/template_large_stump_corner",
-  "textures": {
-    "side": "minecraft:block/crimson_stem",
-    "top": "cozyhome:block/large_stump/crimson_large_stump_corner_top"
-  }
-}

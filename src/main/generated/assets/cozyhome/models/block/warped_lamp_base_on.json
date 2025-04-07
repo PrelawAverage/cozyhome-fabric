@@ -1,7 +1,0 @@
-{
-  "parent": "cozyhome:block/lamp/warped_lamp_base",
-  "textures": {
-    "all": "cozyhome:block/lamp/warped_lamp_on",
-    "particle": "minecraft:block/warped_planks"
-  }
-}

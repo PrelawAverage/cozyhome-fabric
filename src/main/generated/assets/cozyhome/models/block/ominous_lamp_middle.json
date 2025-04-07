@@ -1,7 +1,0 @@
-{
-  "parent": "cozyhome:block/lamp/ominous_lamp_middle",
-  "textures": {
-    "all": "cozyhome:block/lamp/ominous_lamp",
-    "particle": "cozyhome:block/break/ominous_furniture"
-  }
-}

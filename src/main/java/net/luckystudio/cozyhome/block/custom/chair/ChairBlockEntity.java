@@ -19,6 +19,7 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
+// Copied from the Decorated Pot
 public class ChairBlockEntity extends BlockEntity implements LootableInventory, SingleStackInventory.SingleStackBlockEntityInventory {
     protected RegistryKey<LootTable> lootTableId;
     protected long lootTableSeed;

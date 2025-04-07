@@ -1,7 +1,0 @@
-{
-  "parent": "cozyhome:block/fountain/template_fountain_corner",
-  "textures": {
-    "all": "cozyhome:block/fountain/mud_fountain",
-    "particle": "minecraft:block/mud"
-  }
-}

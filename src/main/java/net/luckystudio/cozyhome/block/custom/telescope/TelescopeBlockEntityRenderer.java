@@ -2,7 +2,6 @@ package net.luckystudio.cozyhome.block.custom.telescope;
 
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.client.ModEntityModelLayers;
-import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -14,17 +13,16 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.RotationAxis;
 
 public class TelescopeBlockEntityRenderer implements BlockEntityRenderer<TelescopeBlockEntity> {
-    private final ModelPart model;
+    private final TelescopeModel model;
 
     public TelescopeBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
         // Use a custom model layer (make sure to register it in your client mod initializer)
-        this.model = ctx.getLayerModelPart(ModEntityModelLayers.TELESCOPE);
+        this.model = new TelescopeModel(ctx.getLayerModelPart(ModEntityModelLayers.TELESCOPE));
     }
 
     @Override
     public void render(TelescopeBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         matrices.push();  // Save the current matrix stack
-        int i = entity.getZoomLevel();
         // Move the model to the center top of the block
         matrices.translate(0.5, 2.5, 0.5);  // Position the model on top of the block
         // Flip the model upright (rotate 180 degrees around the X axis)
@@ -33,7 +31,9 @@ public class TelescopeBlockEntityRenderer implements BlockEntityRenderer<Telesco
 
         // Render the entire model
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(RenderLayer.getEntityCutout(Identifier.of(CozyHome.MOD_ID, "textures/entity/telescope_head.png")));
-        model.render(matrices, vertexConsumer, light, overlay);
+        System.out.println("Rendering Telescope with Yaw: " + entity.getYaw() + ", Pitch: " + entity.getPitch());
+        this.model.setRotations(entity.getYaw(), entity.getPitch());
+        this.model.render(matrices, vertexConsumer, light, overlay);
 
         matrices.pop();  // Restore the matrix stack
     }

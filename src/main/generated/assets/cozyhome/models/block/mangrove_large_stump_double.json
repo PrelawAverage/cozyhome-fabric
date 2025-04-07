@@ -1,7 +1,0 @@
-{
-  "parent": "cozyhome:block/large_stump/template_large_stump_double",
-  "textures": {
-    "side": "minecraft:block/mangrove_log",
-    "top": "cozyhome:block/large_stump/mangrove_large_stump_double_top"
-  }
-}
