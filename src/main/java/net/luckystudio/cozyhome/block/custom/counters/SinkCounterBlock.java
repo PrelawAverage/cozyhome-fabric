@@ -72,7 +72,7 @@ public class SinkCounterBlock extends AbstractSinkBlock {
         super.appendTooltip(stack, context, tooltip, type);
         tooltip.add(ScreenTexts.EMPTY);
         tooltip.add(Text.translatable("tooltip.cozyhome.pulls_water_from").formatted(Formatting.GRAY));
-        tooltip.add(ModScreenTexts.entry().append(Text.translatable("tooltip.direction.behind")));
-        tooltip.add(ModScreenTexts.entry().append(Text.translatable("tooltip.direction.below")));
+        tooltip.add(ModScreenTexts.entry().append(Text.translatable("tooltip.cozyhome.behind")));
+        tooltip.add(ModScreenTexts.entry().append(Text.translatable("tooltip.cozyhome.below")));
     }
 }
