@@ -363,5 +363,22 @@
   "message.cozyhome.telescope.new_moon_facts_2": "I was told mobs are at their weakest tonight, perfect time to fulfill some nightly task.",
   "message.cozyhome.telescope.waxing_crescent_facts_0": "The moon is waxing into a crescent.",
   "message.cozyhome.telescope.first_quarter_facts_0": "The first quarter moon is half-lit.",
-  "message.cozyhome.telescope.waxing_gibbous_facts_0": "The moon grows fuller in a waxing gibbous phase, tomorrow night will be dangerous."
+  "message.cozyhome.telescope.waxing_gibbous_facts_0": "The moon grows fuller in a waxing gibbous phase, tomorrow night will be dangerous.",
+
+  "cozyhome.color.white": "White",
+  "cozyhome.color.gray": "Gray",
+  "cozyhome.color.black": "Black",
+  "cozyhome.color.brown": "Brown",
+  "cozyhome.color.red": "Red",
+  "cozyhome.color.orange": "Orange",
+  "cozyhome.color.yellow": "Yellow",
+  "cozyhome.color.lime": "Lime",
+  "cozyhome.color.green": "Green",
+  "cozyhome.color.cyan": "Cyan",
+  "cozyhome.color.light_blue": "Light Blue",
+  "cozyhome.color.blue": "Blue",
+  "cozyhome.color.purple": "Purple",
+  "cozyhome.color.magenta": "Magenta",
+  "cozyhome.color.pink": "Pink",
+  "cozyhome.custom_colored": "Custom Colored"
 }
