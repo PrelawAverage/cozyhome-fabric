@@ -1,6 +1,8 @@
 package net.luckystudio.cozyhome.entity.custom;
 
+import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.custom.AbstractSeatBlock;
+import net.luckystudio.cozyhome.block.custom.telescope.TelescopeBlockEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.data.DataTracker;
@@ -45,13 +47,32 @@ public class SeatEntity extends Entity {
         return true;
     }
 
+    @Override
+    public void tick() {
+        super.tick();
+        World world = this.getWorld();
+        Entity entity = this.getFirstPassenger();
+        if (!world.isClient) {
+            if (entity == null) {
+                this.remove(RemovalReason.DISCARDED);
+            } else {
+                if (isTelescopeBlock()) {
+                    if (this.getWorld().getBlockEntity(this.getBlockPos()) instanceof TelescopeBlockEntity telescopeBlockEntity && entity != null) {
+                        telescopeBlockEntity.setYaw(entity.getYaw() - 90);
+                        telescopeBlockEntity.setPitch(-entity.getPitch());
+                        telescopeBlockEntity.markDirty();
+                    }
+                }
+            }
+        }
+    }
 
     // Runs when
     @Override
     protected void addPassenger(Entity passenger) {
         BlockPos pos = this.getBlockPos();
         BlockState state = this.getWorld().getBlockState(pos);
-        if (state.getBlock() instanceof AbstractSeatBlock) {
+        if (state.getBlock() instanceof AbstractSeatBlock || isTelescopeBlock()) {
             passenger.setYaw(this.getYaw());
             super.addPassenger(passenger);
         }
@@ -115,13 +136,14 @@ public class SeatEntity extends Entity {
 
     @Override
     protected void updatePassengerPosition(Entity passenger, PositionUpdater positionUpdater) {
+        super.updatePassengerPosition(passenger, positionUpdater);
         if (passenger instanceof PlayerEntity) {
-            // Get the yaw of the entity and the player
-            float entityYaw = this.getYaw();
-            // If the yaw difference exceeds the threshold, rotate the player's body
-            passenger.setBodyYaw(entityYaw);
             // Update the player's position relative to the entity
-            passenger.setPos(this.getX(), this.getY() - 0.5f + getHeightOffset(), this.getZ());
+            float riderYaw = passenger.getYaw() + 180; // Degrees
+            double radians = Math.toRadians(riderYaw);
+            double offsetX = isTelescopeBlock() ? -Math.sin(radians) : 0;
+            double offsetZ = isTelescopeBlock() ? Math.cos(radians) : 0;
+            passenger.setPos(this.getX() + offsetX, this.getY() - 0.5F + getHeightOffset(), this.getZ() + offsetZ);
         }
     }
 
@@ -134,19 +156,15 @@ public class SeatEntity extends Entity {
         return 0f;
     }
 
-    @Override
-    protected BlockPos getPosWithYOffset(float offset) {
-        BlockPos pos = this.getBlockPos();
-        BlockState state = getWorld().getBlockState(pos);
-        if (state.getBlock() instanceof AbstractSeatBlock abstractSeatBlock) {
-            return new BlockPos((int) this.getX(), (int) (this.getY() + abstractSeatBlock.getSeatHeight(state)),(int)  this.getZ());
-        }
-        return super.getPosWithYOffset(offset);
-    }
-
     // This allows the seat entity to get moved by a piston
     @Override
     protected Vec3d adjustMovementForPiston(Vec3d movement) {
         return super.adjustMovementForPiston(movement);
+    }
+
+    private boolean isTelescopeBlock() {
+        BlockPos pos = this.getBlockPos();
+        BlockState state = this.getWorld().getBlockState(pos);
+        return state.getBlock() == ModBlocks.TELESCOPE;
     }
 }

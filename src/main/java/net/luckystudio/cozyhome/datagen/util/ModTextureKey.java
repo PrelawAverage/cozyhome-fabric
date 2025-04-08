@@ -3,6 +3,7 @@ package net.luckystudio.cozyhome.datagen.util;
 import net.minecraft.data.client.TextureKey;
 
 public class ModTextureKey {
+    public static final TextureKey INNER_FRONT = TextureKey.of("inner_front");
     public static final TextureKey INNER_SIDE = TextureKey.of("inner_side");
     public static final TextureKey INNER_BOTTOM = TextureKey.of("inner_bottom");
     public static final TextureKey EXTRA = TextureKey.of("extra");

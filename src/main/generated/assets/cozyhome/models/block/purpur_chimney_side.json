@@ -1,7 +1,7 @@
 {
   "parent": "cozyhome:block/chimney/template_chimney_middle",
   "textures": {
-    "particle": "cozyhome:block/chimney/purpur_chimney_top",
+    "particle": "minecraft:block/purpur_block",
     "side": "cozyhome:block/chimney/purpur_chimney_middle"
   }
 }

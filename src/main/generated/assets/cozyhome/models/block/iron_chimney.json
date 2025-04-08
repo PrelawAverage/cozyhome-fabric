@@ -1,0 +1,10 @@
+{
+  "parent": "cozyhome:block/chimney/template_chimney",
+  "textures": {
+    "bottom": "cozyhome:block/chimney/chimney_intake_iron",
+    "extra": "cozyhome:block/chimney/iron_chimney_intake_side",
+    "particle": "cozyhome:block/break/iron_furniture",
+    "side": "cozyhome:block/chimney/iron_chimney_side",
+    "top": "cozyhome:block/chimney/iron_chimney_top"
+  }
+}

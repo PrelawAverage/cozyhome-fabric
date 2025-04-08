@@ -255,7 +255,7 @@
     },
     {
       "apply": {
-        "model": "cozyhome:block/inset_water_pane"
+        "model": "cozyhome:block/water_15"
       },
       "when": {
         "contains": "water"
@@ -263,7 +263,7 @@
     },
     {
       "apply": {
-        "model": "cozyhome:block/inset_lava_pane"
+        "model": "cozyhome:block/lava_15"
       },
       "when": {
         "contains": "lava"
@@ -271,7 +271,7 @@
     },
     {
       "apply": {
-        "model": "cozyhome:block/inset_ice_pane"
+        "model": "cozyhome:block/ice_15"
       },
       "when": {
         "contains": "ice"

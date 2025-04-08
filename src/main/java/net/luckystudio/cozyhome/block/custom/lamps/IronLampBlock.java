@@ -1,9 +1,6 @@
 package net.luckystudio.cozyhome.block.custom.lamps;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.entity.LampBlockEntity;
-import net.luckystudio.cozyhome.block.util.enums.VerticalLinearConnectionBlock;
-import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
@@ -13,11 +10,7 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.DyedColorComponent;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ColorHelper;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;

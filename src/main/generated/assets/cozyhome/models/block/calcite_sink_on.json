@@ -1,0 +1,10 @@
+{
+  "parent": "cozyhome:block/sink/sink_on",
+  "textures": {
+    "bottom": "cozyhome:block/sink/calcite_sink_bottom",
+    "extra": "cozyhome:block/faucet/iron_faucet",
+    "particle": "minecraft:block/calcite",
+    "side": "cozyhome:block/sink/calcite_sink_side",
+    "top": "cozyhome:block/sink/calcite_sink_top"
+  }
+}

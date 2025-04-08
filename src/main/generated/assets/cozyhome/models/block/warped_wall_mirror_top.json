@@ -1,7 +1,7 @@
 {
   "parent": "cozyhome:block/wall_mirror/wall_mirror_top",
   "textures": {
-    "back": "cozyhome:block/shared/warped_back_top",
+    "back": "cozyhome:block/shared/warped_board_top",
     "front": "cozyhome:block/shared/warped_frame_top",
     "particle": "cozyhome:block/mirror/nether_mirror"
   }

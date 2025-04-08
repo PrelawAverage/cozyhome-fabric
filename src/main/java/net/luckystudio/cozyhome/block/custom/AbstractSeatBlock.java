@@ -1,7 +1,7 @@
 package net.luckystudio.cozyhome.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.entity.ChairBlockEntity;
+import net.luckystudio.cozyhome.block.custom.chair.ChairBlockEntity;
 import net.luckystudio.cozyhome.block.util.interfaces.SeatBlock;
 import net.luckystudio.cozyhome.entity.ModEntities;
 import net.luckystudio.cozyhome.entity.custom.SeatEntity;
@@ -10,15 +10,13 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RotationPropertyHelper;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
@@ -27,8 +25,9 @@ import org.jetbrains.annotations.Nullable;
 
 public abstract class AbstractSeatBlock extends BlockWithEntity implements SeatBlock {
     private static final VoxelShape BASE_SHAPE = VoxelShapes.cuboid(2,0,2,14,10,14);
-
     public static final BooleanProperty TRIGGERED = Properties.TRIGGERED;
+    public static final int MAX_ROTATION_INDEX = RotationPropertyHelper.getMax();
+    protected static final int MAX_ROTATIONS = MAX_ROTATION_INDEX + 1;
 
     public AbstractSeatBlock(Settings settings) {
         super(settings);

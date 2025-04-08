@@ -13,13 +13,11 @@ public class ModModels {
 
     public static final Model STORAGE_COUNTER = modBlockWithTypeAndVariant("storage_counter", ModBlockTypes.COUNTER, "_open", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKey.OPEN, ModTextureKey.CLOSED, TextureKey.BACK, TextureKey.PARTICLE);
 
-    public static final Model SINK_COUNTER = modBlockWithType("sink_counter", ModBlockTypes.COUNTER, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, ModTextureKey.EXTRA, ModTextureKey.INNER_SIDE, ModTextureKey.INNER_BOTTOM, TextureKey.PARTICLE);
-    public static final Model SINK_COUNTER_1 = modBlockWithTypeAndVariant("sink_counter_1", ModBlockTypes.COUNTER, "_1", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, ModTextureKey.EXTRA, ModTextureKey.INNER_SIDE, ModTextureKey.INNER_BOTTOM, ModTextureKey.LIQUID, TextureKey.PARTICLE);
-    public static final Model SINK_COUNTER_2 = modBlockWithTypeAndVariant("sink_counter_2", ModBlockTypes.COUNTER, "_2", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, ModTextureKey.EXTRA, ModTextureKey.INNER_SIDE, ModTextureKey.INNER_BOTTOM, ModTextureKey.LIQUID, TextureKey.PARTICLE);
-    public static final Model SINK_COUNTER_3 = modBlockWithTypeAndVariant("sink_counter_3", ModBlockTypes.COUNTER, "_3", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, ModTextureKey.EXTRA, ModTextureKey.INNER_SIDE, ModTextureKey.INNER_BOTTOM, ModTextureKey.LIQUID, TextureKey.PARTICLE);
+    public static final Model SINK_COUNTER = modBlockWithType("sink_counter", ModBlockTypes.COUNTER, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, ModTextureKey.INNER_SIDE, ModTextureKey.INNER_BOTTOM, ModTextureKey.EXTRA, TextureKey.PARTICLE);
+    public static final Model SINK_COUNTER_ON = modBlockWithTypeAndVariant("sink_counter_on", ModBlockTypes.COUNTER, "_on", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, TextureKey.BACK, ModTextureKey.INNER_SIDE, ModTextureKey.INNER_BOTTOM, ModTextureKey.EXTRA, TextureKey.PARTICLE);
 
-    public static final Model CHIMNEY_SINGLE = modBlockWithType("template_chimney", ModBlockTypes.CHIMNEY, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.PARTICLE);
-    public static final Model CHIMNEY_TOP = modBlockWithTypeAndVariant("template_chimney_top", ModBlockTypes.CHIMNEY, "_top", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.PARTICLE);
+    public static final Model CHIMNEY_SINGLE = modBlockWithType("template_chimney", ModBlockTypes.CHIMNEY, TextureKey.TOP, TextureKey.SIDE, ModTextureKey.EXTRA, TextureKey.BOTTOM, TextureKey.PARTICLE);
+    public static final Model CHIMNEY_TOP = modBlockWithTypeAndVariant("template_chimney_top", ModBlockTypes.CHIMNEY, "_top", TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
     public static final Model CHIMNEY_MIDDLE = modBlockWithTypeAndVariant("template_chimney_middle", ModBlockTypes.CHIMNEY, "_side", TextureKey.SIDE, TextureKey.PARTICLE);
     public static final Model CHIMNEY_INTAKE = modBlockWithTypeAndVariant("template_chimney_intake", ModBlockTypes.CHIMNEY, "_bottom", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.PARTICLE);
     public static final Model TABLE = modBlockWithType("template_table", ModBlockTypes.TABLE, TextureKey.ALL, TextureKey.PARTICLE);
@@ -73,13 +71,16 @@ public class ModModels {
     public static final Model WALL_MIRROR_MIDDLE = modBlockWithTypeAndVariant("wall_mirror_middle", ModBlockTypes.WALL_MIRROR, "_middle", TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
     public static final Model WALL_MIRROR_BOTTOM = modBlockWithTypeAndVariant("wall_mirror_bottom", ModBlockTypes.WALL_MIRROR, "_bottom", TextureKey.FRONT, TextureKey.BACK, TextureKey.PARTICLE);
 
-    public static final Model LARGE_STUMP = modBlockWithType("template_large_stump", ModBlockTypes.LARGE_STUMP, TextureKey.TOP, TextureKey.SIDE);
-    public static final Model LARGE_STUMP_CORNER = modBlockWithTypeAndVariant("template_large_stump_corner", ModBlockTypes.LARGE_STUMP, "_corner", TextureKey.TOP, TextureKey.SIDE);
-    public static final Model LARGE_STUMP_CORNER_PIECE = modBlockWithTypeAndVariant("template_large_stump_corner_piece", ModBlockTypes.LARGE_STUMP, "_corner_piece", TextureKey.TOP, TextureKey.SIDE);
-    public static final Model LARGE_STUMP_DOUBLE = modBlockWithTypeAndVariant("template_large_stump_double", ModBlockTypes.LARGE_STUMP, "_double", TextureKey.TOP, TextureKey.SIDE);
-    public static final Model LARGE_STUMP_INNER_CORNER_PIECE = modBlockWithTypeAndVariant("template_large_stump_inner_corner_piece", ModBlockTypes.LARGE_STUMP, "_inner_corner_piece", TextureKey.TOP);
-    public static final Model LARGE_STUMP_MIDDLE = modBlockWithTypeAndVariant("template_large_stump_middle", ModBlockTypes.LARGE_STUMP, "_middle", TextureKey.TOP, TextureKey.SIDE);
-    public static final Model LARGE_STUMP_SIDE = modBlockWithTypeAndVariant("template_large_stump_side", ModBlockTypes.LARGE_STUMP, "_side", TextureKey.TOP, TextureKey.SIDE);
+    public static final Model SINK = modBlockWithType("sink", ModBlockTypes.SINK, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKey.EXTRA, TextureKey.PARTICLE);
+    public static final Model SINK_ON = modBlockWithTypeAndVariant("sink_on", ModBlockTypes.SINK, "_on", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKey.EXTRA, TextureKey.PARTICLE);
+
+    public static final Model LARGE_STUMP = modBlockWithType("template_large_stump", ModBlockTypes.LARGE_STUMP, TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
+    public static final Model LARGE_STUMP_CORNER = modBlockWithTypeAndVariant("template_large_stump_corner", ModBlockTypes.LARGE_STUMP, "_corner", TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
+    public static final Model LARGE_STUMP_CORNER_PIECE = modBlockWithTypeAndVariant("template_large_stump_corner_piece", ModBlockTypes.LARGE_STUMP, "_corner_piece", TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
+    public static final Model LARGE_STUMP_DOUBLE = modBlockWithTypeAndVariant("template_large_stump_double", ModBlockTypes.LARGE_STUMP, "_double", TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
+    public static final Model LARGE_STUMP_INNER_CORNER_PIECE = modBlockWithTypeAndVariant("template_large_stump_inner_corner_piece", ModBlockTypes.LARGE_STUMP, "_inner_corner_piece", TextureKey.TOP, TextureKey.PARTICLE);
+    public static final Model LARGE_STUMP_MIDDLE = modBlockWithTypeAndVariant("template_large_stump_middle", ModBlockTypes.LARGE_STUMP, "_middle", TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
+    public static final Model LARGE_STUMP_SIDE = modBlockWithTypeAndVariant("template_large_stump_side", ModBlockTypes.LARGE_STUMP, "_side", TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
 
     public static final Model FOUNTAIN = modBlockWithType("template_fountain", ModBlockTypes.FOUNTAIN, TextureKey.ALL, TextureKey.PARTICLE);
     public static final Model FOUNTAIN_CORNER = modBlockWithTypeAndVariant("template_fountain_corner", ModBlockTypes.FOUNTAIN, "_corner", TextureKey.ALL, TextureKey.PARTICLE);
@@ -89,9 +90,12 @@ public class ModModels {
     public static final Model FOUNTAIN_MIDDLE = modBlockWithTypeAndVariant("template_fountain_middle", ModBlockTypes.FOUNTAIN, "_middle", TextureKey.ALL, TextureKey.PARTICLE);
     public static final Model FOUNTAIN_SIDE = modBlockWithTypeAndVariant("template_fountain_side", ModBlockTypes.FOUNTAIN, "_side", TextureKey.ALL, TextureKey.PARTICLE);
 
-    public static final Model INSET_WATER_PANE = modBlockWithTypeAndVariant("template_pane_15", ModBlockTypes.PLANE,"water", TextureKey.UP, TextureKey.PARTICLE);
-    public static final Model INSET_LAVA_PANE = modBlockWithTypeAndVariant("template_pane_15", ModBlockTypes.PLANE,"lava", TextureKey.UP, TextureKey.PARTICLE);
-    public static final Model INSET_ICE_PANE = modBlockWithTypeAndVariant("template_pane_15", ModBlockTypes.PLANE,"ice", TextureKey.UP, TextureKey.PARTICLE);
+    public static final Model WATER_15 = modBlockWithTypeAndVariant("flat_15", ModBlockTypes.FLAT,"water_15", TextureKey.UP);
+    public static final Model LAVA_15 = modBlockWithTypeAndVariant("flat_15", ModBlockTypes.FLAT,"lava_15", TextureKey.UP);
+    public static final Model ICE_15 = modBlockWithTypeAndVariant("flat_15", ModBlockTypes.FLAT,"ice_15", TextureKey.UP);
+    public static final Model INSET_WATER_FLAT_15 = modBlockWithTypeAndVariant("inset_flat_15", ModBlockTypes.FLAT,"inset_water_15", TextureKey.UP);
+    public static final Model INSET_WATER_FLAT_13 = modBlockWithTypeAndVariant("inset_flat_13", ModBlockTypes.FLAT,"inset_water_13", TextureKey.UP);
+    public static final Model INSET_WATER_FLAT_11 = modBlockWithTypeAndVariant("inset_flat_11", ModBlockTypes.FLAT,"inset_water_11", TextureKey.UP);
 
     private static Model modBlock(String parent, TextureKey... requiredTextureKeys) {
         return new Model(Optional.of(CozyHome.id("block/" + parent)), Optional.empty(), requiredTextureKeys);

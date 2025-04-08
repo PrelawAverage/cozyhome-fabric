@@ -1,6 +1,7 @@
 {
   "parent": "cozyhome:block/large_stump/template_large_stump",
   "textures": {
+    "particle": "minecraft:block/bamboo_block",
     "side": "minecraft:block/bamboo_block",
     "top": "minecraft:block/bamboo_block_top"
   }

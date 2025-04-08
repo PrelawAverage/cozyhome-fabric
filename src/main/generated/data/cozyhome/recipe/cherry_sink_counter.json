@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:cherry_planks"
+    },
+    "@": {
+      "item": "minecraft:calcite"
+    },
+    "C": {
+      "item": "minecraft:cauldron"
+    }
+  },
+  "pattern": [
+    "@@@",
+    "#C#",
+    "###"
+  ],
+  "result": {
+    "count": 3,
+    "id": "cozyhome:cherry_sink_counter"
+  }
+}

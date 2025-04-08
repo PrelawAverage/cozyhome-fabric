@@ -1,5 +1,8 @@
 {
 	"credit": "Made with Blockbench",
+	"textures": {
+		"side": "cozyhome:block/chimney/brick_chimney_middle"
+	},
 	"elements": [
 		{
 			"from": [2, 0, 2],

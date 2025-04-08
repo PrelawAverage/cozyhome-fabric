@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:polished_andesite"
+    },
+    "@": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "pattern": [
+    "@@ ",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyhome:andesite_sink"
+  }
+}

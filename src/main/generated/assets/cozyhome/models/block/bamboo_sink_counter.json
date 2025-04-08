@@ -3,10 +3,10 @@
   "textures": {
     "back": "cozyhome:block/counter/bamboo_counter_back",
     "bottom": "cozyhome:block/counter/bamboo_counter_bottom",
-    "extra": "cozyhome:block/dye_vat/dye_vat_faucet",
+    "extra": "cozyhome:block/faucet/iron_faucet",
     "front": "cozyhome:block/counter/bamboo_counter_front",
-    "inner_bottom": "cozyhome:block/dye_vat/dye_vat_inner_bottom",
-    "inner_side": "cozyhome:block/dye_vat/dye_vat_inner_side",
+    "inner_bottom": "cozyhome:block/counter/sink_inner_bottom",
+    "inner_side": "cozyhome:block/counter/sink_inner_side",
     "particle": "cozyhome:block/break/bamboo_furniture",
     "side": "cozyhome:block/counter/bamboo_counter_side",
     "top": "cozyhome:block/counter/bamboo_counter_sink_top"

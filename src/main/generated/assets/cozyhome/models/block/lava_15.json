@@ -1,0 +1,6 @@
+{
+  "parent": "cozyhome:block/flat/flat_15",
+  "textures": {
+    "up": "minecraft:block/lava_still"
+  }
+}

@@ -1,7 +1,6 @@
 package net.luckystudio.cozyhome.block.custom.lamps;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.entity.LampBlockEntity;
 import net.luckystudio.cozyhome.block.util.enums.VerticalLinearConnectionBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

@@ -1,5 +1,6 @@
 package net.luckystudio.cozyhome.item.custom;
 
+import net.luckystudio.cozyhome.util.ModScreenTexts;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BrushableBlock;
@@ -122,6 +123,7 @@ public class PaintBrushItem extends BrushItem {
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         super.appendTooltip(stack, context, tooltip, type);
         tooltip.add(ScreenTexts.EMPTY);
-        tooltip.add(Text.translatable("tooltip.cozyhome.item.paint_brush").formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("tooltip.cozyhome.on_interacted_with_dyeable_block").formatted(Formatting.GRAY));
+        tooltip.add(ModScreenTexts.entry().append(Text.translatable("tooltip.cozyhome.sets_block_color")));
     }
 }

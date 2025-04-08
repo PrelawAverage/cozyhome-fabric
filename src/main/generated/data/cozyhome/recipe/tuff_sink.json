@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:tuff"
+    },
+    "@": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "pattern": [
+    "@@ ",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyhome:tuff_sink"
+  }
+}
