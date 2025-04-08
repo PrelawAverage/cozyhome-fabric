@@ -316,25 +316,26 @@ public class ModModelProvider extends FabricModelProvider {
     }
 
     public final void registerCounter(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
+        String counterPath = "block/counter/" + Registries.BLOCK.getId(block).getPath();
         TextureMap counter = new TextureMap()
-                .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath() + "_top"))
-                .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath() + "_side"))
-                .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath() + "_bottom"))
-                .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath() + "_front"))
-                .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath() + "_back"))
+                .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), counterPath + "_top"))
+                .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), counterPath + "_side"))
+                .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), counterPath + "_bottom"))
+                .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), counterPath + "_front"))
+                .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), counterPath + "_front"))
                 .put(TextureKey.PARTICLE, breakParticle);
         TextureMap counterInner = new TextureMap()
-                .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath() + "_inner_top"))
-                .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath() + "_side"))
-                .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath() + "_inner_bottom"))
-                .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath() + "_front"))
-                .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath() + "_back"))
+                .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), counterPath + "_inner_top"))
+                .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), counterPath + "_side"))
+                .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), counterPath + "_inner_bottom"))
+                .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), counterPath + "_front"))
+                .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), counterPath + "_back"))
                 .put(TextureKey.PARTICLE, breakParticle);
         TextureMap counterOuter = new TextureMap()
-                .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath() + "_outer_top"))
-                .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath() + "_side"))
-                .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath() + "_outer_bottom"))
-                .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath() + "_outer_side"))
+                .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), counterPath + "_outer_top"))
+                .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), counterPath + "_side"))
+                .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), counterPath + "_outer_bottom"))
+                .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), counterPath + "_outer_side"))
                 .put(TextureKey.PARTICLE, breakParticle);
         Identifier counterModelId = ModModels.COUNTER.upload(block, counter, blockStateModelGenerator.modelCollector);
         Identifier counterInnerModelId = ModModels.COUNTER_INNER.upload(block, counterInner, blockStateModelGenerator.modelCollector);
@@ -408,7 +409,7 @@ public class ModModelProvider extends FabricModelProvider {
         Identifier bottom = Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_storage", "") + "_bottom");
         Identifier open = Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_storage", "") + "_open");
         Identifier closed = Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_storage", "") + "_closed");
-        Identifier back = Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_storage", "") + "_back");
+        Identifier back = Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_storage", "") + "_front");
 
         TextureMap storageCounter = new TextureMap()
                 .put(TextureKey.TOP, top)

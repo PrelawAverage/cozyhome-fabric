@@ -29,8 +29,8 @@ public class DyeableCushionItem extends CushionItem {
     @Override
     public Text getName(ItemStack stack) {
         int color = DyedColorComponent.getColor(stack, -393218); // Using 'this' as the BlockEntity
-        String colorName = ModColorHandler.getColorName(color);
-        return Text.literal(colorName + " ").append(super.getName(stack));
+        Text colorName = ModColorHandler.getColorName(color);
+        return colorName.copy().append(Text.literal(" ")).append(super.getName(stack));
     }
 
     @Override

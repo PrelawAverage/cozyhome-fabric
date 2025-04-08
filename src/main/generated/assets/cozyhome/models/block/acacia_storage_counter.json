@@ -1,7 +1,7 @@
 {
   "parent": "cozyhome:block/counter/counter",
   "textures": {
-    "back": "cozyhome:block/counter/acacia_counter_back",
+    "back": "cozyhome:block/counter/acacia_counter_front",
     "bottom": "cozyhome:block/counter/acacia_counter_bottom",
     "front": "cozyhome:block/counter/acacia_counter_closed",
     "particle": "cozyhome:block/break/acacia_furniture",
