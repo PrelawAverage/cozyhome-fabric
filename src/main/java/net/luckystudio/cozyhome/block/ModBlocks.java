@@ -394,6 +394,7 @@ public class ModBlocks {
     public static final Block ENDSTONE_SINK = registerBlock("endstone_sink", createSink(Blocks.END_STONE));
     public static final Block PURPUR_SINK = registerBlock("purpur_sink", createSink(Blocks.PURPUR_BLOCK));
     public static final Block IRON_SINK = registerBlock("iron_sink", createSink(Blocks.IRON_BLOCK));
+    public static final Block GOLD_SINK = registerBlock("gold_sink", createSink(Blocks.GOLD_BLOCK));
 
     // Fountains
     public static final Block STONE_BRICK_FOUNTAIN = registerBlock("stone_brick_fountain", createFountain(1.5f,6, BlockSoundGroup.STONE));
@@ -471,6 +472,7 @@ public class ModBlocks {
     public static final Block BLACKSTONE_CHIMNEY = registerBlock("blackstone_chimney", createChimney(1.5f,6, BlockSoundGroup.GILDED_BLACKSTONE));
     public static final Block ENDSTONE_CHIMNEY = registerBlock("endstone_chimney", createChimney(3,9, BlockSoundGroup.STONE));
     public static final Block PURPUR_CHIMNEY = registerBlock("purpur_chimney", createChimney(1.5f,6, BlockSoundGroup.STONE));
+    public static final Block IRON_CHIMNEY = registerBlock("iron_chimney", createChimney(1.5f,6, BlockSoundGroup.METAL));
 
     public static final Block TELESCOPE = registerBlock("telescope", new TelescopeBlock(AbstractBlock.Settings.create()
             .breakInstantly()

@@ -284,6 +284,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.ENDSTONE_SINK)
                 .add(ModBlocks.PURPUR_SINK)
                 .add(ModBlocks.IRON_SINK)
+                .add(ModBlocks.GOLD_SINK)
 
                 // CHIMNEY
                 .add(ModBlocks.STONE_BRICK_CHIMNEY)
@@ -304,6 +305,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BLACKSTONE_CHIMNEY)
                 .add(ModBlocks.ENDSTONE_CHIMNEY)
                 .add(ModBlocks.PURPUR_CHIMNEY)
+                .add(ModBlocks.IRON_CHIMNEY)
 
                 // FOUNTAIN
                 .add(ModBlocks.STONE_BRICK_FOUNTAIN)

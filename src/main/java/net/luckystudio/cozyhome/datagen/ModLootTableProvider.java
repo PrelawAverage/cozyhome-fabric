@@ -236,6 +236,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.ENDSTONE_SINK);
         addDrop(ModBlocks.PURPUR_SINK);
         addDrop(ModBlocks.IRON_SINK);
+        addDrop(ModBlocks.GOLD_SINK);
 
         // CHIMNEY
         addDrop(ModBlocks.STONE_BRICK_CHIMNEY);
@@ -256,6 +257,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.BLACKSTONE_CHIMNEY);
         addDrop(ModBlocks.ENDSTONE_CHIMNEY);
         addDrop(ModBlocks.PURPUR_CHIMNEY);
+        addDrop(ModBlocks.IRON_CHIMNEY);
 
         // FOUNTAINS
         addDrop(ModBlocks.STONE_BRICK_FOUNTAIN);

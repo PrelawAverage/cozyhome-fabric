@@ -1,10 +1,10 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"particle": "cozyhome:block/sink/purpur_sink_top",
-		"top": "cozyhome:block/sink/purpur_sink_top",
-		"side": "cozyhome:block/sink/purpur_sink_side",
-		"bottom": "cozyhome:block/sink/purpur_sink_bottom",
+		"particle": "cozyhome:block/sink/iron_sink_top",
+		"top": "cozyhome:block/sink/iron_sink_top",
+		"side": "cozyhome:block/sink/iron_sink_side",
+		"bottom": "cozyhome:block/sink/iron_sink_bottom",
 		"extra": "cozyhome:block/faucet/iron_faucet"
 	},
 	"elements": [

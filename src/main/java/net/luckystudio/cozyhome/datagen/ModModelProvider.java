@@ -222,6 +222,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerSink(blockStateModelGenerator, ModBlocks.ENDSTONE_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/end_stone"));
         registerSink(blockStateModelGenerator, ModBlocks.PURPUR_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/purpur_block"));
         registerSink(blockStateModelGenerator, ModBlocks.IRON_SINK, CozyHome.id("block/faucet/iron_faucet"), CozyHome.id("block/break/iron_furniture"));
+        registerSink(blockStateModelGenerator, ModBlocks.GOLD_SINK, CozyHome.id("block/faucet/gold_faucet"), CozyHome.id("block/break/gold_furniture"));
 
         registerLargeStump(blockStateModelGenerator, ModBlocks.OAK_LARGE_STUMP, Identifier.of("oak_log"));
         registerLargeStump(blockStateModelGenerator, ModBlocks.SPRUCE_LARGE_STUMP, Identifier.of("spruce_log"));
@@ -272,6 +273,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerChimney(blockStateModelGenerator, ModBlocks.BLACKSTONE_CHIMNEY, Identifier.ofVanilla("block/polished_blackstone_bricks"), ChimneyIntake.IRON);
         registerChimney(blockStateModelGenerator, ModBlocks.ENDSTONE_CHIMNEY, Identifier.ofVanilla("block/end_stone_bricks"), ChimneyIntake.IRON);
         registerChimney(blockStateModelGenerator, ModBlocks.PURPUR_CHIMNEY, Identifier.ofVanilla("block/purpur_block"), ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.IRON_CHIMNEY, CozyHome.id("block/break/iron_furniture"), ChimneyIntake.IRON);
     }
 
     // I have no idea what this does, but it's required.

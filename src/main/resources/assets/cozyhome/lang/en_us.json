@@ -195,6 +195,7 @@
   "block.cozyhome.endstone_sink": "Endstone Sink",
   "block.cozyhome.purpur_sink": "Purpur Sink",
   "block.cozyhome.iron_sink": "Iron Sink",
+  "block.cozyhome.gold_sink": "Gold Sink",
 
   "block.cozyhome.oak_large_stump": "Oak Large Stump",
   "block.cozyhome.spruce_large_stump": "Spruce Large Stump",
@@ -226,6 +227,7 @@
   "block.cozyhome.blackstone_chimney": "Blackstone Chimney",
   "block.cozyhome.endstone_chimney": "Endstone Chimney",
   "block.cozyhome.purpur_chimney": "Purpur Chimney",
+  "block.cozyhome.iron_chimney": "Iron Chimney",
 
   "block.cozyhome.stone_brick_fountain": "Stone Brick Fountain",
   "block.cozyhome.mossy_stone_brick_fountain": "Mossy Stone Brick Fountain",

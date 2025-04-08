@@ -35,22 +35,6 @@ public class ModBlockEntityTypes {
                 ModBlocks.WARPED_STORAGE_COUNTER
         ).build());
 
-//    public static final BlockEntityType<SinkBlockEntity> SINK_COUNTER_BLOCK_ENTITY = Registry.register(
-//            Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "sink_counter_block_entity"),
-//            BlockEntityType.Builder.create(SinkBlockEntity::new,
-//                    ModBlocks.OAK_SINK_COUNTER,
-//                    ModBlocks.SPRUCE_SINK_COUNTER,
-//                    ModBlocks.BIRCH_SINK_COUNTER,
-//                    ModBlocks.JUNGLE_SINK_COUNTER,
-//                    ModBlocks.ACACIA_SINK_COUNTER,
-//                    ModBlocks.DARK_OAK_SINK_COUNTER,
-//                    ModBlocks.MANGROVE_SINK_COUNTER,
-//                    ModBlocks.CHERRY_SINK_COUNTER,
-//                    ModBlocks.BAMBOO_SINK_COUNTER,
-//                    ModBlocks.CRIMSON_SINK_COUNTER,
-//                    ModBlocks.WARPED_SINK_COUNTER
-//            ).build());
-
     public static final BlockEntityType<DrawerBlockEntity> DRAWER_BLOCK_ENTITY = Registry.register(
             Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "drawer_block_entity"),
             BlockEntityType.Builder.create(DrawerBlockEntity::new,
@@ -188,6 +172,7 @@ public class ModBlockEntityTypes {
                     ModBlocks.DIORITE_CHIMNEY,
                     ModBlocks.ANDESITE_CHIMNEY,
                     ModBlocks.DEEPSLATE_CHIMNEY,
+                    ModBlocks.CALCITE_CHIMNEY,
                     ModBlocks.TUFF_CHIMNEY,
                     ModBlocks.BRICK_CHIMNEY,
                     ModBlocks.MUD_CHIMNEY,
@@ -198,8 +183,8 @@ public class ModBlockEntityTypes {
                     ModBlocks.RED_NETHER_BRICK_CHIMNEY,
                     ModBlocks.BLACKSTONE_CHIMNEY,
                     ModBlocks.ENDSTONE_CHIMNEY,
-                    ModBlocks.PURPUR_CHIMNEY
-
+                    ModBlocks.PURPUR_CHIMNEY,
+                    ModBlocks.IRON_CHIMNEY
             ).build());
 
     public static final BlockEntityType<TelescopeBlockEntity> TELESCOPE_BLOCK_ENTITY = Registry.register(
