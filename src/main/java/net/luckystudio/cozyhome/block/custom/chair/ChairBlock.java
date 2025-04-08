@@ -49,8 +49,6 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock, Wate
                     createSettingsCodec() // Ensure this exists and works as expected
             ).apply(instance, ChairBlock::new)
     );
-
-    public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final BooleanProperty TUCKED = ModProperties.TUCKED;
     public static final IntProperty ROTATION = Properties.ROTATION;
 
@@ -73,7 +71,6 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock, Wate
     public ChairBlock(ChairType chairType, Settings settings) {
         super(settings);
         this.getDefaultState()
-                .with(WATERLOGGED, Boolean.FALSE)
                 .with(TUCKED, false)
                 .with(ROTATION, 0);
         this.type = chairType;
@@ -88,7 +85,7 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock, Wate
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(WATERLOGGED, TUCKED, ROTATION);
+        builder.add(TUCKED, ROTATION);
     }
 
     // This is the hit-box of the block, we are applying our VoxelShape to it.
@@ -110,12 +107,9 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock, Wate
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
-        boolean water = fluidState.getFluid() == Fluids.WATER;
         boolean isSneaking = ctx.getPlayer().isSneaking();
         int rotationOffset = isSneaking ? 180 : 0;
         return super.getPlacementState(ctx)
-                .with(WATERLOGGED, water)
                 .with(TUCKED, false)
                 .with(ROTATION, RotationPropertyHelper.fromYaw(ctx.getPlayerYaw() + rotationOffset));
     }
@@ -273,11 +267,6 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock, Wate
     protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         ItemScatterer.onStateReplaced(state, newState, world, pos);
         super.onStateReplaced(state, world, pos, newState, moved);
-    }
-
-    @Override
-    protected FluidState getFluidState(BlockState state) {
-        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
     @Override

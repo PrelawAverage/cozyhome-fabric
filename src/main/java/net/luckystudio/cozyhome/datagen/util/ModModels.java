@@ -74,6 +74,10 @@ public class ModModels {
     public static final Model SINK = modBlockWithType("sink", ModBlockTypes.SINK, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKey.EXTRA, TextureKey.PARTICLE);
     public static final Model SINK_ON = modBlockWithTypeAndVariant("sink_on", ModBlockTypes.SINK, "_on", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, ModTextureKey.EXTRA, TextureKey.PARTICLE);
 
+    public static final Model BATHTUB_FRONT = modBlockWithType("bathtub_front", ModBlockTypes.BATHTUB, TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, ModTextureKey.INNER_FRONT, ModTextureKey.INNER_SIDE, TextureKey.PARTICLE);
+    public static final Model BATHTUB_BACK = modBlockWithTypeAndVariant("bathtub_back", ModBlockTypes.BATHTUB, "_back", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, ModTextureKey.INNER_FRONT, ModTextureKey.INNER_SIDE, ModTextureKey.EXTRA, TextureKey.PARTICLE);
+    public static final Model BATHTUB_BACK_ON = modBlockWithTypeAndVariant("bathtub_back_on", ModBlockTypes.BATHTUB, "_back_on", TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM, TextureKey.FRONT, ModTextureKey.INNER_FRONT, ModTextureKey.INNER_SIDE, ModTextureKey.EXTRA, TextureKey.PARTICLE);
+
     public static final Model LARGE_STUMP = modBlockWithType("template_large_stump", ModBlockTypes.LARGE_STUMP, TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
     public static final Model LARGE_STUMP_CORNER = modBlockWithTypeAndVariant("template_large_stump_corner", ModBlockTypes.LARGE_STUMP, "_corner", TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
     public static final Model LARGE_STUMP_CORNER_PIECE = modBlockWithTypeAndVariant("template_large_stump_corner_piece", ModBlockTypes.LARGE_STUMP, "_corner_piece", TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);

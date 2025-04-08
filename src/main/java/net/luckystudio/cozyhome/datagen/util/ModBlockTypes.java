@@ -19,7 +19,8 @@ public enum ModBlockTypes implements StringIdentifiable {
     DESK("desk"),
     WALL_MIRROR("wall_mirror"),
     FAUCET("faucet"),
-    SINK("sink");
+    SINK("sink"),
+    BATHTUB("bathtub");
 
     private final String name;
 

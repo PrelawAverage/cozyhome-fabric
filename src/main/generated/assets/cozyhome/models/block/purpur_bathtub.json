@@ -1,0 +1,12 @@
+{
+  "parent": "cozyhome:block/bathtub/bathtub_front",
+  "textures": {
+    "bottom": "cozyhome:block/bathtub/purpur_bathtub_bottom",
+    "front": "cozyhome:block/bathtub/purpur_bathtub_front",
+    "inner_front": "cozyhome:block/bathtub/purpur_bathtub_inner_front",
+    "inner_side": "cozyhome:block/bathtub/purpur_bathtub_inner_side",
+    "particle": "minecraft:block/purpur_block",
+    "side": "cozyhome:block/bathtub/purpur_bathtub_side",
+    "top": "cozyhome:block/bathtub/purpur_bathtub_top"
+  }
+}

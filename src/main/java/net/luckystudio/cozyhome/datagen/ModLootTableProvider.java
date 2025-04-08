@@ -238,6 +238,28 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.IRON_SINK);
         addDrop(ModBlocks.GOLD_SINK);
 
+        // BATHTUBS
+        addDrop(ModBlocks.STONE_BRICK_BATHTUB);
+        addDrop(ModBlocks.MOSSY_STONE_BRICK_BATHTUB);
+        addDrop(ModBlocks.GRANITE_BATHTUB);
+        addDrop(ModBlocks.DIORITE_BATHTUB);
+        addDrop(ModBlocks.ANDESITE_BATHTUB);
+        addDrop(ModBlocks.DEEPSLATE_BATHTUB);
+        addDrop(ModBlocks.CALCITE_BATHTUB);
+        addDrop(ModBlocks.TUFF_BATHTUB);
+        addDrop(ModBlocks.BRICK_BATHTUB);
+        addDrop(ModBlocks.MUD_BATHTUB);
+        addDrop(ModBlocks.SANDSTONE_BATHTUB);
+        addDrop(ModBlocks.RED_SANDSTONE_BATHTUB);
+        addDrop(ModBlocks.PRISMARINE_BATHTUB);
+        addDrop(ModBlocks.NETHER_BRICK_BATHTUB);
+        addDrop(ModBlocks.RED_NETHER_BRICK_BATHTUB);
+        addDrop(ModBlocks.BLACKSTONE_BATHTUB);
+        addDrop(ModBlocks.ENDSTONE_BATHTUB);
+        addDrop(ModBlocks.PURPUR_BATHTUB);
+        addDrop(ModBlocks.IRON_BATHTUB);
+        addDrop(ModBlocks.GOLD_BATHTUB);
+
         // CHIMNEY
         addDrop(ModBlocks.STONE_BRICK_CHIMNEY);
         addDrop(ModBlocks.MOSSY_STONE_BRICK_CHIMNEY);

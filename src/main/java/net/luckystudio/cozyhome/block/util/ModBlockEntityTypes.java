@@ -8,7 +8,7 @@ import net.luckystudio.cozyhome.block.custom.chair.ChairBlockEntity;
 import net.luckystudio.cozyhome.block.custom.clocks.grandfather_clock.GrandfatherClockBlockEntity;
 import net.luckystudio.cozyhome.block.custom.clocks.wall_clock.WallClockBlockEntity;
 import net.luckystudio.cozyhome.block.custom.couch.CouchBlockEntity;
-import net.luckystudio.cozyhome.block.custom.drawer.DrawerBlockEntity;
+import net.luckystudio.cozyhome.block.custom.drawers.DrawerBlockEntity;
 import net.luckystudio.cozyhome.block.custom.lamps.LampBlockEntity;
 import net.luckystudio.cozyhome.block.custom.sofa.SofaBlockEntity;
 import net.luckystudio.cozyhome.block.custom.telescope.TelescopeBlockEntity;

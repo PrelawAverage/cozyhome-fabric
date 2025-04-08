@@ -1,0 +1,153 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "cozyhome:block/andesite_bathtub",
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/andesite_bathtub"
+      },
+      "when": {
+        "facing": "south",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/andesite_bathtub",
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/andesite_bathtub",
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/andesite_bathtub_back",
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "part": "back",
+        "triggered": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/andesite_bathtub_back"
+      },
+      "when": {
+        "facing": "south",
+        "part": "back",
+        "triggered": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/andesite_bathtub_back",
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "part": "back",
+        "triggered": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/andesite_bathtub_back",
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "part": "back",
+        "triggered": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/andesite_bathtub_back_on",
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "part": "back",
+        "triggered": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/andesite_bathtub_back_on"
+      },
+      "when": {
+        "facing": "south",
+        "part": "back",
+        "triggered": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/andesite_bathtub_back_on",
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "part": "back",
+        "triggered": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/andesite_bathtub_back_on",
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "part": "back",
+        "triggered": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/inset_water_11"
+      },
+      "when": {
+        "level": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/inset_water_13"
+      },
+      "when": {
+        "level": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/inset_water_15"
+      },
+      "when": {
+        "level": "3"
+      }
+    }
+  ]
+}

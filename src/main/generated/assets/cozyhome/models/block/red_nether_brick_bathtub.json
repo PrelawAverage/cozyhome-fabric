@@ -1,0 +1,12 @@
+{
+  "parent": "cozyhome:block/bathtub/bathtub_front",
+  "textures": {
+    "bottom": "cozyhome:block/bathtub/red_nether_brick_bathtub_bottom",
+    "front": "cozyhome:block/bathtub/red_nether_brick_bathtub_front",
+    "inner_front": "cozyhome:block/bathtub/red_nether_brick_bathtub_inner_front",
+    "inner_side": "cozyhome:block/bathtub/red_nether_brick_bathtub_inner_side",
+    "particle": "minecraft:block/red_nether_bricks",
+    "side": "cozyhome:block/bathtub/red_nether_brick_bathtub_side",
+    "top": "cozyhome:block/bathtub/red_nether_brick_bathtub_top"
+  }
+}

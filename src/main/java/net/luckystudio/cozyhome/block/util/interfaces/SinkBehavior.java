@@ -3,7 +3,7 @@ package net.luckystudio.cozyhome.block.util.interfaces;
 import com.mojang.serialization.Codec;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import net.luckystudio.cozyhome.block.custom.AbstractSinkBlock;
+import net.luckystudio.cozyhome.block.custom.sinks.AbstractWaterHoldingBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.minecraft.block.*;
 import net.minecraft.component.DataComponentTypes;
@@ -57,7 +57,7 @@ public interface SinkBehavior {
                 ItemStack itemStack = stack.copyComponentsToNewStack(Blocks.SHULKER_BOX, 1);
                 player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, itemStack, false));
                 player.incrementStat(Stats.CLEAN_SHULKER_BOX);
-                AbstractSinkBlock.decreaseLevel(state, world, pos);
+                AbstractWaterHoldingBlock.decreaseLevel(state, world, pos);
             }
 
             return ItemActionResult.success(world.isClient);
@@ -76,7 +76,7 @@ public interface SinkBehavior {
                 itemStack.set(DataComponentTypes.BANNER_PATTERNS, bannerPatternsComponent.withoutTopLayer());
                 player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, itemStack, false));
                 player.incrementStat(Stats.CLEAN_BANNER);
-                AbstractSinkBlock.decreaseLevel(state, world, pos);
+                AbstractWaterHoldingBlock.decreaseLevel(state, world, pos);
             }
 
             return ItemActionResult.success(world.isClient);
@@ -95,7 +95,7 @@ public interface SinkBehavior {
             if (!world.isClient) {
                 stack.remove(DataComponentTypes.DYED_COLOR);
                 player.incrementStat(Stats.CLEAN_ARMOR);
-                AbstractSinkBlock.decreaseLevel(state, world, pos);
+                AbstractWaterHoldingBlock.decreaseLevel(state, world, pos);
             }
 
             return ItemActionResult.success(world.isClient);
@@ -161,7 +161,7 @@ public interface SinkBehavior {
                     player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, PotionContentsComponent.createStack(Items.POTION, Potions.WATER)));
                     player.incrementStat(Stats.USE_CAULDRON);
                     player.incrementStat(Stats.USED.getOrCreateStat(item));
-                    AbstractSinkBlock.decreaseLevel(state, world, pos);
+                    AbstractWaterHoldingBlock.decreaseLevel(state, world, pos);
                     world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
                     world.emitGameEvent(null, GameEvent.FLUID_PICKUP, pos);
                 }
@@ -178,7 +178,7 @@ public interface SinkBehavior {
                     if (!world.isClient) {
                         player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.GLASS_BOTTLE)));
                         player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
-                        AbstractSinkBlock.increaseLevel(state, world, pos);
+                        AbstractWaterHoldingBlock.increaseLevel(state, world, pos);
                         world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                         world.emitGameEvent(null, GameEvent.FLUID_PLACE, pos);
                     }

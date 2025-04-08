@@ -224,6 +224,27 @@ public class ModModelProvider extends FabricModelProvider {
         registerSink(blockStateModelGenerator, ModBlocks.IRON_SINK, CozyHome.id("block/faucet/iron_faucet"), CozyHome.id("block/break/iron_furniture"));
         registerSink(blockStateModelGenerator, ModBlocks.GOLD_SINK, CozyHome.id("block/faucet/gold_faucet"), CozyHome.id("block/break/gold_furniture"));
 
+        registerBathtub(blockStateModelGenerator, ModBlocks.STONE_BRICK_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/stone_bricks"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.MOSSY_STONE_BRICK_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/mossy_stone_bricks"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.GRANITE_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/granite"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.DIORITE_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/diorite"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.ANDESITE_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/andesite"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.DEEPSLATE_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/deepslate"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.CALCITE_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/calcite"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.TUFF_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/tuff"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.BRICK_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/bricks"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.MUD_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/mud"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.SANDSTONE_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/sandstone"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.RED_SANDSTONE_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/red_sandstone"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.PRISMARINE_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/prismarine_bricks"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.NETHER_BRICK_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/nether_bricks"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.RED_NETHER_BRICK_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/red_nether_bricks"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.BLACKSTONE_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/blackstone"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.ENDSTONE_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/end_stone"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.PURPUR_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/purpur_block"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.IRON_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), CozyHome.id("block/break/iron_furniture"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.GOLD_BATHTUB, CozyHome.id("block/faucet/gold_faucet"), CozyHome.id("block/break/gold_furniture"));
+
         registerLargeStump(blockStateModelGenerator, ModBlocks.OAK_LARGE_STUMP, Identifier.of("oak_log"));
         registerLargeStump(blockStateModelGenerator, ModBlocks.SPRUCE_LARGE_STUMP, Identifier.of("spruce_log"));
         registerLargeStump(blockStateModelGenerator, ModBlocks.BIRCH_LARGE_STUMP, Identifier.of("birch_log"));
@@ -1328,6 +1349,79 @@ public class ModModelProvider extends FabricModelProvider {
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R270))
                 .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.WEST).set(Properties.TRIGGERED, true),
                         BlockStateVariant.create().put(VariantSettings.MODEL, baseOnModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+
+                // Water
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 1),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_water_11")))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 2),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_water_13")))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 3),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_water_15")))
+        );
+    }
+
+    public final void registerBathtub(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier faucetTexture, Identifier breakParticle) {
+        String bathtubPath = "block/bathtub/" + Registries.BLOCK.getId(block).getPath();
+        TextureMap frontTextureMap = new TextureMap()
+                .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), bathtubPath + "_top"))
+                .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), bathtubPath + "_side"))
+                .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), bathtubPath + "_bottom"))
+                .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), bathtubPath + "_front"))
+                .put(ModTextureKey.INNER_FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), bathtubPath + "_inner_front"))
+                .put(ModTextureKey.INNER_SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), bathtubPath + "_inner_side"))
+                .put(TextureKey.PARTICLE, breakParticle);
+        TextureMap backTextureMap = new TextureMap()
+                .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), bathtubPath + "_top"))
+                .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), bathtubPath + "_side"))
+                .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), bathtubPath + "_bottom"))
+                .put(TextureKey.FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), bathtubPath + "_front"))
+                .put(ModTextureKey.INNER_FRONT, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), bathtubPath + "_inner_front"))
+                .put(ModTextureKey.INNER_SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), bathtubPath + "_inner_side"))
+                .put(ModTextureKey.EXTRA, faucetTexture)
+                .put(TextureKey.PARTICLE, breakParticle);
+        Identifier frontModelId = ModModels.BATHTUB_FRONT.upload(block, frontTextureMap, blockStateModelGenerator.modelCollector);
+        Identifier backModelId = ModModels.BATHTUB_BACK.upload(block, backTextureMap, blockStateModelGenerator.modelCollector);
+        Identifier backOnModelId = ModModels.BATHTUB_BACK_ON.upload(block, backTextureMap, blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(block)
+
+                // Front Part, shown regardless of on/off state, just rotates
+                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.NORTH).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, frontModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.SOUTH).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, frontModelId))
+                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.EAST).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, frontModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.WEST).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, frontModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+
+                // Back when On
+                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.NORTH).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.BACK).set(Properties.TRIGGERED, false),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, backModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.SOUTH).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.BACK).set(Properties.TRIGGERED, false),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, backModelId))
+                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.EAST).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.BACK).set(Properties.TRIGGERED, false),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, backModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.WEST).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.BACK).set(Properties.TRIGGERED, false),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, backModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+
+                // Back when Off
+                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.NORTH).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.BACK).set(Properties.TRIGGERED, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, backOnModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.SOUTH).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.BACK).set(Properties.TRIGGERED, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, backOnModelId))
+                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.EAST).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.BACK).set(Properties.TRIGGERED, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, backOnModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.WEST).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.BACK).set(Properties.TRIGGERED, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, backOnModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R90))
 
                 // Water

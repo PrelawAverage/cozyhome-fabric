@@ -286,6 +286,28 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.IRON_SINK)
                 .add(ModBlocks.GOLD_SINK)
 
+                // BATHTUBS
+                .add(ModBlocks.STONE_BRICK_BATHTUB)
+                .add(ModBlocks.MOSSY_STONE_BRICK_BATHTUB)
+                .add(ModBlocks.GRANITE_BATHTUB)
+                .add(ModBlocks.DIORITE_BATHTUB)
+                .add(ModBlocks.ANDESITE_BATHTUB)
+                .add(ModBlocks.DEEPSLATE_BATHTUB)
+                .add(ModBlocks.CALCITE_BATHTUB)
+                .add(ModBlocks.TUFF_BATHTUB)
+                .add(ModBlocks.BRICK_BATHTUB)
+                .add(ModBlocks.MUD_BATHTUB)
+                .add(ModBlocks.SANDSTONE_BATHTUB)
+                .add(ModBlocks.RED_SANDSTONE_BATHTUB)
+                .add(ModBlocks.PRISMARINE_BATHTUB)
+                .add(ModBlocks.NETHER_BRICK_BATHTUB)
+                .add(ModBlocks.RED_NETHER_BRICK_BATHTUB)
+                .add(ModBlocks.BLACKSTONE_BATHTUB)
+                .add(ModBlocks.ENDSTONE_BATHTUB)
+                .add(ModBlocks.PURPUR_BATHTUB)
+                .add(ModBlocks.IRON_BATHTUB)
+                .add(ModBlocks.GOLD_BATHTUB)
+
                 // CHIMNEY
                 .add(ModBlocks.STONE_BRICK_CHIMNEY)
                 .add(ModBlocks.MOSSY_STONE_BRICK_CHIMNEY)

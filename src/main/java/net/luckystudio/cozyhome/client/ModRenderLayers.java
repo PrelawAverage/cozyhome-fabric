@@ -113,7 +113,10 @@ public class ModRenderLayers {
     public static void registerColorProviders() {
         // Gives blocks the water color
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) ->
-                        BiomeColors.getWaterColor(world, pos),
+                {
+                    assert world != null;
+                    return BiomeColors.getWaterColor(world, pos);
+                },
                 ModBlocks.OAK_SINK_COUNTER,
                 ModBlocks.SPRUCE_SINK_COUNTER,
                 ModBlocks.BIRCH_SINK_COUNTER,
@@ -143,7 +146,29 @@ public class ModRenderLayers {
                 ModBlocks.BLACKSTONE_SINK,
                 ModBlocks.ENDSTONE_SINK,
                 ModBlocks.PURPUR_SINK,
-                ModBlocks.IRON_SINK
+                ModBlocks.IRON_SINK,
+                ModBlocks.GOLD_SINK,
+
+                ModBlocks.STONE_BRICK_BATHTUB,
+                ModBlocks.MOSSY_STONE_BRICK_BATHTUB,
+                ModBlocks.GRANITE_BATHTUB,
+                ModBlocks.DIORITE_BATHTUB,
+                ModBlocks.ANDESITE_BATHTUB,
+                ModBlocks.DEEPSLATE_BATHTUB,
+                ModBlocks.CALCITE_BATHTUB,
+                ModBlocks.TUFF_BATHTUB,
+                ModBlocks.BRICK_BATHTUB,
+                ModBlocks.MUD_BATHTUB,
+                ModBlocks.SANDSTONE_BATHTUB,
+                ModBlocks.RED_SANDSTONE_BATHTUB,
+                ModBlocks.PRISMARINE_BATHTUB,
+                ModBlocks.NETHER_BRICK_BATHTUB,
+                ModBlocks.RED_NETHER_BRICK_BATHTUB,
+                ModBlocks.BLACKSTONE_BATHTUB,
+                ModBlocks.ENDSTONE_BATHTUB,
+                ModBlocks.PURPUR_BATHTUB,
+                ModBlocks.IRON_BATHTUB,
+                ModBlocks.GOLD_BATHTUB
         );
 
 //        // Blocks that can hold water or others
@@ -216,7 +241,10 @@ public class ModRenderLayers {
                 ModBlocks.OMINOUS_LAMP
         );
 
-        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> ModColorHandler.getBlockColor(view.getBlockEntity(pos), -17170434),
+        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> {
+                    assert view != null;
+                    return ModColorHandler.getBlockColor(view.getBlockEntity(pos), -17170434);
+                },
                 ModBlocks.OAK_COUCH,
                 ModBlocks.SPRUCE_COUCH,
                 ModBlocks.BIRCH_COUCH,

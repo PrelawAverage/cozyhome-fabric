@@ -9,6 +9,8 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -26,12 +28,14 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractSeatBlock extends BlockWithEntity implements SeatBlock {
     private static final VoxelShape BASE_SHAPE = VoxelShapes.cuboid(2,0,2,14,10,14);
     public static final BooleanProperty TRIGGERED = Properties.TRIGGERED;
+    public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+
     public static final int MAX_ROTATION_INDEX = RotationPropertyHelper.getMax();
     protected static final int MAX_ROTATIONS = MAX_ROTATION_INDEX + 1;
 
     public AbstractSeatBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.getDefaultState().with(TRIGGERED, false));
+        this.setDefaultState(this.getDefaultState().with(TRIGGERED, false).with(WATERLOGGED, false));
     }
 
     @Override
@@ -44,7 +48,7 @@ public abstract class AbstractSeatBlock extends BlockWithEntity implements SeatB
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(TRIGGERED);
+        builder.add(TRIGGERED, WATERLOGGED);
     }
 
     @Override
@@ -55,7 +59,10 @@ public abstract class AbstractSeatBlock extends BlockWithEntity implements SeatB
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
+        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
+        boolean water = fluidState.getFluid() == Fluids.WATER;
         return super.getPlacementState(ctx)
+                .with(WATERLOGGED, water)
                 .with(TRIGGERED, false);
     }
 
@@ -85,6 +92,11 @@ public abstract class AbstractSeatBlock extends BlockWithEntity implements SeatB
     @Override
     protected boolean canPathfindThrough(BlockState state, NavigationType type) {
         return false;
+    }
+
+    @Override
+    protected FluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
     @Override
