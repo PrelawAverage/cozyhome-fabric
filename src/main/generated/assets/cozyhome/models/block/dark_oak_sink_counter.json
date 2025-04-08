@@ -3,6 +3,7 @@
   "textures": {
     "back": "cozyhome:block/counter/dark_oak_counter_back",
     "bottom": "cozyhome:block/counter/dark_oak_counter_bottom",
+    "extra": "cozyhome:block/faucet/iron_faucet",
     "front": "cozyhome:block/counter/dark_oak_counter_front",
     "inner_bottom": "cozyhome:block/counter/sink_inner_bottom",
     "inner_side": "cozyhome:block/counter/sink_inner_side",

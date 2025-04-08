@@ -1,0 +1,9 @@
+{
+  "parent": "cozyhome:block/chimney/template_chimney_intake",
+  "textures": {
+    "bottom": "cozyhome:block/chimney/chimney_intake_iron",
+    "particle": "minecraft:block/calcite",
+    "side": "cozyhome:block/chimney/calcite_chimney_intake_side",
+    "top": "cozyhome:block/chimney/calcite_chimney_top"
+  }
+}

@@ -216,6 +216,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.DIORITE_SINK);
                         entries.add(ModBlocks.ANDESITE_SINK);
                         entries.add(ModBlocks.DEEPSLATE_SINK);
+                        entries.add(ModBlocks.CALCITE_SINK);
                         entries.add(ModBlocks.TUFF_SINK);
                         entries.add(ModBlocks.BRICK_SINK);
                         entries.add(ModBlocks.MUD_SINK);
@@ -287,6 +288,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.DIORITE_CHIMNEY);
                         entries.add(ModBlocks.ANDESITE_CHIMNEY);
                         entries.add(ModBlocks.DEEPSLATE_CHIMNEY);
+                        entries.add(ModBlocks.CALCITE_CHIMNEY);
                         entries.add(ModBlocks.TUFF_CHIMNEY);
                         entries.add(ModBlocks.BRICK_CHIMNEY);
                         entries.add(ModBlocks.MUD_CHIMNEY);

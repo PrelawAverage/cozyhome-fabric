@@ -292,6 +292,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.DIORITE_CHIMNEY)
                 .add(ModBlocks.ANDESITE_CHIMNEY)
                 .add(ModBlocks.DEEPSLATE_CHIMNEY)
+                .add(ModBlocks.CALCITE_CHIMNEY)
                 .add(ModBlocks.TUFF_CHIMNEY)
                 .add(ModBlocks.BRICK_CHIMNEY)
                 .add(ModBlocks.MUD_CHIMNEY)
@@ -311,6 +312,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.DIORITE_FOUNTAIN)
                 .add(ModBlocks.ANDESITE_FOUNTAIN)
                 .add(ModBlocks.DEEPSLATE_FOUNTAIN)
+                .add(ModBlocks.CALCITE_FOUNTAIN)
                 .add(ModBlocks.TUFF_FOUNTAIN)
                 .add(ModBlocks.BRICK_FOUNTAIN)
                 .add(ModBlocks.MUD_FOUNTAIN)
@@ -322,6 +324,26 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BLACKSTONE_FOUNTAIN)
                 .add(ModBlocks.ENDSTONE_FOUNTAIN)
                 .add(ModBlocks.PURPUR_FOUNTAIN)
+
+                // FOUNTAIN SPROUTS
+                .add(ModBlocks.STONE_BRICK_FOUNTAIN_SPROUT)
+                .add(ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN_SPROUT)
+                .add(ModBlocks.GRANITE_FOUNTAIN_SPROUT)
+                .add(ModBlocks.DIORITE_FOUNTAIN_SPROUT)
+                .add(ModBlocks.ANDESITE_FOUNTAIN_SPROUT)
+                .add(ModBlocks.DEEPSLATE_FOUNTAIN_SPROUT)
+                .add(ModBlocks.CALCITE_FOUNTAIN_SPROUT)
+                .add(ModBlocks.TUFF_FOUNTAIN_SPROUT)
+                .add(ModBlocks.BRICK_FOUNTAIN_SPROUT)
+                .add(ModBlocks.MUD_FOUNTAIN_SPROUT)
+                .add(ModBlocks.SANDSTONE_FOUNTAIN_SPROUT)
+                .add(ModBlocks.RED_SANDSTONE_FOUNTAIN_SPROUT)
+                .add(ModBlocks.PRISMARINE_FOUNTAIN_SPROUT)
+                .add(ModBlocks.NETHER_BRICK_FOUNTAIN_SPROUT)
+                .add(ModBlocks.RED_NETHER_BRICK_FOUNTAIN_SPROUT)
+                .add(ModBlocks.BLACKSTONE_FOUNTAIN_SPROUT)
+                .add(ModBlocks.ENDSTONE_FOUNTAIN_SPROUT)
+                .add(ModBlocks.PURPUR_FOUNTAIN_SPROUT)
         ;
     }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/chimney/template_chimney_middle",
+  "textures": {
+    "particle": "minecraft:block/calcite",
+    "side": "cozyhome:block/chimney/calcite_chimney_middle"
+  }
+}

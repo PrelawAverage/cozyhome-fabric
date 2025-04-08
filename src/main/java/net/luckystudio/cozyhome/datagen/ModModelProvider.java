@@ -51,17 +51,17 @@ public class ModModelProvider extends FabricModelProvider {
         registerStorageCounter(blockStateModelGenerator, ModBlocks.CRIMSON_STORAGE_COUNTER, CozyHome.id("block/break/crimson_furniture"));
         registerStorageCounter(blockStateModelGenerator, ModBlocks.WARPED_STORAGE_COUNTER, CozyHome.id("block/break/warped_furniture"));
 
-        registerSinkCounter(blockStateModelGenerator, ModBlocks.OAK_SINK_COUNTER, CozyHome.id("block/break/oak_furniture"));
-        registerSinkCounter(blockStateModelGenerator, ModBlocks.SPRUCE_SINK_COUNTER, CozyHome.id("block/break/spruce_furniture"));
-        registerSinkCounter(blockStateModelGenerator, ModBlocks.BIRCH_SINK_COUNTER, CozyHome.id("block/break/birch_furniture"));
-        registerSinkCounter(blockStateModelGenerator, ModBlocks.JUNGLE_SINK_COUNTER, CozyHome.id("block/break/jungle_furniture"));
-        registerSinkCounter(blockStateModelGenerator, ModBlocks.ACACIA_SINK_COUNTER, CozyHome.id("block/break/acacia_furniture"));
-        registerSinkCounter(blockStateModelGenerator, ModBlocks.DARK_OAK_SINK_COUNTER, CozyHome.id("block/break/dark_oak_furniture"));
-        registerSinkCounter(blockStateModelGenerator, ModBlocks.MANGROVE_SINK_COUNTER, CozyHome.id("block/break/mangrove_furniture"));
-        registerSinkCounter(blockStateModelGenerator, ModBlocks.CHERRY_SINK_COUNTER, CozyHome.id("block/break/cherry_furniture"));
-        registerSinkCounter(blockStateModelGenerator, ModBlocks.BAMBOO_SINK_COUNTER, CozyHome.id("block/break/bamboo_furniture"));
-        registerSinkCounter(blockStateModelGenerator, ModBlocks.CRIMSON_SINK_COUNTER, CozyHome.id("block/break/crimson_furniture"));
-        registerSinkCounter(blockStateModelGenerator, ModBlocks.WARPED_SINK_COUNTER, CozyHome.id("block/break/warped_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.OAK_SINK_COUNTER, CozyHome.id("block/faucet/iron_faucet"), CozyHome.id("block/break/oak_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.SPRUCE_SINK_COUNTER, CozyHome.id("block/faucet/iron_faucet"), CozyHome.id("block/break/spruce_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.BIRCH_SINK_COUNTER, CozyHome.id("block/faucet/iron_faucet"), CozyHome.id("block/break/birch_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.JUNGLE_SINK_COUNTER, CozyHome.id("block/faucet/iron_faucet"), CozyHome.id("block/break/jungle_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.ACACIA_SINK_COUNTER, CozyHome.id("block/faucet/iron_faucet"), CozyHome.id("block/break/acacia_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.DARK_OAK_SINK_COUNTER, CozyHome.id("block/faucet/iron_faucet"), CozyHome.id("block/break/dark_oak_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.MANGROVE_SINK_COUNTER, CozyHome.id("block/faucet/iron_faucet"), CozyHome.id("block/break/mangrove_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.CHERRY_SINK_COUNTER, CozyHome.id("block/faucet/iron_faucet"), CozyHome.id("block/break/cherry_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.BAMBOO_SINK_COUNTER, CozyHome.id("block/faucet/iron_faucet"), CozyHome.id("block/break/bamboo_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.CRIMSON_SINK_COUNTER, CozyHome.id("block/faucet/iron_faucet"), CozyHome.id("block/break/crimson_furniture"));
+        registerSinkCounter(blockStateModelGenerator, ModBlocks.WARPED_SINK_COUNTER, CozyHome.id("block/faucet/iron_faucet"), CozyHome.id("block/break/warped_furniture"));
 
         registerTable(blockStateModelGenerator, ModBlocks.OAK_TABLE, TableTypes.GENERIC, Identifier.of("block/oak_planks"));
         registerTable(blockStateModelGenerator, ModBlocks.SPRUCE_TABLE, TableTypes.GENERIC, Identifier.of("block/spruce_planks"));
@@ -241,6 +241,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerFountain(blockStateModelGenerator, ModBlocks.DIORITE_FOUNTAIN, Identifier.of("block/diorite"));
         registerFountain(blockStateModelGenerator, ModBlocks.ANDESITE_FOUNTAIN, Identifier.of("block/andesite"));
         registerFountain(blockStateModelGenerator, ModBlocks.DEEPSLATE_FOUNTAIN, Identifier.of("block/deepslate"));
+        registerFountain(blockStateModelGenerator, ModBlocks.CALCITE_FOUNTAIN, Identifier.of("block/calcite"));
         registerFountain(blockStateModelGenerator, ModBlocks.TUFF_FOUNTAIN, Identifier.of("block/tuff"));
         registerFountain(blockStateModelGenerator, ModBlocks.BRICK_FOUNTAIN, Identifier.of("block/bricks"));
         registerFountain(blockStateModelGenerator, ModBlocks.MUD_FOUNTAIN, Identifier.of("block/mud"));
@@ -259,6 +260,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerChimney(blockStateModelGenerator, ModBlocks.DIORITE_CHIMNEY, Identifier.ofVanilla("block/polished_diorite"), ChimneyIntake.IRON);
         registerChimney(blockStateModelGenerator, ModBlocks.ANDESITE_CHIMNEY, Identifier.ofVanilla("block/polished_andesite"), ChimneyIntake.IRON);
         registerChimney(blockStateModelGenerator, ModBlocks.DEEPSLATE_CHIMNEY, Identifier.ofVanilla("block/chiseled_deepslate"), ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.CALCITE_CHIMNEY, Identifier.ofVanilla("block/calcite"), ChimneyIntake.IRON);
         registerChimney(blockStateModelGenerator, ModBlocks.TUFF_CHIMNEY, Identifier.ofVanilla("block/chiseled_tuff"), ChimneyIntake.IRON);
         registerChimney(blockStateModelGenerator, ModBlocks.BRICK_CHIMNEY, Identifier.ofVanilla("block/bricks"), ChimneyIntake.IRON);
         registerChimney(blockStateModelGenerator, ModBlocks.MUD_CHIMNEY, Identifier.ofVanilla("block/bricks"), ChimneyIntake.IRON);
@@ -284,11 +286,6 @@ public class ModModelProvider extends FabricModelProvider {
      * In order to use these models, we just simply call the Cozyhome.id(block).
      */
     public final void registerGenerals(BlockStateModelGenerator blockStateModelGenerator) {
-        Identifier ironFaucet = ModModels.FAUCET.upload(
-                CozyHome.id("block/iron_faucet"), new TextureMap().put(TextureKey.ALL, CozyHome.id("block/faucet/iron_faucet")), blockStateModelGenerator.modelCollector);
-        Identifier ironFaucetOn = ModModels.FAUCET_ON.upload(
-                CozyHome.id("block/iron_faucet_on"), new TextureMap().put(TextureKey.ALL, CozyHome.id("block/faucet/iron_faucet")), blockStateModelGenerator.modelCollector);
-
         Identifier waterModelId = ModModels.WATER_15.upload(
                 CozyHome.id("block/water_15"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/water_still")), blockStateModelGenerator.modelCollector);
         Identifier lavaModelId = ModModels.LAVA_15.upload(
@@ -456,7 +453,7 @@ public class ModModelProvider extends FabricModelProvider {
                 ));
     }
 
-    public final void registerSinkCounter(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
+    public final void registerSinkCounter(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier faucetTexture, Identifier breakParticle) {
         TextureMap baseTexture = new TextureMap()
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_sink", "") + "_sink_top"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_sink", "") + "_side"))
@@ -465,43 +462,36 @@ public class ModModelProvider extends FabricModelProvider {
                 .put(TextureKey.BACK, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/counter/" + Registries.BLOCK.getId(block).getPath().replace("_sink", "") + "_back"))
                 .put(ModTextureKey.INNER_SIDE, CozyHome.id("block/counter/sink_inner_side"))
                 .put(ModTextureKey.INNER_BOTTOM, CozyHome.id("block/counter/sink_inner_bottom"))
+                .put(ModTextureKey.EXTRA, faucetTexture)
                 .put(TextureKey.PARTICLE, breakParticle);
         Identifier sinkCounterModelID = ModModels.SINK_COUNTER.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
+        Identifier sinkCounterOnModelID = ModModels.SINK_COUNTER_ON.upload(block, baseTexture, blockStateModelGenerator.modelCollector);
+
         blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(block)
                         // Sink
-                        .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.NORTH),
-                                BlockStateVariant.create().put(VariantSettings.MODEL, sinkCounterModelID)
-                                        .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.SOUTH),
-                                BlockStateVariant.create().put(VariantSettings.MODEL, sinkCounterModelID))
-                        .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.EAST),
-                                BlockStateVariant.create().put(VariantSettings.MODEL, sinkCounterModelID)
-                                        .put(VariantSettings.Y, VariantSettings.Rotation.R270))
-                        .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.WEST),
-                                BlockStateVariant.create().put(VariantSettings.MODEL, sinkCounterModelID)
-                                        .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                        // Faucet
                         .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.NORTH).set(Properties.TRIGGERED, false),
-                                BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/iron_faucet"))
+                                BlockStateVariant.create().put(VariantSettings.MODEL, sinkCounterModelID)
                                         .put(VariantSettings.Y, VariantSettings.Rotation.R180))
                         .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.SOUTH).set(Properties.TRIGGERED, false),
-                                BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/iron_faucet")))
+                                BlockStateVariant.create().put(VariantSettings.MODEL, sinkCounterModelID))
                         .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.EAST).set(Properties.TRIGGERED, false),
-                                BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/iron_faucet"))
+                                BlockStateVariant.create().put(VariantSettings.MODEL, sinkCounterModelID)
                                         .put(VariantSettings.Y, VariantSettings.Rotation.R270))
                         .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.WEST).set(Properties.TRIGGERED, false),
-                                BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/iron_faucet"))
+                                BlockStateVariant.create().put(VariantSettings.MODEL, sinkCounterModelID)
                                         .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+
+                        // Sink On
                         .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.NORTH).set(Properties.TRIGGERED, true),
-                                BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/iron_faucet_on"))
+                                BlockStateVariant.create().put(VariantSettings.MODEL, sinkCounterOnModelID)
                                         .put(VariantSettings.Y, VariantSettings.Rotation.R180))
                         .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.SOUTH).set(Properties.TRIGGERED, true),
-                                BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/iron_faucet_on")))
+                                BlockStateVariant.create().put(VariantSettings.MODEL, sinkCounterOnModelID))
                         .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.EAST).set(Properties.TRIGGERED, true),
-                                BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/iron_faucet_on"))
+                                BlockStateVariant.create().put(VariantSettings.MODEL, sinkCounterOnModelID)
                                         .put(VariantSettings.Y, VariantSettings.Rotation.R270))
                         .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.WEST).set(Properties.TRIGGERED, true),
-                                BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/iron_faucet_on"))
+                                BlockStateVariant.create().put(VariantSettings.MODEL, sinkCounterOnModelID)
                                         .put(VariantSettings.Y, VariantSettings.Rotation.R90))
 
                         // Water
@@ -1310,42 +1300,34 @@ public class ModModelProvider extends FabricModelProvider {
                 .put(ModTextureKey.EXTRA, faucetTexture)
                 .put(TextureKey.PARTICLE, breakParticle);
         Identifier baseModelId = ModModels.SINK.upload(block, baseTextureMap, blockStateModelGenerator.modelCollector);
+        Identifier baseOnModelId = ModModels.SINK_ON.upload(block, baseTextureMap, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(block)
                 // Sink
-                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.NORTH),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, baseModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.SOUTH),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, baseModelId))
-                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.EAST),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, baseModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
-                .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.WEST),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, baseModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                // Faucet
                 .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.NORTH).set(Properties.TRIGGERED, false),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/iron_faucet"))
+                        BlockStateVariant.create().put(VariantSettings.MODEL, baseModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R180))
                 .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.SOUTH).set(Properties.TRIGGERED, false),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/iron_faucet")))
+                        BlockStateVariant.create().put(VariantSettings.MODEL, baseModelId))
                 .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.EAST).set(Properties.TRIGGERED, false),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/iron_faucet"))
+                        BlockStateVariant.create().put(VariantSettings.MODEL, baseModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R270))
                 .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.WEST).set(Properties.TRIGGERED, false),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/iron_faucet"))
+                        BlockStateVariant.create().put(VariantSettings.MODEL, baseModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+
+                // Sink On
                 .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.NORTH).set(Properties.TRIGGERED, true),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/iron_faucet_on"))
+                        BlockStateVariant.create().put(VariantSettings.MODEL, baseOnModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R180))
                 .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.SOUTH).set(Properties.TRIGGERED, true),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/iron_faucet_on")))
+                        BlockStateVariant.create().put(VariantSettings.MODEL, baseOnModelId))
                 .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.EAST).set(Properties.TRIGGERED, true),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/iron_faucet_on"))
+                        BlockStateVariant.create().put(VariantSettings.MODEL, baseOnModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R270))
                 .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.WEST).set(Properties.TRIGGERED, true),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/iron_faucet_on"))
+                        BlockStateVariant.create().put(VariantSettings.MODEL, baseOnModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+
                 // Water
                 .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 1),
                         BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_water_11")))

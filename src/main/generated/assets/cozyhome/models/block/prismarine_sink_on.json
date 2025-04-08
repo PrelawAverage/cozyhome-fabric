@@ -1,0 +1,10 @@
+{
+  "parent": "cozyhome:block/sink/sink_on",
+  "textures": {
+    "bottom": "cozyhome:block/sink/prismarine_sink_bottom",
+    "extra": "cozyhome:block/faucet/iron_faucet",
+    "particle": "minecraft:block/prismarine_bricks",
+    "side": "cozyhome:block/sink/prismarine_sink_side",
+    "top": "cozyhome:block/sink/prismarine_sink_top"
+  }
+}

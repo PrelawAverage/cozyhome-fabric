@@ -282,6 +282,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerCounterRecipe(exporter, ModBlocks.ACACIA_COUNTER, Blocks.POLISHED_DIORITE, Blocks.ACACIA_PLANKS);
         offerCounterRecipe(exporter, ModBlocks.DARK_OAK_COUNTER, Blocks.DEEPSLATE_TILES, Blocks.DARK_OAK_PLANKS);
         offerCounterRecipe(exporter, ModBlocks.MANGROVE_COUNTER, Blocks.PACKED_MUD, Blocks.MANGROVE_PLANKS);
+        offerCounterRecipe(exporter, ModBlocks.CHERRY_COUNTER, Blocks.CALCITE, Blocks.CHERRY_PLANKS);
         offerCounterRecipe(exporter, ModBlocks.BAMBOO_COUNTER, Blocks.BAMBOO_BLOCK, Blocks.BAMBOO_PLANKS);
         offerCounterRecipe(exporter, ModBlocks.CRIMSON_COUNTER, Blocks.NETHER_WART_BLOCK, Blocks.CRIMSON_PLANKS);
         offerCounterRecipe(exporter, ModBlocks.WARPED_COUNTER, Blocks.WARPED_WART_BLOCK, Blocks.WARPED_PLANKS);
@@ -294,6 +295,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerStorageCounterRecipe(exporter, ModBlocks.ACACIA_STORAGE_COUNTER, Blocks.POLISHED_DIORITE, Blocks.ACACIA_PLANKS);
         offerStorageCounterRecipe(exporter, ModBlocks.DARK_OAK_STORAGE_COUNTER, Blocks.DEEPSLATE_TILES, Blocks.DARK_OAK_PLANKS);
         offerStorageCounterRecipe(exporter, ModBlocks.MANGROVE_STORAGE_COUNTER, Blocks.PACKED_MUD, Blocks.MANGROVE_PLANKS);
+        offerStorageCounterRecipe(exporter, ModBlocks.CHERRY_STORAGE_COUNTER, Blocks.CALCITE, Blocks.CHERRY_PLANKS);
         offerStorageCounterRecipe(exporter, ModBlocks.BAMBOO_STORAGE_COUNTER, Blocks.BAMBOO_BLOCK, Blocks.BAMBOO_PLANKS);
         offerStorageCounterRecipe(exporter, ModBlocks.CRIMSON_STORAGE_COUNTER, Blocks.NETHER_WART_BLOCK, Blocks.CRIMSON_PLANKS);
         offerStorageCounterRecipe(exporter, ModBlocks.WARPED_STORAGE_COUNTER, Blocks.WARPED_WART_BLOCK, Blocks.WARPED_PLANKS);
@@ -306,6 +308,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerSinkCounterRecipe(exporter, ModBlocks.ACACIA_SINK_COUNTER, Blocks.POLISHED_DIORITE, Blocks.ACACIA_PLANKS);
         offerSinkCounterRecipe(exporter, ModBlocks.DARK_OAK_SINK_COUNTER, Blocks.DEEPSLATE_TILES, Blocks.DARK_OAK_PLANKS);
         offerSinkCounterRecipe(exporter, ModBlocks.MANGROVE_SINK_COUNTER, Blocks.PACKED_MUD, Blocks.MANGROVE_PLANKS);
+        offerSinkCounterRecipe(exporter, ModBlocks.CHERRY_SINK_COUNTER, Blocks.CALCITE, Blocks.CHERRY_PLANKS);
         offerSinkCounterRecipe(exporter, ModBlocks.BAMBOO_SINK_COUNTER, Blocks.BAMBOO_BLOCK, Blocks.BAMBOO_PLANKS);
         offerSinkCounterRecipe(exporter, ModBlocks.CRIMSON_SINK_COUNTER, Blocks.NETHER_WART_BLOCK, Blocks.CRIMSON_PLANKS);
         offerSinkCounterRecipe(exporter, ModBlocks.WARPED_SINK_COUNTER, Blocks.WARPED_WART_BLOCK, Blocks.WARPED_PLANKS);
@@ -318,6 +321,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerTableRecipe(exporter, ModBlocks.ACACIA_TABLE, Blocks.ACACIA_PLANKS, Blocks.ACACIA_SLAB);
         offerTableRecipe(exporter, ModBlocks.DARK_OAK_TABLE, Blocks.DARK_OAK_PLANKS, Blocks.DARK_OAK_SLAB);
         offerTableRecipe(exporter, ModBlocks.MANGROVE_TABLE, Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_SLAB);
+        offerTableRecipe(exporter, ModBlocks.CHERRY_TABLE, Blocks.CHERRY_PLANKS, Blocks.CHERRY_SLAB);
         offerTableRecipe(exporter, ModBlocks.BAMBOO_TABLE, Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_SLAB);
         offerTableRecipe(exporter, ModBlocks.CRIMSON_TABLE, Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_SLAB);
         offerTableRecipe(exporter, ModBlocks.WARPED_TABLE, Blocks.WARPED_PLANKS, Blocks.WARPED_SLAB);
@@ -345,6 +349,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerWallClockRecipe(exporter, ModBlocks.ACACIA_WALL_CLOCK, Blocks.ACACIA_SLAB);
         offerWallClockRecipe(exporter, ModBlocks.DARK_OAK_WALL_CLOCK, Blocks.DARK_OAK_SLAB);
         offerWallClockRecipe(exporter, ModBlocks.MANGROVE_WALL_CLOCK, Blocks.MANGROVE_SLAB);
+        offerWallClockRecipe(exporter, ModBlocks.CHERRY_WALL_CLOCK, Blocks.CHERRY_SLAB);
         offerWallClockRecipe(exporter, ModBlocks.BAMBOO_WALL_CLOCK, Blocks.BAMBOO_SLAB);
         offerWallClockRecipe(exporter, ModBlocks.CRIMSON_WALL_CLOCK, Blocks.CRIMSON_SLAB);
         offerWallClockRecipe(exporter, ModBlocks.WARPED_WALL_CLOCK, Blocks.WARPED_SLAB);
@@ -357,6 +362,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerGrandfatherClockRecipe(exporter, ModBlocks.ACACIA_GRANDFATHER_CLOCK, ModBlocks.ACACIA_WALL_CLOCK, Blocks.ACACIA_PLANKS);
         offerGrandfatherClockRecipe(exporter, ModBlocks.DARK_OAK_GRANDFATHER_CLOCK, ModBlocks.DARK_OAK_WALL_CLOCK, Blocks.DARK_OAK_PLANKS);
         offerGrandfatherClockRecipe(exporter, ModBlocks.MANGROVE_GRANDFATHER_CLOCK, ModBlocks.MANGROVE_WALL_CLOCK, Blocks.MANGROVE_PLANKS);
+        offerGrandfatherClockRecipe(exporter, ModBlocks.CHERRY_GRANDFATHER_CLOCK, ModBlocks.CHERRY_WALL_CLOCK, Blocks.CHERRY_PLANKS);
         offerGrandfatherClockRecipe(exporter, ModBlocks.BAMBOO_GRANDFATHER_CLOCK, ModBlocks.BAMBOO_WALL_CLOCK, Blocks.BAMBOO_PLANKS);
         offerGrandfatherClockRecipe(exporter, ModBlocks.CRIMSON_GRANDFATHER_CLOCK, ModBlocks.CRIMSON_WALL_CLOCK, Blocks.CRIMSON_PLANKS);
         offerGrandfatherClockRecipe(exporter, ModBlocks.WARPED_GRANDFATHER_CLOCK, ModBlocks.WARPED_WALL_CLOCK, Blocks.WARPED_PLANKS);
@@ -408,6 +414,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerDeskRecipe(exporter, ModBlocks.ACACIA_DESK, Blocks.ACACIA_SLAB, Blocks.ACACIA_PLANKS);
         offerDeskRecipe(exporter, ModBlocks.DARK_OAK_DESK, Blocks.DARK_OAK_SLAB, Blocks.DARK_OAK_PLANKS);
         offerDeskRecipe(exporter, ModBlocks.MANGROVE_DESK, Blocks.MANGROVE_SLAB, Blocks.MANGROVE_PLANKS);
+        offerDeskRecipe(exporter, ModBlocks.CHERRY_DESK, Blocks.CHERRY_SLAB, Blocks.CHERRY_PLANKS);
         offerDeskRecipe(exporter, ModBlocks.BAMBOO_DESK, Blocks.BAMBOO_SLAB, Blocks.BAMBOO_PLANKS);
         offerDeskRecipe(exporter, ModBlocks.CRIMSON_DESK, Blocks.CRIMSON_SLAB, Blocks.CRIMSON_PLANKS);
         offerDeskRecipe(exporter, ModBlocks.WARPED_DESK, Blocks.WARPED_SLAB, Blocks.WARPED_PLANKS);
@@ -420,6 +427,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerDrawerRecipe(exporter, ModBlocks.ACACIA_DRAWER, Blocks.ACACIA_SLAB, Blocks.ACACIA_PLANKS);
         offerDrawerRecipe(exporter, ModBlocks.DARK_OAK_DRAWER, Blocks.DARK_OAK_SLAB, Blocks.DARK_OAK_PLANKS);
         offerDrawerRecipe(exporter, ModBlocks.MANGROVE_DRAWER, Blocks.MANGROVE_SLAB, Blocks.MANGROVE_PLANKS);
+        offerDrawerRecipe(exporter, ModBlocks.CHERRY_DRAWER, Blocks.CHERRY_SLAB, Blocks.CHERRY_PLANKS);
         offerDrawerRecipe(exporter, ModBlocks.BAMBOO_DRAWER, Blocks.BAMBOO_SLAB, Blocks.BAMBOO_PLANKS);
         offerDrawerRecipe(exporter, ModBlocks.CRIMSON_DRAWER, Blocks.CRIMSON_SLAB, Blocks.CRIMSON_PLANKS);
         offerDrawerRecipe(exporter, ModBlocks.WARPED_DRAWER, Blocks.WARPED_SLAB, Blocks.WARPED_PLANKS);

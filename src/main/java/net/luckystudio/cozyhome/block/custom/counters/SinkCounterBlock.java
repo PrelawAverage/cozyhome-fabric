@@ -25,6 +25,11 @@ public class SinkCounterBlock extends AbstractSinkBlock {
 
     public SinkCounterBlock(Settings settings) {
         super(settings);
+        this.setDefaultState(this.stateManager.getDefaultState()
+                .with(TRIGGERED, false)
+                .with(LEVEL, 0)
+                .with(NEXT_LEVEL, 0)
+                .with(FACING, Direction.NORTH));
     }
 
     @Override

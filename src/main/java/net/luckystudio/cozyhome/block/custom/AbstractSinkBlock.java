@@ -40,11 +40,6 @@ public abstract class AbstractSinkBlock extends Block implements LeveledWaterHol
 
     public AbstractSinkBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState()
-                .with(TRIGGERED, false)
-                .with(LEVEL, 0)
-                .with(NEXT_LEVEL, 0)
-                .with(FACING, Direction.NORTH));
     }
 
     @Override
@@ -93,16 +88,17 @@ public abstract class AbstractSinkBlock extends Block implements LeveledWaterHol
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (world.isClient) return ActionResult.SUCCESS;
-        if (hasWaterToPull(state, world, pos)) {
-            if (state.get(LEVEL) < 3) {
+        if (state.get(LEVEL) == 3) {
+            player.sendMessage(Text.translatable("message.cozyhome.full"), true);
+            return ActionResult.SUCCESS;
+        } else {
+            if (hasWaterToPull(state, world, pos)) {
                 this.togglePower(state, world, pos, player);
                 world.scheduleBlockTick(pos, this, 1);
                 return ActionResult.SUCCESS;
             } else {
-                player.sendMessage(Text.translatable("message.cozyhome.full"), true);
+                player.sendMessage(Text.translatable("message.cozyhome.needs_water"), true);
             }
-        } else {
-            player.sendMessage(Text.translatable("message.cozyhome.needs_water"), true);
         }
         return ActionResult.CONSUME;
     }
