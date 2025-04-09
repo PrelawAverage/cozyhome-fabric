@@ -1,8 +1,9 @@
 package net.luckystudio.cozyhome.entity.custom;
 
 import net.luckystudio.cozyhome.block.ModBlocks;
-import net.luckystudio.cozyhome.block.custom.AbstractSeatBlock;
 import net.luckystudio.cozyhome.block.custom.telescope.TelescopeBlockEntity;
+import net.luckystudio.cozyhome.block.util.interfaces.SeatBlock;
+import net.luckystudio.cozyhome.entity.ModEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.data.DataTracker;
@@ -11,6 +12,8 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ItemActionResult;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.*;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
@@ -53,12 +56,14 @@ public class SeatEntity extends Entity {
         World world = this.getWorld();
         Entity entity = this.getFirstPassenger();
         if (!world.isClient) {
+            // Delete the entity if no player is riding it
             if (entity == null) {
                 this.remove(RemovalReason.DISCARDED);
             } else {
+                // Aiming the telescope
                 if (isTelescopeBlock()) {
                     if (this.getWorld().getBlockEntity(this.getBlockPos()) instanceof TelescopeBlockEntity telescopeBlockEntity && entity != null) {
-                        telescopeBlockEntity.setYaw(entity.getYaw() - 90);
+                        telescopeBlockEntity.setYaw(entity.getYaw() + 180);
                         telescopeBlockEntity.setPitch(-entity.getPitch());
                         telescopeBlockEntity.markDirty();
                     }
@@ -72,7 +77,7 @@ public class SeatEntity extends Entity {
     protected void addPassenger(Entity passenger) {
         BlockPos pos = this.getBlockPos();
         BlockState state = this.getWorld().getBlockState(pos);
-        if (state.getBlock() instanceof AbstractSeatBlock || isTelescopeBlock()) {
+        if (state.getBlock() instanceof SeatBlock) {
             passenger.setYaw(this.getYaw());
             super.addPassenger(passenger);
         }
@@ -102,7 +107,7 @@ public class SeatEntity extends Entity {
                             passenger.setPose(entityPose);
                             World world = this.getWorld();
                             BlockPos pos = this.getBlockPos();
-                            if (world.getBlockState(pos).getBlock() instanceof AbstractSeatBlock) {
+                            if (world.getBlockState(pos).getBlock() instanceof SeatBlock) {
                                 BlockState state = world.getBlockState(pos);
                                 world.setBlockState(pos, state.with(Properties.TRIGGERED, false));
                             }
@@ -115,7 +120,7 @@ public class SeatEntity extends Entity {
         }
         World world = this.getWorld();
         BlockPos pos = this.getBlockPos();
-        if (world.getBlockState(pos).getBlock() instanceof AbstractSeatBlock) {
+        if (world.getBlockState(pos).getBlock() instanceof SeatBlock) {
             BlockState state = world.getBlockState(pos);
             world.setBlockState(pos, state.with(Properties.TRIGGERED, false));
         }
@@ -127,7 +132,7 @@ public class SeatEntity extends Entity {
     public void remove(RemovalReason reason) {
         World world = this.getWorld();
         BlockPos pos = this.getBlockPos();
-        if (world.getBlockState(pos).getBlock() instanceof AbstractSeatBlock) {
+        if (world.getBlockState(pos).getBlock() instanceof SeatBlock) {
             BlockState state = world.getBlockState(pos);
             world.setBlockState(pos, state.with(Properties.TRIGGERED, false));
         }
@@ -150,8 +155,8 @@ public class SeatEntity extends Entity {
     private float getHeightOffset() {
         BlockPos pos = this.getBlockPos();
         BlockState state = getWorld().getBlockState(pos);
-        if (state.getBlock() instanceof AbstractSeatBlock abstractSeatBlock) {
-            return abstractSeatBlock.getSeatHeight(state);
+        if (state.getBlock() instanceof SeatBlock seatBlock) {
+            return seatBlock.getSeatHeight(state);
         }
         return 0f;
     }

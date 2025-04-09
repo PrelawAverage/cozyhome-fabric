@@ -2,6 +2,8 @@ package net.luckystudio.cozyhome.block.custom.telescope;
 
 import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.CozyHome;
+import net.luckystudio.cozyhome.block.util.ModProperties;
+import net.luckystudio.cozyhome.block.util.interfaces.SeatBlock;
 import net.luckystudio.cozyhome.entity.ModEntities;
 import net.luckystudio.cozyhome.entity.custom.SeatEntity;
 import net.luckystudio.cozyhome.util.ModScreenTexts;
@@ -40,10 +42,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class TelescopeBlock extends BlockWithEntity implements Waterloggable {
+public class TelescopeBlock extends BlockWithEntity implements Waterloggable, SeatBlock {
     public static final MapCodec<TelescopeBlock> CODEC = createCodec(TelescopeBlock::new);
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+    public static final BooleanProperty TRIGGERED = Properties.TRIGGERED;
 
     public static final VoxelShape SHAPE = Block.createCuboidShape(5, 0, 5, 11, 16, 11);
 
@@ -116,12 +119,13 @@ public class TelescopeBlock extends BlockWithEntity implements Waterloggable {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState()
                 .with(WATERLOGGED, Boolean.FALSE)
+                .with(TRIGGERED, Boolean.FALSE)
                 .with(FACING, Direction.NORTH));
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING, WATERLOGGED);
+        builder.add(FACING, WATERLOGGED, TRIGGERED);
     }
 
     @Override
@@ -176,6 +180,7 @@ public class TelescopeBlock extends BlockWithEntity implements Waterloggable {
             seat.setPosition(pos.getX() + 0.5f, pos.getY(), pos.getZ() + 0.5f);
             world.spawnEntity(seat);
             player.startRiding(seat);
+            world.setBlockState(pos, state.with(TRIGGERED, true), 3);
             return ActionResult.SUCCESS;
         } else if (!world.isClient) {
             if (isDay) {
@@ -259,5 +264,15 @@ public class TelescopeBlock extends BlockWithEntity implements Waterloggable {
     @Override
     protected BlockState mirror(BlockState state, BlockMirror mirror) {
         return state.rotate(mirror.getRotation(state.get(FACING)));
+    }
+
+    @Override
+    public float getSeatRotation(BlockState state, World world, BlockPos pos) {
+        return ModProperties.setSeatRotationFromFacing(state) + 180;
+    }
+
+    @Override
+    public float getSeatHeight(BlockState state) {
+        return 0.2f;
     }
 }
