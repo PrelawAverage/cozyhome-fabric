@@ -130,40 +130,39 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock, Wate
             // Get the item stack that is currently stored in the block
             ItemStack storedItem = chairBlockEntity.getStack();
             // Check if the item in hand is a valid tool or weapon.
-            if (stack.getItem() instanceof CushionItem) {
+            if (stack.getItem() instanceof CushionItem && !stack.isEmpty() && (storedItem.isEmpty())) {
                 // If the stack is not empty, and the rack is either empty or can accept the item (same type and enough space),
                 // proceed to insert the item into the block.
-                if (!stack.isEmpty() && (storedItem.isEmpty())) {
 
-                    // Increment the player's use stat for the item in their hand.
-                    player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
+                // Increment the player's use stat for the item in their hand.
+                player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
 
-                    // Split the stack unless the player is in creative mode (in which case the item won't be removed).
-                    ItemStack itemStack2 = stack.splitUnlessCreative(1, player);
+                // Split the stack unless the player is in creative mode (in which case the item won't be removed).
+                ItemStack itemStack2 = stack.splitUnlessCreative(1, player);
 
-                    // If the block was empty, store the item directly.
-                    if (chairBlockEntity.isEmpty()) {
-                        chairBlockEntity.setStack(itemStack2);
-                    }
-
-                    if (chairBlockEntity.getStack() == ModItems.HAY_CUSHION.getDefaultStack()) {
-                        world.playSound(player, pos, SoundEvents.BLOCK_GRASS_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                    } else {
-                        world.playSound(player, pos, SoundEvents.BLOCK_WOOL_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                    }
-
-                    // Mark the block entity as dirty, indicating it has changed.
-                    chairBlockEntity.markDirty();
-
-                    // Notify the world that the block state has changed and trigger the block update.
-                    world.updateListeners(pos, state, state, Block.NOTIFY_ALL);
-
-                    // Emit a game event to notify of the block's state change
-                    world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-
-                    // Return a successful result to stop further interaction processing.
-                    return ItemActionResult.SUCCESS;
+                // If the block was empty, store the item directly.
+                if (chairBlockEntity.isEmpty()) {
+                    chairBlockEntity.setStack(itemStack2);
                 }
+
+                if (chairBlockEntity.getStack() == ModItems.HAY_CUSHION.getDefaultStack()) {
+                    world.playSound(player, pos, SoundEvents.BLOCK_GRASS_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                } else {
+                    world.playSound(player, pos, SoundEvents.BLOCK_WOOL_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                }
+
+                // Mark the block entity as dirty, indicating it has changed.
+                chairBlockEntity.markDirty();
+
+                // Notify the world that the block state has changed and trigger the block update.
+                world.updateListeners(pos, state, state, Block.NOTIFY_ALL);
+
+                // Emit a game event to notify of the block's state change
+                world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+
+                // Return a successful result to stop further interaction processing.
+                return ItemActionResult.SUCCESS;
+
             } else if (!chairBlockEntity.isEmpty() && stack.getItem() == Items.SHEARS) {
                 // Get the item stack currently in the block
                 ItemStack storedStack = chairBlockEntity.getStack();
@@ -195,6 +194,12 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock, Wate
                     // Return a success result
                     return ItemActionResult.SUCCESS;
                 }
+            } else if (player.isSneaking()) {
+                // Call tuckable logic or fallback to super
+                TuckableBlock.toggleTuck(state, world, pos, player);
+                return ItemActionResult.SUCCESS;
+            } else {
+                return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
             }
         }
         // If the block at the given position doesn't have a block entity (ItemRackBlockEntity), skip default interaction.
@@ -204,7 +209,7 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock, Wate
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (world.isClient) return ActionResult.SUCCESS;
-         if (player.isSneaking() || state.get(TUCKED)) {
+        if (player.isSneaking() || state.get(TUCKED)) {
             // Call tuckable logic or fallback to super
             TuckableBlock.toggleTuck(state, world, pos, player);
             return ActionResult.SUCCESS;

@@ -12,10 +12,13 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RotationPropertyHelper;
@@ -67,26 +70,8 @@ public abstract class AbstractSeatBlock extends BlockWithEntity implements SeatB
     }
 
     @Override
-    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if (world.isClient) return ActionResult.SUCCESS;
-        if (state.getBlock() instanceof SeatBlock seatBlock) {
-            if (!state.get(Properties.TRIGGERED)) {
-                world.setBlockState(pos, state.with(Properties.TRIGGERED, true));
-                // Creates a new entity
-                SeatEntity seat = new SeatEntity(ModEntities.SEAT_ENTITY, world);
-                // Sets it's location
-                seat.setPosition(pos.getX() + 0.5f, pos.getY(), pos.getZ() + 0.5f);
-
-                seat.setYaw(seatBlock.getSeatRotation(state, world, pos));
-                seat.setAngles(seatBlock.getSeatRotation(state, world, pos), 0);
-
-                world.spawnEntity(seat);
-
-                player.startRiding(seat);
-                return ActionResult.SUCCESS;
-            }
-        }
-        return ActionResult.PASS;
+    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        return SeatBlock.sitDown(state, world, pos, player);
     }
 
     @Override

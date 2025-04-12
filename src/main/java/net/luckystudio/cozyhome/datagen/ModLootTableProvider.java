@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.util.ModProperties;
+import net.luckystudio.cozyhome.block.util.enums.DoubleLongPart;
 import net.luckystudio.cozyhome.block.util.enums.TripleTallBlock;
 import net.minecraft.block.Block;
 import net.minecraft.component.DataComponentTypes;
@@ -239,26 +240,26 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.GOLD_SINK);
 
         // BATHTUBS
-        addDrop(ModBlocks.STONE_BRICK_BATHTUB);
-        addDrop(ModBlocks.MOSSY_STONE_BRICK_BATHTUB);
-        addDrop(ModBlocks.GRANITE_BATHTUB);
-        addDrop(ModBlocks.DIORITE_BATHTUB);
-        addDrop(ModBlocks.ANDESITE_BATHTUB);
-        addDrop(ModBlocks.DEEPSLATE_BATHTUB);
-        addDrop(ModBlocks.CALCITE_BATHTUB);
-        addDrop(ModBlocks.TUFF_BATHTUB);
-        addDrop(ModBlocks.BRICK_BATHTUB);
-        addDrop(ModBlocks.MUD_BATHTUB);
-        addDrop(ModBlocks.SANDSTONE_BATHTUB);
-        addDrop(ModBlocks.RED_SANDSTONE_BATHTUB);
-        addDrop(ModBlocks.PRISMARINE_BATHTUB);
-        addDrop(ModBlocks.NETHER_BRICK_BATHTUB);
-        addDrop(ModBlocks.RED_NETHER_BRICK_BATHTUB);
-        addDrop(ModBlocks.BLACKSTONE_BATHTUB);
-        addDrop(ModBlocks.ENDSTONE_BATHTUB);
-        addDrop(ModBlocks.PURPUR_BATHTUB);
-        addDrop(ModBlocks.IRON_BATHTUB);
-        addDrop(ModBlocks.GOLD_BATHTUB);
+        addDrop(ModBlocks.STONE_BRICK_BATHTUB, dropsWithProperty(ModBlocks.STONE_BRICK_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.MOSSY_STONE_BRICK_BATHTUB, dropsWithProperty(ModBlocks.MOSSY_STONE_BRICK_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.GRANITE_BATHTUB, dropsWithProperty(ModBlocks.GRANITE_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.DIORITE_BATHTUB, dropsWithProperty(ModBlocks.DIORITE_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.ANDESITE_BATHTUB, dropsWithProperty(ModBlocks.ANDESITE_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.DEEPSLATE_BATHTUB, dropsWithProperty(ModBlocks.DEEPSLATE_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.CALCITE_BATHTUB, dropsWithProperty(ModBlocks.CALCITE_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.TUFF_BATHTUB, dropsWithProperty(ModBlocks.TUFF_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.BRICK_BATHTUB, dropsWithProperty(ModBlocks.BRICK_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.MUD_BATHTUB, dropsWithProperty(ModBlocks.MUD_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.SANDSTONE_BATHTUB, dropsWithProperty(ModBlocks.SANDSTONE_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.RED_SANDSTONE_BATHTUB, dropsWithProperty(ModBlocks.RED_SANDSTONE_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.PRISMARINE_BATHTUB, dropsWithProperty(ModBlocks.PRISMARINE_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.NETHER_BRICK_BATHTUB, dropsWithProperty(ModBlocks.NETHER_BRICK_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.RED_NETHER_BRICK_BATHTUB, dropsWithProperty(ModBlocks.RED_NETHER_BRICK_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.BLACKSTONE_BATHTUB, dropsWithProperty(ModBlocks.BLACKSTONE_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.ENDSTONE_BATHTUB, dropsWithProperty(ModBlocks.ENDSTONE_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.PURPUR_BATHTUB, dropsWithProperty(ModBlocks.PURPUR_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.IRON_BATHTUB, dropsWithProperty(ModBlocks.IRON_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
+        addDrop(ModBlocks.GOLD_BATHTUB, dropsWithProperty(ModBlocks.GOLD_BATHTUB, ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT));
 
         // CHIMNEY
         addDrop(ModBlocks.STONE_BRICK_CHIMNEY);
@@ -280,6 +281,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.ENDSTONE_CHIMNEY);
         addDrop(ModBlocks.PURPUR_CHIMNEY);
         addDrop(ModBlocks.IRON_CHIMNEY);
+        addDrop(ModBlocks.GOLD_CHIMNEY);
 
         // FOUNTAINS
         addDrop(ModBlocks.STONE_BRICK_FOUNTAIN);

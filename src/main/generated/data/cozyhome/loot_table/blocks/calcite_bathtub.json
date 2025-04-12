@@ -11,6 +11,15 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "cozyhome:calcite_bathtub",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "part": "front"
+              }
+            }
+          ],
           "name": "cozyhome:calcite_bathtub"
         }
       ],

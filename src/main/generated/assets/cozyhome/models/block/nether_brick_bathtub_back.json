@@ -2,7 +2,7 @@
   "parent": "cozyhome:block/bathtub/bathtub_back",
   "textures": {
     "bottom": "cozyhome:block/bathtub/nether_brick_bathtub_bottom",
-    "extra": "cozyhome:block/faucet/iron_faucet",
+    "extra": "cozyhome:block/faucet/netherite_faucet",
     "front": "cozyhome:block/bathtub/nether_brick_bathtub_front",
     "inner_front": "cozyhome:block/bathtub/nether_brick_bathtub_inner_front",
     "inner_side": "cozyhome:block/bathtub/nether_brick_bathtub_inner_side",

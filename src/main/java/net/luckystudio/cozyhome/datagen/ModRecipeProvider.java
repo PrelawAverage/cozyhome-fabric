@@ -498,6 +498,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerChimneyRecipe(exporter, ModBlocks.ENDSTONE_CHIMNEY, Blocks.END_STONE);
         offerChimneyRecipe(exporter, ModBlocks.PURPUR_CHIMNEY, Blocks.PURPUR_BLOCK);
         offerChimneyRecipe(exporter, ModBlocks.IRON_CHIMNEY, Blocks.IRON_BLOCK);
+        offerChimneyRecipe(exporter, ModBlocks.GOLD_CHIMNEY, Blocks.GOLD_BLOCK);
 
         offerCushionRecipe(exporter, ModItems.CUSHION, Blocks.WHITE_WOOL, Items.STRING);
         offerCushionRecipe(exporter, ModItems.HAY_CUSHION, Blocks.HAY_BLOCK, Items.STRING);

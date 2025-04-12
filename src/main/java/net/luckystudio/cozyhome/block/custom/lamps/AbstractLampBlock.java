@@ -138,7 +138,7 @@ public abstract class AbstractLampBlock extends BlockWithEntity implements Conne
 
     @Override
     protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        return canPlaceAt(state, world, pos) ? state.with(CONNECTION, ModProperties.setVerticalConnection(state, world, pos)) : Blocks.AIR.getDefaultState();
+        return canPlaceAt(state, world, pos) ? state.with(CONNECTION, VerticalLinearConnectionBlock.setVerticalConnection(state, world, pos)) : Blocks.AIR.getDefaultState();
     }
 
     @Override

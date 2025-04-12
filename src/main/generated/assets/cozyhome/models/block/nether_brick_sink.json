@@ -2,7 +2,8 @@
   "parent": "cozyhome:block/sink/sink",
   "textures": {
     "bottom": "cozyhome:block/sink/nether_brick_sink_bottom",
-    "extra": "cozyhome:block/faucet/iron_faucet",
+    "extra": "cozyhome:block/faucet/netherite_faucet",
+    "inner_side": "cozyhome:block/sink/nether_brick_sink_inner_side",
     "particle": "minecraft:block/nether_bricks",
     "side": "cozyhome:block/sink/nether_brick_sink_side",
     "top": "cozyhome:block/sink/nether_brick_sink_top"

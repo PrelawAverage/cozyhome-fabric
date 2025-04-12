@@ -1,6 +1,9 @@
 package net.luckystudio.cozyhome.block.custom.sinks;
 
 import com.mojang.serialization.MapCodec;
+import net.luckystudio.cozyhome.block.util.ModProperties;
+import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
+import net.luckystudio.cozyhome.block.util.interfaces.WaterHoldingBlock;
 import net.luckystudio.cozyhome.util.ModScreenTexts;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -14,6 +17,8 @@ import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -27,9 +32,12 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class SinkBlock extends AbstractWaterHoldingBlock implements Waterloggable {
+public class SinkBlock extends AbstractLiquidHoldingBlock implements Waterloggable, WaterHoldingBlock {
     public static final MapCodec<SinkBlock> CODEC = createCodec(SinkBlock::new);
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+    public static final IntProperty LEVEL = ModProperties.FILLED_LEVEL_0_3;
+    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+
     public static final VoxelShape SHAPE = VoxelShapes.union(
             Block.createCuboidShape(0, 14, 0, 16, 16, 16),
             Block.createCuboidShape(1, 8, 1, 15, 14, 15));
@@ -41,8 +49,7 @@ public class SinkBlock extends AbstractWaterHoldingBlock implements Waterloggabl
 
     public SinkBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState()
-                .with(TRIGGERED, false)
+        this.setDefaultState(super.getDefaultState()
                 .with(LEVEL, 0)
                 .with(NEXT_LEVEL, 0)
                 .with(WATERLOGGED, false)
@@ -51,11 +58,11 @@ public class SinkBlock extends AbstractWaterHoldingBlock implements Waterloggabl
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        super.appendProperties(builder.add(WATERLOGGED));
+        super.appendProperties(builder.add(WATERLOGGED, LEVEL, FACING));
     }
 
     @Override
-    public float getWaterLevel(BlockState state) {
+    public float getLiquidLevelHeight(BlockState state) {
         int level = state.get(LEVEL);
         return switch (level) {
             case 1 -> 0.438f;
@@ -66,8 +73,41 @@ public class SinkBlock extends AbstractWaterHoldingBlock implements Waterloggabl
     }
 
     @Override
-    public boolean hasWaterToPull(BlockState state, World world, BlockPos pos) {
-        return isWaterLogged(world, pos.offset(state.get(FACING)));
+    public List<Direction> sidesToPull(BlockState state) {
+        Direction behind = state.get(FACING).getOpposite();
+        return List.of(behind);
+    }
+
+    @Override
+    public boolean isFull(BlockState state) {
+        return state.get(LEVEL) == 3;
+    }
+
+    @Override
+    public int getLevel(BlockState state) {
+        return state.get(LEVEL);
+    }
+
+    @Override
+    public void addLiquid(BlockState state, World world, BlockPos pos, int amount, ContainsBlock contains) {
+        if (state.get(CONTAINS) == ContainsBlock.NONE) {
+            state = state.with(CONTAINS, contains);
+            world.setBlockState(pos, state, 3);
+        }
+        int level = state.get(LEVEL);
+        int newLevel = Math.min(6, level + amount); // clamp to max of 6
+
+        if (level < 6) {
+            world.setBlockState(pos, state.with(LEVEL, newLevel), 3);
+        }
+    }
+
+    @Override
+    public void removeLiquid(BlockState state, World world, BlockPos pos, int amount) {
+        int level = state.get(LEVEL);
+        int newLevel = Math.max(0, level - amount); // ensures level never goes below 0
+        ContainsBlock contains = newLevel == 0 ? ContainsBlock.NONE : state.get(CONTAINS);
+        world.setBlockState(pos, state.with(LEVEL, newLevel).with(CONTAINS, contains), 3);
     }
 
     @Override

@@ -3,6 +3,7 @@
   "textures": {
     "bottom": "cozyhome:block/sink/diorite_sink_bottom",
     "extra": "cozyhome:block/faucet/iron_faucet",
+    "inner_side": "cozyhome:block/sink/diorite_sink_inner_side",
     "particle": "minecraft:block/diorite",
     "side": "cozyhome:block/sink/diorite_sink_side",
     "top": "cozyhome:block/sink/diorite_sink_top"

@@ -31,7 +31,6 @@ public class TelescopeBlockEntityRenderer implements BlockEntityRenderer<Telesco
 
         // Render the entire model
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(RenderLayer.getEntityCutout(Identifier.of(CozyHome.MOD_ID, "textures/entity/telescope_head.png")));
-        System.out.println("Rendering Telescope with Yaw: " + entity.getYaw() + ", Pitch: " + entity.getPitch());
         this.model.setRotations(entity.getYaw(), entity.getPitch());
         this.model.render(matrices, vertexConsumer, light, overlay);
 

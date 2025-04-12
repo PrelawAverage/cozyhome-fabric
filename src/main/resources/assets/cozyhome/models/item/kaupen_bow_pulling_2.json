@@ -1,0 +1,6 @@
+{
+    "parent": "cozyhome:item/kaupen_bow",
+    "textures": {
+        "layer0": "cozyhome:item/kaupen_bow_pulling_2"
+    }
+}

@@ -11,6 +11,15 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "cozyhome:nether_brick_bathtub",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "part": "front"
+              }
+            }
+          ],
           "name": "cozyhome:nether_brick_bathtub"
         }
       ],

@@ -31,9 +31,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
-import static net.luckystudio.cozyhome.block.util.ModProperties.updateAdvancedHorizontalConnections;
-
-
 public class DrawerBlock extends BlockWithEntity implements Waterloggable, ConnectingBlock {
     public static final MapCodec<DrawerBlock> CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(BlockState.CODEC.fieldOf("base_state").forGetter(block -> block.baseBlockState), createSettingsCodec())
@@ -205,7 +202,7 @@ public class DrawerBlock extends BlockWithEntity implements Waterloggable, Conne
         if (state.get(WATERLOGGED)) {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
-        return state.with(HORIZONTAL_CONNECTION, updateAdvancedHorizontalConnections(state, world, pos));
+        return state.with(HORIZONTAL_CONNECTION, AdvancedHorizontalLinearConnectionBlock.updateAdvancedHorizontalConnections(state, world, pos));
     }
 
     @Override

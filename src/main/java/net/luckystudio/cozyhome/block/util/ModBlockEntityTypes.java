@@ -184,7 +184,8 @@ public class ModBlockEntityTypes {
                     ModBlocks.BLACKSTONE_CHIMNEY,
                     ModBlocks.ENDSTONE_CHIMNEY,
                     ModBlocks.PURPUR_CHIMNEY,
-                    ModBlocks.IRON_CHIMNEY
+                    ModBlocks.IRON_CHIMNEY,
+                    ModBlocks.GOLD_CHIMNEY
             ).build());
 
     public static final BlockEntityType<TelescopeBlockEntity> TELESCOPE_BLOCK_ENTITY = Registry.register(

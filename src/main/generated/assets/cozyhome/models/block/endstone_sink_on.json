@@ -3,6 +3,7 @@
   "textures": {
     "bottom": "cozyhome:block/sink/endstone_sink_bottom",
     "extra": "cozyhome:block/faucet/iron_faucet",
+    "inner_side": "cozyhome:block/sink/endstone_sink_inner_side",
     "particle": "minecraft:block/end_stone",
     "side": "cozyhome:block/sink/endstone_sink_side",
     "top": "cozyhome:block/sink/endstone_sink_top"

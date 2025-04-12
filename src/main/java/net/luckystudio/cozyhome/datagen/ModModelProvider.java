@@ -216,8 +216,8 @@ public class ModModelProvider extends FabricModelProvider {
         registerSink(blockStateModelGenerator, ModBlocks.SANDSTONE_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/sandstone"));
         registerSink(blockStateModelGenerator, ModBlocks.RED_SANDSTONE_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/red_sandstone"));
         registerSink(blockStateModelGenerator, ModBlocks.PRISMARINE_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/prismarine_bricks"));
-        registerSink(blockStateModelGenerator, ModBlocks.NETHER_BRICK_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/nether_bricks"));
-        registerSink(blockStateModelGenerator, ModBlocks.RED_NETHER_BRICK_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/red_nether_bricks"));
+        registerSink(blockStateModelGenerator, ModBlocks.NETHER_BRICK_SINK, CozyHome.id("block/faucet/netherite_faucet"), Identifier.ofVanilla("block/nether_bricks"));
+        registerSink(blockStateModelGenerator, ModBlocks.RED_NETHER_BRICK_SINK, CozyHome.id("block/faucet/netherite_faucet"), Identifier.ofVanilla("block/red_nether_bricks"));
         registerSink(blockStateModelGenerator, ModBlocks.BLACKSTONE_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/blackstone"));
         registerSink(blockStateModelGenerator, ModBlocks.ENDSTONE_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/end_stone"));
         registerSink(blockStateModelGenerator, ModBlocks.PURPUR_SINK, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/purpur_block"));
@@ -237,8 +237,8 @@ public class ModModelProvider extends FabricModelProvider {
         registerBathtub(blockStateModelGenerator, ModBlocks.SANDSTONE_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/sandstone"));
         registerBathtub(blockStateModelGenerator, ModBlocks.RED_SANDSTONE_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/red_sandstone"));
         registerBathtub(blockStateModelGenerator, ModBlocks.PRISMARINE_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/prismarine_bricks"));
-        registerBathtub(blockStateModelGenerator, ModBlocks.NETHER_BRICK_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/nether_bricks"));
-        registerBathtub(blockStateModelGenerator, ModBlocks.RED_NETHER_BRICK_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/red_nether_bricks"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.NETHER_BRICK_BATHTUB, CozyHome.id("block/faucet/netherite_faucet"), Identifier.ofVanilla("block/nether_bricks"));
+        registerBathtub(blockStateModelGenerator, ModBlocks.RED_NETHER_BRICK_BATHTUB, CozyHome.id("block/faucet/netherite_faucet"), Identifier.ofVanilla("block/red_nether_bricks"));
         registerBathtub(blockStateModelGenerator, ModBlocks.BLACKSTONE_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/blackstone"));
         registerBathtub(blockStateModelGenerator, ModBlocks.ENDSTONE_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/end_stone"));
         registerBathtub(blockStateModelGenerator, ModBlocks.PURPUR_BATHTUB, CozyHome.id("block/faucet/iron_faucet"), Identifier.ofVanilla("block/purpur_block"));
@@ -290,11 +290,12 @@ public class ModModelProvider extends FabricModelProvider {
         registerChimney(blockStateModelGenerator, ModBlocks.RED_SANDSTONE_CHIMNEY, Identifier.ofVanilla("block/chiseled_red_sandstone"), ChimneyIntake.IRON);
         registerChimney(blockStateModelGenerator, ModBlocks.PRISMARINE_CHIMNEY, Identifier.ofVanilla("block/prismarine_bricks"), ChimneyIntake.IRON);
         registerChimney(blockStateModelGenerator, ModBlocks.NETHER_BRICK_CHIMNEY, Identifier.ofVanilla("block/nether_bricks"), ChimneyIntake.IRON);
-        registerChimney(blockStateModelGenerator, ModBlocks.RED_NETHER_BRICK_CHIMNEY, Identifier.ofVanilla("block/red_nether_bricks"), ChimneyIntake.IRON);;
+        registerChimney(blockStateModelGenerator, ModBlocks.RED_NETHER_BRICK_CHIMNEY, Identifier.ofVanilla("block/red_nether_bricks"), ChimneyIntake.IRON);
         registerChimney(blockStateModelGenerator, ModBlocks.BLACKSTONE_CHIMNEY, Identifier.ofVanilla("block/polished_blackstone_bricks"), ChimneyIntake.IRON);
         registerChimney(blockStateModelGenerator, ModBlocks.ENDSTONE_CHIMNEY, Identifier.ofVanilla("block/end_stone_bricks"), ChimneyIntake.IRON);
         registerChimney(blockStateModelGenerator, ModBlocks.PURPUR_CHIMNEY, Identifier.ofVanilla("block/purpur_block"), ChimneyIntake.IRON);
         registerChimney(blockStateModelGenerator, ModBlocks.IRON_CHIMNEY, CozyHome.id("block/break/iron_furniture"), ChimneyIntake.IRON);
+        registerChimney(blockStateModelGenerator, ModBlocks.GOLD_CHIMNEY, CozyHome.id("block/break/gold_furniture"), ChimneyIntake.IRON);
     }
 
     // I have no idea what this does, but it's required.
@@ -305,7 +306,6 @@ public class ModModelProvider extends FabricModelProvider {
     /**
      * Many blocks share models in them, but we can't register the shared models in the blockstate generator because it will cause a duplicate model error.
      * So we create a separate method to generate them here and call it at the beginning, for all to use.
-     *
      * In order to use these models, we just simply call the Cozyhome.id(block).
      */
     public final void registerGenerals(BlockStateModelGenerator blockStateModelGenerator) {
@@ -322,6 +322,11 @@ public class ModModelProvider extends FabricModelProvider {
                 CozyHome.id("block/inset_water_13"), new TextureMap().put(TextureKey.UP, CozyHome.id("block/liquid/inset_water_still")), blockStateModelGenerator.modelCollector);
         Identifier insetWater11ModelId = ModModels.INSET_WATER_FLAT_11.upload(
                 CozyHome.id("block/inset_water_11"), new TextureMap().put(TextureKey.UP, CozyHome.id("block/liquid/inset_water_still")), blockStateModelGenerator.modelCollector);
+
+        Identifier bathtubWater1ModelId = ModModels.BATHTUB_WATER_1.upload(CozyHome.id("block/bathtub/bathtub_water_1"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/water_still")), blockStateModelGenerator.modelCollector);
+        Identifier bathtubWater2ModelId = ModModels.BATHTUB_WATER_2.upload(CozyHome.id("block/bathtub/bathtub_water_2"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/water_still")), blockStateModelGenerator.modelCollector);
+        Identifier bathtubLava1ModelId = ModModels.BATHTUB_LAVA_1.upload(CozyHome.id("block/bathtub/bathtub_lava_1"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/lava_still")), blockStateModelGenerator.modelCollector);
+        Identifier bathtubLava2ModelId = ModModels.BATHTUB_LAVA_2.upload(CozyHome.id("block/bathtub/bathtub_lava_2"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/lava_still")), blockStateModelGenerator.modelCollector);
     }
 
     public final void registerBuiltinWithParticleAndParentedItemModel(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier particleSource, Identifier modelPath) {
@@ -1321,6 +1326,7 @@ public class ModModelProvider extends FabricModelProvider {
                 .put(TextureKey.TOP, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/sink/" + Registries.BLOCK.getId(block).getPath() + "_top"))
                 .put(TextureKey.SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/sink/" + Registries.BLOCK.getId(block).getPath() + "_side"))
                 .put(TextureKey.BOTTOM, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/sink/" + Registries.BLOCK.getId(block).getPath() + "_bottom"))
+                .put(ModTextureKey.INNER_SIDE, Identifier.of(Registries.BLOCK.getId(block).getNamespace(), "block/sink/" + Registries.BLOCK.getId(block).getPath() + "_inner_side"))
                 .put(ModTextureKey.EXTRA, faucetTexture)
                 .put(TextureKey.PARTICLE, breakParticle);
         Identifier baseModelId = ModModels.SINK.upload(block, baseTextureMap, blockStateModelGenerator.modelCollector);
@@ -1384,6 +1390,7 @@ public class ModModelProvider extends FabricModelProvider {
         Identifier frontModelId = ModModels.BATHTUB_FRONT.upload(block, frontTextureMap, blockStateModelGenerator.modelCollector);
         Identifier backModelId = ModModels.BATHTUB_BACK.upload(block, backTextureMap, blockStateModelGenerator.modelCollector);
         Identifier backOnModelId = ModModels.BATHTUB_BACK_ON.upload(block, backTextureMap, blockStateModelGenerator.modelCollector);
+
         blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(block)
 
                 // Front Part, shown regardless of on/off state, just rotates
@@ -1425,13 +1432,53 @@ public class ModModelProvider extends FabricModelProvider {
                         BlockStateVariant.create().put(VariantSettings.MODEL, backOnModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R90))
 
-                // Water
-                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 1),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_water_11")))
-                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 2),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_water_13")))
-                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 3),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_water_15")))
+                // Water North
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_2, 1).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT).set(Properties.HORIZONTAL_FACING, Direction.NORTH).set(ModProperties.CONTAINS, ContainsBlock.WATER),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/bathtub/bathtub_water_1"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_2, 2).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT).set(Properties.HORIZONTAL_FACING, Direction.NORTH).set(ModProperties.CONTAINS, ContainsBlock.WATER),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/bathtub/bathtub_water_2"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_2, 1).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT).set(Properties.HORIZONTAL_FACING, Direction.SOUTH).set(ModProperties.CONTAINS, ContainsBlock.WATER),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/bathtub/bathtub_water_1")))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_2, 2).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT).set(Properties.HORIZONTAL_FACING, Direction.SOUTH).set(ModProperties.CONTAINS, ContainsBlock.WATER),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/bathtub/bathtub_water_2")))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_2, 1).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT).set(Properties.HORIZONTAL_FACING, Direction.EAST).set(ModProperties.CONTAINS, ContainsBlock.WATER),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/bathtub/bathtub_water_1"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_2, 2).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT).set(Properties.HORIZONTAL_FACING, Direction.EAST).set(ModProperties.CONTAINS, ContainsBlock.WATER),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/bathtub/bathtub_water_2"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_2, 1).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT).set(Properties.HORIZONTAL_FACING, Direction.WEST).set(ModProperties.CONTAINS, ContainsBlock.WATER),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/bathtub/bathtub_water_1"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_2, 2).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT).set(Properties.HORIZONTAL_FACING, Direction.WEST).set(ModProperties.CONTAINS, ContainsBlock.WATER),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/bathtub/bathtub_water_2"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+
+                // Lava
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_2, 1).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT).set(Properties.HORIZONTAL_FACING, Direction.NORTH).set(ModProperties.CONTAINS, ContainsBlock.LAVA),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/bathtub/bathtub_lava_1"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_2, 2).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT).set(Properties.HORIZONTAL_FACING, Direction.NORTH).set(ModProperties.CONTAINS, ContainsBlock.LAVA),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/bathtub/bathtub_lava_2"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_2, 1).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT).set(Properties.HORIZONTAL_FACING, Direction.SOUTH).set(ModProperties.CONTAINS, ContainsBlock.LAVA),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/bathtub/bathtub_lava_1")))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_2, 2).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT).set(Properties.HORIZONTAL_FACING, Direction.SOUTH).set(ModProperties.CONTAINS, ContainsBlock.LAVA),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/bathtub/bathtub_lava_2")))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_2, 1).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT).set(Properties.HORIZONTAL_FACING, Direction.EAST).set(ModProperties.CONTAINS, ContainsBlock.LAVA),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/bathtub/bathtub_lava_1"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_2, 2).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT).set(Properties.HORIZONTAL_FACING, Direction.EAST).set(ModProperties.CONTAINS, ContainsBlock.LAVA),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/bathtub/bathtub_lava_2"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_2, 1).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT).set(Properties.HORIZONTAL_FACING, Direction.WEST).set(ModProperties.CONTAINS, ContainsBlock.LAVA),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/bathtub/bathtub_lava_1"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_2, 2).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT).set(Properties.HORIZONTAL_FACING, Direction.WEST).set(ModProperties.CONTAINS, ContainsBlock.LAVA),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/bathtub/bathtub_lava_2"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
         );
     }
 

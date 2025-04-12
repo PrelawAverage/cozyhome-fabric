@@ -182,7 +182,7 @@ public class TelescopeBlock extends BlockWithEntity implements Waterloggable, Se
             player.startRiding(seat);
             world.setBlockState(pos, state.with(TRIGGERED, true), 3);
             return ActionResult.SUCCESS;
-        } else if (!world.isClient) {
+        } else {
             if (isDay) {
                 player.sendMessage(Text.translatable("message.cozyhome.telescope.cant_use"), true);
             } else {
@@ -274,5 +274,52 @@ public class TelescopeBlock extends BlockWithEntity implements Waterloggable, Se
     @Override
     public float getSeatHeight(BlockState state) {
         return 0.2f;
+    }
+
+    public static boolean isFacingMoon(World world, BlockState state, BlockPos pos, float rawYaw, float pitch) {
+        if (world.getBlockEntity(pos) instanceof TelescopeBlockEntity telescopeBlockEntity) {
+            float yaw360 = (rawYaw % 360 + 360) % 360; // Now in range 0 to 360
+            long timeOfDay = world.getTimeOfDay();
+            float moonYawNeeded = timeOfDay < 18000 ? 270 : 90; // Flips the yaw depending on the time of day, as when the moon is directionly 90 degrees, the direction flips
+            float moonPitchBasedOnTime = getMoonPitchFromTime(timeOfDay);
+            boolean isYawCorrect = moonPitchBasedOnTime >= 85 || (yaw360 >= moonYawNeeded - 5 && yaw360 <= moonYawNeeded + 5); // Give the player a small threshold in the yaw to look at the moon
+            boolean isPitchCorrect = pitch >= moonPitchBasedOnTime - 5 && pitch <= moonPitchBasedOnTime + 5; // Give the player a small threshold in the pitch to look at the moon
+//            System.out.println("Yaw: " + rawYaw + ", MyYaw: " + yaw360);
+            System.out.println((isYawCorrect && isPitchCorrect) + ", Yaw: " + yaw360 + ", Pitch: " + pitch + ", Moon Yaw Needed: " + moonYawNeeded + ", Moon Pitch Needed: " + moonPitchBasedOnTime);
+            return isYawCorrect && isPitchCorrect;
+        }
+        return false;
+    }
+
+    public static float getMoonYawFromTime(long timeOfDay) {
+        // Normalize time to range [0, 24000)
+        timeOfDay = timeOfDay % 24000;
+
+        // Calculate the moon's yaw based on the time of day
+        float yaw = (timeOfDay / 24000f) * 360f; // 0° at sunrise, 180° at sunset
+
+        return yaw;
+    }
+
+    public static float getMoonPitchFromTime(long timeOfDay) {
+        // Normalize to [0, 23999]
+        timeOfDay = timeOfDay % 24000;
+
+        // Before moon rise or after moon set
+        if (timeOfDay < 12775 || timeOfDay > 23225) {
+            return Float.NaN; // Moon not visible
+        }
+
+        // Rising phase: 12775 → 18000 (pitch 0 → 90)
+        if (timeOfDay <= 18000) {
+            float t = (timeOfDay - 12775f) / (18000f - 12775f); // 0 → 1
+            return t * 90f; // Linear interpolation
+        }
+
+        // Falling phase: 18000 → 23225 (pitch 90 → 0)
+        else {
+            float t = (timeOfDay - 18000f) / (23225f - 18000f); // 0 → 1
+            return (1f - t) * 90f; // Linear interpolation
+        }
     }
 }

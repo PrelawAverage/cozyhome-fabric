@@ -11,6 +11,15 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "cozyhome:andesite_bathtub",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "part": "front"
+              }
+            }
+          ],
           "name": "cozyhome:andesite_bathtub"
         }
       ],

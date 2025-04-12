@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-08T17:33:17.5763425	Cozy Home/Recipes
+// 1.21.1	2025-04-11T23:22:43.5865511	Cozy Home/Recipes
 2ee7d43da9fee8a8f884a3e1e74a3728c17991d4 data\cozyhome\recipe\gold_sink.json
 feb75c56d70537fbec42dffea42e357d48ee31ae data\cozyhome\recipe\jungle_large_stump.json
 f4fd4436d456566ae12f9e9fb494b1a22f0593b4 data\cozyhome\advancement\recipes\building_blocks\mangrove_wall_clock.json
@@ -116,6 +116,7 @@ c6f963d97887a4d21d8fb31caeacb1166971b893 data\cozyhome\advancement\recipes\build
 f7b69688e49f94cbc1469c7b0ccb523a13cdaa05 data\cozyhome\recipe\prismarine_chimney.json
 6f68171afd144a8d461402ce3305d90f3611882f data\cozyhome\recipe\stone_brick_sink.json
 d4542d82f297a43cfe1cf72800597d79a70f37c2 data\cozyhome\recipe\birch_wall_clock.json
+c787803184ab08367825b77ead7b9a03a45b20c6 data\cozyhome\advancement\recipes\building_blocks\gold_chimney.json
 1a538faa3d2c88e79f5462ba593a79ef4a361c88 data\cozyhome\recipe\spruce_grandfather_clock.json
 cbeb3fbbc073b2c48efa62f80c22882753fbec1e data\cozyhome\advancement\recipes\building_blocks\oak_large_stump.json
 c41595eb0ad651c6cb9b27bcde2d66f7cd6bf7c3 data\cozyhome\recipe\cherry_large_stump.json
@@ -188,6 +189,7 @@ b9d086c5f78228c1aa08cf2a84ce04b6dc389588 data\cozyhome\recipe\warped_lamp.json
 501f6896f13553c14da52a11ad88aa278074ab7f data\cozyhome\recipe\warped_grandfather_clock.json
 bbe424ede6f3df84cdff897853be776f842acb01 data\cozyhome\advancement\recipes\building_blocks\brick_chimney.json
 011ea4b3524f132c25465afc030be914d9ece159 data\cozyhome\advancement\recipes\building_blocks\hay_cushion.json
+10ae34e697381afdb2807164a4eaaa87ff3a36da data\cozyhome\recipe\gold_chimney.json
 0895563720d984db751c720923aed5b083f14670 data\cozyhome\advancement\recipes\building_blocks\acacia_large_stump.json
 caa9525d3929678931af7f9118b2fb61ef75dd65 data\cozyhome\advancement\recipes\building_blocks\birch_storage_counter.json
 f6708313c42f81135578ac82fdf246c187d945e9 data\cozyhome\recipe\spruce_sink_counter.json

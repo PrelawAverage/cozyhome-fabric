@@ -24,6 +24,7 @@ public class ModEntityModelLayers {
     public static final EntityModelLayer SOFA_CUSHION = registerMain("sofa_cushion");
     public static final EntityModelLayer GRANDFATHER_CLOCK = registerMain("grandfather_clock");
     public static final EntityModelLayer WALL_CLOCK = registerMain("wall_clock");
+    public static final EntityModelLayer BATHTUB_LIQUID = registerMain("bathtub_liquid");
 
     private static EntityModelLayer registerMain(String id) {
         return register(id, MAIN);

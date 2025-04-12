@@ -1,7 +1,7 @@
 package net.luckystudio.cozyhome.block;
 
 import net.luckystudio.cozyhome.CozyHome;
-import net.luckystudio.cozyhome.block.custom.BathTubBlock;
+import net.luckystudio.cozyhome.block.custom.bathtub.BathTubBlock;
 import net.luckystudio.cozyhome.block.custom.chimney.ChimneyBlock;
 import net.luckystudio.cozyhome.block.custom.drawers.DeskBlock;
 import net.luckystudio.cozyhome.block.custom.drawers.DrawerBlock;
@@ -111,11 +111,17 @@ public class ModBlocks {
     }
 
     private static Block createSink(Block block) {
-        return new SinkBlock(AbstractBlock.Settings.copy(block).nonOpaque().requiresTool());
+        return new SinkBlock(AbstractBlock.Settings.copy(block)
+                .nonOpaque()
+                .luminance(ModBlockUtilities.createLightLevelFromContainsBlockState(15))
+                .requiresTool());
     }
 
     private static Block createBathTub(Block block) {
-        return new BathTubBlock(AbstractBlock.Settings.copy(block).nonOpaque().requiresTool());
+        return new BathTubBlock(AbstractBlock.Settings.copy(block)
+                .nonOpaque()
+                .luminance(ModBlockUtilities.createLightLevelFromContainsBlockState(15))
+                .requiresTool());
     }
 
     private static Block createFountain(float hardness, float resistance, BlockSoundGroup soundGroup) {
@@ -500,6 +506,7 @@ public class ModBlocks {
     public static final Block ENDSTONE_CHIMNEY = registerBlock("endstone_chimney", createChimney(3,9, BlockSoundGroup.STONE));
     public static final Block PURPUR_CHIMNEY = registerBlock("purpur_chimney", createChimney(1.5f,6, BlockSoundGroup.STONE));
     public static final Block IRON_CHIMNEY = registerBlock("iron_chimney", createChimney(1.5f,6, BlockSoundGroup.METAL));
+    public static final Block GOLD_CHIMNEY = registerBlock("gold_chimney", createChimney(1.5f,6, BlockSoundGroup.METAL));
 
     public static final Block TELESCOPE = registerBlock("telescope", new TelescopeBlock(AbstractBlock.Settings.create()
             .breakInstantly()
