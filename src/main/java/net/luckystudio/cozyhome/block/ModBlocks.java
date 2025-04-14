@@ -256,10 +256,10 @@ public class ModBlocks {
     public static final Block BAMBOO_CHAIR = registerBlock("bamboo_chair", createChair(ChairBlock.Type.BAMBOO,  2, 3, BlockSoundGroup.BAMBOO_WOOD, false, true));
     public static final Block CRIMSON_CHAIR = registerBlock("crimson_chair", createChair(ChairBlock.Type.CRIMSON,  2, 3, BlockSoundGroup.NETHER_WOOD, false, false));
     public static final Block WARPED_CHAIR = registerBlock("warped_chair", createChair(ChairBlock.Type.WARPED,  2, 3, BlockSoundGroup.NETHER_WOOD, false, false));
-    public static final Block IRON_CHAIR = registerBlock("iron_chair", createChair(ChairBlock.Type.IRON,  2, 3, BlockSoundGroup.METAL, true, false));
-    public static final Block GLASS_CHAIR = registerBlock("glass_chair", createChair(ChairBlock.Type.GLASS,  2, 3, BlockSoundGroup.GLASS, true, false));
-    public static final Block UNDEAD_CHAIR = registerBlock("undead_chair", createChair(ChairBlock.Type.UNDEAD,  2, 3, BlockSoundGroup.VAULT, true, false));
-    public static final Block OMINOUS_CHAIR = registerBlock("ominous_chair", createChair(ChairBlock.Type.OMINOUS, 2, 3, BlockSoundGroup.TRIAL_SPAWNER, true, false));
+    public static final Block IRON_CHAIR = registerBlock("iron_chair", createChair(ChairBlock.Type.IRON,  5, 6, BlockSoundGroup.METAL, true, false));
+    public static final Block GLASS_CHAIR = registerBlock("glass_chair", createChair(ChairBlock.Type.GLASS,  5, 6, BlockSoundGroup.GLASS, true, false));
+    public static final Block UNDEAD_CHAIR = registerBlock("undead_chair", createChair(ChairBlock.Type.UNDEAD,  5, 6, BlockSoundGroup.VAULT, true, false));
+    public static final Block OMINOUS_CHAIR = registerBlock("ominous_chair", createChair(ChairBlock.Type.OMINOUS, 5, 6, BlockSoundGroup.TRIAL_SPAWNER, true, false));
 
     // WALL CLOCKS
     public static final Block OAK_WALL_CLOCK = registerBlock("oak_wall_clock", createWallClock(WallClockBlock.Type.OAK, Blocks.OAK_PLANKS));
@@ -276,9 +276,9 @@ public class ModBlocks {
     public static final Block IRON_WALL_CLOCK = registerBlock("iron_wall_clock", createWallClock(WallClockBlock.Type.IRON, Blocks.IRON_BLOCK));
     public static final Block GLASS_WALL_CLOCK = registerBlock("glass_wall_clock", createWallClock(WallClockBlock.Type.GLASS, Blocks.GLASS));
     public static final Block UNDEAD_WALL_CLOCK = registerBlock("undead_wall_clock", new WallClockBlock(WallClockBlock.Type.UNDEAD,
-            AbstractBlock.Settings.create().breakInstantly().sounds(BlockSoundGroup.VAULT)));
+            AbstractBlock.Settings.create().breakInstantly().sounds(BlockSoundGroup.VAULT).hardness(5).resistance(6).requiresTool()));
     public static final Block OMINOUS_WALL_CLOCK = registerBlock("ominous_wall_clock", new WallClockBlock(WallClockBlock.Type.OMINOUS,
-            AbstractBlock.Settings.create().sounds(BlockSoundGroup.TRIAL_SPAWNER)));
+            AbstractBlock.Settings.create().sounds(BlockSoundGroup.TRIAL_SPAWNER).hardness(5).resistance(6).requiresTool()));
 
     // GRANDFATHER CLOCKS
     public static final Block OAK_GRANDFATHER_CLOCK = registerBlock("oak_grandfather_clock", createGrandfatherClock(GrandfatherClockBlock.Type.OAK, BlockSoundGroup.WOOD));

@@ -370,5 +370,27 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.ENDSTONE_FOUNTAIN_SPROUT)
                 .add(ModBlocks.PURPUR_FOUNTAIN_SPROUT)
         ;
+
+        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+                .add(ModBlocks.IRON_CHAIR)
+                .add(ModBlocks.IRON_TABLE)
+                .add(ModBlocks.GLASS_TABLE)
+                .add(ModBlocks.UNDEAD_TABLE)
+                .add(ModBlocks.OMINOUS_TABLE)
+
+                .add(ModBlocks.IRON_GRANDFATHER_CLOCK)
+                .add(ModBlocks.GLASS_GRANDFATHER_CLOCK)
+                .add(ModBlocks.UNDEAD_GRANDFATHER_CLOCK)
+                .add(ModBlocks.OMINOUS_GRANDFATHER_CLOCK)
+
+                .add(ModBlocks.IRON_SINK)
+                .add(ModBlocks.GOLD_SINK)
+
+                .add(ModBlocks.IRON_BATHTUB)
+                .add(ModBlocks.GOLD_BATHTUB)
+
+                .add(ModBlocks.IRON_CHIMNEY)
+                .add(ModBlocks.GOLD_CHIMNEY)
+        ;
     }
 }
