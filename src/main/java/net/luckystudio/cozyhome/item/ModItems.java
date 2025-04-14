@@ -5,6 +5,7 @@ import net.luckystudio.cozyhome.item.custom.CushionItem;
 import net.luckystudio.cozyhome.item.custom.DyeableCushionItem;
 import net.luckystudio.cozyhome.item.custom.PaintBrushItem;
 import net.minecraft.item.BannerPatternItem;
+import net.minecraft.item.BowItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;

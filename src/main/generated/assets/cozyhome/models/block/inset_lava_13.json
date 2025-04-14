@@ -1,0 +1,6 @@
+{
+  "parent": "cozyhome:block/flat/inset_flat_13",
+  "textures": {
+    "up": "cozyhome:block/liquid/inset_lava_still"
+  }
+}

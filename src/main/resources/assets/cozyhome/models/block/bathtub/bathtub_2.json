@@ -1,0 +1,34 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"up": "block/water_still"
+	},
+	"elements": [
+		{
+			"from": [2, 11, 2],
+			"to": [14, 11, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 9, 0]},
+			"faces": {
+				"up": {"uv": [2, 0, 14, 14], "texture": "#up", "tintindex": 0},
+				"down": {"uv": [2, 0, 14, 14], "texture": "#up", "tintindex": 0}
+			}
+		},
+		{
+			"from": [2, 11, 16],
+			"to": [14, 11, 30],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 9, 14]},
+			"faces": {
+				"up": {"uv": [2, 2, 14, 16], "texture": "#up", "tintindex": 0},
+				"down": {"uv": [2, 2, 14, 16], "texture": "#up", "tintindex": 0}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "group",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1]
+		}
+	]
+}

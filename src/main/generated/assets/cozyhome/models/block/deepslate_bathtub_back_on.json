@@ -1,0 +1,13 @@
+{
+  "parent": "cozyhome:block/bathtub/bathtub_back_on",
+  "textures": {
+    "bottom": "cozyhome:block/bathtub/deepslate_bathtub_bottom",
+    "extra": "cozyhome:block/faucet/iron_faucet",
+    "front": "cozyhome:block/bathtub/deepslate_bathtub_front",
+    "inner_front": "cozyhome:block/bathtub/deepslate_bathtub_inner_front",
+    "inner_side": "cozyhome:block/bathtub/deepslate_bathtub_inner_side",
+    "particle": "minecraft:block/deepslate",
+    "side": "cozyhome:block/bathtub/deepslate_bathtub_side",
+    "top": "cozyhome:block/bathtub/deepslate_bathtub_top"
+  }
+}

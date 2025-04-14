@@ -27,10 +27,11 @@ import net.luckystudio.cozyhome.entity.model.*;
 import net.luckystudio.cozyhome.item.renderer.ChairItemRenderer;
 import net.luckystudio.cozyhome.item.renderer.SofaItemRenderer;
 import net.luckystudio.cozyhome.item.renderer.WallClockItemRenderer;
-import net.luckystudio.cozyhome.block.custom.drawer.DrawerScreen;
-import net.luckystudio.cozyhome.block.custom.drawer.DrawerScreenHandler;
+import net.luckystudio.cozyhome.block.custom.drawers.DrawerScreen;
+import net.luckystudio.cozyhome.block.custom.drawers.DrawerScreenHandler;
 import net.luckystudio.cozyhome.block.custom.counters.StorageCounterScreen;
 import net.luckystudio.cozyhome.block.custom.counters.StorageCounterScreenHandler;
+import net.luckystudio.cozyhome.util.ModModelPredicates;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.item.ItemConvertible;
@@ -138,5 +139,6 @@ public class CozyHomeClient implements ClientModInitializer {
         }
         ModRenderLayers.registerBlockRenderLayers();
         ModRenderLayers.registerColorProviders();
+        ModModelPredicates.registerModelPredicates();
     }
 }

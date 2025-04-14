@@ -100,7 +100,7 @@ public class ChimneyBlock extends BlockWithEntity {
         int horizontalSides = 0;
         for (Direction dir : Direction.Type.HORIZONTAL) {
             BlockState sideState = world.getBlockState(pos.offset(dir));
-            if (sideState.isSideSolidFullSquare(world, pos.offset(dir), dir.getOpposite())) {
+            if (sideState.getBlock() != Blocks.AIR) {
                 horizontalSides++;
             }
         }

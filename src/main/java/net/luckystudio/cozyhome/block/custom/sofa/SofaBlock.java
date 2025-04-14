@@ -114,44 +114,42 @@ public class SofaBlock extends AbstractSeatBlock {
                 world.updateListeners(pos, state, state, 0);
                 return ItemActionResult.SUCCESS;
             }
-
+            ItemStack storedItem = sofaBlockEntity.getStack();
             // Check if the item in hand is a valid tool or weapon.
-            if (stack.getItem() instanceof CushionItem) {
+            if (stack.getItem() instanceof CushionItem && !stack.isEmpty() && (storedItem.isEmpty())) {
                 // Get the item stack that is currently stored in the block
-                ItemStack storedItem = sofaBlockEntity.getStack();
                 // If the stack is not empty, and the rack is either empty or can accept the item (same type and enough space),
                 // proceed to insert the item into the block.
-                if (!stack.isEmpty() && (storedItem.isEmpty())) {
 
-                    // Increment the player's use stat for the item in their hand.
-                    player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
+                // Increment the player's use stat for the item in their hand.
+                player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
 
-                    // Split the stack unless the player is in creative mode (in which case the item won't be removed).
-                    ItemStack itemStack2 = stack.splitUnlessCreative(1, player);
+                // Split the stack unless the player is in creative mode (in which case the item won't be removed).
+                ItemStack itemStack2 = stack.splitUnlessCreative(1, player);
 
-                    // If the block was empty, store the item directly.
-                    if (sofaBlockEntity.isEmpty()) {
-                        sofaBlockEntity.setStack(itemStack2);
-                    }
-
-                    if (sofaBlockEntity.getStack() == ModItems.HAY_CUSHION.getDefaultStack()) {
-                        world.playSound(player, pos, SoundEvents.BLOCK_GRASS_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                    } else {
-                        world.playSound(player, pos, SoundEvents.BLOCK_WOOL_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                    }
-
-                    // Mark the block entity as dirty, indicating it has changed.
-                    sofaBlockEntity.markDirty();
-
-                    // Notify the world that the block state has changed and trigger the block update.
-                    world.updateListeners(pos, state, state, Block.NOTIFY_ALL);
-
-                    // Emit a game event to notify of the block's state change
-                    world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-
-                    // Return a successful result to stop further interaction processing.
-                    return ItemActionResult.SUCCESS;
+                // If the block was empty, store the item directly.
+                if (sofaBlockEntity.isEmpty()) {
+                    sofaBlockEntity.setStack(itemStack2);
                 }
+
+                if (sofaBlockEntity.getStack() == ModItems.HAY_CUSHION.getDefaultStack()) {
+                    world.playSound(player, pos, SoundEvents.BLOCK_GRASS_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                } else {
+                    world.playSound(player, pos, SoundEvents.BLOCK_WOOL_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                }
+
+                // Mark the block entity as dirty, indicating it has changed.
+                sofaBlockEntity.markDirty();
+
+                // Notify the world that the block state has changed and trigger the block update.
+                world.updateListeners(pos, state, state, Block.NOTIFY_ALL);
+
+                // Emit a game event to notify of the block's state change
+                world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+
+                // Return a successful result to stop further interaction processing.
+                return ItemActionResult.SUCCESS;
+
             } else if (!sofaBlockEntity.isEmpty() && stack.getItem() == Items.SHEARS) {
                 // Get the item stack currently in the block
                 ItemStack storedStack = sofaBlockEntity.getStack();

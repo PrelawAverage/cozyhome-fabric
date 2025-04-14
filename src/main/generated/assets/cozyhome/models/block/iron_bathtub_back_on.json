@@ -1,0 +1,13 @@
+{
+  "parent": "cozyhome:block/bathtub/bathtub_back_on",
+  "textures": {
+    "bottom": "cozyhome:block/bathtub/iron_bathtub_bottom",
+    "extra": "cozyhome:block/faucet/iron_faucet",
+    "front": "cozyhome:block/bathtub/iron_bathtub_front",
+    "inner_front": "cozyhome:block/bathtub/iron_bathtub_inner_front",
+    "inner_side": "cozyhome:block/bathtub/iron_bathtub_inner_side",
+    "particle": "cozyhome:block/break/iron_furniture",
+    "side": "cozyhome:block/bathtub/iron_bathtub_side",
+    "top": "cozyhome:block/bathtub/iron_bathtub_top"
+  }
+}

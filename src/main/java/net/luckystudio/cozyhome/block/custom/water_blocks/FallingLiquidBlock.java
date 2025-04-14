@@ -4,13 +4,13 @@ import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
-import net.luckystudio.cozyhome.block.util.enums.HasUnderBlock;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -23,13 +23,13 @@ import net.minecraft.world.WorldAccess;
 
 public class FallingLiquidBlock extends Block {
     public static final EnumProperty<ContainsBlock> CONTAINS = ModProperties.CONTAINS;
-    public static final EnumProperty<HasUnderBlock> HAS_UNDER = ModProperties.HAS_UNDER;
+    public static final BooleanProperty HAS_UNDER = ModProperties.HAS_UNDER;
     public static final VoxelShape BASE = VoxelShapes.union(Block.createCuboidShape(0, 0, 0, 0, 0, 0));
     public FallingLiquidBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState()
                 .with(CONTAINS, ContainsBlock.NONE)
-                .with(HAS_UNDER, HasUnderBlock.NONE));
+                .with(HAS_UNDER, false));
     }
 
     @Override
@@ -60,15 +60,11 @@ public class FallingLiquidBlock extends Block {
     @Override
     protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         super.scheduledTick(state, world, pos, random);
-        if (!canStay(world, pos)) {
+        if (!canStay(state, world, pos)) {
             world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
         } else if (!ModBlockUtilities.isEntityObstructing(world, pos) && ModBlockUtilities.canPlaceBelow(world, pos)) {
-            elongate(world, pos);
+            world.setBlockState(pos.down(), ModBlocks.FALLING_LIQUID.getDefaultState());
         }
-    }
-
-    private void elongate(World world, BlockPos pos) {
-        world.setBlockState(pos.down(), ModBlocks.FALLING_LIQUID.getDefaultState());
     }
 
     @Override
@@ -77,10 +73,10 @@ public class FallingLiquidBlock extends Block {
                 .with(HAS_UNDER, hasUnder(world, pos));
     }
 
-    private static boolean canStay(World world, BlockPos pos) {
+    private static boolean canStay(BlockState state, World world, BlockPos pos) {
         BlockPos posAbove = pos.up();
-        Block blockAbove = world.getBlockState(posAbove).getBlock();
-        return blockAbove instanceof FountainSproutBlock || blockAbove instanceof FallingLiquidBlock;
+        BlockState blockStateAbove = world.getBlockState(posAbove);
+        return (blockStateAbove.getBlock() instanceof FountainSproutBlock || blockStateAbove.getBlock() instanceof FallingLiquidBlock) && blockStateAbove.get(CONTAINS) == state.get(CONTAINS);
     }
 
     private ContainsBlock determineContains(World world, BlockPos pos) {
@@ -93,30 +89,16 @@ public class FallingLiquidBlock extends Block {
         return ContainsBlock.NONE;
     }
 
-    private HasUnderBlock hasUnder(WorldAccess world, BlockPos pos) {
+    private boolean hasUnder(WorldAccess world, BlockPos pos) {
         BlockPos posBelow = pos.down();
         BlockState blockStateBelow = world.getBlockState(posBelow);
-        if (blockStateBelow.isSideSolidFullSquare(world, pos, Direction.UP)) return HasUnderBlock.FLAT;
-        if (isLowered(blockStateBelow)) return HasUnderBlock.LOWERED;
-        if (isDeep(blockStateBelow)) return HasUnderBlock.DEEP;
-        return HasUnderBlock.NONE;
-    }
-
-    private static boolean isLowered(BlockState blockStateBelow) {
-        return blockStateBelow.getBlock() instanceof LavaCauldronBlock ||
-                blockStateBelow.getBlock() instanceof FountainBlock ||
-                blockStateBelow.getBlock() == Blocks.FARMLAND ||
-                blockStateBelow.getBlock() instanceof FluidBlock;
-    }
-
-    private static boolean isDeep(BlockState blockStateBelow) {
-        return blockStateBelow.getBlock() instanceof LeveledCauldronBlock || blockStateBelow.getBlock() instanceof CauldronBlock;
+        return blockStateBelow.isSideSolidFullSquare(world, pos, Direction.UP);
     }
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         // Check if the block can see the sky and spawn smoke particles if block contains lava
-        if (state.get(HAS_UNDER) != HasUnderBlock.NONE) {
+        if (state.get(HAS_UNDER)) {
             if (state.get(CONTAINS) == ContainsBlock.LAVA) {
                 world.addParticle(ParticleTypes.SMOKE,
                         false,
@@ -126,6 +108,7 @@ public class FallingLiquidBlock extends Block {
                         0,
                         0,
                         0);
+                return;
             }
             if (state.get(CONTAINS) == ContainsBlock.WATER) {
                 world.addParticle(ParticleTypes.CLOUD,
@@ -175,7 +158,6 @@ public class FallingLiquidBlock extends Block {
                         0,
                         0);
             }
-            world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
         }
         super.onEntityCollision(state, world, pos, entity);
     }

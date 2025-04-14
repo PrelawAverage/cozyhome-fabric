@@ -2,13 +2,15 @@ package net.luckystudio.cozyhome.block.util;
 
 import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.ModBlocks;
+import net.luckystudio.cozyhome.block.custom.bathtub.BathTubBlockEntity;
+import net.luckystudio.cozyhome.block.custom.bathtub.SinkBlockEntity;
 import net.luckystudio.cozyhome.block.custom.chimney.ChimneyBlockEntity;
 import net.luckystudio.cozyhome.block.custom.counters.StorageCounterBlockEntity;
 import net.luckystudio.cozyhome.block.custom.chair.ChairBlockEntity;
 import net.luckystudio.cozyhome.block.custom.clocks.grandfather_clock.GrandfatherClockBlockEntity;
 import net.luckystudio.cozyhome.block.custom.clocks.wall_clock.WallClockBlockEntity;
 import net.luckystudio.cozyhome.block.custom.couch.CouchBlockEntity;
-import net.luckystudio.cozyhome.block.custom.drawer.DrawerBlockEntity;
+import net.luckystudio.cozyhome.block.custom.drawers.DrawerBlockEntity;
 import net.luckystudio.cozyhome.block.custom.lamps.LampBlockEntity;
 import net.luckystudio.cozyhome.block.custom.sofa.SofaBlockEntity;
 import net.luckystudio.cozyhome.block.custom.telescope.TelescopeBlockEntity;
@@ -34,22 +36,6 @@ public class ModBlockEntityTypes {
                 ModBlocks.CRIMSON_STORAGE_COUNTER,
                 ModBlocks.WARPED_STORAGE_COUNTER
         ).build());
-
-//    public static final BlockEntityType<SinkBlockEntity> SINK_COUNTER_BLOCK_ENTITY = Registry.register(
-//            Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "sink_counter_block_entity"),
-//            BlockEntityType.Builder.create(SinkBlockEntity::new,
-//                    ModBlocks.OAK_SINK_COUNTER,
-//                    ModBlocks.SPRUCE_SINK_COUNTER,
-//                    ModBlocks.BIRCH_SINK_COUNTER,
-//                    ModBlocks.JUNGLE_SINK_COUNTER,
-//                    ModBlocks.ACACIA_SINK_COUNTER,
-//                    ModBlocks.DARK_OAK_SINK_COUNTER,
-//                    ModBlocks.MANGROVE_SINK_COUNTER,
-//                    ModBlocks.CHERRY_SINK_COUNTER,
-//                    ModBlocks.BAMBOO_SINK_COUNTER,
-//                    ModBlocks.CRIMSON_SINK_COUNTER,
-//                    ModBlocks.WARPED_SINK_COUNTER
-//            ).build());
 
     public static final BlockEntityType<DrawerBlockEntity> DRAWER_BLOCK_ENTITY = Registry.register(
             Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "drawer_block_entity"),
@@ -188,6 +174,7 @@ public class ModBlockEntityTypes {
                     ModBlocks.DIORITE_CHIMNEY,
                     ModBlocks.ANDESITE_CHIMNEY,
                     ModBlocks.DEEPSLATE_CHIMNEY,
+                    ModBlocks.CALCITE_CHIMNEY,
                     ModBlocks.TUFF_CHIMNEY,
                     ModBlocks.BRICK_CHIMNEY,
                     ModBlocks.MUD_CHIMNEY,
@@ -198,8 +185,71 @@ public class ModBlockEntityTypes {
                     ModBlocks.RED_NETHER_BRICK_CHIMNEY,
                     ModBlocks.BLACKSTONE_CHIMNEY,
                     ModBlocks.ENDSTONE_CHIMNEY,
-                    ModBlocks.PURPUR_CHIMNEY
+                    ModBlocks.PURPUR_CHIMNEY,
+                    ModBlocks.IRON_CHIMNEY,
+                    ModBlocks.GOLD_CHIMNEY
+            ).build());
 
+    public static final BlockEntityType<BathTubBlockEntity> BATHTUB_BLOCK_ENTITY = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "bathtub_block_entity"),
+            BlockEntityType.Builder.create(BathTubBlockEntity::new,
+                    ModBlocks.STONE_BRICK_BATHTUB,
+                    ModBlocks.MOSSY_STONE_BRICK_BATHTUB,
+                    ModBlocks.GRANITE_BATHTUB,
+                    ModBlocks.DIORITE_BATHTUB,
+                    ModBlocks.ANDESITE_BATHTUB,
+                    ModBlocks.DEEPSLATE_BATHTUB,
+                    ModBlocks.CALCITE_BATHTUB,
+                    ModBlocks.TUFF_BATHTUB,
+                    ModBlocks.BRICK_BATHTUB,
+                    ModBlocks.MUD_BATHTUB,
+                    ModBlocks.SANDSTONE_BATHTUB,
+                    ModBlocks.RED_SANDSTONE_BATHTUB,
+                    ModBlocks.PRISMARINE_BATHTUB,
+                    ModBlocks.NETHER_BRICK_BATHTUB,
+                    ModBlocks.RED_NETHER_BRICK_BATHTUB,
+                    ModBlocks.BLACKSTONE_BATHTUB,
+                    ModBlocks.ENDSTONE_BATHTUB,
+                    ModBlocks.PURPUR_BATHTUB,
+                    ModBlocks.IRON_BATHTUB,
+                    ModBlocks.GOLD_BATHTUB
+            ).build());
+
+    public static final BlockEntityType<SinkBlockEntity> SINK_BLOCK_ENTITY = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE, Identifier.of(CozyHome.MOD_ID, "sink_block_entity"),
+            BlockEntityType.Builder.create(SinkBlockEntity::new,
+                    ModBlocks.STONE_BRICK_SINK,
+                    ModBlocks.MOSSY_STONE_BRICK_SINK,
+                    ModBlocks.GRANITE_SINK,
+                    ModBlocks.DIORITE_SINK,
+                    ModBlocks.ANDESITE_SINK,
+                    ModBlocks.DEEPSLATE_SINK,
+                    ModBlocks.CALCITE_SINK,
+                    ModBlocks.TUFF_SINK,
+                    ModBlocks.BRICK_SINK,
+                    ModBlocks.MUD_SINK,
+                    ModBlocks.SANDSTONE_SINK,
+                    ModBlocks.RED_SANDSTONE_SINK,
+                    ModBlocks.PRISMARINE_SINK,
+                    ModBlocks.NETHER_BRICK_SINK,
+                    ModBlocks.RED_NETHER_BRICK_SINK,
+                    ModBlocks.BLACKSTONE_SINK,
+                    ModBlocks.ENDSTONE_SINK,
+                    ModBlocks.PURPUR_SINK,
+                    ModBlocks.IRON_SINK,
+                    ModBlocks.GOLD_SINK,
+
+                    ModBlocks.OAK_SINK_COUNTER,
+                    ModBlocks.SPRUCE_SINK_COUNTER,
+                    ModBlocks.BIRCH_SINK_COUNTER,
+                    ModBlocks.JUNGLE_SINK_COUNTER,
+                    ModBlocks.ACACIA_SINK_COUNTER,
+                    ModBlocks.DARK_OAK_SINK_COUNTER,
+                    ModBlocks.MANGROVE_SINK_COUNTER,
+                    ModBlocks.CHERRY_SINK_COUNTER,
+                    ModBlocks.BAMBOO_SINK_COUNTER,
+                    ModBlocks.CRIMSON_SINK_COUNTER,
+                    ModBlocks.WARPED_SINK_COUNTER
             ).build());
 
     public static final BlockEntityType<TelescopeBlockEntity> TELESCOPE_BLOCK_ENTITY = Registry.register(

@@ -1,6 +1,6 @@
 package net.luckystudio.cozyhome.block.util.interfaces;
 
-import net.luckystudio.cozyhome.block.custom.drawer.DeskBlock;
+import net.luckystudio.cozyhome.block.custom.drawers.DeskBlock;
 import net.luckystudio.cozyhome.block.custom.horizontal_connecting_blocks.TableBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.minecraft.block.BlockState;

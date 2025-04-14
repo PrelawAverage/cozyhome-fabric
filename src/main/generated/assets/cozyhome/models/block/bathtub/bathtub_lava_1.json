@@ -1,0 +1,6 @@
+{
+  "parent": "cozyhome:block/bathtub/bathtub_1",
+  "textures": {
+    "up": "minecraft:block/lava_still"
+  }
+}

@@ -229,8 +229,31 @@ public class ModItemGroups {
                         entries.add(ModBlocks.ENDSTONE_SINK);
                         entries.add(ModBlocks.PURPUR_SINK);
                         entries.add(ModBlocks.IRON_SINK);
+                        entries.add(ModBlocks.GOLD_SINK);
 
-                        // Large Stump
+                        // BATHTUBS
+                        entries.add(ModBlocks.STONE_BRICK_BATHTUB);
+                        entries.add(ModBlocks.MOSSY_STONE_BRICK_BATHTUB);
+                        entries.add(ModBlocks.GRANITE_BATHTUB);
+                        entries.add(ModBlocks.DIORITE_BATHTUB);
+                        entries.add(ModBlocks.ANDESITE_BATHTUB);
+                        entries.add(ModBlocks.DEEPSLATE_BATHTUB);
+                        entries.add(ModBlocks.CALCITE_BATHTUB);
+                        entries.add(ModBlocks.TUFF_BATHTUB);
+                        entries.add(ModBlocks.BRICK_BATHTUB);
+                        entries.add(ModBlocks.MUD_BATHTUB);
+                        entries.add(ModBlocks.SANDSTONE_BATHTUB);
+                        entries.add(ModBlocks.RED_SANDSTONE_BATHTUB);
+                        entries.add(ModBlocks.PRISMARINE_BATHTUB);
+                        entries.add(ModBlocks.NETHER_BRICK_BATHTUB);
+                        entries.add(ModBlocks.RED_NETHER_BRICK_BATHTUB);
+                        entries.add(ModBlocks.BLACKSTONE_BATHTUB);
+                        entries.add(ModBlocks.ENDSTONE_BATHTUB);
+                        entries.add(ModBlocks.PURPUR_BATHTUB);
+                        entries.add(ModBlocks.IRON_BATHTUB);
+                        entries.add(ModBlocks.GOLD_BATHTUB);
+
+                        // LARGE STUMPS
                         entries.add(ModBlocks.OAK_LARGE_STUMP);
                         entries.add(ModBlocks.SPRUCE_LARGE_STUMP);
                         entries.add(ModBlocks.BIRCH_LARGE_STUMP);
@@ -243,45 +266,47 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CRIMSON_LARGE_STUMP);
                         entries.add(ModBlocks.WARPED_LARGE_STUMP);
 
-//                        // Fountains
-//                        entries.add(ModBlocks.STONE_BRICK_FOUNTAIN);
-//                        entries.add(ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN);
-//                        entries.add(ModBlocks.GRANITE_FOUNTAIN);
-//                        entries.add(ModBlocks.DIORITE_FOUNTAIN);
-//                        entries.add(ModBlocks.ANDESITE_FOUNTAIN);
-//                        entries.add(ModBlocks.DEEPSLATE_FOUNTAIN);
-//                        entries.add(ModBlocks.TUFF_FOUNTAIN);
-//                        entries.add(ModBlocks.BRICK_FOUNTAIN);
-//                        entries.add(ModBlocks.MUD_FOUNTAIN);
-//                        entries.add(ModBlocks.SANDSTONE_FOUNTAIN);
-//                        entries.add(ModBlocks.RED_SANDSTONE_FOUNTAIN);
-//                        entries.add(ModBlocks.PRISMARINE_FOUNTAIN);
-//                        entries.add(ModBlocks.NETHER_BRICK_FOUNTAIN);
-//                        entries.add(ModBlocks.RED_NETHER_BRICK_FOUNTAIN);
-//                        entries.add(ModBlocks.BLACKSTONE_FOUNTAIN);
-//                        entries.add(ModBlocks.ENDSTONE_FOUNTAIN);
-//                        entries.add(ModBlocks.PURPUR_FOUNTAIN);
+                        // FOUNTAINS
+                        entries.add(ModBlocks.STONE_BRICK_FOUNTAIN);
+                        entries.add(ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN);
+                        entries.add(ModBlocks.GRANITE_FOUNTAIN);
+                        entries.add(ModBlocks.DIORITE_FOUNTAIN);
+                        entries.add(ModBlocks.ANDESITE_FOUNTAIN);
+                        entries.add(ModBlocks.DEEPSLATE_FOUNTAIN);
+                        entries.add(ModBlocks.CALCITE_FOUNTAIN);
+                        entries.add(ModBlocks.TUFF_FOUNTAIN);
+                        entries.add(ModBlocks.BRICK_FOUNTAIN);
+                        entries.add(ModBlocks.MUD_FOUNTAIN);
+                        entries.add(ModBlocks.SANDSTONE_FOUNTAIN);
+                        entries.add(ModBlocks.RED_SANDSTONE_FOUNTAIN);
+                        entries.add(ModBlocks.PRISMARINE_FOUNTAIN);
+                        entries.add(ModBlocks.NETHER_BRICK_FOUNTAIN);
+                        entries.add(ModBlocks.RED_NETHER_BRICK_FOUNTAIN);
+                        entries.add(ModBlocks.BLACKSTONE_FOUNTAIN);
+                        entries.add(ModBlocks.ENDSTONE_FOUNTAIN);
+                        entries.add(ModBlocks.PURPUR_FOUNTAIN);
+
+                        // FOUNTAIN SPROUTS
+                        entries.add(ModBlocks.STONE_BRICK_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.GRANITE_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.DIORITE_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.ANDESITE_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.DEEPSLATE_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.CALCITE_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.TUFF_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.BRICK_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.MUD_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.SANDSTONE_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.RED_SANDSTONE_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.PRISMARINE_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.NETHER_BRICK_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.RED_NETHER_BRICK_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.BLACKSTONE_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.ENDSTONE_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.PURPUR_FOUNTAIN_SPROUT);
 //
-//                        // Fountain Sprouts
-//                        entries.add(ModBlocks.STONE_BRICK_FOUNTAIN_SPROUT);
-//                        entries.add(ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN_SPROUT);
-//                        entries.add(ModBlocks.GRANITE_FOUNTAIN_SPROUT);
-//                        entries.add(ModBlocks.DIORITE_FOUNTAIN_SPROUT);
-//                        entries.add(ModBlocks.ANDESITE_FOUNTAIN_SPROUT);
-//                        entries.add(ModBlocks.DEEPSLATE_FOUNTAIN_SPROUT);
-//                        entries.add(ModBlocks.TUFF_FOUNTAIN_SPROUT);
-//                        entries.add(ModBlocks.BRICK_FOUNTAIN_SPROUT);
-//                        entries.add(ModBlocks.MUD_FOUNTAIN_SPROUT);
-//                        entries.add(ModBlocks.SANDSTONE_FOUNTAIN_SPROUT);
-//                        entries.add(ModBlocks.RED_SANDSTONE_FOUNTAIN_SPROUT);
-//                        entries.add(ModBlocks.PRISMARINE_FOUNTAIN_SPROUT);
-//                        entries.add(ModBlocks.NETHER_BRICK_FOUNTAIN_SPROUT);
-//                        entries.add(ModBlocks.RED_NETHER_BRICK_FOUNTAIN_SPROUT);
-//                        entries.add(ModBlocks.BLACKSTONE_FOUNTAIN_SPROUT);
-//                        entries.add(ModBlocks.ENDSTONE_FOUNTAIN_SPROUT);
-//                        entries.add(ModBlocks.PURPUR_FOUNTAIN_SPROUT);
-//
-                        // Chimneys
+                        // CHIMNEYS
                         entries.add(ModBlocks.STONE_BRICK_CHIMNEY);
                         entries.add(ModBlocks.MOSSY_STONE_BRICK_CHIMNEY);
                         entries.add(ModBlocks.GRANITE_CHIMNEY);
@@ -300,6 +325,9 @@ public class ModItemGroups {
                         entries.add(ModBlocks.BLACKSTONE_CHIMNEY);
                         entries.add(ModBlocks.ENDSTONE_CHIMNEY);
                         entries.add(ModBlocks.PURPUR_CHIMNEY);
+                        entries.add(ModBlocks.IRON_CHIMNEY);
+                        entries.add(ModBlocks.GOLD_CHIMNEY);
+
                         // Misc. Blocks/Items
                         entries.add(ModBlocks.TELESCOPE);
                         entries.add(ModItems.PAINT_BRUSH);

@@ -1,0 +1,317 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "cozyhome:block/purpur_bathtub",
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/purpur_bathtub"
+      },
+      "when": {
+        "facing": "south",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/purpur_bathtub",
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/purpur_bathtub",
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/purpur_bathtub_back",
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "part": "back",
+        "triggered": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/purpur_bathtub_back"
+      },
+      "when": {
+        "facing": "south",
+        "part": "back",
+        "triggered": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/purpur_bathtub_back",
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "part": "back",
+        "triggered": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/purpur_bathtub_back",
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "part": "back",
+        "triggered": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/purpur_bathtub_back_on",
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "part": "back",
+        "triggered": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/purpur_bathtub_back_on"
+      },
+      "when": {
+        "facing": "south",
+        "part": "back",
+        "triggered": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/purpur_bathtub_back_on",
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "part": "back",
+        "triggered": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/purpur_bathtub_back_on",
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "part": "back",
+        "triggered": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/bathtub/bathtub_water_1",
+        "y": 180
+      },
+      "when": {
+        "contains": "water",
+        "facing": "north",
+        "level": "1",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/bathtub/bathtub_water_2",
+        "y": 180
+      },
+      "when": {
+        "contains": "water",
+        "facing": "north",
+        "level": "2",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/bathtub/bathtub_water_1"
+      },
+      "when": {
+        "contains": "water",
+        "facing": "south",
+        "level": "1",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/bathtub/bathtub_water_2"
+      },
+      "when": {
+        "contains": "water",
+        "facing": "south",
+        "level": "2",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/bathtub/bathtub_water_1",
+        "y": 270
+      },
+      "when": {
+        "contains": "water",
+        "facing": "east",
+        "level": "1",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/bathtub/bathtub_water_2",
+        "y": 270
+      },
+      "when": {
+        "contains": "water",
+        "facing": "east",
+        "level": "2",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/bathtub/bathtub_water_1",
+        "y": 90
+      },
+      "when": {
+        "contains": "water",
+        "facing": "west",
+        "level": "1",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/bathtub/bathtub_water_2",
+        "y": 90
+      },
+      "when": {
+        "contains": "water",
+        "facing": "west",
+        "level": "2",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/bathtub/bathtub_lava_1",
+        "y": 180
+      },
+      "when": {
+        "contains": "lava",
+        "facing": "north",
+        "level": "1",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/bathtub/bathtub_lava_2",
+        "y": 180
+      },
+      "when": {
+        "contains": "lava",
+        "facing": "north",
+        "level": "2",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/bathtub/bathtub_lava_1"
+      },
+      "when": {
+        "contains": "lava",
+        "facing": "south",
+        "level": "1",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/bathtub/bathtub_lava_2"
+      },
+      "when": {
+        "contains": "lava",
+        "facing": "south",
+        "level": "2",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/bathtub/bathtub_lava_1",
+        "y": 270
+      },
+      "when": {
+        "contains": "lava",
+        "facing": "east",
+        "level": "1",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/bathtub/bathtub_lava_2",
+        "y": 270
+      },
+      "when": {
+        "contains": "lava",
+        "facing": "east",
+        "level": "2",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/bathtub/bathtub_lava_1",
+        "y": 90
+      },
+      "when": {
+        "contains": "lava",
+        "facing": "west",
+        "level": "1",
+        "part": "front"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/bathtub/bathtub_lava_2",
+        "y": 90
+      },
+      "when": {
+        "contains": "lava",
+        "facing": "west",
+        "level": "2",
+        "part": "front"
+      }
+    }
+  ]
+}

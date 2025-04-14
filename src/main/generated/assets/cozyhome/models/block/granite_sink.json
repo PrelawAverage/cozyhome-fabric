@@ -3,6 +3,7 @@
   "textures": {
     "bottom": "cozyhome:block/sink/granite_sink_bottom",
     "extra": "cozyhome:block/faucet/iron_faucet",
+    "inner_side": "cozyhome:block/sink/granite_sink_inner_side",
     "particle": "minecraft:block/granite",
     "side": "cozyhome:block/sink/granite_sink_side",
     "top": "cozyhome:block/sink/granite_sink_top"

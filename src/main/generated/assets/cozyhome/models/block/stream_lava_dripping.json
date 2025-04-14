@@ -1,0 +1,6 @@
+{
+  "parent": "cozyhome:block/liquid/template_stream_dripping",
+  "textures": {
+    "all": "minecraft:block/lava_flow"
+  }
+}

@@ -7,7 +7,6 @@ import net.luckystudio.cozyhome.item.ModItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
@@ -464,6 +463,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerSinkRecipe(exporter, ModBlocks.ENDSTONE_SINK, Items.IRON_NUGGET, Blocks.END_STONE);
         offerSinkRecipe(exporter, ModBlocks.PURPUR_SINK, Items.IRON_NUGGET, Blocks.PURPUR_BLOCK);
         offerSinkRecipe(exporter, ModBlocks.IRON_SINK, Items.IRON_NUGGET, Blocks.IRON_BARS);
+        offerSinkRecipe(exporter, ModBlocks.GOLD_SINK, Items.GOLD_NUGGET, Blocks.GOLD_BLOCK);
 
         // Large Stumps
         offerLargeStumpRecipe(exporter, ModBlocks.OAK_LARGE_STUMP, Blocks.OAK_LOG);
@@ -496,6 +496,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerChimneyRecipe(exporter, ModBlocks.BLACKSTONE_CHIMNEY, Blocks.BLACKSTONE);
         offerChimneyRecipe(exporter, ModBlocks.ENDSTONE_CHIMNEY, Blocks.END_STONE);
         offerChimneyRecipe(exporter, ModBlocks.PURPUR_CHIMNEY, Blocks.PURPUR_BLOCK);
+        offerChimneyRecipe(exporter, ModBlocks.IRON_CHIMNEY, Blocks.IRON_BLOCK);
+        offerChimneyRecipe(exporter, ModBlocks.GOLD_CHIMNEY, Blocks.GOLD_BLOCK);
 
         offerCushionRecipe(exporter, ModItems.CUSHION, Blocks.WHITE_WOOL, Items.STRING);
         offerCushionRecipe(exporter, ModItems.HAY_CUSHION, Blocks.HAY_BLOCK, Items.STRING);

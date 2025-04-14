@@ -1,7 +1,7 @@
 {
   "parent": "cozyhome:block/counter/storage_counter",
   "textures": {
-    "back": "cozyhome:block/counter/cherry_counter_back",
+    "back": "cozyhome:block/counter/cherry_counter_front",
     "bottom": "cozyhome:block/counter/cherry_counter_bottom",
     "closed": "cozyhome:block/counter/cherry_counter_closed",
     "open": "cozyhome:block/counter/cherry_counter_open",

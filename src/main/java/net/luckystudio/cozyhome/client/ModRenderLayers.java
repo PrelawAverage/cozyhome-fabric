@@ -5,6 +5,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.luckystudio.cozyhome.block.ModBlocks;
+import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
 import net.luckystudio.cozyhome.item.ModItems;
 import net.luckystudio.cozyhome.util.ModColorHandler;
 import net.minecraft.client.color.world.BiomeColors;
@@ -113,7 +114,15 @@ public class ModRenderLayers {
     public static void registerColorProviders() {
         // Gives blocks the water color
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) ->
-                        BiomeColors.getWaterColor(world, pos),
+                {
+                    assert world != null;
+                    return BiomeColors.getWaterColor(world, pos);
+                }
+        );
+
+        // Blocks that can hold water or others
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) ->
+                        ModBlockUtilities.getColorFromContainsState(state, world, pos),
                 ModBlocks.OAK_SINK_COUNTER,
                 ModBlocks.SPRUCE_SINK_COUNTER,
                 ModBlocks.BIRCH_SINK_COUNTER,
@@ -143,48 +152,66 @@ public class ModRenderLayers {
                 ModBlocks.BLACKSTONE_SINK,
                 ModBlocks.ENDSTONE_SINK,
                 ModBlocks.PURPUR_SINK,
-                ModBlocks.IRON_SINK
+                ModBlocks.IRON_SINK,
+                ModBlocks.GOLD_SINK,
+                ModBlocks.STONE_BRICK_BATHTUB,
+                ModBlocks.MOSSY_STONE_BRICK_BATHTUB,
+                ModBlocks.GRANITE_BATHTUB,
+                ModBlocks.DIORITE_BATHTUB,
+                ModBlocks.ANDESITE_BATHTUB,
+                ModBlocks.DEEPSLATE_BATHTUB,
+                ModBlocks.CALCITE_BATHTUB,
+                ModBlocks.TUFF_BATHTUB,
+                ModBlocks.BRICK_BATHTUB,
+                ModBlocks.MUD_BATHTUB,
+                ModBlocks.SANDSTONE_BATHTUB,
+                ModBlocks.RED_SANDSTONE_BATHTUB,
+                ModBlocks.PRISMARINE_BATHTUB,
+                ModBlocks.NETHER_BRICK_BATHTUB,
+                ModBlocks.RED_NETHER_BRICK_BATHTUB,
+                ModBlocks.BLACKSTONE_BATHTUB,
+                ModBlocks.ENDSTONE_BATHTUB,
+                ModBlocks.PURPUR_BATHTUB,
+                ModBlocks.IRON_BATHTUB,
+                ModBlocks.GOLD_BATHTUB,
+                ModBlocks.STONE_BRICK_FOUNTAIN,
+                ModBlocks.STONE_BRICK_FOUNTAIN_SPROUT,
+                ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN,
+                ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN_SPROUT,
+                ModBlocks.GRANITE_FOUNTAIN,
+                ModBlocks.GRANITE_FOUNTAIN_SPROUT,
+                ModBlocks.DIORITE_FOUNTAIN,
+                ModBlocks.DIORITE_FOUNTAIN_SPROUT,
+                ModBlocks.ANDESITE_FOUNTAIN,
+                ModBlocks.ANDESITE_FOUNTAIN_SPROUT,
+                ModBlocks.DEEPSLATE_FOUNTAIN,
+                ModBlocks.DEEPSLATE_FOUNTAIN_SPROUT,
+                ModBlocks.CALCITE_FOUNTAIN,
+                ModBlocks.CALCITE_FOUNTAIN_SPROUT,
+                ModBlocks.TUFF_FOUNTAIN,
+                ModBlocks.TUFF_FOUNTAIN_SPROUT,
+                ModBlocks.BRICK_FOUNTAIN,
+                ModBlocks.BRICK_FOUNTAIN_SPROUT,
+                ModBlocks.MUD_FOUNTAIN,
+                ModBlocks.MUD_FOUNTAIN_SPROUT,
+                ModBlocks.SANDSTONE_FOUNTAIN,
+                ModBlocks.SANDSTONE_FOUNTAIN_SPROUT,
+                ModBlocks.RED_SANDSTONE_FOUNTAIN,
+                ModBlocks.RED_SANDSTONE_FOUNTAIN_SPROUT,
+                ModBlocks.PRISMARINE_FOUNTAIN,
+                ModBlocks.PRISMARINE_FOUNTAIN_SPROUT,
+                ModBlocks.NETHER_BRICK_FOUNTAIN,
+                ModBlocks.NETHER_BRICK_FOUNTAIN_SPROUT,
+                ModBlocks.RED_NETHER_BRICK_FOUNTAIN,
+                ModBlocks.RED_NETHER_BRICK_FOUNTAIN_SPROUT,
+                ModBlocks.BLACKSTONE_FOUNTAIN,
+                ModBlocks.BLACKSTONE_FOUNTAIN_SPROUT,
+                ModBlocks.ENDSTONE_FOUNTAIN,
+                ModBlocks.ENDSTONE_FOUNTAIN_SPROUT,
+                ModBlocks.PURPUR_FOUNTAIN,
+                ModBlocks.PURPUR_FOUNTAIN_SPROUT,
+                ModBlocks.FALLING_LIQUID
         );
-
-//        // Blocks that can hold water or others
-//        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) ->
-//                        ModBlockUtilities.getColorFromContainsState(state, world, pos),
-//                ModBlocks.STONE_BRICK_FOUNTAIN,
-//                ModBlocks.STONE_BRICK_FOUNTAIN_SPROUT,
-//                ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN,
-//                ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN_SPROUT,
-//                ModBlocks.GRANITE_FOUNTAIN,
-//                ModBlocks.GRANITE_FOUNTAIN_SPROUT,
-//                ModBlocks.DIORITE_FOUNTAIN,
-//                ModBlocks.DIORITE_FOUNTAIN_SPROUT,
-//                ModBlocks.ANDESITE_FOUNTAIN,
-//                ModBlocks.ANDESITE_FOUNTAIN_SPROUT,
-//                ModBlocks.DEEPSLATE_FOUNTAIN,
-//                ModBlocks.DEEPSLATE_FOUNTAIN_SPROUT,
-//                ModBlocks.TUFF_FOUNTAIN,
-//                ModBlocks.TUFF_FOUNTAIN_SPROUT,
-//                ModBlocks.BRICK_FOUNTAIN,
-//                ModBlocks.BRICK_FOUNTAIN_SPROUT,
-//                ModBlocks.MUD_FOUNTAIN,
-//                ModBlocks.MUD_FOUNTAIN_SPROUT,
-//                ModBlocks.SANDSTONE_FOUNTAIN,
-//                ModBlocks.SANDSTONE_FOUNTAIN_SPROUT,
-//                ModBlocks.RED_SANDSTONE_FOUNTAIN,
-//                ModBlocks.RED_SANDSTONE_FOUNTAIN_SPROUT,
-//                ModBlocks.PRISMARINE_FOUNTAIN,
-//                ModBlocks.PRISMARINE_FOUNTAIN_SPROUT,
-//                ModBlocks.NETHER_BRICK_FOUNTAIN,
-//                ModBlocks.NETHER_BRICK_FOUNTAIN_SPROUT,
-//                ModBlocks.RED_NETHER_BRICK_FOUNTAIN,
-//                ModBlocks.RED_NETHER_BRICK_FOUNTAIN_SPROUT,
-//                ModBlocks.BLACKSTONE_FOUNTAIN,
-//                ModBlocks.BLACKSTONE_FOUNTAIN_SPROUT,
-//                ModBlocks.ENDSTONE_FOUNTAIN,
-//                ModBlocks.ENDSTONE_FOUNTAIN_SPROUT,
-//                ModBlocks.PURPUR_FOUNTAIN,
-//                ModBlocks.PURPUR_FOUNTAIN_SPROUT,
-//                ModBlocks.FALLING_LIQUID
-//        );
 
         ColorProviderRegistry.ITEM.register(((stack, tintIndex) -> DyedColorComponent.getColor(stack, -17170434)),
                 ModItems.CUSHION,
@@ -216,7 +243,10 @@ public class ModRenderLayers {
                 ModBlocks.OMINOUS_LAMP
         );
 
-        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> ModColorHandler.getBlockColor(view.getBlockEntity(pos), -17170434),
+        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> {
+                    assert view != null;
+                    return ModColorHandler.getBlockColor(view.getBlockEntity(pos), -17170434);
+                },
                 ModBlocks.OAK_COUCH,
                 ModBlocks.SPRUCE_COUCH,
                 ModBlocks.BIRCH_COUCH,

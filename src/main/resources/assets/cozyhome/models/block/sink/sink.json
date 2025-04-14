@@ -1,10 +1,11 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"particle": "cozyhome:block/sink/purpur_sink_top",
-		"top": "cozyhome:block/sink/purpur_sink_top",
-		"side": "cozyhome:block/sink/purpur_sink_side",
-		"bottom": "cozyhome:block/sink/purpur_sink_bottom",
+		"particle": "cozyhome:block/sink/brick_sink_top",
+		"top": "cozyhome:block/sink/brick_sink_top",
+		"side": "cozyhome:block/sink/brick_sink_side",
+		"bottom": "cozyhome:block/sink/brick_sink_bottom",
+		"inner_side": "cozyhome:block/sink/brick_sink_inner",
 		"extra": "cozyhome:block/faucet/iron_faucet"
 	},
 	"elements": [
@@ -52,7 +53,7 @@
 				"north": {"uv": [1, 2, 3, 8], "texture": "#side"},
 				"east": {"uv": [1, 2, 15, 8], "texture": "#side"},
 				"south": {"uv": [13, 2, 15, 8], "texture": "#side"},
-				"west": {"uv": [1, 10, 15, 16], "texture": "#side"},
+				"west": {"uv": [1, 2, 15, 8], "texture": "#inner_side"},
 				"down": {"uv": [13, 1, 15, 15], "texture": "#bottom"}
 			}
 		},
@@ -62,7 +63,7 @@
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 12, 8]},
 			"faces": {
 				"north": {"uv": [13, 2, 15, 8], "texture": "#side"},
-				"east": {"uv": [1, 10, 15, 16], "texture": "#side"},
+				"east": {"uv": [1, 2, 15, 8], "texture": "#inner_side"},
 				"south": {"uv": [1, 2, 3, 8], "texture": "#side"},
 				"west": {"uv": [1, 2, 15, 8], "texture": "#side"},
 				"down": {"uv": [1, 15, 3, 1], "texture": "#bottom"}
@@ -74,7 +75,7 @@
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 12, 8]},
 			"faces": {
 				"north": {"uv": [3, 2, 13, 8], "texture": "#side"},
-				"south": {"uv": [3, 10, 13, 16], "texture": "#side"},
+				"south": {"uv": [3, 2, 13, 8], "texture": "#inner_side"},
 				"down": {"uv": [3, 3, 13, 1], "texture": "#bottom"}
 			}
 		},
@@ -83,7 +84,7 @@
 			"to": [13, 14, 15],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 12, 8]},
 			"faces": {
-				"north": {"uv": [3, 10, 13, 16], "texture": "#side"},
+				"north": {"uv": [3, 2, 13, 8], "texture": "#inner_side"},
 				"south": {"uv": [3, 2, 13, 8], "texture": "#side"},
 				"down": {"uv": [3, 15, 13, 13], "texture": "#bottom"}
 			}
@@ -103,7 +104,7 @@
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 14, 0]},
 			"faces": {
 				"north": {"uv": [13, 0, 16, 2], "texture": "#side", "cullface": "north"},
-				"east": {"uv": [0, 8, 16, 10], "texture": "#side"},
+				"east": {"uv": [0, 0, 16, 2], "texture": "#inner_side"},
 				"south": {"uv": [0, 0, 3, 2], "texture": "#side", "cullface": "south"},
 				"west": {"uv": [0, 0, 16, 2], "texture": "#side", "cullface": "west"},
 				"up": {"uv": [0, 0, 3, 16], "texture": "#top", "cullface": "up"},
@@ -118,7 +119,7 @@
 				"north": {"uv": [0, 0, 3, 2], "texture": "#side", "cullface": "north"},
 				"east": {"uv": [0, 0, 16, 2], "texture": "#side", "cullface": "east"},
 				"south": {"uv": [13, 0, 16, 2], "texture": "#side", "cullface": "south"},
-				"west": {"uv": [0, 8, 16, 10], "texture": "#side"},
+				"west": {"uv": [0, 0, 16, 2], "texture": "#inner_side"},
 				"up": {"uv": [13, 0, 16, 16], "texture": "#top", "cullface": "up"},
 				"down": {"uv": [13, 16, 16, 0], "texture": "#bottom"}
 			}
@@ -128,7 +129,7 @@
 			"to": [13, 16, 16],
 			"rotation": {"angle": 0, "axis": "y", "origin": [10, 14, 0]},
 			"faces": {
-				"north": {"uv": [3, 8, 13, 10], "texture": "#side"},
+				"north": {"uv": [3, 0, 13, 2], "texture": "#inner_side"},
 				"east": {"uv": [0, 0, 3, 2], "texture": "#missing"},
 				"south": {"uv": [3, 0, 13, 2], "texture": "#side", "cullface": "south"},
 				"west": {"uv": [0, 0, 3, 2], "texture": "#missing"},
@@ -143,7 +144,7 @@
 			"faces": {
 				"north": {"uv": [3, 0, 13, 2], "texture": "#side", "cullface": "north"},
 				"east": {"uv": [0, 0, 3, 2], "texture": "#missing"},
-				"south": {"uv": [3, 8, 13, 10], "texture": "#side"},
+				"south": {"uv": [3, 0, 13, 2], "texture": "#inner_side"},
 				"west": {"uv": [0, 0, 3, 2], "texture": "#missing"},
 				"up": {"uv": [3, 0, 13, 3], "texture": "#top", "cullface": "up"},
 				"down": {"uv": [3, 3, 13, 0], "texture": "#bottom"}

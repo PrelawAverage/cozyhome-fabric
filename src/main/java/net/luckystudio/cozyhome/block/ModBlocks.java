@@ -1,9 +1,10 @@
 package net.luckystudio.cozyhome.block;
 
 import net.luckystudio.cozyhome.CozyHome;
+import net.luckystudio.cozyhome.block.custom.bathtub.BathTubBlock;
 import net.luckystudio.cozyhome.block.custom.chimney.ChimneyBlock;
-import net.luckystudio.cozyhome.block.custom.drawer.DeskBlock;
-import net.luckystudio.cozyhome.block.custom.drawer.DrawerBlock;
+import net.luckystudio.cozyhome.block.custom.drawers.DeskBlock;
+import net.luckystudio.cozyhome.block.custom.drawers.DrawerBlock;
 import net.luckystudio.cozyhome.block.custom.couch.CouchBlock;
 import net.luckystudio.cozyhome.block.custom.horizontal_connecting_blocks.LargeStumpBlock;
 import net.luckystudio.cozyhome.block.custom.horizontal_connecting_blocks.ShelfTableBlock;
@@ -11,7 +12,7 @@ import net.luckystudio.cozyhome.block.custom.horizontal_connecting_blocks.TableB
 import net.luckystudio.cozyhome.block.custom.sofa.SofaBlock;
 import net.luckystudio.cozyhome.block.custom.chair.ChairBlock;
 import net.luckystudio.cozyhome.block.custom.counters.CounterBlock;
-import net.luckystudio.cozyhome.block.custom.counters.SinkCounterBlock;
+import net.luckystudio.cozyhome.block.custom.sinks.SinkCounterBlock;
 import net.luckystudio.cozyhome.block.custom.counters.StorageCounterBlock;
 import net.luckystudio.cozyhome.block.custom.clocks.grandfather_clock.GrandfatherClockBlock;
 import net.luckystudio.cozyhome.block.custom.clocks.wall_clock.WallClockBlock;
@@ -22,7 +23,7 @@ import net.luckystudio.cozyhome.block.custom.water_blocks.FountainSproutBlock;
 import net.luckystudio.cozyhome.block.custom.lamps.*;
 import net.luckystudio.cozyhome.block.custom.wall_mirror.WallMirrorBlock;
 import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
-import net.luckystudio.cozyhome.block.custom.SinkBlock;
+import net.luckystudio.cozyhome.block.custom.sinks.SinkBlock;
 import net.luckystudio.cozyhome.item.custom.DyedBlockItem;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
@@ -50,6 +51,11 @@ public class ModBlocks {
         if (requiresTool) settings.requiresTool();
         if (burnable) settings.burnable();
         return new StorageCounterBlock(settings);
+    }
+
+    private static Block createSinkCounterBlock(Block block) {
+        return new SinkCounterBlock(AbstractBlock.Settings.copy(block)
+                .luminance(ModBlockUtilities.createLightLevelFromContainsBlockState(15)));
     }
 
     private static Block createChair(ChairBlock.ChairType chairType, float hardness, float resistance, BlockSoundGroup soundGroup, Boolean requiresTool, Boolean burnable) {
@@ -110,7 +116,17 @@ public class ModBlocks {
     }
 
     private static Block createSink(Block block) {
-        return new SinkBlock(AbstractBlock.Settings.copy(block).nonOpaque().requiresTool());
+        return new SinkBlock(AbstractBlock.Settings.copy(block)
+                .nonOpaque()
+                .luminance(ModBlockUtilities.createLightLevelFromContainsBlockState(15))
+                .requiresTool());
+    }
+
+    private static Block createBathTub(Block block) {
+        return new BathTubBlock(AbstractBlock.Settings.copy(block)
+                .nonOpaque()
+                .luminance(ModBlockUtilities.createLightLevelFromContainsBlockState(15))
+                .requiresTool());
     }
 
     private static Block createFountain(float hardness, float resistance, BlockSoundGroup soundGroup) {
@@ -186,28 +202,17 @@ public class ModBlocks {
     public static final Block WARPED_STORAGE_COUNTER = registerBlock("warped_storage_counter", createStorageCounterBlock(Blocks.WARPED_PLANKS, false, false));
 
     // Sink Counters
-    public static final Block OAK_SINK_COUNTER = registerBlock("oak_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block SPRUCE_SINK_COUNTER = registerBlock("spruce_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block BIRCH_SINK_COUNTER = registerBlock("birch_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block JUNGLE_SINK_COUNTER = registerBlock("jungle_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block ACACIA_SINK_COUNTER = registerBlock("acacia_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block DARK_OAK_SINK_COUNTER = registerBlock("dark_oak_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block MANGROVE_SINK_COUNTER = registerBlock("mangrove_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block CHERRY_SINK_COUNTER = registerBlock("cherry_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block BAMBOO_SINK_COUNTER = registerBlock("bamboo_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block CRIMSON_SINK_COUNTER = registerBlock("crimson_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block WARPED_SINK_COUNTER = registerBlock("warped_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+    public static final Block OAK_SINK_COUNTER = registerBlock("oak_sink_counter", createSinkCounterBlock(Blocks.OAK_PLANKS));
+    public static final Block SPRUCE_SINK_COUNTER = registerBlock("spruce_sink_counter", createSinkCounterBlock(Blocks.SPRUCE_PLANKS));
+    public static final Block BIRCH_SINK_COUNTER = registerBlock("birch_sink_counter", createSinkCounterBlock(Blocks.BIRCH_PLANKS));
+    public static final Block JUNGLE_SINK_COUNTER = registerBlock("jungle_sink_counter", createSinkCounterBlock(Blocks.JUNGLE_PLANKS));
+    public static final Block ACACIA_SINK_COUNTER = registerBlock("acacia_sink_counter", createSinkCounterBlock(Blocks.ACACIA_PLANKS));
+    public static final Block DARK_OAK_SINK_COUNTER = registerBlock("dark_oak_sink_counter", createSinkCounterBlock(Blocks.DARK_OAK_PLANKS));
+    public static final Block MANGROVE_SINK_COUNTER = registerBlock("mangrove_sink_counter", createSinkCounterBlock(Blocks.MANGROVE_PLANKS));
+    public static final Block CHERRY_SINK_COUNTER = registerBlock("cherry_sink_counter", createSinkCounterBlock(Blocks.CHERRY_PLANKS));
+    public static final Block BAMBOO_SINK_COUNTER = registerBlock("bamboo_sink_counter", createSinkCounterBlock(Blocks.BAMBOO_PLANKS));
+    public static final Block CRIMSON_SINK_COUNTER = registerBlock("crimson_sink_counter", createSinkCounterBlock(Blocks.CRIMSON_PLANKS));
+    public static final Block WARPED_SINK_COUNTER = registerBlock("warped_sink_counter", createSinkCounterBlock(Blocks.WARPED_PLANKS));
 
     // Tables
     public static final Block OAK_TABLE = registerBlock("oak_table", createTable(Blocks.OAK_PLANKS));
@@ -239,7 +244,7 @@ public class ModBlocks {
                     .dynamicBounds()
     ));
 
-    // Chairs
+    // CHAIRS
     public static final Block OAK_CHAIR = registerBlock("oak_chair", createChair(ChairBlock.Type.OAK, 2, 3, BlockSoundGroup.WOOD, false, true));
     public static final Block SPRUCE_CHAIR = registerBlock("spruce_chair", createChair(ChairBlock.Type.SPRUCE,  2, 3, BlockSoundGroup.WOOD, false, true));
     public static final Block BIRCH_CHAIR = registerBlock("birch_chair", createChair(ChairBlock.Type.BIRCH,  2, 3, BlockSoundGroup.WOOD, false, true));
@@ -256,7 +261,7 @@ public class ModBlocks {
     public static final Block UNDEAD_CHAIR = registerBlock("undead_chair", createChair(ChairBlock.Type.UNDEAD,  2, 3, BlockSoundGroup.VAULT, true, false));
     public static final Block OMINOUS_CHAIR = registerBlock("ominous_chair", createChair(ChairBlock.Type.OMINOUS, 2, 3, BlockSoundGroup.TRIAL_SPAWNER, true, false));
 
-    // Wall Clocks
+    // WALL CLOCKS
     public static final Block OAK_WALL_CLOCK = registerBlock("oak_wall_clock", createWallClock(WallClockBlock.Type.OAK, Blocks.OAK_PLANKS));
     public static final Block SPRUCE_WALL_CLOCK = registerBlock("spruce_wall_clock", createWallClock(WallClockBlock.Type.SPRUCE, Blocks.SPRUCE_PLANKS));
     public static final Block BIRCH_WALL_CLOCK = registerBlock("birch_wall_clock", createWallClock(WallClockBlock.Type.BIRCH, Blocks.BIRCH_PLANKS));
@@ -275,7 +280,7 @@ public class ModBlocks {
     public static final Block OMINOUS_WALL_CLOCK = registerBlock("ominous_wall_clock", new WallClockBlock(WallClockBlock.Type.OMINOUS,
             AbstractBlock.Settings.create().sounds(BlockSoundGroup.TRIAL_SPAWNER)));
 
-    // Grandfather Clocks
+    // GRANDFATHER CLOCKS
     public static final Block OAK_GRANDFATHER_CLOCK = registerBlock("oak_grandfather_clock", createGrandfatherClock(GrandfatherClockBlock.Type.OAK, BlockSoundGroup.WOOD));
     public static final Block SPRUCE_GRANDFATHER_CLOCK = registerBlock("spruce_grandfather_clock", createGrandfatherClock(GrandfatherClockBlock.Type.SPRUCE, BlockSoundGroup.WOOD));
     public static final Block BIRCH_GRANDFATHER_CLOCK = registerBlock("birch_grandfather_clock", createGrandfatherClock(GrandfatherClockBlock.Type.BIRCH, BlockSoundGroup.WOOD));
@@ -292,7 +297,7 @@ public class ModBlocks {
     public static final Block UNDEAD_GRANDFATHER_CLOCK = registerBlock("undead_grandfather_clock", createGrandfatherClock(GrandfatherClockBlock.Type.UNDEAD, BlockSoundGroup.VAULT));
     public static final Block OMINOUS_GRANDFATHER_CLOCK = registerBlock("ominous_grandfather_clock", createGrandfatherClock(GrandfatherClockBlock.Type.OMINOUS, BlockSoundGroup.TRIAL_SPAWNER));
 
-    // Lamps
+    // LAMPS
     public static final Block OAK_LAMP = registerDyedBlock("oak_lamp", createGenericLamp());
     public static final Block SPRUCE_LAMP = registerDyedBlock("spruce_lamp", new SpruceLampBlock(AbstractBlock.Settings.copy(ModBlocks.OAK_LAMP)));
     public static final Block BIRCH_LAMP = registerDyedBlock("birch_lamp", createGenericLamp());
@@ -309,7 +314,7 @@ public class ModBlocks {
     public static final Block UNDEAD_LAMP = registerDyedBlock("undead_lamp", new UndeadLampBlock(AbstractBlock.Settings.copy(ModBlocks.OAK_LAMP)));
     public static final Block OMINOUS_LAMP = registerBlock("ominous_lamp", new OminousLampBlock(AbstractBlock.Settings.copy(ModBlocks.OAK_LAMP)));
 
-    // Sofas
+    // SOFAS
     public static final Block OAK_SOFA = registerDyedBlock("oak_sofa", createSofa(SofaBlock.Type.OAK, Blocks.OAK_PLANKS));
     public static final Block SPRUCE_SOFA = registerDyedBlock("spruce_sofa", createSofa(SofaBlock.Type.SPRUCE, Blocks.SPRUCE_PLANKS));
     public static final Block BIRCH_SOFA = registerDyedBlock("birch_sofa", createSofa(SofaBlock.Type.BIRCH, Blocks.BIRCH_PLANKS));
@@ -322,7 +327,7 @@ public class ModBlocks {
     public static final Block CRIMSON_SOFA = registerDyedBlock("crimson_sofa", createSofa(SofaBlock.Type.CRIMSON, Blocks.CRIMSON_PLANKS));
     public static final Block WARPED_SOFA = registerDyedBlock("warped_sofa", createSofa(SofaBlock.Type.WARPED, Blocks.WARPED_PLANKS));
 
-    // Couches
+    // COUCHES
     public static final Block OAK_COUCH = registerDyedBlock("oak_couch", createCouch(Blocks.OAK_PLANKS));
     public static final Block SPRUCE_COUCH = registerDyedBlock("spruce_couch", createCouch(Blocks.SPRUCE_PLANKS));
     public static final Block BIRCH_COUCH = registerDyedBlock("birch_couch", createCouch(Blocks.BIRCH_PLANKS));
@@ -335,7 +340,7 @@ public class ModBlocks {
     public static final Block CRIMSON_COUCH = registerDyedBlock("crimson_couch", createCouch(Blocks.CRIMSON_PLANKS));
     public static final Block WARPED_COUCH = registerDyedBlock("warped_couch", createCouch(Blocks.WARPED_PLANKS));
 
-    // Desks
+    // DESKS
     public static final Block OAK_DESK = registerBlock("oak_desk", createDesk(Blocks.OAK_PLANKS));
     public static final Block SPRUCE_DESK = registerBlock("spruce_desk", createDesk(Blocks.SPRUCE_PLANKS));
     public static final Block BIRCH_DESK = registerBlock("birch_desk", createDesk(Blocks.BIRCH_PLANKS));
@@ -348,7 +353,7 @@ public class ModBlocks {
     public static final Block CRIMSON_DESK = registerBlock("crimson_desk", createDesk(Blocks.CRIMSON_PLANKS));
     public static final Block WARPED_DESK = registerBlock("warped_desk", createDesk(Blocks.WARPED_PLANKS));
 
-    // Drawers
+    // DRAWERS
     public static final Block OAK_DRAWER = registerBlock("oak_drawer", createDrawer(Blocks.OAK_PLANKS));
     public static final Block SPRUCE_DRAWER = registerBlock("spruce_drawer", createDrawer(Blocks.SPRUCE_PLANKS));
     public static final Block BIRCH_DRAWER = registerBlock("birch_drawer", createDrawer(Blocks.BIRCH_PLANKS));
@@ -361,7 +366,7 @@ public class ModBlocks {
     public static final Block CRIMSON_DRAWER = registerBlock("crimson_drawer", createDrawer(Blocks.CRIMSON_PLANKS));
     public static final Block WARPED_DRAWER = registerBlock("warped_drawer", createDrawer(Blocks.WARPED_PLANKS));
 
-    // Wall Mirrors
+    // WALL MIRRORS
     public static final Block OAK_WALL_MIRROR = registerBlock("oak_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
     public static final Block SPRUCE_WALL_MIRROR = registerBlock("spruce_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
     public static final Block BIRCH_WALL_MIRROR = registerBlock("birch_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
@@ -374,7 +379,7 @@ public class ModBlocks {
     public static final Block CRIMSON_WALL_MIRROR = registerBlock("crimson_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
     public static final Block WARPED_WALL_MIRROR = registerBlock("warped_wall_mirror", new WallMirrorBlock(AbstractBlock.Settings.copy(Blocks.GLASS)));
 
-    // Sinks
+    // SINKS
     public static final Block STONE_BRICK_SINK = registerBlock("stone_brick_sink", createSink(Blocks.STONE_BRICKS));
     public static final Block MOSSY_STONE_BRICK_SINK = registerBlock("mossy_stone_brick_sink", createSink(Blocks.MOSSY_STONE_BRICKS));
     public static final Block GRANITE_SINK = registerBlock("granite_sink", createSink(Blocks.GRANITE));
@@ -394,6 +399,29 @@ public class ModBlocks {
     public static final Block ENDSTONE_SINK = registerBlock("endstone_sink", createSink(Blocks.END_STONE));
     public static final Block PURPUR_SINK = registerBlock("purpur_sink", createSink(Blocks.PURPUR_BLOCK));
     public static final Block IRON_SINK = registerBlock("iron_sink", createSink(Blocks.IRON_BLOCK));
+    public static final Block GOLD_SINK = registerBlock("gold_sink", createSink(Blocks.GOLD_BLOCK));
+
+    // BATHTUBS
+    public static final Block STONE_BRICK_BATHTUB = registerBlock("stone_brick_bathtub", createBathTub(Blocks.STONE_BRICKS));
+    public static final Block MOSSY_STONE_BRICK_BATHTUB = registerBlock("mossy_stone_brick_bathtub", createBathTub(Blocks.MOSSY_STONE_BRICKS));
+    public static final Block GRANITE_BATHTUB = registerBlock("granite_bathtub", createBathTub(Blocks.GRANITE));
+    public static final Block DIORITE_BATHTUB = registerBlock("diorite_bathtub", createBathTub(Blocks.DIORITE));
+    public static final Block ANDESITE_BATHTUB = registerBlock("andesite_bathtub", createBathTub(Blocks.ANDESITE));
+    public static final Block DEEPSLATE_BATHTUB = registerBlock("deepslate_bathtub", createBathTub(Blocks.DEEPSLATE_BRICKS));
+    public static final Block CALCITE_BATHTUB = registerBlock("calcite_bathtub", createBathTub(Blocks.CALCITE));
+    public static final Block TUFF_BATHTUB = registerBlock("tuff_bathtub", createBathTub(Blocks.TUFF));
+    public static final Block BRICK_BATHTUB = registerBlock("brick_bathtub", createBathTub(Blocks.BRICKS));
+    public static final Block MUD_BATHTUB = registerBlock("mud_bathtub", createBathTub(Blocks.MUD_BRICKS));
+    public static final Block SANDSTONE_BATHTUB = registerBlock("sandstone_bathtub", createBathTub(Blocks.SANDSTONE));
+    public static final Block RED_SANDSTONE_BATHTUB = registerBlock("red_sandstone_bathtub", createBathTub(Blocks.RED_SANDSTONE));
+    public static final Block PRISMARINE_BATHTUB = registerBlock("prismarine_bathtub", createBathTub(Blocks.PRISMARINE));
+    public static final Block NETHER_BRICK_BATHTUB = registerBlock("nether_brick_bathtub", createBathTub(Blocks.NETHER_BRICKS));
+    public static final Block RED_NETHER_BRICK_BATHTUB = registerBlock("red_nether_brick_bathtub", createBathTub(Blocks.RED_NETHER_BRICKS));
+    public static final Block BLACKSTONE_BATHTUB = registerBlock("blackstone_bathtub", createBathTub(Blocks.BLACKSTONE));
+    public static final Block ENDSTONE_BATHTUB = registerBlock("endstone_bathtub", createBathTub(Blocks.END_STONE));
+    public static final Block PURPUR_BATHTUB = registerBlock("purpur_bathtub", createBathTub(Blocks.PURPUR_BLOCK));
+    public static final Block IRON_BATHTUB = registerBlock("iron_bathtub", createBathTub(Blocks.IRON_BLOCK));
+    public static final Block GOLD_BATHTUB = registerBlock("gold_bathtub", createBathTub(Blocks.GOLD_BLOCK));
 
     // Fountains
     public static final Block STONE_BRICK_FOUNTAIN = registerBlock("stone_brick_fountain", createFountain(1.5f,6, BlockSoundGroup.STONE));
@@ -471,6 +499,8 @@ public class ModBlocks {
     public static final Block BLACKSTONE_CHIMNEY = registerBlock("blackstone_chimney", createChimney(1.5f,6, BlockSoundGroup.GILDED_BLACKSTONE));
     public static final Block ENDSTONE_CHIMNEY = registerBlock("endstone_chimney", createChimney(3,9, BlockSoundGroup.STONE));
     public static final Block PURPUR_CHIMNEY = registerBlock("purpur_chimney", createChimney(1.5f,6, BlockSoundGroup.STONE));
+    public static final Block IRON_CHIMNEY = registerBlock("iron_chimney", createChimney(1.5f,6, BlockSoundGroup.METAL));
+    public static final Block GOLD_CHIMNEY = registerBlock("gold_chimney", createChimney(1.5f,6, BlockSoundGroup.METAL));
 
     public static final Block TELESCOPE = registerBlock("telescope", new TelescopeBlock(AbstractBlock.Settings.create()
             .breakInstantly()

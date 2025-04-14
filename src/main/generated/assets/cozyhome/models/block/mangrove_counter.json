@@ -1,7 +1,7 @@
 {
   "parent": "cozyhome:block/counter/counter",
   "textures": {
-    "back": "cozyhome:block/counter/mangrove_counter_back",
+    "back": "cozyhome:block/counter/mangrove_counter_front",
     "bottom": "cozyhome:block/counter/mangrove_counter_bottom",
     "front": "cozyhome:block/counter/mangrove_counter_front",
     "particle": "cozyhome:block/break/mangrove_furniture",

@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "net.luckystudio.cozyhome.mixin",
+	"package": "net.luckystudio.cozyhome",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 

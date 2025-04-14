@@ -60,29 +60,41 @@ public class FountainBlock extends AbstractHorizontalConnectingBlock implements 
     }
 
     @Override
+    protected MapCodec<? extends Block> getCodec() {
+        return CODEC;
+    }
+
+    @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(CONTAINS);
-        super.appendProperties(builder);
-    }
-
-    @Override
-    protected MapCodec<? extends Block> getCodec() {
-        return CODEC;
+        super.appendProperties(builder.add(CONTAINS));
     }
 
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        ContainsBlock contents = state.get(CONTAINS);
         if (stack.getItem() == Items.WATER_BUCKET) {
             ItemUsage.exchangeStack(stack, player, Items.BUCKET.getDefaultStack());
             return changeState(state, ContainsBlock.WATER, SoundEvents.ITEM_BUCKET_EMPTY, world, pos, player);
         } else if (stack.getItem() == Items.LAVA_BUCKET) {
             ItemUsage.exchangeStack(stack, player, Items.BUCKET.getDefaultStack());
             return changeState(state, ContainsBlock.LAVA, SoundEvents.ITEM_BUCKET_EMPTY_LAVA, world, pos, player);
+        } else if (contents != ContainsBlock.NONE) {
+            if (stack.getItem() == Items.BUCKET) {
+                if (contents == ContainsBlock.WATER) {
+                    ItemUsage.exchangeStack(stack, player, Items.WATER_BUCKET.getDefaultStack());
+                    return changeState(state, ContainsBlock.NONE, SoundEvents.ITEM_BUCKET_FILL, world, pos, player);
+                } else if (contents == ContainsBlock.LAVA) {
+                    ItemUsage.exchangeStack(stack, player, Items.LAVA_BUCKET.getDefaultStack());
+                    return changeState(state, ContainsBlock.NONE, SoundEvents.ITEM_BUCKET_FILL_LAVA, world, pos, player);
+                }
+            } else {
+                return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            }
         }
         return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }

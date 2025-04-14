@@ -1,18 +1,22 @@
 package net.luckystudio.cozyhome.entity.custom;
 
 import net.luckystudio.cozyhome.block.ModBlocks;
-import net.luckystudio.cozyhome.block.custom.AbstractSeatBlock;
+import net.luckystudio.cozyhome.block.custom.bathtub.BathTubBlock;
+import net.luckystudio.cozyhome.block.custom.telescope.TelescopeBlock;
 import net.luckystudio.cozyhome.block.custom.telescope.TelescopeBlockEntity;
+import net.luckystudio.cozyhome.block.util.interfaces.SeatBlock;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.*;
-import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 
 public class SeatEntity extends Entity {
@@ -52,16 +56,19 @@ public class SeatEntity extends Entity {
         super.tick();
         World world = this.getWorld();
         Entity entity = this.getFirstPassenger();
-        if (!world.isClient) {
-            if (entity == null) {
-                this.remove(RemovalReason.DISCARDED);
-            } else {
-                if (isTelescopeBlock()) {
-                    if (this.getWorld().getBlockEntity(this.getBlockPos()) instanceof TelescopeBlockEntity telescopeBlockEntity && entity != null) {
-                        telescopeBlockEntity.setYaw(entity.getYaw() - 90);
-                        telescopeBlockEntity.setPitch(-entity.getPitch());
-                        telescopeBlockEntity.markDirty();
-                    }
+        // Delete the entity if no player is riding it
+        if (entity instanceof LivingEntity livingEntity) {
+            if (world.getBlockState(getBlockPos()).getBlock() instanceof BathTubBlock && world.getBlockState(getBlockPos().down()).getBlock() == Blocks.MAGMA_BLOCK) {
+                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, 0)); // 3 seconds (60 ticks), level 1
+            }
+            // Aiming the telescope
+            if (isOffsettingBlock()) {
+                if (this.getWorld().getBlockEntity(this.getBlockPos()) instanceof TelescopeBlockEntity telescopeBlockEntity) {
+                    BlockState telescopeBlockState = this.getWorld().getBlockState(this.getBlockPos());
+                    telescopeBlockEntity.setYaw(livingEntity.getYaw() + 90);
+                    telescopeBlockEntity.setPitch(-livingEntity.getPitch());
+                    TelescopeBlock.isFacingMoon(world, telescopeBlockState, getBlockPos(), livingEntity.getYaw(), -livingEntity.getPitch());
+                    telescopeBlockEntity.markDirty();
                 }
             }
         }
@@ -72,7 +79,7 @@ public class SeatEntity extends Entity {
     protected void addPassenger(Entity passenger) {
         BlockPos pos = this.getBlockPos();
         BlockState state = this.getWorld().getBlockState(pos);
-        if (state.getBlock() instanceof AbstractSeatBlock || isTelescopeBlock()) {
+        if (state.getBlock() instanceof SeatBlock) {
             passenger.setYaw(this.getYaw());
             super.addPassenger(passenger);
         }
@@ -84,41 +91,6 @@ public class SeatEntity extends Entity {
  */
     @Override
     public Vec3d updatePassengerForDismount(LivingEntity passenger) {
-        Direction direction = this.getMovementDirection();
-        if (direction.getAxis() != Direction.Axis.Y) {
-            int[][] is = Dismounting.getDismountOffsets(direction);
-            BlockPos blockPos = this.getBlockPos();
-            BlockPos.Mutable mutable = new BlockPos.Mutable();
-
-            for (EntityPose entityPose : passenger.getPoses()) {
-                Box box = passenger.getBoundingBox(entityPose);
-
-                for (int[] js : is) {
-                    mutable.set(blockPos.getX() + js[0], blockPos.getY(), blockPos.getZ() + js[1]);
-                    double d = this.getWorld().getDismountHeight(mutable);
-                    if (Dismounting.canDismountInBlock(d)) {
-                        Vec3d vec3d = Vec3d.ofCenter(mutable, d);
-                        if (Dismounting.canPlaceEntityAt(this.getWorld(), passenger, box.offset(vec3d))) {
-                            passenger.setPose(entityPose);
-                            World world = this.getWorld();
-                            BlockPos pos = this.getBlockPos();
-                            if (world.getBlockState(pos).getBlock() instanceof AbstractSeatBlock) {
-                                BlockState state = world.getBlockState(pos);
-                                world.setBlockState(pos, state.with(Properties.TRIGGERED, false));
-                            }
-                            this.remove(RemovalReason.DISCARDED);
-                            return vec3d;
-                        }
-                    }
-                }
-            }
-        }
-        World world = this.getWorld();
-        BlockPos pos = this.getBlockPos();
-        if (world.getBlockState(pos).getBlock() instanceof AbstractSeatBlock) {
-            BlockState state = world.getBlockState(pos);
-            world.setBlockState(pos, state.with(Properties.TRIGGERED, false));
-        }
         this.remove(RemovalReason.DISCARDED);
         return super.updatePassengerForDismount(passenger);
     }
@@ -127,7 +99,7 @@ public class SeatEntity extends Entity {
     public void remove(RemovalReason reason) {
         World world = this.getWorld();
         BlockPos pos = this.getBlockPos();
-        if (world.getBlockState(pos).getBlock() instanceof AbstractSeatBlock) {
+        if (world.getBlockState(pos).getBlock() instanceof SeatBlock) {
             BlockState state = world.getBlockState(pos);
             world.setBlockState(pos, state.with(Properties.TRIGGERED, false));
         }
@@ -135,23 +107,31 @@ public class SeatEntity extends Entity {
     }
 
     @Override
-    protected void updatePassengerPosition(Entity passenger, PositionUpdater positionUpdater) {
-        super.updatePassengerPosition(passenger, positionUpdater);
+    protected Vec3d getPassengerAttachmentPos(Entity passenger, EntityDimensions dimensions, float scaleFactor) {
+        Vec3d attachmentPoint = super.getPassengerAttachmentPos(passenger, dimensions, scaleFactor);
         if (passenger instanceof PlayerEntity) {
-            // Update the player's position relative to the entity
-            float riderYaw = passenger.getYaw() + 180; // Degrees
+            float yaw = passenger.getYaw();
+            if (Float.isNaN(yaw)) yaw = 0.0F;
+
+            float riderYaw = yaw + 180.0F;
             double radians = Math.toRadians(riderYaw);
-            double offsetX = isTelescopeBlock() ? -Math.sin(radians) : 0;
-            double offsetZ = isTelescopeBlock() ? Math.cos(radians) : 0;
-            passenger.setPos(this.getX() + offsetX, this.getY() - 0.5F + getHeightOffset(), this.getZ() + offsetZ);
+
+            double offsetX = isOffsettingBlock() ? -Math.sin(radians) : 0.0;
+            double offsetZ = isOffsettingBlock() ? Math.cos(radians) : 0.0;
+
+            double yOffset = getHeightOffset();
+
+            // Apply the offset
+            return attachmentPoint.add(offsetX, yOffset - 1, offsetZ);
         }
+        return super.getPassengerAttachmentPos(passenger, dimensions, scaleFactor);
     }
 
     private float getHeightOffset() {
         BlockPos pos = this.getBlockPos();
         BlockState state = getWorld().getBlockState(pos);
-        if (state.getBlock() instanceof AbstractSeatBlock abstractSeatBlock) {
-            return abstractSeatBlock.getSeatHeight(state);
+        if (state.getBlock() instanceof SeatBlock seatBlock) {
+            return seatBlock.getSeatHeight(state);
         }
         return 0f;
     }
@@ -162,7 +142,7 @@ public class SeatEntity extends Entity {
         return super.adjustMovementForPiston(movement);
     }
 
-    private boolean isTelescopeBlock() {
+    private boolean isOffsettingBlock() {
         BlockPos pos = this.getBlockPos();
         BlockState state = this.getWorld().getBlockState(pos);
         return state.getBlock() == ModBlocks.TELESCOPE;

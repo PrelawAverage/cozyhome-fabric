@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/chimney/template_chimney_middle",
+  "textures": {
+    "particle": "cozyhome:block/break/gold_furniture",
+    "side": "cozyhome:block/chimney/gold_chimney_middle"
+  }
+}

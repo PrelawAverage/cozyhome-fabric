@@ -5,7 +5,6 @@ import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.block.util.ModBlockUtilities;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
-import net.luckystudio.cozyhome.block.util.enums.HasUnderBlock;
 import net.luckystudio.cozyhome.util.ModSoundEvents;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.BlockFace;
@@ -18,8 +17,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -32,8 +29,7 @@ import net.minecraft.world.WorldView;
 public class FountainSproutBlock extends WallMountedBlock {
     public static final MapCodec<FountainSproutBlock> CODEC = createCodec(FountainSproutBlock::new);
     public static final EnumProperty<ContainsBlock> CONTAINS = ModProperties.CONTAINS;
-    public static final EnumProperty<HasUnderBlock> HAS_UNDER = ModProperties.HAS_UNDER;
-    private int tickCounter = 0; // Counter to track ticks
+    public static final BooleanProperty HAS_UNDER = ModProperties.HAS_UNDER;
 
     protected static final VoxelShape NORTH_WALL_SHAPE = Block.createCuboidShape(5, 10, 10, 11, 16, 16);
     protected static final VoxelShape SOUTH_WALL_SHAPE = Block.createCuboidShape(5, 10, 0, 11, 16, 6);
@@ -45,7 +41,7 @@ public class FountainSproutBlock extends WallMountedBlock {
     public FountainSproutBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState()
-                .with(HAS_UNDER, HasUnderBlock.NONE)
+                .with(HAS_UNDER, false)
                 .with(FACING, Direction.NORTH)
                 .with(CONTAINS, ContainsBlock.NONE)
                 .with(FACE, BlockFace.WALL));
@@ -80,7 +76,7 @@ public class FountainSproutBlock extends WallMountedBlock {
         super.onBlockAdded(state, world, pos, oldState, notify); // Call super first
         world.setBlockState(pos, state
                 .with(CONTAINS, determineContains(state, world, pos))
-                .with(HAS_UNDER, hasUnder(state, world, pos)));
+                .with(HAS_UNDER, hasUnder(world, pos)));
         world.scheduleBlockTick(pos, this, 10); // Schedule the tick
     }
 
@@ -108,7 +104,7 @@ public class FountainSproutBlock extends WallMountedBlock {
     protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         world.scheduleBlockTick(pos, this, 20);
         if (getDirection(state).getOpposite() == direction && !state.canPlaceAt(world, pos)) return Blocks.AIR.getDefaultState();
-        return state.with(CONTAINS, determineContains(state, world, pos)).with(HAS_UNDER, hasUnder(state, world, pos));
+        return state.with(CONTAINS, determineContains(state, world, pos)).with(HAS_UNDER, hasUnder(world, pos));
     }
 
     private ContainsBlock determineContains(BlockState state, WorldAccess world, BlockPos pos) {
@@ -132,31 +128,16 @@ public class FountainSproutBlock extends WallMountedBlock {
         return targetState.getBlock() instanceof FountainBlock;
     }
 
-    private HasUnderBlock hasUnder(BlockState state, WorldAccess world, BlockPos pos) {
+    private boolean hasUnder(WorldAccess world, BlockPos pos) {
         BlockPos posBelow = pos.down();
         BlockState blockStateBelow = world.getBlockState(posBelow);
-        if (state.get(FACE) != BlockFace.FLOOR) {
-            if (blockStateBelow.isSideSolidFullSquare(world, pos, Direction.UP)) return HasUnderBlock.FLAT;
-            if (isLowered(blockStateBelow)) return HasUnderBlock.LOWERED;
-            if (isDeep(blockStateBelow)) return HasUnderBlock.DEEP;
-        }
-        return HasUnderBlock.NONE;
-    }
-
-    private static boolean isLowered(BlockState blockStateBelow) {
-        return blockStateBelow.getBlock() instanceof LavaCauldronBlock || blockStateBelow.getBlock() instanceof FountainBlock ||
-                blockStateBelow.getBlock() == Blocks.FARMLAND ||
-                blockStateBelow.getBlock() instanceof FluidBlock;
-    }
-
-    private static boolean isDeep(BlockState blockStateBelow) {
-        return blockStateBelow.getBlock() instanceof LeveledCauldronBlock || blockStateBelow.getBlock() instanceof CauldronBlock;
+        return blockStateBelow.isSideSolidFullSquare(world, pos, Direction.UP);
     }
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         // Check if the block can see the sky and spawn smoke particles if block contains lava
-        if (state.get(HAS_UNDER) != HasUnderBlock.NONE) {
+        if (state.get(HAS_UNDER)) {
             if (state.get(CONTAINS) == ContainsBlock.LAVA) {
                 world.addParticle(ParticleTypes.SMOKE,
                         false,
@@ -191,7 +172,7 @@ public class FountainSproutBlock extends WallMountedBlock {
 
     @Override
     protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!ModBlockUtilities.isEntityObstructing(world, pos) && ModBlockUtilities.canPlaceBelow(world, pos)) {
+        if (!ModBlockUtilities.isEntityObstructing(world, pos) && ModBlockUtilities.canPlaceBelow(world, pos) && state.get(CONTAINS) != ContainsBlock.NONE) {
             elongate(world, pos);
         }
     }
@@ -208,16 +189,6 @@ public class FountainSproutBlock extends WallMountedBlock {
             }
         }
         super.onEntityCollision(state, world, pos, entity);
-    }
-
-    @Override
-    protected BlockState rotate(BlockState state, BlockRotation rotation) {
-        return state.with(FACING, rotation.rotate(state.get(FACING)));
-    }
-
-    @Override
-    protected BlockState mirror(BlockState state, BlockMirror mirror) {
-        return state.rotate(mirror.getRotation(state.get(FACING)));
     }
 }
 

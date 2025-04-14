@@ -268,14 +268,6 @@
       "when": {
         "contains": "lava"
       }
-    },
-    {
-      "apply": {
-        "model": "cozyhome:block/ice_15"
-      },
-      "when": {
-        "contains": "ice"
-      }
     }
   ]
 }
