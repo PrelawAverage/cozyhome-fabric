@@ -174,13 +174,7 @@ public class TelescopeBlock extends BlockWithEntity implements Waterloggable, Se
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         boolean isDay = world.isDay();
         if (!player.isSneaking()) {
-            // Creates a new entity
-            SeatEntity seat = new SeatEntity(ModEntities.SEAT_ENTITY, world);
-            // Sets it's location
-            seat.setPosition(pos.getX() + 0.5f, pos.getY(), pos.getZ() + 0.5f);
-            world.spawnEntity(seat);
-            player.startRiding(seat);
-            world.setBlockState(pos, state.with(TRIGGERED, true), 3);
+            SeatBlock.sitDown(state, world, pos, player);
             return ActionResult.SUCCESS;
         } else {
             if (isDay) {

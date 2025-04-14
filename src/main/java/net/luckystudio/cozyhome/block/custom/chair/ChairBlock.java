@@ -275,6 +275,11 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock, Wate
     }
 
     @Override
+    public float getSeatHeight(BlockState state) {
+        return 0.65f;
+    }
+
+    @Override
     public float getSeatRotation(BlockState state, World world, BlockPos pos) {
         return ModProperties.setSeatRotationFromRotation(state);
     }

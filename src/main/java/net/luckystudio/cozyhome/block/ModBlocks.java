@@ -53,6 +53,11 @@ public class ModBlocks {
         return new StorageCounterBlock(settings);
     }
 
+    private static Block createSinkCounterBlock(Block block) {
+        return new SinkCounterBlock(AbstractBlock.Settings.copy(block)
+                .luminance(ModBlockUtilities.createLightLevelFromContainsBlockState(15)));
+    }
+
     private static Block createChair(ChairBlock.ChairType chairType, float hardness, float resistance, BlockSoundGroup soundGroup, Boolean requiresTool, Boolean burnable) {
         AbstractBlock.Settings settings = AbstractBlock.Settings.create();
         if (requiresTool) settings.requiresTool();
@@ -197,28 +202,17 @@ public class ModBlocks {
     public static final Block WARPED_STORAGE_COUNTER = registerBlock("warped_storage_counter", createStorageCounterBlock(Blocks.WARPED_PLANKS, false, false));
 
     // Sink Counters
-    public static final Block OAK_SINK_COUNTER = registerBlock("oak_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block SPRUCE_SINK_COUNTER = registerBlock("spruce_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block BIRCH_SINK_COUNTER = registerBlock("birch_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block JUNGLE_SINK_COUNTER = registerBlock("jungle_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block ACACIA_SINK_COUNTER = registerBlock("acacia_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block DARK_OAK_SINK_COUNTER = registerBlock("dark_oak_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block MANGROVE_SINK_COUNTER = registerBlock("mangrove_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block CHERRY_SINK_COUNTER = registerBlock("cherry_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block BAMBOO_SINK_COUNTER = registerBlock("bamboo_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block CRIMSON_SINK_COUNTER = registerBlock("crimson_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
-    public static final Block WARPED_SINK_COUNTER = registerBlock("warped_sink_counter",
-            new SinkCounterBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+    public static final Block OAK_SINK_COUNTER = registerBlock("oak_sink_counter", createSinkCounterBlock(Blocks.OAK_PLANKS));
+    public static final Block SPRUCE_SINK_COUNTER = registerBlock("spruce_sink_counter", createSinkCounterBlock(Blocks.SPRUCE_PLANKS));
+    public static final Block BIRCH_SINK_COUNTER = registerBlock("birch_sink_counter", createSinkCounterBlock(Blocks.BIRCH_PLANKS));
+    public static final Block JUNGLE_SINK_COUNTER = registerBlock("jungle_sink_counter", createSinkCounterBlock(Blocks.JUNGLE_PLANKS));
+    public static final Block ACACIA_SINK_COUNTER = registerBlock("acacia_sink_counter", createSinkCounterBlock(Blocks.ACACIA_PLANKS));
+    public static final Block DARK_OAK_SINK_COUNTER = registerBlock("dark_oak_sink_counter", createSinkCounterBlock(Blocks.DARK_OAK_PLANKS));
+    public static final Block MANGROVE_SINK_COUNTER = registerBlock("mangrove_sink_counter", createSinkCounterBlock(Blocks.MANGROVE_PLANKS));
+    public static final Block CHERRY_SINK_COUNTER = registerBlock("cherry_sink_counter", createSinkCounterBlock(Blocks.CHERRY_PLANKS));
+    public static final Block BAMBOO_SINK_COUNTER = registerBlock("bamboo_sink_counter", createSinkCounterBlock(Blocks.BAMBOO_PLANKS));
+    public static final Block CRIMSON_SINK_COUNTER = registerBlock("crimson_sink_counter", createSinkCounterBlock(Blocks.CRIMSON_PLANKS));
+    public static final Block WARPED_SINK_COUNTER = registerBlock("warped_sink_counter", createSinkCounterBlock(Blocks.WARPED_PLANKS));
 
     // Tables
     public static final Block OAK_TABLE = registerBlock("oak_table", createTable(Blocks.OAK_PLANKS));

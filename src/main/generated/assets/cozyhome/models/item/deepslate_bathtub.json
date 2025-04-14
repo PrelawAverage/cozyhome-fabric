@@ -1,3 +1,6 @@
 {
-  "parent": "cozyhome:block/deepslate_bathtub"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cozyhome:item/deepslate_bathtub"
+  }
 }

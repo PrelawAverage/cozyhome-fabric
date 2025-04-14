@@ -8,6 +8,7 @@ import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.*;
 import net.luckystudio.cozyhome.datagen.util.*;
 import net.minecraft.block.Block;
+import net.minecraft.block.enums.BlockFace;
 import net.minecraft.block.enums.StairShape;
 import net.minecraft.data.client.*;
 import net.minecraft.item.Item;
@@ -26,7 +27,7 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         registerGenerals(blockStateModelGenerator);
-
+        registerFallingLiquid(blockStateModelGenerator, ModBlocks.FALLING_LIQUID);
         registerCounter(blockStateModelGenerator, ModBlocks.OAK_COUNTER, CozyHome.id("block/break/oak_furniture"));
         registerCounter(blockStateModelGenerator, ModBlocks.SPRUCE_COUNTER, CozyHome.id("block/break/spruce_furniture"));
         registerCounter(blockStateModelGenerator, ModBlocks.BIRCH_COUNTER, CozyHome.id("block/break/birch_furniture"));
@@ -276,6 +277,25 @@ public class ModModelProvider extends FabricModelProvider {
         registerFountain(blockStateModelGenerator, ModBlocks.ENDSTONE_FOUNTAIN, Identifier.of("block/end_stone"));
         registerFountain(blockStateModelGenerator, ModBlocks.PURPUR_FOUNTAIN, Identifier.of("block/purpur_block"));
 
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.STONE_BRICK_FOUNTAIN_SPROUT, Identifier.of("block/stone_bricks"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN_SPROUT, Identifier.of("block/mossy_stone_bricks"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.GRANITE_FOUNTAIN_SPROUT, Identifier.of("block/granite"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.DIORITE_FOUNTAIN_SPROUT, Identifier.of("block/diorite"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.ANDESITE_FOUNTAIN_SPROUT, Identifier.of("block/andesite"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.DEEPSLATE_FOUNTAIN_SPROUT, Identifier.of("block/deepslate"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.CALCITE_FOUNTAIN_SPROUT, Identifier.of("block/calcite"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.TUFF_FOUNTAIN_SPROUT, Identifier.of("block/tuff"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.BRICK_FOUNTAIN_SPROUT, Identifier.of("block/bricks"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.MUD_FOUNTAIN_SPROUT, Identifier.of("block/mud"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.SANDSTONE_FOUNTAIN_SPROUT, Identifier.of("block/sandstone"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.RED_SANDSTONE_FOUNTAIN_SPROUT, Identifier.of("block/red_sandstone"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.PRISMARINE_FOUNTAIN_SPROUT, Identifier.of("block/prismarine_bricks"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.NETHER_BRICK_FOUNTAIN_SPROUT, Identifier.of("block/nether_bricks"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.RED_NETHER_BRICK_FOUNTAIN_SPROUT, Identifier.of("block/red_nether_bricks"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.BLACKSTONE_FOUNTAIN_SPROUT, Identifier.of("block/blackstone"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.ENDSTONE_FOUNTAIN_SPROUT, Identifier.of("block/end_stone"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.PURPUR_FOUNTAIN_SPROUT, Identifier.of("block/purpur_block"));
+
         registerChimney(blockStateModelGenerator, ModBlocks.STONE_BRICK_CHIMNEY, Identifier.ofVanilla("block/stone_bricks"), ChimneyIntake.IRON);
         registerChimney(blockStateModelGenerator, ModBlocks.MOSSY_STONE_BRICK_CHIMNEY, Identifier.ofVanilla("block/mossy_stone_bricks"), ChimneyIntake.IRON);
         registerChimney(blockStateModelGenerator, ModBlocks.GRANITE_CHIMNEY, Identifier.ofVanilla("block/polished_granite"), ChimneyIntake.IRON);
@@ -301,6 +321,26 @@ public class ModModelProvider extends FabricModelProvider {
     // I have no idea what this does, but it's required.
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        itemModelGenerator.register(ModBlocks.STONE_BRICK_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.MOSSY_STONE_BRICK_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.GRANITE_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.DIORITE_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.ANDESITE_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.DEEPSLATE_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.CALCITE_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.TUFF_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.BRICK_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.MUD_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.SANDSTONE_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.RED_SANDSTONE_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.PRISMARINE_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.NETHER_BRICK_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.RED_NETHER_BRICK_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.BLACKSTONE_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.ENDSTONE_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.PURPUR_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.IRON_BATHTUB.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.GOLD_BATHTUB.asItem(), Models.GENERATED);
     }
 
     /**
@@ -313,8 +353,19 @@ public class ModModelProvider extends FabricModelProvider {
                 CozyHome.id("block/water_15"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/water_still")), blockStateModelGenerator.modelCollector);
         Identifier lavaModelId = ModModels.LAVA_15.upload(
                 CozyHome.id("block/lava_15"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/lava_still")), blockStateModelGenerator.modelCollector);
-        Identifier iceModelId = ModModels.ICE_15.upload(
-                CozyHome.id("block/ice_15"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/ice")), blockStateModelGenerator.modelCollector);
+
+        Identifier streamWaterDrippingModelId = ModModels.STREAM_WATER_DRIPPING.upload(
+                CozyHome.id("block/stream_water_dripping"), new TextureMap().put(TextureKey.ALL, Identifier.ofVanilla("block/water_flow")), blockStateModelGenerator.modelCollector);
+        Identifier streamLavaDrippingModelId = ModModels.STREAM_LAVA_DRIPPING.upload(
+                CozyHome.id("block/stream_lava_dripping"), new TextureMap().put(TextureKey.ALL, Identifier.ofVanilla("block/lava_flow")), blockStateModelGenerator.modelCollector);
+        Identifier streamWaterFallingModelId = ModModels.STREAM_WATER_FALLING.upload(
+                CozyHome.id("block/stream_water_falling"), new TextureMap().put(TextureKey.ALL, Identifier.ofVanilla("block/water_flow")), blockStateModelGenerator.modelCollector);
+        Identifier streamLavaFallingModelId = ModModels.STREAM_LAVA_FALLING.upload(
+                CozyHome.id("block/stream_lava_falling"), new TextureMap().put(TextureKey.ALL, Identifier.ofVanilla("block/lava_flow")), blockStateModelGenerator.modelCollector);
+        Identifier streamWaterLandingModelId = ModModels.STREAM_WATER_LANDING.upload(
+                CozyHome.id("block/stream_water_landing"), new TextureMap().put(TextureKey.ALL, Identifier.ofVanilla("block/water_flow")), blockStateModelGenerator.modelCollector);
+        Identifier streamLavaLandingModelId = ModModels.STREAM_LAVA_LANDING.upload(
+                CozyHome.id("block/stream_lava_landing"), new TextureMap().put(TextureKey.ALL, Identifier.ofVanilla("block/lava_flow")), blockStateModelGenerator.modelCollector);
 
         Identifier insetWater15ModelId = ModModels.INSET_WATER_FLAT_15.upload(
                 CozyHome.id("block/inset_water_15"), new TextureMap().put(TextureKey.UP, CozyHome.id("block/liquid/inset_water_still")), blockStateModelGenerator.modelCollector);
@@ -322,11 +373,30 @@ public class ModModelProvider extends FabricModelProvider {
                 CozyHome.id("block/inset_water_13"), new TextureMap().put(TextureKey.UP, CozyHome.id("block/liquid/inset_water_still")), blockStateModelGenerator.modelCollector);
         Identifier insetWater11ModelId = ModModels.INSET_WATER_FLAT_11.upload(
                 CozyHome.id("block/inset_water_11"), new TextureMap().put(TextureKey.UP, CozyHome.id("block/liquid/inset_water_still")), blockStateModelGenerator.modelCollector);
+        Identifier insetLava15ModelId = ModModels.INSET_LAVA_FLAT_15.upload(
+                CozyHome.id("block/inset_lava_15"), new TextureMap().put(TextureKey.UP, CozyHome.id("block/liquid/inset_lava_still")), blockStateModelGenerator.modelCollector);
+        Identifier insetLava13ModelId = ModModels.INSET_LAVA_FLAT_13.upload(
+                CozyHome.id("block/inset_lava_13"), new TextureMap().put(TextureKey.UP, CozyHome.id("block/liquid/inset_lava_still")), blockStateModelGenerator.modelCollector);
+        Identifier insetLava11ModelId = ModModels.INSET_LAVA_FLAT_11.upload(
+                CozyHome.id("block/inset_lava_11"), new TextureMap().put(TextureKey.UP, CozyHome.id("block/liquid/inset_lava_still")), blockStateModelGenerator.modelCollector);
 
         Identifier bathtubWater1ModelId = ModModels.BATHTUB_WATER_1.upload(CozyHome.id("block/bathtub/bathtub_water_1"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/water_still")), blockStateModelGenerator.modelCollector);
         Identifier bathtubWater2ModelId = ModModels.BATHTUB_WATER_2.upload(CozyHome.id("block/bathtub/bathtub_water_2"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/water_still")), blockStateModelGenerator.modelCollector);
         Identifier bathtubLava1ModelId = ModModels.BATHTUB_LAVA_1.upload(CozyHome.id("block/bathtub/bathtub_lava_1"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/lava_still")), blockStateModelGenerator.modelCollector);
         Identifier bathtubLava2ModelId = ModModels.BATHTUB_LAVA_2.upload(CozyHome.id("block/bathtub/bathtub_lava_2"), new TextureMap().put(TextureKey.UP, Identifier.ofVanilla("block/lava_still")), blockStateModelGenerator.modelCollector);
+    }
+
+    public final void registerFallingLiquid(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+        blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(block)
+                .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.WATER),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/stream_water_falling")))
+                .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.LAVA),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/stream_lava_falling")))
+                .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.WATER).set(ModProperties.HAS_UNDER, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/stream_water_landing")))
+                .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.LAVA).set(ModProperties.HAS_UNDER, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/stream_lava_landing")))
+        );
     }
 
     public final void registerBuiltinWithParticleAndParentedItemModel(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier particleSource, Identifier modelPath) {
@@ -524,12 +594,20 @@ public class ModModelProvider extends FabricModelProvider {
                                         .put(VariantSettings.Y, VariantSettings.Rotation.R90))
 
                         // Water
-                        .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 1),
+                        .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 1).set(ModProperties.CONTAINS, ContainsBlock.WATER),
                                 BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_water_11")))
-                        .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 2),
+                        .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 2).set(ModProperties.CONTAINS, ContainsBlock.WATER),
                                 BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_water_13")))
-                        .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 3),
+                        .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 3).set(ModProperties.CONTAINS, ContainsBlock.WATER),
                                 BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_water_15")))
+
+                        // Lava
+                        .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 1).set(ModProperties.CONTAINS, ContainsBlock.LAVA),
+                                BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_lava_11")))
+                        .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 2).set(ModProperties.CONTAINS, ContainsBlock.LAVA),
+                                BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_lava_13")))
+                        .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 3).set(ModProperties.CONTAINS, ContainsBlock.LAVA),
+                                BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_lava_15")))
                 );
     }
 
@@ -842,12 +920,84 @@ public class ModModelProvider extends FabricModelProvider {
                         BlockStateVariant.create().put(VariantSettings.MODEL, fountainSideModelID).put(VariantSettings.Y, VariantSettings.Rotation.R180))
                 .with(When.create().set(Properties.NORTH, true).set(Properties.EAST, true).set(Properties.SOUTH, true).set(Properties.WEST, false),
                         BlockStateVariant.create().put(VariantSettings.MODEL, fountainSideModelID).put(VariantSettings.Y, VariantSettings.Rotation.R270))
+
+                // Dripping Liquid
                 .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.WATER),
                         BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/water_15")))
                 .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.LAVA),
                         BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/lava_15")))
-                .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.ICE),
-                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/ice_15")))
+        );
+    }
+
+    public final void registerFountainSprout(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
+        String blockNamespace = Registries.BLOCK.getId(block).getNamespace();
+        String blockPath = Registries.BLOCK.getId(block).getPath();
+        String baseTexturePath = "block/fountain_sprout/" + blockPath;
+
+        TextureMap baseTextureMap = new TextureMap()
+                .put(TextureKey.ALL, Identifier.of(blockNamespace, baseTexturePath))
+                .put(TextureKey.PARTICLE, breakParticle);
+
+        Identifier baseModelId = ModModels.FOUNTAIN_SPROUT.upload(block, baseTextureMap, blockStateModelGenerator.modelCollector);
+        Identifier wallModelId = ModModels.FOUNTAIN_SPROUT_WALL.upload(block, baseTextureMap, blockStateModelGenerator.modelCollector);
+
+        blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(block)
+
+                // Floor and Ceilings
+                .with(When.create().set(Properties.BLOCK_FACE, BlockFace.FLOOR),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, baseModelId))
+                .with(When.create().set(Properties.BLOCK_FACE, BlockFace.CEILING),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, baseModelId)
+                                .put(VariantSettings.X, VariantSettings.Rotation.R180))
+
+                // Walls
+                .with(When.create().set(Properties.BLOCK_FACE, BlockFace.WALL).set(Properties.HORIZONTAL_FACING, Direction.NORTH),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, wallModelId))
+                .with(When.create().set(Properties.BLOCK_FACE, BlockFace.WALL).set(Properties.HORIZONTAL_FACING, Direction.EAST),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, wallModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                .with(When.create().set(Properties.BLOCK_FACE, BlockFace.WALL).set(Properties.HORIZONTAL_FACING, Direction.SOUTH),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, wallModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                .with(When.create().set(Properties.BLOCK_FACE, BlockFace.WALL).set(Properties.HORIZONTAL_FACING, Direction.WEST),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, wallModelId)
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+
+                // Dripping Liquid
+                .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.WATER).set(Properties.BLOCK_FACE, BlockFace.WALL).set(Properties.HORIZONTAL_FACING, Direction.NORTH),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/stream_water_dripping")))
+                .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.WATER).set(Properties.BLOCK_FACE, BlockFace.WALL).set(Properties.HORIZONTAL_FACING, Direction.EAST),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/stream_water_dripping"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.WATER).set(Properties.BLOCK_FACE, BlockFace.WALL).set(Properties.HORIZONTAL_FACING, Direction.SOUTH),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/stream_water_dripping"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.WATER).set(Properties.BLOCK_FACE, BlockFace.WALL).set(Properties.HORIZONTAL_FACING, Direction.WEST),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/stream_water_dripping"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.LAVA).set(Properties.BLOCK_FACE, BlockFace.WALL).set(Properties.HORIZONTAL_FACING, Direction.NORTH),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/stream_lava_dripping")))
+                .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.LAVA).set(Properties.BLOCK_FACE, BlockFace.WALL).set(Properties.HORIZONTAL_FACING, Direction.EAST),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/stream_lava_dripping"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.LAVA).set(Properties.BLOCK_FACE, BlockFace.WALL).set(Properties.HORIZONTAL_FACING, Direction.SOUTH),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/stream_lava_dripping"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
+                .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.LAVA).set(Properties.BLOCK_FACE, BlockFace.WALL).set(Properties.HORIZONTAL_FACING, Direction.WEST),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/stream_lava_dripping"))
+                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
+
+                // Falling Liquid
+                .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.WATER).set(Properties.BLOCK_FACE, BlockFace.CEILING),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/stream_water_falling")))
+                .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.LAVA).set(Properties.BLOCK_FACE, BlockFace.CEILING),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/stream_lava_falling")))
+
+                // Landed Liquid
+                .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.WATER).set(ModProperties.HAS_UNDER, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/stream_water_landing")))
+                .with(When.create().set(ModProperties.CONTAINS, ContainsBlock.LAVA).set(ModProperties.HAS_UNDER, true),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/stream_lava_landing")))
         );
     }
 
@@ -901,7 +1051,7 @@ public class ModModelProvider extends FabricModelProvider {
 
         private final String type;
 
-        private ChimneyIntake(final String type) {
+        ChimneyIntake(final String type) {
             this.type = type;
         }
 
@@ -1359,12 +1509,20 @@ public class ModModelProvider extends FabricModelProvider {
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R90))
 
                 // Water
-                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 1),
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 1).set(ModProperties.CONTAINS, ContainsBlock.WATER),
                         BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_water_11")))
-                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 2),
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 2).set(ModProperties.CONTAINS, ContainsBlock.WATER),
                         BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_water_13")))
-                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 3),
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 3).set(ModProperties.CONTAINS, ContainsBlock.WATER),
                         BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_water_15")))
+
+                // Lava
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 1).set(ModProperties.CONTAINS, ContainsBlock.LAVA),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_lava_11")))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 2).set(ModProperties.CONTAINS, ContainsBlock.LAVA),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_lava_13")))
+                .with(When.create().set(ModProperties.FILLED_LEVEL_0_3, 3).set(ModProperties.CONTAINS, ContainsBlock.LAVA),
+                        BlockStateVariant.create().put(VariantSettings.MODEL, CozyHome.id("block/inset_lava_15")))
         );
     }
 

@@ -273,6 +273,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.DIORITE_FOUNTAIN);
                         entries.add(ModBlocks.ANDESITE_FOUNTAIN);
                         entries.add(ModBlocks.DEEPSLATE_FOUNTAIN);
+                        entries.add(ModBlocks.CALCITE_FOUNTAIN);
                         entries.add(ModBlocks.TUFF_FOUNTAIN);
                         entries.add(ModBlocks.BRICK_FOUNTAIN);
                         entries.add(ModBlocks.MUD_FOUNTAIN);
@@ -292,6 +293,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.DIORITE_FOUNTAIN_SPROUT);
                         entries.add(ModBlocks.ANDESITE_FOUNTAIN_SPROUT);
                         entries.add(ModBlocks.DEEPSLATE_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.CALCITE_FOUNTAIN_SPROUT);
                         entries.add(ModBlocks.TUFF_FOUNTAIN_SPROUT);
                         entries.add(ModBlocks.BRICK_FOUNTAIN_SPROUT);
                         entries.add(ModBlocks.MUD_FOUNTAIN_SPROUT);

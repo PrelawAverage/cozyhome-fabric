@@ -1,12 +1,16 @@
 package net.luckystudio.cozyhome.entity.custom;
 
 import net.luckystudio.cozyhome.block.ModBlocks;
+import net.luckystudio.cozyhome.block.custom.bathtub.BathTubBlock;
 import net.luckystudio.cozyhome.block.custom.telescope.TelescopeBlock;
 import net.luckystudio.cozyhome.block.custom.telescope.TelescopeBlockEntity;
 import net.luckystudio.cozyhome.block.util.interfaces.SeatBlock;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.state.property.Properties;
@@ -53,16 +57,17 @@ public class SeatEntity extends Entity {
         World world = this.getWorld();
         Entity entity = this.getFirstPassenger();
         // Delete the entity if no player is riding it
-        if (entity == null) {
-            this.remove(RemovalReason.DISCARDED);
-        } else {
+        if (entity instanceof LivingEntity livingEntity) {
+            if (world.getBlockState(getBlockPos()).getBlock() instanceof BathTubBlock && world.getBlockState(getBlockPos().down()).getBlock() == Blocks.MAGMA_BLOCK) {
+                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, 0)); // 3 seconds (60 ticks), level 1
+            }
             // Aiming the telescope
             if (isOffsettingBlock()) {
-                if (this.getWorld().getBlockEntity(this.getBlockPos()) instanceof TelescopeBlockEntity telescopeBlockEntity && entity != null) {
+                if (this.getWorld().getBlockEntity(this.getBlockPos()) instanceof TelescopeBlockEntity telescopeBlockEntity) {
                     BlockState telescopeBlockState = this.getWorld().getBlockState(this.getBlockPos());
-                    telescopeBlockEntity.setYaw(entity.getYaw() + 180);
-                    telescopeBlockEntity.setPitch(-entity.getPitch());
-                    TelescopeBlock.isFacingMoon(world, telescopeBlockState, getBlockPos(), entity.getYaw(), -entity.getPitch());
+                    telescopeBlockEntity.setYaw(livingEntity.getYaw() + 90);
+                    telescopeBlockEntity.setPitch(-livingEntity.getPitch());
+                    TelescopeBlock.isFacingMoon(world, telescopeBlockState, getBlockPos(), livingEntity.getYaw(), -livingEntity.getPitch());
                     telescopeBlockEntity.markDirty();
                 }
             }

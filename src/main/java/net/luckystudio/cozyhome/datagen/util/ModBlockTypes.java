@@ -11,6 +11,8 @@ public enum ModBlockTypes implements StringIdentifiable {
     CHIMNEY("chimney"),
     TABLE("table"),
     FOUNTAIN("fountain"),
+    FOUNTAIN_SPROUT("fountain_sprout"),
+    LIQUID("liquid"),
     LARGE_STUMP("large_stump"),
     FLAT("flat"),
     LAMP("lamp"),

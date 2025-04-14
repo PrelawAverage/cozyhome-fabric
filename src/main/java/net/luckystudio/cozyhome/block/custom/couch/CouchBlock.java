@@ -5,11 +5,9 @@ import net.luckystudio.cozyhome.block.custom.AbstractSeatBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.HorizontalLinearConnectionBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.ConnectingBlock;
-import net.luckystudio.cozyhome.components.ModDataComponents;
 import net.luckystudio.cozyhome.item.ModItems;
 import net.luckystudio.cozyhome.item.custom.CushionItem;
 import net.luckystudio.cozyhome.util.ModColorHandler;
-import net.luckystudio.cozyhome.util.ModScreenTexts;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -24,7 +22,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.screen.ScreenTexts;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
@@ -47,6 +44,8 @@ import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Objects;
+
 import static net.luckystudio.cozyhome.block.util.ModProperties.setStairShapeNoFlip;
 
 public class CouchBlock extends AbstractSeatBlock implements ConnectingBlock {
@@ -95,7 +94,7 @@ public class CouchBlock extends AbstractSeatBlock implements ConnectingBlock {
 
     @Override
     public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
-        return super.getPlacementState(ctx)
+        return Objects.requireNonNull(super.getPlacementState(ctx))
                 .with(FACING, ctx.getHorizontalPlayerFacing());
     }
 

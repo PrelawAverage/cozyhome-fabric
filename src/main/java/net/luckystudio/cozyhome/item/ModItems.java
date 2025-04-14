@@ -21,9 +21,6 @@ public class ModItems {
     public static final Item HAY_CUSHION = registerItem("hay_cushion", new CushionItem(new Item.Settings()));
     public static final Item TRADER_CUSHION = registerItem("trader_cushion", new CushionItem(new Item.Settings().rarity(Rarity.UNCOMMON)));
 
-    public static final Item KAUPEN_BOW = registerItem("kaupen_bow",
-            new BowItem(new Item.Settings().maxDamage(500)));
-
     // Helper Method to register items
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(CozyHome.MOD_ID, name), item);

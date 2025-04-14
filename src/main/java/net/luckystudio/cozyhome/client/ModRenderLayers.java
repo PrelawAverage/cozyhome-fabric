@@ -186,6 +186,8 @@ public class ModRenderLayers {
                 ModBlocks.ANDESITE_FOUNTAIN_SPROUT,
                 ModBlocks.DEEPSLATE_FOUNTAIN,
                 ModBlocks.DEEPSLATE_FOUNTAIN_SPROUT,
+                ModBlocks.CALCITE_FOUNTAIN,
+                ModBlocks.CALCITE_FOUNTAIN_SPROUT,
                 ModBlocks.TUFF_FOUNTAIN,
                 ModBlocks.TUFF_FOUNTAIN_SPROUT,
                 ModBlocks.BRICK_FOUNTAIN,

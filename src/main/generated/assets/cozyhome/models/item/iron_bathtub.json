@@ -1,3 +1,6 @@
 {
-  "parent": "cozyhome:block/iron_bathtub"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cozyhome:item/iron_bathtub"
+  }
 }

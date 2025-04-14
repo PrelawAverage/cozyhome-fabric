@@ -3,7 +3,7 @@
 	"ambientocclusion": false,
 	"texture_size": [128, 128],
 	"textures": {
-		"0": "cozyhome:block/fountain/stone_brick_fountain"
+		"all": "cozyhome:block/fountain/tuff_fountain"
 	},
 	"elements": [
 		{
@@ -11,8 +11,8 @@
 			"to": [16, 14, 16],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
 			"faces": {
-				"up": {"uv": [9, 1, 10, 2], "texture": "#0"},
-				"down": {"uv": [9, 7, 10, 8], "texture": "#0"}
+				"up": {"uv": [0, 3, 1, 4], "rotation": 270, "texture": "#all"},
+				"down": {"uv": [7, 7, 8, 8], "texture": "#all", "cullface": "down"}
 			}
 		}
 	]

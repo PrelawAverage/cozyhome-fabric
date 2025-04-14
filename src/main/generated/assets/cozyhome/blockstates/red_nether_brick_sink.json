@@ -83,6 +83,7 @@
         "model": "cozyhome:block/inset_water_11"
       },
       "when": {
+        "contains": "water",
         "level": "1"
       }
     },
@@ -91,6 +92,7 @@
         "model": "cozyhome:block/inset_water_13"
       },
       "when": {
+        "contains": "water",
         "level": "2"
       }
     },
@@ -99,6 +101,34 @@
         "model": "cozyhome:block/inset_water_15"
       },
       "when": {
+        "contains": "water",
+        "level": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/inset_lava_11"
+      },
+      "when": {
+        "contains": "lava",
+        "level": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/inset_lava_13"
+      },
+      "when": {
+        "contains": "lava",
+        "level": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/inset_lava_15"
+      },
+      "when": {
+        "contains": "lava",
         "level": "3"
       }
     }

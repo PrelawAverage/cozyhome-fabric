@@ -1,3 +1,6 @@
 {
-  "parent": "cozyhome:block/stone_brick_bathtub"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cozyhome:item/stone_brick_bathtub"
+  }
 }

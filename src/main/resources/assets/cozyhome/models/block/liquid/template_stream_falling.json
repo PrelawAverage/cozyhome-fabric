@@ -1,19 +1,18 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "block/water_flow",
-		"particle": "cozyhome:block/fountain_sprout/stone_bricks_fountain_sprout"
+		"all": "block/water_flow"
 	},
 	"elements": [
 		{
-			"from": [7, 0, 7],
-			"to": [9, 16, 9],
+			"from": [7, -1, 7],
+			"to": [9, 15, 9],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
 			"faces": {
-				"north": {"uv": [3.5, 8, 4.5, 16], "texture": "#1", "tintindex": 0},
-				"east": {"uv": [3, 8, 4, 16], "texture": "#1", "tintindex": 0},
-				"south": {"uv": [4.5, 8, 5.5, 16], "texture": "#1", "tintindex": 0},
-				"west": {"uv": [4, 8, 5, 16], "texture": "#1", "tintindex": 0}
+				"north": {"uv": [3.5, 1.5, 4.5, 9.5], "texture": "#all", "tintindex": 0},
+				"east": {"uv": [3, 1.5, 4, 9.5], "texture": "#all", "tintindex": 0},
+				"south": {"uv": [4.5, 1.5, 5.5, 9.5], "texture": "#all", "tintindex": 0},
+				"west": {"uv": [4, 1.5, 5, 9.5], "texture": "#all", "tintindex": 0}
 			}
 		}
 	],
