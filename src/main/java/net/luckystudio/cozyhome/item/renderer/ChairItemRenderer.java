@@ -1,9 +1,9 @@
 package net.luckystudio.cozyhome.item.renderer;
 
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
-import net.luckystudio.cozyhome.block.custom.chair.ChairBlock;
-import net.luckystudio.cozyhome.block.custom.chair.ChairBlockEntityRenderer;
-import net.luckystudio.cozyhome.block.custom.chair.ChairModel;
+import net.luckystudio.cozyhome.block.custom.chairs.ChairBlock;
+import net.luckystudio.cozyhome.block.custom.chairs.ChairBlockEntityRenderer;
+import net.luckystudio.cozyhome.block.custom.chairs.ChairModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.model.ModelPart;

@@ -1,6 +1,6 @@
 package net.luckystudio.cozyhome.block.util.interfaces;
 
-import net.luckystudio.cozyhome.block.custom.bathtub.AbstractWaterHoldingBlockEntity;
+import net.luckystudio.cozyhome.block.custom.water_holding_blocks.AbstractWaterHoldingBlockEntity;
 import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;

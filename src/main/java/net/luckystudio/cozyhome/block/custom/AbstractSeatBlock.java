@@ -1,10 +1,8 @@
 package net.luckystudio.cozyhome.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.custom.chair.ChairBlockEntity;
+import net.luckystudio.cozyhome.block.custom.chairs.ChairBlockEntity;
 import net.luckystudio.cozyhome.block.util.interfaces.SeatBlock;
-import net.luckystudio.cozyhome.entity.ModEntities;
-import net.luckystudio.cozyhome.entity.custom.SeatEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
@@ -16,7 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;

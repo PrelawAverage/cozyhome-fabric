@@ -1,7 +1,7 @@
 package net.luckystudio.cozyhome.block.custom.counters;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.custom.sinks.SinkCounterBlock;
+import net.luckystudio.cozyhome.block.custom.water_holding_blocks.sink.SinkCounterBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.interfaces.ConnectingBlock;
 import net.minecraft.block.*;

@@ -1,7 +1,7 @@
 package net.luckystudio.cozyhome.entity.custom;
 
 import net.luckystudio.cozyhome.block.ModBlocks;
-import net.luckystudio.cozyhome.block.custom.bathtub.BathTubBlock;
+import net.luckystudio.cozyhome.block.custom.water_holding_blocks.bathtub.BathTubBlock;
 import net.luckystudio.cozyhome.block.custom.telescope.TelescopeBlock;
 import net.luckystudio.cozyhome.block.custom.telescope.TelescopeBlockEntity;
 import net.luckystudio.cozyhome.block.util.interfaces.SeatBlock;
