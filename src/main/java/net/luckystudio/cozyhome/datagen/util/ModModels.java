@@ -98,8 +98,8 @@ public class ModModels {
     public static final Model FOUNTAIN_MIDDLE = modBlockWithTypeAndVariant("template_fountain_middle", ModBlockTypes.FOUNTAIN, "_middle", TextureKey.ALL, TextureKey.PARTICLE);
     public static final Model FOUNTAIN_SIDE = modBlockWithTypeAndVariant("template_fountain_side", ModBlockTypes.FOUNTAIN, "_side", TextureKey.ALL, TextureKey.PARTICLE);
 
-    public static final Model FOUNTAIN_SPROUT = modBlockWithType("template_fountain_sprout", ModBlockTypes.FOUNTAIN_SPROUT, TextureKey.ALL, TextureKey.PARTICLE);
-    public static final Model FOUNTAIN_SPROUT_WALL = modBlockWithTypeAndVariant("template_fountain_sprout_wall", ModBlockTypes.FOUNTAIN_SPROUT, "_wall", TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model FOUNTAIN_SPOUT = modBlockWithType("template_fountain_spout", ModBlockTypes.FOUNTAIN_SPOUT, TextureKey.ALL, TextureKey.PARTICLE);
+    public static final Model FOUNTAIN_SPOUT_WALL = modBlockWithTypeAndVariant("template_fountain_spout_wall", ModBlockTypes.FOUNTAIN_SPOUT, "_wall", TextureKey.ALL, TextureKey.PARTICLE);
 
     public static final Model WATER_15 = modBlockWithTypeAndVariant("flat_15", ModBlockTypes.FLAT,"water_15", TextureKey.UP);
     public static final Model LAVA_15 = modBlockWithTypeAndVariant("flat_15", ModBlockTypes.FLAT,"lava_15", TextureKey.UP);

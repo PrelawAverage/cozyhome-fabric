@@ -304,24 +304,24 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.PURPUR_FOUNTAIN);
 
         // FOUNTAIN SPROUTS
-        addDrop(ModBlocks.STONE_BRICK_FOUNTAIN_SPROUT);
-        addDrop(ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN_SPROUT);
-        addDrop(ModBlocks.GRANITE_FOUNTAIN_SPROUT);
-        addDrop(ModBlocks.DIORITE_FOUNTAIN_SPROUT);
-        addDrop(ModBlocks.ANDESITE_FOUNTAIN_SPROUT);
-        addDrop(ModBlocks.DEEPSLATE_FOUNTAIN_SPROUT);
-        addDrop(ModBlocks.CALCITE_FOUNTAIN_SPROUT);
-        addDrop(ModBlocks.TUFF_FOUNTAIN_SPROUT);
-        addDrop(ModBlocks.BRICK_FOUNTAIN_SPROUT);
-        addDrop(ModBlocks.MUD_FOUNTAIN_SPROUT);
-        addDrop(ModBlocks.SANDSTONE_FOUNTAIN_SPROUT);
-        addDrop(ModBlocks.RED_SANDSTONE_FOUNTAIN_SPROUT);
-        addDrop(ModBlocks.PRISMARINE_FOUNTAIN_SPROUT);
-        addDrop(ModBlocks.NETHER_BRICK_FOUNTAIN_SPROUT);
-        addDrop(ModBlocks.RED_NETHER_BRICK_FOUNTAIN_SPROUT);
-        addDrop(ModBlocks.BLACKSTONE_FOUNTAIN_SPROUT);
-        addDrop(ModBlocks.ENDSTONE_FOUNTAIN_SPROUT);
-        addDrop(ModBlocks.PURPUR_FOUNTAIN_SPROUT);
+        addDrop(ModBlocks.STONE_BRICK_FOUNTAIN_SPOUT);
+        addDrop(ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN_SPOUT);
+        addDrop(ModBlocks.GRANITE_FOUNTAIN_SPOUT);
+        addDrop(ModBlocks.DIORITE_FOUNTAIN_SPOUT);
+        addDrop(ModBlocks.ANDESITE_FOUNTAIN_SPOUT);
+        addDrop(ModBlocks.DEEPSLATE_FOUNTAIN_SPOUT);
+        addDrop(ModBlocks.CALCITE_FOUNTAIN_SPOUT);
+        addDrop(ModBlocks.TUFF_FOUNTAIN_SPOUT);
+        addDrop(ModBlocks.BRICK_FOUNTAIN_SPOUT);
+        addDrop(ModBlocks.MUD_FOUNTAIN_SPOUT);
+        addDrop(ModBlocks.SANDSTONE_FOUNTAIN_SPOUT);
+        addDrop(ModBlocks.RED_SANDSTONE_FOUNTAIN_SPOUT);
+        addDrop(ModBlocks.PRISMARINE_FOUNTAIN_SPOUT);
+        addDrop(ModBlocks.NETHER_BRICK_FOUNTAIN_SPOUT);
+        addDrop(ModBlocks.RED_NETHER_BRICK_FOUNTAIN_SPOUT);
+        addDrop(ModBlocks.BLACKSTONE_FOUNTAIN_SPOUT);
+        addDrop(ModBlocks.ENDSTONE_FOUNTAIN_SPOUT);
+        addDrop(ModBlocks.PURPUR_FOUNTAIN_SPOUT);
 
         addDrop(ModBlocks.TELESCOPE);
     }

@@ -49,7 +49,7 @@ public class AbstractWaterHoldingBlockEntity extends BlockEntity {
                 Direction pullDirection = waterHoldingBlock.pullingDirection(state, world, blockPos);
 
                 // Turn off the trigger if the block has no liquid to pull
-                if (pullDirection == null) {
+                if (pullDirection == null || waterHoldingBlock.isFull(state)) {
                     world.setBlockState(blockPos, state.with(Properties.TRIGGERED, false), 3);
                     return;
                 }
@@ -94,9 +94,7 @@ public class AbstractWaterHoldingBlockEntity extends BlockEntity {
                     blockEntity.timer = 0; // Reset timer
 
                     // Increase LEVEL if it's not at max (2)
-                    if (!waterHoldingBlock.isFull(state)) {
-                        waterHoldingBlock.addLiquid(state, world, blockPos, pullState, pullDirection);
-                    }
+                    waterHoldingBlock.addLiquid(state, world, blockPos, pullState, pullDirection);
                 }
             }
         }

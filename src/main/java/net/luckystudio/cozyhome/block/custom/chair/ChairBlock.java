@@ -7,14 +7,11 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import net.luckystudio.cozyhome.block.custom.AbstractSeatBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.interfaces.TuckableBlock;
-import net.luckystudio.cozyhome.components.ModDataComponents;
 import net.luckystudio.cozyhome.item.ModItems;
 import net.luckystudio.cozyhome.item.custom.CushionItem;
 import net.luckystudio.cozyhome.util.ModScreenTexts;
 import net.minecraft.block.*;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;
@@ -41,6 +38,7 @@ import net.minecraft.world.event.GameEvent;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class ChairBlock extends AbstractSeatBlock implements TuckableBlock, Waterloggable {
     public static final MapCodec<ChairBlock> CODEC = RecordCodecBuilder.mapCodec(
@@ -66,7 +64,6 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock, Wate
             Block.createCuboidShape(-8, 0, 2, 4, 10, 14),
             Block.createCuboidShape(2, 10, 2, 4, 24, 14));
     private final ChairType type;
-    private static final Formatting TITLE_FORMATTING = Formatting.GRAY;
 
     public ChairBlock(ChairType chairType, Settings settings) {
         super(settings);
@@ -107,9 +104,9 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock, Wate
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        boolean isSneaking = ctx.getPlayer().isSneaking();
+        boolean isSneaking = Objects.requireNonNull(ctx.getPlayer()).isSneaking();
         int rotationOffset = isSneaking ? 180 : 0;
-        return super.getPlacementState(ctx)
+        return Objects.requireNonNull(super.getPlacementState(ctx))
                 .with(TUCKED, false)
                 .with(ROTATION, RotationPropertyHelper.fromYaw(ctx.getPlayerYaw() + rotationOffset));
     }
@@ -286,11 +283,11 @@ public class ChairBlock extends AbstractSeatBlock implements TuckableBlock, Wate
 
     @Override
     protected BlockState rotate(BlockState state, BlockRotation rotation) {
-        return state.with(ROTATION, Integer.valueOf(rotation.rotate((Integer)state.get(ROTATION), MAX_ROTATIONS)));
+        return state.with(ROTATION, rotation.rotate(state.get(ROTATION), MAX_ROTATIONS));
     }
 
     @Override
     protected BlockState mirror(BlockState state, BlockMirror mirror) {
-        return state.with(ROTATION, Integer.valueOf(mirror.mirror((Integer)state.get(ROTATION), MAX_ROTATIONS)));
+        return state.with(ROTATION, mirror.mirror(state.get(ROTATION), MAX_ROTATIONS));
     }
 }

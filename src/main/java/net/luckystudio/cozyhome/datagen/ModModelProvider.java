@@ -277,24 +277,24 @@ public class ModModelProvider extends FabricModelProvider {
         registerFountain(blockStateModelGenerator, ModBlocks.ENDSTONE_FOUNTAIN, Identifier.of("block/end_stone"));
         registerFountain(blockStateModelGenerator, ModBlocks.PURPUR_FOUNTAIN, Identifier.of("block/purpur_block"));
 
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.STONE_BRICK_FOUNTAIN_SPROUT, Identifier.of("block/stone_bricks"));
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN_SPROUT, Identifier.of("block/mossy_stone_bricks"));
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.GRANITE_FOUNTAIN_SPROUT, Identifier.of("block/granite"));
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.DIORITE_FOUNTAIN_SPROUT, Identifier.of("block/diorite"));
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.ANDESITE_FOUNTAIN_SPROUT, Identifier.of("block/andesite"));
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.DEEPSLATE_FOUNTAIN_SPROUT, Identifier.of("block/deepslate"));
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.CALCITE_FOUNTAIN_SPROUT, Identifier.of("block/calcite"));
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.TUFF_FOUNTAIN_SPROUT, Identifier.of("block/tuff"));
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.BRICK_FOUNTAIN_SPROUT, Identifier.of("block/bricks"));
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.MUD_FOUNTAIN_SPROUT, Identifier.of("block/mud"));
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.SANDSTONE_FOUNTAIN_SPROUT, Identifier.of("block/sandstone"));
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.RED_SANDSTONE_FOUNTAIN_SPROUT, Identifier.of("block/red_sandstone"));
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.PRISMARINE_FOUNTAIN_SPROUT, Identifier.of("block/prismarine_bricks"));
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.NETHER_BRICK_FOUNTAIN_SPROUT, Identifier.of("block/nether_bricks"));
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.RED_NETHER_BRICK_FOUNTAIN_SPROUT, Identifier.of("block/red_nether_bricks"));
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.BLACKSTONE_FOUNTAIN_SPROUT, Identifier.of("block/blackstone"));
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.ENDSTONE_FOUNTAIN_SPROUT, Identifier.of("block/end_stone"));
-        registerFountainSprout(blockStateModelGenerator, ModBlocks.PURPUR_FOUNTAIN_SPROUT, Identifier.of("block/purpur_block"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.STONE_BRICK_FOUNTAIN_SPOUT, Identifier.of("block/stone_bricks"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN_SPOUT, Identifier.of("block/mossy_stone_bricks"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.GRANITE_FOUNTAIN_SPOUT, Identifier.of("block/granite"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.DIORITE_FOUNTAIN_SPOUT, Identifier.of("block/diorite"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.ANDESITE_FOUNTAIN_SPOUT, Identifier.of("block/andesite"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.DEEPSLATE_FOUNTAIN_SPOUT, Identifier.of("block/deepslate"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.CALCITE_FOUNTAIN_SPOUT, Identifier.of("block/calcite"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.TUFF_FOUNTAIN_SPOUT, Identifier.of("block/tuff"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.BRICK_FOUNTAIN_SPOUT, Identifier.of("block/bricks"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.MUD_FOUNTAIN_SPOUT, Identifier.of("block/mud"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.SANDSTONE_FOUNTAIN_SPOUT, Identifier.of("block/sandstone"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.RED_SANDSTONE_FOUNTAIN_SPOUT, Identifier.of("block/red_sandstone"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.PRISMARINE_FOUNTAIN_SPOUT, Identifier.of("block/prismarine_bricks"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.NETHER_BRICK_FOUNTAIN_SPOUT, Identifier.of("block/nether_bricks"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.RED_NETHER_BRICK_FOUNTAIN_SPOUT, Identifier.of("block/red_nether_bricks"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.BLACKSTONE_FOUNTAIN_SPOUT, Identifier.of("block/blackstone"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.ENDSTONE_FOUNTAIN_SPOUT, Identifier.of("block/end_stone"));
+        registerFountainSprout(blockStateModelGenerator, ModBlocks.PURPUR_FOUNTAIN_SPOUT, Identifier.of("block/purpur_block"));
 
         registerChimney(blockStateModelGenerator, ModBlocks.STONE_BRICK_CHIMNEY, Identifier.ofVanilla("block/stone_bricks"), ChimneyIntake.IRON);
         registerChimney(blockStateModelGenerator, ModBlocks.MOSSY_STONE_BRICK_CHIMNEY, Identifier.ofVanilla("block/mossy_stone_bricks"), ChimneyIntake.IRON);
@@ -932,14 +932,14 @@ public class ModModelProvider extends FabricModelProvider {
     public final void registerFountainSprout(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier breakParticle) {
         String blockNamespace = Registries.BLOCK.getId(block).getNamespace();
         String blockPath = Registries.BLOCK.getId(block).getPath();
-        String baseTexturePath = "block/fountain_sprout/" + blockPath;
+        String baseTexturePath = "block/fountain_spout/" + blockPath;
 
         TextureMap baseTextureMap = new TextureMap()
                 .put(TextureKey.ALL, Identifier.of(blockNamespace, baseTexturePath))
                 .put(TextureKey.PARTICLE, breakParticle);
 
-        Identifier baseModelId = ModModels.FOUNTAIN_SPROUT.upload(block, baseTextureMap, blockStateModelGenerator.modelCollector);
-        Identifier wallModelId = ModModels.FOUNTAIN_SPROUT_WALL.upload(block, baseTextureMap, blockStateModelGenerator.modelCollector);
+        Identifier baseModelId = ModModels.FOUNTAIN_SPOUT.upload(block, baseTextureMap, blockStateModelGenerator.modelCollector);
+        Identifier wallModelId = ModModels.FOUNTAIN_SPOUT_WALL.upload(block, baseTextureMap, blockStateModelGenerator.modelCollector);
 
         blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(block)
 

@@ -76,7 +76,7 @@ public class FallingLiquidBlock extends Block {
     private static boolean canStay(BlockState state, World world, BlockPos pos) {
         BlockPos posAbove = pos.up();
         BlockState blockStateAbove = world.getBlockState(posAbove);
-        return (blockStateAbove.getBlock() instanceof FountainSproutBlock || blockStateAbove.getBlock() instanceof FallingLiquidBlock) && blockStateAbove.get(CONTAINS) == state.get(CONTAINS);
+        return (blockStateAbove.getBlock() instanceof FountainSpoutBlock || blockStateAbove.getBlock() instanceof FallingLiquidBlock) && blockStateAbove.get(CONTAINS) == state.get(CONTAINS);
     }
 
     private ContainsBlock determineContains(World world, BlockPos pos) {

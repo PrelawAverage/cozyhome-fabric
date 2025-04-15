@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/fountain_spout/template_fountain_spout",
+  "textures": {
+    "all": "cozyhome:block/fountain_spout/red_sandstone_fountain_spout",
+    "particle": "minecraft:block/red_sandstone"
+  }
+}

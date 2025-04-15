@@ -6,11 +6,9 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import net.luckystudio.cozyhome.block.custom.AbstractSeatBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
-import net.luckystudio.cozyhome.components.ModDataComponents;
 import net.luckystudio.cozyhome.item.ModItems;
 import net.luckystudio.cozyhome.item.custom.CushionItem;
 import net.luckystudio.cozyhome.util.ModColorHandler;
-import net.luckystudio.cozyhome.util.ModScreenTexts;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.component.ComponentMap;
@@ -21,7 +19,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.screen.ScreenTexts;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
@@ -56,7 +53,6 @@ public class SofaBlock extends AbstractSeatBlock {
 
     private static final VoxelShape BASE_SHAPE = SofaBlock.createCuboidShape(0, 2, 0, 16, 8, 16);
     private final SofaBlock.SofaType type;
-    private static final Formatting TITLE_FORMATTING = Formatting.GRAY;
 
     public SofaBlock(SofaBlock.SofaType SofaType, Settings settings) {
         super(settings);
@@ -271,11 +267,11 @@ public class SofaBlock extends AbstractSeatBlock {
 
     @Override
     protected BlockState rotate(BlockState state, BlockRotation rotation) {
-        return state.with(ROTATION, Integer.valueOf(rotation.rotate((Integer)state.get(ROTATION), MAX_ROTATIONS)));
+        return state.with(ROTATION, rotation.rotate(state.get(ROTATION), MAX_ROTATIONS));
     }
 
     @Override
     protected BlockState mirror(BlockState state, BlockMirror mirror) {
-        return state.with(ROTATION, Integer.valueOf(mirror.mirror((Integer)state.get(ROTATION), MAX_ROTATIONS)));
+        return state.with(ROTATION, mirror.mirror(state.get(ROTATION), MAX_ROTATIONS));
     }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "cozyhome:block/fountain_spout/template_fountain_spout_wall",
+  "textures": {
+    "all": "cozyhome:block/fountain_spout/mossy_stone_brick_fountain_spout",
+    "particle": "minecraft:block/mossy_stone_bricks"
+  }
+}

@@ -11,7 +11,7 @@ public enum ModBlockTypes implements StringIdentifiable {
     CHIMNEY("chimney"),
     TABLE("table"),
     FOUNTAIN("fountain"),
-    FOUNTAIN_SPROUT("fountain_sprout"),
+    FOUNTAIN_SPOUT("fountain_spout"),
     LIQUID("liquid"),
     LARGE_STUMP("large_stump"),
     FLAT("flat"),
@@ -20,7 +20,6 @@ public enum ModBlockTypes implements StringIdentifiable {
     DRAWER("drawer"),
     DESK("desk"),
     WALL_MIRROR("wall_mirror"),
-    FAUCET("faucet"),
     SINK("sink"),
     BATHTUB("bathtub");
 

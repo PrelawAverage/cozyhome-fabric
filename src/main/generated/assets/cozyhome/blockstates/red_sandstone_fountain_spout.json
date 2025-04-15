@@ -1,0 +1,182 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "cozyhome:block/red_sandstone_fountain_spout"
+      },
+      "when": {
+        "face": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/red_sandstone_fountain_spout",
+        "x": 180
+      },
+      "when": {
+        "face": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/red_sandstone_fountain_spout_wall"
+      },
+      "when": {
+        "face": "wall",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/red_sandstone_fountain_spout_wall",
+        "y": 90
+      },
+      "when": {
+        "face": "wall",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/red_sandstone_fountain_spout_wall",
+        "y": 180
+      },
+      "when": {
+        "face": "wall",
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/red_sandstone_fountain_spout_wall",
+        "y": 270
+      },
+      "when": {
+        "face": "wall",
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/stream_water_dripping"
+      },
+      "when": {
+        "contains": "water",
+        "face": "wall",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/stream_water_dripping",
+        "y": 90
+      },
+      "when": {
+        "contains": "water",
+        "face": "wall",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/stream_water_dripping",
+        "y": 180
+      },
+      "when": {
+        "contains": "water",
+        "face": "wall",
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/stream_water_dripping",
+        "y": 270
+      },
+      "when": {
+        "contains": "water",
+        "face": "wall",
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/stream_lava_dripping"
+      },
+      "when": {
+        "contains": "lava",
+        "face": "wall",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/stream_lava_dripping",
+        "y": 90
+      },
+      "when": {
+        "contains": "lava",
+        "face": "wall",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/stream_lava_dripping",
+        "y": 180
+      },
+      "when": {
+        "contains": "lava",
+        "face": "wall",
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/stream_lava_dripping",
+        "y": 270
+      },
+      "when": {
+        "contains": "lava",
+        "face": "wall",
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/stream_water_falling"
+      },
+      "when": {
+        "contains": "water",
+        "face": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/stream_lava_falling"
+      },
+      "when": {
+        "contains": "lava",
+        "face": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/stream_water_landing"
+      },
+      "when": {
+        "contains": "water",
+        "has_under": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cozyhome:block/stream_lava_landing"
+      },
+      "when": {
+        "contains": "lava",
+        "has_under": "true"
+      }
+    }
+  ]
+}

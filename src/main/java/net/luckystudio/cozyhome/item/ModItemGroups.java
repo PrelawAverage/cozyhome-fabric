@@ -287,24 +287,24 @@ public class ModItemGroups {
                         entries.add(ModBlocks.PURPUR_FOUNTAIN);
 
                         // FOUNTAIN SPROUTS
-                        entries.add(ModBlocks.STONE_BRICK_FOUNTAIN_SPROUT);
-                        entries.add(ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN_SPROUT);
-                        entries.add(ModBlocks.GRANITE_FOUNTAIN_SPROUT);
-                        entries.add(ModBlocks.DIORITE_FOUNTAIN_SPROUT);
-                        entries.add(ModBlocks.ANDESITE_FOUNTAIN_SPROUT);
-                        entries.add(ModBlocks.DEEPSLATE_FOUNTAIN_SPROUT);
-                        entries.add(ModBlocks.CALCITE_FOUNTAIN_SPROUT);
-                        entries.add(ModBlocks.TUFF_FOUNTAIN_SPROUT);
-                        entries.add(ModBlocks.BRICK_FOUNTAIN_SPROUT);
-                        entries.add(ModBlocks.MUD_FOUNTAIN_SPROUT);
-                        entries.add(ModBlocks.SANDSTONE_FOUNTAIN_SPROUT);
-                        entries.add(ModBlocks.RED_SANDSTONE_FOUNTAIN_SPROUT);
-                        entries.add(ModBlocks.PRISMARINE_FOUNTAIN_SPROUT);
-                        entries.add(ModBlocks.NETHER_BRICK_FOUNTAIN_SPROUT);
-                        entries.add(ModBlocks.RED_NETHER_BRICK_FOUNTAIN_SPROUT);
-                        entries.add(ModBlocks.BLACKSTONE_FOUNTAIN_SPROUT);
-                        entries.add(ModBlocks.ENDSTONE_FOUNTAIN_SPROUT);
-                        entries.add(ModBlocks.PURPUR_FOUNTAIN_SPROUT);
+                        entries.add(ModBlocks.STONE_BRICK_FOUNTAIN_SPOUT);
+                        entries.add(ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN_SPOUT);
+                        entries.add(ModBlocks.GRANITE_FOUNTAIN_SPOUT);
+                        entries.add(ModBlocks.DIORITE_FOUNTAIN_SPOUT);
+                        entries.add(ModBlocks.ANDESITE_FOUNTAIN_SPOUT);
+                        entries.add(ModBlocks.DEEPSLATE_FOUNTAIN_SPOUT);
+                        entries.add(ModBlocks.CALCITE_FOUNTAIN_SPOUT);
+                        entries.add(ModBlocks.TUFF_FOUNTAIN_SPOUT);
+                        entries.add(ModBlocks.BRICK_FOUNTAIN_SPOUT);
+                        entries.add(ModBlocks.MUD_FOUNTAIN_SPOUT);
+                        entries.add(ModBlocks.SANDSTONE_FOUNTAIN_SPOUT);
+                        entries.add(ModBlocks.RED_SANDSTONE_FOUNTAIN_SPOUT);
+                        entries.add(ModBlocks.PRISMARINE_FOUNTAIN_SPOUT);
+                        entries.add(ModBlocks.NETHER_BRICK_FOUNTAIN_SPOUT);
+                        entries.add(ModBlocks.RED_NETHER_BRICK_FOUNTAIN_SPOUT);
+                        entries.add(ModBlocks.BLACKSTONE_FOUNTAIN_SPOUT);
+                        entries.add(ModBlocks.ENDSTONE_FOUNTAIN_SPOUT);
+                        entries.add(ModBlocks.PURPUR_FOUNTAIN_SPOUT);
 //
                         // CHIMNEYS
                         entries.add(ModBlocks.STONE_BRICK_CHIMNEY);

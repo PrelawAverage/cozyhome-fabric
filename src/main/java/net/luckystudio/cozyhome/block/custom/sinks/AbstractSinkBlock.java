@@ -1,11 +1,13 @@
 package net.luckystudio.cozyhome.block.custom.sinks;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.luckystudio.cozyhome.block.custom.bathtub.AbstractWaterHoldingBlockEntity;
 import net.luckystudio.cozyhome.block.custom.bathtub.SinkBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModBlockEntityTypes;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.WaterHoldingBlock;
+import net.luckystudio.cozyhome.util.ModScreenTexts;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -14,13 +16,17 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.particle.ParticleManager;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.PotionContentsComponent;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleType;
 import net.minecraft.potion.Potions;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.screen.ScreenTexts;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -136,7 +142,7 @@ public abstract class AbstractSinkBlock extends BlockWithEntity implements Water
     }
 
     // CARLOS IS GAY
-    public ItemActionResult toggleSwitch(BlockState state, World world, BlockPos pos, PlayerEntity player) {
+    private ItemActionResult toggleSwitch(BlockState state, World world, BlockPos pos, PlayerEntity player) {
         if (player.isSneaking()) {
             if (pullingDirection(state, world, pos) != null) {
                 world.setBlockState(pos, state.cycle(TRIGGERED), Block.NOTIFY_ALL);
@@ -243,6 +249,21 @@ public abstract class AbstractSinkBlock extends BlockWithEntity implements Water
         return null;
     }
 
+    // Handles entity effects based on the block’s fill state (LAVA, POWDER_SNOW, WATER)
+    @Override
+    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
+        ContainsBlock fillState = state.get(CONTAINS);
+
+        // If block contains lava, apply burn damage and set the entity on fire
+        if (fillState == ContainsBlock.LAVA && entity instanceof LivingEntity) {
+            entity.damage(world.getDamageSources().hotFloor(), 4.0F);
+            entity.setOnFireFor(3);
+        }
+
+        // Call the superclass method after handling custom effects
+        super.onSteppedOn(world, pos, state, entity);
+    }
+
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         super.randomDisplayTick(state, world, pos, random);
@@ -263,7 +284,18 @@ public abstract class AbstractSinkBlock extends BlockWithEntity implements Water
                     particleManager.addParticle((ParticleEffect) type, x, y, z, 0.0, 0.01, 0.0);
                 }
             }
+        }
+    }
 
+    @Override
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
+        super.appendTooltip(stack, context, tooltip, type);
+        tooltip.add(ScreenTexts.EMPTY);
+        tooltip.add(Text.translatable("tooltip.cozyhome.interact_with_hand_while_sneaking").formatted(Formatting.GRAY));
+        tooltip.add(ModScreenTexts.entry().append(Text.translatable("tooltip.cozyhome.toggle_switch")));
+        if (FabricLoader.getInstance().isModLoaded("supplementaries")) {
+            tooltip.add(Text.translatable("tooltip.cozyhome.interact_with_soup").formatted(Formatting.GRAY));
+            tooltip.add(ModScreenTexts.entry().append(Text.translatable("tooltip.cozyhome.add_bubbles")));
         }
     }
 }

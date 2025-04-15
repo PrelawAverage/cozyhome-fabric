@@ -1,7 +1,0 @@
-{
-  "parent": "cozyhome:block/fountain_sprout/template_fountain_sprout",
-  "textures": {
-    "all": "cozyhome:block/fountain_sprout/sandstone_fountain_sprout",
-    "particle": "minecraft:block/sandstone"
-  }
-}

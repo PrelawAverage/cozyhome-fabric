@@ -1,7 +1,0 @@
-{
-  "parent": "cozyhome:block/fountain_sprout/template_fountain_sprout_wall",
-  "textures": {
-    "all": "cozyhome:block/fountain_sprout/nether_brick_fountain_sprout",
-    "particle": "minecraft:block/nether_bricks"
-  }
-}
