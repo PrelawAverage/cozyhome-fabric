@@ -128,16 +128,6 @@ public class FountainBlock extends AbstractHorizontalConnectingBlock implements 
         }
     }
 
-    @Override
-    protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        super.randomTick(state, world, pos, random);
-        if (state.get(CONTAINS) == ContainsBlock.ICE) {
-            ModBlockUtilities.tryMelt(state, world, pos, state.with(CONTAINS, ContainsBlock.WATER));
-        } else if (state.get(CONTAINS) == ContainsBlock.WATER) {
-            ModBlockUtilities.tryFreezeWater(state, world, pos, state.with(CONTAINS, ContainsBlock.ICE));
-        }
-    }
-
     // Handles entity effects based on the block’s fill state (LAVA, POWDER_SNOW, WATER)
     @Override
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
@@ -164,7 +154,6 @@ public class FountainBlock extends AbstractHorizontalConnectingBlock implements 
         super.appendTooltip(stack, context, tooltip, options);
         tooltip.add(ScreenTexts.EMPTY);
         tooltip.add(Text.translatable("tooltip.cozyhome.block.can_hold").formatted(Formatting.GRAY));
-        tooltip.add(ModScreenTexts.entry().append(Text.translatable("block.minecraft.grass_block")));
         tooltip.add(ModScreenTexts.entry().append(Text.translatable("block.minecraft.water")));
         tooltip.add(ModScreenTexts.entry().append(Text.translatable("block.minecraft.lava")));
     }
@@ -181,6 +170,7 @@ public class FountainBlock extends AbstractHorizontalConnectingBlock implements 
         return super.onBreak(world, pos, state, player);
     }
 
+    // Spill out liquids when the block is destroyed
     private static void onBlockDestroyed(World world, BlockState state, BlockPos pos) {
             if (state.get(CONTAINS) == ContainsBlock.WATER) {
                 FluidState fluidState = Fluids.FLOWING_WATER.getDefaultState().with(Properties.LEVEL_1_8, 4);

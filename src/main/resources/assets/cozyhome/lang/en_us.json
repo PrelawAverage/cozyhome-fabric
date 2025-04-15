@@ -321,6 +321,7 @@
   "tooltip.cozyhome.block.can_hold": "Can Hold: ",
   "tooltip.cozyhome.dyeable": "§7Dyeable",
   "tooltip.cozyhome.applied_when_interacted_with": "Applied When Interacted With:",
+  "tooltip.cozyhome.pours_liquid_from_liquid_holding_blocks_into_others": "Pours Liquid From Liquid Holding Blocks Into Others",
 
   "tooltip.cozyhome.below": "Below",
   "tooltip.cozyhome.behind": "Behind",

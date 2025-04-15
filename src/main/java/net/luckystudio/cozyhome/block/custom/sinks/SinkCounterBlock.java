@@ -26,6 +26,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SinkCounterBlock extends AbstractSinkBlock implements WaterHoldingBlock {
@@ -89,40 +90,9 @@ public class SinkCounterBlock extends AbstractSinkBlock implements WaterHoldingB
     }
 
     @Override
-    public boolean hasLiquidToPull(BlockState state, World world, BlockPos pos) {
-        Direction facing = state.get(FACING);
-        BlockPos offsetPos = pos.offset(facing);
-        BlockState offsetState = world.getBlockState(offsetPos);
-
-        BlockPos downOffsetPos = pos.down();
-        BlockState downOffsetState = world.getBlockState(downOffsetPos);
-        return (downOffsetState.getFluidState().isIn(FluidTags.LAVA) || downOffsetState.getFluidState().isIn(FluidTags.WATER) ||
-                (downOffsetState.contains(Properties.WATERLOGGED) && downOffsetState.get(Properties.WATERLOGGED))) ||
-                (offsetState.getFluidState().isIn(FluidTags.LAVA) || offsetState.getFluidState().isIn(FluidTags.WATER) ||
-                (offsetState.contains(Properties.WATERLOGGED) && offsetState.get(Properties.WATERLOGGED)));
-    }
-
-    @Override
-    public ContainsBlock getLiquidToPull(BlockState state, World world, BlockPos pos) {
-        Direction facing = state.get(FACING);
-        BlockPos offsetPos = pos.offset(facing);
-        BlockState offsetState = world.getBlockState(offsetPos);
-
-        BlockPos downOffsetPos = pos.down();
-        BlockState downOffsetState = world.getBlockState(downOffsetPos);
-
-        if (offsetState.getFluidState().isOf(Fluids.WATER) || (offsetState.contains(Properties.WATERLOGGED) && offsetState.get(Properties.WATERLOGGED))) {
-            return ContainsBlock.WATER;
-        } else if (offsetState.getFluidState().isOf(Fluids.LAVA)) {
-            return ContainsBlock.LAVA;
-        }
-
-        if (downOffsetState.getFluidState().isIn(FluidTags.WATER) || (downOffsetState.contains(Properties.WATERLOGGED) && downOffsetState.get(Properties.WATERLOGGED))) {
-            return ContainsBlock.WATER;
-        } else if (downOffsetState.getFluidState().isOf(Fluids.LAVA)) {
-            return ContainsBlock.LAVA;
-        }
-
-        return ContainsBlock.NONE;
+    public List<Direction> getDirectionsToPull(BlockState state) {
+        List<Direction> directions = new ArrayList<>(super.getDirectionsToPull(state));
+        directions.add(Direction.DOWN);
+        return directions;
     }
 }

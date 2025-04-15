@@ -4,10 +4,8 @@ import net.minecraft.util.StringIdentifiable;
 
 public enum ContainsBlock implements StringIdentifiable {
     NONE("none"),
-    GRASS("grass"),
     WATER("water"),
-    LAVA("lava"),
-    ICE("ice");
+    LAVA("lava");
 
     private final String name;
 

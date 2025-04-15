@@ -1,22 +1,25 @@
 package net.luckystudio.cozyhome.block.custom.sinks;
 
+import net.luckystudio.cozyhome.block.custom.bathtub.AbstractWaterHoldingBlockEntity;
 import net.luckystudio.cozyhome.block.custom.bathtub.SinkBlockEntity;
 import net.luckystudio.cozyhome.block.util.ModBlockEntityTypes;
 import net.luckystudio.cozyhome.block.util.ModProperties;
 import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.WaterHoldingBlock;
-import net.luckystudio.cozyhome.util.ModSoundEvents;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.particle.ParticleManager;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.PotionContentsComponent;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
+import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleType;
 import net.minecraft.potion.Potions;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -29,10 +32,12 @@ import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public abstract class AbstractSinkBlock extends BlockWithEntity implements WaterHoldingBlock {
 
@@ -68,6 +73,11 @@ public abstract class AbstractSinkBlock extends BlockWithEntity implements Water
         ContainsBlock contents = state.get(CONTAINS);
         int level = state.get(LEVEL);
 
+        // --- 0. Check if the block has water and the item is a soup ---
+        if (WaterHoldingBlock.trySoup(item, world, pos, player, hand, contents)) {
+            return ItemActionResult.SUCCESS;
+        }
+
         // --- 1. Filling a bucket from a full block ---
         if (item == Items.BUCKET && level == 3 && contents != ContainsBlock.NONE) {
             ItemStack filledBucket = contents == ContainsBlock.WATER ? new ItemStack(Items.WATER_BUCKET) : new ItemStack(Items.LAVA_BUCKET);
@@ -84,7 +94,7 @@ public abstract class AbstractSinkBlock extends BlockWithEntity implements Water
         // --- 2. Pouring water/lava bucket into the block ---
         if ((item == Items.WATER_BUCKET || item == Items.LAVA_BUCKET) && level < 3) {
             ContainsBlock newContents = item == Items.WATER_BUCKET ? ContainsBlock.WATER : ContainsBlock.LAVA;
-            SoundEvent soundEvent = contents == ContainsBlock.WATER ? SoundEvents.ITEM_BUCKET_EMPTY : SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
+            SoundEvent soundEvent = newContents == ContainsBlock.WATER ? SoundEvents.ITEM_BUCKET_EMPTY : SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
             player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.BUCKET)));
             player.incrementStat(Stats.FILL_CAULDRON);
             player.incrementStat(Stats.USED.getOrCreateStat(item));
@@ -95,13 +105,13 @@ public abstract class AbstractSinkBlock extends BlockWithEntity implements Water
         }
 
         // --- 3. Using a water bottle to fill the block ---
-        if (item == Items.POTION && contents == ContainsBlock.WATER && level < 3) {
+        if (item == Items.POTION && ((contents == ContainsBlock.WATER && level < 3) || contents == ContainsBlock.NONE)) {
             PotionContentsComponent potionContentsComponent = stack.get(DataComponentTypes.POTION_CONTENTS);
             if (potionContentsComponent != null && potionContentsComponent.matches(Potions.WATER)) {
                 player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.GLASS_BOTTLE)));
                 player.incrementStat(Stats.USE_CAULDRON);
                 player.incrementStat(Stats.USED.getOrCreateStat(item));
-                world.setBlockState(pos, state.with(LEVEL, level + 1), 3);
+                world.setBlockState(pos, state.with(LEVEL, level + 1).with(CONTAINS, ContainsBlock.WATER), 3);
                 world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 world.emitGameEvent(null, GameEvent.FLUID_PLACE, pos);
                 return ItemActionResult.SUCCESS;
@@ -112,10 +122,12 @@ public abstract class AbstractSinkBlock extends BlockWithEntity implements Water
 
         // --- 4. Filling a bottle from the block ---
         if (item == Items.GLASS_BOTTLE && contents == ContainsBlock.WATER && level > 0) {
+            int newLevel = level - 1;
+            ContainsBlock newContents = newLevel == 0 ? ContainsBlock.NONE : contents;
             player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, PotionContentsComponent.createStack(Items.POTION, Potions.WATER)));
             player.incrementStat(Stats.USE_CAULDRON);
             player.incrementStat(Stats.USED.getOrCreateStat(item));
-            world.setBlockState(pos, state.with(LEVEL, level - 1), 3);
+            world.setBlockState(pos, state.with(LEVEL, level - 1).with(CONTAINS, newContents), 3);
             world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
             world.emitGameEvent(null, GameEvent.FLUID_PICKUP, pos);
             return ItemActionResult.SUCCESS;
@@ -123,10 +135,10 @@ public abstract class AbstractSinkBlock extends BlockWithEntity implements Water
         return toggleSwitch(state, world, pos, player);
     }
 
-
-    private ItemActionResult toggleSwitch(BlockState state, World world, BlockPos pos, PlayerEntity player) {
+    // CARLOS IS GAY
+    public ItemActionResult toggleSwitch(BlockState state, World world, BlockPos pos, PlayerEntity player) {
         if (player.isSneaking()) {
-            if (hasLiquidToPull(state, world, pos)) {
+            if (pullingDirection(state, world, pos) != null) {
                 world.setBlockState(pos, state.cycle(TRIGGERED), Block.NOTIFY_ALL);
             } else {
                 player.sendMessage(Text.translatable("message.cozyhome.needs_liquid"), true);
@@ -136,27 +148,10 @@ public abstract class AbstractSinkBlock extends BlockWithEntity implements Water
         return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
-    private void togglePower(BlockState state, World world, BlockPos pos, @Nullable PlayerEntity player) {
-        state = state.cycle(TRIGGERED);
-        world.setBlockState(pos, state, 3);
-        this.updateNeighbors(world, pos);
-        playClickSound(player, world, pos, state);
-        world.emitGameEvent(player, state.get(TRIGGERED) ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, pos);
-    }
-
-    protected static void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, BlockState state) {
-        float f = state.get(TRIGGERED) ? 1.0F : 0.8F;
-        world.playSound(player, pos, ModSoundEvents.SINK_TOGGLE, SoundCategory.BLOCKS, 0.3F, f);
-    }
-
-    private void updateNeighbors(World world, BlockPos pos) {
-        world.updateNeighborsAlways(pos, this);
-    }
-
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return state.get(TRIGGERED) ? validateTicker(type, ModBlockEntityTypes.SINK_BLOCK_ENTITY, SinkBlockEntity::tick) : null;
+        return validateTicker(type, ModBlockEntityTypes.SINK_BLOCK_ENTITY, SinkBlockEntity::tick);
     }
 
     @Override
@@ -189,41 +184,37 @@ public abstract class AbstractSinkBlock extends BlockWithEntity implements Water
     }
 
     @Override
-    public boolean hasLiquidToPull(BlockState state, World world, BlockPos pos) {
-        Direction facing = state.get(FACING);
-        BlockPos offsetPos = pos.offset(facing);
-        BlockState offsetState = world.getBlockState(offsetPos);
-        return offsetState.getFluidState().isIn(FluidTags.LAVA) ||
-                offsetState.getFluidState().isIn(FluidTags.WATER) ||
-                (offsetState.contains(Properties.WATERLOGGED) && offsetState.get(Properties.WATERLOGGED));
-    }
-
-    @Override
-    public ContainsBlock getLiquidToPull(BlockState state, World world, BlockPos pos) {
-        Direction facing = state.get(FACING);
-        BlockPos offsetPos = pos.offset(facing);
-        BlockState offsetState = world.getBlockState(offsetPos);
-        FluidState fluid = offsetState.getFluidState();
-
-        if (fluid.isOf(Fluids.WATER) || (offsetState.contains(Properties.WATERLOGGED) && offsetState.get(Properties.WATERLOGGED))) {
-            return ContainsBlock.WATER;
-        } else if (fluid.isOf(Fluids.LAVA)) {
-            return ContainsBlock.LAVA;
-        }
-
-        return ContainsBlock.NONE;
-    }
-
-    @Override
     public boolean isFull(BlockState state) {
         return state.get(LEVEL) == 3;
     }
 
     @Override
-    public void addLiquid(BlockState state, World world, BlockPos pos, ContainsBlock contains) {
+    public void addLiquid(BlockState state, World world, BlockPos pos, BlockState pullState, Direction pullDirection) {
         int level = state.get(LEVEL);
         int newLevel = Math.min(3, level + 1); // ensures level never goes above 2
-        world.setBlockState(pos, state.with(LEVEL, newLevel).with(CONTAINS, contains), 3);
+        ContainsBlock contains;
+        if (pullState.getFluidState().isIn(FluidTags.WATER) || pullState.contains(Properties.WATERLOGGED) && pullState.get(Properties.WATERLOGGED)) {
+            contains = ContainsBlock.WATER;
+            world.setBlockState(pos, state.with(LEVEL, newLevel).with(CONTAINS, contains), 3);
+            return;
+        }
+        if (pullState.getFluidState().isIn(FluidTags.LAVA)) {
+            world.setBlockState(pos.offset(pullDirection), Blocks.AIR.getDefaultState(), 3);
+            contains = ContainsBlock.LAVA;
+            world.setBlockState(pos, state.with(LEVEL, 3).with(CONTAINS, contains), 3);
+            return;
+        }
+        if (pullState.getBlock() == Blocks.WATER_CAULDRON) {
+            LeveledCauldronBlock.decrementFluidLevel(pullState, world, pos.offset(pullDirection));
+            contains = ContainsBlock.WATER;
+            world.setBlockState(pos, state.with(LEVEL, newLevel).with(CONTAINS, contains), 3);
+            return;
+        }
+        if (pullState.getBlock() == Blocks.LAVA_CAULDRON) {
+            world.setBlockState(pos.offset(pullDirection), Blocks.CAULDRON.getDefaultState(), 3);
+            contains = ContainsBlock.LAVA;
+            world.setBlockState(pos, state.with(LEVEL, 3).with(CONTAINS, contains), 3);
+        }
     }
 
     @Override
@@ -232,5 +223,47 @@ public abstract class AbstractSinkBlock extends BlockWithEntity implements Water
         int newLevel = Math.max(0, level - 1); // ensures level never goes below 0
         ContainsBlock contains = newLevel == 0 ? ContainsBlock.NONE : state.get(CONTAINS);
         world.setBlockState(pos, state.with(LEVEL, newLevel).with(CONTAINS, contains), 3);
+    }
+
+    @Override
+    public List<Direction> getDirectionsToPull(BlockState state) {
+        Direction behind = state.get(FACING);
+        return List.of(behind);
+    }
+
+    @Override
+    public Direction pullingDirection(BlockState state, World world, BlockPos pos) {
+        for (Direction direction : getDirectionsToPull(state)) {
+            BlockPos offsetPos = pos.offset(direction);
+            BlockState offsetState = world.getBlockState(offsetPos);
+            if (offsetState.getFluidState().isIn(FluidTags.WATER) || offsetState.getFluidState().isIn(FluidTags.LAVA) || offsetState.getBlock() == Blocks.WATER_CAULDRON || offsetState.getBlock() == Blocks.LAVA_CAULDRON) {
+                return direction;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        super.randomDisplayTick(state, world, pos, random);
+        if (world.getBlockEntity(pos) instanceof AbstractWaterHoldingBlockEntity blockEntity) {
+            if (world.isClient && blockEntity.soupTime > 0) {
+                MinecraftClient client = MinecraftClient.getInstance();
+                ParticleManager particleManager = client.particleManager;
+
+                // The particle ID (e.g. "supplementaries:suds") — must be registered with a factory!
+                Identifier id = Identifier.of("supplementaries", "suds");
+                ParticleType<?> type = Registries.PARTICLE_TYPE.get(id);
+
+                if (type != null) {
+                    double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.3;
+                    double y = pos.getY() + getLiquidLevelHeight(state);
+                    double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.3;
+
+                    particleManager.addParticle((ParticleEffect) type, x, y, z, 0.0, 0.01, 0.0);
+                }
+            }
+
+        }
     }
 }

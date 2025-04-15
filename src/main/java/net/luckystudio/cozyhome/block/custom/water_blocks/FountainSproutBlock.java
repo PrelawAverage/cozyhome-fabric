@@ -10,13 +10,19 @@ import net.minecraft.block.*;
 import net.minecraft.block.enums.BlockFace;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.screen.ScreenTexts;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -25,6 +31,8 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
+
+import java.util.List;
 
 public class FountainSproutBlock extends WallMountedBlock {
     public static final MapCodec<FountainSproutBlock> CODEC = createCodec(FountainSproutBlock::new);
@@ -76,7 +84,7 @@ public class FountainSproutBlock extends WallMountedBlock {
         super.onBlockAdded(state, world, pos, oldState, notify); // Call super first
         world.setBlockState(pos, state
                 .with(CONTAINS, determineContains(state, world, pos))
-                .with(HAS_UNDER, hasUnder(world, pos)));
+                .with(HAS_UNDER, hasUnder(state, world, pos)));
         world.scheduleBlockTick(pos, this, 10); // Schedule the tick
     }
 
@@ -104,7 +112,7 @@ public class FountainSproutBlock extends WallMountedBlock {
     protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         world.scheduleBlockTick(pos, this, 20);
         if (getDirection(state).getOpposite() == direction && !state.canPlaceAt(world, pos)) return Blocks.AIR.getDefaultState();
-        return state.with(CONTAINS, determineContains(state, world, pos)).with(HAS_UNDER, hasUnder(world, pos));
+        return state.with(CONTAINS, determineContains(state, world, pos)).with(HAS_UNDER, hasUnder(state, world, pos));
     }
 
     private ContainsBlock determineContains(BlockState state, WorldAccess world, BlockPos pos) {
@@ -128,53 +136,89 @@ public class FountainSproutBlock extends WallMountedBlock {
         return targetState.getBlock() instanceof FountainBlock;
     }
 
-    private boolean hasUnder(WorldAccess world, BlockPos pos) {
+    private boolean hasUnder(BlockState state, WorldAccess world, BlockPos pos) {
         BlockPos posBelow = pos.down();
         BlockState blockStateBelow = world.getBlockState(posBelow);
-        return blockStateBelow.isSideSolidFullSquare(world, pos, Direction.UP);
+        return state.get(FACE) != BlockFace.FLOOR || blockStateBelow.isSideSolidFullSquare(world, pos, Direction.UP) || blockStateBelow.getBlock() instanceof FountainBlock;
     }
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        // Check if the block can see the sky and spawn smoke particles if block contains lava
-        if (state.get(HAS_UNDER)) {
-            if (state.get(CONTAINS) == ContainsBlock.LAVA) {
-                world.addParticle(ParticleTypes.SMOKE,
-                        false,
-                        pos.getX() + 0.5,
-                        pos.getY() + 0.1,
-                        pos.getZ() + 0.5,
-                        0,
-                        0,
-                        0);
+        ContainsBlock contents = state.get(CONTAINS);
+        boolean isFloor = state.get(FACE) == BlockFace.FLOOR;
+        boolean hasUnder = state.get(HAS_UNDER);
+        double x = pos.getX() + 0.5;
+        double y = pos.getY() + 0.1;
+        double z = pos.getZ() + 0.5;
+
+        if (isFloor) {
+            switch (contents) {
+                case LAVA -> world.addParticle(ParticleTypes.LAVA, false, x, y, z, 0, 0, 0);
+                case WATER -> {
+                    world.addParticle(ParticleTypes.CLOUD, false, x, y, z, 0, 0.1, 0);
+                    world.addParticle(ParticleTypes.SPLASH, false, x, pos.getY() + 2.1, z, 0, 0.1, 0);
+                }
             }
-            if (state.get(CONTAINS) == ContainsBlock.WATER) {
-                world.playSound(null, pos, ModSoundEvents.LIGHT_WATER_FLOW, SoundCategory.AMBIENT, 0.1f, 1);
-                world.addParticle(ParticleTypes.CLOUD,
-                        false,
-                        pos.getX() + 0.5,
-                        pos.getY() + 0.1,
-                        pos.getZ() + 0.5,
-                        0,
-                        0,
-                        0);
-                world.addParticle(ParticleTypes.SPLASH,
-                        false,
-                        pos.getX() + 0.5,
-                        pos.getY() + 0.1,
-                        pos.getZ() + 0.5,
-                        0,
-                        0,
-                        0);
+        } else if (hasUnder) {
+            switch (contents) {
+                case LAVA -> world.addParticle(ParticleTypes.SMOKE, false, x, y, z, 0, 0, 0);
+                case WATER -> {
+                    world.playSound(null, pos, ModSoundEvents.LIGHT_WATER_FLOW, SoundCategory.AMBIENT, 0.1f, 1);
+                    world.addParticle(ParticleTypes.CLOUD, false, x, y, z, 0, 0, 0);
+                    world.addParticle(ParticleTypes.SPLASH, false, x, y, z, 0, 0, 0);
+                }
             }
         }
     }
 
     @Override
     protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!ModBlockUtilities.isEntityObstructing(world, pos) && ModBlockUtilities.canPlaceBelow(world, pos) && state.get(CONTAINS) != ContainsBlock.NONE) {
+        BlockPos posBehind = pos.offset(getDirection(state).getOpposite());
+        BlockState stateBehind = world.getBlockState(posBehind);
+
+        BlockPos posBelow = pos.down();
+        BlockState stateBelow = world.getBlockState(posBelow);
+
+        ContainsBlock contains = state.get(CONTAINS);
+
+        // Attempt to transfer liquid
+        if (contains != ContainsBlock.NONE && canPullLiquid(stateBehind) && canPourLiquidBelow(stateBelow)) {
+
+            // Pour into block below
+            if (stateBelow.getBlock() instanceof FountainBlock) {
+                world.setBlockState(posBelow, stateBelow.with(CONTAINS, contains), 3);
+            } else if (stateBelow.isOf(Blocks.CAULDRON)) {
+                BlockState filledCauldron = contains == ContainsBlock.WATER
+                        ? Blocks.WATER_CAULDRON.getDefaultState().with(Properties.LEVEL_3, 3)
+                        : Blocks.LAVA_CAULDRON.getDefaultState();
+                world.setBlockState(posBelow, filledCauldron, 3);
+            }
+
+            // Empty source behind
+            if (stateBehind.getBlock() instanceof FountainBlock) {
+                world.setBlockState(posBehind, stateBehind.with(CONTAINS, ContainsBlock.NONE), 3);
+            } else if (stateBehind.isOf(Blocks.WATER_CAULDRON) || stateBehind.isOf(Blocks.LAVA_CAULDRON)) {
+                world.setBlockState(posBehind, Blocks.CAULDRON.getDefaultState(), 3);
+            }
+
+        } else if (!ModBlockUtilities.isEntityObstructing(world, pos)
+                && ModBlockUtilities.canPlaceBelow(world, pos)
+                && contains != ContainsBlock.NONE) {
             elongate(world, pos);
         }
+    }
+
+    private boolean canPullLiquid(BlockState state) {
+        Block block = state.getBlock();
+        return block instanceof FountainBlock
+                || (block == Blocks.WATER_CAULDRON && state.get(Properties.LEVEL_3) == 3)
+                || block == Blocks.LAVA_CAULDRON;
+    }
+
+    private boolean canPourLiquidBelow(BlockState state) {
+        Block block = state.getBlock();
+        return (block instanceof FountainBlock && state.get(CONTAINS) == ContainsBlock.NONE)
+                || block == Blocks.CAULDRON;
     }
 
     @Override
@@ -189,6 +233,13 @@ public class FountainSproutBlock extends WallMountedBlock {
             }
         }
         super.onEntityCollision(state, world, pos, entity);
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
+        super.appendTooltip(stack, context, tooltip, options);
+        tooltip.add(ScreenTexts.EMPTY);
+        tooltip.add(Text.translatable("tooltip.cozyhome.pours_liquid_from_liquid_holding_blocks_into_others").formatted(Formatting.GRAY));
     }
 }
 
