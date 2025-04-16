@@ -121,7 +121,7 @@ public abstract class AbstractSinkBlock extends BlockWithEntity implements Water
                 world.emitGameEvent(null, GameEvent.FLUID_PLACE, pos);
                 return ItemActionResult.SUCCESS;
             } else {
-                return toggleSwitch(state, world, pos, player);
+                return WaterHoldingBlock.toggleSwitch(state, world, pos, player);
             }
         }
 
@@ -137,21 +137,10 @@ public abstract class AbstractSinkBlock extends BlockWithEntity implements Water
             world.emitGameEvent(null, GameEvent.FLUID_PICKUP, pos);
             return ItemActionResult.SUCCESS;
         }
-        return toggleSwitch(state, world, pos, player);
+        return WaterHoldingBlock.toggleSwitch(state, world, pos, player);
     }
 
     // CARLOS IS GAY
-    private ItemActionResult toggleSwitch(BlockState state, World world, BlockPos pos, PlayerEntity player) {
-        if (player.isSneaking()) {
-            if (pullingDirection(state, world, pos) != null) {
-                world.setBlockState(pos, state.cycle(TRIGGERED), Block.NOTIFY_ALL);
-            } else {
-                player.sendMessage(Text.translatable("message.cozyhome.needs_liquid"), true);
-            }
-            return ItemActionResult.SUCCESS;
-        }
-        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-    }
 
     @Nullable
     @Override

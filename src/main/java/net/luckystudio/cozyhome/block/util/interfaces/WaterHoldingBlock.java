@@ -2,14 +2,17 @@ package net.luckystudio.cozyhome.block.util.interfaces;
 
 import net.luckystudio.cozyhome.block.custom.water_holding_blocks.AbstractWaterHoldingBlockEntity;
 import net.luckystudio.cozyhome.block.util.enums.ContainsBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemUsage;
 import net.minecraft.registry.Registries;
+import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
@@ -44,5 +47,17 @@ public interface WaterHoldingBlock {
             }
         }
         return false;
+    }
+
+    static ItemActionResult toggleSwitch(BlockState state, World world, BlockPos pos, PlayerEntity player) {
+        if (!(state.getBlock() instanceof WaterHoldingBlock waterHoldingBlock)) return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+
+        if (!player.isSneaking()) return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        if (state.get(Properties.TRIGGERED) || (waterHoldingBlock.pullingDirection(state, world, pos) != null && !waterHoldingBlock.isFull(state))) {
+            world.setBlockState(pos, state.cycle(Properties.TRIGGERED), Block.NOTIFY_ALL);
+        }
+
+        player.sendMessage(Text.translatable("message.cozyhome.needs_liquid"), true);
+        return ItemActionResult.SUCCESS;
     }
 }

@@ -195,7 +195,9 @@ public class BathTubBlock extends BlockWithEntity implements Waterloggable, Seat
         int level = state.get(LEVEL);
 
         if (player.shouldCancelInteraction()) {
-            return toggleSwitch(state, world, pos, player);
+            BlockState stateToRun = state.get(PART) == DoubleLongPart.BACK ? state : getOtherPartState(state, world, pos);
+            BlockPos posToRun = state.get(PART) == DoubleLongPart.BACK ? pos : getOtherPartPos(state, pos);
+            return WaterHoldingBlock.toggleSwitch(stateToRun, world, posToRun, player);
         }
 
         // --- 0. Check if the block has water and the item is a soup ---
@@ -242,20 +244,6 @@ public class BathTubBlock extends BlockWithEntity implements Waterloggable, Seat
             return ItemActionResult.SUCCESS;
         }
         return SeatBlock.sitDown(state, world, pos, player);
-    }
-
-    public ItemActionResult toggleSwitch(BlockState state, World world, BlockPos pos, PlayerEntity player) {
-        if (player.isSneaking()) {
-            BlockState stateToRun = state.get(PART) == DoubleLongPart.BACK ? state : getOtherPartState(state, world, pos);
-            BlockPos posToRun = state.get(PART) == DoubleLongPart.BACK ? pos : getOtherPartPos(state, pos);
-            if (pullingDirection(stateToRun, world, posToRun) != null) {
-                world.setBlockState(posToRun, stateToRun.cycle(TRIGGERED), Block.NOTIFY_ALL);
-            } else {
-                player.sendMessage(Text.translatable("message.cozyhome.needs_liquid"), true);
-            }
-            return ItemActionResult.SUCCESS;
-        }
-        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     @Nullable

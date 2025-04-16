@@ -35,65 +35,65 @@ public class AbstractWaterHoldingBlockEntity extends BlockEntity {
     }
 
     public static void tick(World world, BlockPos blockPos, BlockState state, AbstractWaterHoldingBlockEntity blockEntity) {
+
+        // Handle soup time
         if (blockEntity.soupTime > 0) {
             if (state.get(ModProperties.CONTAINS) != ContainsBlock.WATER) blockEntity.soupTime = 0;
             blockEntity.soupTime--;
         }
 
-        if (state.get(Properties.TRIGGERED)) {
-            if (state.getBlock() instanceof WaterHoldingBlock waterHoldingBlock) {
-                Direction pullDirection = waterHoldingBlock.pullingDirection(state, world, blockPos);
+        // If the block is not triggered, or if it's not a water holding block, return to stop the tick
+        if (!state.get(Properties.TRIGGERED) && !(state.getBlock() instanceof WaterHoldingBlock)) return;
 
-                // Turn off the trigger if the block has no liquid to pull
-                if (pullDirection == null || waterHoldingBlock.isFull(state)) {
-                    world.setBlockState(blockPos, state.with(Properties.TRIGGERED, false), 3);
-                    return;
-                }
+        WaterHoldingBlock waterHoldingBlock = (WaterHoldingBlock) state.getBlock();
 
-                // Determine the liquid we should be pulling
-                BlockPos pullPos = blockPos.offset(pullDirection);
-                BlockState pullState = world.getBlockState(pullPos);
-                ContainsBlock pullingLiquid;
-                if (pullState.getFluidState().isIn(FluidTags.WATER) || pullState.contains(Properties.WATERLOGGED) && pullState.get(Properties.WATERLOGGED) || pullState.getBlock() == Blocks.WATER_CAULDRON) {
-                    pullingLiquid = ContainsBlock.WATER;
-                } else if (pullState.getFluidState().isIn(FluidTags.LAVA) || pullState.getBlock() == Blocks.LAVA_CAULDRON) {
-                    pullingLiquid = ContainsBlock.LAVA;
-                }else {
-                    pullingLiquid = ContainsBlock.NONE;
-                }
+        Direction pullDirection = waterHoldingBlock.pullingDirection(state, world, blockPos);
 
-                // Choose the correct particles
-                ParticleEffect dripParticle;
-                ParticleEffect splashParticle;
-
-                if (pullingLiquid == ContainsBlock.WATER) {
-                    dripParticle = ParticleTypes.FALLING_DRIPSTONE_WATER;
-                    splashParticle = ParticleTypes.SPLASH;
-                } else {
-                    dripParticle = ParticleTypes.FALLING_LAVA;
-                    splashParticle = ParticleTypes.LANDING_LAVA;
-                }
-
-                // Particle positions
-                double faucetHeight = state.getBlock() instanceof AbstractSinkBlock ? 0.6 : 0.4875; // Adjust this value to change the height of the faucet
-                Vec3d centerTop = Vec3d.ofCenter(blockPos).add(0.0, faucetHeight, 0.0);
-                Vec3d center = Vec3d.ofCenter(blockPos).add(blockPos.getX() + 0.5, blockPos.getY() + waterHoldingBlock.getLiquidLevelHeight(state), blockPos.getZ() + 0.5);
-
-                // Spawn particles
-                world.addParticle(dripParticle, centerTop.x, centerTop.y, centerTop.z, 0.0, 0.0, 0.0);
-                world.addParticle(splashParticle, center.x, center.y, center.z, 0.0, 0.0, 0.0);
-
-                // Update timer and level
-                blockEntity.timer++;
-
-                if (blockEntity.timer >= 20) {
-                    blockEntity.timer = 0; // Reset timer
-
-                    // Increase LEVEL if it's not at max (2)
-                    waterHoldingBlock.addLiquid(state, world, blockPos, pullState, pullDirection);
-                }
-            }
+        // Turn off the trigger if the block has no liquid to pull or the block is full
+        if (pullDirection == null || waterHoldingBlock.isFull(state)) {
+            world.setBlockState(blockPos, state.with(Properties.TRIGGERED, false), 3);
+            return;
         }
+
+        // Determine the liquid we should be pulling
+        BlockPos pullPos = blockPos.offset(pullDirection);
+        BlockState pullState = world.getBlockState(pullPos);
+        ContainsBlock pullingLiquid;
+        if (pullState.getFluidState().isIn(FluidTags.WATER) || pullState.contains(Properties.WATERLOGGED) && pullState.get(Properties.WATERLOGGED) || pullState.getBlock() == Blocks.WATER_CAULDRON) {
+            pullingLiquid = ContainsBlock.WATER;
+        } else if (pullState.getFluidState().isIn(FluidTags.LAVA) || pullState.getBlock() == Blocks.LAVA_CAULDRON) {
+            pullingLiquid = ContainsBlock.LAVA;
+        }else {
+            pullingLiquid = ContainsBlock.NONE;
+        }
+
+        // Choose the correct particles
+        ParticleEffect dripParticle;
+        ParticleEffect splashParticle;
+
+        if (pullingLiquid == ContainsBlock.WATER) {
+            dripParticle = ParticleTypes.FALLING_DRIPSTONE_WATER;
+            splashParticle = ParticleTypes.SPLASH;
+        } else {
+            dripParticle = ParticleTypes.FALLING_LAVA;
+            splashParticle = ParticleTypes.LANDING_LAVA;
+        }
+
+        // Particle positions
+        double faucetHeight = state.getBlock() instanceof AbstractSinkBlock ? 0.6 : 0.4875; // Adjust this value to change the height of the faucet
+        Vec3d centerTop = Vec3d.ofCenter(blockPos).add(0.0, faucetHeight, 0.0);
+        Vec3d center = Vec3d.ofCenter(blockPos).add(blockPos.getX() + 0.5, blockPos.getY() + waterHoldingBlock.getLiquidLevelHeight(state), blockPos.getZ() + 0.5);
+
+        // Spawn particles
+        world.addParticle(dripParticle, centerTop.x, centerTop.y, centerTop.z, 0.0, 0.0, 0.0);
+        world.addParticle(splashParticle, center.x, center.y, center.z, 0.0, 0.0, 0.0);
+
+        // Update timer and level
+        blockEntity.timer++;
+
+        if (blockEntity.timer < 20) return;
+        waterHoldingBlock.addLiquid(state, world, blockPos, pullState, pullDirection);
+        blockEntity.timer = 0; // Reset timer
     }
 
     @Override
