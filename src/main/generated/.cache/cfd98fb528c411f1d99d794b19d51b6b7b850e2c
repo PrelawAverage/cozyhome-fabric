@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-22T18:53:20.3868901	Cozy Home/Block Loot Tables
+// 1.21.1	2025-05-04T00:02:40.0536489	Cozy Home/Block Loot Tables
 4d6ab4f3c2f7c9bc2f00fbb919dd36c0d0ed39f7 data\cozyhome\loot_table\blocks\dark_oak_wall_mirror.json
 f17976ea3cac6639c9db1b8284fa8600696beaa4 data\cozyhome\loot_table\blocks\mud_fountain_spout.json
 2c97a9052bd08b05505921986c05b7dc88ce199e data\cozyhome\loot_table\blocks\warped_wall_clock.json
@@ -230,8 +230,8 @@ b957ac19ee6b125345c20b87223f68c472b27eaf data\cozyhome\loot_table\blocks\granite
 ba72dbd7127781de003e5b5debdad749f6984e8e data\cozyhome\loot_table\blocks\oak_chair.json
 1cc55f997dca9d9b7d5907472ecd7f7d212a4dd7 data\cozyhome\loot_table\blocks\mangrove_desk.json
 913e473cc59734ae4183d41e8590cdaf3d69b059 data\cozyhome\loot_table\blocks\endstone_chimney.json
-709d4056044d4a435a757e5c39e43ee55a705651 data\cozyhome\loot_table\blocks\bamboo_sofa.json
 af1b1cd3bc925500e6cc7efd58e237ad1e47e39a data\cozyhome\loot_table\blocks\cherry_sink_counter.json
+709d4056044d4a435a757e5c39e43ee55a705651 data\cozyhome\loot_table\blocks\bamboo_sofa.json
 64b1a26ae3f6ad2e6211f89b5362a632a2f38b4c data\cozyhome\loot_table\blocks\oak_desk.json
 9908a85f190fac8e102ca7d927341d91d6c9b0ce data\cozyhome\loot_table\blocks\oak_wall_mirror.json
 3c165f6b0ebeb7e879948f278cd38e96659bba39 data\cozyhome\loot_table\blocks\red_nether_brick_sink.json

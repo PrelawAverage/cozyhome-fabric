@@ -224,10 +224,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public static void offerSinkRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2) {
         ShapedRecipeJsonBuilder.create(
                         RecipeCategory.BUILDING_BLOCKS,
-                        output, 3)
-                .pattern("###")
-                .pattern("#@#")
-                .pattern("###")
+                        output, 1)
+                .pattern("@")
+                .pattern("#")
                 .input('@', input1)
                 .input('#', input2)
                 .criterion(hasItem(input2), conditionsFromItem(input2))
@@ -238,10 +237,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public static void offerBathtubRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2) {
         ShapedRecipeJsonBuilder.create(
                         RecipeCategory.BUILDING_BLOCKS,
-                        output, 3)
-                .pattern("###")
-                .pattern("#@#")
-                .pattern("###")
+                        output, 1)
+                .pattern("@ ")
+                .pattern("##")
                 .input('@', input1)
                 .input('#', input2)
                 .criterion(hasItem(input2), conditionsFromItem(input2))
@@ -522,6 +520,28 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerSinkRecipe(exporter, ModBlocks.PURPUR_SINK, Items.IRON_NUGGET, Blocks.PURPUR_BLOCK);
         offerSinkRecipe(exporter, ModBlocks.IRON_SINK, Items.IRON_NUGGET, Blocks.IRON_BARS);
         offerSinkRecipe(exporter, ModBlocks.GOLD_SINK, Items.GOLD_NUGGET, Blocks.GOLD_BLOCK);
+
+        // Bathtubs
+        offerBathtubRecipe(exporter, ModBlocks.STONE_BRICK_BATHTUB, Items.IRON_NUGGET, Blocks.STONE_BRICKS);
+        offerBathtubRecipe(exporter, ModBlocks.MOSSY_STONE_BRICK_BATHTUB, Items.IRON_NUGGET, Blocks.MOSSY_STONE_BRICKS);
+        offerBathtubRecipe(exporter, ModBlocks.GRANITE_BATHTUB, Items.IRON_NUGGET, Blocks.POLISHED_GRANITE);
+        offerBathtubRecipe(exporter, ModBlocks.DIORITE_BATHTUB, Items.IRON_NUGGET, Blocks.POLISHED_DIORITE);
+        offerBathtubRecipe(exporter, ModBlocks.ANDESITE_BATHTUB, Items.IRON_NUGGET, Blocks.POLISHED_ANDESITE);
+        offerBathtubRecipe(exporter, ModBlocks.DEEPSLATE_BATHTUB, Items.IRON_NUGGET, Blocks.POLISHED_DEEPSLATE);
+        offerBathtubRecipe(exporter, ModBlocks.CALCITE_BATHTUB, Items.IRON_NUGGET, Blocks.CALCITE);
+        offerBathtubRecipe(exporter, ModBlocks.TUFF_BATHTUB, Items.IRON_NUGGET, Blocks.TUFF);
+        offerBathtubRecipe(exporter, ModBlocks.BRICK_BATHTUB, Items.IRON_NUGGET, Blocks.BRICKS);
+        offerBathtubRecipe(exporter, ModBlocks.MUD_BATHTUB, Items.IRON_NUGGET, Blocks.MUD);
+        offerBathtubRecipe(exporter, ModBlocks.SANDSTONE_BATHTUB, Items.IRON_NUGGET, Blocks.SANDSTONE);
+        offerBathtubRecipe(exporter, ModBlocks.RED_SANDSTONE_BATHTUB, Items.IRON_NUGGET, Blocks.RED_SANDSTONE);
+        offerBathtubRecipe(exporter, ModBlocks.PRISMARINE_BATHTUB, Items.IRON_NUGGET, Blocks.PRISMARINE);
+        offerBathtubRecipe(exporter, ModBlocks.NETHER_BRICK_BATHTUB, Items.IRON_NUGGET, Blocks.NETHER_BRICKS);
+        offerBathtubRecipe(exporter, ModBlocks.RED_NETHER_BRICK_BATHTUB, Items.IRON_NUGGET, Blocks.RED_NETHER_BRICKS);
+        offerBathtubRecipe(exporter, ModBlocks.BLACKSTONE_BATHTUB, Items.IRON_NUGGET, Blocks.BLACKSTONE);
+        offerBathtubRecipe(exporter, ModBlocks.ENDSTONE_BATHTUB, Items.IRON_NUGGET, Blocks.END_STONE);
+        offerBathtubRecipe(exporter, ModBlocks.PURPUR_BATHTUB, Items.IRON_NUGGET, Blocks.PURPUR_BLOCK);
+        offerBathtubRecipe(exporter, ModBlocks.IRON_BATHTUB, Items.IRON_NUGGET, Blocks.IRON_BARS);
+        offerBathtubRecipe(exporter, ModBlocks.GOLD_BATHTUB, Items.GOLD_NUGGET, Blocks.GOLD_BLOCK);
 
         // Large Stumps
         offerLargeStumpRecipe(exporter, ModBlocks.OAK_LARGE_STUMP, Blocks.OAK_LOG);
