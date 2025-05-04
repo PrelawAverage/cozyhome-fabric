@@ -2,13 +2,16 @@ package net.luckystudio.cozyhome.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.luckystudio.cozyhome.CozyHome;
 import net.luckystudio.cozyhome.block.ModBlocks;
 import net.luckystudio.cozyhome.item.ModItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.StonecuttingRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 
@@ -19,6 +22,22 @@ import java.util.concurrent.CompletableFuture;
 public class ModRecipeProvider extends FabricRecipeProvider {
     public ModRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
+    }
+
+    public static void offerStoneCuttingRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
+        StonecuttingRecipeJsonBuilder.createStonecutting(
+                        Ingredient.ofItems(input),
+                        RecipeCategory.BUILDING_BLOCKS, output)
+                .criterion(hasItem(input), conditionsFromItem(input))
+                .offerTo(exporter, CozyHome.id(getItemPath(output) + "_stonecutting"));
+    }
+
+    public static void offerStoneCuttingWithAmountRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input, int amount) {
+        StonecuttingRecipeJsonBuilder.createStonecutting(
+                        Ingredient.ofItems(input),
+                        RecipeCategory.BUILDING_BLOCKS, output, amount)
+                .criterion(hasItem(input), conditionsFromItem(input))
+                .offerTo(exporter, CozyHome.id(getItemPath(output) + "_stonecutting"));
     }
 
     public static void offerCounterRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2) {
@@ -205,9 +224,23 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public static void offerSinkRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2) {
         ShapedRecipeJsonBuilder.create(
                         RecipeCategory.BUILDING_BLOCKS,
-                        output, 1)
-                .pattern("@@ ")
-                .pattern("# #")
+                        output, 3)
+                .pattern("###")
+                .pattern("#@#")
+                .pattern("###")
+                .input('@', input1)
+                .input('#', input2)
+                .criterion(hasItem(input2), conditionsFromItem(input2))
+                .offerTo(exporter);
+    }
+
+    // Criterion needs to be fixed to take in a tag instead of a singular item, instead it should be tag planks
+    public static void offerBathtubRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2) {
+        ShapedRecipeJsonBuilder.create(
+                        RecipeCategory.BUILDING_BLOCKS,
+                        output, 3)
+                .pattern("###")
+                .pattern("#@#")
                 .pattern("###")
                 .input('@', input1)
                 .input('#', input2)
@@ -226,6 +259,29 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('#', input)
                 .criterion(hasItem(input), conditionsFromItem(input))
                 .offerTo(exporter);
+    }
+
+    public static void offerFountainRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
+        ShapedRecipeJsonBuilder.create(
+                        RecipeCategory.BUILDING_BLOCKS,
+                        output, 6)
+                .pattern("###")
+                .pattern(" # ")
+                .pattern(" # ")
+                .input('#', input)
+                .criterion(hasItem(input), conditionsFromItem(input))
+                .offerTo(exporter, CozyHome.id(getItemPath(output) + "_shaped"));
+    }
+
+    public static void offerFountainSpoutRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
+        ShapedRecipeJsonBuilder.create(
+                        RecipeCategory.BUILDING_BLOCKS,
+                        output, 4)
+                .pattern("## ")
+                .pattern(" # ")
+                .input('#', input)
+                .criterion(hasItem(input), conditionsFromItem(input))
+                .offerTo(exporter, CozyHome.id(getItemPath(output) + "_shaped"));
     }
 
     // Criterion needs to be fixed to take in a tag instead of a singular item, instead it should be tag planks
@@ -378,6 +434,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerLampRecipe(exporter, ModBlocks.BAMBOO_LAMP, Blocks.BAMBOO_PLANKS, Blocks.CANDLE, Blocks.BAMBOO_PLANKS);
         offerLampRecipe(exporter, ModBlocks.CRIMSON_LAMP, Blocks.CRIMSON_FUNGUS, Blocks.CRIMSON_NYLIUM, Blocks.FLOWER_POT);
         offerLampRecipe(exporter, ModBlocks.WARPED_LAMP, Blocks.WARPED_FUNGUS, Blocks.WARPED_NYLIUM, Blocks.FLOWER_POT);
+        offerLampRecipe(exporter, ModBlocks.IRON_LAMP, Blocks.IRON_BLOCK, Blocks.LANTERN, Items.IRON_INGOT);
+        offerLampRecipe(exporter, ModBlocks.GLASS_LAMP, Blocks.GLASS, Blocks.LANTERN, Items.GLASS_BOTTLE);
 
         // Sofas
         offerSofaRecipe(exporter, ModBlocks.OAK_SOFA, Blocks.OAK_SLAB);
@@ -477,6 +535,82 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerLargeStumpRecipe(exporter, ModBlocks.BAMBOO_LARGE_STUMP, Blocks.BAMBOO);
         offerLargeStumpRecipe(exporter, ModBlocks.CRIMSON_LARGE_STUMP, Blocks.CRIMSON_STEM);
         offerLargeStumpRecipe(exporter, ModBlocks.WARPED_LARGE_STUMP, Blocks.WARPED_STEM);
+
+        // Fountains
+        offerFountainRecipe(exporter, ModBlocks.STONE_BRICK_FOUNTAIN, Blocks.STONE_BRICKS);
+        offerFountainRecipe(exporter, ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN, Blocks.MOSSY_STONE_BRICKS);
+        offerFountainRecipe(exporter, ModBlocks.GRANITE_FOUNTAIN, Blocks.POLISHED_GRANITE);
+        offerFountainRecipe(exporter, ModBlocks.DIORITE_FOUNTAIN, Blocks.POLISHED_DIORITE);
+        offerFountainRecipe(exporter, ModBlocks.ANDESITE_FOUNTAIN, Blocks.POLISHED_ANDESITE);
+        offerFountainRecipe(exporter, ModBlocks.DEEPSLATE_FOUNTAIN, Blocks.POLISHED_DEEPSLATE);
+        offerFountainRecipe(exporter, ModBlocks.CALCITE_FOUNTAIN, Blocks.CALCITE);
+        offerFountainRecipe(exporter, ModBlocks.TUFF_FOUNTAIN, Blocks.TUFF);
+        offerFountainRecipe(exporter, ModBlocks.BRICK_FOUNTAIN, Blocks.BRICKS);
+        offerFountainRecipe(exporter, ModBlocks.MUD_FOUNTAIN, Blocks.MUD);
+        offerFountainRecipe(exporter, ModBlocks.SANDSTONE_FOUNTAIN, Blocks.SANDSTONE);
+        offerFountainRecipe(exporter, ModBlocks.RED_SANDSTONE_FOUNTAIN, Blocks.RED_SANDSTONE);
+        offerFountainRecipe(exporter, ModBlocks.PRISMARINE_FOUNTAIN, Blocks.PRISMARINE);
+        offerFountainRecipe(exporter, ModBlocks.NETHER_BRICK_FOUNTAIN, Blocks.NETHER_BRICKS);
+        offerFountainRecipe(exporter, ModBlocks.RED_NETHER_BRICK_FOUNTAIN, Blocks.RED_NETHER_BRICKS);
+        offerFountainRecipe(exporter, ModBlocks.BLACKSTONE_FOUNTAIN, Blocks.BLACKSTONE);
+        offerFountainRecipe(exporter, ModBlocks.ENDSTONE_FOUNTAIN, Blocks.END_STONE);
+        offerFountainRecipe(exporter, ModBlocks.PURPUR_FOUNTAIN, Blocks.PURPUR_BLOCK);
+        offerStoneCuttingRecipe(exporter, ModBlocks.STONE_BRICK_FOUNTAIN, Blocks.STONE_BRICKS);
+        offerStoneCuttingRecipe(exporter, ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN, Blocks.MOSSY_STONE_BRICKS);
+        offerStoneCuttingRecipe(exporter, ModBlocks.GRANITE_FOUNTAIN, Blocks.POLISHED_GRANITE);
+        offerStoneCuttingRecipe(exporter, ModBlocks.DIORITE_FOUNTAIN, Blocks.POLISHED_DIORITE);
+        offerStoneCuttingRecipe(exporter, ModBlocks.ANDESITE_FOUNTAIN, Blocks.POLISHED_ANDESITE);
+        offerStoneCuttingRecipe(exporter, ModBlocks.DEEPSLATE_FOUNTAIN, Blocks.POLISHED_DEEPSLATE);
+        offerStoneCuttingRecipe(exporter, ModBlocks.CALCITE_FOUNTAIN, Blocks.CALCITE);
+        offerStoneCuttingRecipe(exporter, ModBlocks.TUFF_FOUNTAIN, Blocks.TUFF);
+        offerStoneCuttingRecipe(exporter, ModBlocks.BRICK_FOUNTAIN, Blocks.BRICKS);
+        offerStoneCuttingRecipe(exporter, ModBlocks.MUD_FOUNTAIN, Blocks.MUD);
+        offerStoneCuttingRecipe(exporter, ModBlocks.SANDSTONE_FOUNTAIN, Blocks.SANDSTONE);
+        offerStoneCuttingRecipe(exporter, ModBlocks.RED_SANDSTONE_FOUNTAIN, Blocks.RED_SANDSTONE);
+        offerStoneCuttingRecipe(exporter, ModBlocks.PRISMARINE_FOUNTAIN, Blocks.PRISMARINE);
+        offerStoneCuttingRecipe(exporter, ModBlocks.NETHER_BRICK_FOUNTAIN, Blocks.NETHER_BRICKS);
+        offerStoneCuttingRecipe(exporter, ModBlocks.RED_NETHER_BRICK_FOUNTAIN, Blocks.RED_NETHER_BRICKS);
+        offerStoneCuttingRecipe(exporter, ModBlocks.BLACKSTONE_FOUNTAIN, Blocks.BLACKSTONE);
+        offerStoneCuttingRecipe(exporter, ModBlocks.ENDSTONE_FOUNTAIN, Blocks.END_STONE);
+        offerStoneCuttingRecipe(exporter, ModBlocks.PURPUR_FOUNTAIN, Blocks.PURPUR_BLOCK);
+
+        // Fountains Spouts
+        offerFountainSpoutRecipe(exporter, ModBlocks.STONE_BRICK_FOUNTAIN_SPOUT, Blocks.STONE_BRICKS);
+        offerFountainSpoutRecipe(exporter, ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN_SPOUT, Blocks.MOSSY_STONE_BRICKS);
+        offerFountainSpoutRecipe(exporter, ModBlocks.GRANITE_FOUNTAIN_SPOUT, Blocks.POLISHED_GRANITE);
+        offerFountainSpoutRecipe(exporter, ModBlocks.DIORITE_FOUNTAIN_SPOUT, Blocks.POLISHED_DIORITE);
+        offerFountainSpoutRecipe(exporter, ModBlocks.ANDESITE_FOUNTAIN_SPOUT, Blocks.POLISHED_ANDESITE);
+        offerFountainSpoutRecipe(exporter, ModBlocks.DEEPSLATE_FOUNTAIN_SPOUT, Blocks.POLISHED_DEEPSLATE);
+        offerFountainSpoutRecipe(exporter, ModBlocks.CALCITE_FOUNTAIN_SPOUT, Blocks.CALCITE);
+        offerFountainSpoutRecipe(exporter, ModBlocks.TUFF_FOUNTAIN_SPOUT, Blocks.TUFF);
+        offerFountainSpoutRecipe(exporter, ModBlocks.BRICK_FOUNTAIN_SPOUT, Blocks.BRICKS);
+        offerFountainSpoutRecipe(exporter, ModBlocks.MUD_FOUNTAIN_SPOUT, Blocks.MUD);
+        offerFountainSpoutRecipe(exporter, ModBlocks.SANDSTONE_FOUNTAIN_SPOUT, Blocks.SANDSTONE);
+        offerFountainSpoutRecipe(exporter, ModBlocks.RED_SANDSTONE_FOUNTAIN_SPOUT, Blocks.RED_SANDSTONE);
+        offerFountainSpoutRecipe(exporter, ModBlocks.PRISMARINE_FOUNTAIN_SPOUT, Blocks.PRISMARINE);
+        offerFountainSpoutRecipe(exporter, ModBlocks.NETHER_BRICK_FOUNTAIN_SPOUT, Blocks.NETHER_BRICKS);
+        offerFountainSpoutRecipe(exporter, ModBlocks.RED_NETHER_BRICK_FOUNTAIN_SPOUT, Blocks.RED_NETHER_BRICKS);
+        offerFountainSpoutRecipe(exporter, ModBlocks.BLACKSTONE_FOUNTAIN_SPOUT, Blocks.BLACKSTONE);
+        offerFountainSpoutRecipe(exporter, ModBlocks.ENDSTONE_FOUNTAIN_SPOUT, Blocks.END_STONE);
+        offerFountainSpoutRecipe(exporter, ModBlocks.PURPUR_FOUNTAIN_SPOUT, Blocks.PURPUR_BLOCK);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.STONE_BRICK_FOUNTAIN_SPOUT, Blocks.STONE_BRICKS, 6);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN_SPOUT, Blocks.MOSSY_STONE_BRICKS, 6);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.GRANITE_FOUNTAIN_SPOUT, Blocks.POLISHED_GRANITE, 6);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.DIORITE_FOUNTAIN_SPOUT, Blocks.POLISHED_DIORITE, 6);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.ANDESITE_FOUNTAIN_SPOUT, Blocks.POLISHED_ANDESITE, 6);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.DEEPSLATE_FOUNTAIN_SPOUT, Blocks.POLISHED_DEEPSLATE, 6);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.CALCITE_FOUNTAIN_SPOUT, Blocks.CALCITE, 6);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.TUFF_FOUNTAIN_SPOUT, Blocks.TUFF, 6);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.BRICK_FOUNTAIN_SPOUT, Blocks.BRICKS, 6);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.MUD_FOUNTAIN_SPOUT, Blocks.MUD, 6);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.SANDSTONE_FOUNTAIN_SPOUT, Blocks.SANDSTONE, 6);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.RED_SANDSTONE_FOUNTAIN_SPOUT, Blocks.RED_SANDSTONE, 6);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.PRISMARINE_FOUNTAIN_SPOUT, Blocks.PRISMARINE, 6);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.NETHER_BRICK_FOUNTAIN_SPOUT, Blocks.NETHER_BRICKS, 6);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.RED_NETHER_BRICK_FOUNTAIN_SPOUT, Blocks.RED_NETHER_BRICKS, 6);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.BLACKSTONE_FOUNTAIN_SPOUT, Blocks.BLACKSTONE, 6);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.ENDSTONE_FOUNTAIN_SPOUT, Blocks.END_STONE, 6);
+        offerStoneCuttingWithAmountRecipe(exporter, ModBlocks.PURPUR_FOUNTAIN_SPOUT, Blocks.PURPUR_BLOCK, 6);
 
         // Chimneys
         offerChimneyRecipe(exporter, ModBlocks.STONE_BRICK_CHIMNEY, Blocks.STONE_BRICKS);

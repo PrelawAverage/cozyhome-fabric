@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:tuff"
+  },
+  "result": {
+    "count": 6,
+    "id": "cozyhome:tuff_fountain_spout"
+  }
+}

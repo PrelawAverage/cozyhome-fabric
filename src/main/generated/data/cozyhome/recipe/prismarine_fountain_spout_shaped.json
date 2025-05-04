@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:prismarine"
+    }
+  },
+  "pattern": [
+    "## ",
+    " # "
+  ],
+  "result": {
+    "count": 4,
+    "id": "cozyhome:prismarine_fountain_spout"
+  }
+}

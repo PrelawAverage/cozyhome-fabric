@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-15T16:15:32.2870193	Cozy Home/Block Loot Tables
+// 1.21.1	2025-04-22T18:53:20.3868901	Cozy Home/Block Loot Tables
 4d6ab4f3c2f7c9bc2f00fbb919dd36c0d0ed39f7 data\cozyhome\loot_table\blocks\dark_oak_wall_mirror.json
 f17976ea3cac6639c9db1b8284fa8600696beaa4 data\cozyhome\loot_table\blocks\mud_fountain_spout.json
 2c97a9052bd08b05505921986c05b7dc88ce199e data\cozyhome\loot_table\blocks\warped_wall_clock.json
@@ -48,8 +48,8 @@ f5f839de53414695348245d679068a4b9cf3ff26 data\cozyhome\loot_table\blocks\mossy_s
 e0ebedf4e5bde32f805c478881dec5e3e1070e96 data\cozyhome\loot_table\blocks\telescope.json
 7a201896f93e41f1f36db16758f98ffd44f1648f data\cozyhome\loot_table\blocks\birch_wall_clock.json
 fc2a58d4996559d45351ec12e7f1068e5d0f69ab data\cozyhome\loot_table\blocks\diorite_sink.json
-badfaaede66b9dabb223fb9c2aaf66b1fccb98aa data\cozyhome\loot_table\blocks\crimson_table.json
 3b3d1a74ad093ca285c5a37e8865ee5f416cf2f7 data\cozyhome\loot_table\blocks\purpur_fountain_spout.json
+badfaaede66b9dabb223fb9c2aaf66b1fccb98aa data\cozyhome\loot_table\blocks\crimson_table.json
 02fc689e967f50f68388d223cef54d172897f81c data\cozyhome\loot_table\blocks\acacia_chair.json
 f40d35842696274628a975d84eaf5522359547e1 data\cozyhome\loot_table\blocks\stone_brick_chimney.json
 02bf362ecb640619925f5ab018bb2a0d53530640 data\cozyhome\loot_table\blocks\jungle_wall_mirror.json
@@ -175,8 +175,8 @@ a76fa981c510fffedae506a49f4dc363d6f28fbf data\cozyhome\loot_table\blocks\spruce_
 3b8069874f2fe80fb10899d38fe335ffab4f13da data\cozyhome\loot_table\blocks\crimson_counter.json
 b5c5a4cb5a3e87853aa0a5eccd5504f1ab8a508b data\cozyhome\loot_table\blocks\bamboo_wall_mirror.json
 405f729889a881380454e2c5288d49006d2161f3 data\cozyhome\loot_table\blocks\oak_grandfather_clock.json
-2dc8f6fecad905824148a00d1047966491a1eda2 data\cozyhome\loot_table\blocks\jungle_lamp.json
 5aee248bd0353b0024f1f0a2f1edce8f06834644 data\cozyhome\loot_table\blocks\blackstone_fountain.json
+2dc8f6fecad905824148a00d1047966491a1eda2 data\cozyhome\loot_table\blocks\jungle_lamp.json
 a33a47be2340dec7b7e29be3e7976e02d5adc9f3 data\cozyhome\loot_table\blocks\oak_table.json
 7ba0a9941b4ed0476cc10ca558052b3019c0dd42 data\cozyhome\loot_table\blocks\spruce_counter.json
 8035f21ee5bbb77875b4d1174eca5d0ca3aca88c data\cozyhome\loot_table\blocks\diorite_chimney.json

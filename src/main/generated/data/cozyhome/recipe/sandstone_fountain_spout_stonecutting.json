@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:sandstone"
+  },
+  "result": {
+    "count": 6,
+    "id": "cozyhome:sandstone_fountain_spout"
+  }
+}
