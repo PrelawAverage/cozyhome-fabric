@@ -76,18 +76,18 @@ public class FountainBlock extends AbstractHorizontalConnectingBlock implements 
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ContainsBlock contents = state.get(CONTAINS);
         if (stack.getItem() == Items.WATER_BUCKET) {
-            ItemUsage.exchangeStack(stack, player, Items.BUCKET.getDefaultStack());
+            player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.BUCKET)));
             return changeState(state, ContainsBlock.WATER, SoundEvents.ITEM_BUCKET_EMPTY, world, pos, player);
         } else if (stack.getItem() == Items.LAVA_BUCKET) {
-            ItemUsage.exchangeStack(stack, player, Items.BUCKET.getDefaultStack());
+            player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.BUCKET)));
             return changeState(state, ContainsBlock.LAVA, SoundEvents.ITEM_BUCKET_EMPTY_LAVA, world, pos, player);
         } else if (contents != ContainsBlock.NONE) {
             if (stack.getItem() == Items.BUCKET) {
                 if (contents == ContainsBlock.WATER) {
-                    ItemUsage.exchangeStack(stack, player, Items.WATER_BUCKET.getDefaultStack());
+                    player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.WATER_BUCKET)));
                     return changeState(state, ContainsBlock.NONE, SoundEvents.ITEM_BUCKET_FILL, world, pos, player);
                 } else if (contents == ContainsBlock.LAVA) {
-                    ItemUsage.exchangeStack(stack, player, Items.LAVA_BUCKET.getDefaultStack());
+                    player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.LAVA_BUCKET)));
                     return changeState(state, ContainsBlock.NONE, SoundEvents.ITEM_BUCKET_FILL_LAVA, world, pos, player);
                 }
             } else {
