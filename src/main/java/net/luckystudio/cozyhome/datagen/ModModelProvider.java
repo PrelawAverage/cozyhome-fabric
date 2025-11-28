@@ -10,6 +10,7 @@ import net.luckystudio.cozyhome.datagen.util.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.enums.BlockFace;
 import net.minecraft.block.enums.StairShape;
+import net.minecraft.client.render.item.ItemModels;
 import net.minecraft.data.client.*;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -277,6 +278,27 @@ public class ModModelProvider extends FabricModelProvider {
         registerFountain(blockStateModelGenerator, ModBlocks.ENDSTONE_FOUNTAIN, Identifier.of("block/end_stone"));
         registerFountain(blockStateModelGenerator, ModBlocks.PURPUR_FOUNTAIN, Identifier.of("block/purpur_block"));
 
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.STONE_BRICK_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.MOSSY_STONE_BRICK_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.GRANITE_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.DIORITE_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.ANDESITE_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.DEEPSLATE_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.CALCITE_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.TUFF_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.BRICK_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.MUD_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.SANDSTONE_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.RED_SANDSTONE_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.PRISMARINE_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.NETHER_BRICK_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.RED_NETHER_BRICK_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.BLACKSTONE_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.ENDSTONE_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.PURPUR_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.IRON_BATHTUB, ModItemTemplates.BATHTUB.get());
+        blockStateModelGenerator.registerParentedItemModel(ModBlocks.GOLD_BATHTUB, ModItemTemplates.BATHTUB.get());
+
         registerFountainSprout(blockStateModelGenerator, ModBlocks.STONE_BRICK_FOUNTAIN_SPOUT, Identifier.of("block/stone_bricks"));
         registerFountainSprout(blockStateModelGenerator, ModBlocks.MOSSY_STONE_BRICK_FOUNTAIN_SPOUT, Identifier.of("block/mossy_stone_bricks"));
         registerFountainSprout(blockStateModelGenerator, ModBlocks.GRANITE_FOUNTAIN_SPOUT, Identifier.of("block/granite"));
@@ -321,26 +343,7 @@ public class ModModelProvider extends FabricModelProvider {
     // I have no idea what this does, but it's required.
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        itemModelGenerator.register(ModBlocks.STONE_BRICK_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.MOSSY_STONE_BRICK_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.GRANITE_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.DIORITE_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.ANDESITE_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.DEEPSLATE_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.CALCITE_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.TUFF_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.BRICK_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.MUD_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.SANDSTONE_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.RED_SANDSTONE_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.PRISMARINE_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.NETHER_BRICK_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.RED_NETHER_BRICK_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.BLACKSTONE_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.ENDSTONE_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.PURPUR_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.IRON_BATHTUB.asItem(), Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.GOLD_BATHTUB.asItem(), Models.GENERATED);
+
     }
 
     /**
@@ -1093,112 +1096,58 @@ public class ModModelProvider extends FabricModelProvider {
         Identifier deskRightModelId = ModModels.DESK_RIGHT.upload(block, desk_right, blockStateModelGenerator.modelCollector);
 
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
-                .coordinate(BlockStateVariantMap.create(Properties.HORIZONTAL_FACING, ModProperties.ADVANCED_HORIZONTAL_CONNECTION)
+                .coordinate(BlockStateVariantMap.create(Properties.HORIZONTAL_FACING, ModProperties.HORIZONTAL_CONNECTION)
                         // North
-                        .register(Direction.NORTH, AdvancedHorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, deskModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(Direction.NORTH, AdvancedHorizontalLinearConnectionBlock.LEFT, BlockStateVariant.create()
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.LEFT, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, deskLeftModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(Direction.NORTH, AdvancedHorizontalLinearConnectionBlock.MIDDLE, BlockStateVariant.create()
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.MIDDLE, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, deskMiddleModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(Direction.NORTH, AdvancedHorizontalLinearConnectionBlock.RIGHT, BlockStateVariant.create()
+                        .register(Direction.NORTH, HorizontalLinearConnectionBlock.RIGHT, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, deskRightModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(Direction.NORTH, AdvancedHorizontalLinearConnectionBlock.LEFT_DIFF, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskLeftModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(Direction.NORTH, AdvancedHorizontalLinearConnectionBlock.RIGHT_DIFF, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskRightModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(Direction.NORTH, AdvancedHorizontalLinearConnectionBlock.LEFT_DIFF_LEFT, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskMiddleModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(Direction.NORTH, AdvancedHorizontalLinearConnectionBlock.RIGHT_DIFF_RIGHT, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskMiddleModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(Direction.NORTH, AdvancedHorizontalLinearConnectionBlock.MIDDLE_DIFF, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskMiddleModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R180))
 
                         // Repeat for SOUTH
-                        .register(Direction.SOUTH, AdvancedHorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, deskModelId))
-                        .register(Direction.SOUTH, AdvancedHorizontalLinearConnectionBlock.LEFT, BlockStateVariant.create()
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.LEFT, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, deskLeftModelId))
-                        .register(Direction.SOUTH, AdvancedHorizontalLinearConnectionBlock.MIDDLE, BlockStateVariant.create()
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.MIDDLE, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, deskMiddleModelId))
-                        .register(Direction.SOUTH, AdvancedHorizontalLinearConnectionBlock.RIGHT, BlockStateVariant.create()
+                        .register(Direction.SOUTH, HorizontalLinearConnectionBlock.RIGHT, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, deskRightModelId))
-                        .register(Direction.SOUTH, AdvancedHorizontalLinearConnectionBlock.LEFT_DIFF, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskLeftModelId))
-                        .register(Direction.SOUTH, AdvancedHorizontalLinearConnectionBlock.RIGHT_DIFF, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskRightModelId))
-                        .register(Direction.SOUTH, AdvancedHorizontalLinearConnectionBlock.LEFT_DIFF_LEFT, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskMiddleModelId))
-                        .register(Direction.SOUTH, AdvancedHorizontalLinearConnectionBlock.RIGHT_DIFF_RIGHT, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskMiddleModelId))
-                        .register(Direction.SOUTH, AdvancedHorizontalLinearConnectionBlock.MIDDLE_DIFF, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskMiddleModelId))
 
                         // Repeat for EAST
-                        .register(Direction.EAST, AdvancedHorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, deskModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R270))
-                        .register(Direction.EAST, AdvancedHorizontalLinearConnectionBlock.LEFT, BlockStateVariant.create()
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.LEFT, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, deskLeftModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R270))
-                        .register(Direction.EAST, AdvancedHorizontalLinearConnectionBlock.MIDDLE, BlockStateVariant.create()
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.MIDDLE, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, deskMiddleModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R270))
-                        .register(Direction.EAST, AdvancedHorizontalLinearConnectionBlock.RIGHT, BlockStateVariant.create()
+                        .register(Direction.EAST, HorizontalLinearConnectionBlock.RIGHT, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, deskRightModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
-                        .register(Direction.EAST, AdvancedHorizontalLinearConnectionBlock.LEFT_DIFF, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskLeftModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
-                        .register(Direction.EAST, AdvancedHorizontalLinearConnectionBlock.RIGHT_DIFF, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskRightModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
-                        .register(Direction.EAST, AdvancedHorizontalLinearConnectionBlock.LEFT_DIFF_LEFT, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskMiddleModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
-                        .register(Direction.EAST, AdvancedHorizontalLinearConnectionBlock.RIGHT_DIFF_RIGHT, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskMiddleModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R270))
-                        .register(Direction.EAST, AdvancedHorizontalLinearConnectionBlock.MIDDLE_DIFF, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskMiddleModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R270))
 
+
                         // Repeat for WEST
-                        .register(Direction.WEST, AdvancedHorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.SINGLE, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, deskModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                        .register(Direction.WEST, AdvancedHorizontalLinearConnectionBlock.LEFT, BlockStateVariant.create()
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.LEFT, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, deskLeftModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                        .register(Direction.WEST, AdvancedHorizontalLinearConnectionBlock.MIDDLE, BlockStateVariant.create()
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.MIDDLE, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, deskMiddleModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                        .register(Direction.WEST, AdvancedHorizontalLinearConnectionBlock.RIGHT, BlockStateVariant.create()
+                        .register(Direction.WEST, HorizontalLinearConnectionBlock.RIGHT, BlockStateVariant.create()
                                 .put(VariantSettings.MODEL, deskRightModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                        .register(Direction.WEST, AdvancedHorizontalLinearConnectionBlock.LEFT_DIFF, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskLeftModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                        .register(Direction.WEST, AdvancedHorizontalLinearConnectionBlock.RIGHT_DIFF, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskRightModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                        .register(Direction.WEST, AdvancedHorizontalLinearConnectionBlock.LEFT_DIFF_LEFT, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskMiddleModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                        .register(Direction.WEST, AdvancedHorizontalLinearConnectionBlock.RIGHT_DIFF_RIGHT, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskMiddleModelId)
-                                .put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                        .register(Direction.WEST, AdvancedHorizontalLinearConnectionBlock.MIDDLE_DIFF, BlockStateVariant.create()
-                                .put(VariantSettings.MODEL, deskMiddleModelId)
                                 .put(VariantSettings.Y, VariantSettings.Rotation.R90))
                 )
         );
@@ -1550,7 +1499,6 @@ public class ModModelProvider extends FabricModelProvider {
         Identifier backOnModelId = ModModels.BATHTUB_BACK_ON.upload(block, backTextureMap, blockStateModelGenerator.modelCollector);
 
         blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(block)
-
                 // Front Part, shown regardless of on/off state, just rotates
                 .with(When.create().set(Properties.HORIZONTAL_FACING, Direction.NORTH).set(ModProperties.DOUBLE_LONG_PART, DoubleLongPart.FRONT),
                         BlockStateVariant.create().put(VariantSettings.MODEL, frontModelId)

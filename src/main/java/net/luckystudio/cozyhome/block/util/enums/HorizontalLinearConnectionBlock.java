@@ -16,7 +16,7 @@ public enum HorizontalLinearConnectionBlock implements StringIdentifiable {
 
     private final String name;
 
-    private HorizontalLinearConnectionBlock(final String name) {
+    HorizontalLinearConnectionBlock(final String name) {
         this.name = name;
     }
 

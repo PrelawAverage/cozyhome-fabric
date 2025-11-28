@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "cozyhome:item/mossy_stone_brick_bathtub"
-  }
+  "parent": "cozyhome:item/template/template_bathtub"
 }

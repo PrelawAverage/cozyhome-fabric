@@ -8,7 +8,8 @@ import java.util.function.Supplier;
 public enum ModItemTemplates implements Supplier<Identifier> {
     CHAIR(CozyHome.id("item/template/template_chair")),
     SOFA(CozyHome.id("item/template/template_sofa")),
-    WALL_CLOCK(CozyHome.id("item/template/template_wall_clock"));
+    WALL_CLOCK(CozyHome.id("item/template/template_wall_clock")),
+    BATHTUB(CozyHome.id("item/template/template_bathtub")),;
 
     private final Identifier name;
 

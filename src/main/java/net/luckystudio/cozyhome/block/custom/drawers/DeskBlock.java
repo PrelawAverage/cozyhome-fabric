@@ -2,7 +2,7 @@ package net.luckystudio.cozyhome.block.custom.drawers;
 
 import com.mojang.serialization.MapCodec;
 import net.luckystudio.cozyhome.block.util.ModProperties;
-import net.luckystudio.cozyhome.block.util.enums.AdvancedHorizontalLinearConnectionBlock;
+import net.luckystudio.cozyhome.block.util.enums.HorizontalLinearConnectionBlock;
 import net.luckystudio.cozyhome.block.util.interfaces.ConnectingBlock;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 public class DeskBlock extends Block implements Waterloggable, ConnectingBlock {
     public static final MapCodec<DeskBlock> CODEC = createCodec(DeskBlock::new);
 
-    public static final EnumProperty<AdvancedHorizontalLinearConnectionBlock> HORIZONTAL_CONNECTION = ModProperties.ADVANCED_HORIZONTAL_CONNECTION;
+    public static final EnumProperty<HorizontalLinearConnectionBlock> HORIZONTAL_CONNECTION = ModProperties.HORIZONTAL_CONNECTION;
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
@@ -41,7 +41,7 @@ public class DeskBlock extends Block implements Waterloggable, ConnectingBlock {
     public DeskBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState()
-                .with(HORIZONTAL_CONNECTION, AdvancedHorizontalLinearConnectionBlock.SINGLE)
+                .with(HORIZONTAL_CONNECTION, HorizontalLinearConnectionBlock.SINGLE)
                 .with(FACING, Direction.NORTH)
                 .with(WATERLOGGED, Boolean.FALSE));
     }
@@ -58,12 +58,12 @@ public class DeskBlock extends Block implements Waterloggable, ConnectingBlock {
 
     private VoxelShape getShape(BlockState state) {
         Direction direction = state.get(FACING);
-        AdvancedHorizontalLinearConnectionBlock horz = state.get(HORIZONTAL_CONNECTION);
+        HorizontalLinearConnectionBlock horz = state.get(HORIZONTAL_CONNECTION);
         VoxelShape shape = VoxelShapes.union(DESK_TOP, DESK_BODY);
 
         // Add the inner cutout based on the direction
         shape = VoxelShapes.combineAndSimplify(shape, Block.createCuboidShape(
-                x1(direction, horz),
+                        x1(direction, horz),
                         0,
                         z1(direction, horz),
                         x2(direction, horz),
@@ -74,30 +74,30 @@ public class DeskBlock extends Block implements Waterloggable, ConnectingBlock {
         // Adding legs and returning the shape.
         return switch (horz) {
             case SINGLE -> VoxelShapes.union(shape, NORTH_EAST_LEG_PIECE, NORTH_WEST_LEG_PIECE, SOUTH_EAST_LEG_PIECE, SOUTH_WEST_LEG_PIECE);
-            case LEFT, LEFT_DIFF, LEFT_DIFF_LEFT -> switch (direction) {
+            case LEFT -> switch (direction) {
                 case NORTH -> VoxelShapes.union(shape, NORTH_WEST_LEG_PIECE, SOUTH_WEST_LEG_PIECE);
                 case SOUTH -> VoxelShapes.union(shape, NORTH_EAST_LEG_PIECE, SOUTH_EAST_LEG_PIECE);
                 case WEST -> VoxelShapes.union(shape, SOUTH_EAST_LEG_PIECE, SOUTH_WEST_LEG_PIECE);
                 default -> VoxelShapes.union(shape, NORTH_EAST_LEG_PIECE, NORTH_WEST_LEG_PIECE);
             };
-            case RIGHT, RIGHT_DIFF, RIGHT_DIFF_RIGHT -> switch (direction) {
+            case RIGHT -> switch (direction) {
                 case NORTH -> VoxelShapes.union(shape, NORTH_EAST_LEG_PIECE, SOUTH_EAST_LEG_PIECE);
                 case SOUTH -> VoxelShapes.union(shape, NORTH_WEST_LEG_PIECE, SOUTH_WEST_LEG_PIECE);
                 case WEST -> VoxelShapes.union(shape, NORTH_WEST_LEG_PIECE, NORTH_EAST_LEG_PIECE);
                 default -> VoxelShapes.union(shape, SOUTH_WEST_LEG_PIECE, SOUTH_EAST_LEG_PIECE);
             };
-            case MIDDLE, MIDDLE_DIFF -> shape;
+            case MIDDLE -> shape;
         };
     }
 
-    private static int x1(Direction direction, AdvancedHorizontalLinearConnectionBlock horz) {
+    private static int x1(Direction direction, HorizontalLinearConnectionBlock horz) {
         return switch (direction) {
             case NORTH -> switch (horz) {
-                case RIGHT, RIGHT_DIFF, RIGHT_DIFF_RIGHT, MIDDLE, MIDDLE_DIFF -> 0;
+                case RIGHT, MIDDLE -> 0;
                 default -> 4;
             };
             case SOUTH -> switch (horz) {
-                case LEFT, LEFT_DIFF, LEFT_DIFF_LEFT, MIDDLE, MIDDLE_DIFF -> 0;
+                case LEFT, MIDDLE -> 0;
                 default -> 4;
             };
             case WEST -> 4;
@@ -105,14 +105,14 @@ public class DeskBlock extends Block implements Waterloggable, ConnectingBlock {
         };
     }
 
-    private static int z1(Direction direction, AdvancedHorizontalLinearConnectionBlock horz) {
+    private static int z1(Direction direction, HorizontalLinearConnectionBlock horz) {
         return switch (direction) {
             case EAST -> switch (horz) {
-                case RIGHT, RIGHT_DIFF, RIGHT_DIFF_RIGHT, MIDDLE, MIDDLE_DIFF -> 0;
+                case RIGHT, MIDDLE -> 0;
                 default -> 4;
             };
             case WEST -> switch (horz) {
-                case LEFT, LEFT_DIFF, LEFT_DIFF_LEFT, MIDDLE, MIDDLE_DIFF -> 0;
+                case LEFT, MIDDLE -> 0;
                 default -> 4;
             };
             case NORTH -> 4;
@@ -120,14 +120,14 @@ public class DeskBlock extends Block implements Waterloggable, ConnectingBlock {
         };
     }
 
-    private static int x2(Direction direction, AdvancedHorizontalLinearConnectionBlock horz) {
+    private static int x2(Direction direction, HorizontalLinearConnectionBlock horz) {
         return switch (direction) {
             case NORTH -> switch (horz) {
-                case LEFT, LEFT_DIFF, LEFT_DIFF_LEFT, MIDDLE, MIDDLE_DIFF -> 16;
+                case LEFT, MIDDLE -> 16;
                 default -> 12;
             };
             case SOUTH -> switch (horz) {
-                case RIGHT, RIGHT_DIFF, RIGHT_DIFF_RIGHT, MIDDLE, MIDDLE_DIFF -> 16;
+                case RIGHT, MIDDLE -> 16;
                 default -> 12;
             };
             case EAST -> 12;
@@ -135,14 +135,14 @@ public class DeskBlock extends Block implements Waterloggable, ConnectingBlock {
         };
     }
 
-    private static int z2(Direction direction, AdvancedHorizontalLinearConnectionBlock horz) {
+    private static int z2(Direction direction, HorizontalLinearConnectionBlock horz) {
         return switch (direction) {
             case EAST -> switch (horz) {
-                case LEFT, LEFT_DIFF, LEFT_DIFF_LEFT, MIDDLE, MIDDLE_DIFF -> 16;
+                case LEFT, MIDDLE -> 16;
                 default -> 12;
             };
             case WEST -> switch (horz) {
-                case RIGHT, RIGHT_DIFF, RIGHT_DIFF_RIGHT, MIDDLE, MIDDLE_DIFF -> 16;
+                case RIGHT, MIDDLE -> 16;
                 default -> 12;
             };
             case SOUTH -> 12;
@@ -157,7 +157,7 @@ public class DeskBlock extends Block implements Waterloggable, ConnectingBlock {
         BlockState defaultState = this.getDefaultState()
                 .with(FACING, ctx.getHorizontalPlayerFacing()) // Face the player by default
                 .with(WATERLOGGED, bl);
-        return defaultState;
+        return defaultState.with(HORIZONTAL_CONNECTION, HorizontalLinearConnectionBlock.setHorizontalConnection(defaultState, ctx.getWorld(), ctx.getBlockPos()));
     }
 
     @Override
@@ -165,7 +165,7 @@ public class DeskBlock extends Block implements Waterloggable, ConnectingBlock {
         if (state.get(WATERLOGGED)) {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
-        return state.with(HORIZONTAL_CONNECTION, AdvancedHorizontalLinearConnectionBlock.updateAdvancedHorizontalConnections(state, world, pos));
+        return state.with(HORIZONTAL_CONNECTION, HorizontalLinearConnectionBlock.setHorizontalConnection(state, world, pos));
     }
 
     @Override

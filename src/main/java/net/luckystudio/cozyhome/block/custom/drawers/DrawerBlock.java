@@ -202,7 +202,7 @@ public class DrawerBlock extends BlockWithEntity implements Waterloggable, Conne
         if (state.get(WATERLOGGED)) {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
-        return state.with(HORIZONTAL_CONNECTION, AdvancedHorizontalLinearConnectionBlock.updateAdvancedHorizontalConnections(state, world, pos));
+        return state.with(HORIZONTAL_CONNECTION, AdvancedHorizontalLinearConnectionBlock.setAdvancedHorizontalConnections(state, world, pos));
     }
 
     @Override

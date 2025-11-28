@@ -6,17 +6,17 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.luckystudio.cozyhome.block.util.ModBlockEntityTypes;
 import net.luckystudio.cozyhome.block.ModBlocks;
-import net.luckystudio.cozyhome.block.custom.chairs.ChairBlockEntityRenderer;
-import net.luckystudio.cozyhome.block.custom.chairs.ChairModel;
+import net.luckystudio.cozyhome.block.custom.seatable.chairs.ChairBlockEntityRenderer;
+import net.luckystudio.cozyhome.block.custom.seatable.chairs.ChairModel;
 import net.luckystudio.cozyhome.block.custom.clocks.grandfather_clock.GrandfatherClockBlockEntityRenderer;
 import net.luckystudio.cozyhome.block.custom.clocks.grandfather_clock.GrandfatherClockModel;
 import net.luckystudio.cozyhome.block.custom.clocks.wall_clock.WallClockBlockEntityRenderer;
 import net.luckystudio.cozyhome.block.custom.clocks.wall_clock.WallClockModel;
-import net.luckystudio.cozyhome.block.custom.couches.CouchBlockEntityRenderer;
-import net.luckystudio.cozyhome.block.custom.couches.CouchCushionModel;
-import net.luckystudio.cozyhome.block.custom.sofas.SofaBlockEntityRenderer;
-import net.luckystudio.cozyhome.block.custom.sofas.SofaCushionModel;
-import net.luckystudio.cozyhome.block.custom.sofas.SofaModel;
+import net.luckystudio.cozyhome.block.custom.seatable.couches.CouchBlockEntityRenderer;
+import net.luckystudio.cozyhome.block.custom.seatable.couches.CouchCushionModel;
+import net.luckystudio.cozyhome.block.custom.seatable.sofas.SofaBlockEntityRenderer;
+import net.luckystudio.cozyhome.block.custom.seatable.sofas.SofaCushionModel;
+import net.luckystudio.cozyhome.block.custom.seatable.sofas.SofaModel;
 import net.luckystudio.cozyhome.block.custom.telescope.TelescopeBlockEntityRenderer;
 import net.luckystudio.cozyhome.block.custom.telescope.TelescopeModel;
 import net.luckystudio.cozyhome.client.ModEntityModelLayers;
@@ -24,6 +24,7 @@ import net.luckystudio.cozyhome.client.ModRenderLayers;
 import net.luckystudio.cozyhome.entity.ModEntities;
 import net.luckystudio.cozyhome.entity.custom.SeatRenderer;
 import net.luckystudio.cozyhome.entity.model.*;
+import net.luckystudio.cozyhome.item.renderer.BathtubItemRenderer;
 import net.luckystudio.cozyhome.item.renderer.ChairItemRenderer;
 import net.luckystudio.cozyhome.item.renderer.SofaItemRenderer;
 import net.luckystudio.cozyhome.item.renderer.WallClockItemRenderer;
@@ -137,6 +138,33 @@ public class CozyHomeClient implements ClientModInitializer {
         for (ItemConvertible wallClock : wallClockItems) {
             BuiltinItemRendererRegistry.INSTANCE.register(wallClock, new WallClockItemRenderer());
         }
+
+        ItemConvertible[] bathtubsItems = {
+                ModBlocks.STONE_BRICK_BATHTUB,
+                ModBlocks.MOSSY_STONE_BRICK_BATHTUB,
+                ModBlocks.GRANITE_BATHTUB,
+                ModBlocks.DIORITE_BATHTUB,
+                ModBlocks.ANDESITE_BATHTUB,
+                ModBlocks.DEEPSLATE_BATHTUB,
+                ModBlocks.CALCITE_BATHTUB,
+                ModBlocks.TUFF_BATHTUB,
+                ModBlocks.BRICK_BATHTUB,
+                ModBlocks.MUD_BATHTUB,
+                ModBlocks.SANDSTONE_BATHTUB,
+                ModBlocks.RED_SANDSTONE_BATHTUB,
+                ModBlocks.PRISMARINE_BATHTUB,
+                ModBlocks.NETHER_BRICK_BATHTUB,
+                ModBlocks.RED_NETHER_BRICK_BATHTUB,
+                ModBlocks.BLACKSTONE_BATHTUB,
+                ModBlocks.ENDSTONE_BATHTUB,
+                ModBlocks.PURPUR_BATHTUB,
+                ModBlocks.IRON_BATHTUB,
+                ModBlocks.GOLD_BATHTUB,
+        };
+        for (ItemConvertible bathtubs : bathtubsItems) {
+            BuiltinItemRendererRegistry.INSTANCE.register(bathtubs, new BathtubItemRenderer());
+        }
+
         ModRenderLayers.registerBlockRenderLayers();
         ModRenderLayers.registerColorProviders();
         ModModelPredicates.registerModelPredicates();

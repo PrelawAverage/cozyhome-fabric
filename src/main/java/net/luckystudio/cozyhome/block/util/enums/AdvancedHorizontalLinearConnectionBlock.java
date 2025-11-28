@@ -35,7 +35,7 @@ public enum AdvancedHorizontalLinearConnectionBlock implements StringIdentifiabl
         return this.name;
     }
 
-    public static AdvancedHorizontalLinearConnectionBlock updateAdvancedHorizontalConnections(BlockState state, WorldAccess world, BlockPos pos) {
+    public static AdvancedHorizontalLinearConnectionBlock setAdvancedHorizontalConnections(BlockState state, WorldAccess world, BlockPos pos) {
         Direction facing = state.get(HorizontalFacingBlock.FACING);
         // Determine left and right directions based on the block's facing
         Direction left = facing.rotateYClockwise();
@@ -105,20 +105,35 @@ public enum AdvancedHorizontalLinearConnectionBlock implements StringIdentifiabl
     }
 
     private static boolean isLeft(BlockState targetState) {
-        AdvancedHorizontalLinearConnectionBlock connectionBlock = targetState.get(ModProperties.ADVANCED_HORIZONTAL_CONNECTION);
-        return connectionBlock == AdvancedHorizontalLinearConnectionBlock.LEFT || connectionBlock == AdvancedHorizontalLinearConnectionBlock.LEFT_DIFF;
+        if (targetState.contains(ModProperties.ADVANCED_HORIZONTAL_CONNECTION)) {
+            AdvancedHorizontalLinearConnectionBlock connectionBlock = targetState.get(ModProperties.ADVANCED_HORIZONTAL_CONNECTION);
+            return connectionBlock == AdvancedHorizontalLinearConnectionBlock.LEFT || connectionBlock == AdvancedHorizontalLinearConnectionBlock.LEFT_DIFF;
+        } else {
+            HorizontalLinearConnectionBlock connectionBlock = targetState.get(ModProperties.HORIZONTAL_CONNECTION);
+            return connectionBlock == HorizontalLinearConnectionBlock.LEFT;
+        }
     }
 
     private static boolean isRight(BlockState targetState) {
-        AdvancedHorizontalLinearConnectionBlock connectionBlock = targetState.get(ModProperties.ADVANCED_HORIZONTAL_CONNECTION);
-        return connectionBlock == AdvancedHorizontalLinearConnectionBlock.RIGHT || connectionBlock == AdvancedHorizontalLinearConnectionBlock.RIGHT_DIFF;
+        if (targetState.contains(ModProperties.ADVANCED_HORIZONTAL_CONNECTION)) {
+            AdvancedHorizontalLinearConnectionBlock connectionBlock = targetState.get(ModProperties.ADVANCED_HORIZONTAL_CONNECTION);
+            return connectionBlock == AdvancedHorizontalLinearConnectionBlock.RIGHT || connectionBlock == AdvancedHorizontalLinearConnectionBlock.RIGHT_DIFF;
+        } else {
+            HorizontalLinearConnectionBlock connectionBlock = targetState.get(ModProperties.HORIZONTAL_CONNECTION);
+            return connectionBlock == HorizontalLinearConnectionBlock.RIGHT;
+        }
     }
 
     private static boolean isMiddle(BlockState targetState) {
-        AdvancedHorizontalLinearConnectionBlock connectionBlock = targetState.get(ModProperties.ADVANCED_HORIZONTAL_CONNECTION);
-        return connectionBlock == AdvancedHorizontalLinearConnectionBlock.MIDDLE ||
-                connectionBlock == AdvancedHorizontalLinearConnectionBlock.MIDDLE_DIFF ||
-                connectionBlock == AdvancedHorizontalLinearConnectionBlock.LEFT_DIFF_LEFT ||
-                connectionBlock == AdvancedHorizontalLinearConnectionBlock.RIGHT_DIFF_RIGHT;
+        if (targetState.contains(ModProperties.ADVANCED_HORIZONTAL_CONNECTION)) {
+            AdvancedHorizontalLinearConnectionBlock connectionBlock = targetState.get(ModProperties.ADVANCED_HORIZONTAL_CONNECTION);
+            return connectionBlock == AdvancedHorizontalLinearConnectionBlock.MIDDLE ||
+                    connectionBlock == AdvancedHorizontalLinearConnectionBlock.MIDDLE_DIFF ||
+                    connectionBlock == AdvancedHorizontalLinearConnectionBlock.LEFT_DIFF_LEFT ||
+                    connectionBlock == AdvancedHorizontalLinearConnectionBlock.RIGHT_DIFF_RIGHT;
+        } else {
+            HorizontalLinearConnectionBlock connectionBlock = targetState.get(ModProperties.HORIZONTAL_CONNECTION);
+            return connectionBlock == HorizontalLinearConnectionBlock.MIDDLE;
+        }
     }
 }

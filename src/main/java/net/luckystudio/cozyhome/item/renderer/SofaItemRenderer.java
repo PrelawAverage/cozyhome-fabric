@@ -1,9 +1,9 @@
 package net.luckystudio.cozyhome.item.renderer;
 
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
-import net.luckystudio.cozyhome.block.custom.sofas.SofaBlock;
-import net.luckystudio.cozyhome.block.custom.sofas.SofaBlockEntityRenderer;
-import net.luckystudio.cozyhome.block.custom.sofas.SofaModel;
+import net.luckystudio.cozyhome.block.custom.seatable.sofas.SofaBlock;
+import net.luckystudio.cozyhome.block.custom.seatable.sofas.SofaBlockEntityRenderer;
+import net.luckystudio.cozyhome.block.custom.seatable.sofas.SofaModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.model.ModelPart;

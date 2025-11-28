@@ -3,6 +3,7 @@ package net.luckystudio.cozyhome.datagen.util;
 import net.luckystudio.cozyhome.CozyHome;
 import net.minecraft.data.client.Model;
 import net.minecraft.data.client.TextureKey;
+import net.minecraft.util.Identifier;
 
 import java.util.Optional;
 
@@ -81,7 +82,6 @@ public class ModModels {
     public static final Model BATHTUB_WATER_1 = modBlockWithTypeAndVariant("bathtub_1", ModBlockTypes.BATHTUB,"bathtub_water_1", TextureKey.UP);
     public static final Model BATHTUB_LAVA_2 = modBlockWithTypeAndVariant("bathtub_2", ModBlockTypes.BATHTUB,"bathtub_lava_2", TextureKey.UP);
     public static final Model BATHTUB_LAVA_1 = modBlockWithTypeAndVariant("bathtub_1", ModBlockTypes.BATHTUB,"bathtub_lava_1", TextureKey.UP);
-
     public static final Model LARGE_STUMP = modBlockWithType("template_large_stump", ModBlockTypes.LARGE_STUMP, TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
     public static final Model LARGE_STUMP_CORNER = modBlockWithTypeAndVariant("template_large_stump_corner", ModBlockTypes.LARGE_STUMP, "_corner", TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
     public static final Model LARGE_STUMP_CORNER_PIECE = modBlockWithTypeAndVariant("template_large_stump_corner_piece", ModBlockTypes.LARGE_STUMP, "_corner_piece", TextureKey.TOP, TextureKey.SIDE, TextureKey.PARTICLE);
@@ -117,6 +117,10 @@ public class ModModels {
     public static final Model INSET_LAVA_FLAT_15 = modBlockWithTypeAndVariant("inset_flat_15", ModBlockTypes.FLAT,"inset_lava_15", TextureKey.UP);
     public static final Model INSET_LAVA_FLAT_13 = modBlockWithTypeAndVariant("inset_flat_13", ModBlockTypes.FLAT,"inset_lava_13", TextureKey.UP);
     public static final Model INSET_LAVA_FLAT_11 = modBlockWithTypeAndVariant("inset_flat_11", ModBlockTypes.FLAT,"inset_lava_11", TextureKey.UP);
+
+    private static Model item(String parent, TextureKey... requiredTextureKeys) {
+        return new Model(Optional.of(CozyHome.id("item/" + parent)), Optional.empty(), requiredTextureKeys);
+    }
 
     private static Model modBlock(String parent, TextureKey... requiredTextureKeys) {
         return new Model(Optional.of(CozyHome.id("block/" + parent)), Optional.empty(), requiredTextureKeys);

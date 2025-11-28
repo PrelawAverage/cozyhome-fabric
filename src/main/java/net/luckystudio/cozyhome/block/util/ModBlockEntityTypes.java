@@ -6,13 +6,13 @@ import net.luckystudio.cozyhome.block.custom.water_holding_blocks.bathtub.BathTu
 import net.luckystudio.cozyhome.block.custom.water_holding_blocks.sink.SinkBlockEntity;
 import net.luckystudio.cozyhome.block.custom.chimneys.ChimneyBlockEntity;
 import net.luckystudio.cozyhome.block.custom.counters.StorageCounterBlockEntity;
-import net.luckystudio.cozyhome.block.custom.chairs.ChairBlockEntity;
+import net.luckystudio.cozyhome.block.custom.seatable.chairs.ChairBlockEntity;
 import net.luckystudio.cozyhome.block.custom.clocks.grandfather_clock.GrandfatherClockBlockEntity;
 import net.luckystudio.cozyhome.block.custom.clocks.wall_clock.WallClockBlockEntity;
-import net.luckystudio.cozyhome.block.custom.couches.CouchBlockEntity;
+import net.luckystudio.cozyhome.block.custom.seatable.couches.CouchBlockEntity;
 import net.luckystudio.cozyhome.block.custom.drawers.DrawerBlockEntity;
 import net.luckystudio.cozyhome.block.custom.lamps.LampBlockEntity;
-import net.luckystudio.cozyhome.block.custom.sofas.SofaBlockEntity;
+import net.luckystudio.cozyhome.block.custom.seatable.sofas.SofaBlockEntity;
 import net.luckystudio.cozyhome.block.custom.telescope.TelescopeBlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;

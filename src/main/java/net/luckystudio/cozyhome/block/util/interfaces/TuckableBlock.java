@@ -3,6 +3,8 @@ package net.luckystudio.cozyhome.block.util.interfaces;
 import net.luckystudio.cozyhome.block.custom.drawers.DeskBlock;
 import net.luckystudio.cozyhome.block.custom.horizontal_connecting_blocks.TableBlock;
 import net.luckystudio.cozyhome.block.util.ModProperties;
+import net.luckystudio.cozyhome.block.util.enums.AdvancedHorizontalLinearConnectionBlock;
+import net.luckystudio.cozyhome.block.util.enums.HorizontalLinearConnectionBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.TrapdoorBlock;
@@ -54,7 +56,7 @@ public interface TuckableBlock {
         // Allow trapdoors to be tucked under if they are the top half and closed.
         if (targetState.getBlock() instanceof TrapdoorBlock && targetState.get(Properties.BLOCK_HALF) == BlockHalf.TOP && !targetState.get(Properties.OPEN)) return true;
         // Allow desks to be tucked under if they are facing the same direction.
-        if (targetState.getBlock() instanceof DeskBlock && targetState.get(Properties.FACING) == direction(state)) return true;
+        if (targetState.getBlock() instanceof DeskBlock && targetState.get(Properties.HORIZONTAL_FACING) == direction(state) && targetState.get(ModProperties.HORIZONTAL_CONNECTION) == HorizontalLinearConnectionBlock.MIDDLE) return true;
         // Allow tables to be tucked under.
         if (targetState.getBlock() instanceof TableBlock) return true;
         // Allow blocks that are replaceable or air to be tucked under.

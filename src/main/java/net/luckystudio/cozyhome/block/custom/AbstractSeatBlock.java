@@ -1,7 +1,7 @@
 package net.luckystudio.cozyhome.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.luckystudio.cozyhome.block.custom.chairs.ChairBlockEntity;
+import net.luckystudio.cozyhome.block.custom.seatable.chairs.ChairBlockEntity;
 import net.luckystudio.cozyhome.block.util.interfaces.SeatBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
