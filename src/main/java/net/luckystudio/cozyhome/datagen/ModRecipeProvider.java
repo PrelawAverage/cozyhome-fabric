@@ -182,7 +182,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         RecipeCategory.BUILDING_BLOCKS,
                         output, 3)
                 .pattern("@@@")
-                .pattern("# #")
+                .pattern("#@#")
                 .pattern("# #")
                 .input('@', input1)
                 .input('#', input2)
